@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Stackframe: Local variables, Arrays and Structures.
+title: Stackframe; Local variables, Arrays and Structures.
 subtitle: Assembly management of local variables, arrays and structures.
 tags: [assem]
 ---
