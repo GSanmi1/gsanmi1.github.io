@@ -134,6 +134,7 @@ This is, if a caller reserve a shadow space for a callee, then the callee access
 
 <br>
 
+```
 ┌─────────────────────────┐  Higher addresses
 │                         │
 │  Shadow space           │  ← Callee accesses via [rsp+8], [rsp+10], etc.
@@ -147,6 +148,7 @@ This is, if a caller reserve a shadow space for a callee, then the callee access
 │  (locals, saved regs)   │     Going DOWN (negative offsets)
 │                         │
 └─────────────────────────┘  Lower addresses
+```
 
 <br>
 
