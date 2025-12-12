@@ -441,7 +441,7 @@ Thus, lets retrieve the assembly of this code, first from MCVS 2019:
 	jmp         main+48h (0140001048h)
 	```
 
-	Note that the operation is barely the same buit this time, instead of use JNE, is using JLE which checks (ZF=1 || SF!=OF), this means; evaluates if the two values are equal or if, first, if the sign bit is up without an overflow being happened (SF=1, OF=0), second, if the result is positive with an overflow (SF=0, OF=1). Note that both cases means that b is greater than a; one because the substraction "a-b" is negative or two, because "a-b" is positive but overflowing, which means in fact is negative but it gets wrapped over positive due to hardware limitations.
+	Note that the operation is barely the same buit this time, instead of use JNE, is using JLE which checks (ZF=1 \|\| SF!=OF), this means; evaluates if the two values are equal or if, first, if the sign bit is up without an overflow being happened (SF=1, OF=0), second, if the result is positive with an overflow (SF=0, OF=1). Note that both cases means that b is greater than a; one because the substraction "a-b" is negative or two, because "a-b" is positive but overflowing, which means in fact is negative but it gets wrapped over positive due to hardware limitations.
 
 	Note that always the if-statement is checking the opposite event: a > b; a greater than b. By default the flow execution prones to enter the if-block, only if this is false, jumps to another part. 
 
