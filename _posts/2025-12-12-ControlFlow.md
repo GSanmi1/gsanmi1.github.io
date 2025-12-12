@@ -609,25 +609,25 @@ It is worth to note that this code is compiled and extracted in MCVS 2019 and fo
 
 - First, is setting the argc and argv arguments which come from RCX and RDX (standard in ABI convention). This is possible due to the shadow space alloced by the caller of main.
 
-```assem
-mov         qword ptr [rsp+10h],rdx  
-mov         dword ptr [rsp+8],ecx 
-```
+    ```assem
+    mov         qword ptr [rsp+10h],rdx  
+    mov         dword ptr [rsp+8],ecx 
+    ```
 
 - Then, it allocates the shadow space for the atoi() function:
 
-```assem
-sub         rsp,38h 
-```
+    ```assem
+    sub         rsp,38h 
+    ```
 
 - Lastly, it introduces in RCX the argument of atoi() which is argv[1]:
 
-```assem
-000000014000100D B8 08 00 00 00       mov         eax,8  
-0000000140001012 48 6B C0 01          imul        rax,rax,1  
-0000000140001016 48 8B 4C 24 48       mov         rcx,qword ptr [argv]  
-000000014000101B 48 8B 0C 01          mov         rcx,qword ptr [rcx+rax]  
-```
+    ```assem
+    000000014000100D B8 08 00 00 00       mov         eax,8  
+    0000000140001012 48 6B C0 01          imul        rax,rax,1  
+    0000000140001016 48 8B 4C 24 48       mov         rcx,qword ptr [argv]  
+    000000014000101B 48 8B 0C 01          mov         rcx,qword ptr [rcx+rax]  
+    ```
 
 	Note that, is a convoluted way to introduce the word size (in x64, which is the size of a pointer) into RAX and then add it to the argv pointer, the result is in terms of pointer arithmetics, argv + 1 or argv[1] being stored in RCX
 
