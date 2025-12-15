@@ -629,7 +629,7 @@ It is worth to note that this code is compiled and extracted in MCVS 2019 and fo
     000000014000101B 48 8B 0C 01          mov         rcx,qword ptr [rcx+rax]  
     ```
 
-	Note that, is a convoluted way to introduce the word size (in x64, which is the size of a pointer) into RAX and then add it to the argv pointer, the result is in terms of pointer arithmetics, argv + 1 or argv[1] being stored in RCX
+	Note that, is a convoluted way to introduce the word size (in x64, which is the size of a pointer) into RAX and then add it to the argv pointer, the result is in terms of pointer arithmetics, argv + 1 or argv[1] being stored in RCX.
 
 
 <br>
