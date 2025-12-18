@@ -7,9 +7,11 @@ tags: [assem]
 
 ### 1. Control Flow. Definition and types.
 
-In terms of program execution; **Control Flow** is a term that refers in the order in which the instructions gets executed by the CPU. Generally, in simple terms, there is a special non-general-purpouse register (RIP on x64) that holds the address of the next instruction to be executed and advanced sequentially through memory if nothing interrupts it.
+In terms of program execution; **Control Flow** is a term that refers in the order in which the instructions gets executed by the CPU. 
 
-How ever, many architectures implements a set of instructions that allows a program to take over the control flow manipulating RIP under certain circunstances in two ways:
+In normal conditions, there is a special non-general-purpouse register, the Instruction Pointer, (RIP/EIP/IP) which holds the address that points to the next instruction to be executed by the CPU. The instruction pointer register advance sequentially through memory if nothing interrupts it.
+
+How ever, x86 implements a set of instructions that allows a program to take over the control flow manipulating Instruction Pointer under certain circunstances in two ways:
 
 - **Unconditional**; execution always transfers somewhere else regardless of state, examples of this control flow take-away are instructions like CALL or RET.
 - **Conditional**, which divides the code into branchs based on test cases triggered by some instructions.
