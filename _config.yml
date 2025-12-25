@@ -17,7 +17,8 @@ navbar-links:
   Program:
     - C: Cpage
     - Dharma: DHARMApage
-  Pentest:
+    - Rust: RUSTpage
+  Web2:
     - Burp: BURPSUITEpage
     - Thm: THMpage
     - Htb: HackTheBoxpage
@@ -26,10 +27,11 @@ navbar-links:
     - Blueteam: BLUETEAMBASICSpage
     - Net: REDESpage  # --- Con estos links ponemos page que mostrarán posts relacionados con un tag en conctreto. --- #
     - Git: 2022-11-17-GitBasics
-  Vuln Research:
-    - CSoft: CSOFTpage
+    - MemCorrupt: CSOFTpage
+  Web3:
+    - ZKP: ZKPpage
   Assembly:
-    - Arch1001: ASSEMpage
+    - x86: ASSEMpage
 
 # --- Logo --- #
 
