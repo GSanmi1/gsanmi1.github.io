@@ -1,6 +1,6 @@
 ---
 layout: page
-title: C-Family Software Implementation Vulnerabilities
+title: C-Family Software Memory Corruption Vulnerabilities
 subtitle: OpenSecurity Training 2 courses notes
 ---
 
