@@ -9,7 +9,7 @@
 title: Home
 
 # Your name to show in the footer
-author: Qv1nTv5
+author: German
 
 # --- List of links in the navigation bar --- #
 
@@ -30,6 +30,8 @@ navbar-links:
     - MemCorrupt: CSOFTpage
   Web3:
     - ZKP: ZKPpage
+    - Rust: RUSTpage
+    - Noir: NOIRpage
   Assembly:
     - x86: ASSEMpage
 
@@ -52,7 +54,7 @@ round-avatar: true
 # Select the social network links that you want to show in the footer.
 # Uncomment the links you want to show and add your information to each one.
 social-network-links:
-  email: "sanmillan.german@gmail.com"
+  email: ""
   rss: true  # remove this line if you don't want to show an RSS link at the bottom
 # facebook: deanattali
   github: Qv1nTv5
