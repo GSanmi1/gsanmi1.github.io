@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Evasión de Defensas
-subtitle: Introduccióna evasión de Antivirus y UAC.
-tags: [redteam] 
+title: "Evasión de Defensas"
+subtitle: "Introduccióna evasión de Antivirus y UAC."
+date: 2022-02-05 09:00:00 +0000
+categories: ['Past Blogs', 'Red Team']
+tags: ['offensive-security', 'tactics']
+author: German Sanmi
 ---
+
 
 # 1. Antivirus.
 
@@ -51,7 +55,7 @@ Con MSFVenom pode acudir a dos técnicas:
 - **Cifrado**: Con MSFVenom podemos cifrar el payload que estamos generando en forma de binario. 
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M8/Pasted image 20220131212010.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M8/Pasted image 20220131212010.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	Sin embargo, aunque los antivirus no sean buenos escaneando malware cifrado, al descifrarlo y utilizarlo el escaneo en tiempo real sigue suponiendo una línea de defensa fuerte y por tanto 
@@ -59,7 +63,7 @@ Con MSFVenom pode acudir a dos técnicas:
 - **Encoders**: También podemos utilizar herramientas de codificación que añden código inservible con la finalidad de alterar la firma. Este código se puede añadir en una serie de iteraciones que nosotros podemos seleccionar. Esto hará que, a mayor número de iteraciones, menos probable será que sea detectado pero más pesara ya que lo que se hace en esencia es añadir código.
 	
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M8/Pasted image 20220131223951.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M8/Pasted image 20220131223951.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	Entre los encoders más destacados encontramos:
@@ -77,13 +81,13 @@ Utilizamos metasploit para buscar el modulo correspondiente y ajustar las corres
 
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M8/Pasted image 20220201131506.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M8/Pasted image 20220201131506.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 Seguidamente, subimos el fichero a VirusTotal y observamos el resultado.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M8/Pasted image 20220201131943.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M8/Pasted image 20220201131943.png' | relative_url }}" text-align="center"/>
 	</div>
 
 <br />
@@ -94,19 +98,19 @@ Lo instalamos tal y como se indica en : https://github.com/nccgroup/Winpayloads.
 Una vez lo hemos instalado seguimos las instrucciones para llevar a cabo los payloads correspondientes:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M8/Pasted image 20220201155053.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M8/Pasted image 20220201155053.png' | relative_url }}" text-align="center"/>
 	</div>
 
 Una vez terminado el proceso se almacenará nuestro payload en una ubicación y  abrirá un multihandler automáticamente a la espera de que el payload generado se ejecute en la máquina víctima:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M8/Pasted image 20220201155202.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M8/Pasted image 20220201155202.png' | relative_url }}" text-align="center"/>
 	</div>
 
 <br />
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M8/Pasted image 20220201155214.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M8/Pasted image 20220201155214.png' | relative_url }}" text-align="center"/>
 	</div>
 
 <br />
@@ -127,13 +131,13 @@ chmod +x setup.sh && sudo ./setup.sh
 <br />
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M8/Pasted image 20220201161032.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M8/Pasted image 20220201161032.png' | relative_url }}" text-align="center"/>
 	</div>
 
 Seguidamente se instalan las dependencias.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M8/Pasted image 20220201161201.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M8/Pasted image 20220201161201.png' | relative_url }}" text-align="center"/>
 	</div>
 
 Una vez se termina de instalar lo ejecutamos desde la terminal. Seguimos las instrucciones para generar el payload deseado.
@@ -199,13 +203,13 @@ En Windows 10 podemos acceder a este gestor mediante **Panel de Control > Cuenta
 Cuando esta se encuentra en el máximo nivel, puede suponer un problema a la hora de utilizar ciertas funcionalidades en meterpreter o dentro de la máquina simplemente: 
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M8/Pasted image 20220202191309.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M8/Pasted image 20220202191309.png' | relative_url }}" text-align="center"/>
 	</div>
 
 <br />
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M8/Pasted image 20220202195227.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M8/Pasted image 20220202195227.png' | relative_url }}" text-align="center"/>
 	</div>
 
 Sin embargo, podemos utilizar módulos de metasploit para saltarnos esta clase de barreras:
@@ -241,5 +245,5 @@ Sin embargo, podemos utilizar módulos de metasploit para saltarnos esta clase d
 De forma que si el UAC no está en el nivel más alto, si la shell que manipulamos es propiedad de alguien que pertence al grupo de administradores y configurando adecuadamente las variables del módulo obtenemos:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M8/Pasted image 20220202195125.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M8/Pasted image 20220202195125.png' | relative_url }}" text-align="center"/>
 	</div>

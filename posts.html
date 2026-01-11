@@ -1,0 +1,33 @@
+---
+layout: default
+title: Todos los Posts
+---
+
+<div class="posts-archive">
+    <h1>Todos los Posts</h1>
+    <p>Archivo completo de todos los artículos y apuntes sobre Zero-Knowledge Proofs.</p>
+
+    <ul class="post-list">
+        {% for post in site.posts %}
+        <li class="post-list-item">
+            <h3 class="post-list-title">
+                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            </h3>
+            <p class="post-meta">
+                {{ post.date | date: "%d de %B, %Y" }}
+                {% if post.categories %}
+                    {% for category in post.categories %}
+                        • <span class="category">{{ category }}</span>
+                    {% endfor %}
+                {% endif %}
+            </p>
+            {% if post.excerpt %}
+            <p class="post-excerpt">
+                {{ post.excerpt | strip_html | truncatewords: 50 }}
+                <a href="{{ post.url | relative_url }}" class="read-more">Leer más →</a>
+            </p>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</div>

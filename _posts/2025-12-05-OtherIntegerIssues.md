@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Other Integer Issues.
-subtitle: Notes from Other Integer Issues course from OST2.
-tags: [csoft]
+title: "Other Integer Issues."
+subtitle: "Notes from Other Integer Issues course from OST2."
+date: 2025-12-05 09:00:00 +0000
+categories: ['Past Blogs', 'Binary Exploitation']
+tags: ['memory-corruption', 'exploits']
+author: German Sanmi
 ---
+
 
 ### 1. Definition.
 

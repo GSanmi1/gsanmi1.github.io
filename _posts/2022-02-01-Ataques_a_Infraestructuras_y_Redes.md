@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Ataques a Infraestructuras y Redes
-subtitle: Introducción a webs, análsis de puertos.
-tags: [redteam] 
+title: "Ataques a Infraestructuras y Redes"
+subtitle: "Introducción a webs, análsis de puertos."
+date: 2022-02-01 09:00:00 +0000
+categories: ['Past Blogs', 'Red Team']
+tags: ['offensive-security', 'tactics']
+author: German Sanmi
 ---
+
 <!-- Este tag hace que el post salga en la lista de RedTeam-->
 
 # 1. Escaneo de puertos con Nmap.
@@ -70,7 +74,7 @@ Con Nmap podemos llevar a cabo un barrido de una red, esto es; identificar el m�
 	Este es el resultado de pasar las cuatro partes del número binario a decimal. Pasándolo a cifras significativas obtenemos que cada 255 son 8 bits y como son 3 partes es: 8\*3=24 y por tanto el valor que define la máscara de red es 24. Si fuera de clase A sería 255.0.0.0 -> 8 \* 1 = 8 y si fuese de clase B sería de 16. Para más dudas repasar parte de redes.
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M2/Pasted image 20211208104950.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20211208104950.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	En este caso, no hemos añadido ninguna especificacion del protocolo que Nmap utiliza para envíar paquetes a los puertos, por ejemplo: **con -sP Nmap envía paquetes con ICMP**, pero por defecto utilizará TCP.
@@ -128,7 +132,7 @@ Existen modificadores que alteran el comportamiento de Nmap, entre los cuales en
 Por ejemplo:
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M2/Pasted image 20211207094328.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20211207094328.png' | relative_url }}" text-align="center"/>
 </div>
 
 En la imágen podemos observar el informe del escaneo y de los puertos.
@@ -218,13 +222,13 @@ Vulscan es un script que detecta vulnerabilidades y puede descargarse desde gith
 Para instalarlo debemos acudir a la carpeta /usr/share/nmap/scripts y clonar de Github el paquete con **git clone**.
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M2/Pasted image 20220211122509.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20220211122509.png' | relative_url }}" text-align="center"/>
 </div>
 
 Debe de quedar de tal forma que dentro de la carpeta "scripts" haya una carpeta llamada "vulscan" que contenga nuestros archivos de scripts.
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M2/Pasted image 20220211122527.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20220211122527.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -240,7 +244,7 @@ nmap -sV --script=vulscan/vulscan.nse <IP>
 <br />
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M2/Pasted image 20220211122936.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20220211122936.png' | relative_url }}" text-align="center"/>
 </div>
 
 
@@ -259,7 +263,7 @@ nmap --script=vulners.nse <IP>
 <br />
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M2/Pasted image 20220211123730.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20220211123730.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -272,15 +276,15 @@ Falla en versiones recientes de kali por incompatibilidades con la versión de l
 Asi que hay que utilizar Ubuntu.
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M2/Pasted image 20211209124316.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20211209124316.png' | relative_url }}" text-align="center"/>
 </div>
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M2/Pasted image 20211209124418.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20211209124418.png' | relative_url }}" text-align="center"/>
 </div>
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M2/Pasted image 20211209124625.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20211209124625.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -333,7 +337,7 @@ Por otra parte, también hay que comprobar si en ambas máquinas el proceso 'ssh
 
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M2/Pasted image 20211211184638.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20211211184638.png' | relative_url }}" text-align="center"/>
 </div>
 
 De lo contrario, se puede probar a iniciar el servicio con 'sudo systemctl start ssh' aunque el problema bien podría estribar en otra causa y ahí la solución es más compleja.
@@ -437,24 +441,24 @@ Lo importante para diferenciarlo de Openvas es que este último no te pide nada 
 ## 3.2. Nessus.
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M2/Pasted image 20211210092148.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20211210092148.png' | relative_url }}" text-align="center"/>
 </div>
 
 Para descargarse Nessus Essentials primero hay que logearse con tu correo electrónico, 
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M2/Pasted image 20220106232521.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20220106232521.png' | relative_url }}" text-align="center"/>
 </div>
 
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M2/Pasted image 20220106232545.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20220106232545.png' | relative_url }}" text-align="center"/>
 </div>
 
 entonces te será facilitado un código de activación del producto que decidas descargate que por defecto será Nessus mediante el correo electrónico que hayas decido poner.
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M2/Pasted image 20220106232644.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20220106232644.png' | relative_url }}" text-align="center"/>
 </div>
 
 De entre todas las descargas a nosotros evidentemente nos inte
@@ -467,7 +471,7 @@ $ dpkg -i <nombrearchivo>.deb
 Y tras instalarlo nos aparecerá el siguiente mensaje.
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M2/Pasted image 20211210173121.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20211210173121.png' | relative_url }}" text-align="center"/>
 </div>
 
 En el cual se nos informa de que el servicio de Nessus monta para nostros una aplicación web que carga en cierto puerto al que debemos conectarnos. Y tras acudir a la dirección IP indicada y meter el código de activación proporicionado al logearse debemos iniciar sesión con nombre de usuario y genrar un contraseña y esperar que se instalen unos plugins (un software especifico que ayudará al sistema operativo a manejar el programa, los plugins son a un programa o aplicación lo que los drivers son al hardware, son piezas de código que guían al sistema operativo en la gestión de un dispositivo).
@@ -477,19 +481,19 @@ En el cual se nos informa de que el servicio de Nessus monta para nostros una ap
 Tras la instalación de los plugins, iniciaremos sesión y se nos presentará la interfaz de Nessus.
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M2/Pasted image 20220106235123.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20220106235123.png' | relative_url }}" text-align="center"/>
 </div>
 
 
 Desde New Scan podemos elegir el tipo de escaneo que podemos hacer, por ejemplo uno básico
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M2/Pasted image 20220106235447.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20220106235447.png' | relative_url }}" text-align="center"/>
 </div>
 
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M2/Pasted image 20220106235544.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20220106235544.png' | relative_url }}" text-align="center"/>
 </div>
 
 
@@ -498,7 +502,7 @@ Desde la pestaña "Credentials" podemos definir si el ataque lo hacemos con perm
 ![[Pasted image 20220106235751.png]]
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M2/Pasted image 20220106235751.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20220106235751.png' | relative_url }}" text-align="center"/>
 </div>
 
 
@@ -507,12 +511,12 @@ Una vez completada la configuración, lo guardamos con save y una vez lo tengamo
 Cuando este termina podemos pulsar sobre dicho escaneo para obtener una descripción de este y además podemos elegir tener un report sobre las vulnerabilidades obtenidas:
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M2/Pasted image 20220107000329.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20220107000329.png' | relative_url }}" text-align="center"/>
 </div>
 
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M2/Pasted image 20220107000339.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20220107000339.png' | relative_url }}" text-align="center"/>
 </div>
 
 
@@ -523,16 +527,16 @@ Entre los distintos formatos de report podemos destacar entre uno completo (tipo
 # 4. Ataque MiTM con Ettercap.
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M2/Pasted image 20211213092937.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20211213092937.png' | relative_url }}" text-align="center"/>
 </div>
 
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M2/Pasted image 20211213100718.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20211213100718.png' | relative_url }}" text-align="center"/>
 </div>
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M2/Pasted image 20211213105024.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20211213105024.png' | relative_url }}" text-align="center"/>
 </div>
 
 ## 4.1. Antecedentes.
@@ -568,7 +572,7 @@ Seguidamente comprobamos las tablas arp de las tres tablas con el comando 'arp -
 (Este comando, **arp -a**, a veces no funciona correctamente de forma que hay que insistir. De todas formas se trata de un comando antiguo y algunos distros ya no tienen arp -a. En dichas máquinas se puede utilizar el comando **ip n**. SOLO LO TIENEN LAS MÁQUINAS MODERNAS.)
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M2/Pasted image 20211213095218.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20211213095218.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -588,13 +592,13 @@ Vamos a utilizar este software para suplantar la identidad de una tarjeta de MAC
 En prime lugar ejecutamos el comando de arriba en la máquina y nos saldrá la siguiente interfaz:
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M2/Pasted image 20211213182455.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20211213182455.png' | relative_url }}" text-align="center"/>
 </div>
 
 Una vez abierto esto, elejimos la tarjeta de red eth0 y le damos al primer botón arriba a la derecha y elejimos el modo promiscuo. 
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M2/Pasted image 20211213182914.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20211213182914.png' | relative_url }}" text-align="center"/>
 </div>
 
 Una vez elegido nos saldrá una nueva interfaz en la que llevamos los siguientes pasos:
@@ -611,7 +615,7 @@ De esta forma, Ettercap cambia la MAC de la DVL y  Metasploitable por la de la k
 
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M2/Pasted image 20211213184149.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20211213184149.png' | relative_url }}" text-align="center"/>
 </div>
 
 La segunda y tercera MAC son idénticas. Y si desde la DVL hiciéramos la misma operación la MAC de la Metasploitable y la Kali también serían idénticas. De esta forma, se tiene que toda la información que se envía desde la Metasplotaible hacia la DVL pasa por Kali y la Kali lo redirecciona a DVL y viceversa. De forma que el tráfico pasa por tu máquina y puede ser analizado con WireShark y se puede leer la conversación que hay entre ambas máquinas (siempre y cuando no esté cifrada).
@@ -639,13 +643,13 @@ Además le permite filtrar el registro antes de que comience la captura o durant
 En primer lugar, cuando abres Wireshark tienes una pantalla que te muestra una lista de todas las conexiones de red que puedes monitorear listadas mediantes las interfaces de red activas: eth (ethernet: internet por cable), lo (loopack; un adapatador de wireshark para leer tráfico de la máquina propia), wlan (wifi), ... en función de por dónde provenga la información de interés examinaremos una interfaz u otra.
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M2/Pasted image 20211216114841.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20211216114841.png' | relative_url }}" text-align="center"/>
 </div>
 
 Seleccionamos una y empezamos a capturar tráfico de red que atraviese esa conexión que WireShark nos mostrará por pantalla.
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M2/Pasted image 20211216120648.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20211216120648.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -659,7 +663,7 @@ Wireshark muestra tres paneles diferentes para inspeccionar la información de l
 ### 5.4.1. Panel Superior: Listado de paquetes.
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M2/Pasted image 20211216130356.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20211216130356.png' | relative_url }}" text-align="center"/>
 </div>
 
 Tal y como se puede ver en la imágen, la información que ofrece el panel superior está divido en columnas:
@@ -667,7 +671,7 @@ Tal y como se puede ver en la imágen, la información que ofrece el panel super
 - **No.**: Este es el orden numérico del paquete que se capturó. El corchete indica que este paquete es parte de una conversación. (Una conversación de red es el tráfico entre dos puntos finales específicos. En este caso se refiere a una conversación IP, que sería todo el tráfico entre dos direcciones IP).
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M2/Pasted image 20211216130703.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20211216130703.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	En este ejemplo concreto estamos capturando el tráfico entre dos máquinas y por tanto todos los paquetes del tráficos forman parte de una única conversación, pero si nuestra máquina fuese un servidor que pusiese en contacto varias máquinas, el corchete sería un marcador útil para seguir la conversación entre máquinas cuyos paquetes no son adyacentes en el panel).
@@ -675,7 +679,7 @@ Tal y como se puede ver en la imágen, la información que ofrece el panel super
 	Además de corchetes nos podemos encontrar diversas marcas:
 	
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M2/Pasted image 20211216132818.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20211216132818.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 - **Time**: Muestra el tiempo que ha pasado desde el inicio de la captura de tráfico hasta la captura del paquete en cuestión.
@@ -700,7 +704,7 @@ El panel central muestra información sobre el paquete seleccionado con el botó
 
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M2/Pasted image 20211216135756.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20211216135756.png' | relative_url }}" text-align="center"/>
 	</div>
 
 Nos encontramos con cuatro protocolos analizados por Wireshark:
@@ -710,7 +714,7 @@ Nos encontramos con cuatro protocolos analizados por Wireshark:
 	El "protocolo" frame no es un protocolo en sí mismo pero es utilizado por Wireshark como una campo en el que recopila información acerca de la captura del paquete como: peso del paquete en cable, peso del paquete capturado, tipo de encapsulación (wifi, ethernet,...), hora exacta de la captura del paquete, etc.
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M2/Pasted image 20211216140319.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20211216140319.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	<br />
@@ -724,7 +728,7 @@ Nos encontramos con cuatro protocolos analizados por Wireshark:
 	![[]]
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M2/Pasted image 20211216153547.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20211216153547.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	<br />
@@ -734,7 +738,7 @@ Nos encontramos con cuatro protocolos analizados por Wireshark:
 	Muestra la información del paquete en relación al protocolo IP: IPs, protocolo de transporte utilizado, etc.
 	
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M2/Pasted image 20211216153811.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20211216153811.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	<br />
@@ -744,7 +748,7 @@ Nos encontramos con cuatro protocolos analizados por Wireshark:
 	Este protocolo variará en función de si ha sido transportado por TCP, UDP, ICMP...
 	
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M2/Pasted image 20211216154559.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20211216154559.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	Generalmente ofrece el protocolo, el puerto, el tipo de paquete, su número de secuencia, de ack, etc.
@@ -758,7 +762,7 @@ Oferce información sobre como fue capturado el paquete en hexadecimal y una lev
 Cuando está mirando un paquete que es parte de una conversación, puede hacer clic con el botón derecho en el paquete y seleccionar Seguir para ver solo los paquetes que son parte de esa conversación.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M2/Pasted image 20211216155411.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M2/Pasted image 20211216155411.png' | relative_url }}" text-align="center"/>
 	</div>
 
 <br />

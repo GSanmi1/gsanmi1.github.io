@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Passing Parameters.
-subtitle: Calling Conventions and LEA instruction.
-tags: [assem]
+title: "Passing Parameters."
+subtitle: "Calling Conventions and LEA instruction."
+date: 2025-12-04 09:00:00 +0000
+categories: ['Past Blogs', 'Assembly']
+tags: ['x86', 'reverse-engineering']
+author: German Sanmi
 ---
+
 
 ### 1. Parameter Definition.
 

@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Curso Básico Redes
-subtitle: Introducción a conceptos básicos de redes.
-tags: [redes] 
+title: "Curso Básico Redes"
+subtitle: "Introducción a conceptos básicos de redes."
+date: 2022-02-07 09:00:00 +0000
+categories: ['Past Blogs', 'Networks']
+tags: ['networking', 'protocols']
+author: German Sanmi
 ---
+
 
 # 1. Modelo OSI.
 
@@ -47,7 +51,7 @@ La dirección MAC es un número hexadecimal de 12 dígitos (número binario de 6
 <br />
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/Redes/MACAddr.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/Redes/MACAddr.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -95,7 +99,7 @@ Tiene las siguientes características:
 - TCP/IP a resumidas cuentas se trata de un protocolo jerárquico hecho de "módulos interativos" y cada uno de ellos provee una funcionalidad específica.
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/Redes/TCPvsOSI.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/Redes/TCPvsOSI.png' | relative_url }}" text-align="center"/>
 </div>
 
 

@@ -1,9 +1,13 @@
 ---
 layout: post
-title: SharedLibraries&FunctionHooking
-subtitle: SharedLibraries and FunctionHooking theory with exampls in C
-tags: [C]
+title: "SharedLibraries&FunctionHooking"
+subtitle: "SharedLibraries and FunctionHooking theory with exampls in C"
+date: 2025-04-26 09:00:00 +0000
+categories: ['Past Blogs', 'Programming']
+tags: ['c-language', 'systems']
+author: German Sanmi
 ---
+
 
 ## Binaries and Shared Libraries.
 
@@ -88,7 +92,7 @@ Having this clear, in simple terms; Sections defines how the ELF binary exists i
 <br>
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/C/Pasted image 20250316110636.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/C/Pasted image 20250316110636.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br>

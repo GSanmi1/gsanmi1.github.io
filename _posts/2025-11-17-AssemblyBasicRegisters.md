@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Basic Instructions.
-subtitle: Introduction to NOP, PUSH and POP instructions.
-tags: [assem]
+title: "Basic Instructions."
+subtitle: "Introduction to NOP, PUSH and POP instructions."
+date: 2025-11-17 09:00:00 +0000
+categories: ['Past Blogs', 'Assembly']
+tags: ['x86', 'reverse-engineering']
+author: German Sanmi
 ---
+
 
 ### 1. Introduction. Assembly instruction definition.
 

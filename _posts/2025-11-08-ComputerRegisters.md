@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Computer Registers.
-subtitle: Brief introduction to CPU Registers.
-tags: [assem]
+title: "Computer Registers."
+subtitle: "Brief introduction to CPU Registers."
+date: 2025-11-08 09:00:00 +0000
+categories: ['Past Blogs', 'Assembly']
+tags: ['x86', 'reverse-engineering']
+author: German Sanmi
 ---
+
 
 ### 1. Computer Memory Hierarchy.
 

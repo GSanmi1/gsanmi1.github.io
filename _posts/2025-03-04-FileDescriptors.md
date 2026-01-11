@@ -1,9 +1,13 @@
 ---
 layout: post
-title: File Descritors
-subtitle: File Descriptors explanation and manipulation with C
-tags: [C]
+title: "File Descritors"
+subtitle: "File Descriptors explanation and manipulation with C"
+date: 2025-03-04 09:00:00 +0000
+categories: ['Past Blogs', 'Programming']
+tags: ['c-language', 'systems']
+author: German Sanmi
 ---
+
 
 ## File Descriptors Theory.
 

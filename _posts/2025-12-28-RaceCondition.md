@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Race Conditions.
-subtitle: Race Condition notes from OST2 course.
-tags: [csoft]
+title: "Race Conditions."
+subtitle: "Race Condition notes from OST2 course."
+date: 2025-12-28 09:00:00 +0000
+categories: ['Past Blogs', 'Binary Exploitation']
+tags: ['memory-corruption', 'exploits']
+author: German Sanmi
 ---
+
 
 ### 1. Definition.
 

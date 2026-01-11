@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Malloc Tutorial
-subtitle: A brief tutorial about how malloc() and free() work internally.
-tags: [C]
+title: "Malloc Tutorial"
+subtitle: "A brief tutorial about how malloc() and free() work internally."
+date: 2025-06-06 09:00:00 +0000
+categories: ['Past Blogs', 'Programming']
+tags: ['c-language', 'systems']
+author: German Sanmi
 ---
+
 ### Malloc's tutorial.
 
 #### Introduction.
@@ -64,7 +68,7 @@ In C programming, from the allocator's point of view, the heap is a continuous s
 <br>
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/C/image-1.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/C/image-1.png' | relative_url }}" text-align="center"/>
 </div>
 
 
@@ -77,7 +81,7 @@ Thus, when we call *malloc*, this functions gets a chunk from the unmapped heap 
 <br>
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/C/image-2.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/C/image-2.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br>
@@ -118,7 +122,7 @@ Physical memory and virtual memory is organize in *pages* (frames for the physic
 <br>
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/C/image-3.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/C/image-3.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br>
@@ -185,7 +189,7 @@ This block would be before the pointer rlinked list in eturned by malloc that po
 <br>
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/C/image-4.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/C/image-4.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br>
@@ -224,7 +228,7 @@ Then, we remember that, our procesor can only read a word's size in a cycle, so 
 <br>
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/C/image-5.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/C/image-5.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br>
@@ -238,7 +242,7 @@ Following the previous example, the efficent way to organize the data over the a
 <br>
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/C/image-6.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/C/image-6.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br>
@@ -368,7 +372,7 @@ Since the pointer holds the first address in which data is stored, if this addre
 <br>
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/C/image-7.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/C/image-7.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br>
@@ -488,7 +492,7 @@ In the previous fit first algorithm, we just provide the first memory chunk that
 <br>
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/C/image-8.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/C/image-8.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br>
@@ -498,7 +502,7 @@ A first solution is to split blocks: when a chunk is wide enough to held the ask
 <br>
 
 <div style="text-align:center">
-<img src="{{'assets/img/C/image-9.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/C/image-9.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br>

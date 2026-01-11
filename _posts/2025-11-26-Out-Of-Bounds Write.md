@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Out-Of-Bounds Write.
-subtitle: Notes from Out-Of-Bounds Write course from OST2.
-tags: [csoft]
+title: "Out-Of-Bounds Write."
+subtitle: "Notes from Out-Of-Bounds Write course from OST2."
+date: 2025-11-26 09:00:00 +0000
+categories: ['Past Blogs', 'Binary Exploitation']
+tags: ['memory-corruption', 'exploits']
+author: German Sanmi
 ---
+
 
 ### 1. Definition.
 

@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Control Flow.
-subtitle: Unconditional and conditional x86-64 instructions.
-tags: [assem]
+title: "Control Flow."
+subtitle: "Unconditional and conditional x86-64 instructions."
+date: 2025-12-12 09:00:00 +0000
+categories: ['Past Blogs', 'Assembly']
+tags: ['x86', 'reverse-engineering']
+author: German Sanmi
 ---
+
 
 ### 1. Control Flow. Definition and types.
 

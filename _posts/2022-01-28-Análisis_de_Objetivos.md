@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Análisis de Objetivos
-subtitle: Introducción a OSINT y análisis de objetivos de ataque.
-tags: [redteam]
+title: "Análisis de Objetivos"
+subtitle: "Introducción a OSINT y análisis de objetivos de ataque."
+date: 2022-01-28 09:00:00 +0000
+categories: ['Past Blogs', 'Red Team']
+tags: ['offensive-security', 'tactics']
+author: German Sanmi
 ---
+
 
 # 1. Introducción OSINT.
 

@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Garbage Collector.
-subtitle: Simple conservativer sweep-mark Garbage Collector.
-tags: [C]
+title: "Garbage Collector."
+subtitle: "Simple conservativer sweep-mark Garbage Collector."
+date: 2025-07-11 09:00:00 +0000
+categories: ['Past Blogs', 'Programming']
+tags: ['c-language', 'systems']
+author: German Sanmi
 ---
+
 
 ### Garbage Collector.
 
@@ -24,7 +28,7 @@ The dynamic memory is stored in the *heap*, and the references to the heap are m
 <br>
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/C/stack-heap.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/C/stack-heap.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br>
@@ -34,7 +38,7 @@ This means that our job is to build a program that sweep the main's stack portio
 <br>
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/C/stack-heap2.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/C/stack-heap2.png' | relative_url }}" text-align="center"/>
 </div>
 
 
@@ -46,7 +50,7 @@ Thus, after the action of the GC, the unreachable chunk gets freed and available
 
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/C/stack-heapGC.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/C/stack-heapGC.png' | relative_url }}" text-align="center"/>
 </div>
 
 
@@ -79,7 +83,7 @@ Relative to the code of the first version of *heap.c* file, several changes are 
     With this, the GC is provided with a range of memory from the stack that corresponds with the first memory allocation to the moment in which a clean job is needed.
 
     <div style="text-align:center">
-    <img src="{{ 'assets/img/C/memory_region.png' | relative_url }}" text-align="center"/>
+    <img src="{{ '/assets/images/past-blogs/C/memory_region.png' | relative_url }}" text-align="center"/>
     </div>
 
 
