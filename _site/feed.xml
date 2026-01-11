@@ -12,223 +12,223 @@
     
     
       <item>
-        <title>2. Constants and Literals in C.</title>
+        <title>P vs NP.</title>
         <description>
-          Basics of Constants and Literals in C. - 
-          1. Constants. 1.1. Definition. A constant in C is nothing than a name that refers to location in memory whose value cannot be modify when is declared (in contrast with a variable). The use of constant have several benefits: Immutability, which prevents for some accidental errors changing critical data. Readability....
+          Turing Machines and Complexity Clases. P vs NP asymmetry. - 
+          0. Index. Introduction: Algorithms and Time Complexity. 1.1. Algorithms. 1.2. Time complexity. Solving problems and verifying solutions. 2.1. Problems. 2.2. Definitions. Languages, Decisions Problems, N/DTMs and Time in TMs. 2.2.1. Languages. 2.2.2. Decisions Problems and Languages. 2.2.3. Turing Machines. 2.2.4. Build a Turing machine that accepts a string and increments...
         </description>
-        <pubDate>Tue, 10 Dec 2024 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2024-12-10-1.ConstantsinC-copy/</link>
-        <guid isPermaLink="true">http://localhost:4000/2024-12-10-1.ConstantsinC-copy/</guid>
+        <pubDate>Sun, 11 Jan 2026 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2026-01-11-PvsNP/</link>
+        <guid isPermaLink="true">http://localhost:4000/2026-01-11-PvsNP/</guid>
       </item>
     
       <item>
-        <title>1. Basics of C</title>
+        <title>Race Conditions.</title>
         <description>
-          Basics of C programing. - 
-          1. Program Structure. Normally, the structure of a C program depends on his complexity, there are at least two main parts on any C program: Preprocessor Section, where we define preprocessors directives that server several purpuoses like: include the libraries of the program precided by the pre-processor directive ‘#’. The...
+          Race Condition notes from OST2 course. - 
+          1. Definition. 1.1. Race Condition definition. Race Condition is a term than refers to a set of bugs which arises when the behavior of a system depends on the relative timing or ordering of events, and that timing isn’t properly controlled. The “race” is between two or more operations that...
         </description>
-        <pubDate>Mon, 02 Dec 2024 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2024-12-02-1.BasicsOfC/</link>
-        <guid isPermaLink="true">http://localhost:4000/2024-12-02-1.BasicsOfC/</guid>
+        <pubDate>Sun, 28 Dec 2025 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2025-12-28-RaceCondition/</link>
+        <guid isPermaLink="true">http://localhost:4000/2025-12-28-RaceCondition/</guid>
       </item>
     
       <item>
-        <title>Gramáticas en Dharma</title>
+        <title>Introducción al Cálculo</title>
         <description>
-          Introducción a la construcción de gramáticas para Dharma. - 
-          Dharma Dharma es un mutational-grammar-based que genera programas con inputs (llamadas a webAPIs) sintáctica y semánticamente correctos pero incorporando cambios (mutaciones) en cada input con el objetivo de provocar un fallo, un bug, en el engine de procesamiento de los programas que crea. La variación de un input a otro...
+          Ejemplos de ecuaciones matemáticas con LaTeX - 
+          Teorema fundamental del cálculo La derivada de una integral es: \[\frac{d}{dx}\int_a^x f(t)dt = f(x)\] Ecuaciones inline También puedes usar ecuaciones dentro del texto, por ejemplo la famosa ecuación de Einstein $E = mc^2$ o la identidad de Euler $e^{i\pi} + 1 = 0$. Más ejemplos La fórmula cuadrática: \[x =...
         </description>
-        <pubDate>Tue, 24 Sep 2024 00:00:00 -0400</pubDate>
-        <link>http://localhost:4000/2024-09-24-Dharma_Tutorial/</link>
-        <guid isPermaLink="true">http://localhost:4000/2024-09-24-Dharma_Tutorial/</guid>
+        <pubDate>Thu, 25 Dec 2025 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2025-12-25-MathTest/</link>
+        <guid isPermaLink="true">http://localhost:4000/2025-12-25-MathTest/</guid>
       </item>
     
       <item>
-        <title>Gramáticas en Dharma</title>
+        <title>Uninitialize Data Access.</title>
         <description>
-          Introducción a la construcción de gramáticas para Dharma. - 
-          Dharma Dharma es un mutational-grammar-based que genera programas con inputs (llamadas a webAPIs) sintáctica y semánticamente correctos pero incorporando cambios (mutaciones) en cada input con el objetivo de provocar un fallo, un bug, en el engine de procesamiento de los programas que crea. La variación de un input a otro...
+          Uninitialice Data Access notes from OST2 course. - 
+          1. Definition. 1.1. Preface. Initialize vs Uninitialize data. First, let’s introduce two memory regions in which the program data-storage happens at runtime, the stack and the heap. The stack is a LIFO structure in which fixed-size data within the function stackframe’s owner scope gets stored. The heap is an amount...
         </description>
-        <pubDate>Fri, 22 Mar 2024 00:00:00 -0400</pubDate>
-        <link>http://localhost:4000/2024-03-22-Dharma_Tutorial-copy/</link>
-        <guid isPermaLink="true">http://localhost:4000/2024-03-22-Dharma_Tutorial-copy/</guid>
+        <pubDate>Tue, 23 Dec 2025 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2025-12-23-UDA/</link>
+        <guid isPermaLink="true">http://localhost:4000/2025-12-23-UDA/</guid>
       </item>
     
       <item>
-        <title>Mi experiencia con el OSCP</title>
+        <title>Control Flow.</title>
         <description>
-          Client Side attacks. - 
-          En este blog resumo las experiencias e ideas que he ido recogiendo a lo largo del curso PEN200. Puntos claves sobre el curso. Pasa rápidamente a los laboratorios. Al ser esta una certificación eminentemente práctica, el autentico aprendizaje comienza cuando empiezas los laboratorios. Todo el tiempo de más que dedicas...
+          Unconditional and conditional x86-64 instructions. - 
+          1. Control Flow. Definition and types. In terms of program execution; Control Flow is a term that refers in the order in which the instructions gets executed by the CPU. In normal conditions, there is a special non-general-purpouse register, the Instruction Pointer, (RIP/EIP/IP) which holds the address that points to...
         </description>
-        <pubDate>Sun, 19 Nov 2023 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2023-11-19-PEN200_Experience/</link>
-        <guid isPermaLink="true">http://localhost:4000/2023-11-19-PEN200_Experience/</guid>
+        <pubDate>Fri, 12 Dec 2025 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2025-12-12-ControlFlow/</link>
+        <guid isPermaLink="true">http://localhost:4000/2025-12-12-ControlFlow/</guid>
       </item>
     
       <item>
-        <title>Client Side</title>
+        <title>Other Integer Issues.</title>
         <description>
-          Client Side attacks. - 
-          En los tiempos modernos se ha vuelto cada vez más raro encontrar y explotar vulnerabilidades en servicios de networks empresariales. El Phising es ahora el segundo vector de ataque más utilizado despúes del robo de credenciales. El Phising es un tipo de ataque que se realiza enviando a los usuarios...
+          Notes from Other Integer Issues course from OST2. - 
+          1. Definition. This section is an extension about Integers Overflow issues. We are going to cover three topics: Incorrect Signed Sanity Checks. Signed or unsigned integer truncation. Signed Integer extension issues. 2. Incorrect Signed Sanity Checks. 2.1. Definition. Incorrect Signed Sanity Checks refers to the idea of bad sanity checks...
         </description>
-        <pubDate>Fri, 17 Nov 2023 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2023-11-17-17.Client_Side_Attacks/</link>
-        <guid isPermaLink="true">http://localhost:4000/2023-11-17-17.Client_Side_Attacks/</guid>
+        <pubDate>Fri, 05 Dec 2025 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2025-12-05-OtherIntegerIssues/</link>
+        <guid isPermaLink="true">http://localhost:4000/2025-12-05-OtherIntegerIssues/</guid>
       </item>
     
       <item>
-        <title>Deep Packet Tunneling</title>
+        <title>Integer Overflow/Underflow.</title>
         <description>
-          Tunneling through deep packet inspection - 
-          Deep packet inspection es una tecnología que implementa un monitoreo de tráfico en base a conjunto de reglas. A menudo, esto se realiza sobre un perímetro de red en el que se puede dilucidar algún indicio de compromiso. Los dispositivos de inspección de paquetes están configurados para dejar pasar tráfico...
+          Notes from Integer Overflow course from OST2. - 
+          1. Integer Overflow/Underflow vulnerabilities introduction. Integer Overflow/Undwerflow vulnerabilities referer a vulnerability form in which an attacker leverage cases in which is possible that signed and unsigned integers exceeds their positive and negative value ranges due to egdy math cases. Before enter in a further explanation, let’s take a reminder on...
         </description>
-        <pubDate>Thu, 16 Nov 2023 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2023-11-16-16.Tunneling_Through_Deep_Packet_Inspection/</link>
-        <guid isPermaLink="true">http://localhost:4000/2023-11-16-16.Tunneling_Through_Deep_Packet_Inspection/</guid>
+        <pubDate>Fri, 05 Dec 2025 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2025-12-05-IntegerOverflow-Underflow/</link>
+        <guid isPermaLink="true">http://localhost:4000/2025-12-05-IntegerOverflow-Underflow/</guid>
       </item>
     
       <item>
-        <title>Report</title>
+        <title>Passing Parameters.</title>
         <description>
-          Make report. - 
-          Importancia del report en un pentest. En una prueba de penetración se toman notas a medida que se avanza para garantizar que haya un report detallado de lo que se hizo. Esto asegura que: la prueba de penetración se puede repetir si es necesario para demostrar que un problema es real....
+          Calling Conventions and LEA instruction. - 
+          1. Parameter Definition. First, a parameter is simply data that gets placed in a specific location where the calling convention dictates the callee should look for it. This means that is data that a called function knows where to find it. Consider the following code: int func(int a){ int i...
         </description>
-        <pubDate>Wed, 15 Nov 2023 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2023-11-15-15.Making_Reports/</link>
-        <guid isPermaLink="true">http://localhost:4000/2023-11-15-15.Making_Reports/</guid>
+        <pubDate>Thu, 04 Dec 2025 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2025-12-04-Passing-Parameters/</link>
+        <guid isPermaLink="true">http://localhost:4000/2025-12-04-Passing-Parameters/</guid>
       </item>
     
       <item>
-        <title>Metasploit</title>
+        <title>Stackframe; Local variables, Arrays and Structures.</title>
         <description>
-          Metasploit Exercises. - 
-          1. Once connected through SSH on VM #1, in order to get the flag look through the saved activities and scans in the Metasploit database’s workspace. Nos conectamos a través de SSH y activamos msfconsole y cambiamos el workspace a PWK: msf6&amp;gt; workspaces PWK Y de ahí buscamos la flag...
+          Assembly management of local variables, arrays and structures. - 
+          1. Defintion. Let’s consider the following code: int calculate(int a, int b) { int result; int temp = 5; result = a + b + temp; return result; } int main() { int x = calculate(10, 20); return x; } We have a C code which returns a calculated value...
         </description>
-        <pubDate>Tue, 14 Nov 2023 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2023-11-14-14.Metasploit/</link>
-        <guid isPermaLink="true">http://localhost:4000/2023-11-14-14.Metasploit/</guid>
+        <pubDate>Mon, 01 Dec 2025 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2025-12-01-LocalVars_Arrays_structs/</link>
+        <guid isPermaLink="true">http://localhost:4000/2025-12-01-LocalVars_Arrays_structs/</guid>
       </item>
     
       <item>
-        <title>Password Attacks</title>
+        <title>Out-Of-Bounds Write.</title>
         <description>
-          Password Attacks Basics. - 
-          En esta sección vamos a cubrir los siguientes temas: Attacking network services logins. Password Cracking Fundamentals. Working with passwords hashings. 21.1. Attacking Networks Services Login. SSH y RDP En esta sección vamos a ver cómo lanzar lo que se denomina como un ataque de lista de diccionario contra servicios de...
+          Notes from Out-Of-Bounds Write course from OST2. - 
+          1. Definition. In simple terms, Out-Of-Bounds Writes is a memory corruption vulnerability in which user-controlled data is used to calculate a memory location without proper security measures leading to data being write out of the intended destination in memory. In some ocasions user-controlled data can be written on a user-controlled...
         </description>
-        <pubDate>Mon, 13 Nov 2023 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2023-11-13-13.Password_Attacks/</link>
-        <guid isPermaLink="true">http://localhost:4000/2023-11-13-13.Password_Attacks/</guid>
+        <pubDate>Wed, 26 Nov 2025 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2025-11-26-Out-Of-Bounds-Write/</link>
+        <guid isPermaLink="true">http://localhost:4000/2025-11-26-Out-Of-Bounds-Write/</guid>
       </item>
     
       <item>
-        <title>Active Directory Attacks</title>
+        <title>Calling Functions.</title>
         <description>
-          Active Directory Attacks basics - 
-          Active Directory Domain Services, también referido simplemente como Active Dierctory o AD, es un servicio que permite a administradores de sistemas actualizar y gestionar sistemas operativos, aplicaciones, usuarios y acceso de datos a gran escala. Es decir, es un servicio que proporciona una gestión centralizada de una red corporativa (a...
+          Introduction to CALL, RET, MOV, ADD and SUB instructions. - 
+          1. Calling functions. In order to introduce some more instructions, lets consider the following C code int func(){ return 0xbeef; } int main() { func(); return 0xf00d; } and the corresponding Assembly tranlation: func: 0000000140001000 mov eax, 0BEEFh 0000000140001005 ret main: 0000000140001010 sub rsp, 28h 0000000140001014 call func (0140001000h) 0000000140001019...
         </description>
-        <pubDate>Sun, 12 Nov 2023 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2023-11-12-12.Active_Directory_Attacks/</link>
-        <guid isPermaLink="true">http://localhost:4000/2023-11-12-12.Active_Directory_Attacks/</guid>
+        <pubDate>Fri, 21 Nov 2025 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2025-11-21-CallingFunctions/</link>
+        <guid isPermaLink="true">http://localhost:4000/2025-11-21-CallingFunctions/</guid>
       </item>
     
       <item>
-        <title>Port Forwarding</title>
+        <title>(Linear) Heap Buffer Overflow.</title>
         <description>
-          Port Forwarding Basics. - 
-          1. Port Redirection and Tunneling. Segmented Networks. Firewalls. Una Network o Red es un conjunto de ordenadores conectados entre sí, es decir, que pueden comunicarse entre ellos. Atendiendo a la topología podemos diferenciar dos tipos de redes: Flat Networks: Cuando todos las máquinas de una red se pueden comunicar entre...
+          Notes from Heap Buffer Overflow course from OST2. - 
+          1. Definition. A linear heap buffer overflow (LHBO), similar to an LSBO, occurs when an huge amount of data gets written in a heap-allocated buffer. By huge we mean an amount of data large enough to exceed the buffer size resulting in adyacents memory structures to be overwritten. A tipical...
         </description>
-        <pubDate>Sat, 11 Nov 2023 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2023-11-11-11.Port_Forwarding/</link>
-        <guid isPermaLink="true">http://localhost:4000/2023-11-11-11.Port_Forwarding/</guid>
+        <pubDate>Tue, 18 Nov 2025 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2025-11-18-HBO/</link>
+        <guid isPermaLink="true">http://localhost:4000/2025-11-18-HBO/</guid>
       </item>
     
       <item>
-        <title>Privilege Escalation</title>
+        <title>Basic Instructions.</title>
         <description>
-          Privilege Escalation Basics. - 
-          Durante una prueba de penetración, a menudo obtenemos un punto de apoyo inicial en un sistema como usuario estándar o sin privilegios. En estos casos, generalmente buscamos obtener derechos de acceso adicionales antes de que podamos demostrar el impacto total del compromiso. Este proceso se conoce como escalada de privilegios (PrivEsc) y es una...
+          Introduction to NOP, PUSH and POP instructions. - 
+          1. Introduction. Assembly instruction definition. An assembly instruction is a human-readable representation of a machine code operation that a computer’s processor can execute. It’s a low-level programming command that directly corresponds to the binary instructions that the CPU understands. Basically they are mnemonic codes (like MOV, ADD, JMP) that represent...
         </description>
-        <pubDate>Fri, 10 Nov 2023 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2023-11-10-10.Privilege_Escalation/</link>
-        <guid isPermaLink="true">http://localhost:4000/2023-11-10-10.Privilege_Escalation/</guid>
+        <pubDate>Mon, 17 Nov 2025 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2025-11-17-AssemblyBasicRegisters/</link>
+        <guid isPermaLink="true">http://localhost:4000/2025-11-17-AssemblyBasicRegisters/</guid>
       </item>
     
       <item>
-        <title>File Transfers</title>
+        <title>Computer Registers.</title>
         <description>
-          File Transfers Basics. - 
-          El término Post-explotation refiere a las acciones realizadas por el atacante cuando ya ha tomado control de la máquina. Entre estas acciones se encuentran el escalar privilegios, ganar persistencia, efectuar una operación de limpieza de la máquina, etc. 1. Antecedentes. 1.1. Dangers of Transferring Attack Tools. En algunos casos, es...
+          Brief introduction to CPU Registers. - 
+          1. Computer Memory Hierarchy. Computer memory hierarchy is a structured arrangement of different types of storage in a computer system, organized in terms of efficiency between speed access, capacity and availability. At the top there are the fastest but smallest in storage: CPU registers (directly inside the processor, nanosecond access)....
         </description>
-        <pubDate>Thu, 09 Nov 2023 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2023-11-09-9.File_Tranfers/</link>
-        <guid isPermaLink="true">http://localhost:4000/2023-11-09-9.File_Tranfers/</guid>
+        <pubDate>Sat, 08 Nov 2025 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2025-11-08-ComputerRegisters/</link>
+        <guid isPermaLink="true">http://localhost:4000/2025-11-08-ComputerRegisters/</guid>
       </item>
     
       <item>
-        <title>Buffer Overflows</title>
+        <title>CVE-2021-20294.</title>
         <description>
-          Buffer Overflows Basics. - 
-          1. Introduction to BuffersOverflow. En este apartado cubriremos los fundamentos sobre los que se asienta una vulnerabilidad muy común denominada Buffer Overflow. Recorreremos: Cómo se usa la memoria en la ejecución de un programa. Cómo ocurre el desbordamiento del buffer. Cómo tomar control del flujo de ejecución de la aplicación....
+          Extended investigation about CVE-2021-20294 (unfinished). - 
+          1. Introduction. This is an exploit for CVE-2021-20294. This vulnerability consists in a “linear stack buffer overflow” on the version 2.35 of binutils (downloaded from https://ftp.gnu.org/gnu/binutils/binutils-2.35.tar.gz). static void print_dynamic_symbol (Filedata *filedata, unsigned long si, Elf_Internal_Sym *symtab, Elf_Internal_Shdr *section, char *strtab, size_t strtab_size) { const char *version_string; enum versioned_symbol_info sym_info; unsigned...
         </description>
-        <pubDate>Wed, 08 Nov 2023 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2023-11-08-8.Buffer_Overflows/</link>
-        <guid isPermaLink="true">http://localhost:4000/2023-11-08-8.Buffer_Overflows/</guid>
+        <pubDate>Fri, 07 Nov 2025 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2025-11-07-CVE-2021-20294/</link>
+        <guid isPermaLink="true">http://localhost:4000/2025-11-07-CVE-2021-20294/</guid>
       </item>
     
       <item>
-        <title>Vulnerability Scanning.</title>
+        <title>(Linear) Stack Buffer Overflow.</title>
         <description>
-          VUlnerability Scanning Basics. - 
-          El Vulnerability Discovery es una parte integral de una evaluación de seguridad. Aunque se puede hacer de forma manual nosotros cubriremos sobre todo herramientas de escaneo de vulnerabilidades automatizadas. 1. Introducción al escaneo de vulnerabilidades. Cómo funciona un escanner de vulnerabilidades Aunque la implementación varia, la mayoría de los escaneres...
+          Notes from Stack Buffer Overflow course from OST2. - 
+          1. Introduction. 1.1. Memory Layout. First of all, let’s introduce some fundamental concepts: Stack: The stack is the name of a data structure type where data is pushed onto the top and gets popped off the top. Exists a memory region which behaves like the stack data type and is...
         </description>
-        <pubDate>Tue, 07 Nov 2023 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2023-11-07-7.Vulnerability_Scanning/</link>
-        <guid isPermaLink="true">http://localhost:4000/2023-11-07-7.Vulnerability_Scanning/</guid>
+        <pubDate>Thu, 06 Nov 2025 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2025-11-06-LSBO/</link>
+        <guid isPermaLink="true">http://localhost:4000/2025-11-06-LSBO/</guid>
       </item>
     
       <item>
-        <title>Information Gathering</title>
+        <title>Text Editor.</title>
         <description>
-          Information gathering basics. - 
-          Active Information Gathering es un término que remite directamente a la recopilación de información sobre un sistema o una estructura empleando métodos que realizan una interación directa con dicha estructura para recabar información como escaneo de red, escaneo de puertos, enumeración de servicios como DNS, SMB, NFS, SMTP o SNMP,...
+          Simple text exitor written in C. - 
+          Creating a text editor: kilo. We are going to write a text editor in C. We are using the following Make file: kilo: kilo.c $(CC) kilo.c -o kilo -Wall -Wextra -pedantic -std=c99 We are declaring that we want to build ‘kilo’ binary from ‘kilo.c’. We are declaring the build command...
         </description>
-        <pubDate>Mon, 06 Nov 2023 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/2023-11-06-6.Active_Information_Gathering/</link>
-        <guid isPermaLink="true">http://localhost:4000/2023-11-06-6.Active_Information_Gathering/</guid>
+        <pubDate>Mon, 11 Aug 2025 00:00:00 -0400</pubDate>
+        <link>http://localhost:4000/2025-08-11-Text-Editor/</link>
+        <guid isPermaLink="true">http://localhost:4000/2025-08-11-Text-Editor/</guid>
       </item>
     
       <item>
-        <title>Windows</title>
+        <title>Garbage Collector.</title>
         <description>
-          Windows Basics. - 
-          1. Windows Basics. Una cosa destacable entre Windows y Linux es que los paths de los ficheros de Windows no son ‘case-sensitive’. En Windows ambas rutas designan el mismo fichero: C:\&amp;gt; type HelloMoon.txt C:\&amp;gt; type helLoMoon.txt 1.1. Windows Shells Shells Windows dispone de tres diferentes interfaces cli: Command Prompt, PowerShell...
+          Simple conservativer sweep-mark Garbage Collector. - 
+          Garbage Collector. This is the second part, or the continuation from the previous report in which we build a custom memory allocator from a heap array. Now, we are going to pick up the code where we leave it and implement a garbage collector with several changes in the original...
         </description>
-        <pubDate>Sun, 05 Nov 2023 00:00:00 -0400</pubDate>
-        <link>http://localhost:4000/2023-11-05-5.Windows/</link>
-        <guid isPermaLink="true">http://localhost:4000/2023-11-05-5.Windows/</guid>
+        <pubDate>Fri, 11 Jul 2025 00:00:00 -0400</pubDate>
+        <link>http://localhost:4000/2025-07-11-GarbageCollector/</link>
+        <guid isPermaLink="true">http://localhost:4000/2025-07-11-GarbageCollector/</guid>
       </item>
     
       <item>
-        <title>Networking</title>
+        <title>Hashtables.</title>
         <description>
-          Basics Net Concepts. - 
-          1. Networking Fundamentals. Un pentester debe ser un individuo bien versado en conceptos fundamentales de Networking. 1.1. TCP/IP model Layer. Un modelo de red es una descripción del curso que siguen los paquetes cuando estos viajan a través de dos ordenadores. Uno de los modelos más empleados es el modelo...
+          Explanation of hashtables in C. - 
+          HashTables Presentation of the problem. Let’s suppose we have the following exercise: Given a roman numeral, convert it to an integer. The roman numbers are built through a finite set of simbols (Numerals) that have each equivalent decimal number as the following table shows: Roman Numeral Integer Value I 1...
         </description>
-        <pubDate>Sat, 04 Nov 2023 00:00:00 -0400</pubDate>
-        <link>http://localhost:4000/2023-11-04-4.Networking/</link>
-        <guid isPermaLink="true">http://localhost:4000/2023-11-04-4.Networking/</guid>
+        <pubDate>Fri, 13 Jun 2025 00:00:00 -0400</pubDate>
+        <link>http://localhost:4000/2025-06-13-HashTable/</link>
+        <guid isPermaLink="true">http://localhost:4000/2025-06-13-HashTable/</guid>
       </item>
     
       <item>
-        <title>Scripting</title>
+        <title>Building my own malloc in C.</title>
         <description>
-          Scripting Basics. - 
-          1. Bash Scripting Basics. 1.1. Intro to Bash Scripting. GNU Bourne-Again Shell (Bash) es un potente entorno de trabajo y un motor de secuencias de comandos. Un script de Bash es un archivo de texto sin formato que tiene una serie de comandos que se ejecutan como si se hubieran escrito...
+          A malloc code written in C. - 
+          Defining the idea. In this section we will built a custom malloc() function with also a free() and later a garbage collector. First, the central idea is that we are implementing a custom memory allocator along with a free function which will allocate and deallocate memory from a static array...
         </description>
-        <pubDate>Fri, 03 Nov 2023 00:00:00 -0400</pubDate>
-        <link>http://localhost:4000/2023-11-03-3.Scripting/</link>
-        <guid isPermaLink="true">http://localhost:4000/2023-11-03-3.Scripting/</guid>
+        <pubDate>Mon, 09 Jun 2025 00:00:00 -0400</pubDate>
+        <link>http://localhost:4000/2025-06-09-BuildingOwnMalloc/</link>
+        <guid isPermaLink="true">http://localhost:4000/2025-06-09-BuildingOwnMalloc/</guid>
       </item>
     
   </channel>

@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 5.0.0 | Copyright Dean Attali 2020 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>Calling Functions.</title>
+
+  
+  <meta name="author" content="German">
+  
+
+  <meta name="description" content="Introduction to CALL, RET, MOV, ADD and SUB instructions.">
+
+  
+
+  
+
+  
+  <link rel="alternate" type="application/rss+xml" title="Home" href="http://localhost:4000/feed.xml">
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/custom-dark.css">
+    
+  
+
+  
+  
+  
+
+  
+
+  
+  <meta property="og:site_name" content="Home">
+  <meta property="og:title" content="Calling Functions.">
+  <meta property="og:description" content="Introduction to CALL, RET, MOV, ADD and SUB instructions.">
+
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:article:author" content="German">
+  <meta property="og:article:published_time" content="2025-11-21T00:00:00-05:00">
+  <meta property="og:url" content="http://localhost:4000/2025-11-21-CallingFunctions/">
+  <link rel="canonical" href="http://localhost:4000/2025-11-21-CallingFunctions/">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:site" content="@Qvintvs1">
+  <meta name="twitter:creator" content="@Qvintvs1">
+
+  <meta property="twitter:title" content="Calling Functions.">
+  <meta property="twitter:description" content="Introduction to CALL, RET, MOV, ADD and SUB instructions.">
+
+  
+
+  
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+    document.querySelectorAll("script[type='math/tex; mode=display']").forEach(function(el) {
+      el.outerHTML = "\\[" + el.textContent + "\\]";
+    });
+    document.querySelectorAll("script[type='math/tex']").forEach(function(el) {
+      el.outerHTML = "\\(" + el.textContent + "\\)";
+    });
+    var script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js';
+    script.async = true;
+    document.head.appendChild(script);
+  });
+</script>
+
+
+  
+
+  
+
+</head>
+
+
+<body>
+
+  
+
+
+  <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">Home</a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Program</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/Cpage">C</a>
+                  <a class="dropdown-item" href="/DHARMApage">Dharma</a>
+                  <a class="dropdown-item" href="/RUSTpage">Rust</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Web2</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/BURPSUITEpage">Burp</a>
+                  <a class="dropdown-item" href="/THMpage">Thm</a>
+                  <a class="dropdown-item" href="/HackTheBoxpage">Htb</a>
+                  <a class="dropdown-item" href="/PEN200page">BasicPentesting</a>
+                  <a class="dropdown-item" href="/REDTEAMBASICSpage">RedTeam</a>
+                  <a class="dropdown-item" href="/BLUETEAMBASICSpage">Blueteam</a>
+                  <a class="dropdown-item" href="/REDESpage">Net</a>
+                  <a class="dropdown-item" href="/2022-11-17-GitBasics">Git</a>
+                  <a class="dropdown-item" href="/CSOFTpage">MemCorrupt</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ZKP</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/MATHpage">Math</a>
+                  <a class="dropdown-item" href="/RUSTpage">Rust</a>
+                  <a class="dropdown-item" href="/NOIRpage">Noir</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Assembly</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/ASSEMpage">x86</a>
+            </div>
+          </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" id="nav-search-link" href="#" title="Search">
+            <span id="nav-search-icon" class="fa fa-search"></span>
+            <span id="nav-search-text">Search</span>
+          </a>
+        </li></ul>
+  </div>
+
+  
+
+  
+
+</nav>
+
+
+
+<div id="beautifuljekyll-search-overlay">
+
+  <div id="nav-search-exit" title="Exit search">✕</div>
+  <input type="text" id="nav-search-input" placeholder="Search">
+  <ul id="search-results-container"></ul>
+  
+  <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+  <script>
+    var searchjson = '[ \
+       \
+        { \
+          "title"    : "P vs NP.", \
+          "category" : "math", \
+          "url"      : "/2026-01-11-PvsNP/", \
+          "date"     : "January 11, 2026" \
+        }, \
+       \
+        { \
+          "title"    : "Race Conditions.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-28-RaceCondition/", \
+          "date"     : "December 28, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Introducción al Cálculo", \
+          "category" : "matemáticas", \
+          "url"      : "/2025-12-25-MathTest/", \
+          "date"     : "December 25, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Uninitialize Data Access.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-23-UDA/", \
+          "date"     : "December 23, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Control Flow.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-12-ControlFlow/", \
+          "date"     : "December 12, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Other Integer Issues.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-05-OtherIntegerIssues/", \
+          "date"     : "December  5, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Integer Overflow/Underflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-05-IntegerOverflow-Underflow/", \
+          "date"     : "December  5, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Passing Parameters.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-04-Passing-Parameters/", \
+          "date"     : "December  4, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Stackframe; Local variables, Arrays and Structures.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-01-LocalVars_Arrays_structs/", \
+          "date"     : "December  1, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Out-Of-Bounds Write.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-26-Out-Of-Bounds-Write/", \
+          "date"     : "November 26, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Calling Functions.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-21-CallingFunctions/", \
+          "date"     : "November 21, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "(Linear) Heap Buffer Overflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-18-HBO/", \
+          "date"     : "November 18, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Basic Instructions.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-17-AssemblyBasicRegisters/", \
+          "date"     : "November 17, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Computer Registers.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-08-ComputerRegisters/", \
+          "date"     : "November  8, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "CVE-2021-20294.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-07-CVE-2021-20294/", \
+          "date"     : "November  7, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "(Linear) Stack Buffer Overflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-06-LSBO/", \
+          "date"     : "November  6, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Text Editor.", \
+          "category" : "C", \
+          "url"      : "/2025-08-11-Text-Editor/", \
+          "date"     : "August 11, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Garbage Collector.", \
+          "category" : "C", \
+          "url"      : "/2025-07-11-GarbageCollector/", \
+          "date"     : "July 11, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Hashtables.", \
+          "category" : "C", \
+          "url"      : "/2025-06-13-HashTable/", \
+          "date"     : "June 13, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Building my own malloc in C.", \
+          "category" : "C", \
+          "url"      : "/2025-06-09-BuildingOwnMalloc/", \
+          "date"     : "June  9, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Malloc Tutorial", \
+          "category" : "C", \
+          "url"      : "/2025-06-06-MallocTutorial/", \
+          "date"     : "June  6, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "SharedLibraries&amp;FunctionHooking", \
+          "category" : "C", \
+          "url"      : "/2025-04-26-SharedLibraries&FunctionHooking/", \
+          "date"     : "April 26, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "File Descritors", \
+          "category" : "C", \
+          "url"      : "/2025-03-04-FileDescriptors/", \
+          "date"     : "March  4, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Network Programming", \
+          "category" : "C", \
+          "url"      : "/2025-02-22-Network_Programming/", \
+          "date"     : "February 22, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "2. Constants and Literals in C.", \
+          "category" : "C", \
+          "url"      : "/2024-12-10-2.ConstantsinC-copy/", \
+          "date"     : "December 10, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "1. Basics of C", \
+          "category" : "C", \
+          "url"      : "/2024-12-02-1.BasicsOfC/", \
+          "date"     : "December  2, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "Gramáticas en Dharma", \
+          "category" : "DHA", \
+          "url"      : "/2024-09-24-Dharma_Tutorial/", \
+          "date"     : "September 24, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "Gramáticas en Dharma", \
+          "category" : "fuzz", \
+          "url"      : "/2024-03-22-Dharma_Tutorial-copy/", \
+          "date"     : "March 22, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "Mi experiencia con el OSCP", \
+          "category" : "pen", \
+          "url"      : "/2023-11-19-PEN200_Experience/", \
+          "date"     : "November 19, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Client Side", \
+          "category" : "pen", \
+          "url"      : "/2023-11-17-17.Client_Side_Attacks/", \
+          "date"     : "November 17, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Deep Packet Tunneling", \
+          "category" : "pen", \
+          "url"      : "/2023-11-16-16.Tunneling_Through_Deep_Packet_Inspection/", \
+          "date"     : "November 16, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Report", \
+          "category" : "pen", \
+          "url"      : "/2023-11-15-15.Making_Reports/", \
+          "date"     : "November 15, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Metasploit", \
+          "category" : "pen", \
+          "url"      : "/2023-11-14-14.Metasploit/", \
+          "date"     : "November 14, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Password Attacks", \
+          "category" : "pen", \
+          "url"      : "/2023-11-13-13.Password_Attacks/", \
+          "date"     : "November 13, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Active Directory Attacks", \
+          "category" : "pen", \
+          "url"      : "/2023-11-12-12.Active_Directory_Attacks/", \
+          "date"     : "November 12, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Port Forwarding", \
+          "category" : "pen", \
+          "url"      : "/2023-11-11-11.Port_Forwarding/", \
+          "date"     : "November 11, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Privilege Escalation", \
+          "category" : "pen", \
+          "url"      : "/2023-11-10-10.Privilege_Escalation/", \
+          "date"     : "November 10, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "File Transfers", \
+          "category" : "pen", \
+          "url"      : "/2023-11-09-9.File_Tranfers/", \
+          "date"     : "November  9, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Buffer Overflows", \
+          "category" : "pen", \
+          "url"      : "/2023-11-08-8.Buffer_Overflows/", \
+          "date"     : "November  8, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Vulnerability Scanning.", \
+          "category" : "pen", \
+          "url"      : "/2023-11-07-7.Vulnerability_Scanning/", \
+          "date"     : "November  7, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Information Gathering", \
+          "category" : "pen", \
+          "url"      : "/2023-11-06-6.Active_Information_Gathering/", \
+          "date"     : "November  6, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Windows", \
+          "category" : "pen", \
+          "url"      : "/2023-11-05-5.Windows/", \
+          "date"     : "November  5, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Networking", \
+          "category" : "pen", \
+          "url"      : "/2023-11-04-4.Networking/", \
+          "date"     : "November  4, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Scripting", \
+          "category" : "pen", \
+          "url"      : "/2023-11-03-3.Scripting/", \
+          "date"     : "November  3, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Practical Tools", \
+          "category" : "pen", \
+          "url"      : "/2023-11-02-2.PracticalTools/", \
+          "date"     : "November  2, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Linux", \
+          "category" : "pen", \
+          "url"      : "/2023-11-01-1.Linux/", \
+          "date"     : "November  1, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Easy", \
+          "category" : "hack", \
+          "url"      : "/2022-12-01-Easy/", \
+          "date"     : "December  1, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Git Basics", \
+          "category" : "", \
+          "url"      : "/2022-11-17-GitBasics/", \
+          "date"     : "November 17, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Tier I", \
+          "category" : "hack", \
+          "url"      : "/2022-11-10-Tier_1/", \
+          "date"     : "November 10, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Tier 0", \
+          "category" : "hack", \
+          "url"      : "/2022-11-09-Tier_0/", \
+          "date"     : "November  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "7.BufferOverflow.", \
+          "category" : "thm", \
+          "url"      : "/2022-11-02-7.BufferOverflow/", \
+          "date"     : "November  2, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "6.Offensive Pentesting", \
+          "category" : "thm", \
+          "url"      : "/2022-11-01-6.OffensivePentesting/", \
+          "date"     : "November  1, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "5.RedTeam", \
+          "category" : "thm", \
+          "url"      : "/2022-10-30-5.RedTeam/", \
+          "date"     : "October 30, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "4.Windows", \
+          "category" : "thm", \
+          "url"      : "/2022-10-22-4.Windows/", \
+          "date"     : "October 22, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "3.Junior Penetrationtester path", \
+          "category" : "thm", \
+          "url"      : "/2022-09-02-3.JRPenetrationTester/", \
+          "date"     : "September  2, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "2.Complete Begginer path.", \
+          "category" : "thm", \
+          "url"      : "/2022-08-07-2.CompleteBegginer/", \
+          "date"     : "August  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "1.Pre-Security path.", \
+          "category" : "thm", \
+          "url"      : "/2022-07-11-1Pre-Security/", \
+          "date"     : "July 11, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "0.Scripting for pentesters.", \
+          "category" : "thm", \
+          "url"      : "/2022-07-10-0.Scripting_for_pentesters/", \
+          "date"     : "July 10, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Burp Certified Practitioner Practice Exam.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-30-PracticeExam/", \
+          "date"     : "March 30, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "22. OAuth Authentication.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-27-22.OAuth_authentication/", \
+          "date"     : "March 27, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "21. HTTP Request Smuggling.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-26-21.HTTP_request_smuggling/", \
+          "date"     : "March 26, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "20. HTTP Host Header Attacks.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-25-20.HTTP_Host_header_attacks/", \
+          "date"     : "March 25, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "19. Web Cache Poisoning.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-24-19.Web_cache_poisoning/", \
+          "date"     : "March 24, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "18. Server-Side Template Injection.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-23-18.Serve-side_template_injection/", \
+          "date"     : "March 23, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "17. Insecure Deserialization.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-22-17.Insecure_deserialization/", \
+          "date"     : "March 22, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "16. WebSockets.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-21-16.WebSockets/", \
+          "date"     : "March 21, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "15.DOM-based XSS vulnerabilities.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-20-15-DOM-based_vulnerabilities/", \
+          "date"     : "March 20, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "14. Clickjacking.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-19-14.Clickjacking/", \
+          "date"     : "March 19, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "13. Cross-Origin Resource Sharing.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-18-13.Cross-origin_resource_sharing_(CORS)/", \
+          "date"     : "March 18, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "12. Cross-Site Request Forgery.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-17-12.Cross-site_request_forgery_(CSRF)/", \
+          "date"     : "March 17, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "11. Cross-Site Scripting.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-16-11.Cross-site_scripting_(XSS)/", \
+          "date"     : "March 16, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "10. XXE Injection.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-15-10.XXE_injection/", \
+          "date"     : "March 15, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "9. Server-Side Request Forgery.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-14-9.Server-side_request_forgery/", \
+          "date"     : "March 14, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "8. File Upload.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-13-8.File_upload_vulnerabilities/", \
+          "date"     : "March 13, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "7. Access Control.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-12-7.Access_control/", \
+          "date"     : "March 12, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "6. Information Disclosure.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-11-6.Information_disclosure/", \
+          "date"     : "March 11, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "5. Bussiness Logic Vulnerabilities.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-10-5.Business_logic_vulnerabilities/", \
+          "date"     : "March 10, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "4. Command Injection.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-09-4.Command_Injection/", \
+          "date"     : "March  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "3. Directory Traversal.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-08-3.Directory_Traversal/", \
+          "date"     : "March  8, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "2. Authentication.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-07-2.Authentication/", \
+          "date"     : "March  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "1. SQLInjection", \
+          "category" : "burp", \
+          "url"      : "/2022-03-06-1.SQLInjection/", \
+          "date"     : "March  6, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Seguridad Perimetral", \
+          "category" : "blueteam", \
+          "url"      : "/2022-02-09-Seguridad_Perimetral/", \
+          "date"     : "February  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Hardening de sistemas", \
+          "category" : "blueteam", \
+          "url"      : "/2022-02-09-Hardening_de_sistemas/", \
+          "date"     : "February  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Bandit", \
+          "category" : "otw", \
+          "url"      : "/2022-02-08-Bandit/", \
+          "date"     : "February  8, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Proxy", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-Proxys/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Protocolos Relevantes", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-Protocolos_Importantes/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Curso Básico Redes", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-Precurso_Redes/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "IPs", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-IPs/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Movimientos Laterales", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-06-Introducci%C3%B3n_a_movimientos_laterales/", \
+          "date"     : "February  6, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Evasión de Defensas", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-05-Evasi%C3%B3n_de_Defensas/", \
+          "date"     : "February  5, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Escalada de privilegios", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-05-Escalada_de_privilegios/", \
+          "date"     : "February  5, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Metasploit", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-04-Metasploit_B%C3%A1sico/", \
+          "date"     : "February  4, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Ataques a aplicaciones Android", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-03-Ataques_aplicaciones_android/", \
+          "date"     : "February  3, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Ataque a aplicaciones web.", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-02-Ataques_a_aplicaciones_web/", \
+          "date"     : "February  2, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Ataques a Infraestructuras y Redes", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-01-Ataques_a_Infraestructuras_y_Redes/", \
+          "date"     : "February  1, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Análisis de Objetivos", \
+          "category" : "redteam", \
+          "url"      : "/2022-01-28-An%C3%A1lisis_de_Objetivos/", \
+          "date"     : "January 28, 2022" \
+        }, \
+       \
+       \
+        { \
+          "title"    : "Assembly and Architecture Introduction.", \
+          "category" : "page", \
+          "url"      : "/ASSEMpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Blueteam Basics", \
+          "category" : "page", \
+          "url"      : "/BLUETEAMBASICSpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "PortSwigger BurpSuite Course", \
+          "category" : "page", \
+          "url"      : "/BURPSUITEpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "C-Family Software Memory Corruption Vulnerabilities", \
+          "category" : "page", \
+          "url"      : "/CSOFTpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "C &amp; Systems Fundamentals.", \
+          "category" : "page", \
+          "url"      : "/Cpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Dharma Fuzzer language", \
+          "category" : "page", \
+          "url"      : "/DHARMApage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Exploiting &amp; Reversing", \
+          "category" : "page", \
+          "url"      : "/EXPREVpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Fuzzing JavaScript Engine", \
+          "category" : "page", \
+          "url"      : "/Fuzzpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "HackTheBox", \
+          "category" : "page", \
+          "url"      : "/HackTheBoxpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "TryHackMe", \
+          "category" : "page", \
+          "url"      : "/MATHpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "PEN200 notes", \
+          "category" : "page", \
+          "url"      : "/PEN200page/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Proyectos", \
+          "category" : "page", \
+          "url"      : "/PROJECTSpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Networking Basics", \
+          "category" : "page", \
+          "url"      : "/REDESpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "RedTeam Basics", \
+          "category" : "page", \
+          "url"      : "/REDTEAMBASICSpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Retired Machines", \
+          "category" : "page", \
+          "url"      : "/RetiredMachinespage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "TryHackMe", \
+          "category" : "page", \
+          "url"      : "/THMpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "About me", \
+          "category" : "page", \
+          "url"      : "/aboutme/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "THM", \
+          "category" : "page", \
+          "url"      : "/preOSCPpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Tag Index", \
+          "category" : "page", \
+          "url"      : "/tags/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page2/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page3/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page4/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page5/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page6/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page7/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page8/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page9/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page10/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page11/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page12/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page13/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page14/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page15/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page16/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page17/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page18/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page19/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page20/", \
+          "date"     : "January 1, 1970" \
+        } \
+       \
+    ]';
+    searchjson = JSON.parse(searchjson);
+
+    var sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('nav-search-input'),
+      resultsContainer: document.getElementById('search-results-container'),
+      json: searchjson
+    });
+  </script>
+</div>
+
+
+
+
+
+  <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Calling Functions.</h1>
+          
+            
+              <h2 class="post-subheading">Introduction to CALL, RET, MOV, ADD and SUB instructions.</h2>
+            
+          
+
+          
+            <span class="post-meta">Posted on November 21, 2025</span>
+            
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+
+      
+
+      <article role="main" class="blog-post">
+        <h3 id="1-calling-functions">1. Calling functions.</h3>
+
+<p>In order to introduce some more instructions, lets consider the following C code</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">func</span><span class="p">(){</span>
+    <span class="k">return</span> <span class="mh">0xbeef</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">func</span><span class="p">();</span>
+    <span class="k">return</span> <span class="mh">0xf00d</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>and the corresponding Assembly tranlation:</p>
+
+<pre><code class="language-assem">func:
+0000000140001000 mov    eax, 0BEEFh
+0000000140001005 ret
+
+main:
+0000000140001010 sub    rsp, 28h
+0000000140001014 call   func (0140001000h)
+0000000140001019 mov    eax, 0F00Dh
+000000014000101E add    rsp, 28h
+0000000140001022 ret
+</code></pre>
+
+<p>The assembly code above contains all the function we gonna review.</p>
+
+<p><br /></p>
+
+<h3 id="2-call-and-ret">2. CALL and RET.</h3>
+
+<h4 id="21-definition-and-sintax">2.1. Definition and Sintax.</h4>
+
+<h5 id="211-call">2.1.1. CALL.</h5>
+
+<p>The CALL instruction is one of the most important instructions in assembly language, used to implement function/procedure calls. CALL’s job is to transfer the flow of execution to a different function with the appropiate measures to ensure the flow can be resumed later where it left off using RET.</p>
+
+<p>The CALL instruction performs two essential operations:</p>
+
+<ul>
+  <li><strong>Saves the return address</strong> - Pushes the address of the next instruction (after CALL) onto the stack, this ensures the restauration of the flow of execution when the called function finish.</li>
+  <li><strong>Jumps to the target</strong> - Introduces in the RIP register (Instruction Pointer register; pointer to the next instruction to execute) the address of the first instruction of the called function. This transfers control to the specified function/procedure address.</li>
+</ul>
+
+<p>It has the following sintax:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CALL memory_address    ; Direct call
+CALL register          ; Indirect call through register
+CALL [r/mX]            ; Indirect call through memory
+</code></pre></div></div>
+
+<p>Note that CALL is equal to:</p>
+
+<pre><code class="language-assem">push RIP + jmp target
+</code></pre>
+
+<p><br /></p>
+
+<h5 id="212-ret">2.1.2. RET.</h5>
+
+<p>The RET instruction is the counterpart to CALL, used to return from a function/procedure back to the caller.</p>
+
+<p>RET performs two essential operations:</p>
+
+<ul>
+  <li><strong>Pops the return address</strong> - Retrieves the return address from the top of the stack which was saved previously by CALL.</li>
+  <li><strong>Jumps to that address</strong> - Changes the RIP value with the address of the instruction popped out from the stack. This way it transfers the control back to the instruction after the original CALL.</li>
+</ul>
+
+<p>It gets called simply with RET.</p>
+
+<p>Is worth to mention that RET’s functionally is equivalent to POP RIP (pop out the next instruction of the stack, the address previously saved by CALL, and insert it in the destination) though you can’t actually write POP RIP directly in most assemblers because RIP/EIP is a special register (not a general-purpouse register).</p>
+
+<pre><code class="language-assem">pop RIP + jmp RIP
+</code></pre>
+
+<p><br /></p>
+
+<h4 id="22-sinergy-in-an-example">2.2. Sinergy in an example.</h4>
+
+<p>Now that we know how CALL and RET formaly works. Let’s see the behaviour described before in an example, some address are just cutdown for simplicity, the archicture however is x86-64:</p>
+
+<pre><code class="language-less">main:
+    mov rax, 10          ; Address: 0x401000
+    mov rbx, 20          ; Address: 0x401007
+    call AddNumbers      ; Address: 0x40100E (pushes 0x401013 onto stack)
+    mov rcx, rax         ; Address: 0x401013 - rax contains 30
+    ret                  ; Address: 0x40101A
+
+AddNumbers:              
+    add rax, rbx         ; Address: 0x402000 - rax = 10 + 20 = 30
+    ret                  ; Address: 0x402003 - pops 0x401013, jumps there
+</code></pre>
+
+<p><br /></p>
+
+<p>Then the stack status before CALL is something like follows:</p>
+
+<pre><code class="language-less">Step 1: Before CALL
+┌─────────────────────────────────────┐
+│ RIP: 0x40100E                       │
+│ RSP: 0x7FFFFFFFE000 (stack pointer) │
+│ RAX: 10                             │
+│ RBX: 20                             │
+└─────────────────────────────────────┘
+</code></pre>
+
+<p>When CALL function is processed, the address of the next instruction after call (0x401013) gets pushed into the stack and RIP contains the address of the first instruction of <em>AddNumbers</em>:</p>
+
+<pre><code class="language-less">Step 2: CALL executes
+┌─────────────────────────────────────┐
+│ Action 1: PUSH 0x401013             │  Push return address (8 bytes)
+│ Action 2: RSP = 0x7FFFFFFFDF8       │  Stack grows down by 8 bytes QUADWORD
+│ Action 3: RIP = 0x402000            │  Jump to AddNumbers
+└─────────────────────────────────────┘
+
+Stack after CALL (64-bit):
+      High Memory
+    ┌──────────────────┐
+    │       ...        │
+    ├──────────────────┤ 0x7FFFFFFFE000 
+    │ 0x0000000401013  │ 0x7FFFFFFFDFF8  (RSP)
+    ├──────────────────┤
+    │       ...        │
+      Low Memory
+</code></pre>
+
+<p>Now, the function <em>AddNumbers</em> execute normally, it perform a simple addition and then RET takes place, it pops out the next instruction of the stack (which result to be the return address saved by CALL) into RIP, restoring the execution flow of the program to the caller:</p>
+
+<pre><code class="language-less">Step 3: Inside AddNumbers
+┌─────────────────────────────────────┐
+│ RIP: 0x402000                       │
+│ RSP: 0x7FFFFFFFDF8                  │
+│ Execute: add rax, rbx               │
+│ RAX: 30 (result)                    │
+└─────────────────────────────────────┘
+
+Step 4: RET executes
+┌─────────────────────────────────────┐
+│ Action 1: POP into RIP              │  RIP = 0x401013
+│ Action 2: RSP = 0x7FFFFFFFE000      │  Stack restored (RSP + 8)
+└─────────────────────────────────────┘
+</code></pre>
+
+<p>Now, with RET having restored the flow of execution, the system is ready to continue with the execution of the program where it leaved it:</p>
+
+<pre><code class="language-less">Step 5: Back in main
+┌─────────────────────────────────────┐
+│ RIP: 0x401013                       │  Continues after CALL
+│ RSP: 0x7FFFFFFFE000                 │  Stack pointer restored
+│ RAX: 30                             │  Has the result
+└─────────────────────────────────────┘
+</code></pre>
+
+<p><br /></p>
+
+<h4 id="23-brief-warning">2.3. Brief warning.</h4>
+
+<p>Is worth to mention that, despite we warn about CALL and RET are equals to some instructions which manipulates RIP register:</p>
+
+<pre><code class="language-assem">CALL &lt;==&gt; push RIP + jmp target
+RET &lt;==&gt; pop RIP + jmp RIP
+</code></pre>
+
+<p>This lines can’t be found the example above, this is because RIP is a very critic register as we see in our section dedicated to <a href="https://qv1ntv5.github.io/2025-11-08-ComputerRegisters/">registers</a> and the CPU performs the action for us. We will se in other procedures, like <em>stackframe creation</em>, lines which manipulates special-purpouses registers as RBP or RSP because this are optional procedures established by compiler’s convention.</p>
+
+<p><br /></p>
+
+<h3 id="3-two-operand-instructions-sintax">3. Two-Operand instructions sintax.</h3>
+
+<h4 id="31-syntax">3.1. Syntax.</h4>
+
+<p>There are two types of syntax in base of the flow of the assignation:</p>
+
+<ul>
+  <li><strong>Intel Syntax</strong>: Destination &lt;- Source (like in algebra, <em>y = x + 1</em>).</li>
+  <li><strong>AT&amp;T Syntax</strong>: Source -&gt; Destination (the opposite, mlike when we calculate the result of an operation 1 + 2 = 3).</li>
+</ul>
+
+<p>For now on, we gonna read in Intel syntax, but is worth to note that exists both of them.</p>
+
+<p><br /></p>
+
+<h4 id="32-cisc-vs-risc-architectures">3.2. CISC vs RISC Architectures.</h4>
+
+<p>In the world of computers, “architecture” (specifically, Instruction Set Architecture or ISA) is like the basic vocabulary and grammar of a language that the CPU understands. When C code is compiled, the compiler translates this C code to a set of instructions that the CPU understand and is able to process, this is machine-code and the precise set of instructions or commands used to craft this byte-level code is the so called architecture.</p>
+
+<p>Assembly is a human-readable translation of the machine-code.</p>
+
+<p>In this context, this set of instructions can be:</p>
+
+<ul>
+  <li>
+    <p>RISC (Reduced Instruction Set Computer); small set of simple, highly optimized instructions.</p>
+  </li>
+  <li>
+    <p>CISC (Complex Instruction Set Computer); a large set of powerful, complex instructions</p>
+  </li>
+</ul>
+
+<p>Regarding to our interests, there is a major distinction between CISC and RISC architectures on how they handle different size-architectures commands.</p>
+
+<ul>
+  <li>
+    <p>RISC; have different instructions for the same operation depending of the size being operated with.</p>
+
+    <pre><code class="language-assem">  LDRB R1, [R2]    ; Load BYTE (8-bit) from memory address in R2
+  LDRH R1, [R2]    ; Load HALFWORD (16-bit) from memory address in R2  
+  LDR  R1, [R2]    ; Load WORD (32-bit) from memory address in R2
+  LDRD R1, R2, [R3] ; Load DOUBLEWORD (64-bit) from memory address in R3
+</code></pre>
+  </li>
+  <li>
+    <p>CISC use the same set of instructions despite the size and use directives to specify the amount of bits of an address that is being used in an operation. It allows using the same instruction with different operand sizes, if a directive specifying the size of the data in the operation is used in:</p>
+
+    <ul>
+      <li>
+        <p>Memory Operations with Immediate Values:</p>
+
+        <pre><code class="language-assem">  MOV BYTE PTR [eax], 5     ; Write 1 byte
+  MOV WORD PTR [eax], 5     ; Write 2 bytes  
+  MOV DWORD PTR [eax], 5    ; Write 4 bytes
+  MOV QWORD PTR [eax], 5    ; Write 8 bytes
+</code></pre>
+      </li>
+      <li>
+        <p>Memory Operations where Register Size isn’t Clear:</p>
+
+        <pre><code class="language-assem">  MOV [ebx], 10     ; Ambiguous: size unknown
+  MOV DWORD PTR [ebx], 10  ; Clear: 32-bit operation
+</code></pre>
+
+        <p>Size directives are only needed when the size cannot be inferred from the registers</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>There are a lot of cases but the important thing is that this serve to us to introduce the size directives:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```assem
+BYTE PTR [r/mX];  Use one 1 byte from the address r/mX.
+WORD PTR [r/mX]; Use 2 bytes from the address r/mX. 
+DWORD PTR [r/mX]; Use 4 bytes from the address r/mX.
+QWORD PTR [r/mX]; Use 8 bytes from the address r/mX.
+```
+</code></pre></div></div>
+
+<h3 id="4-mov---move">4. MOV - Move.</h3>
+
+<h4 id="41-definition">4.1. Definition.</h4>
+
+<p>The MOV (move) instruction is one of the most fundamental and frequently used instructions in assembly language. Despite its name, it doesn’t actually “move” data it copies data from a source to a destination.</p>
+
+<p><br /></p>
+
+<h4 id="42-syntax-and-restrictions">4.2. Syntax and restrictions.</h4>
+
+<p>The basic sintax of the MOV instruction is:</p>
+
+<pre><code class="language-assem">MOV destination, source
+</code></pre>
+
+<p>And MOV can copy between:</p>
+
+<ol>
+  <li>Register to Register:</li>
+</ol>
+
+<pre><code class="language-assem">MOV rax, rbx        ; Copy value from RBX to RAX
+MOV eax, ebx        ; 32-bit registers
+MOV ax, bx          ; 16-bit registers
+MOV al, bl          ; 8-bit registers
+</code></pre>
+
+<ol>
+  <li>Immediate Value to Register:</li>
+</ol>
+
+<pre><code class="language-assem">MOV rax, 42         ; Store the value 42 in RAX
+MOV rcx, 0x1000     ; Store hexadecimal value in RCX
+MOV edx, -5         ; Negative values work too
+</code></pre>
+
+<ol>
+  <li>Memory to Register (Load):</li>
+</ol>
+
+<pre><code class="language-assem">MOV rax, [rbx]              ; Load value from memory address in RBX into RAX
+MOV eax, [rsp+8]            ; Load from stack offset
+MOV rcx, [rbp-16]           ; Access local variables
+MOV rdx, QWORD PTR [rax]    ; Explicit size qualifier (64-bit)
+</code></pre>
+
+<ol>
+  <li>Register to Memory (Store):</li>
+</ol>
+
+<pre><code class="language-assem">MOV [rax], rbx              ; Store RBX value to memory address in RAX
+MOV [rsp+4], ecx            ; Store to stack
+MOV DWORD PTR [rdi], 100    ; Store immediate to memory (32-bit)
+</code></pre>
+
+<ol>
+  <li>Immediate Value to Memory:</li>
+</ol>
+
+<pre><code class="language-assem">MOV QWORD PTR [rax], 42     ; Store value 42 to memory (need size specifier)
+MOV BYTE PTR [rbx+5], 0xFF  ; Store byte value
+</code></pre>
+
+<p><br /></p>
+
+<p>Also, there are a few restrictions:</p>
+
+<ul>
+  <li>
+    <p><strong>No Memory-to-Memory</strong></p>
+
+    <p>In x86-64 there are no memory-to-memory tranfer operations, they need a register as an intermediate:</p>
+
+    <pre><code class="language-assem">  MOV [rax], [rbx]    ; INVALID - cannot move directly between memory locations
+    
+        
+  ; Must use a register as intermediate:
+  MOV rcx, [rbx]      ; Load from memory
+  MOV [rax], rcx      ; Store to memory
+</code></pre>
+  </li>
+  <li>
+    <p><strong>Size Matching</strong></p>
+
+    <pre><code class="language-assem">  MOV rax, ebx        ; INVALID - size mismatch (64-bit vs 32-bit)
+  MOV eax, ebx        ; VALID - both 32-bit
+  MOV rax, rbx        ; VALID - both 64-bit
+</code></pre>
+  </li>
+  <li>
+    <p><strong>Segment Registers (Special Case)</strong>:</p>
+
+    <pre><code class="language-assem">  MOV ds, ax          ; Load segment register from general register
+  MOV ds, 0x10        ; INVALID - cannot load immediate into segment register
+</code></pre>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="5-add--sub">5. ADD &amp; SUB.</h3>
+
+<p>This instructions are both kind of trivials, they just add or substract as expected except between memory address. Both instructions performs addition/substraction on two operands and stores the result in the destination operand.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ADD/SUB destination, source    ; destination = destination + source
+</code></pre></div></div>
+
+<p>Again, the destination and the source (this is, the operands) can be registers, immediates or memory address but since memory copy from memory to memory is not allowed both operands cannot be memory addressa at the same time.</p>
+
+<pre><code class="language-assem">add rsp, 8 -&gt; (rsp = rsp + 8)
+sub rax, [rbx*2] -&gt; (rax = rax - memorypointedtoby(rbx*2))
+</code></pre>
+
+<p><br /></p>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#assem">assem</a>
+          
+        </div>
+      
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+<section id = "social-share-section">
+  <span class="sr-only">Share: </span>
+
+  
+    <a href="https://twitter.com/intent/tweet?text=Calling+Functions.&url=http%3A%2F%2Flocalhost%3A4000%2F2025-11-21-CallingFunctions%2F"
+      class="btn btn-social-icon btn-twitter" title="Share on Twitter">
+      <span class="fab fa-fw fa-twitter" aria-hidden="true"></span>
+      <span class="sr-only">Twitter</span>
+    </a>
+  
+
+  
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F2025-11-21-CallingFunctions%2F"
+      class="btn btn-social-icon btn-facebook" title="Share on Facebook">
+      <span class="fab fa-fw fa-facebook" aria-hidden="true"></span>
+      <span class="sr-only">Facebook</span>
+    </a>
+  
+
+  
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F2025-11-21-CallingFunctions%2F"
+      class="btn btn-social-icon btn-linkedin" title="Share on LinkedIn">
+      <span class="fab fa-fw fa-linkedin" aria-hidden="true"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  
+
+  
+
+  
+
+</section>
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/2025-11-18-HBO/" data-toggle="tooltip" data-placement="top" title="(Linear) Heap Buffer Overflow.">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/2025-11-26-Out-Of-Bounds-Write/" data-toggle="tooltip" data-placement="top" title="Out-Of-Bounds Write.">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+      
+  
+  
+  
+
+  
+
+
+  
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="/feed.xml" title="RSS">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">RSS</span>
+    </a>
+  </li><li class="list-inline-item">
+    <a href="mailto:" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/Qv1nTv5" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://twitter.com/Qvintvs1" title="Twitter">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Twitter</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://linkedin.com/in/german-sanmillan-68b308229/" title="LinkedIn">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">LinkedIn</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        German
+        &nbsp;&bull;&nbsp;
+      
+      2026
+
+      
+
+      
+      </p>
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>

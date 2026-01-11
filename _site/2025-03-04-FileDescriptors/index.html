@@ -1,0 +1,2037 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 5.0.0 | Copyright Dean Attali 2020 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>File Descritors</title>
+
+  
+  <meta name="author" content="German">
+  
+
+  <meta name="description" content="File Descriptors explanation and manipulation with C">
+
+  
+
+  
+
+  
+  <link rel="alternate" type="application/rss+xml" title="Home" href="http://localhost:4000/feed.xml">
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/custom-dark.css">
+    
+  
+
+  
+  
+  
+
+  
+
+  
+  <meta property="og:site_name" content="Home">
+  <meta property="og:title" content="File Descritors">
+  <meta property="og:description" content="File Descriptors explanation and manipulation with C">
+
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:article:author" content="German">
+  <meta property="og:article:published_time" content="2025-03-04T00:00:00-05:00">
+  <meta property="og:url" content="http://localhost:4000/2025-03-04-FileDescriptors/">
+  <link rel="canonical" href="http://localhost:4000/2025-03-04-FileDescriptors/">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:site" content="@Qvintvs1">
+  <meta name="twitter:creator" content="@Qvintvs1">
+
+  <meta property="twitter:title" content="File Descritors">
+  <meta property="twitter:description" content="File Descriptors explanation and manipulation with C">
+
+  
+
+  
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+    document.querySelectorAll("script[type='math/tex; mode=display']").forEach(function(el) {
+      el.outerHTML = "\\[" + el.textContent + "\\]";
+    });
+    document.querySelectorAll("script[type='math/tex']").forEach(function(el) {
+      el.outerHTML = "\\(" + el.textContent + "\\)";
+    });
+    var script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js';
+    script.async = true;
+    document.head.appendChild(script);
+  });
+</script>
+
+
+  
+
+  
+
+</head>
+
+
+<body>
+
+  
+
+
+  <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">Home</a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Program</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/Cpage">C</a>
+                  <a class="dropdown-item" href="/DHARMApage">Dharma</a>
+                  <a class="dropdown-item" href="/RUSTpage">Rust</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Web2</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/BURPSUITEpage">Burp</a>
+                  <a class="dropdown-item" href="/THMpage">Thm</a>
+                  <a class="dropdown-item" href="/HackTheBoxpage">Htb</a>
+                  <a class="dropdown-item" href="/PEN200page">BasicPentesting</a>
+                  <a class="dropdown-item" href="/REDTEAMBASICSpage">RedTeam</a>
+                  <a class="dropdown-item" href="/BLUETEAMBASICSpage">Blueteam</a>
+                  <a class="dropdown-item" href="/REDESpage">Net</a>
+                  <a class="dropdown-item" href="/2022-11-17-GitBasics">Git</a>
+                  <a class="dropdown-item" href="/CSOFTpage">MemCorrupt</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ZKP</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/MATHpage">Math</a>
+                  <a class="dropdown-item" href="/RUSTpage">Rust</a>
+                  <a class="dropdown-item" href="/NOIRpage">Noir</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Assembly</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/ASSEMpage">x86</a>
+            </div>
+          </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" id="nav-search-link" href="#" title="Search">
+            <span id="nav-search-icon" class="fa fa-search"></span>
+            <span id="nav-search-text">Search</span>
+          </a>
+        </li></ul>
+  </div>
+
+  
+
+  
+
+</nav>
+
+
+
+<div id="beautifuljekyll-search-overlay">
+
+  <div id="nav-search-exit" title="Exit search">✕</div>
+  <input type="text" id="nav-search-input" placeholder="Search">
+  <ul id="search-results-container"></ul>
+  
+  <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+  <script>
+    var searchjson = '[ \
+       \
+        { \
+          "title"    : "P vs NP.", \
+          "category" : "math", \
+          "url"      : "/2026-01-11-PvsNP/", \
+          "date"     : "January 11, 2026" \
+        }, \
+       \
+        { \
+          "title"    : "Race Conditions.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-28-RaceCondition/", \
+          "date"     : "December 28, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Introducción al Cálculo", \
+          "category" : "matemáticas", \
+          "url"      : "/2025-12-25-MathTest/", \
+          "date"     : "December 25, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Uninitialize Data Access.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-23-UDA/", \
+          "date"     : "December 23, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Control Flow.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-12-ControlFlow/", \
+          "date"     : "December 12, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Other Integer Issues.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-05-OtherIntegerIssues/", \
+          "date"     : "December  5, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Integer Overflow/Underflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-05-IntegerOverflow-Underflow/", \
+          "date"     : "December  5, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Passing Parameters.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-04-Passing-Parameters/", \
+          "date"     : "December  4, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Stackframe; Local variables, Arrays and Structures.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-01-LocalVars_Arrays_structs/", \
+          "date"     : "December  1, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Out-Of-Bounds Write.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-26-Out-Of-Bounds-Write/", \
+          "date"     : "November 26, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Calling Functions.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-21-CallingFunctions/", \
+          "date"     : "November 21, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "(Linear) Heap Buffer Overflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-18-HBO/", \
+          "date"     : "November 18, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Basic Instructions.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-17-AssemblyBasicRegisters/", \
+          "date"     : "November 17, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Computer Registers.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-08-ComputerRegisters/", \
+          "date"     : "November  8, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "CVE-2021-20294.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-07-CVE-2021-20294/", \
+          "date"     : "November  7, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "(Linear) Stack Buffer Overflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-06-LSBO/", \
+          "date"     : "November  6, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Text Editor.", \
+          "category" : "C", \
+          "url"      : "/2025-08-11-Text-Editor/", \
+          "date"     : "August 11, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Garbage Collector.", \
+          "category" : "C", \
+          "url"      : "/2025-07-11-GarbageCollector/", \
+          "date"     : "July 11, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Hashtables.", \
+          "category" : "C", \
+          "url"      : "/2025-06-13-HashTable/", \
+          "date"     : "June 13, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Building my own malloc in C.", \
+          "category" : "C", \
+          "url"      : "/2025-06-09-BuildingOwnMalloc/", \
+          "date"     : "June  9, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Malloc Tutorial", \
+          "category" : "C", \
+          "url"      : "/2025-06-06-MallocTutorial/", \
+          "date"     : "June  6, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "SharedLibraries&amp;FunctionHooking", \
+          "category" : "C", \
+          "url"      : "/2025-04-26-SharedLibraries&FunctionHooking/", \
+          "date"     : "April 26, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "File Descritors", \
+          "category" : "C", \
+          "url"      : "/2025-03-04-FileDescriptors/", \
+          "date"     : "March  4, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Network Programming", \
+          "category" : "C", \
+          "url"      : "/2025-02-22-Network_Programming/", \
+          "date"     : "February 22, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "2. Constants and Literals in C.", \
+          "category" : "C", \
+          "url"      : "/2024-12-10-2.ConstantsinC-copy/", \
+          "date"     : "December 10, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "1. Basics of C", \
+          "category" : "C", \
+          "url"      : "/2024-12-02-1.BasicsOfC/", \
+          "date"     : "December  2, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "Gramáticas en Dharma", \
+          "category" : "DHA", \
+          "url"      : "/2024-09-24-Dharma_Tutorial/", \
+          "date"     : "September 24, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "Gramáticas en Dharma", \
+          "category" : "fuzz", \
+          "url"      : "/2024-03-22-Dharma_Tutorial-copy/", \
+          "date"     : "March 22, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "Mi experiencia con el OSCP", \
+          "category" : "pen", \
+          "url"      : "/2023-11-19-PEN200_Experience/", \
+          "date"     : "November 19, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Client Side", \
+          "category" : "pen", \
+          "url"      : "/2023-11-17-17.Client_Side_Attacks/", \
+          "date"     : "November 17, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Deep Packet Tunneling", \
+          "category" : "pen", \
+          "url"      : "/2023-11-16-16.Tunneling_Through_Deep_Packet_Inspection/", \
+          "date"     : "November 16, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Report", \
+          "category" : "pen", \
+          "url"      : "/2023-11-15-15.Making_Reports/", \
+          "date"     : "November 15, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Metasploit", \
+          "category" : "pen", \
+          "url"      : "/2023-11-14-14.Metasploit/", \
+          "date"     : "November 14, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Password Attacks", \
+          "category" : "pen", \
+          "url"      : "/2023-11-13-13.Password_Attacks/", \
+          "date"     : "November 13, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Active Directory Attacks", \
+          "category" : "pen", \
+          "url"      : "/2023-11-12-12.Active_Directory_Attacks/", \
+          "date"     : "November 12, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Port Forwarding", \
+          "category" : "pen", \
+          "url"      : "/2023-11-11-11.Port_Forwarding/", \
+          "date"     : "November 11, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Privilege Escalation", \
+          "category" : "pen", \
+          "url"      : "/2023-11-10-10.Privilege_Escalation/", \
+          "date"     : "November 10, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "File Transfers", \
+          "category" : "pen", \
+          "url"      : "/2023-11-09-9.File_Tranfers/", \
+          "date"     : "November  9, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Buffer Overflows", \
+          "category" : "pen", \
+          "url"      : "/2023-11-08-8.Buffer_Overflows/", \
+          "date"     : "November  8, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Vulnerability Scanning.", \
+          "category" : "pen", \
+          "url"      : "/2023-11-07-7.Vulnerability_Scanning/", \
+          "date"     : "November  7, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Information Gathering", \
+          "category" : "pen", \
+          "url"      : "/2023-11-06-6.Active_Information_Gathering/", \
+          "date"     : "November  6, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Windows", \
+          "category" : "pen", \
+          "url"      : "/2023-11-05-5.Windows/", \
+          "date"     : "November  5, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Networking", \
+          "category" : "pen", \
+          "url"      : "/2023-11-04-4.Networking/", \
+          "date"     : "November  4, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Scripting", \
+          "category" : "pen", \
+          "url"      : "/2023-11-03-3.Scripting/", \
+          "date"     : "November  3, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Practical Tools", \
+          "category" : "pen", \
+          "url"      : "/2023-11-02-2.PracticalTools/", \
+          "date"     : "November  2, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Linux", \
+          "category" : "pen", \
+          "url"      : "/2023-11-01-1.Linux/", \
+          "date"     : "November  1, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Easy", \
+          "category" : "hack", \
+          "url"      : "/2022-12-01-Easy/", \
+          "date"     : "December  1, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Git Basics", \
+          "category" : "", \
+          "url"      : "/2022-11-17-GitBasics/", \
+          "date"     : "November 17, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Tier I", \
+          "category" : "hack", \
+          "url"      : "/2022-11-10-Tier_1/", \
+          "date"     : "November 10, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Tier 0", \
+          "category" : "hack", \
+          "url"      : "/2022-11-09-Tier_0/", \
+          "date"     : "November  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "7.BufferOverflow.", \
+          "category" : "thm", \
+          "url"      : "/2022-11-02-7.BufferOverflow/", \
+          "date"     : "November  2, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "6.Offensive Pentesting", \
+          "category" : "thm", \
+          "url"      : "/2022-11-01-6.OffensivePentesting/", \
+          "date"     : "November  1, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "5.RedTeam", \
+          "category" : "thm", \
+          "url"      : "/2022-10-30-5.RedTeam/", \
+          "date"     : "October 30, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "4.Windows", \
+          "category" : "thm", \
+          "url"      : "/2022-10-22-4.Windows/", \
+          "date"     : "October 22, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "3.Junior Penetrationtester path", \
+          "category" : "thm", \
+          "url"      : "/2022-09-02-3.JRPenetrationTester/", \
+          "date"     : "September  2, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "2.Complete Begginer path.", \
+          "category" : "thm", \
+          "url"      : "/2022-08-07-2.CompleteBegginer/", \
+          "date"     : "August  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "1.Pre-Security path.", \
+          "category" : "thm", \
+          "url"      : "/2022-07-11-1Pre-Security/", \
+          "date"     : "July 11, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "0.Scripting for pentesters.", \
+          "category" : "thm", \
+          "url"      : "/2022-07-10-0.Scripting_for_pentesters/", \
+          "date"     : "July 10, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Burp Certified Practitioner Practice Exam.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-30-PracticeExam/", \
+          "date"     : "March 30, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "22. OAuth Authentication.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-27-22.OAuth_authentication/", \
+          "date"     : "March 27, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "21. HTTP Request Smuggling.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-26-21.HTTP_request_smuggling/", \
+          "date"     : "March 26, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "20. HTTP Host Header Attacks.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-25-20.HTTP_Host_header_attacks/", \
+          "date"     : "March 25, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "19. Web Cache Poisoning.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-24-19.Web_cache_poisoning/", \
+          "date"     : "March 24, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "18. Server-Side Template Injection.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-23-18.Serve-side_template_injection/", \
+          "date"     : "March 23, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "17. Insecure Deserialization.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-22-17.Insecure_deserialization/", \
+          "date"     : "March 22, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "16. WebSockets.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-21-16.WebSockets/", \
+          "date"     : "March 21, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "15.DOM-based XSS vulnerabilities.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-20-15-DOM-based_vulnerabilities/", \
+          "date"     : "March 20, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "14. Clickjacking.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-19-14.Clickjacking/", \
+          "date"     : "March 19, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "13. Cross-Origin Resource Sharing.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-18-13.Cross-origin_resource_sharing_(CORS)/", \
+          "date"     : "March 18, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "12. Cross-Site Request Forgery.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-17-12.Cross-site_request_forgery_(CSRF)/", \
+          "date"     : "March 17, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "11. Cross-Site Scripting.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-16-11.Cross-site_scripting_(XSS)/", \
+          "date"     : "March 16, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "10. XXE Injection.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-15-10.XXE_injection/", \
+          "date"     : "March 15, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "9. Server-Side Request Forgery.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-14-9.Server-side_request_forgery/", \
+          "date"     : "March 14, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "8. File Upload.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-13-8.File_upload_vulnerabilities/", \
+          "date"     : "March 13, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "7. Access Control.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-12-7.Access_control/", \
+          "date"     : "March 12, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "6. Information Disclosure.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-11-6.Information_disclosure/", \
+          "date"     : "March 11, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "5. Bussiness Logic Vulnerabilities.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-10-5.Business_logic_vulnerabilities/", \
+          "date"     : "March 10, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "4. Command Injection.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-09-4.Command_Injection/", \
+          "date"     : "March  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "3. Directory Traversal.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-08-3.Directory_Traversal/", \
+          "date"     : "March  8, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "2. Authentication.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-07-2.Authentication/", \
+          "date"     : "March  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "1. SQLInjection", \
+          "category" : "burp", \
+          "url"      : "/2022-03-06-1.SQLInjection/", \
+          "date"     : "March  6, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Seguridad Perimetral", \
+          "category" : "blueteam", \
+          "url"      : "/2022-02-09-Seguridad_Perimetral/", \
+          "date"     : "February  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Hardening de sistemas", \
+          "category" : "blueteam", \
+          "url"      : "/2022-02-09-Hardening_de_sistemas/", \
+          "date"     : "February  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Bandit", \
+          "category" : "otw", \
+          "url"      : "/2022-02-08-Bandit/", \
+          "date"     : "February  8, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Proxy", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-Proxys/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Protocolos Relevantes", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-Protocolos_Importantes/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Curso Básico Redes", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-Precurso_Redes/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "IPs", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-IPs/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Movimientos Laterales", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-06-Introducci%C3%B3n_a_movimientos_laterales/", \
+          "date"     : "February  6, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Evasión de Defensas", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-05-Evasi%C3%B3n_de_Defensas/", \
+          "date"     : "February  5, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Escalada de privilegios", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-05-Escalada_de_privilegios/", \
+          "date"     : "February  5, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Metasploit", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-04-Metasploit_B%C3%A1sico/", \
+          "date"     : "February  4, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Ataques a aplicaciones Android", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-03-Ataques_aplicaciones_android/", \
+          "date"     : "February  3, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Ataque a aplicaciones web.", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-02-Ataques_a_aplicaciones_web/", \
+          "date"     : "February  2, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Ataques a Infraestructuras y Redes", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-01-Ataques_a_Infraestructuras_y_Redes/", \
+          "date"     : "February  1, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Análisis de Objetivos", \
+          "category" : "redteam", \
+          "url"      : "/2022-01-28-An%C3%A1lisis_de_Objetivos/", \
+          "date"     : "January 28, 2022" \
+        }, \
+       \
+       \
+        { \
+          "title"    : "Assembly and Architecture Introduction.", \
+          "category" : "page", \
+          "url"      : "/ASSEMpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Blueteam Basics", \
+          "category" : "page", \
+          "url"      : "/BLUETEAMBASICSpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "PortSwigger BurpSuite Course", \
+          "category" : "page", \
+          "url"      : "/BURPSUITEpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "C-Family Software Memory Corruption Vulnerabilities", \
+          "category" : "page", \
+          "url"      : "/CSOFTpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "C &amp; Systems Fundamentals.", \
+          "category" : "page", \
+          "url"      : "/Cpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Dharma Fuzzer language", \
+          "category" : "page", \
+          "url"      : "/DHARMApage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Exploiting &amp; Reversing", \
+          "category" : "page", \
+          "url"      : "/EXPREVpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Fuzzing JavaScript Engine", \
+          "category" : "page", \
+          "url"      : "/Fuzzpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "HackTheBox", \
+          "category" : "page", \
+          "url"      : "/HackTheBoxpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "TryHackMe", \
+          "category" : "page", \
+          "url"      : "/MATHpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "PEN200 notes", \
+          "category" : "page", \
+          "url"      : "/PEN200page/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Proyectos", \
+          "category" : "page", \
+          "url"      : "/PROJECTSpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Networking Basics", \
+          "category" : "page", \
+          "url"      : "/REDESpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "RedTeam Basics", \
+          "category" : "page", \
+          "url"      : "/REDTEAMBASICSpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Retired Machines", \
+          "category" : "page", \
+          "url"      : "/RetiredMachinespage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "TryHackMe", \
+          "category" : "page", \
+          "url"      : "/THMpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "About me", \
+          "category" : "page", \
+          "url"      : "/aboutme/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "THM", \
+          "category" : "page", \
+          "url"      : "/preOSCPpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Tag Index", \
+          "category" : "page", \
+          "url"      : "/tags/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page2/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page3/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page4/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page5/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page6/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page7/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page8/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page9/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page10/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page11/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page12/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page13/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page14/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page15/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page16/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page17/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page18/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page19/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page20/", \
+          "date"     : "January 1, 1970" \
+        } \
+       \
+    ]';
+    searchjson = JSON.parse(searchjson);
+
+    var sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('nav-search-input'),
+      resultsContainer: document.getElementById('search-results-container'),
+      json: searchjson
+    });
+  </script>
+</div>
+
+
+
+
+
+  <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>File Descritors</h1>
+          
+            
+              <h2 class="post-subheading">File Descriptors explanation and manipulation with C</h2>
+            
+          
+
+          
+            <span class="post-meta">Posted on March 4, 2025</span>
+            
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+
+      
+
+      <article role="main" class="blog-post">
+        <h2 id="file-descriptors-theory">File Descriptors Theory.</h2>
+
+<h3 id="what-is-a-file-descriptor">What is a File Descriptor.</h3>
+
+<p>A <strong>file descriptor (FD)</strong> is a unique integer identifier used by the operating system to access <strong>files, sockets, pipes and barely any other I/O resource</strong>. Whenever u open a file, a socket or a pipe, the OS assigns to it a file descriptor in order to use it as a handle to write or read from that resource.</p>
+
+<p>In brief terms, a FD is an element that helps the kernel to identify a resource in information transfer operations.</p>
+
+<p><br /></p>
+
+<h3 id="introduction">Introduction.</h3>
+
+<p><strong>Information Transfer operations in Linux</strong></p>
+
+<p>Let starts with <em>how Linux treats information</em>. In Linux, or every Unix-like system, everything is treated as a file, including I/O streams. The terminal itself is treated as a especial file located in <em>/dev/</em> directory (for example /dev/tty).</p>
+
+<p>In this context, we have three main data streams:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>DataStream</th>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>stdin</td>
+      <td>Standard Input</td>
+      <td>(Keyboard)</td>
+    </tr>
+    <tr>
+      <td>stdout</td>
+      <td>Standard Output</td>
+      <td>(Terminal)</td>
+    </tr>
+    <tr>
+      <td>stderr</td>
+      <td>Standard Error</td>
+      <td>(Terminal)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>It is worth to mention that for debug purpouses, the error data stream is treated as a different stream.</p>
+
+<p>This data streams are nothing but entry or departure points for dataflow to be transfered between files. So, the <em>file descriptor</em> get sense as an element to identify the file involved in a I/O operation. So, the datastreams above are related over three FDs in any process:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>File Descriptor</th>
+      <th>DataStream</th>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>stdin</td>
+      <td>Standard Input</td>
+      <td>(Keyboard)</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>stdout</td>
+      <td>Standard Output</td>
+      <td>(Terminal)</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>stderr</td>
+      <td>Standard Error</td>
+      <td>(Terminal)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This means that, whenever there is a new process, this process inherits the FDs of the parent process so it can transfer information over the standard resources which are the keyboard or the terminal.</p>
+
+<p><br /></p>
+
+<h3 id="how-file-descriptors-work-the-file-descriptor-table">How file descriptors work. The File Descriptor Table.</h3>
+
+<p>File descriptors are managed by the OS kernel, and they point to an entry in a <strong>File Descriptor Table (FDT)</strong>.</p>
+
+<p>Supose we have the following line in C:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">fd</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="s">"test.txt"</span><span class="p">,</span> <span class="n">O_WRONLY</span> <span class="o">|</span> <span class="n">O_CREAT</span><span class="p">,</span> <span class="mo">0644</span><span class="p">);</span>
+</code></pre></div></div>
+<p>The <em>open()</em> syscall returns a file descriptor (FD) which get stored in the <em>int fd</em> variable. Then, the kernel maps ‘fd’ to ‘text.txt’ in the FDT of that process. The value of the fd vinculated to ‘text.txt’ resource is the lowest value posible in the fd table, in this case, ‘3’.</p>
+
+<p>The FDT is a real data structure inside the kernel, maintained per process. However, the OS exposes information about it through <strong>/proc/&lt;PID&gt;/fd/</strong>, making it accessible as a virtual filesystem</p>
+
+<p>For example; we can access the FDT listing the contents of the following directory.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls</span> <span class="nt">-l</span> /proc/[PID]/fd/
+</code></pre></div></div>
+
+<p>For example, with the currently running process:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kali@kali:/proc/self/fd<span class="nv">$ </span><span class="nb">ls</span> <span class="nt">-la</span>
+total 0
+dr-x------ 2 kali kali  9 Feb 25 21:33 <span class="nb">.</span>
+dr-xr-xr-x 9 kali kali  0 Feb 25 21:33 ..
+lrwx------ 1 kali kali 64 Feb 25 21:33 0 -&gt; /dev/pts/0
+lrwx------ 1 kali kali 64 Feb 25 21:36 1 -&gt; /dev/pts/0
+lrwx------ 1 kali kali 64 Feb 25 21:36 10 -&gt; /dev/pts/0
+lr-x------ 1 kali kali 64 Feb 25 21:36 12 -&gt; /usr/share/zsh/functions/Completion.zwc
+lr-x------ 1 kali kali 64 Feb 25 21:36 14 -&gt; /usr/share/zsh/functions/Completion/Base.zwc
+lr-x------ 1 kali kali 64 Feb 25 21:36 15 -&gt; /usr/share/zsh/functions/Misc.zwc
+lr-x------ 1 kali kali 64 Feb 25 21:36 16 -&gt; /usr/share/zsh/functions/Completion/Zsh.zwc
+lr-x------ 1 kali kali 64 Feb 25 21:36 17 -&gt; /usr/share/zsh/functions/Completion/Unix.zwc
+lrwx------ 1 kali kali 64 Feb 25 21:36 2 -&gt; /dev/pts/0
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="low-level-example-mode-swicht-goft-and-file-offset">Low-level example: Mode Swicht, GOFT and File offset.</h3>
+
+<p>Now that we briefly get on the FD in the OS. We can try to get in how this work at low-level.</p>
+
+<p><br /></p>
+
+<h4 id="opening-a-file-how-the-kernel-assigns-a-fd">Opening a file. How the kernel assigns a FD.</h4>
+
+<p>Consider the following line:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">fd</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="s">"file.txt"</span><span class="p">,</span> <span class="n">O_RDWR</span> <span class="o">|</span> <span class="n">O_CREAT</span><span class="p">,</span> <span class="mo">0644</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>In first instance, the <em>open()</em> function (part of the C standard library) and perform a syscall to <em>sys_open</em> in Linux (low-level system call provided by the linux kernel). <strong>This mainly done to the CPU to switch from user-space (with a restrict enviroment) to kernel-mode in order to perform a task.</strong> Is worth to note that a syscall poorly configurated is a potential security issue.</p>
+  </li>
+  <li>
+    <p>Then, the kernel checks if the process have permissions to access “file.txt”.</p>
+  </li>
+  <li>
+    <p>If it has, then it creates the file if not exists or locate it if exists in the directory structure.</p>
+  </li>
+  <li>
+    <p>Once, the file is locate, the kernel assigns it a file descriptor by updating the <em>File Descriptor Table (FDT)</em> of the process. This is performed following the steps:</p>
+
+    <ul>
+      <li>First, the kernel checks the FDT to find the next available file descriptor number (usually the next of 2; 3).</li>
+      <li>
+        <p>Then, the FDT doesn’t store the file or the number it self, it stores a pointer to an entry in the <em>Global Open File Table (GOFT)</em> (if the entry for the file descriptor doesn’t exists, it gets created); this is system-wide structure that keeps track of all opened files in the system. A example of an entry in this table can be the follow:</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>FD</th>
+              <th>File Path</th>
+              <th>Mode</th>
+              <th>Offset</th>
+              <th>Reference Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>3</td>
+              <td>/home/user/file.txt</td>
+              <td>O_RDONLY</td>
+              <td>0</td>
+              <td>1</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>So the FDT points to the GOFT and the GOFT points to the path to the file (and also contains the file offset, this will be mentioned below). We can check this GOFT entry in our system by:</p>
+
+        <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nb">cat</span> /proc/&lt;PID&gt;/fdinfo/&lt;fd&gt;
+</code></pre></div>        </div>
+
+        <p>For example:</p>
+
+        <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  kali@kali:~<span class="nv">$ </span><span class="nb">cat</span> /proc/self/fdinfo/1
+  pos:    0 <span class="c"># --&gt; File offset.</span>
+  flags:  0100002 <span class="c"># --&gt; Open flags for file permissions.</span>
+  mnt_id: 27 <span class="c"># --&gt; Mount namespace information.</span>
+  ino:    3
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h4 id="reading-and-writing-from-a-file">Reading and Writing from a file.</h4>
+
+<p>Now that we have a file descriptor pointing to a resource, the OS is ready to read or write from that resource. Consider the following line:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+<span class="n">read</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">buffer</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>In the line above, first we create an array with a size for 100 chars. Then:</p>
+
+<ul>
+  <li>The code performs a system call, read() calls to <em>sys_read</em> and the CPU switches from userspace to kernel mode.</li>
+  <li>Then, the kernel validates <em>fd</em> by checking the FDT, then the GOFT, and identifiying the resource and the <em>file offset</em> (This keeps track of where the next read or write operation will occur in an open file. At first, this is get initializet to 0, then when a write or read operation is performed, the value of the file offset gets updated).</li>
+  <li>The kernel determines how much data to read (in this case from the file offset to 100 bytes obeying the read() parameters). This information get stored in a buffer in kernel space.</li>
+  <li>This buffer gets copied from kernel memory to userspace (buffer array) and the file offset gets updated.</li>
+</ul>
+
+<p>Till this is the read operation. Now lets consider the following line:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">write</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="s">"Hello, World!"</span><span class="p">,</span> <span class="mi">13</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>In this line, the following steps are performed:</p>
+
+<ul>
+  <li>write() perform a syscall to sys_write and the CPU switchs to Kernel Mode.</li>
+  <li>The kernel validates <em>fd</em> and retrieve the <em>file offset</em> to know the file to write and how much data write.</li>
+  <li>The data is write and the <em>file offset</em> gets updated.</li>
+</ul>
+
+<p><br /></p>
+
+<h4 id="closing-the-file">Closing the file.</h4>
+
+<p>Now, consider that we want to close the resource throught the following line:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">close</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>We remember that the FDT maps the fd to an entry in the GOFT and this contains:</p>
+
+<ul>
+  <li>A pointer to the file or inode (the actual resource).</li>
+  <li>The file offset.</li>
+  <li>A reference count, how many FD actually points to this entry.</li>
+</ul>
+
+<p>When you call close(), a sys call is invoked and the system remove <em>fd</em> from FDT but this doesn’t means that the entry in GOFT gets deleted. If the reference count drops to 0, the GOFT entry is removed and the resource gets unaccesible from any other process.</p>
+
+<p><br /></p>
+
+<h3 id="dup2-function">dup2() function.</h3>
+
+<p>Dup() is a syscall described as follows:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span>
+<span class="kt">int</span> <span class="nf">dup2</span><span class="p">(</span><span class="kt">int</span> <span class="n">oldfd</span><span class="p">,</span> <span class="kt">int</span> <span class="n">newfd</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>The dup2() system call performs the task of allocate a new file descriptor that refers to the same as the old file descriptor, specified in newfd. In other words, the file descriptor newfd is adjusted so that it now refers to the same open file description as oldfd.</p>
+
+<p>Step by step, this function:</p>
+
+<ul>
+  <li>Closes newfd if its open.</li>
+  <li>Then makes newfd a copy of oldfd by making newfd to point to the same GOFT entry as oldfd in his own FDT (of the process which call dup2()).</li>
+</ul>
+
+<p>This provokes that, if a process call <em>dup2()</em>; the information transfer operations carried by oldfd are now handled by newfd in this process.</p>
+
+<p><br /></p>
+
+<h3 id="final-example-bind-shell-easy">Final example: Bind shell easy.</h3>
+
+<p>Lets see an example;</p>
+
+<h4 id="server-side-code">Server side code.</h4>
+
+<p>Supose we have a C code; like the following:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;sys/socket.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;netinet/in.h&gt;</span><span class="cp">
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">//creating variable listen_sock which is returned by socket() as we need it for the bind(), listen(), and accept() calls </span>
+    <span class="kt">int</span> <span class="n">listen_sock</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+    <span class="c1">// Building a 'struct' which consists of AF_INET, the interface we want to listen on (all), and a port number to bind on. This entire entity will be referenced in arguments for the next syscall: bind()    </span>
+    <span class="k">struct</span> <span class="n">sockaddr_in</span> <span class="n">server_addr</span><span class="p">;</span>
+    <span class="n">server_addr</span><span class="p">.</span><span class="n">sin_family</span> <span class="o">=</span> <span class="n">AF_INET</span><span class="p">;</span>           
+    <span class="n">server_addr</span><span class="p">.</span><span class="n">sin_addr</span><span class="p">.</span><span class="n">s_addr</span> <span class="o">=</span> <span class="n">INADDR_ANY</span><span class="p">;</span>  
+    <span class="n">server_addr</span><span class="p">.</span><span class="n">sin_port</span> <span class="o">=</span> <span class="n">htons</span><span class="p">(</span><span class="mi">5555</span><span class="p">);</span>        
+
+    <span class="c1">// Our second syscall, and perhaps the most complicated: bind() </span>
+    <span class="n">bind</span><span class="p">(</span><span class="n">listen_sock</span><span class="p">,</span> <span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">server_addr</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">server_addr</span><span class="p">));</span>
+
+    <span class="c1">//0 here is our specified backlog, (we dont have one)</span>
+    <span class="n">listen</span><span class="p">(</span><span class="n">listen_sock</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+    <span class="c1">//creating new var conn_sock which is returned from accept() and needed for the dup2() call which duplicates this for stdin, stdout, and stderr</span>
+    <span class="kt">int</span> <span class="n">sockfd</span> <span class="o">=</span> <span class="n">accept</span><span class="p">(</span><span class="n">listen_sock</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+
+    <span class="n">execve</span><span class="p">(</span><span class="s">"/bin/bash"</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The code above prepare a socket ready to listen income connections in every internet address on port 5555, and then execute through “execve()” syscall “/bin/bash” without arguments.</p>
+
+<p>In this context, execve() would replace the process and socket by efectively spawning a shell. Lets see that, the program create a socket, which is a I/O file resource maintained by the kernel, not by the process it self, so when the process gets replaced with the spawn of a shell, the sockets still being available as a file descriptor, how ever, the new spawned shell have the defaults file descriptors assigned so is unavailable to used it. We can solve this by replacing in the process the default file descriptors through the socket:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dup2</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="n">dup2</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">dup2</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>This C code, replace for the current process the datastreams (input, output and error) the sockfd file descriptor, this effectively means that now, the process read from the socket, writes on the socket and send error messages through the socket.</p>
+
+<p>This is done by updataing in the FDT of the current process the pointers for 0,1 and 2 entries, which now points to sockfd in the GOFT. The global code would look like follows:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;sys/socket.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;netinet/in.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;arpa/inet.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="kt">int</span> <span class="n">serv_sock</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+    <span class="k">struct</span> <span class="n">sockaddr_in</span> <span class="n">server_addr</span><span class="p">;</span>
+    <span class="n">server_addr</span><span class="p">.</span><span class="n">sin_family</span> <span class="o">=</span> <span class="n">AF_INET</span><span class="p">;</span>           
+    <span class="n">server_addr</span><span class="p">.</span><span class="n">sin_addr</span><span class="p">.</span><span class="n">s_addr</span> <span class="o">=</span> <span class="n">inet_addr</span><span class="p">(</span><span class="s">"127.0.0.1"</span><span class="p">);</span>  
+    <span class="n">server_addr</span><span class="p">.</span><span class="n">sin_port</span> <span class="o">=</span> <span class="n">htons</span><span class="p">(</span><span class="mi">4444</span><span class="p">);</span>        
+
+  
+    <span class="n">bind</span><span class="p">(</span><span class="n">serv_sock</span><span class="p">,</span> <span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">server_addr</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">server_addr</span><span class="p">));</span>
+
+   
+    <span class="n">listen</span><span class="p">(</span><span class="n">serv_sock</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">"[+] Socket is listening on 127.0.0.1:4444</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span> <span class="c1">//Always put '\n' at the end of a stdout fd connected to a terminal in order to trigger the bufer. Other way the printf() function will not display anything. </span>
+
+    <span class="kt">int</span> <span class="n">sockfd</span> <span class="o">=</span> <span class="n">accept</span><span class="p">(</span><span class="n">serv_sock</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+
+    <span class="n">dup2</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">dup2</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">dup2</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">//Replace file stdin, stdout and stderr for current process</span>
+
+    <span class="n">execve</span><span class="p">(</span><span class="s">"/bin/bash"</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h4 id="client-side-code">Client-side code.</h4>
+
+<p>Lets now create a client code which would connect with the program above in order to send or receive data through the socket to the spawned shell to get fully interactive control of the program:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;sys/socket.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;arpa/inet.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;errno.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;fcntl.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;sys/select.h&gt;</span><span class="cp">
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+   
+    <span class="kt">int</span> <span class="n">sockfd</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+    <span class="k">struct</span> <span class="n">sockaddr_in</span> <span class="n">server_addr</span><span class="p">;</span>
+    <span class="n">server_addr</span><span class="p">.</span><span class="n">sin_family</span> <span class="o">=</span> <span class="n">AF_INET</span><span class="p">;</span>
+    <span class="n">server_addr</span><span class="p">.</span><span class="n">sin_port</span> <span class="o">=</span> <span class="n">htons</span><span class="p">(</span><span class="s">"4444"</span><span class="p">);</span>
+    <span class="n">server_addr</span><span class="p">.</span><span class="n">sin_addr</span><span class="p">.</span><span class="n">s_addr</span> <span class="o">=</span> <span class="n">inet_addr</span><span class="p">(</span><span class="s">"127.0.0.1"</span><span class="p">);</span>
+
+    <span class="n">connect</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">server_addr</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">server_addr</span><span class="p">));</span> <span class="c1">//Create a socket and connect</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">"[+] Connected to bind shell at %s:%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="s">"127.0.0.1"</span><span class="p">,</span> <span class="s">"4444"</span><span class="p">);</span>
+
+    <span class="n">fcntl</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">F_SETFL</span><span class="p">,</span> <span class="n">O_NONBLOCK</span><span class="p">);</span><span class="c1">// Enable non-blocking mode on stdin</span>
+
+
+    <span class="c1">// 5. Main loop: read from socket and stdin, forward data</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">fd_set</span> <span class="n">fds</span><span class="p">;</span>
+        <span class="n">FD_ZERO</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fds</span><span class="p">);</span>
+        <span class="n">FD_SET</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fds</span><span class="p">);</span> <span class="c1">// Watch socket</span>
+        <span class="n">FD_SET</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fds</span><span class="p">);</span> <span class="c1">// Watch keyboard input</span>
+
+        <span class="c1">// Use select() to wait for activity on either stdin or the socket</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">select</span><span class="p">(</span><span class="n">sockfd</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fds</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">perror</span><span class="p">(</span><span class="s">"[-] Select error"</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Read from the socket and print to the terminal</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">FD_ISSET</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fds</span><span class="p">))</span> <span class="p">{</span>
+            <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
+            <span class="kt">int</span> <span class="n">bytes</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="n">buffer</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">bytes</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">"[-] Connection closed</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">buffer</span><span class="p">[</span><span class="n">bytes</span><span class="p">]</span> <span class="o">=</span> <span class="sc">'\0'</span><span class="p">;</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"%s"</span><span class="p">,</span> <span class="n">buffer</span><span class="p">);</span>
+            <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Read from stdin and send to the socket</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">FD_ISSET</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fds</span><span class="p">))</span> <span class="p">{</span>
+            <span class="kt">char</span> <span class="n">input</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
+            <span class="kt">int</span> <span class="n">bytes</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">input</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">input</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">bytes</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">input</span><span class="p">[</span><span class="n">bytes</span><span class="p">]</span> <span class="o">=</span> <span class="sc">'\0'</span><span class="p">;</span>
+                <span class="n">write</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="n">input</span><span class="p">,</span> <span class="n">bytes</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">close</span><span class="p">(</span><span class="n">sockfd</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Lets break up this code.</p>
+
+<p><br /></p>
+
+<h5 id="create-socket-and-connect">Create socket and connect.</h5>
+
+<p>There is nothing special in this part:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">sockfd</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+<span class="k">struct</span> <span class="n">sockaddr_in</span> <span class="n">server_addr</span><span class="p">;</span>
+<span class="n">server_addr</span><span class="p">.</span><span class="n">sin_family</span> <span class="o">=</span> <span class="n">AF_INET</span><span class="p">;</span>
+<span class="n">server_addr</span><span class="p">.</span><span class="n">sin_port</span> <span class="o">=</span> <span class="n">htons</span><span class="p">(</span><span class="s">"4444"</span><span class="p">);</span>
+<span class="n">server_addr</span><span class="p">.</span><span class="n">sin_addr</span><span class="p">.</span><span class="n">s_addr</span> <span class="o">=</span> <span class="n">inet_addr</span><span class="p">(</span><span class="s">"127.0.0.1"</span><span class="p">);</span>
+
+<span class="n">connect</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">server_addr</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">server_addr</span><span class="p">));</span> <span class="c1">//Create a socket and connect</span>
+
+<span class="n">printf</span><span class="p">(</span><span class="s">"[+] Connected to bind shell at %s:%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="s">"127.0.0.1"</span><span class="p">,</span> <span class="s">"4444"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>It just create a socket, deine the properties of the socket (family address, port, ip address), and then attemps to connect. In behalf of simplicity, with skip the checks.</p>
+
+<p><br /></p>
+
+<h5 id="fcntl-enable-non-blocking-mode-on-stdin">fcntl. Enable non-blocking mode on stdin.</h5>
+
+<p>The term <em>fcntl</em> stands for <strong>file control</strong> and referes to a function that allows file descriptors manipulation. More precisely, <em>fcntl()</em> performs one of the operations described below on the open  file descriptor.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="cp">#include</span> <span class="cpf">&lt;fcntl.h&gt;</span><span class="cp">
+</span>
+<span class="kt">int</span> <span class="nf">fcntl</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="kt">int</span> <span class="n">op</span><span class="p">,</span> <span class="p">...</span> <span class="cm">/* arg */</span> <span class="p">);</span>
+</code></pre></div></div>
+
+<p>The operation is determined by <em>op</em>. There is a third argument that could be required by the <em>op</em> value. In this case, the functionality of <em>fcntl</em> is described by the following line:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fcntl</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">F_SETFL</span><span class="p">,</span> <span class="n">O_NONBLOCK</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>So, there are three arguments that are being pass to fcntl;</p>
+
+<ul>
+  <li><strong>0</strong>; This is the file descriptor that is gonna be manipulated; stdin.</li>
+  <li><strong>F_SETFL</strong>; This command set a <em>file status flag</em>.</li>
+  <li><strong>O_NONBLOCK</strong>; In this case, <em>op</em> (F_SETFL), requires a third argument which is a flag that makes input non-blocking, meaning <em>read()</em> calls on <em>0</em> (stdin) file descriptor will return immediately instead of waiting for user input.</li>
+</ul>
+
+<p>This prevents the following behaviour.</p>
+
+<p>By default, file descriptors operates in <strong>blocking mode</strong>, this means that, when you call <em>read()</em> over a file descritor, the program waits until data is received by read and then lets the flow execution to continue. In this case, read would waits until the remote host send some data which can be <em>disruptive</em> in terms of network comunication’s tempo.</p>
+
+<p>In order to prevent programs blocking or simply large waiting times, we use <em>fcntl()</em> to set a flag over the stdin file descriptor in order to not block the program until some data is received.</p>
+
+<p><br /></p>
+
+<h5 id="monitoring-io-data-transfer">Monitoring I/O data transfer.</h5>
+
+<p>In order to handle I/O data transfer over the socket into the spawned shell we implement the following <em>while</em> loop:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">fd_set</span> <span class="n">fds</span><span class="p">;</span>
+    <span class="n">FD_ZERO</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fds</span><span class="p">);</span>
+    <span class="n">FD_SET</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fds</span><span class="p">);</span> <span class="c1">// Watch socket</span>
+    <span class="n">FD_SET</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fds</span><span class="p">);</span> <span class="c1">// Watch keyboard input</span>
+
+    <span class="c1">// Use select() to wait for activity on either stdin or the socket</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">select</span><span class="p">(</span><span class="n">sockfd</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fds</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">perror</span><span class="p">(</span><span class="s">"[-] Select error"</span><span class="p">);</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Read from the socket and print to the terminal</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">FD_ISSET</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fds</span><span class="p">))</span> <span class="p">{</span>
+        <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
+        <span class="kt">int</span> <span class="n">bytes</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="n">buffer</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">bytes</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"[-] Connection closed</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">buffer</span><span class="p">[</span><span class="n">bytes</span><span class="p">]</span> <span class="o">=</span> <span class="sc">'\0'</span><span class="p">;</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"%s"</span><span class="p">,</span> <span class="n">buffer</span><span class="p">);</span>
+        <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Read from stdin and send to the socket</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">FD_ISSET</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fds</span><span class="p">))</span> <span class="p">{</span>
+        <span class="kt">char</span> <span class="n">input</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
+        <span class="kt">int</span> <span class="n">bytes</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">input</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">input</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">bytes</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">input</span><span class="p">[</span><span class="n">bytes</span><span class="p">]</span> <span class="o">=</span> <span class="sc">'\0'</span><span class="p">;</span>
+            <span class="n">write</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="n">input</span><span class="p">,</span> <span class="n">bytes</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>It uses mainly <em>select()</em> function to multiplex system calls provided by several files. In other words, is used to wait for activity in either of the available file descriptors; keyboard (stdin) or socket.</p>
+
+<p>Lets break it up.</p>
+
+<p><br /></p>
+
+<p><strong>1. Infinity Loop</strong></p>
+
+<p>This first line;</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">){</span>
+    <span class="c1">//code</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Makes while to repeat the loop indefenitely until a <em>break condition</em> happens. In the code, break conditions occurs when a check statement detects a failure in network communication flow. Then, while loop breaks and the programs continue with the inmediate next line after the loop.</p>
+
+<p><br /></p>
+
+<p><strong>2. Select() function</strong></p>
+
+<p>As we said above: <em>select()</em> function is a multiplexing system call used for monitoring multiple file descriptors (FDs) to see if they are ready for reading, writing, or exceptions.</p>
+
+<p>The function has the following prototype:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;sys/select.h&gt;</span><span class="cp">
+</span>
+<span class="kt">int</span> <span class="nf">select</span><span class="p">(</span><span class="kt">int</span> <span class="n">nfds</span><span class="p">,</span> <span class="n">fd_set</span> <span class="o">*</span><span class="n">readfds</span><span class="p">,</span> <span class="n">fd_set</span> <span class="o">*</span><span class="n">writefds</span><span class="p">,</span> <span class="n">fd_set</span> <span class="o">*</span><span class="n">exceptfds</span><span class="p">,</span> <span class="k">struct</span> <span class="n">timeval</span> <span class="o">*</span><span class="n">timeout</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>First, we have to say that <em>fd_set</em> is a data structure used mainly with <em>select()</em>. It represents a <strong>set of file descriptors</strong>, in fact is a bit array, where each bite represents a file descriptor.</p>
+
+<p>Now, we get along with the arguments of the select function:</p>
+
+<ul>
+  <li><strong>nfds</strong> is the <strong>highest file descriptor + 1</strong> to monitor.</li>
+  <li><strong>readfds</strong> the fds to check file descriptors ready to be read.</li>
+  <li><strong>writefds</strong> the fds to check the file descriptors ready to bre wrote in.</li>
+  <li><strong>errorsfds</strong> the fds to check the file descriptors ready to give exceptions (stderr).</li>
+  <li><strong>timeout</strong> maximum in seconds of time before the return of select.</li>
+</ul>
+
+<p>The function return the number of FDs that changed or 0 if none changed:</p>
+
+<ul>
+  <li><strong>&gt;0</strong>; Number of FDs that changed state.</li>
+  <li><strong>0</strong>; timeout, no FDs changed.</li>
+  <li><strong>-1</strong>; Error ocurred.</li>
+</ul>
+
+<p><em>Select</em> works by passing to him a prepared fd_set of structures with <em>FD_SET()</em> and <em>FD_ZERO()</em> Macros.  For example;</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fd_set</span> <span class="n">readfds</span><span class="p">;</span>
+<span class="n">FD_ZERO</span><span class="p">(</span><span class="o">&amp;</span><span class="n">readfds</span><span class="p">);</span> <span class="c1">//Clear variable readfds. </span>
+<span class="n">FD_SET</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">readfds</span><span class="p">);</span> <span class="c1">// Add 'fd' to readfds variable.</span>
+<span class="n">select</span><span class="p">(</span><span class="n">sockfd</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">readfds</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span> <span class="c1">//Use readfds in select to select those fds ready to be read.  </span>
+</code></pre></div></div>
+
+<p>There are also <em>FD_ISSET()</em> which checks if ‘fd’ is ready for I/O operations on ‘readfds’.</p>
+
+<p>So this loop creates a fd_set variable and set it with stdin and our socket:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fd_set</span> <span class="n">fds</span><span class="p">;</span>
+<span class="n">FD_ZERO</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fds</span><span class="p">);</span>
+<span class="n">FD_SET</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fds</span><span class="p">);</span>
+<span class="n">FD_SET</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fds</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Then, the code waits for select to receive data from the socket or the keyboard:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="n">select</span><span class="p">(</span><span class="n">sockfd</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fds</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">perror</span><span class="p">(</span><span class="s">"[-] Select error"</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Then we check if the socket or the keyboard are ready to be receive data and display it or send to the socket if there is:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="n">FD_ISSET</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fds</span><span class="p">))</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">bytes</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="n">buffer</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">bytes</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"[-] Connection closed</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">buffer</span><span class="p">[</span><span class="n">bytes</span><span class="p">]</span> <span class="o">=</span> <span class="sc">'\0'</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%s"</span><span class="p">,</span> <span class="n">buffer</span><span class="p">);</span>
+    <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Read from stdin and send to the socket</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">FD_ISSET</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fds</span><span class="p">))</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="n">input</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">bytes</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">input</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">input</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">bytes</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">input</span><span class="p">[</span><span class="n">bytes</span><span class="p">]</span> <span class="o">=</span> <span class="sc">'\0'</span><span class="p">;</span>
+        <span class="n">write</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="n">input</span><span class="p">,</span> <span class="n">bytes</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>We can see that if we receive from the socket a value inferior to 0, then this means that the connection is closed and we break the loop.</p>
+
+<p><br /></p>
+
+
+      </article>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#C">C</a>
+          
+        </div>
+      
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+<section id = "social-share-section">
+  <span class="sr-only">Share: </span>
+
+  
+    <a href="https://twitter.com/intent/tweet?text=File+Descritors&url=http%3A%2F%2Flocalhost%3A4000%2F2025-03-04-FileDescriptors%2F"
+      class="btn btn-social-icon btn-twitter" title="Share on Twitter">
+      <span class="fab fa-fw fa-twitter" aria-hidden="true"></span>
+      <span class="sr-only">Twitter</span>
+    </a>
+  
+
+  
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F2025-03-04-FileDescriptors%2F"
+      class="btn btn-social-icon btn-facebook" title="Share on Facebook">
+      <span class="fab fa-fw fa-facebook" aria-hidden="true"></span>
+      <span class="sr-only">Facebook</span>
+    </a>
+  
+
+  
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F2025-03-04-FileDescriptors%2F"
+      class="btn btn-social-icon btn-linkedin" title="Share on LinkedIn">
+      <span class="fab fa-fw fa-linkedin" aria-hidden="true"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  
+
+  
+
+  
+
+</section>
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/2025-02-22-Network_Programming/" data-toggle="tooltip" data-placement="top" title="Network Programming">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/2025-04-26-SharedLibraries&FunctionHooking/" data-toggle="tooltip" data-placement="top" title="SharedLibraries&amp;FunctionHooking">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+      
+  
+  
+  
+
+  
+
+
+  
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="/feed.xml" title="RSS">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">RSS</span>
+    </a>
+  </li><li class="list-inline-item">
+    <a href="mailto:" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/Qv1nTv5" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://twitter.com/Qvintvs1" title="Twitter">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Twitter</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://linkedin.com/in/german-sanmillan-68b308229/" title="LinkedIn">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">LinkedIn</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        German
+        &nbsp;&bull;&nbsp;
+      
+      2026
+
+      
+
+      
+      </p>
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>

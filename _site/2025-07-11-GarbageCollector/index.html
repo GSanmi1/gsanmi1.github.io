@@ -1,0 +1,2088 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 5.0.0 | Copyright Dean Attali 2020 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>Garbage Collector.</title>
+
+  
+  <meta name="author" content="German">
+  
+
+  <meta name="description" content="Simple conservativer sweep-mark Garbage Collector.">
+
+  
+
+  
+
+  
+  <link rel="alternate" type="application/rss+xml" title="Home" href="http://localhost:4000/feed.xml">
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/custom-dark.css">
+    
+  
+
+  
+  
+  
+
+  
+
+  
+  <meta property="og:site_name" content="Home">
+  <meta property="og:title" content="Garbage Collector.">
+  <meta property="og:description" content="Simple conservativer sweep-mark Garbage Collector.">
+
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:article:author" content="German">
+  <meta property="og:article:published_time" content="2025-07-11T00:00:00-04:00">
+  <meta property="og:url" content="http://localhost:4000/2025-07-11-GarbageCollector/">
+  <link rel="canonical" href="http://localhost:4000/2025-07-11-GarbageCollector/">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:site" content="@Qvintvs1">
+  <meta name="twitter:creator" content="@Qvintvs1">
+
+  <meta property="twitter:title" content="Garbage Collector.">
+  <meta property="twitter:description" content="Simple conservativer sweep-mark Garbage Collector.">
+
+  
+
+  
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+    document.querySelectorAll("script[type='math/tex; mode=display']").forEach(function(el) {
+      el.outerHTML = "\\[" + el.textContent + "\\]";
+    });
+    document.querySelectorAll("script[type='math/tex']").forEach(function(el) {
+      el.outerHTML = "\\(" + el.textContent + "\\)";
+    });
+    var script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js';
+    script.async = true;
+    document.head.appendChild(script);
+  });
+</script>
+
+
+  
+
+  
+
+</head>
+
+
+<body>
+
+  
+
+
+  <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">Home</a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Program</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/Cpage">C</a>
+                  <a class="dropdown-item" href="/DHARMApage">Dharma</a>
+                  <a class="dropdown-item" href="/RUSTpage">Rust</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Web2</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/BURPSUITEpage">Burp</a>
+                  <a class="dropdown-item" href="/THMpage">Thm</a>
+                  <a class="dropdown-item" href="/HackTheBoxpage">Htb</a>
+                  <a class="dropdown-item" href="/PEN200page">BasicPentesting</a>
+                  <a class="dropdown-item" href="/REDTEAMBASICSpage">RedTeam</a>
+                  <a class="dropdown-item" href="/BLUETEAMBASICSpage">Blueteam</a>
+                  <a class="dropdown-item" href="/REDESpage">Net</a>
+                  <a class="dropdown-item" href="/2022-11-17-GitBasics">Git</a>
+                  <a class="dropdown-item" href="/CSOFTpage">MemCorrupt</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ZKP</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/MATHpage">Math</a>
+                  <a class="dropdown-item" href="/RUSTpage">Rust</a>
+                  <a class="dropdown-item" href="/NOIRpage">Noir</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Assembly</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/ASSEMpage">x86</a>
+            </div>
+          </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" id="nav-search-link" href="#" title="Search">
+            <span id="nav-search-icon" class="fa fa-search"></span>
+            <span id="nav-search-text">Search</span>
+          </a>
+        </li></ul>
+  </div>
+
+  
+
+  
+
+</nav>
+
+
+
+<div id="beautifuljekyll-search-overlay">
+
+  <div id="nav-search-exit" title="Exit search">✕</div>
+  <input type="text" id="nav-search-input" placeholder="Search">
+  <ul id="search-results-container"></ul>
+  
+  <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+  <script>
+    var searchjson = '[ \
+       \
+        { \
+          "title"    : "P vs NP.", \
+          "category" : "math", \
+          "url"      : "/2026-01-11-PvsNP/", \
+          "date"     : "January 11, 2026" \
+        }, \
+       \
+        { \
+          "title"    : "Race Conditions.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-28-RaceCondition/", \
+          "date"     : "December 28, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Introducción al Cálculo", \
+          "category" : "matemáticas", \
+          "url"      : "/2025-12-25-MathTest/", \
+          "date"     : "December 25, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Uninitialize Data Access.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-23-UDA/", \
+          "date"     : "December 23, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Control Flow.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-12-ControlFlow/", \
+          "date"     : "December 12, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Other Integer Issues.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-05-OtherIntegerIssues/", \
+          "date"     : "December  5, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Integer Overflow/Underflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-05-IntegerOverflow-Underflow/", \
+          "date"     : "December  5, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Passing Parameters.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-04-Passing-Parameters/", \
+          "date"     : "December  4, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Stackframe; Local variables, Arrays and Structures.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-01-LocalVars_Arrays_structs/", \
+          "date"     : "December  1, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Out-Of-Bounds Write.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-26-Out-Of-Bounds-Write/", \
+          "date"     : "November 26, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Calling Functions.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-21-CallingFunctions/", \
+          "date"     : "November 21, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "(Linear) Heap Buffer Overflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-18-HBO/", \
+          "date"     : "November 18, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Basic Instructions.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-17-AssemblyBasicRegisters/", \
+          "date"     : "November 17, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Computer Registers.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-08-ComputerRegisters/", \
+          "date"     : "November  8, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "CVE-2021-20294.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-07-CVE-2021-20294/", \
+          "date"     : "November  7, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "(Linear) Stack Buffer Overflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-06-LSBO/", \
+          "date"     : "November  6, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Text Editor.", \
+          "category" : "C", \
+          "url"      : "/2025-08-11-Text-Editor/", \
+          "date"     : "August 11, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Garbage Collector.", \
+          "category" : "C", \
+          "url"      : "/2025-07-11-GarbageCollector/", \
+          "date"     : "July 11, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Hashtables.", \
+          "category" : "C", \
+          "url"      : "/2025-06-13-HashTable/", \
+          "date"     : "June 13, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Building my own malloc in C.", \
+          "category" : "C", \
+          "url"      : "/2025-06-09-BuildingOwnMalloc/", \
+          "date"     : "June  9, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Malloc Tutorial", \
+          "category" : "C", \
+          "url"      : "/2025-06-06-MallocTutorial/", \
+          "date"     : "June  6, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "SharedLibraries&amp;FunctionHooking", \
+          "category" : "C", \
+          "url"      : "/2025-04-26-SharedLibraries&FunctionHooking/", \
+          "date"     : "April 26, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "File Descritors", \
+          "category" : "C", \
+          "url"      : "/2025-03-04-FileDescriptors/", \
+          "date"     : "March  4, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Network Programming", \
+          "category" : "C", \
+          "url"      : "/2025-02-22-Network_Programming/", \
+          "date"     : "February 22, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "2. Constants and Literals in C.", \
+          "category" : "C", \
+          "url"      : "/2024-12-10-2.ConstantsinC-copy/", \
+          "date"     : "December 10, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "1. Basics of C", \
+          "category" : "C", \
+          "url"      : "/2024-12-02-1.BasicsOfC/", \
+          "date"     : "December  2, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "Gramáticas en Dharma", \
+          "category" : "DHA", \
+          "url"      : "/2024-09-24-Dharma_Tutorial/", \
+          "date"     : "September 24, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "Gramáticas en Dharma", \
+          "category" : "fuzz", \
+          "url"      : "/2024-03-22-Dharma_Tutorial-copy/", \
+          "date"     : "March 22, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "Mi experiencia con el OSCP", \
+          "category" : "pen", \
+          "url"      : "/2023-11-19-PEN200_Experience/", \
+          "date"     : "November 19, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Client Side", \
+          "category" : "pen", \
+          "url"      : "/2023-11-17-17.Client_Side_Attacks/", \
+          "date"     : "November 17, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Deep Packet Tunneling", \
+          "category" : "pen", \
+          "url"      : "/2023-11-16-16.Tunneling_Through_Deep_Packet_Inspection/", \
+          "date"     : "November 16, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Report", \
+          "category" : "pen", \
+          "url"      : "/2023-11-15-15.Making_Reports/", \
+          "date"     : "November 15, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Metasploit", \
+          "category" : "pen", \
+          "url"      : "/2023-11-14-14.Metasploit/", \
+          "date"     : "November 14, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Password Attacks", \
+          "category" : "pen", \
+          "url"      : "/2023-11-13-13.Password_Attacks/", \
+          "date"     : "November 13, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Active Directory Attacks", \
+          "category" : "pen", \
+          "url"      : "/2023-11-12-12.Active_Directory_Attacks/", \
+          "date"     : "November 12, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Port Forwarding", \
+          "category" : "pen", \
+          "url"      : "/2023-11-11-11.Port_Forwarding/", \
+          "date"     : "November 11, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Privilege Escalation", \
+          "category" : "pen", \
+          "url"      : "/2023-11-10-10.Privilege_Escalation/", \
+          "date"     : "November 10, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "File Transfers", \
+          "category" : "pen", \
+          "url"      : "/2023-11-09-9.File_Tranfers/", \
+          "date"     : "November  9, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Buffer Overflows", \
+          "category" : "pen", \
+          "url"      : "/2023-11-08-8.Buffer_Overflows/", \
+          "date"     : "November  8, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Vulnerability Scanning.", \
+          "category" : "pen", \
+          "url"      : "/2023-11-07-7.Vulnerability_Scanning/", \
+          "date"     : "November  7, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Information Gathering", \
+          "category" : "pen", \
+          "url"      : "/2023-11-06-6.Active_Information_Gathering/", \
+          "date"     : "November  6, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Windows", \
+          "category" : "pen", \
+          "url"      : "/2023-11-05-5.Windows/", \
+          "date"     : "November  5, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Networking", \
+          "category" : "pen", \
+          "url"      : "/2023-11-04-4.Networking/", \
+          "date"     : "November  4, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Scripting", \
+          "category" : "pen", \
+          "url"      : "/2023-11-03-3.Scripting/", \
+          "date"     : "November  3, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Practical Tools", \
+          "category" : "pen", \
+          "url"      : "/2023-11-02-2.PracticalTools/", \
+          "date"     : "November  2, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Linux", \
+          "category" : "pen", \
+          "url"      : "/2023-11-01-1.Linux/", \
+          "date"     : "November  1, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Easy", \
+          "category" : "hack", \
+          "url"      : "/2022-12-01-Easy/", \
+          "date"     : "December  1, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Git Basics", \
+          "category" : "", \
+          "url"      : "/2022-11-17-GitBasics/", \
+          "date"     : "November 17, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Tier I", \
+          "category" : "hack", \
+          "url"      : "/2022-11-10-Tier_1/", \
+          "date"     : "November 10, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Tier 0", \
+          "category" : "hack", \
+          "url"      : "/2022-11-09-Tier_0/", \
+          "date"     : "November  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "7.BufferOverflow.", \
+          "category" : "thm", \
+          "url"      : "/2022-11-02-7.BufferOverflow/", \
+          "date"     : "November  2, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "6.Offensive Pentesting", \
+          "category" : "thm", \
+          "url"      : "/2022-11-01-6.OffensivePentesting/", \
+          "date"     : "November  1, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "5.RedTeam", \
+          "category" : "thm", \
+          "url"      : "/2022-10-30-5.RedTeam/", \
+          "date"     : "October 30, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "4.Windows", \
+          "category" : "thm", \
+          "url"      : "/2022-10-22-4.Windows/", \
+          "date"     : "October 22, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "3.Junior Penetrationtester path", \
+          "category" : "thm", \
+          "url"      : "/2022-09-02-3.JRPenetrationTester/", \
+          "date"     : "September  2, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "2.Complete Begginer path.", \
+          "category" : "thm", \
+          "url"      : "/2022-08-07-2.CompleteBegginer/", \
+          "date"     : "August  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "1.Pre-Security path.", \
+          "category" : "thm", \
+          "url"      : "/2022-07-11-1Pre-Security/", \
+          "date"     : "July 11, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "0.Scripting for pentesters.", \
+          "category" : "thm", \
+          "url"      : "/2022-07-10-0.Scripting_for_pentesters/", \
+          "date"     : "July 10, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Burp Certified Practitioner Practice Exam.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-30-PracticeExam/", \
+          "date"     : "March 30, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "22. OAuth Authentication.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-27-22.OAuth_authentication/", \
+          "date"     : "March 27, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "21. HTTP Request Smuggling.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-26-21.HTTP_request_smuggling/", \
+          "date"     : "March 26, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "20. HTTP Host Header Attacks.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-25-20.HTTP_Host_header_attacks/", \
+          "date"     : "March 25, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "19. Web Cache Poisoning.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-24-19.Web_cache_poisoning/", \
+          "date"     : "March 24, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "18. Server-Side Template Injection.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-23-18.Serve-side_template_injection/", \
+          "date"     : "March 23, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "17. Insecure Deserialization.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-22-17.Insecure_deserialization/", \
+          "date"     : "March 22, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "16. WebSockets.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-21-16.WebSockets/", \
+          "date"     : "March 21, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "15.DOM-based XSS vulnerabilities.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-20-15-DOM-based_vulnerabilities/", \
+          "date"     : "March 20, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "14. Clickjacking.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-19-14.Clickjacking/", \
+          "date"     : "March 19, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "13. Cross-Origin Resource Sharing.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-18-13.Cross-origin_resource_sharing_(CORS)/", \
+          "date"     : "March 18, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "12. Cross-Site Request Forgery.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-17-12.Cross-site_request_forgery_(CSRF)/", \
+          "date"     : "March 17, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "11. Cross-Site Scripting.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-16-11.Cross-site_scripting_(XSS)/", \
+          "date"     : "March 16, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "10. XXE Injection.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-15-10.XXE_injection/", \
+          "date"     : "March 15, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "9. Server-Side Request Forgery.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-14-9.Server-side_request_forgery/", \
+          "date"     : "March 14, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "8. File Upload.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-13-8.File_upload_vulnerabilities/", \
+          "date"     : "March 13, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "7. Access Control.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-12-7.Access_control/", \
+          "date"     : "March 12, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "6. Information Disclosure.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-11-6.Information_disclosure/", \
+          "date"     : "March 11, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "5. Bussiness Logic Vulnerabilities.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-10-5.Business_logic_vulnerabilities/", \
+          "date"     : "March 10, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "4. Command Injection.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-09-4.Command_Injection/", \
+          "date"     : "March  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "3. Directory Traversal.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-08-3.Directory_Traversal/", \
+          "date"     : "March  8, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "2. Authentication.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-07-2.Authentication/", \
+          "date"     : "March  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "1. SQLInjection", \
+          "category" : "burp", \
+          "url"      : "/2022-03-06-1.SQLInjection/", \
+          "date"     : "March  6, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Seguridad Perimetral", \
+          "category" : "blueteam", \
+          "url"      : "/2022-02-09-Seguridad_Perimetral/", \
+          "date"     : "February  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Hardening de sistemas", \
+          "category" : "blueteam", \
+          "url"      : "/2022-02-09-Hardening_de_sistemas/", \
+          "date"     : "February  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Bandit", \
+          "category" : "otw", \
+          "url"      : "/2022-02-08-Bandit/", \
+          "date"     : "February  8, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Proxy", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-Proxys/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Protocolos Relevantes", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-Protocolos_Importantes/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Curso Básico Redes", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-Precurso_Redes/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "IPs", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-IPs/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Movimientos Laterales", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-06-Introducci%C3%B3n_a_movimientos_laterales/", \
+          "date"     : "February  6, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Evasión de Defensas", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-05-Evasi%C3%B3n_de_Defensas/", \
+          "date"     : "February  5, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Escalada de privilegios", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-05-Escalada_de_privilegios/", \
+          "date"     : "February  5, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Metasploit", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-04-Metasploit_B%C3%A1sico/", \
+          "date"     : "February  4, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Ataques a aplicaciones Android", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-03-Ataques_aplicaciones_android/", \
+          "date"     : "February  3, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Ataque a aplicaciones web.", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-02-Ataques_a_aplicaciones_web/", \
+          "date"     : "February  2, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Ataques a Infraestructuras y Redes", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-01-Ataques_a_Infraestructuras_y_Redes/", \
+          "date"     : "February  1, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Análisis de Objetivos", \
+          "category" : "redteam", \
+          "url"      : "/2022-01-28-An%C3%A1lisis_de_Objetivos/", \
+          "date"     : "January 28, 2022" \
+        }, \
+       \
+       \
+        { \
+          "title"    : "Assembly and Architecture Introduction.", \
+          "category" : "page", \
+          "url"      : "/ASSEMpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Blueteam Basics", \
+          "category" : "page", \
+          "url"      : "/BLUETEAMBASICSpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "PortSwigger BurpSuite Course", \
+          "category" : "page", \
+          "url"      : "/BURPSUITEpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "C-Family Software Memory Corruption Vulnerabilities", \
+          "category" : "page", \
+          "url"      : "/CSOFTpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "C &amp; Systems Fundamentals.", \
+          "category" : "page", \
+          "url"      : "/Cpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Dharma Fuzzer language", \
+          "category" : "page", \
+          "url"      : "/DHARMApage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Exploiting &amp; Reversing", \
+          "category" : "page", \
+          "url"      : "/EXPREVpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Fuzzing JavaScript Engine", \
+          "category" : "page", \
+          "url"      : "/Fuzzpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "HackTheBox", \
+          "category" : "page", \
+          "url"      : "/HackTheBoxpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "TryHackMe", \
+          "category" : "page", \
+          "url"      : "/MATHpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "PEN200 notes", \
+          "category" : "page", \
+          "url"      : "/PEN200page/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Proyectos", \
+          "category" : "page", \
+          "url"      : "/PROJECTSpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Networking Basics", \
+          "category" : "page", \
+          "url"      : "/REDESpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "RedTeam Basics", \
+          "category" : "page", \
+          "url"      : "/REDTEAMBASICSpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Retired Machines", \
+          "category" : "page", \
+          "url"      : "/RetiredMachinespage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "TryHackMe", \
+          "category" : "page", \
+          "url"      : "/THMpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "About me", \
+          "category" : "page", \
+          "url"      : "/aboutme/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "THM", \
+          "category" : "page", \
+          "url"      : "/preOSCPpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Tag Index", \
+          "category" : "page", \
+          "url"      : "/tags/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page2/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page3/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page4/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page5/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page6/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page7/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page8/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page9/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page10/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page11/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page12/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page13/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page14/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page15/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page16/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page17/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page18/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page19/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page20/", \
+          "date"     : "January 1, 1970" \
+        } \
+       \
+    ]';
+    searchjson = JSON.parse(searchjson);
+
+    var sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('nav-search-input'),
+      resultsContainer: document.getElementById('search-results-container'),
+      json: searchjson
+    });
+  </script>
+</div>
+
+
+
+
+
+  <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Garbage Collector.</h1>
+          
+            
+              <h2 class="post-subheading">Simple conservativer sweep-mark Garbage Collector.</h2>
+            
+          
+
+          
+            <span class="post-meta">Posted on July 11, 2025</span>
+            
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+
+      
+
+      <article role="main" class="blog-post">
+        <h3 id="garbage-collector">Garbage Collector.</h3>
+
+<p>This is the second part, or the continuation from the previous report in which we build a custom memory allocator from a heap array. Now, we are going to pick up the code where we leave it and implement a garbage collector with several changes in the original code.</p>
+
+<p><br /></p>
+
+<h4 id="explaning-the-idea">Explaning the idea.</h4>
+
+<p>First, a Garbage Collector (for now on: GC), is a program responsable for free unreachable memory in the program in order to optimize the use of the dinamic memory allocation space.</p>
+
+<p>We are referening as <em>unreachable memory</em> to those allocated chunks that doesn’t have a reference (pointer) in the program making them unnaccesible. From the program perspective this kind of chunks no longer exists and represents a waste of memory if it is never used again.</p>
+
+<p>The dynamic memory is stored in the <em>heap</em>, and the references to the heap are mainly stored on the <em>stack</em>; a memory region that stores function-related data. Whenever we call malloc in main, a pointer to an new alloced chunk in the heap is stored on the main function’s stack:</p>
+
+<p><em>For educational purpouses, the following pictures do not represent a realistic stack/heap esqueme, they are just an ilustrative way to show the GC logic.</em></p>
+
+<p><br /></p>
+
+<div style="text-align:center">
+<img src="/assets/img/C/stack-heap.png" text-align="center" />
+</div>
+
+<p><br /></p>
+
+<p>This means that our job is to build a program that sweep the main’s stack portion in order to find references to the heap, (this will be pointers to reachable chunks), the rest are marked as unreachable chunks and reclaimed to be freed.</p>
+
+<p><br /></p>
+
+<div style="text-align:center">
+<img src="/assets/img/C/stack-heap2.png" text-align="center" />
+</div>
+
+<p><br /></p>
+
+<p>Thus, after the action of the GC, the unreachable chunk gets freed and available to be usable again for malloc:</p>
+
+<p><br /></p>
+
+<div style="text-align:center">
+<img src="/assets/img/C/stack-heapGC.png" text-align="center" />
+</div>
+
+<p><br /></p>
+
+<h3 id="explaining-the-code">Explaining the code.</h3>
+
+<p>Now we have in some way clear the idea, let’s see how implemented in code-terms. We depart from the heap allocator code written before.</p>
+
+<p>At first, we divided the contents from the original file in three, following the standard modularization in C.</p>
+
+<p>Each file serves to different purpouses:</p>
+
+<ul>
+  <li><strong>heap.h</strong> - Header File (declarations / API).</li>
+  <li><strong>heap.c</strong> - Implementation.</li>
+  <li><strong>main.c</strong> - Usage / Application.</li>
+</ul>
+
+<p>Relative to the code of the first version of <em>heap.c</em> file, several changes are made:</p>
+
+<ul>
+  <li>
+    <p><strong>Pointer Width Handling</strong>; The <em>heap</em> and <em>malloc</em> now works with <em>word-size</em> slots instead of bytes in order to improve memory alignment in the code. This idea will be explained later.</p>
+  </li>
+  <li>
+    <p><strong>Garbage Collection Added</strong>; The restructured code introduces a simple GC on top of a manual heap allocator (malloc), using stack scanning to determine what memory is still in use.</p>
+  </li>
+  <li>
+    <p><strong>Getting top and base of the stack</strong>. Our implementation of the GC parses the stack memory portion relative to the <em>main</em> function in order to identify potential pointers to the heap. In order to be able to explore this portion we have first to provide the range of memory to be scanned (top and base of the stack). This is done by the following way:</p>
+
+    <ul>
+      <li>
+        <p>First, we have modify <em>malloc</em> function to set the value of the variable <em>stack_base</em> with the base of the stack of the function caller (__builtin_frame_address(1), note the 1), since malloc is called inside main, the caller function is main function. Is worth to mention that the base of the stack not have necesarily to coincide with the base of the stack of the main function.</p>
+      </li>
+      <li>
+        <p>On the other hand, the GC is implemented on <em>heap_collect()</em> and in this function we set the value of <em>start_base</em> with the current frame of the stack (__builtin_frame_address(0), note the 0) which is the top of the stack at that very moment.</p>
+      </li>
+    </ul>
+
+    <p>With this, the GC is provided with a range of memory from the stack that corresponds with the first memory allocation to the moment in which a clean job is needed.</p>
+
+    <div style="text-align:center">
+  <img src="/assets/img/C/memory_region.png" text-align="center" />
+  </div>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="heaph">Heap.h</h3>
+
+<p>The file <strong>heap.h</strong> is a header file which defines the public interface of a custom memory allocator system and a garbage collector. This is, in other words, the contents and definitions (not implementations) that can be share with other applications.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//Check if HEAP_H_ is not defined.(If not, define it. This serves as a flag to prevent the inclusion of the file more than once. If the file has already been included, then the flag exist and then, then directive above prevent the current inclusion.)</span>
+<span class="cp">#ifndef HEAP_H_
+#define HEAP_H_
+</span>
+<span class="c1">//Include standard libraries for assert, integers and several functions.</span>
+<span class="cp">#include</span> <span class="cpf">&lt;assert.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;stdint.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span>
+<span class="c1">//Define UNIMPLEMENTED statement.</span>
+<span class="cp">#define UNIMPLEMENTED \
+    do { \
+        fprintf(stderr, "%s:%d: %s is not implemented yet\n", \
+                __FILE__, __LINE__, __func__); \
+        abort(); \
+    } while(0)
+</span>
+<span class="c1">//Define the size of heap in bytes and check if it is aligned with the size of a word.</span>
+<span class="cp">#define HEAP_CAP_BYTES 640000
+</span><span class="n">static_assert</span><span class="p">(</span><span class="n">HEAP_CAP_BYTES</span> <span class="o">%</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">uintptr_t</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span>
+              <span class="s">"The heap capacity is not divisible by "</span>
+              <span class="s">"the size of the pointer. Of the platform."</span><span class="p">);</span>
+<span class="cp">#define HEAP_CAP_WORDS (HEAP_CAP_BYTES / sizeof(uintptr_t))
+</span>
+<span class="c1">//Heap definition.</span>
+<span class="k">extern</span> <span class="kt">uintptr_t</span> <span class="n">heap</span><span class="p">[</span><span class="n">HEAP_CAP_WORDS</span><span class="p">];</span>
+<span class="k">extern</span> <span class="k">const</span> <span class="kt">uintptr_t</span> <span class="o">*</span><span class="n">stack_base</span><span class="p">;</span>
+
+<span class="c1">//Heap operations Functions.</span>
+<span class="kt">void</span> <span class="o">*</span><span class="nf">malloc</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">size_bytes</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">free</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">ptr</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">heap_collect</span><span class="p">();</span>
+
+<span class="cp">#define CHUNK_LIST_CAP 1024
+</span>
+<span class="c1">//Chunk structs.</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="kt">uintptr_t</span> <span class="o">*</span><span class="n">start</span><span class="p">;</span>
+    <span class="kt">size_t</span> <span class="n">size</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">Chunk</span><span class="p">;</span>
+
+<span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="kt">size_t</span> <span class="n">count</span><span class="p">;</span>
+    <span class="n">Chunk</span> <span class="n">chunks</span><span class="p">[</span><span class="n">CHUNK_LIST_CAP</span><span class="p">];</span>
+<span class="p">}</span> <span class="n">Chunk_List</span><span class="p">;</span>
+
+<span class="c1">//Heap-Free tracklists chunks.</span>
+<span class="k">extern</span> <span class="n">Chunk_List</span> <span class="n">alloced_chunks</span><span class="p">;</span>
+<span class="k">extern</span> <span class="n">Chunk_List</span> <span class="n">freed_chunks</span><span class="p">;</span>
+<span class="k">extern</span> <span class="n">Chunk_List</span> <span class="n">tmp_chunks</span><span class="p">;</span>
+
+<span class="c1">//List operations functions.</span>
+<span class="kt">void</span> <span class="nf">chunk_list_insert</span><span class="p">(</span><span class="n">Chunk_List</span> <span class="o">*</span><span class="n">list</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">start</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">size</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">chunk_list_merge</span><span class="p">(</span><span class="n">Chunk_List</span> <span class="o">*</span><span class="n">dst</span><span class="p">,</span> <span class="k">const</span> <span class="n">Chunk_List</span> <span class="o">*</span><span class="n">src</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">chunk_list_dump</span><span class="p">(</span><span class="k">const</span> <span class="n">Chunk_List</span> <span class="o">*</span><span class="n">list</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">chunk_list_find</span><span class="p">(</span><span class="k">const</span> <span class="n">Chunk_List</span> <span class="o">*</span><span class="n">list</span><span class="p">,</span> <span class="kt">uintptr_t</span> <span class="o">*</span><span class="n">ptr</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">chunk_list_remove</span><span class="p">(</span><span class="n">Chunk_List</span> <span class="o">*</span><span class="n">list</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">index</span><span class="p">);</span>
+
+<span class="cp">#endif // HEAP_H_
+</span></code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="heapc">Heap.c</h3>
+
+<p>Now, <em>heap.c</em> file implements <em>heap.h</em> definitions.</p>
+
+<p>This file implements a custom heap memory allocator with a <em>mark-and-sweep garbage collector</em>. This code changes the contents of the original heap.c code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;stdbool.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">"./heap.h"</span><span class="cp">
+</span>
+
+<span class="kt">uintptr_t</span> <span class="n">heap</span><span class="p">[</span><span class="n">HEAP_CAP_WORDS</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="k">const</span> <span class="kt">uintptr_t</span> <span class="o">*</span><span class="n">stack_base</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="n">bool</span> <span class="n">reachable_chunks</span><span class="p">[</span><span class="n">CHUNK_LIST_CAP</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="kt">void</span> <span class="o">*</span><span class="n">to_free</span><span class="p">[</span><span class="n">CHUNK_LIST_CAP</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="kt">size_t</span> <span class="n">to_free_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="n">Chunk_List</span> <span class="n">alloced_chunks</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="n">Chunk_List</span> <span class="n">freed_chunks</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">.</span><span class="n">count</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">chunks</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">{.</span><span class="n">start</span> <span class="o">=</span> <span class="n">heap</span><span class="p">,</span> <span class="p">.</span><span class="n">size</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">heap</span><span class="p">)}</span>
+    <span class="p">},</span>
+<span class="p">};</span>
+<span class="n">Chunk_List</span> <span class="n">tmp_chunks</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+
+<span class="kt">void</span> <span class="nf">chunk_list_insert</span><span class="p">(</span><span class="n">Chunk_List</span> <span class="o">*</span><span class="n">list</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">start</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">size</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">assert</span><span class="p">(</span><span class="n">list</span><span class="o">-&gt;</span><span class="n">count</span> <span class="o">&lt;</span> <span class="n">CHUNK_LIST_CAP</span><span class="p">);</span>
+    <span class="n">list</span><span class="o">-&gt;</span><span class="n">chunks</span><span class="p">[</span><span class="n">list</span><span class="o">-&gt;</span><span class="n">count</span><span class="p">].</span><span class="n">start</span> <span class="o">=</span> <span class="n">start</span><span class="p">;</span>
+    <span class="n">list</span><span class="o">-&gt;</span><span class="n">chunks</span><span class="p">[</span><span class="n">list</span><span class="o">-&gt;</span><span class="n">count</span><span class="p">].</span><span class="n">size</span>  <span class="o">=</span> <span class="n">size</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="n">list</span><span class="o">-&gt;</span><span class="n">count</span><span class="p">;</span>
+            <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">list</span><span class="o">-&gt;</span><span class="n">chunks</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">start</span> <span class="o">&lt;</span> <span class="n">list</span><span class="o">-&gt;</span><span class="n">chunks</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">].</span><span class="n">start</span><span class="p">;</span>
+            <span class="o">--</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">const</span> <span class="n">Chunk</span> <span class="n">t</span> <span class="o">=</span> <span class="n">list</span><span class="o">-&gt;</span><span class="n">chunks</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="n">list</span><span class="o">-&gt;</span><span class="n">chunks</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">list</span><span class="o">-&gt;</span><span class="n">chunks</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+        <span class="n">list</span><span class="o">-&gt;</span><span class="n">chunks</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">list</span><span class="o">-&gt;</span><span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">chunk_list_merge</span><span class="p">(</span><span class="n">Chunk_List</span> <span class="o">*</span><span class="n">dst</span><span class="p">,</span> <span class="k">const</span> <span class="n">Chunk_List</span> <span class="o">*</span><span class="n">src</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">dst</span><span class="o">-&gt;</span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">src</span><span class="o">-&gt;</span><span class="n">count</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">const</span> <span class="n">Chunk</span> <span class="n">chunk</span> <span class="o">=</span> <span class="n">src</span><span class="o">-&gt;</span><span class="n">chunks</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">dst</span><span class="o">-&gt;</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">Chunk</span> <span class="o">*</span><span class="n">top_chunk</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">dst</span><span class="o">-&gt;</span><span class="n">chunks</span><span class="p">[</span><span class="n">dst</span><span class="o">-&gt;</span><span class="n">count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">top_chunk</span><span class="o">-&gt;</span><span class="n">start</span> <span class="o">+</span> <span class="n">top_chunk</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">==</span> <span class="n">chunk</span><span class="p">.</span><span class="n">start</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">top_chunk</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">+=</span> <span class="n">chunk</span><span class="p">.</span><span class="n">size</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="n">chunk_list_insert</span><span class="p">(</span><span class="n">dst</span><span class="p">,</span> <span class="n">chunk</span><span class="p">.</span><span class="n">start</span><span class="p">,</span> <span class="n">chunk</span><span class="p">.</span><span class="n">size</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">chunk_list_insert</span><span class="p">(</span><span class="n">dst</span><span class="p">,</span> <span class="n">chunk</span><span class="p">.</span><span class="n">start</span><span class="p">,</span> <span class="n">chunk</span><span class="p">.</span><span class="n">size</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">chunk_list_dump</span><span class="p">(</span><span class="k">const</span> <span class="n">Chunk_List</span> <span class="o">*</span><span class="n">list</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%s Chunks (%zu):</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">list</span><span class="o">-&gt;</span><span class="n">count</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">list</span><span class="o">-&gt;</span><span class="n">count</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"  start: %p, size: %zu</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span>
+               <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span> <span class="n">list</span><span class="o">-&gt;</span><span class="n">chunks</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">start</span><span class="p">,</span>
+               <span class="n">list</span><span class="o">-&gt;</span><span class="n">chunks</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">size</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">chunk_list_find</span><span class="p">(</span><span class="k">const</span> <span class="n">Chunk_List</span> <span class="o">*</span><span class="n">list</span><span class="p">,</span> <span class="kt">uintptr_t</span> <span class="o">*</span><span class="n">ptr</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">list</span><span class="o">-&gt;</span><span class="n">count</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">list</span><span class="o">-&gt;</span><span class="n">chunks</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">start</span> <span class="o">==</span> <span class="n">ptr</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">i</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">chunk_list_remove</span><span class="p">(</span><span class="n">Chunk_List</span> <span class="o">*</span><span class="n">list</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">index</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">assert</span><span class="p">(</span><span class="n">index</span> <span class="o">&lt;</span> <span class="n">list</span><span class="o">-&gt;</span><span class="n">count</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="n">index</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">list</span><span class="o">-&gt;</span><span class="n">count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">list</span><span class="o">-&gt;</span><span class="n">chunks</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">list</span><span class="o">-&gt;</span><span class="n">chunks</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="n">list</span><span class="o">-&gt;</span><span class="n">count</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="o">*</span><span class="nf">malloc</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">size_bytes</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">stack_base</span> <span class="o">=</span> <span class="p">(</span><span class="k">const</span> <span class="kt">uintptr_t</span><span class="o">*</span><span class="p">)</span><span class="n">__builtin_frame_address</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="k">const</span> <span class="kt">size_t</span> <span class="n">size_words</span> <span class="o">=</span> <span class="p">(</span><span class="n">size_bytes</span> <span class="o">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">uintptr_t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">uintptr_t</span><span class="p">);</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">size_words</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">chunk_list_merge</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tmp_chunks</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">freed_chunks</span><span class="p">);</span>
+        <span class="n">freed_chunks</span> <span class="o">=</span> <span class="n">tmp_chunks</span><span class="p">;</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">freed_chunks</span><span class="p">.</span><span class="n">count</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">const</span> <span class="n">Chunk</span> <span class="n">chunk</span> <span class="o">=</span> <span class="n">freed_chunks</span><span class="p">.</span><span class="n">chunks</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">chunk</span><span class="p">.</span><span class="n">size</span> <span class="o">&gt;=</span> <span class="n">size_words</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">chunk_list_remove</span><span class="p">(</span><span class="o">&amp;</span><span class="n">freed_chunks</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+
+                <span class="k">const</span> <span class="kt">size_t</span> <span class="n">tail_size_words</span> <span class="o">=</span> <span class="n">chunk</span><span class="p">.</span><span class="n">size</span> <span class="o">-</span> <span class="n">size_words</span><span class="p">;</span>
+                <span class="n">chunk_list_insert</span><span class="p">(</span><span class="o">&amp;</span><span class="n">alloced_chunks</span><span class="p">,</span> <span class="n">chunk</span><span class="p">.</span><span class="n">start</span><span class="p">,</span> <span class="n">size_words</span><span class="p">);</span>
+
+                <span class="k">if</span> <span class="p">(</span><span class="n">tail_size_words</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">chunk_list_insert</span><span class="p">(</span><span class="o">&amp;</span><span class="n">freed_chunks</span><span class="p">,</span> <span class="n">chunk</span><span class="p">.</span><span class="n">start</span> <span class="o">+</span> <span class="n">size_words</span><span class="p">,</span> <span class="n">tail_size_words</span><span class="p">);</span>
+                <span class="p">}</span>
+
+                <span class="k">return</span> <span class="n">chunk</span><span class="p">.</span><span class="n">start</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">free</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">ptr</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ptr</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">const</span> <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="n">chunk_list_find</span><span class="p">(</span><span class="o">&amp;</span><span class="n">alloced_chunks</span><span class="p">,</span> <span class="n">ptr</span><span class="p">);</span>
+        <span class="n">assert</span><span class="p">(</span><span class="n">index</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="n">assert</span><span class="p">(</span><span class="n">ptr</span> <span class="o">==</span> <span class="n">alloced_chunks</span><span class="p">.</span><span class="n">chunks</span><span class="p">[</span><span class="n">index</span><span class="p">].</span><span class="n">start</span><span class="p">);</span>
+        <span class="n">chunk_list_insert</span><span class="p">(</span><span class="o">&amp;</span><span class="n">freed_chunks</span><span class="p">,</span>
+                          <span class="n">alloced_chunks</span><span class="p">.</span><span class="n">chunks</span><span class="p">[</span><span class="n">index</span><span class="p">].</span><span class="n">start</span><span class="p">,</span>
+                          <span class="n">alloced_chunks</span><span class="p">.</span><span class="n">chunks</span><span class="p">[</span><span class="n">index</span><span class="p">].</span><span class="n">size</span><span class="p">);</span>
+        <span class="n">chunk_list_remove</span><span class="p">(</span><span class="o">&amp;</span><span class="n">alloced_chunks</span><span class="p">,</span> <span class="p">(</span><span class="kt">size_t</span><span class="p">)</span> <span class="n">index</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">mark_region</span><span class="p">(</span><span class="k">const</span> <span class="kt">uintptr_t</span> <span class="o">*</span><span class="n">start</span><span class="p">,</span> <span class="k">const</span> <span class="kt">uintptr_t</span> <span class="o">*</span><span class="n">end</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">for</span> <span class="p">(;</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="n">end</span><span class="p">;</span> <span class="n">start</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">const</span> <span class="kt">uintptr_t</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="k">const</span> <span class="kt">uintptr_t</span> <span class="o">*</span><span class="p">)</span> <span class="o">*</span><span class="n">start</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">alloced_chunks</span><span class="p">.</span><span class="n">count</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">Chunk</span> <span class="n">chunk</span> <span class="o">=</span> <span class="n">alloced_chunks</span><span class="p">.</span><span class="n">chunks</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">chunk</span><span class="p">.</span><span class="n">start</span> <span class="o">&lt;=</span> <span class="n">p</span> <span class="o">&amp;&amp;</span> <span class="n">p</span> <span class="o">&lt;</span> <span class="n">chunk</span><span class="p">.</span><span class="n">start</span> <span class="o">+</span> <span class="n">chunk</span><span class="p">.</span><span class="n">size</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">reachable_chunks</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
+                    <span class="n">reachable_chunks</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+                    <span class="n">mark_region</span><span class="p">(</span><span class="n">chunk</span><span class="p">.</span><span class="n">start</span><span class="p">,</span> <span class="n">chunk</span><span class="p">.</span><span class="n">start</span> <span class="o">+</span> <span class="n">chunk</span><span class="p">.</span><span class="n">size</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">heap_collect</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">const</span> <span class="kt">uintptr_t</span> <span class="o">*</span><span class="n">stack_start</span> <span class="o">=</span> <span class="p">(</span><span class="k">const</span> <span class="kt">uintptr_t</span><span class="o">*</span><span class="p">)</span><span class="n">__builtin_frame_address</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="n">memset</span><span class="p">(</span><span class="n">reachable_chunks</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">reachable_chunks</span><span class="p">));</span>
+    <span class="n">mark_region</span><span class="p">(</span><span class="n">stack_start</span><span class="p">,</span> <span class="n">stack_base</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+
+    <span class="n">to_free_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">alloced_chunks</span><span class="p">.</span><span class="n">count</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">reachable_chunks</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
+            <span class="n">assert</span><span class="p">(</span><span class="n">to_free_count</span> <span class="o">&lt;</span> <span class="n">CHUNK_LIST_CAP</span><span class="p">);</span>
+            <span class="n">to_free</span><span class="p">[</span><span class="n">to_free_count</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">alloced_chunks</span><span class="p">.</span><span class="n">chunks</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">start</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">to_free_count</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">free</span><span class="p">(</span><span class="n">to_free</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h4 id="memory-model">Memory Model.</h4>
+
+<p>First, we define a simulated heap:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">uintptr_t</span> <span class="n">heap</span><span class="p">[</span><span class="n">HEAP_CAP_WORDS</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+</code></pre></div></div>
+
+<p>A statically allocated block of memory initialize to 0, each slot is <em>uintptr_t</em> type (unsigned integer of the size of a pointer), this ensure the heap is alligned to pointer-size boundaries.</p>
+
+<p>More specifically, this change is done in order to gain consistency with the <em>heap_collect()</em> function’s logic. The GC will sweep chunks of memory both from the stack and the heap (recursive search to reachable chunks) in search of memory references to alloced chunks, thus, we force the slots of the heap to be word’s size (changing the type from <em>char</em> to <em>uintptr_t</em>) in order to make the sweep go ‘word to word’ intead of ‘byte to byte’.</p>
+
+<p>Let’s considet a heap array sorted byte to byte:
+<br /></p>
+
+<pre><code class="language-less">       HEAP       
+|----------------|
+| 0x61cc15965060 | 
+| 0x61cc15965061 | 
+| 0x61cc15965062 |
+| 0x61cc15965063 |
+| 0x61cc15965064 |
+| 0x61cc15965065 |
+| 0x61cc15965066 |
+| 0x61cc15965067 |
+|----------------| WORD / 8-bytes
+| 0x61cc15965068 |
+| 0x61cc15965069 |
+| 0x61cc1596506a |
+| 0x61cc1596506b |
+| 0x61cc1596506c |
+| 0x61cc1596506d |
+| 0x61cc1596506e |
+| 0x61cc1596506f |
+|----------------| WORD / 8-bytes
+</code></pre>
+
+<p>Sweep it getting 8 contiguous bytes at a time would consist to check the following regions after one another till the end of the heap:</p>
+
+<pre><code class="language-less">[0x61cc15965060, 0x61cc15965068] --&gt; [0x61cc15965061, 0x61cc15965069] --&gt; [0x61cc15965062, 0x61cc1596506a] ...
+</code></pre>
+
+<p>Moving the region one byte size through the heap at each iteration.</p>
+
+<p>When we change the type of the heap, we force the data to be stored in memory address multiples of the word size (this is related with how the processor accesses memory; word size at time), at the start of each slot, (which also are of the size of a pointer) so when we go word by word sweeping the heap we can safely assume there isn’t pointers between slots.</p>
+
+<pre><code class="language-less">|-------------------------------------|
+| WORD @ 0x61cc15965060 → 0x60 - 0x67 |
+|-------------------------------------|
+| WORD @ 0x61cc15965068 → 0x68 - 0x6f |
+|-------------------------------------|
+| WORD @ 0x61cc15965070 → 0x70 - 0x77 |
+|-------------------------------------|
+| WORD @ 0x61cc15965078 → 0x78 - 0x7f |
+|-------------------------------------|
+| WORD @ 0x61cc15965080 → 0x80 - 0x87 |
+|-------------------------------------|
+| WORD @ 0x61cc15965088 → 0x88 - 0x8f |
+|-------------------------------------|
+| WORD @ 0x61cc15965090 → 0x90 - 0x97 |
+|-------------------------------------|
+| WORD @ 0x61cc15965098 → 0x98 - 0x9f |
+|-------------------------------------|
+| WORD @ 0x61cc159650a0 → 0xa0 - 0xa7 |
+|-------------------------------------|
+| WORD @ 0x61cc159650a8 → 0xa8 - 0xaf |
+|-------------------------------------|
+| WORD @ 0x61cc159650b0 → 0xb0 - 0xb7 |
+|-------------------------------------|
+| WORD @ 0x61cc159650b8 → 0xb8 - 0xbf |
+|-------------------------------------|
+</code></pre>
+
+<p>In this esqueme, we can safely check each slot in look for a pointer without check space between slots as we did in the first versión of the heap.</p>
+
+<p><br /></p>
+
+<p>Also, we set an empty variable for the base of the stack, this will be important in the malloc() function and the implementation of the Garbage Collector:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="kt">uintptr_t</span> <span class="o">*</span><span class="n">stack_base</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h4 id="data-structures">Data Structures.</h4>
+
+<p>Then, we define two structures:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="kt">uintptr_t</span> <span class="o">*</span><span class="n">start</span><span class="p">;</span>
+    <span class="kt">size_t</span> <span class="n">size</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">Chunk</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>A representation a region of memory which can be allocated; pointer and size of the chunk.</li>
+</ul>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="kt">size_t</span> <span class="n">count</span><span class="p">;</span>
+    <span class="n">Chunk</span> <span class="n">chunks</span><span class="p">[</span><span class="n">CHUNK_LIST_CAP</span><span class="p">];</span>
+<span class="p">}</span> <span class="n">Chunk_List</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>A list (array) of chunks used to track, allocated, freed o temporary memory chunks.</li>
+</ul>
+
+<p><br /></p>
+
+<h4 id="heap-allocation-logic">Heap allocation logic.</h4>
+
+<p>This function; <em>malloc()</em> is barely a replication from the previous heap.c heap_alloc() function, with several changes:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="o">*</span><span class="nf">malloc</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">size_bytes</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">stack_base</span> <span class="o">=</span> <span class="p">(</span><span class="k">const</span> <span class="kt">uintptr_t</span><span class="o">*</span><span class="p">)</span><span class="n">__builtin_frame_address</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="k">const</span> <span class="kt">size_t</span> <span class="n">size_words</span> <span class="o">=</span> <span class="p">(</span><span class="n">size_bytes</span> <span class="o">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">uintptr_t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">uintptr_t</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">size_words</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">chunk_list_merge</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tmp_chunks</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">freed_chunks</span><span class="p">);</span>
+        <span class="n">freed_chunks</span> <span class="o">=</span> <span class="n">tmp_chunks</span><span class="p">;</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">freed_chunks</span><span class="p">.</span><span class="n">count</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">const</span> <span class="n">Chunk</span> <span class="n">chunk</span> <span class="o">=</span> <span class="n">freed_chunks</span><span class="p">.</span><span class="n">chunks</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">chunk</span><span class="p">.</span><span class="n">size</span> <span class="o">&gt;=</span> <span class="n">size_words</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">chunk_list_remove</span><span class="p">(</span><span class="o">&amp;</span><span class="n">freed_chunks</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+
+                <span class="k">const</span> <span class="kt">size_t</span> <span class="n">tail_size_words</span> <span class="o">=</span> <span class="n">chunk</span><span class="p">.</span><span class="n">size</span> <span class="o">-</span> <span class="n">size_words</span><span class="p">;</span>
+                <span class="n">chunk_list_insert</span><span class="p">(</span><span class="o">&amp;</span><span class="n">alloced_chunks</span><span class="p">,</span> <span class="n">chunk</span><span class="p">.</span><span class="n">start</span><span class="p">,</span> <span class="n">size_words</span><span class="p">);</span>
+
+                <span class="k">if</span> <span class="p">(</span><span class="n">tail_size_words</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">chunk_list_insert</span><span class="p">(</span><span class="o">&amp;</span><span class="n">freed_chunks</span><span class="p">,</span> <span class="n">chunk</span><span class="p">.</span><span class="n">start</span> <span class="o">+</span> <span class="n">size_words</span><span class="p">,</span> <span class="n">tail_size_words</span><span class="p">);</span>
+                <span class="p">}</span>
+
+                <span class="k">return</span> <span class="n">chunk</span><span class="p">.</span><span class="n">start</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>As the previous function, this function allocates memory from a manually managed heap requesting only the size in bytes. It looks through the list of free chunks, merge contigous blocks, finds one that’s big enough, splits it if necessary, adds the new chunk to the allocated list and returns a pointer to the start position of the chunk.</p>
+
+<p>However, it have suitable changes:</p>
+
+<ul>
+  <li>
+    <p>Change type from bytes to word in order to fit with the pointer alignment strategy mentioned above.</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">const</span> <span class="kt">size_t</span> <span class="n">size_words</span> <span class="o">=</span> <span class="p">(</span><span class="n">size_bytes</span> <span class="o">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">uintptr_t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">uintptr_t</span><span class="p">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Added a value for the variable stack_base. We set it to have the value of the stack base of the stack frame of the previous function. If we call malloc through main, the stack base will be setted to the base of the main() function.</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">stack_base</span> <span class="o">=</span> <span class="p">(</span><span class="k">const</span> <span class="kt">uintptr_t</span><span class="o">*</span><span class="p">)</span><span class="n">__builtin_frame_address</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="c1">// The 1 value is calling the stack base of the caller function.</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h4 id="heap-free-logic">Heap free logic</h4>
+
+<p>The free() function doesn’t have any modifications:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">free</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">ptr</span><span class="p">){</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">ptr</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">const</span> <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="n">chunk_list_find</span><span class="p">(</span><span class="o">&amp;</span><span class="n">alloced_chunks</span><span class="p">,</span> <span class="n">ptr</span><span class="p">);</span>
+        <span class="n">assert</span><span class="p">(</span><span class="n">index</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="n">chunk_list_insert</span><span class="p">(</span><span class="o">&amp;</span><span class="n">freed_chunks</span><span class="p">,</span> <span class="n">alloced_chunks</span><span class="p">.</span><span class="n">chunks</span><span class="p">[</span><span class="n">index</span><span class="p">].</span><span class="n">start</span><span class="p">,</span> <span class="n">alloced_chunks</span><span class="p">.</span><span class="n">chunks</span><span class="p">[</span><span class="n">index</span><span class="p">].</span><span class="n">size</span><span class="p">);</span>
+        <span class="n">chunk_list_remove</span><span class="p">(</span><span class="o">&amp;</span><span class="n">alloced_chunks</span><span class="p">,</span> <span class="p">(</span><span class="kt">size_t</span><span class="p">)</span> <span class="n">index</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>If the passed pointer is not null, then we find the chunk referenced by the pointer in the alloced chunks list, we evaluate if the index is not negative and then we insert a new chunk in the freed list and remove the chunk associated to the index from the allocated list.</p>
+
+<p><br /></p>
+
+<h4 id="chunk-list-utilities">Chunk list utilities.</h4>
+
+<p>The list’s operations like insert(), merge() and else doesn’t have any changes and persist as in the first version of the code.</p>
+
+<p><br /></p>
+
+<h4 id="garbage-collector-1">Garbage Collector.</h4>
+
+<h5 id="explaining-the-idea">Explaining the idea.</h5>
+
+<p>As we said in the introduction, the Garbage Collector (GC) is a program that attepts to reclaim memory that was allocated by the program but is no longer referenced (garbage).</p>
+
+<p>Suppose we have the following code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="kt">int</span> <span class="o">*</span><span class="n">arr</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+
+    <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="n">arr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">num</span><span class="p">;</span>
+
+    <span class="n">free</span><span class="p">(</span><span class="n">arr</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In the code above first we are defining a pointer and initializing it with a chunk of memory of 100 integers size. Then, we define an integer and store in the pointer <em>arr</em> the memory address of the <em>num</em> variable, thus, the reference to the 100 integer block is lost and when free is called over <em>arr</em>, only the chunk in which num’s value is stored gets freed. We said that the 100 integer block is no longer referenced in the program and is unreachable.</p>
+
+<p>In simple terms, the GC would locate all the referenced chunks in the heap, by sweeping the stack and the heap in search of pointers to alloced chunks, and reclaims the rest of the memory (marked as unreachable) as free making it available again for new allocations.</p>
+
+<p>This GC has three major característics:</p>
+
+<ul>
+  <li>Is conservative; guess what might be a pointer.</li>
+  <li>Is non-moving; it doesn’t relocate objects.</li>
+  <li>Mark-and-sweep; marks reachable memory and reclaims the rest.</li>
+</ul>
+
+<p>Our GC gets a memory region, start checking every word within and assume that is a pointer. Then examines if the supposed pointer points to any part of an alloced chunk (for each chunk) and if it is, it marks the chunk as reachable and recursively check the chunk for references to other chunks. At the term of the process, free all not marked as reachable.</p>
+
+<p><br /></p>
+
+<h5 id="explaining-the-code-1">Explaining the code.</h5>
+
+<h6 id="global-variables">Global variables.</h6>
+
+<p>The Garbage Collector is defined through the following globals:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bool</span> <span class="n">reachable_chunks</span><span class="p">[</span><span class="n">CHUNK_LIST_CAP</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="kt">void</span> <span class="o">*</span><span class="n">to_free</span><span class="p">[</span><span class="n">CHUNK_LIST_CAP</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="kt">size_t</span> <span class="n">to_free_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">uintptr_t</span> <span class="o">*</span><span class="n">stack_base</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>The globals function are:</p>
+
+<ul>
+  <li><strong>reachable_chunks</strong>; An array of boolean values which have the purpouse of mark if an allocated chunk is reachable.</li>
+  <li><strong>to free</strong>; Hold pointers to chunks what will be free.</li>
+  <li><strong>to_free_count</strong>; Counter to track the many chunks to free.</li>
+  <li><strong>stack_base</strong>; Marks the top of the stack.</li>
+</ul>
+
+<p><br /></p>
+
+<h6 id="functions">Functions.</h6>
+
+<p>The GC gets triggered in <em>heap_collect</em>, this code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">heap_collect</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">const</span> <span class="kt">uintptr_t</span> <span class="o">*</span><span class="n">stack_start</span> <span class="o">=</span> <span class="p">(</span><span class="k">const</span> <span class="kt">uintptr_t</span><span class="o">*</span><span class="p">)</span><span class="n">__builtin_frame_address</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="n">memset</span><span class="p">(</span><span class="n">reachable_chunks</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">reachable_chunks</span><span class="p">));</span>
+    <span class="n">mark_region</span><span class="p">(</span><span class="n">stack_start</span><span class="p">,</span> <span class="n">stack_base</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+
+    <span class="n">to_free_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">alloced_chunks</span><span class="p">.</span><span class="n">count</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">reachable_chunks</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
+            <span class="n">assert</span><span class="p">(</span><span class="n">to_free_count</span> <span class="o">&lt;</span> <span class="n">CHUNK_LIST_CAP</span><span class="p">);</span>
+            <span class="n">to_free</span><span class="p">[</span><span class="n">to_free_count</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">alloced_chunks</span><span class="p">.</span><span class="n">chunks</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">start</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">to_free_count</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">free</span><span class="p">(</span><span class="n">to_free</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>First, store the pointer of the start of the stack:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="kt">uintptr_t</span> <span class="o">*</span><span class="n">stack_start</span> <span class="o">=</span> <span class="p">(</span><span class="k">const</span> <span class="kt">uintptr_t</span><span class="o">*</span><span class="p">)</span><span class="n">__builtin_frame_address</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>First, <em>__builtin_frame_address(0)</em> return a void pointer to the current stack frame, this is the stack frame from the current function, which is essentially the last frame introduced in the stack (remember FIFO). We are getting thus, the start of the stack, and, we cast to (const unintptr_t*) since unintptr_t is a variable of the size of a word. This is neccesary because we want to scan the stack word by word.</p>
+
+<p>Then, it marks the memory of the reachable_chunks array to 0 (as unreachable):</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">memset</span><span class="p">(</span><span class="n">reachable_chunks</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">reachable_chunks</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>We do this even if in the definition of this array we defined all the blocks to 0. This is beacause the array will pass over multiple GC cycles and we need to clean it before every of it.</p>
+
+<p>Then, we call mark_region() function:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">static</span> <span class="kt">void</span> <span class="nf">mark_region</span><span class="p">(</span><span class="k">const</span> <span class="kt">uintptr_t</span> <span class="o">*</span><span class="n">start</span><span class="p">,</span> <span class="k">const</span> <span class="kt">uintptr_t</span> <span class="o">*</span><span class="n">end</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">for</span> <span class="p">(;</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="n">end</span><span class="p">;</span> <span class="n">start</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">const</span> <span class="kt">uintptr_t</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="k">const</span> <span class="kt">uintptr_t</span> <span class="o">*</span><span class="p">)</span> <span class="o">*</span><span class="n">start</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">alloced_chunks</span><span class="p">.</span><span class="n">count</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">Chunk</span> <span class="n">chunk</span> <span class="o">=</span> <span class="n">alloced_chunks</span><span class="p">.</span><span class="n">chunks</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">chunk</span><span class="p">.</span><span class="n">start</span> <span class="o">&lt;=</span> <span class="n">p</span> <span class="o">&amp;&amp;</span> <span class="n">p</span> <span class="o">&lt;</span> <span class="n">chunk</span><span class="p">.</span><span class="n">start</span> <span class="o">+</span> <span class="n">chunk</span><span class="p">.</span><span class="n">size</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">reachable_chunks</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
+                    <span class="n">reachable_chunks</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+                    <span class="n">mark_region</span><span class="p">(</span><span class="n">chunk</span><span class="p">.</span><span class="n">start</span><span class="p">,</span> <span class="n">chunk</span><span class="p">.</span><span class="n">start</span> <span class="o">+</span> <span class="n">chunk</span><span class="p">.</span><span class="n">size</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This function considers a memory region ‘[start, end)’ and treats each word as a posible pointer (uintptr_t) and check if points to an alloced chunk, if it does, mark it as reachable and scans recursively to find other pointers.</p>
+
+<ul>
+  <li>
+    <p>First, implement a for loop that goes over <em>start</em> to <em>end</em> (this is from the current stack frame till the base of the stack as we know from the heap_collect() code)</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">for</span> <span class="p">(;</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="n">end</span><span class="p">;</span> <span class="n">start</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">//Note that the stack grows downwards, from the base to the current frame (start) so the start have the lowest memory address and we are going upward in memory start += 1 to reache the highest memory address (the base of the stack).</span>
+</code></pre></div>    </div>
+
+    <p>Is worth to remember that, applying pointer arithmetics, start += 1, goes iterating word after word, so, we are sweeping the stack word by word.</p>
+  </li>
+  <li>
+    <p>Then we assume that the contents of the start pointer is a pointer to <em>uintptr_t</em> and check if this pointer is a valid reference to any of the allocated chunks by the program. In order to perform this task we perform the following comparison:</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">if</span> <span class="p">(</span><span class="n">chunk</span><span class="p">.</span><span class="n">start</span> <span class="o">&lt;=</span> <span class="n">p</span> <span class="o">&amp;&amp;</span> <span class="n">p</span> <span class="o">&lt;</span> <span class="n">chunk</span><span class="p">.</span><span class="n">start</span> <span class="o">+</span> <span class="n">chunk</span><span class="p">.</span><span class="n">size</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <p>This is in fact checking if <em>p</em> exists within the range of the start and the end of the chunk. Let’s think about this carefully. The GC needs to know if a chunk is reachable, originally we can think that this condition is true if <em>p</em> is equal to <em>chunk.start</em> but this would lead to false negatives since a chunk of memory can have internals positions like fields or elements that can also be referenced in the program.</p>
+
+    <p>Consider for example a structure:</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+      <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+      <span class="kt">int</span> <span class="n">b</span><span class="p">;</span>
+  <span class="p">}</span> <span class="n">Pair</span><span class="p">;</span>
+</code></pre></div>    </div>
+
+    <p>We know that a structure is none but a contiguous region of memory that holds several fields, each field can be referenced through memory address, in this case; &amp;Pair-&gt;a or &amp;Pair-&gt;b. This two memory address are within the range of the start and the end of the chunk and a pointer pointing to it is a valid reference to the chunk. This does not means that in the chunk exists pointers, it means that within the chunk exists memory address that can be referenced by a pointer (from the perspective of the programmer) and must be checked.</p>
+
+    <p>The key is that <strong>we are getting each word’s size portion of the stack, considering it as a pointer and then check if his contents (memory address) falls within the memory region of an allocated chunk, for every chunk allocated by the program</strong>, if it is this way, then the pointer holds a memory address to the allocated chunk, or what is the same; the word is a pointer and the pointer contains a reference to the chunk so the chunk is reachable.</p>
+
+    <p>Then, we scan it recursively in search of more pointers to other chunks.</p>
+  </li>
+  <li>
+    <p>Then, once mark_region() has finished, we evaluate the boolean value of each chunk in reachable_chunk array, mark_region had changed to <em>true</em> those that are reachable, if it is false it adds the chunk to the <em>to_free</em> list and calls free() for every element of that array efectively freeing the unreachable memory.</p>
+  </li>
+</ul>
+
+<p>To prove this program, we can find the complete code and a poc on the following <a href="https://github.com/qv1ntv5/HeapAlloc-GC">repository</a>
+<br /></p>
+
+
+      </article>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#C">C</a>
+          
+        </div>
+      
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+<section id = "social-share-section">
+  <span class="sr-only">Share: </span>
+
+  
+    <a href="https://twitter.com/intent/tweet?text=Garbage+Collector.&url=http%3A%2F%2Flocalhost%3A4000%2F2025-07-11-GarbageCollector%2F"
+      class="btn btn-social-icon btn-twitter" title="Share on Twitter">
+      <span class="fab fa-fw fa-twitter" aria-hidden="true"></span>
+      <span class="sr-only">Twitter</span>
+    </a>
+  
+
+  
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F2025-07-11-GarbageCollector%2F"
+      class="btn btn-social-icon btn-facebook" title="Share on Facebook">
+      <span class="fab fa-fw fa-facebook" aria-hidden="true"></span>
+      <span class="sr-only">Facebook</span>
+    </a>
+  
+
+  
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F2025-07-11-GarbageCollector%2F"
+      class="btn btn-social-icon btn-linkedin" title="Share on LinkedIn">
+      <span class="fab fa-fw fa-linkedin" aria-hidden="true"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  
+
+  
+
+  
+
+</section>
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/2025-06-13-HashTable/" data-toggle="tooltip" data-placement="top" title="Hashtables.">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/2025-08-11-Text-Editor/" data-toggle="tooltip" data-placement="top" title="Text Editor.">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+      
+  
+  
+  
+
+  
+
+
+  
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="/feed.xml" title="RSS">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">RSS</span>
+    </a>
+  </li><li class="list-inline-item">
+    <a href="mailto:" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/Qv1nTv5" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://twitter.com/Qvintvs1" title="Twitter">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Twitter</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://linkedin.com/in/german-sanmillan-68b308229/" title="LinkedIn">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">LinkedIn</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        German
+        &nbsp;&bull;&nbsp;
+      
+      2026
+
+      
+
+      
+      </p>
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>

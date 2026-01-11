@@ -1,0 +1,3063 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 5.0.0 | Copyright Dean Attali 2020 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>SharedLibraries&amp;FunctionHooking</title>
+
+  
+  <meta name="author" content="German">
+  
+
+  <meta name="description" content="SharedLibraries and FunctionHooking theory with exampls in C">
+
+  
+
+  
+
+  
+  <link rel="alternate" type="application/rss+xml" title="Home" href="http://localhost:4000/feed.xml">
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/custom-dark.css">
+    
+  
+
+  
+  
+  
+
+  
+
+  
+  <meta property="og:site_name" content="Home">
+  <meta property="og:title" content="SharedLibraries&amp;FunctionHooking">
+  <meta property="og:description" content="SharedLibraries and FunctionHooking theory with exampls in C">
+
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:article:author" content="German">
+  <meta property="og:article:published_time" content="2025-04-26T00:00:00-04:00">
+  <meta property="og:url" content="http://localhost:4000/2025-04-26-SharedLibraries&FunctionHooking/">
+  <link rel="canonical" href="http://localhost:4000/2025-04-26-SharedLibraries&FunctionHooking/">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:site" content="@Qvintvs1">
+  <meta name="twitter:creator" content="@Qvintvs1">
+
+  <meta property="twitter:title" content="SharedLibraries&amp;FunctionHooking">
+  <meta property="twitter:description" content="SharedLibraries and FunctionHooking theory with exampls in C">
+
+  
+
+  
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+    document.querySelectorAll("script[type='math/tex; mode=display']").forEach(function(el) {
+      el.outerHTML = "\\[" + el.textContent + "\\]";
+    });
+    document.querySelectorAll("script[type='math/tex']").forEach(function(el) {
+      el.outerHTML = "\\(" + el.textContent + "\\)";
+    });
+    var script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js';
+    script.async = true;
+    document.head.appendChild(script);
+  });
+</script>
+
+
+  
+
+  
+
+</head>
+
+
+<body>
+
+  
+
+
+  <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">Home</a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Program</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/Cpage">C</a>
+                  <a class="dropdown-item" href="/DHARMApage">Dharma</a>
+                  <a class="dropdown-item" href="/RUSTpage">Rust</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Web2</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/BURPSUITEpage">Burp</a>
+                  <a class="dropdown-item" href="/THMpage">Thm</a>
+                  <a class="dropdown-item" href="/HackTheBoxpage">Htb</a>
+                  <a class="dropdown-item" href="/PEN200page">BasicPentesting</a>
+                  <a class="dropdown-item" href="/REDTEAMBASICSpage">RedTeam</a>
+                  <a class="dropdown-item" href="/BLUETEAMBASICSpage">Blueteam</a>
+                  <a class="dropdown-item" href="/REDESpage">Net</a>
+                  <a class="dropdown-item" href="/2022-11-17-GitBasics">Git</a>
+                  <a class="dropdown-item" href="/CSOFTpage">MemCorrupt</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ZKP</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/MATHpage">Math</a>
+                  <a class="dropdown-item" href="/RUSTpage">Rust</a>
+                  <a class="dropdown-item" href="/NOIRpage">Noir</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Assembly</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/ASSEMpage">x86</a>
+            </div>
+          </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" id="nav-search-link" href="#" title="Search">
+            <span id="nav-search-icon" class="fa fa-search"></span>
+            <span id="nav-search-text">Search</span>
+          </a>
+        </li></ul>
+  </div>
+
+  
+
+  
+
+</nav>
+
+
+
+<div id="beautifuljekyll-search-overlay">
+
+  <div id="nav-search-exit" title="Exit search">✕</div>
+  <input type="text" id="nav-search-input" placeholder="Search">
+  <ul id="search-results-container"></ul>
+  
+  <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+  <script>
+    var searchjson = '[ \
+       \
+        { \
+          "title"    : "P vs NP.", \
+          "category" : "math", \
+          "url"      : "/2026-01-11-PvsNP/", \
+          "date"     : "January 11, 2026" \
+        }, \
+       \
+        { \
+          "title"    : "Race Conditions.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-28-RaceCondition/", \
+          "date"     : "December 28, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Introducción al Cálculo", \
+          "category" : "matemáticas", \
+          "url"      : "/2025-12-25-MathTest/", \
+          "date"     : "December 25, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Uninitialize Data Access.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-23-UDA/", \
+          "date"     : "December 23, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Control Flow.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-12-ControlFlow/", \
+          "date"     : "December 12, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Other Integer Issues.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-05-OtherIntegerIssues/", \
+          "date"     : "December  5, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Integer Overflow/Underflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-05-IntegerOverflow-Underflow/", \
+          "date"     : "December  5, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Passing Parameters.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-04-Passing-Parameters/", \
+          "date"     : "December  4, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Stackframe; Local variables, Arrays and Structures.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-01-LocalVars_Arrays_structs/", \
+          "date"     : "December  1, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Out-Of-Bounds Write.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-26-Out-Of-Bounds-Write/", \
+          "date"     : "November 26, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Calling Functions.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-21-CallingFunctions/", \
+          "date"     : "November 21, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "(Linear) Heap Buffer Overflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-18-HBO/", \
+          "date"     : "November 18, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Basic Instructions.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-17-AssemblyBasicRegisters/", \
+          "date"     : "November 17, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Computer Registers.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-08-ComputerRegisters/", \
+          "date"     : "November  8, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "CVE-2021-20294.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-07-CVE-2021-20294/", \
+          "date"     : "November  7, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "(Linear) Stack Buffer Overflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-06-LSBO/", \
+          "date"     : "November  6, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Text Editor.", \
+          "category" : "C", \
+          "url"      : "/2025-08-11-Text-Editor/", \
+          "date"     : "August 11, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Garbage Collector.", \
+          "category" : "C", \
+          "url"      : "/2025-07-11-GarbageCollector/", \
+          "date"     : "July 11, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Hashtables.", \
+          "category" : "C", \
+          "url"      : "/2025-06-13-HashTable/", \
+          "date"     : "June 13, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Building my own malloc in C.", \
+          "category" : "C", \
+          "url"      : "/2025-06-09-BuildingOwnMalloc/", \
+          "date"     : "June  9, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Malloc Tutorial", \
+          "category" : "C", \
+          "url"      : "/2025-06-06-MallocTutorial/", \
+          "date"     : "June  6, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "SharedLibraries&amp;FunctionHooking", \
+          "category" : "C", \
+          "url"      : "/2025-04-26-SharedLibraries&FunctionHooking/", \
+          "date"     : "April 26, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "File Descritors", \
+          "category" : "C", \
+          "url"      : "/2025-03-04-FileDescriptors/", \
+          "date"     : "March  4, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Network Programming", \
+          "category" : "C", \
+          "url"      : "/2025-02-22-Network_Programming/", \
+          "date"     : "February 22, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "2. Constants and Literals in C.", \
+          "category" : "C", \
+          "url"      : "/2024-12-10-2.ConstantsinC-copy/", \
+          "date"     : "December 10, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "1. Basics of C", \
+          "category" : "C", \
+          "url"      : "/2024-12-02-1.BasicsOfC/", \
+          "date"     : "December  2, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "Gramáticas en Dharma", \
+          "category" : "DHA", \
+          "url"      : "/2024-09-24-Dharma_Tutorial/", \
+          "date"     : "September 24, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "Gramáticas en Dharma", \
+          "category" : "fuzz", \
+          "url"      : "/2024-03-22-Dharma_Tutorial-copy/", \
+          "date"     : "March 22, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "Mi experiencia con el OSCP", \
+          "category" : "pen", \
+          "url"      : "/2023-11-19-PEN200_Experience/", \
+          "date"     : "November 19, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Client Side", \
+          "category" : "pen", \
+          "url"      : "/2023-11-17-17.Client_Side_Attacks/", \
+          "date"     : "November 17, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Deep Packet Tunneling", \
+          "category" : "pen", \
+          "url"      : "/2023-11-16-16.Tunneling_Through_Deep_Packet_Inspection/", \
+          "date"     : "November 16, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Report", \
+          "category" : "pen", \
+          "url"      : "/2023-11-15-15.Making_Reports/", \
+          "date"     : "November 15, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Metasploit", \
+          "category" : "pen", \
+          "url"      : "/2023-11-14-14.Metasploit/", \
+          "date"     : "November 14, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Password Attacks", \
+          "category" : "pen", \
+          "url"      : "/2023-11-13-13.Password_Attacks/", \
+          "date"     : "November 13, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Active Directory Attacks", \
+          "category" : "pen", \
+          "url"      : "/2023-11-12-12.Active_Directory_Attacks/", \
+          "date"     : "November 12, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Port Forwarding", \
+          "category" : "pen", \
+          "url"      : "/2023-11-11-11.Port_Forwarding/", \
+          "date"     : "November 11, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Privilege Escalation", \
+          "category" : "pen", \
+          "url"      : "/2023-11-10-10.Privilege_Escalation/", \
+          "date"     : "November 10, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "File Transfers", \
+          "category" : "pen", \
+          "url"      : "/2023-11-09-9.File_Tranfers/", \
+          "date"     : "November  9, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Buffer Overflows", \
+          "category" : "pen", \
+          "url"      : "/2023-11-08-8.Buffer_Overflows/", \
+          "date"     : "November  8, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Vulnerability Scanning.", \
+          "category" : "pen", \
+          "url"      : "/2023-11-07-7.Vulnerability_Scanning/", \
+          "date"     : "November  7, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Information Gathering", \
+          "category" : "pen", \
+          "url"      : "/2023-11-06-6.Active_Information_Gathering/", \
+          "date"     : "November  6, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Windows", \
+          "category" : "pen", \
+          "url"      : "/2023-11-05-5.Windows/", \
+          "date"     : "November  5, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Networking", \
+          "category" : "pen", \
+          "url"      : "/2023-11-04-4.Networking/", \
+          "date"     : "November  4, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Scripting", \
+          "category" : "pen", \
+          "url"      : "/2023-11-03-3.Scripting/", \
+          "date"     : "November  3, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Practical Tools", \
+          "category" : "pen", \
+          "url"      : "/2023-11-02-2.PracticalTools/", \
+          "date"     : "November  2, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Linux", \
+          "category" : "pen", \
+          "url"      : "/2023-11-01-1.Linux/", \
+          "date"     : "November  1, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Easy", \
+          "category" : "hack", \
+          "url"      : "/2022-12-01-Easy/", \
+          "date"     : "December  1, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Git Basics", \
+          "category" : "", \
+          "url"      : "/2022-11-17-GitBasics/", \
+          "date"     : "November 17, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Tier I", \
+          "category" : "hack", \
+          "url"      : "/2022-11-10-Tier_1/", \
+          "date"     : "November 10, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Tier 0", \
+          "category" : "hack", \
+          "url"      : "/2022-11-09-Tier_0/", \
+          "date"     : "November  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "7.BufferOverflow.", \
+          "category" : "thm", \
+          "url"      : "/2022-11-02-7.BufferOverflow/", \
+          "date"     : "November  2, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "6.Offensive Pentesting", \
+          "category" : "thm", \
+          "url"      : "/2022-11-01-6.OffensivePentesting/", \
+          "date"     : "November  1, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "5.RedTeam", \
+          "category" : "thm", \
+          "url"      : "/2022-10-30-5.RedTeam/", \
+          "date"     : "October 30, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "4.Windows", \
+          "category" : "thm", \
+          "url"      : "/2022-10-22-4.Windows/", \
+          "date"     : "October 22, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "3.Junior Penetrationtester path", \
+          "category" : "thm", \
+          "url"      : "/2022-09-02-3.JRPenetrationTester/", \
+          "date"     : "September  2, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "2.Complete Begginer path.", \
+          "category" : "thm", \
+          "url"      : "/2022-08-07-2.CompleteBegginer/", \
+          "date"     : "August  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "1.Pre-Security path.", \
+          "category" : "thm", \
+          "url"      : "/2022-07-11-1Pre-Security/", \
+          "date"     : "July 11, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "0.Scripting for pentesters.", \
+          "category" : "thm", \
+          "url"      : "/2022-07-10-0.Scripting_for_pentesters/", \
+          "date"     : "July 10, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Burp Certified Practitioner Practice Exam.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-30-PracticeExam/", \
+          "date"     : "March 30, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "22. OAuth Authentication.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-27-22.OAuth_authentication/", \
+          "date"     : "March 27, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "21. HTTP Request Smuggling.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-26-21.HTTP_request_smuggling/", \
+          "date"     : "March 26, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "20. HTTP Host Header Attacks.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-25-20.HTTP_Host_header_attacks/", \
+          "date"     : "March 25, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "19. Web Cache Poisoning.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-24-19.Web_cache_poisoning/", \
+          "date"     : "March 24, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "18. Server-Side Template Injection.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-23-18.Serve-side_template_injection/", \
+          "date"     : "March 23, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "17. Insecure Deserialization.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-22-17.Insecure_deserialization/", \
+          "date"     : "March 22, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "16. WebSockets.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-21-16.WebSockets/", \
+          "date"     : "March 21, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "15.DOM-based XSS vulnerabilities.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-20-15-DOM-based_vulnerabilities/", \
+          "date"     : "March 20, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "14. Clickjacking.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-19-14.Clickjacking/", \
+          "date"     : "March 19, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "13. Cross-Origin Resource Sharing.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-18-13.Cross-origin_resource_sharing_(CORS)/", \
+          "date"     : "March 18, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "12. Cross-Site Request Forgery.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-17-12.Cross-site_request_forgery_(CSRF)/", \
+          "date"     : "March 17, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "11. Cross-Site Scripting.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-16-11.Cross-site_scripting_(XSS)/", \
+          "date"     : "March 16, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "10. XXE Injection.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-15-10.XXE_injection/", \
+          "date"     : "March 15, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "9. Server-Side Request Forgery.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-14-9.Server-side_request_forgery/", \
+          "date"     : "March 14, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "8. File Upload.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-13-8.File_upload_vulnerabilities/", \
+          "date"     : "March 13, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "7. Access Control.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-12-7.Access_control/", \
+          "date"     : "March 12, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "6. Information Disclosure.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-11-6.Information_disclosure/", \
+          "date"     : "March 11, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "5. Bussiness Logic Vulnerabilities.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-10-5.Business_logic_vulnerabilities/", \
+          "date"     : "March 10, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "4. Command Injection.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-09-4.Command_Injection/", \
+          "date"     : "March  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "3. Directory Traversal.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-08-3.Directory_Traversal/", \
+          "date"     : "March  8, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "2. Authentication.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-07-2.Authentication/", \
+          "date"     : "March  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "1. SQLInjection", \
+          "category" : "burp", \
+          "url"      : "/2022-03-06-1.SQLInjection/", \
+          "date"     : "March  6, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Seguridad Perimetral", \
+          "category" : "blueteam", \
+          "url"      : "/2022-02-09-Seguridad_Perimetral/", \
+          "date"     : "February  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Hardening de sistemas", \
+          "category" : "blueteam", \
+          "url"      : "/2022-02-09-Hardening_de_sistemas/", \
+          "date"     : "February  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Bandit", \
+          "category" : "otw", \
+          "url"      : "/2022-02-08-Bandit/", \
+          "date"     : "February  8, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Proxy", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-Proxys/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Protocolos Relevantes", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-Protocolos_Importantes/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Curso Básico Redes", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-Precurso_Redes/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "IPs", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-IPs/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Movimientos Laterales", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-06-Introducci%C3%B3n_a_movimientos_laterales/", \
+          "date"     : "February  6, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Evasión de Defensas", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-05-Evasi%C3%B3n_de_Defensas/", \
+          "date"     : "February  5, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Escalada de privilegios", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-05-Escalada_de_privilegios/", \
+          "date"     : "February  5, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Metasploit", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-04-Metasploit_B%C3%A1sico/", \
+          "date"     : "February  4, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Ataques a aplicaciones Android", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-03-Ataques_aplicaciones_android/", \
+          "date"     : "February  3, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Ataque a aplicaciones web.", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-02-Ataques_a_aplicaciones_web/", \
+          "date"     : "February  2, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Ataques a Infraestructuras y Redes", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-01-Ataques_a_Infraestructuras_y_Redes/", \
+          "date"     : "February  1, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Análisis de Objetivos", \
+          "category" : "redteam", \
+          "url"      : "/2022-01-28-An%C3%A1lisis_de_Objetivos/", \
+          "date"     : "January 28, 2022" \
+        }, \
+       \
+       \
+        { \
+          "title"    : "Assembly and Architecture Introduction.", \
+          "category" : "page", \
+          "url"      : "/ASSEMpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Blueteam Basics", \
+          "category" : "page", \
+          "url"      : "/BLUETEAMBASICSpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "PortSwigger BurpSuite Course", \
+          "category" : "page", \
+          "url"      : "/BURPSUITEpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "C-Family Software Memory Corruption Vulnerabilities", \
+          "category" : "page", \
+          "url"      : "/CSOFTpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "C &amp; Systems Fundamentals.", \
+          "category" : "page", \
+          "url"      : "/Cpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Dharma Fuzzer language", \
+          "category" : "page", \
+          "url"      : "/DHARMApage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Exploiting &amp; Reversing", \
+          "category" : "page", \
+          "url"      : "/EXPREVpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Fuzzing JavaScript Engine", \
+          "category" : "page", \
+          "url"      : "/Fuzzpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "HackTheBox", \
+          "category" : "page", \
+          "url"      : "/HackTheBoxpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "TryHackMe", \
+          "category" : "page", \
+          "url"      : "/MATHpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "PEN200 notes", \
+          "category" : "page", \
+          "url"      : "/PEN200page/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Proyectos", \
+          "category" : "page", \
+          "url"      : "/PROJECTSpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Networking Basics", \
+          "category" : "page", \
+          "url"      : "/REDESpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "RedTeam Basics", \
+          "category" : "page", \
+          "url"      : "/REDTEAMBASICSpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Retired Machines", \
+          "category" : "page", \
+          "url"      : "/RetiredMachinespage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "TryHackMe", \
+          "category" : "page", \
+          "url"      : "/THMpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "About me", \
+          "category" : "page", \
+          "url"      : "/aboutme/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "THM", \
+          "category" : "page", \
+          "url"      : "/preOSCPpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Tag Index", \
+          "category" : "page", \
+          "url"      : "/tags/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page2/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page3/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page4/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page5/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page6/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page7/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page8/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page9/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page10/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page11/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page12/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page13/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page14/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page15/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page16/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page17/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page18/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page19/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page20/", \
+          "date"     : "January 1, 1970" \
+        } \
+       \
+    ]';
+    searchjson = JSON.parse(searchjson);
+
+    var sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('nav-search-input'),
+      resultsContainer: document.getElementById('search-results-container'),
+      json: searchjson
+    });
+  </script>
+</div>
+
+
+
+
+
+  <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>SharedLibraries&FunctionHooking</h1>
+          
+            
+              <h2 class="post-subheading">SharedLibraries and FunctionHooking theory with exampls in C</h2>
+            
+          
+
+          
+            <span class="post-meta">Posted on April 26, 2025</span>
+            
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+
+      
+
+      <article role="main" class="blog-post">
+        <h2 id="binaries-and-shared-libraries">Binaries and Shared Libraries.</h2>
+
+<h3 id="introduction-to-binaries">Introduction to binaries.</h3>
+
+<p>In Unix-like system, the common standard file format for executable files is the <strong>ELF</strong> (Executable and Linked Format). Here we will break up a little how this binary is structured and what executes a file means.</p>
+
+<p><br /></p>
+
+<h4 id="parts-of-elf-files-disk-and-memory">Parts of ELF files (Disk and Memory).</h4>
+
+<p>An ELF binary is divided into three main parts:</p>
+
+<ol>
+  <li><strong>ELF Header</strong>; which contains metadata about the file (pointers to other sections of the binary or structures necesary for the binary’s execution).</li>
+  <li><strong>Program Header Table</strong>; which defines segments used at runtime (for execution).</li>
+  <li><strong>Section Header Table</strong>; which defines .text (code), .data (data), among other things (for linking and debugging).</li>
+</ol>
+
+<p>Thus, we can have two representation of how a ELF file looks like:</p>
+
+<ul>
+  <li>Disk (ELF Binary):</li>
+</ul>
+
+<pre><code class="language-pgsql">+-------------------------+
+| ELF Header             |  &lt;- Contains metadata, entry point, offsets, etc.
++-------------------------+
+| Program Header Table   |  &lt;- Describes segments (for execution).
++-------------------------+
+| Sections (.text, .data)|  &lt;- Code, data, symbols.
++-------------------------+
+| Section Header Table   |  &lt;- Describes sections (for linking/debugging).
++-------------------------+
+</code></pre>
+
+<p>And in Memory (Process Image):</p>
+
+<pre><code class="language-pgsql">+----------------+  &lt;- Low Memory
+| NULL Page     |  (to catch NULL pointer derefs)
++----------------+
+| ELF Headers   |  (mapped from file)
++----------------+
+| Code (.text)  |  (read-execute)
++----------------+
+| Data (.data)  |  (read-write)
+| BSS (.bss)    |  (read-write, uninitialized vars)
++----------------+
+| Heap (malloc) |  (grows up)
++----------------+
+| Stack         |  (grows down)
++----------------+  &lt;- High Memory
+</code></pre>
+
+<p>Lets dive in how this structures are, but previously, lets explain what segments and sections are:</p>
+
+<p><br /></p>
+
+<p><strong>Sections &amp; Segments</strong></p>
+
+<p>In the context of the ELF binary structure, a <em>section</em> is a logical grouping of data or code inside an ELF file. It’s used during compilation and linking (not execution). Each section has a name and contains a specific type of content. For example;</p>
+
+<ul>
+  <li>.text → compiled machine code (instructions).</li>
+  <li>.data → initialized global/static variables.</li>
+  <li>.bss → uninitialized global/static variables (zero-filled at runtime).</li>
+  <li>.rodata → read-only data (e.g., string literals).</li>
+  <li>.symtab, .strtab, .debug_* → symbol/debug info (used by linker/debugger).</li>
+</ul>
+
+<p>Sections help tools like linkers, debuggers, and disassemblers know what’s what inside the binary.</p>
+
+<p><br /></p>
+
+<p>In the other hand, a <em>segment</em> is a chunk of the ELF file that will actually be mapped into memory by the OS when the program is executed. Segments are defined in the Program Header Table, and each one tells the kernel how to map a mount of bytes in memory:</p>
+
+<ul>
+  <li>PT_LOAD → loadable segment (code or data).</li>
+  <li>PT_INTERP → tells the kernel which dynamic linker to use.</li>
+  <li>PT_DYNAMIC → info used by the dynamic linker (symbols, relocations, etc.).</li>
+  <li>PT_TLS, PT_NOTE, etc. → other specialized segments.</li>
+</ul>
+
+<p>Segments are used by the OS loader — this is what ends up in RAM when you run the ELF file.</p>
+
+<p>Having this clear, in simple terms; Sections defines how the ELF binary exists in disk whether Segments defines how the binary ELF gets mapped in memory during execution (process image; the complete in-memory representation of a program during its execution). When execution triggers, the sections (logically grouped amount of data) are grouped into segments and then gets mapped in memory when execution triggers.</p>
+
+<p><br /></p>
+
+<div style="text-align:center">
+<img src="/assets/img/C/Pasted%20image%2020250316110636.png" text-align="center" />
+</div>
+
+<p><br /></p>
+
+<p><strong>ELF Header</strong></p>
+
+<p>This is the main metadata structure that tells the kernel or linker:</p>
+
+<ul>
+  <li>What kind of ELF file this is,</li>
+  <li>How to interpret the rest of the file,</li>
+  <li>Where to find the Program Headers (segments) and Section Headers.</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Field</strong></th>
+      <th><strong>Size</strong></th>
+      <th><strong>Description</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>e_ident[16]</td>
+      <td>16 bytes</td>
+      <td>Magic number + ELF class (32/64-bit), endianness, version, OS ABI.</td>
+    </tr>
+    <tr>
+      <td>e_type</td>
+      <td>2 bytes</td>
+      <td>File type (e.g., ET_EXEC, ET_DYN, ET_REL).</td>
+    </tr>
+    <tr>
+      <td>e_machine</td>
+      <td>2 bytes</td>
+      <td>Target architecture (e.g., x86-64 = 0x3E).</td>
+    </tr>
+    <tr>
+      <td>e_version</td>
+      <td>4 bytes</td>
+      <td>ELF version (usually 1).</td>
+    </tr>
+    <tr>
+      <td>e_entry</td>
+      <td>8 bytes</td>
+      <td>Entry point virtual address (where execution starts).</td>
+    </tr>
+    <tr>
+      <td>e_phoff</td>
+      <td>8 bytes</td>
+      <td>Offset to the Program Header Table.</td>
+    </tr>
+    <tr>
+      <td>e_shoff</td>
+      <td>8 bytes</td>
+      <td>Offset to the Section Header Table.</td>
+    </tr>
+    <tr>
+      <td>e_flags</td>
+      <td>4 bytes</td>
+      <td>Architecture-specific flags.</td>
+    </tr>
+    <tr>
+      <td>e_ehsize</td>
+      <td>2 bytes</td>
+      <td>Size of the ELF header (usually 64 bytes for 64-bit).</td>
+    </tr>
+    <tr>
+      <td>e_phentsize</td>
+      <td>2 bytes</td>
+      <td>Size of each Program Header entry.</td>
+    </tr>
+    <tr>
+      <td>e_phnum</td>
+      <td>2 bytes</td>
+      <td>Number of Program Headers.</td>
+    </tr>
+    <tr>
+      <td>e_shentsize</td>
+      <td>2 bytes</td>
+      <td>Size of each Section Header entry.</td>
+    </tr>
+    <tr>
+      <td>e_shnum</td>
+      <td>2 bytes</td>
+      <td>Number of Section Headers.</td>
+    </tr>
+    <tr>
+      <td>e_shstrndx</td>
+      <td>2 bytes</td>
+      <td>Index of section header string table (names of sections).</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This are a set of value which tells the kernel some information (Description).</p>
+
+<p>In Linux, we can check <em>ELF Headers</em> with the following command:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>readelf <span class="nt">-h</span> /bin/bash
+ELF Header:
+Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 
+Class:                             ELF64
+Data:                              2<span class="s1">'s complement, little endian
+Version:                           1 (current)
+OS/ABI:                            UNIX - System V
+ABI Version:                       0
+Type:                              DYN (Position-Independent Executable file)
+Machine:                           Advanced Micro Devices X86-64
+Version:                           0x1
+Entry point address:               0x31760
+Start of program headers:          64 (bytes into file)
+Start of section headers:          1300656 (bytes into file)
+Flags:                             0x0
+Size of this header:               64 (bytes)
+Size of program headers:           56 (bytes)
+Number of program headers:         14
+Size of section headers:           64 (bytes)
+Number of section headers:         29
+Section header string table index: 28
+</span></code></pre></div></div>
+
+<p><br /></p>
+
+<p><strong>Program Header Table</strong></p>
+
+<p>The <em>Program Header Table</em> (PHT) describes <em>segments</em>, which are the parts of the file mapped into memory at execution time (code, data, etc.).</p>
+
+<p>Each entry of the table (segment descriptor) looks like follows:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Size</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>p_type</td>
+      <td>4 bytes</td>
+      <td>Type of segment (e.g., PT_LOAD, PT_INTERP, PT_DYNAMIC, PT_PHDR)</td>
+    </tr>
+    <tr>
+      <td>p_flags</td>
+      <td>4 bytes</td>
+      <td>Permissions (Read/Write/Execute)</td>
+    </tr>
+    <tr>
+      <td>p_offset</td>
+      <td>8 bytes</td>
+      <td>Offset in the file where this segment starts</td>
+    </tr>
+    <tr>
+      <td>p_vaddr</td>
+      <td>8 bytes</td>
+      <td>Virtual address where segment will be loaded in memory</td>
+    </tr>
+    <tr>
+      <td>p_paddr</td>
+      <td>8 bytes</td>
+      <td>Physical address (usually ignored)</td>
+    </tr>
+    <tr>
+      <td>p_filesz</td>
+      <td>8 bytes</td>
+      <td>Size of segment in file</td>
+    </tr>
+    <tr>
+      <td>p_memsz</td>
+      <td>8 bytes</td>
+      <td>Size of segment in memory (can be larger than filesz, e.g., for .bss)</td>
+    </tr>
+    <tr>
+      <td>p_align</td>
+      <td>8 bytes</td>
+      <td>Alignment requirements in memory and file</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The loader uses this table, not the Section Header Table, to know what to load and how.
+ We can check <em>ELF Segments</em> in Linux:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>readelf <span class="nt">-l</span> /bin/bash
+
+Elf file <span class="nb">type </span>is DYN <span class="o">(</span>Position-Independent Executable file<span class="o">)</span>
+Entry point 0x31760
+There are 14 program headers, starting at offset 64
+
+Program Headers:
+Type           Offset             VirtAddr           PhysAddr
+                FileSiz            MemSiz              Flags  Align
+PHDR           0x0000000000000040 0x0000000000000040 0x0000000000000040
+                0x0000000000000310 0x0000000000000310  R      0x8
+INTERP         0x0000000000000394 0x0000000000000394 0x0000000000000394
+                0x000000000000001c 0x000000000000001c  R      0x1
+    <span class="o">[</span>Requesting program interpreter: /lib64/ld-linux-x86-64.so.2]
+LOAD           0x0000000000000000 0x0000000000000000 0x0000000000000000
+                0x000000000002ef70 0x000000000002ef70  R      0x1000
+LOAD           0x000000000002f000 0x000000000002f000 0x000000000002f000
+                0x00000000000c9161 0x00000000000c9161  R E    0x1000
+LOAD           0x00000000000f9000 0x00000000000f9000 0x00000000000f9000
+                0x0000000000037f6c 0x0000000000037f6c  R      0x1000
+LOAD           0x0000000000131a50 0x0000000000131a50 0x0000000000131a50
+                0x000000000000bd14 0x0000000000016d70  RW     0x1000
+DYNAMIC        0x00000000001345c8 0x00000000001345c8 0x00000000001345c8
+                0x0000000000000200 0x0000000000000200  RW     0x8
+NOTE           0x0000000000000350 0x0000000000000350 0x0000000000000350
+                0x0000000000000020 0x0000000000000020  R      0x8
+NOTE           0x0000000000000370 0x0000000000000370 0x0000000000000370
+                0x0000000000000024 0x0000000000000024  R      0x4
+NOTE           0x0000000000130f4c 0x0000000000130f4c 0x0000000000130f4c
+                0x0000000000000020 0x0000000000000020  R      0x4
+GNU_PROPERTY   0x0000000000000350 0x0000000000000350 0x0000000000000350
+                0x0000000000000020 0x0000000000000020  R      0x8
+GNU_EH_FRAME   0x0000000000112f30 0x0000000000112f30 0x0000000000112f30
+                0x000000000000470c 0x000000000000470c  R      0x4
+GNU_STACK      0x0000000000000000 0x0000000000000000 0x0000000000000000
+                0x0000000000000000 0x0000000000000000  RW     0x10
+GNU_RELRO      0x0000000000131a50 0x0000000000131a50 0x0000000000131a50
+                0x00000000000035b0 0x00000000000035b0  R      0x1
+
+Section to Segment mapping:
+Segment Sections...
+00     
+01     .interp 
+02     .note.gnu.property .note.gnu.build-id .interp .gnu.hash .dynsym .dynstr .gnu.version .gnu.version_r .rela.dyn .rela.plt 
+03     .init .plt .plt.got .text .fini 
+04     .rodata .eh_frame_hdr .eh_frame .note.ABI-tag 
+05     .init_array .fini_array .data.rel.ro .dynamic .got .data .bss 
+06     .dynamic 
+07     .note.gnu.property 
+08     .note.gnu.build-id 
+09     .note.ABI-tag 
+10     .note.gnu.property 
+11     .eh_frame_hdr 
+12     
+13     .init_array .fini_array .data.rel.ro .dynamic .got
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p><strong>Section Header Table</strong></p>
+
+<p>The Section Header Table (SHT) describes the sections in the ELF file: .text, .data, .bss, .rodata, .symtab, etc. Sections are used for compilation and linking (debug symbols, relocation info, source code references), but not necessarily for runtime execution.</p>
+
+<p>An Entry of this table looks like follows:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Size</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>sh_name</td>
+      <td>4 bytes</td>
+      <td>Offset into Section Header String Table (name of this section)</td>
+    </tr>
+    <tr>
+      <td>sh_type</td>
+      <td>4 bytes</td>
+      <td>Section type (SHT_PROGBITS, SHT_SYMTAB, SHT_NOBITS, etc.)</td>
+    </tr>
+    <tr>
+      <td>sh_flags</td>
+      <td>8 bytes</td>
+      <td>Attributes (SHF_ALLOC, SHF_EXECINSTR, etc.)</td>
+    </tr>
+    <tr>
+      <td>sh_addr</td>
+      <td>8 bytes</td>
+      <td>Virtual address in memory (if alloc’d)</td>
+    </tr>
+    <tr>
+      <td>sh_offset</td>
+      <td>8 bytes</td>
+      <td>Offset in the file</td>
+    </tr>
+    <tr>
+      <td>sh_size</td>
+      <td>8 bytes</td>
+      <td>Size of section</td>
+    </tr>
+    <tr>
+      <td>sh_link</td>
+      <td>4 bytes</td>
+      <td>Depends on section type (e.g., symbol table links to string table)</td>
+    </tr>
+    <tr>
+      <td>sh_info</td>
+      <td>4 bytes</td>
+      <td>Extra info (depends on section type)</td>
+    </tr>
+    <tr>
+      <td>sh_addralign</td>
+      <td>8 bytes</td>
+      <td>Alignment in memory</td>
+    </tr>
+    <tr>
+      <td>sh_entsize</td>
+      <td>8 bytes</td>
+      <td>Entry size for tables (e.g., symbol table entries)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>We can check ELF Sections in Linux through the following command:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>readelf <span class="nt">-S</span> /bin/bash
+There are 29 section headers, starting at offset 0x13d8b0:
+
+Section Headers:
+  <span class="o">[</span>Nr] Name              Type             Address           Offset
+       Size              EntSize          Flags  Link  Info  Align
+  <span class="o">[</span> 0]                   NULL             0000000000000000  00000000
+       0000000000000000  0000000000000000           0     0     0
+  <span class="o">[</span> 1] .note.gnu.pr[...] NOTE             0000000000000350  00000350
+       0000000000000020  0000000000000000   A       0     0     8
+  <span class="o">[</span> 2] .note.gnu.bu[...] NOTE             0000000000000370  00000370
+       0000000000000024  0000000000000000   A       0     0     4
+  <span class="o">[</span> 3] .interp           PROGBITS         0000000000000394  00000394
+       000000000000001c  0000000000000000   A       0     0     1
+  <span class="o">[</span> 4] .gnu.hash         GNU_HASH         00000000000003b0  000003b0
+       0000000000004cd8  0000000000000000   A       5     0     8
+  <span class="o">[</span> 5] .dynsym           DYNSYM           0000000000005088  00005088
+       000000000000f180  0000000000000018   A       6     1     8
+  <span class="o">[</span> 6] .dynstr           STRTAB           0000000000014208  00014208
+       000000000000a181  0000000000000000   A       0     0     1
+  <span class="o">[</span> 7] .gnu.version      VERSYM           000000000001e38a  0001e38a
+       0000000000001420  0000000000000002   A       5     0     2
+  <span class="o">[</span> 8] .gnu.version_r    VERNEED          000000000001f7b0  0001f7b0
+       0000000000000100  0000000000000000   A       6     2     8
+  <span class="o">[</span> 9] .rela.dyn         RELA             000000000001f8b0  0001f8b0
+       000000000000e1f0  0000000000000018   A       5     0     8
+  <span class="o">[</span>10] .rela.plt         RELA             000000000002daa0  0002daa0
+       00000000000014d0  0000000000000018  AI       5    24     8
+  <span class="o">[</span>11] .init             PROGBITS         000000000002f000  0002f000
+       0000000000000017  0000000000000000  AX       0     0     4
+  <span class="o">[</span>12] .plt              PROGBITS         000000000002f020  0002f020
+       0000000000000df0  0000000000000010  AX       0     0     16
+  <span class="o">[</span>13] .plt.got          PROGBITS         000000000002fe10  0002fe10
+       0000000000000018  0000000000000008  AX       0     0     8
+  <span class="o">[</span>14] .text             PROGBITS         000000000002fe40  0002fe40
+       00000000000c8315  0000000000000000  AX       0     0     64
+  <span class="o">[</span>15] .fini             PROGBITS         00000000000f8158  000f8158
+       0000000000000009  0000000000000000  AX       0     0     4
+  <span class="o">[</span>16] .rodata           PROGBITS         00000000000f9000  000f9000
+       0000000000019f30  0000000000000000   A       0     0     32
+  <span class="o">[</span>17] .eh_frame_hdr     PROGBITS         0000000000112f30  00112f30
+       000000000000470c  0000000000000000   A       0     0     4
+  <span class="o">[</span>18] .eh_frame         PROGBITS         0000000000117640  00117640
+       000000000001990c  0000000000000000   A       0     0     8
+  <span class="o">[</span>19] .note.ABI-tag     NOTE             0000000000130f4c  00130f4c
+       0000000000000020  0000000000000000   A       0     0     4
+  <span class="o">[</span>20] .init_array       INIT_ARRAY       0000000000131a50  00131a50
+       0000000000000008  0000000000000008  WA       0     0     8
+  <span class="o">[</span>21] .fini_array       FINI_ARRAY       0000000000131a58  00131a58
+       0000000000000008  0000000000000008  WA       0     0     8
+  <span class="o">[</span>22] .data.rel.ro      PROGBITS         0000000000131a60  00131a60
+       0000000000002b68  0000000000000000  WA       0     0     32
+  <span class="o">[</span>23] .dynamic          DYNAMIC          00000000001345c8  001345c8
+       0000000000000200  0000000000000010  WA       6     0     8
+  <span class="o">[</span>24] .got              PROGBITS         00000000001347c8  001347c8
+       0000000000000820  0000000000000008  WA       0     0     8
+  <span class="o">[</span>25] .data             PROGBITS         0000000000135000  00135000
+       0000000000008764  0000000000000000  WA       0     0     32
+  <span class="o">[</span>26] .bss              NOBITS           000000000013d780  0013d764
+       000000000000b040  0000000000000000  WA       0     0     32
+  <span class="o">[</span>27] .gnu_debuglink    PROGBITS         0000000000000000  0013d764
+       0000000000000034  0000000000000000           0     0     4
+  <span class="o">[</span>28] .shstrtab         STRTAB           0000000000000000  0013d798
+       0000000000000114  0000000000000000           0     0     1
+Key to Flags:
+  W <span class="o">(</span>write<span class="o">)</span>, A <span class="o">(</span>alloc<span class="o">)</span>, X <span class="o">(</span>execute<span class="o">)</span>, M <span class="o">(</span>merge<span class="o">)</span>, S <span class="o">(</span>strings<span class="o">)</span>, I <span class="o">(</span>info<span class="o">)</span>,
+  L <span class="o">(</span><span class="nb">link </span>order<span class="o">)</span>, O <span class="o">(</span>extra OS processing required<span class="o">)</span>, G <span class="o">(</span>group<span class="o">)</span>, T <span class="o">(</span>TLS<span class="o">)</span>,
+  C <span class="o">(</span>compressed<span class="o">)</span>, x <span class="o">(</span>unknown<span class="o">)</span>, o <span class="o">(</span>OS specific<span class="o">)</span>, E <span class="o">(</span>exclude<span class="o">)</span>,
+  D <span class="o">(</span>mbind<span class="o">)</span>, l <span class="o">(</span>large<span class="o">)</span>, p <span class="o">(</span>processor specific<span class="o">)</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h4 id="executing-an-elf-file-memory-mapping-and-permissions">Executing an ELF file. Memory mapping and permissions.</h4>
+
+<p>We speak about <em>execute</em> an ELF file when the Linux kernel loads the ELF file into memory, sets up the process environment (memory layout, stack, etc.), and starts executing it from its defined entry point (<em>e_entry</em> in the ELF header). Lets go deeper into this process, supose we execute “./program” in our terminal:</p>
+
+<ul>
+  <li>First, the terminal executes <em>fork()</em> (spawn a child process) and then <em>execve()</em> syscall is invoked. This efectively replace the current child process image with the ELF binary’s recently executed.</li>
+  <li>The kernel loads the ELF binary. Then; the kernel reads the ELF Headers to verify if its a valid ELF and reads the Program Header Table which describes segments for load in memory.</li>
+  <li>
+    <p>The kernel knows the segments to load (this is map to, put the contents into, a specific virtual memory region), based on the PT_LOAD entries type in the Program Header (those entries that must be loaded) and its permissions.</p>
+  </li>
+  <li>Sets up virtual memory layout settings specific permissions (explained later):
+    <ul>
+      <li>The kernel maps all segments at the right virtual addresses,</li>
+      <li>It prepares the process memory: code, data, heap, stack</li>
+      <li>Environment variables and arguments (argv, envp) are pushed onto the stack.</li>
+    </ul>
+  </li>
+  <li>
+    <p>When a binary is loaded, the kernel uses <em>mmap()</em> to map the sections of the ELF binary into virtual memory. Each mapping has specific flags that describes a specific permission managed by the Memory Management Unit;</p>
+
+    <ul>
+      <li><strong>r</strong> - Can read.</li>
+      <li><strong>w</strong> - Can write.</li>
+      <li><strong>x</strong> - Can execute (run as code).</li>
+    </ul>
+
+    <p>Let’s go region by region describing its permissions.</p>
+
+    <ul>
+      <li><strong>.text</strong> (Code segment): r-x (read and execute permissions). This segment contains the code to be executed, so you need to read it and execute it.</li>
+      <li><strong>.data</strong> (Global Variables): rw- (read and write permissions). This segment contains the global variables and other data needed by the main code so we need to acces it (read) and modifying permissions (write).</li>
+      <li><strong>.rodata</strong> (Read only data, like constants): r– Read-only permissions.</li>
+      <li><strong>.bss</strong> (Uninitialized Global Variables): rw-.</li>
+      <li><strong>GOT/PTL</strong> (Address to functions): rw-/r– (In the majority of cases read-only).</li>
+      <li><strong>Heap/Stack</strong> (Manage dynamic memory, local vars or call frames): rw-.</li>
+    </ul>
+  </li>
+  <li>Jumps to the entry point
+    <ul>
+      <li>The <em>e_entry</em> field in the ELF Header gives the virtual address of the entry point.</li>
+      <li>Usually, this is _start (not main()), which sets up things before calling main() (in dynamically linked ELF, this is managed by the dynamic loader first).</li>
+    </ul>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="from-c-code-to-elf-binary">From C Code to ELF Binary.</h3>
+
+<p>In the process of go through a C writed code to a complete runnabe ELF binary we difference 4 steps:</p>
+
+<ul>
+  <li><strong>Preprocessing</strong>.</li>
+  <li><strong>Compilation</strong>.</li>
+  <li><strong>Assembly</strong></li>
+  <li><strong>Linking</strong></li>
+</ul>
+
+<p><br /></p>
+
+<h4 id="preprocessing">Preprocessing.</h4>
+
+<p>We can only force the <em>preprocessing</em> stage of a C file with the following command in Linux:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gcc <span class="nt">-E</span> main.c <span class="nt">-o</span> main.i
+</code></pre></div></div>
+
+<p>This tells the compiler to only run the preprocesor stage, done by the C PreProcessor, <strong>cpp</strong>. This will transform the C source into a pure C file, where all preprocessor directives are evaluated and expanded. Lets see some examples:</p>
+
+<ul>
+  <li>
+    <p>Processing <em>preprocessor directives</em>.</p>
+
+    <p>For example, if we have the following code;</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span>   <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"hello</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p>Then, the preprocessor will copy-paste the full contents of stdio.h into the source code. This will include all the stdio.h functions declarations (for example pritnf()), it is worth to mention that the declaration and the definition of a function are two differents things. The declaration of a function tells the compiler how is the function (signature, return value, etc) and the definition, located in another file in most of the cases, tells the compiler the actual implementation of the function; how the function works.</p>
+
+    <p>In the case of printf(), its declaration is found in “<stdio.h>", which is included in the source code using the #include directive. This allows the compiler to recognize that printf() exists and can be used in the program. However, the actual definition of printf() is not in <stdio.h> but in the shared library libc.so.</stdio.h></stdio.h></p>
+
+    <p>At runtime, the dynamic linker (ld.so) resolves the printf() symbol and loads its actual definition from libc.so, allowing the function to execute as intended.</p>
+  </li>
+  <li>
+    <p>Macro definitions and Expansions.</p>
+
+    <p>If we have the following macros on our code:</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="cp">#define PI 3.14
+</span>   <span class="cp">#define SQUARE(x) ((x)*(x))
+</span>   <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kt">float</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+        <span class="kt">float</span> <span class="n">a</span> <span class="o">=</span> <span class="n">PI</span> <span class="o">*</span> <span class="n">SQUARE</span><span class="p">(</span><span class="n">r</span><span class="p">);</span>
+   <span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p>The preprocessor replaces every usage with the defined expression expanding the macros, the resulting code would be:</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kt">float</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+        <span class="kt">float</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span><span class="p">.</span><span class="mi">14</span> <span class="o">*</span> <span class="p">((</span><span class="n">r</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">r</span><span class="p">));</span>
+   <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>This are only a few examples of the cpp performance, once all includes, macros, and conditions are expanded, you get a giant .i file — pure C code.</p>
+
+<p><br /></p>
+
+<h4 id="compilation">Compilation.</h4>
+
+<p>When the preprocessor has finished and return a .i file of pure C, it starts the <em>compilation</em> stage, where the .i pur C file gets converted to Assembly code by the <em>compiler</em>. This phase waits a .i file and returns a .s file written in assembly. We can perform only the compulation stage through the following command in Linux:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gcc</span> <span class="o">-</span><span class="n">S</span> <span class="n">main</span><span class="p">.</span><span class="n">i</span> <span class="o">-</span><span class="n">o</span> <span class="n">main</span><span class="p">.</span><span class="n">s</span>
+</code></pre></div></div>
+<p><br /></p>
+
+<h4 id="assemblyas">Assembly(as)</h4>
+
+<p>In this stage, the assembler transform the assembly .s file to machine code, returning an .o file. We can go through this step with one of the following commands:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gcc <span class="nt">-c</span> main.s <span class="nt">-o</span> main.o <span class="c">#Through the .s assembly file.</span>
+
+gcc <span class="nt">-c</span> main.c <span class="nt">-o</span> main.o <span class="c">#Through the .c source file.</span>
+</code></pre></div></div>
+
+<p>The result file is a binary file taht contains several sections:</p>
+
+<ul>
+  <li>Machine code in .text section</li>
+  <li>Global/static variable definitions (.data, .bss)</li>
+  <li>Symbol table (.symtab)</li>
+  <li>Relocation entries (placeholders for unresolved addresses)</li>
+</ul>
+
+<p><br /></p>
+
+<h4 id="linking">Linking.</h4>
+
+<p>In Unix-like systems, linking is the process of combining multiple object files and libraries into a single executable (or library). in this process different parts of a program (functions, variables) gets connected so they all work together in a single executable file. <em>It’s the stage that comes after compilation</em>, and it’s critical to produce a runnable binary.:</p>
+
+<ul>
+  <li>Combines object files</li>
+  <li>Resolves symbols</li>
+  <li>Fixes memory addresses (relocations)</li>
+  <li>And builds the final executable ELF binary</li>
+</ul>
+
+<p>When you compile C code, each .c file becomes an object file (.o), but it doesn’t yet know where functions really live (e.g., printf), where variables are or how to jump/call to other files’ code. Linking resolves those gaps.</p>
+
+<p>Let’s break this up through an example, lets suppose we have two files:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// main.c</span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="kt">void</span> <span class="nf">hello</span><span class="p">();</span>  <span class="c1">// declaration</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">hello</span><span class="p">();</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// hello.c</span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="kt">void</span> <span class="nf">hello</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Hello from hello()</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>If we compile this two codes we would obtain two binary files that have all the necesary to run:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gcc <span class="nt">-c</span> main.c   → main.o
+gcc <span class="nt">-c</span> hello.c  → hello.o
+</code></pre></div></div>
+
+<p>Main code calls hello() function which is defined in other file. The .o file is a binary file wich have all the necesary parts to run, but this parts lack of organization to function in a coherent way.</p>
+
+<p>When we link those files:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gcc main.o hello.o <span class="nt">-o</span> myprogram
+</code></pre></div></div>
+
+<p>The linker, (ld), invoked by gcc:</p>
+
+<ul>
+  <li>Finds that main.o uses a symbol hello</li>
+  <li>Finds the definition of hello in hello.o</li>
+  <li>Patches the call instruction in main.o so it jumps to the address in hello.o</li>
+</ul>
+
+<p>The result is myprogram, an ELF binary with proper machine code, fully connected function calls, all symbols resolved.</p>
+
+<p><br /></p>
+
+<h5 id="static-linking-vs-dynamic-linking-shared-libraries">Static Linking vs Dynamic Linking. Shared Libraries.</h5>
+
+<p>There are two mains forms of linking; static linking and dynamic linking.</p>
+
+<p><br /></p>
+
+<p><strong>Static Linking</strong></p>
+
+<p>The linker copies all needed code from libraries into your final binary. So your binary becomes self-contained and it doesn’t depend on external .so files at runtime. It uses .a files (archive of .o files) during linking.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gcc main.c <span class="nt">-static</span> <span class="nt">-o</span> myprogram
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p><strong>Dynamic Linking</strong></p>
+
+<p>The linker does not copy the code from the libraries, but instead adds references (symbols) to the shared libraries and marks those symbols to be resolved at runtime. It uses .so files (shared objects).</p>
+
+<p>A shared library (.so) in Linux is a compiled binary that contains functions and symbols which other programs can use at runtime. For example, libc.so.6 defines common functions like write(), read(), malloc(), etc. A symbol is simply a name that represents a function, variable, or data object an resolves during the compilation and linking process.</p>
+
+<p><br /></p>
+
+<p><strong>Dynamic Linking Symbol Resolution flow</strong></p>
+
+<p>Let’s see deeper this process, there are a few importants elements which take a crucial parts in dynamic linking:</p>
+
+<ul>
+  <li>PLT (Procedure Linkage Table): Code stubs used to call external functions.</li>
+  <li>GOT (Global Offset Table): Holds actual addresses of external functions (resolved at runtime).</li>
+  <li>.dynsym: Symbol table for dynamic linking.</li>
+  <li>.dynstr: String table (names of symbols).</li>
+  <li>.rel.plt / .rela.plt: Relocation entries for dynamic symbols.</li>
+</ul>
+
+<p>Now, lets suppose we have a code that calls printf().</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+     <span class="n">printf</span><span class="p">(</span><span class="s">"Hello, World!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>If we, at first, compile this program 
+Then, the compiler turns this into a call in the PLT</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>call printf@PLT
+</code></pre></div></div>
+
+<p>The PLT entry does not yet know where real main → PLT → GOT → real printf()printf() is. At runtime, the dynamic linker patches the GOT with the actual address of printf() from libc.so. Now, future calls to printf() jump directly to libc’s real function via GOT.</p>
+
+<p>So, the flow that the system follow in order to go to printf() is:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>main → PLT → GOT → real printf()
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="function-hooking">Function Hooking.</h2>
+
+<h3 id="what-is-function-hooking">What is function hooking.</h3>
+
+<p>Function Hooking is a technique used to intercept and modify the behavior of functions at runtime. It allows a program to redirect function calls, inspect parameters, change return values, or execute additional code before or after a function runs. Hooking can be done in user space (e.g., hijacking dynamic libraries) or kernel space (e.g., modifying system call tables).
+There are several methods to hook a function:</p>
+
+<ul>
+  <li><strong>Inline Hooking (Code Overwriting)</strong>: Modifies the first bytes of a function (machine code) to redirect execution elsewhere.</li>
+  <li><strong>Import Address Table (IAT) Hooking</strong>: Modify the function pointer in order to replace it with a pointer to your custom function.</li>
+  <li><strong>API/Shared Library Hooking</strong>: Load custom function in application execution instead of default one.</li>
+  <li><strong>System Call Hooking</strong>: Modifying the System Call Table in the kernel.</li>
+</ul>
+
+<p>In this case, we gonna see an example of <em>Shared Library hooking</em>, this kind tries to load a custom function instead of the defaul one through LD_PRELOAD method.</p>
+
+<p>Let’s go back over the flow the program follows in order to call a function; main → PLT → GOT → function(). The goal of function hooking is to intercept and replace this flow. This can be done in several ways.</p>
+
+<p><br /></p>
+
+<h3 id="types-of-api-hooking">Types of API Hooking.</h3>
+
+<p>In this module we are covering two types of function hooking.</p>
+
+<p>A. LD_PRELOAD tecnique.
+B. Overwriting GOT Entries (Static and Dynamic case)</p>
+
+<p><br /></p>
+
+<h3 id="ld_preload-technique">LD_PRELOAD Technique.</h3>
+
+<h4 id="ld_preload-explanation">LD_PRELOAD explanation.</h4>
+
+<p>LD_PRELOAD is an enviroment variable used in Unix-like systems that instructs the linker (ld) to load a shared library before any other. This is very powerful since it allows you to override functions in existing programs without modifying their source code or binary.</p>
+
+<p><br /></p>
+
+<h4 id="basic-internals-hooking-with-ld_preload">Basic internals. Hooking with LD_PRELOAD.</h4>
+
+<p>We know that the majority of C programs compiled in Linux systems used the dynamic linking to use shared libraries. This means that, when a program calls a function, it dosen’t have the full implementation of the function but a symbol (a reference to the function in a shared library) which is resolved at runtime by the dynamic linker.</p>
+
+<p>We can intercep this process with LD_PRELOAD:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">LD_PRELOAD</span><span class="o">=</span>/path/to/mylib.so ./target_program
+</code></pre></div></div>
+
+<p>This command perform that the dynamic linker does this before loading libc or other libraries:</p>
+
+<ul>
+  <li>
+    <p>Loads mylib.so</p>
+  </li>
+  <li>
+    <p>Resolves symbols (functions like malloc, open, etc.) from your library first</p>
+  </li>
+  <li>
+    <p>If a symbol is already resolved from your library, it won’t continue to resolve the one in libc</p>
+  </li>
+</ul>
+
+<p>So, your custom function is gonna be executed before any other function.</p>
+
+<p><br /></p>
+
+<h4 id="building-a-shared-library">Building a Shared Library.</h4>
+
+<p>Our pretension is to write a custom function that replaces deafult <em>write()</em> system call. Before that, we will understand how write works and what ‘replace’ this functions means.</p>
+
+<p>The <em>write()</em> function in C is a wrapper around a system call used to write data to a file descriptor and is defined in the <em>unistd.h</em> header. This means that when a program calls ‘write()’ function, it actually calls a function provided by <em>libc</em> (user-space function) which perform a system call to the kernel (sys_write) to execute the actual write operation.</p>
+
+<p>The sintax of this function is as follows:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">ssize_t</span> <span class="nf">write</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">count</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>First, we have to say that <em>ssize_t</em> is an acronym of <em>signed size_t</em>, <em>size_t</em> in the other hand is an unsigned interger data type (named like that for cleaner code purposes) that can holds the maximum the maximum size of a theoretically possible array or an object. The <em>ssize_t</em> is used mainly for functions that return the number of bytes processed, with -1 indicating an error.</p>
+
+<p>Said this, write() functions <strong>return the number of bytes written to the file descriptor and -1 if there been any kind of error in the write process</strong>.</p>
+
+<p>It accepts three arguments:</p>
+
+<ul>
+  <li><strong>int fd</strong>: The file descriptor where data will be written.</li>
+  <li><strong>const void *buf</strong>: A pointer to the buffer which contains the data to write.</li>
+  <li><strong>size_t count</strong>: The number of data to write.</li>
+</ul>
+
+<p><br /></p>
+
+<h5 id="write-functionality">Write functionality.</h5>
+
+<p>Now that we know how to call <em>write()</em>, then we can go deeper in how this functions works internally.</p>
+
+<ol>
+  <li>Checks file descriptor.</li>
+</ol>
+
+<p>At first, the kernel checks if <em>fd</em> is valid. When you call write, at first the system performs the following steps in the kernel:</p>
+
+<ul>
+  <li>System check if <em>fd</em> exists in the FDT of the process, if it not exists in the FDT, write returns an error of bad file descriptor (EBADF).</li>
+  <li>If <em>fd</em> exists in FDT, then check if the file descriptor was opened to write checking the flag on the MODE field in the FDT, if it does not allow to write, the function returns EBADF.</li>
+</ul>
+
+<ol>
+  <li>Copies data from <em>buf</em> to kernel space.</li>
+</ol>
+
+<p>Initially, when you have to write a string to a file descriptor, the string exists in the <em>virtual address user-space</em> inside a buffer, this means that is a pointer to memory managed by the program. Since, for security reasons, user-space programs cannot overwrite memory kernel-space and file descriptors are system resources (handled by the kernel), the string have to be copied to an internal buffer managed by the kernel (sys_write()) in order to be copied to the file descriptor in next steps.</p>
+
+<ol>
+  <li>Perform actual write operation.</li>
+</ol>
+
+<p>Once kernel have the data to be written on an internal buffer, it writes the contents on the desired file descriptor</p>
+
+<ol>
+  <li>Kernel update file offset,</li>
+</ol>
+
+<p>The kernel updates the file offset by adding the number of bytes written (size), this means the next write operation will start from the new offset.</p>
+
+<ol>
+  <li>Returns number of bytes written</li>
+</ol>
+
+<p>Sys_write detect how many bytes has been written to the fd and returns this information to write which also return this information.</p>
+
+<p><br /></p>
+
+<h5 id="custom-write-function-dlsym-call">Custom Write function. Dlsym call.</h5>
+
+<p>Know, consider the following code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;dlfcn.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span>
+<span class="kt">ssize_t</span> <span class="nf">write</span><span class="p">(</span><span class="kt">int</span> <span class="n">fildes</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">nbytes</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">ssize_t</span> <span class="p">(</span><span class="o">*</span><span class="n">new_write</span><span class="p">)(</span><span class="kt">int</span> <span class="n">fildes</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">nbytes</span><span class="p">);</span>
+
+  <span class="kt">ssize_t</span> <span class="n">result</span><span class="p">;</span>
+
+  <span class="n">new_write</span> <span class="o">=</span> <span class="n">dlsym</span><span class="p">(</span><span class="n">RTLD_NEXT</span><span class="p">,</span> <span class="s">"write"</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="s">"Hello, World!</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="p">{</span>
+      <span class="n">result</span> <span class="o">=</span> <span class="n">new_write</span><span class="p">(</span><span class="n">fildes</span><span class="p">,</span> <span class="s">"Goodbye, cruel world!</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="mi">21</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">else</span>
+  <span class="p">{</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">new_write</span><span class="p">(</span><span class="n">fildes</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">nbytes</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Lets break this up:</p>
+
+<p>Now that what is function hooking and how the function we want to hook works</p>
+
+<p>The code imports the following headers:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="c1"> </span><span class="cp">
+#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;dlfcn.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span></code></pre></div></div>
+
+<p>The first and the last one we already know it, is the standard inputo/output library and the tring manipulation functions header. But we will deep in the other two ones:</p>
+
+<ul>
+  <li><strong>unistd.h</strong>; Is the name of the libraru that the header file that provides access to the POSIX operating system API, Unix-systems system calls.</li>
+  <li><strong>dlfcn.h</strong>; Header file that provides functions to dynamically load shared libraries (.so files), retrieve function addresses, and unload them at runtime. This is useful to perform <em>Function hooking</em> (intercepting system calls).</li>
+</ul>
+
+<p>Then, it accepts the same arguments:</p>
+
+<ul>
+  <li><strong>int fildes</strong>: The file descriptor to write.</li>
+  <li><strong>const void *buf</strong>: The buffer with the contents to write</li>
+  <li><strong>size_t</strong>: Numbers of bytes to write.</li>
+</ul>
+
+<p>Now,we declare a <em>function pointer</em> (this is a type of pointer that can hold the address of a function) with the same signature of write. The logic is to give this pointer to hold the real write function with the following code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">ssize_t</span> <span class="p">(</span><span class="o">*</span><span class="n">new_write</span><span class="p">)(</span><span class="kt">int</span> <span class="n">fildes</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">nbytes</span><span class="p">);</span>
+
+<span class="n">new_write</span> <span class="o">=</span> <span class="n">dlsym</span><span class="p">(</span><span class="n">RTLD_NEXT</span><span class="p">,</span> <span class="s">"write"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>The second line uses <strong>dlsym</strong> call, which in brief terms, finds the next occurrence of write in the dynamic symbol resolution order allowing us to use the real <em>write()</em> function. Then we assign the dlsym() call to our function pointer.</p>
+
+<p>Till this point, our function acts exacting like the <em>write()</em> function, accepts the same arguments and with <em>dlsym()</em> call it delegates to actual <em>write()</em> function. Now we are going to write the lines that differs from the normal write() functionality. If the string “Hello, World!” is detected in the buffer passed to the function, instead, the function writes “Goodbye, cruel world”, else it just calls normal <em>write()</em> function.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="s">"Hello, World!"</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+     <span class="n">result</span> <span class="o">=</span> <span class="n">new_write</span><span class="p">(</span><span class="n">fildes</span><span class="p">,</span> <span class="s">"Goodbye, cruel world!"</span><span class="p">,</span> <span class="mi">21</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">else</span>
+<span class="p">{</span>
+     <span class="n">result</span> <span class="o">=</span> <span class="n">new_write</span><span class="p">(</span><span class="n">fildes</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">nbytes</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h5 id="compiling-custom-code-as-a-shared-library">Compiling custom code as a Shared Library.</h5>
+
+<p>We can compile this as a Shared Library with the following command:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gcc <span class="nt">-shared</span> <span class="nt">-fPIC</span> <span class="nt">-o</span> hook.so hook.c <span class="nt">-ldl</span>
+</code></pre></div></div>
+
+<p>Which creates a shared object file (hook.so), which can be used with <strong>LD_PRELOAD</strong> to override functions in dynamically linked programs.</p>
+
+<ul>
+  <li>
+    <p><strong>gcc</strong>: The GNU Compiler Collection (GCC), used to compile C code.</p>
+  </li>
+  <li>
+    <p><strong>shared</strong>: Generates a shared library (.so file instead of an executable). Shared libraries are dynamically loaded into memory when needed.</p>
+  </li>
+  <li>
+    <p><strong>fPIC (Position-Independent Code)</strong>: Ensures the generated machine code can be loaded at any memory address. Required for shared libraries to work correctly with LD_PRELOAD.</p>
+  </li>
+  <li>
+    <p><strong>o hook.so</strong>: Specifies the output file name (hook.so).</p>
+  </li>
+  <li>
+    <p><strong>hook.c</strong>: The source C file to compile.</p>
+  </li>
+  <li>
+    <p><strong>ldl (Link with libdl)</strong>: Links against the libdl library, which provides functions like dlsym(), dlopen(), and dlclose(). Needed for dynamic symbol resolution (e.g., dlsym(RTLD_NEXT, “open”) to get the original function).</p>
+  </li>
+</ul>
+
+<p>The result will be a <em>hook.so</em> shared library. The next step is to compile a normal C program indicating to the linker to use hour custom shared library with first prority:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s">"Hello, World!</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="mi">14</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Then we compile it and execute it:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gcc <span class="nt">-o</span> <span class="nb">test </span>test.c<span class="p">;</span> ./test
+</code></pre></div></div>
+
+<p>We should get “Hello, World!”. Now, we make use of LD_PRELOAD to intercept write function:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">LD_PRELOAD</span><span class="o">=</span>./hook.so ./test
+</code></pre></div></div>
+
+<p>We should get: “Goodbye, cruel world!”.</p>
+
+<p><br /></p>
+
+<h3 id="overwriting-got-entries-technique">Overwriting GOT entries technique.</h3>
+
+<p>Function hooking via GOT overwriting involves modifying the GOT entry of a target function to point to our own malicious or monitoring function instead of the original function.</p>
+
+<p><br /></p>
+
+<h4 id="fundamentals">Fundamentals.</h4>
+
+<h5 id="overview">Overview.</h5>
+
+<p>We remember that, if we have the following code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+     <span class="n">printf</span><span class="p">(</span><span class="s">"Hello, World!</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>And we compile and execute it, the processor does not know were the function <em>printf()</em> is. At the preprocessing stage, the preprocessor include the <em>stdio.h</em> lib, where the <em>printf()</em> declaration relies, within the source code of our file. This will indicate to the processor how the function is (signature, return value, etc) but no his actual implementation or where to find it, this is other process called <strong>dynamic symbol resolution</strong> and happens at runtime, it consists in resolve the symbol (a reference to a external function or piece of code) with the actual memory address where the implementation of the referenced data is.</p>
+
+<p>This happens in several steps, mainly involves two structures:</p>
+
+<ul>
+  <li>
+    <p><strong>PLT (Procedure Linkage Table)</strong>: A stub used to call external functions.</p>
+  </li>
+  <li>
+    <p><strong>GOT (Global Offset Table)</strong>: Stores addresses of dynamically linked functions resolved at run time. Initally, a GOT entry for a function in the first call points to a resolver that loads the actual address of the function.</p>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h5 id="dynamic-symbol-resolution-step-by-step">Dynamic Symbol Resolution step by step.</h5>
+
+<ul>
+  <li>
+    <p><strong>Function call in main()</strong></p>
+
+    <p>First, as we said before; The compiled binary does not contain a direct call to printf(). Instead, the compiler generates a call to the PLT stub for printf.</p>
+
+    <p>Example disassembly of main():</p>
+
+    <pre><code class="language-assembly">   call   printf@plt
+</code></pre>
+
+    <p>This means the function call is indirect, and execution jumps to the PLT entry for printf.</p>
+
+    <p><br /></p>
+  </li>
+  <li>
+    <p><strong>Execution enters the PLT. First call.</strong></p>
+
+    <p>Second, the PLT (Procedure Linkage Table) is a section of the ELF binary (which exists in the .plt section) generated during the linking process which contains <em>stub functions</em> (a small piece of code that acts as an intermediary between the program and an actual dynamically linked function) for dynamically linked functions. It acts as an intermediary before the function address is resolved.</p>
+
+    <p>Each function defined in the source code has an entry in the PLT. For example, the PLT entry for <em>printf()</em> typically looks like this:</p>
+
+    <pre><code class="language-assembly">   printf@plt:
+        jmp    QWORD PTR [GOT+offset]   ; Jump to the GOT entry for printf
+        push   index                    ; Push relocation index onto stack
+        jmp    plt[0]                    ; Jump to PLT0 (common resolver)
+</code></pre>
+
+    <p>If the functions has been already resolved, then execution jumps to the function address, if not (first call) execution continues.</p>
+
+    <p><br /></p>
+  </li>
+  <li>
+    <p><strong>GOT lookup</strong></p>
+
+    <p>As we say before, the first time <em>printf()</em> is called, its GOT entry does not contain the real function address but instead points back to the PLT.</p>
+
+    <p>The GOT entry for printf before resolution points to PLT:</p>
+
+    <pre><code class="language-assembly">   GOT[printf] → PLT stub (resolver)
+</code></pre>
+
+    <p>Since the function is not resolved yet, execution jumps to PLT0, which is a special entry in the PLT that calls the dynamic linker. Is convenient to say that if we manage to force the GOT to point to a custom address, we will actually execute our custom function instead of the intended one, performing efectively function hooking. We will see this later.</p>
+
+    <p><br /></p>
+  </li>
+  <li>
+    <p><strong>Dynamic Linker</strong></p>
+
+    <p>Since this is the first call, the PLT calls the GOT and the GOT points to the <em>resolver stub</em> in PLT, which calls the dynamic linker (ld-linker.so), which is responsible for resolving symbols at runtime. The PLT0 entry performs:</p>
+
+    <pre><code class="language-assembly">   call _dl_runtime_resolve
+</code></pre>
+
+    <p><em>_dl_runtime_resolve()</em> is a function part of the dynamic loader. It looks up in the <em>dynamic symbol table</em>. It finds the real address of <em>printf()</em> in libc (/lib/x86_64-linux-gnu/libc.so.6).</p>
+
+    <p><br /></p>
+  </li>
+  <li>
+    <p><strong>Updating GOT Entry</strong></p>
+
+    <p>Once the real function address is found, the dynamic linker overwrites the GOT entry for printf with the real address.</p>
+
+    <p>The GOT entry for printf after resolution:</p>
+
+    <pre><code class="language-assembly">   GOT[printf] → 0x7ffff7e4e0b0 (actual address of printf)
+</code></pre>
+
+    <p>In following main’s pritnf() calls; The next time printf is called; the PLT stub jumps to the GOT entry. The GOT entry now holds the real function address. Execution goes directly to <em>printf()</em> without calling the dynamic linker again.</p>
+
+    <p><br /></p>
+  </li>
+</ul>
+
+<p>In summary, in the dynamic symbol resolution process go over the followings paths in order to locate the function implementation memory address storage location:</p>
+
+<ul>
+  <li>First call:</li>
+</ul>
+
+<pre><code class="language-assembly">main() → function@plt → GOT (points back to PLT) → PLT0 → Dynamic Linker → function location
+</code></pre>
+
+<p><br /></p>
+
+<ul>
+  <li>Following calls:</li>
+</ul>
+
+<pre><code class="language-assembly">main() → function@plt → GOT (now contains real printf address) → function location.
+</code></pre>
+
+<p><br /></p>
+
+<h5 id="visualizating-plt-and-got-in-real-binary-objdump-and-readelf">Visualizating PLT and GOT in real binary. objdump and readelf.</h5>
+
+<p>In Linux, we can check for the PLT and GOT of a binary with <em>objdump</em> and <em>readelf</em> commands respectively.</p>
+
+<p>Suppose we have the following code in C:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+     <span class="n">printf</span><span class="p">(</span><span class="s">"Hello, World!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Then, we compile our code (gcc test.c -o test) and execute the following command:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>objdump <span class="nt">-d</span> <span class="nb">test</span> | <span class="nb">grep</span> <span class="s2">"&lt;printf@plt&gt;"</span>
+</code></pre></div></div>
+
+<p>We can check that the output is empty, then we instead do the following command:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>objdump <span class="nt">-d</span> <span class="nb">test</span> | <span class="nb">grep</span> <span class="s2">"@plt"</span>        
+
+0000000000001020 &lt;puts@plt-0x10&gt;:
+0000000000001030 &lt;puts@plt&gt;:
+0000000000001040 &lt;__cxa_finalize@plt&gt;:
+    1112:       e8 29 ff ff ff          call   1040 &lt;__cxa_finalize@plt&gt;
+    1147:       e8 e4 fe ff ff          call   1030 &lt;puts@plt&gt;
+</code></pre></div></div>
+
+<p>This means that, when we call printf() in our code, the linker instead of calling <em>printf()</em> calls <em>puts()</em>. The output shows the call.</p>
+
+<p><br /></p>
+
+<p>Now, we can also confirm this with:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> readelf <span class="nt">-r</span> <span class="nb">test</span> | <span class="nb">grep</span> <span class="s2">"puts"</span>  
+
+000000004000  000300000007 R_X86_64_JUMP_SLO 0000000000000000 puts@GLIBC_2.2.5 + 0
+</code></pre></div></div>
+
+<p>This command allow us to visualize the calls to the PLT and the GOT.</p>
+
+<p><br /></p>
+
+<h5 id="memory-protection">Memory protection.</h5>
+
+<p>In the other hand, the GOT is a part of the ELF file which get mapped on memory when its executed as we see in the Segments and Sections part. The image of the ELF binary gets mapped over several virtual memory regions.</p>
+
+<p>Our objective is to chagen an entry of the GOT, which is mapped in a memory region without write permissions as we see in previous sections. So first, we have to change memory permissions and then proceed to change the contents of the memory address of the GOT that contains the legacy function. This can be achieve with <strong>mprotect()</strong> syscall in unix systems.</p>
+
+<p><br /></p>
+
+<h6 id="memory-pagination">Memory pagination.</h6>
+
+<p>Lets explain what pagination is before dive into this function.</p>
+
+<p>Pagin is how the virtual memory system breaks memory into fixed-size chunks called <em>pages</em>. We can think about the memory like a big excel book, then the pages would be fixed height rows of usually 4096 bytes. This page are the most basic units in memory management, each with his own permissions, that are used to translate virtual memory addresses into physical ones. Segments from a ELF bianry are later mapped into pages in virtual memory (Sections –&gt; Segments –&gt; Pages).</p>
+
+<p>Thus, if we want to change permissions over a GOT entry, we have to use <em>mprotect</em> to change the permissions of the page/s in which this entry is stored.</p>
+
+<p><br /></p>
+
+<h6 id="mprotect-syscall">Mprotect() syscall.</h6>
+
+<p>If we access the <em>man</em> documentation of <em>mprotect</em> function we can see the description: “mprotect() changes the access protections for the calling process’s memory pages containing any part of the address range in the interval [addr, addr+len-1].  addr must be aligned to a page boundary”. So, is a function we can use to change the permissions of a designated memory page.</p>
+
+<p>It has the following signature:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">mprotect</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">addr</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">,</span> <span class="kt">int</span> <span class="n">prot</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Let’s describe the arguments:</p>
+
+<ul>
+  <li>
+    <p><strong>void *addr</strong>: This argument is the starting virtual adress of the memory region you want to change protections for. As we now, about pagination, this argument must containt <strong>the initial address of the page that contains the segment you want to modify</strong>. (If not EINVAL error is trigged). Let’s se an example, if our region memory target is 0x601018, then the code to implement is:</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="kt">long</span> <span class="n">pagesize</span> <span class="o">=</span> <span class="n">sysconf</span><span class="p">(</span><span class="n">_SC_PAGESIZE</span><span class="p">);</span>  <span class="c1">// usually 4096</span>
+   <span class="kt">void</span> <span class="o">*</span><span class="n">page_start</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)((</span><span class="kt">uintptr_t</span><span class="p">)</span><span class="n">target_addr</span> <span class="o">&amp;</span> <span class="o">~</span><span class="p">(</span><span class="n">pagesize</span> <span class="o">-</span> <span class="mi">1</span><span class="p">));</span>
+</code></pre></div>    </div>
+
+    <p>This lines first get the page syze by performing <em>sysconf()</em> syscall (get configuration information at runtime; unistd.h). Then, the second line gets the starts address of the page that contains a target_address.</p>
+
+    <ol>
+      <li>First we cast <em>target_addr</em> to a <em>uintptr_t</em> to make it available to hold safely a memory address.</li>
+      <li>With NOT operation “~(pagesize - 1), we flip all the bites and clear to 0 those lower bites getting a mask of a page chunk in hexadecimal’s memory address terms.</li>
+      <li>With AND operation between the target address and our custom mask ((uintptr_t)target_addr &amp; ~(pagesize - 1)) we fit our target address to the mask getting the starting address of the chunk in which our target address lays.</li>
+    </ol>
+  </li>
+  <li>
+    <p><strong>size_t len</strong>: This is the lenth of the memory region to be changed, this doesn’t have to be page-aligned, but internally it’s rounded up to page boundaries. So for example, we can get the size of a page and get a multiple of it:</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">mprotect</span><span class="p">(</span><span class="n">page_start</span><span class="p">,</span> <span class="n">pagesize</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">PROT_READ</span> <span class="o">|</span> <span class="n">PROT_WRITE</span><span class="p">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>int prot</strong>: This is the new memory protection flag, we use the following bitwise OR constants:</p>
+
+    <p>PROT_READ - Pages can be read
+   PROT_WRITE - Pages can be written
+   PROT_EXEC	- Pages can be executed
+   PROT_NONE	- No access (useful for guard pages)</p>
+  </li>
+</ul>
+
+<p>So this function, in summary, change the access permissions (prot) of a region of memory of a dessignated lenght (len), starting by an address (addr). The properly way to use this function is to fit the initial address and the length into a memory page. We will se an example later.</p>
+
+<p><br /></p>
+
+<h5 id="pie-binaries">PIE Binaries.</h5>
+
+<p>PIE is an acronym for Position Indepent Executable. Is a compiler and linker feature that makes the entire binary position independent, so the binary can be loaded in random address at runtime (ASLR, Address Space Layout Randomization) in order to prevent memory corruption attacks (BOF, ROP, etc).</p>
+
+<p>This affects in the location of the GOT entry of the function we want to hook. A PIE compiler’s file will randomize this address at runtime making it untargetable and our code (as much as we try to locate this entry with readelf -r) will fail with segmentation code.</p>
+
+<p>We can detect if a binary is being compiled by a compiler which have the PIE feature using readelf:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>readelf <span class="nt">-h</span> ./test             
+ELF Header:
+&lt;...&gt;
+  Type:                              DYN <span class="o">(</span>Position-Independent Executable file<span class="o">)</span>
+&lt;...&gt;
+</code></pre></div></div>
+
+<p>This means, again, that this file support ASLR. A non PIE compiler’s file would have ‘EXEC’ instead.</p>
+
+<p>We can bypass this hardening measure by adding in the compiling command the <em>-no-pie</em> flag to gcc binary:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>gcc <span class="nt">-no-pie</span> <span class="nt">-o</span> <span class="nb">test </span>test.c                 
+<span class="nv">$ </span>readelf <span class="nt">-h</span> ./test         
+&lt;...&gt;
+  Type:                              EXEC <span class="o">(</span>Executable file<span class="o">)</span>
+</code></pre></div></div>
+
+<p>Now we can reliably locate GOT write’s function entry. This will be explained later.</p>
+
+<p><br /></p>
+
+<h4 id="got-entry-overwriting">GOT entry overwriting.</h4>
+
+<h5 id="overview-the-concept">Overview the concept.</h5>
+
+<p>Function hooking via GOT overwriting involves modifying the GOT entry of a target function to point to our own malicious or monitoring function instead of the original. Let’s see a practical example.</p>
+
+<p><br /></p>
+
+<h5 id="steps-overview">Steps overview.</h5>
+
+<ol>
+  <li>
+    <p>Find GOT entry of write() in the target binary.</p>
+  </li>
+  <li>
+    <p>Make the GOT entry writable (using mprotect()).</p>
+  </li>
+  <li>
+    <p>Overwrite the GOT entry with the address of our custom function.</p>
+  </li>
+  <li>
+    <p>Verify the hook is working.</p>
+  </li>
+</ol>
+
+<p><br /></p>
+
+<h5 id="process-step-by-step">Process step by step.</h5>
+
+<p>Lets suppose we have the following code in C:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">"Hello, World!</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Compiled in <em>test</em> binary (remember to use -no-pie flag):</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gcc <span class="nt">-no-pie</span> <span class="nt">-o</span> <span class="nb">test </span>test.c
+</code></pre></div></div>
+
+<p>And we want to use other function instead write.</p>
+
+<p><br /></p>
+
+<h6 id="locating-write-in-the-got-readelf--r--objdump--r">Locating write() in the GOT. Readelf -r &amp; objdump -R.</h6>
+
+<p>For this task, we will use <em>readelf</em> command with <em>-r</em> flag. This will displays relocations in the ELF file. Relocations are modifications that must be applied to an executable or shared object at load time or link time for several reasons, in our case because shared libraries don’t have fixed addresses and need relocations at runtime.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>readelf <span class="nt">-r</span> <span class="nb">test</span> | <span class="nb">grep </span>write <span class="nt">-C3</span>
+
+Relocation section <span class="s1">'.rela.plt'</span> at offset 0x610 contains 1 entry:
+  Offset          Info           Type           Sym. Value    Sym. Name + Addend
+000000004000  000300000007 R_X86_64_JUMP_SLO 0000000000000000 write@GLIBC_2.2.5 + 0
+</code></pre></div></div>
+<p>We could achieve the same thing by:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>objdump <span class="nt">-R</span> ./test | <span class="nb">grep </span>write
+0000000000004000 R_X86_64_JUMP_SLOT  write@GLIBC_2.2.5
+</code></pre></div></div>
+
+<p>This means that, in our case, the GOT entry that points to real <em>write()</em> address is at offset <em>0x004000</em>.</p>
+
+<p><br /></p>
+
+<h5 id="writing-exploit-static-case">Writing exploit. Static case.</h5>
+<h6 id="overviewing-the-code">Overviewing the code.</h6>
+
+<p>Our task is to modify our test.c code in order to add C code that modifies the GOT entry address to aim to our custom function.</p>
+
+<p>Lets overview the following code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define _GNU_SOURCE
+#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;stdint.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;sys/mman.h&gt;</span><span class="c1"> //Memory managment declarations.</span><span class="cp">
+</span>
+<span class="kt">void</span> <span class="nf">hook_function</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Hooked write!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">overwrite_got_entry</span><span class="p">(</span><span class="kt">uintptr_t</span> <span class="o">*</span><span class="n">got_entry</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">new_function</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Change memory protection to allow writing to the GOT</span>
+    <span class="n">mprotect</span><span class="p">((</span><span class="kt">void</span> <span class="o">*</span><span class="p">)((</span><span class="kt">uintptr_t</span><span class="p">)</span><span class="n">got_entry</span> <span class="o">&amp;</span> <span class="o">~</span><span class="mh">0xFFF</span><span class="p">),</span> <span class="mi">4096</span><span class="p">,</span> <span class="n">PROT_READ</span> <span class="o">|</span> <span class="n">PROT_WRITE</span><span class="p">);</span>
+    
+    <span class="c1">// Overwrite GOT entry</span>
+    <span class="o">*</span><span class="n">got_entry</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uintptr_t</span><span class="p">)</span><span class="n">new_function</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">uintptr_t</span> <span class="o">*</span><span class="n">got_write</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uintptr_t</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x404008</span><span class="p">;</span> <span class="c1">// Replace with actual GOT entry address</span>
+    
+    <span class="c1">// Overwrite the GOT entry for write()</span>
+    <span class="n">overwrite_got_entry</span><span class="p">(</span><span class="n">got_write</span><span class="p">,</span> <span class="n">hook_function</span><span class="p">);</span>
+    
+    <span class="c1">// Call write() (now redirected)</span>
+    <span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">"Hello, World!</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="mi">15</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>First, we define the function we wanna use to hook. When the hook GOT works, this function will be executed instead of the real <em>write()</em>.</li>
+</ul>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">hook_function</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">"Hooked write!</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="mi">14</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Next, we define the function wich will overwrite the GOT entry.</li>
+</ul>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">overwrite_got_entry</span><span class="p">(</span><span class="kt">uintptr_t</span> <span class="o">*</span><span class="n">got_entry</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">new_function</span><span class="p">){</span>
+
+     <span class="n">mprotect</span><span class="p">((</span><span class="kt">void</span> <span class="o">*</span><span class="p">)((</span><span class="kt">uintptr_t</span><span class="p">)</span><span class="n">got_entry</span> <span class="o">&amp;</span> <span class="o">~</span><span class="mh">0xFFF</span><span class="p">),</span> <span class="mi">4096</span><span class="p">,</span> <span class="n">PROT_READ</span> <span class="o">|</span> <span class="n">PROT_WRITE</span><span class="p">);</span>
+     <span class="o">*</span><span class="n">got_entry</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uintptr_t</span><span class="p">)</span><span class="n">new_function</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Then, we have the main code, which calls the swicthing GOT entry’s function and then calls write.</li>
+</ul>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">uintptr_t</span> <span class="o">*</span><span class="n">got_write</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uintptr_t</span> <span class="o">*</span><span class="p">)</span><span class="o">&lt;</span><span class="n">WRITE</span> <span class="n">GOT</span> <span class="n">ADDRESS</span><span class="o">&gt;</span><span class="p">;</span> <span class="c1">// Replace with actual GOT entry address</span>
+    
+    <span class="c1">// Overwrite the GOT entry for write()</span>
+    <span class="n">overwrite_got_entry</span><span class="p">(</span><span class="n">got_write</span><span class="p">,</span> <span class="n">hook_function</span><span class="p">);</span>
+    
+    <span class="c1">// Call write() (now redirected)</span>
+    <span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">"Hello, World!</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="mi">15</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h6 id="triggering-exploit">Triggering exploit.</h6>
+
+<p>If we compile this code with a random value of &lt;WRITE GOT ADDRESS&gt; and then get the real address like we see before:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>gcc <span class="nt">-no-pie</span> <span class="nt">-o</span> <span class="nb">test </span>test.c
+
+<span class="nv">$ </span>readelf <span class="nt">-r</span> ./test | <span class="nb">grep </span>write
+000000404008  000300000007 R_X86_64_JUMP_SLO 0000000000000000 write@GLIBC_2.2.5 + 0
+</code></pre></div></div>
+
+<p>This means our GOT entry is at offset 0x404008, then we replace this number in the code above and recompile and execute:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>gcc <span class="nt">-no-pie</span> <span class="nt">-o</span> <span class="nb">test </span>test.c<span class="p">;</span>./test
+Hooked write!
+</code></pre></div></div>
+
+<p>Instad of write “Hello World”, we manage to hook the write function and replace it with printf “Hooked write!”</p>
+
+<p><br /></p>
+
+<h5 id="writing-exploit-dynamic-case">Writing exploit. Dynamic case.</h5>
+
+<p>Before, we try to locate the GOT in an efficient manner and the code is in certain way static. Now our pretensión is to write a code that dynamically parse the ELF Headers and the relocation table.</p>
+
+<p>Let’s examine the following code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define _GNU_SOURCE
+#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;stdint.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;link.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;sys/mman.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;fcntl.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;elf.h&gt;</span><span class="cp">
+</span>
+<span class="kt">void</span> <span class="nf">hook_function</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Goodbye cruel world!"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">uintptr_t</span> <span class="nf">find_write_got_entry</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">fd</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="s">"/proc/self/exe"</span><span class="p">,</span> <span class="n">O_RDONLY</span><span class="p">);</span>
+
+    <span class="n">Elf64_Ehdr</span> <span class="n">ehdr</span><span class="p">;</span>
+    <span class="n">pread</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ehdr</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">ehdr</span><span class="p">),</span> <span class="mi">0</span><span class="p">);</span>
+
+    <span class="n">Elf64_Shdr</span> <span class="n">shdr</span><span class="p">;</span>
+    <span class="n">Elf64_Shdr</span> <span class="n">sh_str</span><span class="p">;</span>
+    <span class="n">pread</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sh_str</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">sh_str</span><span class="p">),</span> <span class="n">ehdr</span><span class="p">.</span><span class="n">e_shoff</span> <span class="o">+</span> <span class="n">ehdr</span><span class="p">.</span><span class="n">e_shstrndx</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">shdr</span><span class="p">));</span>
+
+    <span class="kt">char</span> <span class="o">*</span><span class="n">shstrtab</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">sh_str</span><span class="p">.</span><span class="n">sh_size</span><span class="p">);</span>
+    <span class="n">pread</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">shstrtab</span><span class="p">,</span> <span class="n">sh_str</span><span class="p">.</span><span class="n">sh_size</span><span class="p">,</span> <span class="n">sh_str</span><span class="p">.</span><span class="n">sh_offset</span><span class="p">);</span>
+
+    <span class="n">Elf64_Shdr</span> <span class="n">relaplt</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+    <span class="n">Elf64_Shdr</span> <span class="n">dynsym</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+    <span class="n">Elf64_Shdr</span> <span class="n">strtab</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">ehdr</span><span class="p">.</span><span class="n">e_shnum</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">pread</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">shdr</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">shdr</span><span class="p">),</span> <span class="n">ehdr</span><span class="p">.</span><span class="n">e_shoff</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">shdr</span><span class="p">));</span>
+        <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span> <span class="o">=</span> <span class="n">shstrtab</span> <span class="o">+</span> <span class="n">shdr</span><span class="p">.</span><span class="n">sh_name</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">".rela.plt"</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">strcmp</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">".rela.plt.sec"</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">relaplt</span> <span class="o">=</span> <span class="n">shdr</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">".dynsym"</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">dynsym</span> <span class="o">=</span> <span class="n">shdr</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">".dynstr"</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">strtab</span> <span class="o">=</span> <span class="n">shdr</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+
+    <span class="kt">char</span> <span class="o">*</span><span class="n">strtab_data</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">strtab</span><span class="p">.</span><span class="n">sh_size</span><span class="p">);</span>
+    <span class="n">pread</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">strtab_data</span><span class="p">,</span> <span class="n">strtab</span><span class="p">.</span><span class="n">sh_size</span><span class="p">,</span> <span class="n">strtab</span><span class="p">.</span><span class="n">sh_offset</span><span class="p">);</span>
+
+    <span class="n">Elf64_Rela</span> <span class="n">rela</span><span class="p">;</span>
+    <span class="n">Elf64_Sym</span> <span class="n">sym</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">off</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">off</span> <span class="o">&lt;</span> <span class="n">relaplt</span><span class="p">.</span><span class="n">sh_size</span><span class="p">;</span> <span class="n">off</span> <span class="o">+=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Elf64_Rela</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">pread</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">rela</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">rela</span><span class="p">),</span> <span class="n">relaplt</span><span class="p">.</span><span class="n">sh_offset</span> <span class="o">+</span> <span class="n">off</span><span class="p">);</span>
+        <span class="kt">size_t</span> <span class="n">sym_idx</span> <span class="o">=</span> <span class="n">ELF64_R_SYM</span><span class="p">(</span><span class="n">rela</span><span class="p">.</span><span class="n">r_info</span><span class="p">);</span>
+        <span class="n">pread</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sym</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">sym</span><span class="p">),</span> <span class="n">dynsym</span><span class="p">.</span><span class="n">sh_offset</span> <span class="o">+</span> <span class="n">sym_idx</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Elf64_Sym</span><span class="p">));</span>
+
+        <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span> <span class="o">=</span> <span class="n">strtab_data</span> <span class="o">+</span> <span class="n">sym</span><span class="p">.</span><span class="n">st_name</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">"write"</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">free</span><span class="p">(</span><span class="n">shstrtab</span><span class="p">);</span>
+            <span class="n">free</span><span class="p">(</span><span class="n">strtab_data</span><span class="p">);</span>
+            <span class="n">close</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
+            <span class="k">return</span> <span class="n">rela</span><span class="p">.</span><span class="n">r_offset</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">overwrite_got_entry</span><span class="p">(</span><span class="kt">uintptr_t</span> <span class="o">*</span><span class="n">got_entry</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">new_function</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">long</span> <span class="n">pagesize</span> <span class="o">=</span> <span class="n">sysconf</span><span class="p">(</span><span class="n">_SC_PAGESIZE</span><span class="p">);</span>
+    <span class="kt">void</span> <span class="o">*</span><span class="n">page_start</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)((</span><span class="kt">uintptr_t</span><span class="p">)</span><span class="n">got_entry</span> <span class="o">&amp;</span> <span class="o">~</span><span class="p">(</span><span class="n">pagesize</span> <span class="o">-</span> <span class="mi">1</span><span class="p">));</span>
+    <span class="n">mprotect</span><span class="p">(</span><span class="n">page_start</span><span class="p">,</span> <span class="n">pagesize</span><span class="p">,</span> <span class="n">PROT_READ</span> <span class="o">|</span> <span class="n">PROT_WRITE</span><span class="p">);</span>
+
+    <span class="o">*</span><span class="n">got_entry</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uintptr_t</span><span class="p">)</span><span class="n">new_function</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">uintptr_t</span> <span class="n">got_addr</span> <span class="o">=</span> <span class="n">find_write_got_entry</span><span class="p">();</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"[+] GOT entry for write(): %p</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="n">got_addr</span><span class="p">);</span>
+
+    <span class="n">overwrite_got_entry</span><span class="p">((</span><span class="kt">uintptr_t</span> <span class="o">*</span><span class="p">)</span><span class="n">got_addr</span><span class="p">,</span> <span class="n">hook_function</span><span class="p">);</span>
+
+    <span class="c1">// This call will be redirected</span>
+    <span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">"Hello, World!</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="mi">15</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This code add a code chunk that aims to locate the GOT entry of the write function at runtime.</p>
+
+<p>This code is pretty looklike the static version with the difference of the adding of the <em>find_write_got_entry()</em>. This function parses the ELF file of the current executable (/proc/self/exe) to find the GOT (Global Offset Table) entry corresponding to the write function.
+It returns the address (offset) in memory where the GOT entry for write() is located.</p>
+
+<p>Let’s break down this function:</p>
+
+<ul>
+  <li>
+    <p>First, we open the current excutable in READNONLY mode:</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="kt">int</span> <span class="n">fd</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="s">"/proc/self/exe"</span><span class="p">,</span> <span class="n">O_RDONLY</span><span class="p">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Then, we read the ELF headers of the binary and store in a Elf64_Ehdr structure variable:</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">Elf64_Ehdr</span> <span class="n">ehdr</span><span class="p">;</span> <span class="c1">//We declare a variable </span>
+   <span class="n">pread</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ehdr</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">ehdr</span><span class="p">),</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">//preads() reads from fd an amount of bytes equal to the size of ehdr (Elf64_Ehdr structure) at offset 0 and stores it on ehdr variable.</span>
+</code></pre></div>    </div>
+
+    <p>Now, ehdr contains basic info about the ELF file. With the information provided by the ELF Headers, we can read the section from the ELF in order to locate where the GOT get mapped in memory since is a non PIE binary.</p>
+  </li>
+  <li>
+    <p>Now, we use the information retrieved in the efdr variable to get the sections of the ELF. Precisely, we read the <em>section names table</em> and store it on sh_str variable:</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">Elf64_Shdr</span> <span class="n">shdr</span><span class="p">;</span>
+   <span class="n">Elf64_Shdr</span> <span class="n">sh_str</span><span class="p">;</span> <span class="c1">//We declare two variables of the Section Header structure type.</span>
+   <span class="n">pread</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sh_str</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">sh_str</span><span class="p">),</span> <span class="n">ehdr</span><span class="p">.</span><span class="n">e_shoff</span> <span class="o">+</span> <span class="n">ehdr</span><span class="p">.</span><span class="n">e_shstrndx</span> <span class="o">*</span> <span class="nf">sizeof</span><span class="p">(</span><span class="n">shdr</span><span class="p">));</span> <span class="c1">//We use pread() function to read from the ELF binary a section as much bigger as a section header, sizeof(sh_str), starting at ehdr.e_shoff + ehdr.e_shstrndx, this is; the Section Header OFFset (shoff) plus an index to access the section header string table.</span>
+</code></pre></div>    </div>
+
+    <p>This sections contains names for all other sections (.text, .data,…).</p>
+  </li>
+  <li>
+    <p>Then, we read the specific string table, in order to find specific sections with useful information:</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="kt">char</span> <span class="o">*</span><span class="n">shstrtab</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">sh_str</span><span class="p">.</span><span class="n">sh_size</span><span class="p">);</span> <span class="c1">//We define a "string" and initialize it allocating memory</span>
+   <span class="n">pread</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">shstrtab</span><span class="p">,</span> <span class="n">sh_str</span><span class="p">.</span><span class="n">sh_size</span><span class="p">,</span> <span class="n">sh_str</span><span class="p">.</span><span class="n">sh_offset</span><span class="p">);</span> <span class="c1">//Read from the section table.</span>
+     
+   <span class="n">Elf64_Shdr</span> <span class="n">relaplt</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+   <span class="n">Elf64_Shdr</span> <span class="n">dynsym</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+   <span class="n">Elf64_Shdr</span> <span class="n">strtab</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+     
+     
+   <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">ehdr</span><span class="p">.</span><span class="n">e_shnum</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//Iterate every section header with a for loop</span>
+          
+        <span class="n">pread</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">shdr</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">shdr</span><span class="p">),</span> <span class="n">ehdr</span><span class="p">.</span><span class="n">e_shoff</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">shdr</span><span class="p">));</span>
+        <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span> <span class="o">=</span> <span class="n">shstrtab</span> <span class="o">+</span> <span class="n">shdr</span><span class="p">.</span><span class="n">sh_name</span><span class="p">;</span> <span class="c1">//Then we get the name of the section header.</span>
+          
+          
+        <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">".rela.plt"</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">strcmp</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">".rela.plt.sec"</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+             <span class="n">relaplt</span> <span class="o">=</span> <span class="n">shdr</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">".dynsym"</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+             <span class="n">dynsym</span> <span class="o">=</span> <span class="n">shdr</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">".dynstr"</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+             <span class="n">strtab</span> <span class="o">=</span> <span class="n">shdr</span><span class="p">;</span>
+        <span class="p">}</span> <span class="c1">//We compare if the name is one we desire. If it is, we store it.</span>
+   <span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p>This sections are critical:</p>
+
+    <ul>
+      <li><strong>.rela.plt</strong>: Holds relocations entries for PLT functions.</li>
+      <li><strong>.dynsym</strong>: Holds dynamic symbols.</li>
+      <li><strong>.dynstr</strong>: Holds names of symbols.</li>
+    </ul>
+
+    <p>Is in this sections where we gona find ‘write’ function GOT entry.</p>
+  </li>
+  <li>
+    <p>First, we resolve the name of the symbols by going to <em>.dynstr</em> and reading it and storing it in <em>strtab_data</em>:</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="kt">char</span> <span class="o">*</span><span class="n">strtab_data</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">strtab</span><span class="p">.</span><span class="n">sh_size</span><span class="p">);</span>
+   <span class="n">pread</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">strtab_data</span><span class="p">,</span> <span class="n">strtab</span><span class="p">.</span><span class="n">sh_size</span><span class="p">,</span> <span class="n">strtab</span><span class="p">.</span><span class="n">sh_offset</span><span class="p">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Then we iterate over each relaction entry of the <em>.rela.plt</em> section and each index reading it and compare if the name of this symbol is ‘write’, if it is, we return the offset of the relocation entry and close all file descriptors:</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">Elf64_Rela</span> <span class="n">rela</span><span class="p">;</span>
+   <span class="n">Elf64_Sym</span> <span class="n">sym</span><span class="p">;</span>
+
+   <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">off</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">off</span> <span class="o">&lt;</span> <span class="n">relaplt</span><span class="p">.</span><span class="n">sh_size</span><span class="p">;</span> <span class="n">off</span> <span class="o">+=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Elf64_Rela</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">pread</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">rela</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">rela</span><span class="p">),</span> <span class="n">relaplt</span><span class="p">.</span><span class="n">sh_offset</span> <span class="o">+</span> <span class="n">off</span><span class="p">);</span>
+        <span class="kt">size_t</span> <span class="n">sym_idx</span> <span class="o">=</span> <span class="n">ELF64_R_SYM</span><span class="p">(</span><span class="n">rela</span><span class="p">.</span><span class="n">r_info</span><span class="p">);</span>
+        <span class="n">pread</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sym</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">sym</span><span class="p">),</span> <span class="n">dynsym</span><span class="p">.</span><span class="n">sh_offset</span> <span class="o">+</span> <span class="n">sym_idx</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Elf64_Sym</span><span class="p">));</span>
+
+        <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span> <span class="o">=</span> <span class="n">strtab_data</span> <span class="o">+</span> <span class="n">sym</span><span class="p">.</span><span class="n">st_name</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">"write"</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+             <span class="n">free</span><span class="p">(</span><span class="n">shstrtab</span><span class="p">);</span>
+             <span class="n">free</span><span class="p">(</span><span class="n">strtab_data</span><span class="p">);</span>
+             <span class="n">close</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
+             <span class="k">return</span> <span class="n">rela</span><span class="p">.</span><span class="n">r_offset</span><span class="p">;</span>
+        <span class="p">}</span>
+   <span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p>At the end, we have gathered the relocation entry of the ‘write’ symbol at runtime without need to write directly in the code after search it manually.</p>
+  </li>
+</ul>
+
+<p>So, in summary; we opned the binary to read the ELF headers and retrieve some sections with important information. Then, using this sections, we lookout for ‘write’ symbol and retrieve the entry of the relocation entry.</p>
+
+<p>Then the other parts of the code ar pretty the same as before. We just define the function to replace and we change the permissions over the page where the GOT entry relies and then overwrite the entry with our function.</p>
+
+<p>The result is, in our code, execute write is equal to execute ‘hook_function’.</p>
+
+<p>If we compile and execute our code as follows we would get:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>gcc <span class="nt">-no-pie</span> <span class="nt">-o</span> <span class="nb">test </span>test.c<span class="p">;</span>./test
+
+<span class="o">[</span>+] GOT entry <span class="k">for </span>write<span class="o">()</span>: 0x404008
+Goodbye cruel world!
+</code></pre></div></div>
+
+
+      </article>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#C">C</a>
+          
+        </div>
+      
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+<section id = "social-share-section">
+  <span class="sr-only">Share: </span>
+
+  
+    <a href="https://twitter.com/intent/tweet?text=SharedLibraries%26FunctionHooking&url=http%3A%2F%2Flocalhost%3A4000%2F2025-04-26-SharedLibraries%26FunctionHooking%2F"
+      class="btn btn-social-icon btn-twitter" title="Share on Twitter">
+      <span class="fab fa-fw fa-twitter" aria-hidden="true"></span>
+      <span class="sr-only">Twitter</span>
+    </a>
+  
+
+  
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F2025-04-26-SharedLibraries%26FunctionHooking%2F"
+      class="btn btn-social-icon btn-facebook" title="Share on Facebook">
+      <span class="fab fa-fw fa-facebook" aria-hidden="true"></span>
+      <span class="sr-only">Facebook</span>
+    </a>
+  
+
+  
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F2025-04-26-SharedLibraries%26FunctionHooking%2F"
+      class="btn btn-social-icon btn-linkedin" title="Share on LinkedIn">
+      <span class="fab fa-fw fa-linkedin" aria-hidden="true"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  
+
+  
+
+  
+
+</section>
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/2025-03-04-FileDescriptors/" data-toggle="tooltip" data-placement="top" title="File Descritors">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/2025-06-06-MallocTutorial/" data-toggle="tooltip" data-placement="top" title="Malloc Tutorial">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+      
+  
+  
+  
+
+  
+
+
+  
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="/feed.xml" title="RSS">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">RSS</span>
+    </a>
+  </li><li class="list-inline-item">
+    <a href="mailto:" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/Qv1nTv5" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://twitter.com/Qvintvs1" title="Twitter">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Twitter</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://linkedin.com/in/german-sanmillan-68b308229/" title="LinkedIn">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">LinkedIn</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        German
+        &nbsp;&bull;&nbsp;
+      
+      2026
+
+      
+
+      
+      </p>
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>

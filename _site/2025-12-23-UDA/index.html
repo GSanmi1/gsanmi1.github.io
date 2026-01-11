@@ -1,0 +1,2663 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 5.0.0 | Copyright Dean Attali 2020 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>Uninitialize Data Access.</title>
+
+  
+  <meta name="author" content="German">
+  
+
+  <meta name="description" content="Uninitialice Data Access notes from OST2 course.">
+
+  
+
+  
+
+  
+  <link rel="alternate" type="application/rss+xml" title="Home" href="http://localhost:4000/feed.xml">
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/custom-dark.css">
+    
+  
+
+  
+  
+  
+
+  
+
+  
+  <meta property="og:site_name" content="Home">
+  <meta property="og:title" content="Uninitialize Data Access.">
+  <meta property="og:description" content="Uninitialice Data Access notes from OST2 course.">
+
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:article:author" content="German">
+  <meta property="og:article:published_time" content="2025-12-23T00:00:00-05:00">
+  <meta property="og:url" content="http://localhost:4000/2025-12-23-UDA/">
+  <link rel="canonical" href="http://localhost:4000/2025-12-23-UDA/">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:site" content="@Qvintvs1">
+  <meta name="twitter:creator" content="@Qvintvs1">
+
+  <meta property="twitter:title" content="Uninitialize Data Access.">
+  <meta property="twitter:description" content="Uninitialice Data Access notes from OST2 course.">
+
+  
+
+  
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+    document.querySelectorAll("script[type='math/tex; mode=display']").forEach(function(el) {
+      el.outerHTML = "\\[" + el.textContent + "\\]";
+    });
+    document.querySelectorAll("script[type='math/tex']").forEach(function(el) {
+      el.outerHTML = "\\(" + el.textContent + "\\)";
+    });
+    var script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js';
+    script.async = true;
+    document.head.appendChild(script);
+  });
+</script>
+
+
+  
+
+  
+
+</head>
+
+
+<body>
+
+  
+
+
+  <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">Home</a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Program</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/Cpage">C</a>
+                  <a class="dropdown-item" href="/DHARMApage">Dharma</a>
+                  <a class="dropdown-item" href="/RUSTpage">Rust</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Web2</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/BURPSUITEpage">Burp</a>
+                  <a class="dropdown-item" href="/THMpage">Thm</a>
+                  <a class="dropdown-item" href="/HackTheBoxpage">Htb</a>
+                  <a class="dropdown-item" href="/PEN200page">BasicPentesting</a>
+                  <a class="dropdown-item" href="/REDTEAMBASICSpage">RedTeam</a>
+                  <a class="dropdown-item" href="/BLUETEAMBASICSpage">Blueteam</a>
+                  <a class="dropdown-item" href="/REDESpage">Net</a>
+                  <a class="dropdown-item" href="/2022-11-17-GitBasics">Git</a>
+                  <a class="dropdown-item" href="/CSOFTpage">MemCorrupt</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ZKP</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/MATHpage">Math</a>
+                  <a class="dropdown-item" href="/RUSTpage">Rust</a>
+                  <a class="dropdown-item" href="/NOIRpage">Noir</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Assembly</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/ASSEMpage">x86</a>
+            </div>
+          </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" id="nav-search-link" href="#" title="Search">
+            <span id="nav-search-icon" class="fa fa-search"></span>
+            <span id="nav-search-text">Search</span>
+          </a>
+        </li></ul>
+  </div>
+
+  
+
+  
+
+</nav>
+
+
+
+<div id="beautifuljekyll-search-overlay">
+
+  <div id="nav-search-exit" title="Exit search">✕</div>
+  <input type="text" id="nav-search-input" placeholder="Search">
+  <ul id="search-results-container"></ul>
+  
+  <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+  <script>
+    var searchjson = '[ \
+       \
+        { \
+          "title"    : "P vs NP.", \
+          "category" : "math", \
+          "url"      : "/2026-01-11-PvsNP/", \
+          "date"     : "January 11, 2026" \
+        }, \
+       \
+        { \
+          "title"    : "Race Conditions.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-28-RaceCondition/", \
+          "date"     : "December 28, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Introducción al Cálculo", \
+          "category" : "matemáticas", \
+          "url"      : "/2025-12-25-MathTest/", \
+          "date"     : "December 25, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Uninitialize Data Access.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-23-UDA/", \
+          "date"     : "December 23, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Control Flow.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-12-ControlFlow/", \
+          "date"     : "December 12, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Other Integer Issues.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-05-OtherIntegerIssues/", \
+          "date"     : "December  5, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Integer Overflow/Underflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-05-IntegerOverflow-Underflow/", \
+          "date"     : "December  5, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Passing Parameters.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-04-Passing-Parameters/", \
+          "date"     : "December  4, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Stackframe; Local variables, Arrays and Structures.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-01-LocalVars_Arrays_structs/", \
+          "date"     : "December  1, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Out-Of-Bounds Write.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-26-Out-Of-Bounds-Write/", \
+          "date"     : "November 26, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Calling Functions.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-21-CallingFunctions/", \
+          "date"     : "November 21, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "(Linear) Heap Buffer Overflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-18-HBO/", \
+          "date"     : "November 18, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Basic Instructions.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-17-AssemblyBasicRegisters/", \
+          "date"     : "November 17, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Computer Registers.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-08-ComputerRegisters/", \
+          "date"     : "November  8, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "CVE-2021-20294.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-07-CVE-2021-20294/", \
+          "date"     : "November  7, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "(Linear) Stack Buffer Overflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-06-LSBO/", \
+          "date"     : "November  6, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Text Editor.", \
+          "category" : "C", \
+          "url"      : "/2025-08-11-Text-Editor/", \
+          "date"     : "August 11, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Garbage Collector.", \
+          "category" : "C", \
+          "url"      : "/2025-07-11-GarbageCollector/", \
+          "date"     : "July 11, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Hashtables.", \
+          "category" : "C", \
+          "url"      : "/2025-06-13-HashTable/", \
+          "date"     : "June 13, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Building my own malloc in C.", \
+          "category" : "C", \
+          "url"      : "/2025-06-09-BuildingOwnMalloc/", \
+          "date"     : "June  9, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Malloc Tutorial", \
+          "category" : "C", \
+          "url"      : "/2025-06-06-MallocTutorial/", \
+          "date"     : "June  6, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "SharedLibraries&amp;FunctionHooking", \
+          "category" : "C", \
+          "url"      : "/2025-04-26-SharedLibraries&FunctionHooking/", \
+          "date"     : "April 26, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "File Descritors", \
+          "category" : "C", \
+          "url"      : "/2025-03-04-FileDescriptors/", \
+          "date"     : "March  4, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Network Programming", \
+          "category" : "C", \
+          "url"      : "/2025-02-22-Network_Programming/", \
+          "date"     : "February 22, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "2. Constants and Literals in C.", \
+          "category" : "C", \
+          "url"      : "/2024-12-10-2.ConstantsinC-copy/", \
+          "date"     : "December 10, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "1. Basics of C", \
+          "category" : "C", \
+          "url"      : "/2024-12-02-1.BasicsOfC/", \
+          "date"     : "December  2, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "Gramáticas en Dharma", \
+          "category" : "DHA", \
+          "url"      : "/2024-09-24-Dharma_Tutorial/", \
+          "date"     : "September 24, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "Gramáticas en Dharma", \
+          "category" : "fuzz", \
+          "url"      : "/2024-03-22-Dharma_Tutorial-copy/", \
+          "date"     : "March 22, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "Mi experiencia con el OSCP", \
+          "category" : "pen", \
+          "url"      : "/2023-11-19-PEN200_Experience/", \
+          "date"     : "November 19, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Client Side", \
+          "category" : "pen", \
+          "url"      : "/2023-11-17-17.Client_Side_Attacks/", \
+          "date"     : "November 17, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Deep Packet Tunneling", \
+          "category" : "pen", \
+          "url"      : "/2023-11-16-16.Tunneling_Through_Deep_Packet_Inspection/", \
+          "date"     : "November 16, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Report", \
+          "category" : "pen", \
+          "url"      : "/2023-11-15-15.Making_Reports/", \
+          "date"     : "November 15, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Metasploit", \
+          "category" : "pen", \
+          "url"      : "/2023-11-14-14.Metasploit/", \
+          "date"     : "November 14, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Password Attacks", \
+          "category" : "pen", \
+          "url"      : "/2023-11-13-13.Password_Attacks/", \
+          "date"     : "November 13, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Active Directory Attacks", \
+          "category" : "pen", \
+          "url"      : "/2023-11-12-12.Active_Directory_Attacks/", \
+          "date"     : "November 12, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Port Forwarding", \
+          "category" : "pen", \
+          "url"      : "/2023-11-11-11.Port_Forwarding/", \
+          "date"     : "November 11, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Privilege Escalation", \
+          "category" : "pen", \
+          "url"      : "/2023-11-10-10.Privilege_Escalation/", \
+          "date"     : "November 10, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "File Transfers", \
+          "category" : "pen", \
+          "url"      : "/2023-11-09-9.File_Tranfers/", \
+          "date"     : "November  9, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Buffer Overflows", \
+          "category" : "pen", \
+          "url"      : "/2023-11-08-8.Buffer_Overflows/", \
+          "date"     : "November  8, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Vulnerability Scanning.", \
+          "category" : "pen", \
+          "url"      : "/2023-11-07-7.Vulnerability_Scanning/", \
+          "date"     : "November  7, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Information Gathering", \
+          "category" : "pen", \
+          "url"      : "/2023-11-06-6.Active_Information_Gathering/", \
+          "date"     : "November  6, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Windows", \
+          "category" : "pen", \
+          "url"      : "/2023-11-05-5.Windows/", \
+          "date"     : "November  5, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Networking", \
+          "category" : "pen", \
+          "url"      : "/2023-11-04-4.Networking/", \
+          "date"     : "November  4, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Scripting", \
+          "category" : "pen", \
+          "url"      : "/2023-11-03-3.Scripting/", \
+          "date"     : "November  3, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Practical Tools", \
+          "category" : "pen", \
+          "url"      : "/2023-11-02-2.PracticalTools/", \
+          "date"     : "November  2, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Linux", \
+          "category" : "pen", \
+          "url"      : "/2023-11-01-1.Linux/", \
+          "date"     : "November  1, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Easy", \
+          "category" : "hack", \
+          "url"      : "/2022-12-01-Easy/", \
+          "date"     : "December  1, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Git Basics", \
+          "category" : "", \
+          "url"      : "/2022-11-17-GitBasics/", \
+          "date"     : "November 17, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Tier I", \
+          "category" : "hack", \
+          "url"      : "/2022-11-10-Tier_1/", \
+          "date"     : "November 10, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Tier 0", \
+          "category" : "hack", \
+          "url"      : "/2022-11-09-Tier_0/", \
+          "date"     : "November  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "7.BufferOverflow.", \
+          "category" : "thm", \
+          "url"      : "/2022-11-02-7.BufferOverflow/", \
+          "date"     : "November  2, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "6.Offensive Pentesting", \
+          "category" : "thm", \
+          "url"      : "/2022-11-01-6.OffensivePentesting/", \
+          "date"     : "November  1, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "5.RedTeam", \
+          "category" : "thm", \
+          "url"      : "/2022-10-30-5.RedTeam/", \
+          "date"     : "October 30, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "4.Windows", \
+          "category" : "thm", \
+          "url"      : "/2022-10-22-4.Windows/", \
+          "date"     : "October 22, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "3.Junior Penetrationtester path", \
+          "category" : "thm", \
+          "url"      : "/2022-09-02-3.JRPenetrationTester/", \
+          "date"     : "September  2, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "2.Complete Begginer path.", \
+          "category" : "thm", \
+          "url"      : "/2022-08-07-2.CompleteBegginer/", \
+          "date"     : "August  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "1.Pre-Security path.", \
+          "category" : "thm", \
+          "url"      : "/2022-07-11-1Pre-Security/", \
+          "date"     : "July 11, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "0.Scripting for pentesters.", \
+          "category" : "thm", \
+          "url"      : "/2022-07-10-0.Scripting_for_pentesters/", \
+          "date"     : "July 10, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Burp Certified Practitioner Practice Exam.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-30-PracticeExam/", \
+          "date"     : "March 30, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "22. OAuth Authentication.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-27-22.OAuth_authentication/", \
+          "date"     : "March 27, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "21. HTTP Request Smuggling.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-26-21.HTTP_request_smuggling/", \
+          "date"     : "March 26, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "20. HTTP Host Header Attacks.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-25-20.HTTP_Host_header_attacks/", \
+          "date"     : "March 25, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "19. Web Cache Poisoning.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-24-19.Web_cache_poisoning/", \
+          "date"     : "March 24, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "18. Server-Side Template Injection.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-23-18.Serve-side_template_injection/", \
+          "date"     : "March 23, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "17. Insecure Deserialization.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-22-17.Insecure_deserialization/", \
+          "date"     : "March 22, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "16. WebSockets.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-21-16.WebSockets/", \
+          "date"     : "March 21, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "15.DOM-based XSS vulnerabilities.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-20-15-DOM-based_vulnerabilities/", \
+          "date"     : "March 20, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "14. Clickjacking.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-19-14.Clickjacking/", \
+          "date"     : "March 19, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "13. Cross-Origin Resource Sharing.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-18-13.Cross-origin_resource_sharing_(CORS)/", \
+          "date"     : "March 18, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "12. Cross-Site Request Forgery.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-17-12.Cross-site_request_forgery_(CSRF)/", \
+          "date"     : "March 17, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "11. Cross-Site Scripting.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-16-11.Cross-site_scripting_(XSS)/", \
+          "date"     : "March 16, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "10. XXE Injection.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-15-10.XXE_injection/", \
+          "date"     : "March 15, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "9. Server-Side Request Forgery.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-14-9.Server-side_request_forgery/", \
+          "date"     : "March 14, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "8. File Upload.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-13-8.File_upload_vulnerabilities/", \
+          "date"     : "March 13, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "7. Access Control.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-12-7.Access_control/", \
+          "date"     : "March 12, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "6. Information Disclosure.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-11-6.Information_disclosure/", \
+          "date"     : "March 11, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "5. Bussiness Logic Vulnerabilities.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-10-5.Business_logic_vulnerabilities/", \
+          "date"     : "March 10, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "4. Command Injection.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-09-4.Command_Injection/", \
+          "date"     : "March  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "3. Directory Traversal.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-08-3.Directory_Traversal/", \
+          "date"     : "March  8, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "2. Authentication.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-07-2.Authentication/", \
+          "date"     : "March  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "1. SQLInjection", \
+          "category" : "burp", \
+          "url"      : "/2022-03-06-1.SQLInjection/", \
+          "date"     : "March  6, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Seguridad Perimetral", \
+          "category" : "blueteam", \
+          "url"      : "/2022-02-09-Seguridad_Perimetral/", \
+          "date"     : "February  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Hardening de sistemas", \
+          "category" : "blueteam", \
+          "url"      : "/2022-02-09-Hardening_de_sistemas/", \
+          "date"     : "February  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Bandit", \
+          "category" : "otw", \
+          "url"      : "/2022-02-08-Bandit/", \
+          "date"     : "February  8, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Proxy", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-Proxys/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Protocolos Relevantes", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-Protocolos_Importantes/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Curso Básico Redes", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-Precurso_Redes/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "IPs", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-IPs/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Movimientos Laterales", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-06-Introducci%C3%B3n_a_movimientos_laterales/", \
+          "date"     : "February  6, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Evasión de Defensas", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-05-Evasi%C3%B3n_de_Defensas/", \
+          "date"     : "February  5, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Escalada de privilegios", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-05-Escalada_de_privilegios/", \
+          "date"     : "February  5, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Metasploit", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-04-Metasploit_B%C3%A1sico/", \
+          "date"     : "February  4, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Ataques a aplicaciones Android", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-03-Ataques_aplicaciones_android/", \
+          "date"     : "February  3, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Ataque a aplicaciones web.", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-02-Ataques_a_aplicaciones_web/", \
+          "date"     : "February  2, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Ataques a Infraestructuras y Redes", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-01-Ataques_a_Infraestructuras_y_Redes/", \
+          "date"     : "February  1, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Análisis de Objetivos", \
+          "category" : "redteam", \
+          "url"      : "/2022-01-28-An%C3%A1lisis_de_Objetivos/", \
+          "date"     : "January 28, 2022" \
+        }, \
+       \
+       \
+        { \
+          "title"    : "Assembly and Architecture Introduction.", \
+          "category" : "page", \
+          "url"      : "/ASSEMpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Blueteam Basics", \
+          "category" : "page", \
+          "url"      : "/BLUETEAMBASICSpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "PortSwigger BurpSuite Course", \
+          "category" : "page", \
+          "url"      : "/BURPSUITEpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "C-Family Software Memory Corruption Vulnerabilities", \
+          "category" : "page", \
+          "url"      : "/CSOFTpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "C &amp; Systems Fundamentals.", \
+          "category" : "page", \
+          "url"      : "/Cpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Dharma Fuzzer language", \
+          "category" : "page", \
+          "url"      : "/DHARMApage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Exploiting &amp; Reversing", \
+          "category" : "page", \
+          "url"      : "/EXPREVpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Fuzzing JavaScript Engine", \
+          "category" : "page", \
+          "url"      : "/Fuzzpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "HackTheBox", \
+          "category" : "page", \
+          "url"      : "/HackTheBoxpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "TryHackMe", \
+          "category" : "page", \
+          "url"      : "/MATHpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "PEN200 notes", \
+          "category" : "page", \
+          "url"      : "/PEN200page/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Proyectos", \
+          "category" : "page", \
+          "url"      : "/PROJECTSpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Networking Basics", \
+          "category" : "page", \
+          "url"      : "/REDESpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "RedTeam Basics", \
+          "category" : "page", \
+          "url"      : "/REDTEAMBASICSpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Retired Machines", \
+          "category" : "page", \
+          "url"      : "/RetiredMachinespage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "TryHackMe", \
+          "category" : "page", \
+          "url"      : "/THMpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "About me", \
+          "category" : "page", \
+          "url"      : "/aboutme/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "THM", \
+          "category" : "page", \
+          "url"      : "/preOSCPpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Tag Index", \
+          "category" : "page", \
+          "url"      : "/tags/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page2/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page3/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page4/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page5/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page6/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page7/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page8/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page9/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page10/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page11/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page12/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page13/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page14/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page15/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page16/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page17/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page18/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page19/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page20/", \
+          "date"     : "January 1, 1970" \
+        } \
+       \
+    ]';
+    searchjson = JSON.parse(searchjson);
+
+    var sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('nav-search-input'),
+      resultsContainer: document.getElementById('search-results-container'),
+      json: searchjson
+    });
+  </script>
+</div>
+
+
+
+
+
+  <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Uninitialize Data Access.</h1>
+          
+            
+              <h2 class="post-subheading">Uninitialice Data Access notes from OST2 course.</h2>
+            
+          
+
+          
+            <span class="post-meta">Posted on December 23, 2025</span>
+            
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+
+      
+
+      <article role="main" class="blog-post">
+        <h3 id="1-definition">1. Definition.</h3>
+
+<h4 id="11-preface-initialize-vs-uninitialize-data">1.1. Preface. Initialize vs Uninitialize data.</h4>
+
+<p>First, let’s introduce two memory regions in which the program data-storage happens at runtime, the stack and the heap.</p>
+
+<ul>
+  <li>
+    <p>The <em>stack</em> is a LIFO structure in which fixed-size data within the function stackframe’s owner scope gets stored.</p>
+  </li>
+  <li>
+    <p>The <em>heap</em> is an amount of memory available to get chunk-divided and manually allocated as required at runtime by the program generally for runtime-defined size data.</p>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>High addresses (0x7FFF...)
+┌─────────────────────────────────┐
+│                                 │
+│            STACK                │
+│                                 │
+│   - Local variables             │
+│   - Function parameters         │
+│   - Return addresses            │
+│   - Saved frame pointers        │
+│                                 │
+│      ↓ grows downward ↓         │
+├─────────────────────────────────┤
+│                                 │
+│                                 │
+│                                 │
+│        (unmapped space)         │
+│                                 │
+│                                 │
+│                                 │
+├─────────────────────────────────┤
+│      ↑ grows upward ↑           │
+│                                 │
+│            HEAP                 │
+│                                 │
+│   - malloc()/calloc() chunks    │
+│   - Dynamic allocations         │
+│   - Heap metadata               │
+│                                 │
+.                                 .
+.                                 .
+.                                 .
+
+Low addresses (0x0000...)
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>In the case of the stack, the allocations happens when the compiler expands the stackframe to make space for new variables by pulling the RSP register down (SUB rsp, 0x20; for example). Then it starts by copying or reading data from that expansion (MOV eax, dword ptr [rbp-4]).</p>
+
+<p><br /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>BEFORE: SUB rsp, 0x20             AFTER: SUB rsp, 0x20
+                    
+┌─────────────────────┐           ┌─────────────────────┐
+│   Return Address    │           │   Return Address    │
+├─────────────────────┤           ├─────────────────────┤
+│     Saved RBP       │           │     Saved RBP       │
+├─────────────────────┤◄─ RBP,RSP ├─────────────────────┤ ◄─ RBP
+│                     │           │                     │
+│                     │           │  Local Variables    │
+│                     │           │     (0x20 bytes)    │
+│    (unmapped)       │           │                     │
+│                     │           ├─────────────────────┤ ◄─ RSP
+│                     │           │                     │
+│                     │           │    (unmapped)       │
+└─────────────────────┘           └─────────────────────┘
+Low addresses                     Low addresses
+
+    RSP pulled down → space alloced in the stack 
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>In the case of the heap, a manual request of x bytes of data is sent and then, a fixed-size memory chunk gets alloced and usually a pointer with the first address of this chunk is stored in the stack.</p>
+
+<p><br /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>BEFORE: malloc(0x20)              AFTER: malloc(0x20)
+
+HEAP:                             HEAP:
+┌─────────────────────┐           ┌─────────────────────┐
+│                     │           │    Heap Metadata    │
+│                     │           ├─────────────────────┤◄─ returned ptr, stored as a local variable in the stack
+│   (available)       │           │                     │
+│                     │           │   Allocated Chunk   │ 
+│                     │           │     (0x20 bytes)    │
+│                     │           │                     │
+└─────────────────────┘           ├─────────────────────┤
+                                  │    (available)      │
+                                  └─────────────────────┘
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>This is the way in which data gets alloced in memory at runtime when a program is executing. This essentially means that the OS reserves space for the data that is about to be stored. Observe that the stack and the heap always posees data, this means that the alloced memory regions are very likely to posees data even before to be alloced again for a reuse. The memory region which has no data placed in since it was alloced is labeled as <em>uninitialized</em>, then, when the data is placed in this is <em>initialize data</em>.</p>
+
+<p>This distinction about data present in a memory region before use it and data written into a memory region is important to understand the vulnerability we are about to explain.</p>
+
+<p><br /></p>
+
+<h4 id="12-uda-definition">1.2. UDA definition.</h4>
+
+<p>UDA, Uninitialize Data Access, is a vulnerability which arises when a program reads from memory that was allocated but never explicitly set to a known value, this is; when a program access to uninitialized data.</p>
+
+<p>As we say before, when a program needs to write into memory it first needs to allocate space, when this space gets alloced then the program uses this memory-chunk placing data into it and once this process finish and this chunk serves no-purpouse (if the programmer has good “programming habits”) this chunk gets presumibly <em>freed</em> which means that this block of data is labeled as <em>available</em> again to be recycled. However, free does not mean clear or zero-cleared, this means; the previously written data does not get erased from a freed chunk (this is called “garbage data”), is just released from the program’s allocator perspective to be reused later but, in the mean while.</p>
+
+<p>This is the key to understand this vulnerability, when a program request a memory chunk, this uninitilize structure offers data that can still be accesed, read it and retrieved.</p>
+
+<p>Is worth to note that exploiting this kind of vulnerabilities is not trivial, since a good understanding of memory layout is needed in order to understand what is being accesed when an uninitialize variable is used as the following example shows.</p>
+
+<p><br /></p>
+
+<h3 id="2-examples">2. Examples.</h3>
+
+<h4 id="21-trivial-example-1-uad1c">2.1. Trivial Example 1: uad1.c</h4>
+
+<p>Let’s consider the following code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Uninitialized Data Access 1 (stack) - uda1.c</span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span>
+<span class="kt">void</span> <span class="nf">uda_func</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span> <span class="n">p</span><span class="p">){</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"We all know that %x is leet, right?</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">acid_setter_func</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span> <span class="n">p</span><span class="p">){</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"We all know that %x is leet, right?</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[]){</span>
+    <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mh">0x1337</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"argc = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">argc</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">argc</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">){</span>
+        <span class="n">strcpy</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)(</span><span class="o">&amp;</span><span class="n">buf</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">buf</span><span class="p">[</span><span class="mi">0</span><span class="p">]){</span>
+        <span class="n">acid_setter_func</span><span class="p">(</span><span class="o">&amp;</span><span class="n">i</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">uda_func</span><span class="p">(</span><span class="o">&amp;</span><span class="n">i</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This code doesn’t have a explicty security issue (despite the Stack-Buffer Overflow in which we are not interested in) but is usefull to understand how recently used memory is accessible thorugh uninitialized data.</p>
+
+<p>If we track the execution-flow of the code we can see that first, we declare a zero-cleared stack buffer and a signed integer.</p>
+
+<p>Then, if the program has been executed among with a cli-parameter argument, it store that parameter within the buffer and in a apparently convoluted way, store this value in i integer. The way in which this assignation is performed ensures the control of an integer-width value.</p>
+
+<ul>
+  <li>First, take the address of buf[0].</li>
+  <li>Then cast it as a pointer to an integer, this means that now, the address points to a 4-bytes width data (instead of 1 byte).</li>
+  <li>Then dereference the contents of that pointer (4 bytes) and store it in <em>i</em>.</li>
+</ul>
+
+<p>Now, if buf[0] is not null, then it calls to <em>acid_setter_func()</em> which declares and initialites a variable which later is used in a printf function.</p>
+
+<p>Later, calls <em>uda_func()</em> which barely do the same but with uninitialize data, only declares <em>i</em> and then proceeds to use it.</p>
+
+<p>If we compile the code and execute the following binary we will get the following results:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./test AAAA
+argc <span class="o">=</span> 2
+We all know that 41414141 is leet, right?
+We all know that 41414141 is leet, right?
+</code></pre></div></div>
+
+<p>We can see that the second line, provided by <em>uda_func()</em> is accessing the data stored in the memory allocated space for an uninitialized declared variable.</p>
+
+<p>Is worth to note that UDA depends on a good memory layout understanding in order to comprehend what is being accesed. The reason why <em>i</em> variables holds the same value in this specific case is due to layout similarity and call-proximity in code of <em>uda_func()</em> and <em>acid_setter_func()</em> as is represented in the following diagram:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HIGHER ADDRESSES
+│
+▼
+
+┌────────────────────────────────┐
+│          main() frame          │
+└────────────────────────────────┘
+
+
+STEP 1: call acid_setter_func()
+
+┌────────────────────────────────┐
+│          main() frame          │
+├────────────────────────────────┤
+│    acid_setter_func() frame    │
+│                                │
+│    int i = 0x41414141  ← WRITE │
+└────────────────────────────────┘
+
+
+STEP 2: return — frame retracts
+
+┌────────────────────────────────┐
+│          main() frame          │
+├ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─  ┤
+│                                │
+│    (0x41414141 still here)     │
+│                                │
+└ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─  ┘
+
+
+STEP 3: call uda_func()
+
+┌────────────────────────────────┐
+│          main() frame          │
+├────────────────────────────────┤
+│       uda_func() frame         │
+│                                │
+│    int i;          ← READ      │
+│    (gets 0x41414141)           │
+└────────────────────────────────┘
+
+│
+▼
+LOWER ADDRESSES
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>In order to understand it better, lets take the dissasembly for both functions:</p>
+
+<ul>
+  <li>
+    <p>First, the dissasembly for <em>acid_setter_func()</em>:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>r2 <span class="nt">-e</span> asm.sub.var<span class="o">=</span><span class="nb">false</span> <span class="nt">-A</span> <span class="nt">-qc</span> <span class="s2">"aaa; s sym.acid_setter_func;pdf"</span> <span class="nb">test
+  </span>Warning: run r2 with <span class="nt">-e</span> bin.cache<span class="o">=</span><span class="nb">true </span>to fix relocations <span class="k">in </span>disassembly
+              <span class="p">;</span> CALL XREF from main @ 0x126c
+  ┌ 53: sym.acid_setter_func <span class="o">(</span>int64_t arg1<span class="o">)</span><span class="p">;</span>
+  │           <span class="p">;</span> var int64_t var_18h @ rbp-0x18
+  │           <span class="p">;</span> var int64_t var_4h @ rbp-0x4
+  │           <span class="p">;</span> arg int64_t arg1 @ rdi
+  │           0x000011b5      f30f1efa       endbr64
+  │           0x000011b9      55             push rbp
+  │           0x000011ba      4889e5         mov rbp, rsp
+  │           0x000011bd      4883ec20       sub rsp, 0x20
+  │           0x000011c1      48897de8       mov qword <span class="o">[</span>rbp - 0x18], rdi <span class="p">;</span> arg1
+  │           0x000011c5      488b45e8       mov rax, qword <span class="o">[</span>rbp - 0x18]
+  │           0x000011c9      8b00           mov eax, dword <span class="o">[</span>rax]
+  │           0x000011cb      8945fc         mov dword <span class="o">[</span>rbp - 4], eax
+  │           0x000011ce      8b45fc         mov eax, dword <span class="o">[</span>rbp - 4]
+  │           0x000011d1      89c6           mov esi, eax
+  │           0x000011d3      488d052e0e00.  lea rax, str.We_all_know_that__x_is_leet__right__n <span class="p">;</span> 0x2008 <span class="p">;</span> <span class="s2">"We all know that %x is leet, right?</span><span class="se">\n</span><span class="s2">"</span>
+  │           0x000011da      4889c7         mov rdi, rax                <span class="p">;</span> const char <span class="k">*</span>format
+  │           0x000011dd      b800000000     mov eax, 0
+  │           0x000011e2      e8a9feffff     call sym.imp.printf         <span class="p">;</span> int <span class="nb">printf</span><span class="o">(</span>const char <span class="k">*</span>format<span class="o">)</span>
+  │           0x000011e7      90             nop
+  │           0x000011e8      c9             leave
+  └           0x000011e9      c3             ret
+</code></pre></div>    </div>
+
+    <p>We can intuit the stack layout from the stackframe prologue, it expands the stack by 0x20:</p>
+
+    <pre><code class="language-assem">  push rbp
+  mov rbp, rsp
+  sub rsp, 0x20
+</code></pre>
+
+    <p>Then, since this is GCC compiler in Unix-like system, it follows System V convention, it pass rdi (parameter <em>i</em>) to the location “rbp-0x18” and from there it ends up in “rbp-4”:</p>
+
+    <pre><code class="language-assem">  mov qword [rbp - 0x18], rdi ; arg1
+  mov rax, qword [rbp - 0x18]
+  mov eax, dword [rax]
+  mov dword [rbp - 4], eax
+  mov eax, dword [rbp - 4]
+</code></pre>
+
+    <p>Lets note that when the function finish, before RET, LEAVE instruction is executed which restore stackframe, LEAVE is equivalent to:</p>
+
+    <pre><code class="language-assem">  mov rsp, rbp    ; restore RSP to where it was before the function
+  pop rbp         ; restore caller's RBP
+</code></pre>
+  </li>
+  <li>
+    <p>Lets now check the <em>uda_func()</em> dissasembly:</p>
+
+    <pre><code class="language-assem">  $ r2 -e asm.sub.var=false -A -qc "aaa; s sym.uda_func;pdf" test
+  Warning: run r2 with -e bin.cache=true to fix relocations in disassembly
+              ; CALL XREF from main @ 0x1278
+  ┌ 44: sym.uda_func (int64_t arg1);
+  │           ; var int64_t var_18h @ rbp-0x18
+  │           ; var int64_t var_4h @ rbp-0x4
+  │           ; arg int64_t arg1 @ rdi
+  │           0x00001189      f30f1efa       endbr64
+  │           0x0000118d      55             push rbp
+  │           0x0000118e      4889e5         mov rbp, rsp
+  │           0x00001191      4883ec20       sub rsp, 0x20
+  │           0x00001195      48897de8       mov qword [rbp - 0x18], rdi ; arg1
+  │           0x00001199      8b45fc         mov eax, dword [rbp - 4]
+  │           0x0000119c      89c6           mov esi, eax
+
+  [...]
+</code></pre>
+
+    <p>The code continues but we don’t need more than what we have. First, the stack expands 0x20 (the same as the previous function) and the parameter ends again in “rbp-4” to later move this to ESI (register-passed for second parameter through System V convention) to later pass it to printf() function.</p>
+
+    <p>This means that is essentially accessing the 32-bits data which were written by the previous function. This result in an UDA vulnerability.</p>
+
+    <p><br /></p>
+  </li>
+</ul>
+
+<h4 id="22-trivial-example-2-uda2c">2.2. Trivial Example 2: uda2.c</h4>
+
+<p>Consider now the following code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Uninitialized Data Access 1 (stack) - uda1.c</span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span>
+<span class="kt">int</span> <span class="nf">uda_func</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span> <span class="n">p</span><span class="p">){</span>
+        <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"We all know that %x is leet, right?</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">i</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">acid_setter_func</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span> <span class="n">p</span><span class="p">){</span>
+        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"We all know that %x is leet, right?</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[]){</span>
+        <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mh">0x1337</span><span class="p">;</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"argc = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">argc</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">argc</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">){</span>
+                <span class="n">strcpy</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)(</span><span class="o">&amp;</span><span class="n">buf</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+        <span class="p">}</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">buf</span><span class="p">[</span><span class="mi">0</span><span class="p">]){</span>
+                <span class="n">acid_setter_func</span><span class="p">(</span><span class="o">&amp;</span><span class="n">i</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">memcpy</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">uda_func</span><span class="p">(</span><span class="o">&amp;</span><span class="n">i</span><span class="p">));</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This code is pretty the same than above with the small difference that now <em>uda_func()</em> is returning <em>i</em> and this value is being implemented as the len parameter of a memcpy() call.</p>
+
+<p>Now is easy to understand that this suppose a bigger danger than the previous example.</p>
+
+<p>Following the flow explained in the example above, the user-controlled data set in memory by <em>acid_setter_func()</em> is then retrieved by <em>uda_func()</em> and placed in a memcpy() operation potentially triggering a SBO.</p>
+
+<p><br /></p>
+
+<h4 id="23-trivial-example-3-heapc">2.3. Trivial Example 3. Heap.c</h4>
+
+<p>Consider now the following code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Uninitialized Data Access 2 (heap) - uda2.c</span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span>
+<span class="cp">#define BUF_SIZE 1024
+</span>
+<span class="kt">void</span> <span class="nf">opt_realloc</span><span class="p">(</span><span class="kt">char</span> <span class="o">**</span> <span class="n">buf1</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span> <span class="n">buf2</span><span class="p">){</span>
+    <span class="n">free</span><span class="p">(</span><span class="o">*</span><span class="n">buf1</span><span class="p">);</span>
+    <span class="n">free</span><span class="p">(</span><span class="o">*</span><span class="n">buf2</span><span class="p">);</span>
+    <span class="o">*</span><span class="n">buf2</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">BUF_SIZE</span><span class="p">);</span> <span class="c1">//XENO: Note, I switched the order of allocs</span>
+    <span class="o">*</span><span class="n">buf1</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">BUF_SIZE</span><span class="p">);</span> <span class="c1">//XENO: This was based on system-specific knowledge</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"buf1 addr = %p, buf2 addr = %p</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="o">*</span><span class="n">buf1</span><span class="p">,</span> <span class="o">*</span><span class="n">buf2</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[]){</span>
+    <span class="kt">char</span> <span class="o">*</span> <span class="n">buf1</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">BUF_SIZE</span><span class="p">);</span>
+    <span class="kt">char</span> <span class="o">*</span> <span class="n">buf2</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">BUF_SIZE</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="o">*</span> <span class="n">i</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="n">buf1</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"buf1 addr = %p, buf2 addr = %p</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">buf1</span><span class="p">,</span> <span class="n">buf2</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"argc = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">argc</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">argc</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">){</span>
+        <span class="n">strcpy</span><span class="p">(</span><span class="n">buf1</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+        <span class="n">memset</span><span class="p">(</span><span class="n">buf2</span><span class="p">,</span> <span class="sc">'!'</span><span class="p">,</span> <span class="n">BUF_SIZE</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">buf1</span><span class="p">[</span><span class="mi">0</span><span class="p">]){</span>
+        <span class="n">opt_realloc</span><span class="p">(</span><span class="o">&amp;</span><span class="n">buf1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">buf2</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">strlen</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">4</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">){</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"At %p+%d:</span><span class="se">\t</span><span class="s"> %x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">*</span><span class="mi">4</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)(</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">));</span>
+    <span class="p">}</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="n">buf2</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">strlen</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">4</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">){</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"At %p+%d:</span><span class="se">\t</span><span class="s"> %x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">*</span><span class="mi">4</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)(</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">));</span>
+    <span class="p">}</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"At the end of the day, the important thing is: %x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">buf1</span><span class="p">[</span><span class="mi">16</span><span class="p">]);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This time we are involving heap-memory region.</p>
+
+<p>First, we define two pointers to which we assignate a memory chunk with malloc:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">char</span> <span class="o">*</span> <span class="n">buf1</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">BUF_SIZE</span><span class="p">);</span>
+<span class="kt">char</span> <span class="o">*</span> <span class="n">buf2</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">BUF_SIZE</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Then we cast <em>buf1</em> to pointer to a integer:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="o">*</span> <span class="n">i</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="n">buf1</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>And if we, along with the program, pass a cli-parameter, then the buffer gets fulfilled amd then we call the opt_realloc() function which is a wrapper around malloc in which we free a pointer and then alloc and assign a memory chunk to this pointer:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">opt_realloc</span><span class="p">(</span><span class="kt">char</span> <span class="o">**</span> <span class="n">buf1</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span> <span class="n">buf2</span><span class="p">){</span>
+    <span class="n">free</span><span class="p">(</span><span class="o">*</span><span class="n">buf1</span><span class="p">);</span>
+    <span class="n">free</span><span class="p">(</span><span class="o">*</span><span class="n">buf2</span><span class="p">);</span>
+    <span class="o">*</span><span class="n">buf2</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">BUF_SIZE</span><span class="p">);</span> <span class="c1">//XENO: Note, I switched the order of allocs</span>
+    <span class="o">*</span><span class="n">buf1</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">BUF_SIZE</span><span class="p">);</span> <span class="c1">//XENO: This was based on system-specific knowledge</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"buf1 addr = %p, buf2 addr = %p</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="o">*</span><span class="n">buf1</span><span class="p">,</span> <span class="o">*</span><span class="n">buf2</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">//...</span>
+<span class="k">if</span><span class="p">(</span><span class="n">buf1</span><span class="p">[</span><span class="mi">0</span><span class="p">]){</span>
+    <span class="n">opt_realloc</span><span class="p">(</span><span class="o">&amp;</span><span class="n">buf1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">buf2</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Due to how the system behaves, in this case once you free a memroy chunk and inmediately assign it, you have assigned the same memory chunk as before, this means that, despite gets realloced, <em>buf1</em> and <em>buf2</em> has no changed at this point.</p>
+
+<p>Then, we simply read from this uninitialized structures:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">strlen</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">4</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">){</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"At %p+%d:</span><span class="se">\t</span><span class="s"> %x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">*</span><span class="mi">4</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)(</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="n">i</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="n">buf2</span><span class="p">;</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="k">for</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">strlen</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">4</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">){</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"At %p+%d:</span><span class="se">\t</span><span class="s"> %x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">*</span><span class="mi">4</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)(</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"At the end of the day, the important thing is: %x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">buf1</span><span class="p">[</span><span class="mi">16</span><span class="p">]);</span>
+<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>Reach this point, if we compile the binary and execute it we obtain the following output:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ./test "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+buf1 addr = 0x581a809a32a0, buf2 addr = 0x581a809a36b0
+argc = 2
+buf1 addr = 0x581a809a32a0, buf2 addr = 0x581a809a36b0
+At 0x581a809a32a0+0:     81a809a3
+At 0x581a809a32a0+4:     5
+At 0x581a809a32a0+8:     0
+At 0x581a809a32a0+12:    0         ; Some of the previous data gets has been erased
+At 0x581a809a32a0+16:    41414141  ; AAAA
+At 0x581a809a32a0+20:    41414141
+At 0x581a809a32a0+24:    41414141
+At 0x581a809a32a0+28:    41414141
+At 0x581a809a32a0+32:    41414141
+At 0x581a809a32a0+36:    41414141
+At 0x581a809a32a0+40:    41414141
+At 0x581a809a32a0+44:    41414141
+At 0x581a809a32a0+48:    41414141
+
+At 0x581a809a36b0+0:     1323b03
+At 0x581a809a36b0+4:     581f
+At 0x581a809a36b0+8:     0
+At 0x581a809a36b0+12:    0
+At 0x581a809a36b0+16:    21212121
+At 0x581a809a36b0+20:    21212121
+At 0x581a809a36b0+24:    21212121
+At 0x581a809a36b0+28:    21212121
+At 0x581a809a36b0+32:    21212121
+At 0x581a809a36b0+36:    21212121
+At 0x581a809a36b0+40:    21212121
+At 0x581a809a36b0+44:    21212121
+At 0x581a809a36b0+48:    21212121
+At the end of the day, the important thing is: 41414141
+</code></pre></div></div>
+
+<p>We can see that, despite being both buffer freed, the previous allocated data still accesible, this is essentially an UDA vulnerability.</p>
+
+<p><br /></p>
+
+<h3 id="3-common-roots">3. Common Roots.</h3>
+
+<p>Among the common causes that leads to a UDA vulnerability are:</p>
+
+<ul>
+  <li>Not initializing local variables at declaration time.</li>
+  <li>No initializing heap data at allocation time.</li>
+  <li>Only partially initializing structs &amp; objects.</li>
+  <li>Accidental failure to initialize down an uncommon control flow path.</li>
+</ul>
+
+<p>If a codebase uses a lot function pointers / callbacks / indirect control flow, it is far more difficult for a human auditor to confidently assess. In such cases tooling and automated analysis (e.g. MemorySanitizer and/or a Fuzzer) should be brought to bear.</p>
+
+<p><br /></p>
+
+<h3 id="4-exercises">4. Exercises.</h3>
+
+<h4 id="41-cve-2022-1809">4.1. CVE-2022-1809.</h4>
+
+<p>Radare2 is a reverse engineering tool, often used to analyze potentially-malicious binaries such as malware, therefore all values that come from the binary need to be treated as ACID.</p>
+
+<p>Consider the following C code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//////////////////////////////////////////////////////////////////////</span>
+<span class="c1">//XENO: Structure that isn't completely initialized</span>
+<span class="c1">//////////////////////////////////////////////////////////////////////</span>
+<span class="cm">/* vtables */</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+	<span class="n">RAnal</span> <span class="o">*</span><span class="n">anal</span><span class="p">;</span>
+	<span class="n">RAnalCPPABI</span> <span class="n">abi</span><span class="p">;</span>
+	<span class="n">ut8</span> <span class="n">word_size</span><span class="p">;</span>
+	<span class="n">bool</span> <span class="p">(</span><span class="o">*</span><span class="n">read_addr</span><span class="p">)</span> <span class="p">(</span><span class="n">RAnal</span> <span class="o">*</span><span class="n">anal</span><span class="p">,</span> <span class="n">ut64</span> <span class="n">addr</span><span class="p">,</span> <span class="n">ut64</span> <span class="o">*</span><span class="n">buf</span><span class="p">);</span>
+<span class="p">}</span> <span class="n">RVTableContext</span><span class="p">;</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////</span>
+<span class="c1">//XENO: Part of the path where incomplete initialized occurs</span>
+<span class="c1">//////////////////////////////////////////////////////////////////////</span>
+
+<span class="c1">//XENO: assume the following fields are ACID based on a malicious ACID binary under analysis:</span>
+<span class="c1">//XENO: anal-&gt;config-&gt;bits, anal-&gt;cur-&gt;arch</span>
+
+<span class="n">R_API</span> <span class="n">bool</span> <span class="nf">r_anal_vtable_begin</span><span class="p">(</span><span class="n">RAnal</span> <span class="o">*</span><span class="n">anal</span><span class="p">,</span> <span class="n">RVTableContext</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">context</span><span class="o">-&gt;</span><span class="n">anal</span> <span class="o">=</span> <span class="n">anal</span><span class="p">;</span>
+	<span class="n">context</span><span class="o">-&gt;</span><span class="n">abi</span> <span class="o">=</span> <span class="n">anal</span><span class="o">-&gt;</span><span class="n">cxxabi</span><span class="p">;</span>
+	<span class="n">context</span><span class="o">-&gt;</span><span class="n">word_size</span> <span class="o">=</span> <span class="p">(</span><span class="n">ut8</span><span class="p">)</span> <span class="p">(</span><span class="n">anal</span><span class="o">-&gt;</span><span class="n">config</span><span class="o">-&gt;</span><span class="n">bits</span> <span class="o">/</span> <span class="mi">8</span><span class="p">);</span>
+	<span class="k">const</span> <span class="n">bool</span> <span class="n">is_arm</span> <span class="o">=</span> <span class="n">anal</span><span class="o">-&gt;</span><span class="n">cur</span><span class="o">-&gt;</span><span class="n">arch</span> <span class="o">&amp;&amp;</span> <span class="n">r_str_startswith</span> <span class="p">(</span><span class="n">anal</span><span class="o">-&gt;</span><span class="n">cur</span><span class="o">-&gt;</span><span class="n">arch</span><span class="p">,</span> <span class="s">"arm"</span><span class="p">);</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">is_arm</span> <span class="o">&amp;&amp;</span> <span class="n">context</span><span class="o">-&gt;</span><span class="n">word_size</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">context</span><span class="o">-&gt;</span><span class="n">word_size</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">const</span> <span class="n">bool</span> <span class="n">be</span> <span class="o">=</span> <span class="n">anal</span><span class="o">-&gt;</span><span class="n">config</span><span class="o">-&gt;</span><span class="n">big_endian</span><span class="p">;</span>
+	<span class="k">switch</span> <span class="p">(</span><span class="n">context</span><span class="o">-&gt;</span><span class="n">word_size</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+		<span class="n">context</span><span class="o">-&gt;</span><span class="n">read_addr</span> <span class="o">=</span> <span class="n">be</span><span class="o">?</span> <span class="n">vtable_read_addr_be8</span> <span class="o">:</span> <span class="n">vtable_read_addr_le8</span><span class="p">;</span>
+		<span class="k">break</span><span class="p">;</span>
+	<span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
+		<span class="n">context</span><span class="o">-&gt;</span><span class="n">read_addr</span> <span class="o">=</span> <span class="n">be</span><span class="o">?</span> <span class="n">vtable_read_addr_be16</span> <span class="o">:</span> <span class="n">vtable_read_addr_le16</span><span class="p">;</span>
+		<span class="k">break</span><span class="p">;</span>
+	<span class="k">case</span> <span class="mi">4</span><span class="p">:</span>
+		<span class="n">context</span><span class="o">-&gt;</span><span class="n">read_addr</span> <span class="o">=</span> <span class="n">be</span><span class="o">?</span> <span class="n">vtable_read_addr_be32</span> <span class="o">:</span> <span class="n">vtable_read_addr_le32</span><span class="p">;</span>
+		<span class="k">break</span><span class="p">;</span>
+	<span class="k">case</span> <span class="mi">8</span><span class="p">:</span>
+		<span class="n">context</span><span class="o">-&gt;</span><span class="n">read_addr</span> <span class="o">=</span> <span class="n">be</span><span class="o">?</span> <span class="n">vtable_read_addr_be64</span> <span class="o">:</span> <span class="n">vtable_read_addr_le64</span><span class="p">;</span>
+		<span class="k">break</span><span class="p">;</span>
+	<span class="nl">default:</span>
+		<span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////</span>
+<span class="c1">//XENO: Part of the path where uninitialized access occurs eventually</span>
+<span class="c1">//////////////////////////////////////////////////////////////////////</span>
+
+
+<span class="n">R_API</span> <span class="kt">void</span> <span class="nf">r_anal_list_vtables</span><span class="p">(</span><span class="n">RAnal</span> <span class="o">*</span><span class="n">anal</span><span class="p">,</span> <span class="kt">int</span> <span class="n">rad</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">RVTableContext</span> <span class="n">context</span><span class="p">;</span>
+	<span class="n">r_anal_vtable_begin</span> <span class="p">(</span><span class="n">anal</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">context</span><span class="p">);</span>
+
+	<span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">noMethodName</span> <span class="o">=</span> <span class="s">"No Name found"</span><span class="p">;</span>
+	<span class="n">RVTableMethodInfo</span> <span class="o">*</span><span class="n">curMethod</span><span class="p">;</span>
+	<span class="n">RListIter</span> <span class="o">*</span><span class="n">vtableIter</span><span class="p">;</span>
+	<span class="n">RVTableInfo</span> <span class="o">*</span><span class="n">table</span><span class="p">;</span>
+
+	<span class="n">RList</span> <span class="o">*</span><span class="n">vtables</span> <span class="o">=</span> <span class="n">r_anal_vtable_search</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">context</span><span class="p">);</span>
+<span class="c1">//XENO: snip</span>
+<span class="p">}</span>
+
+<span class="n">R_API</span> <span class="n">RList</span> <span class="o">*</span><span class="nf">r_anal_vtable_search</span><span class="p">(</span><span class="n">RVTableContext</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">RAnal</span> <span class="o">*</span><span class="n">anal</span> <span class="o">=</span> <span class="n">context</span><span class="o">-&gt;</span><span class="n">anal</span><span class="p">;</span>
+	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">anal</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="n">RList</span> <span class="o">*</span><span class="n">vtables</span> <span class="o">=</span> <span class="n">r_list_newf</span> <span class="p">((</span><span class="n">RListFree</span><span class="p">)</span><span class="n">r_anal_vtable_info_free</span><span class="p">);</span>
+	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">vtables</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="n">RList</span> <span class="o">*</span><span class="n">sections</span> <span class="o">=</span> <span class="n">anal</span><span class="o">-&gt;</span><span class="n">binb</span><span class="p">.</span><span class="n">get_sections</span> <span class="p">(</span><span class="n">anal</span><span class="o">-&gt;</span><span class="n">binb</span><span class="p">.</span><span class="n">bin</span><span class="p">);</span>
+	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">sections</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">r_list_free</span> <span class="p">(</span><span class="n">vtables</span><span class="p">);</span>
+		<span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="n">r_cons_break_push</span> <span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+
+	<span class="n">RListIter</span> <span class="o">*</span><span class="n">iter</span><span class="p">;</span>
+	<span class="n">RBinSection</span> <span class="o">*</span><span class="n">section</span><span class="p">;</span>
+	<span class="n">r_list_foreach</span> <span class="p">(</span><span class="n">sections</span><span class="p">,</span> <span class="n">iter</span><span class="p">,</span> <span class="n">section</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">r_cons_is_breaked</span> <span class="p">())</span> <span class="p">{</span>
+			<span class="k">break</span><span class="p">;</span>
+		<span class="p">}</span>
+
+		<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">vtable_section_can_contain_vtables</span> <span class="p">(</span><span class="n">section</span><span class="p">))</span> <span class="p">{</span>
+			<span class="k">continue</span><span class="p">;</span>
+		<span class="p">}</span>
+
+		<span class="n">ut64</span> <span class="n">startAddress</span> <span class="o">=</span> <span class="n">section</span><span class="o">-&gt;</span><span class="n">vaddr</span><span class="p">;</span>
+		<span class="n">ut64</span> <span class="n">endAddress</span> <span class="o">=</span> <span class="n">startAddress</span> <span class="o">+</span> <span class="p">(</span><span class="n">section</span><span class="o">-&gt;</span><span class="n">vsize</span><span class="p">)</span> <span class="o">-</span> <span class="n">context</span><span class="o">-&gt;</span><span class="n">word_size</span><span class="p">;</span>
+		<span class="n">ut64</span> <span class="n">ss</span> <span class="o">=</span> <span class="n">endAddress</span> <span class="o">-</span> <span class="n">startAddress</span><span class="p">;</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">ss</span> <span class="o">&gt;</span> <span class="n">ST32_MAX</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">break</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="k">while</span> <span class="p">(</span><span class="n">startAddress</span> <span class="o">&lt;=</span> <span class="n">endAddress</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">if</span> <span class="p">(</span><span class="n">r_cons_is_breaked</span> <span class="p">())</span> <span class="p">{</span>
+				<span class="k">break</span><span class="p">;</span>
+			<span class="p">}</span>
+			<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">anal</span><span class="o">-&gt;</span><span class="n">iob</span><span class="p">.</span><span class="n">is_valid_offset</span> <span class="p">(</span><span class="n">anal</span><span class="o">-&gt;</span><span class="n">iob</span><span class="p">.</span><span class="n">io</span><span class="p">,</span> <span class="n">startAddress</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span>
+				<span class="k">break</span><span class="p">;</span>
+			<span class="p">}</span>
+
+			<span class="k">if</span> <span class="p">(</span><span class="n">vtable_is_addr_vtable_start</span> <span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">startAddress</span><span class="p">))</span> <span class="p">{</span>
+				<span class="n">RVTableInfo</span> <span class="o">*</span><span class="n">vtable</span> <span class="o">=</span> <span class="n">r_anal_vtable_parse_at</span> <span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">startAddress</span><span class="p">);</span>
+				<span class="k">if</span> <span class="p">(</span><span class="n">vtable</span><span class="p">)</span> <span class="p">{</span>
+					<span class="n">r_list_append</span> <span class="p">(</span><span class="n">vtables</span><span class="p">,</span> <span class="n">vtable</span><span class="p">);</span>
+					<span class="n">ut64</span> <span class="n">size</span> <span class="o">=</span> <span class="n">r_anal_vtable_info_get_size</span> <span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">vtable</span><span class="p">);</span>
+					<span class="k">if</span> <span class="p">(</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+						<span class="n">startAddress</span> <span class="o">+=</span> <span class="n">size</span><span class="p">;</span>
+						<span class="k">continue</span><span class="p">;</span>
+					<span class="p">}</span>
+				<span class="p">}</span>
+			<span class="p">}</span>
+			<span class="n">startAddress</span> <span class="o">+=</span> <span class="n">context</span><span class="o">-&gt;</span><span class="n">word_size</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="c1">//XENO: snip</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="n">bool</span> <span class="nf">vtable_is_addr_vtable_start</span><span class="p">(</span><span class="n">RVTableContext</span> <span class="o">*</span><span class="n">context</span><span class="p">,</span> <span class="n">RBinSection</span> <span class="o">*</span><span class="n">section</span><span class="p">,</span> <span class="n">ut64</span> <span class="n">curAddress</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">context</span><span class="o">-&gt;</span><span class="n">abi</span> <span class="o">==</span> <span class="n">R_ANAL_CPP_ABI_MSVC</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="n">vtable_is_addr_vtable_start_msvc</span> <span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">curAddress</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">context</span><span class="o">-&gt;</span><span class="n">abi</span> <span class="o">==</span> <span class="n">R_ANAL_CPP_ABI_ITANIUM</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="n">vtable_is_addr_vtable_start_itanium</span> <span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">curAddress</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="n">r_return_val_if_reached</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+	<span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="n">bool</span> <span class="nf">vtable_is_addr_vtable_start_msvc</span><span class="p">(</span><span class="n">RVTableContext</span> <span class="o">*</span><span class="n">context</span><span class="p">,</span> <span class="n">ut64</span> <span class="n">curAddress</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">RAnalRef</span> <span class="o">*</span><span class="n">xref</span><span class="p">;</span>
+	<span class="n">RListIter</span> <span class="o">*</span><span class="n">xrefIter</span><span class="p">;</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">curAddress</span> <span class="o">||</span> <span class="n">curAddress</span> <span class="o">==</span> <span class="n">UT64_MAX</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">curAddress</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">vtable_is_value_in_text_section</span> <span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">curAddress</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">))</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="c1">//XENO: snip</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="n">bool</span> <span class="nf">vtable_is_value_in_text_section</span><span class="p">(</span><span class="n">RVTableContext</span> <span class="o">*</span><span class="n">context</span><span class="p">,</span> <span class="n">ut64</span> <span class="n">curAddress</span><span class="p">,</span> <span class="n">ut64</span> <span class="o">*</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+	<span class="c1">//value at the current address</span>
+	<span class="n">ut64</span> <span class="n">curAddressValue</span><span class="p">;</span>
+	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">context</span><span class="o">-&gt;</span><span class="n">read_addr</span> <span class="p">(</span><span class="n">context</span><span class="o">-&gt;</span><span class="n">anal</span><span class="p">,</span> <span class="n">curAddress</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">curAddressValue</span><span class="p">))</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="c1">//if the value is in text section</span>
+	<span class="n">bool</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">vtable_addr_in_text_section</span> <span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">curAddressValue</span><span class="p">);</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+		<span class="o">*</span><span class="n">value</span> <span class="o">=</span> <span class="n">curAddressValue</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>Let’s reorganize de code to understand it better:</p>
+
+<ul>
+  <li>
+    <p>First, <em>r_anal_list_vtables()</em> calls both <em>r_anal_vtable_begin()</em> which initializes the previously declared variable <em>context</em> and <em>r_anal_vtable_search()</em> also with <em>context</em> passed as parameter. Let’s observe that the parameter <em>anal-&gt;config-&gt;bits</em> is user-controlled, and thus, <em>context-&gt;word_size</em> also is and due to this, there is a margin in which the <em>read_addr</em> field does not get initialized:</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">R_API</span> <span class="n">bool</span> <span class="nf">r_anal_vtable_begin</span><span class="p">(</span><span class="n">RAnal</span> <span class="o">*</span><span class="n">anal</span><span class="p">,</span> <span class="n">RVTableContext</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">context</span><span class="o">-&gt;</span><span class="n">anal</span> <span class="o">=</span> <span class="n">anal</span><span class="p">;</span>
+  <span class="n">context</span><span class="o">-&gt;</span><span class="n">abi</span> <span class="o">=</span> <span class="n">anal</span><span class="o">-&gt;</span><span class="n">cxxabi</span><span class="p">;</span>
+  <span class="n">context</span><span class="o">-&gt;</span><span class="n">word_size</span> <span class="o">=</span> <span class="p">(</span><span class="n">ut8</span><span class="p">)</span> <span class="p">(</span><span class="n">anal</span><span class="o">-&gt;</span><span class="n">config</span><span class="o">-&gt;</span><span class="n">bits</span> <span class="o">/</span> <span class="mi">8</span><span class="p">);</span>
+  <span class="c1">//...</span>
+  <span class="k">switch</span> <span class="p">(</span><span class="n">context</span><span class="o">-&gt;</span><span class="n">word_size</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">//Depending on the case, context-&gt;read_addr get assigned a value except in default case.</span>
+  <span class="nl">default:</span>
+      <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">R_API</span> <span class="kt">void</span> <span class="nf">r_anal_list_vtables</span><span class="p">(</span><span class="n">RAnal</span> <span class="o">*</span><span class="n">anal</span><span class="p">,</span> <span class="kt">int</span> <span class="n">rad</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">RVTableContext</span> <span class="n">context</span><span class="p">;</span>
+  <span class="n">r_anal_vtable_begin</span> <span class="p">(</span><span class="n">anal</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">context</span><span class="p">);</span>
+  <span class="c1">//...</span>
+  <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Then, <em>r_anal_vtable_search()</em> calls <em>vtable_is_addr_vtable_start()</em> which calls <em>vtable_is_addr_vtable_start_msvc()</em> as well and this one to <em>vtable_is_value_in_text_section()</em> which attemps to read from <em>context-&gt;read_addr</em>:</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">static</span> <span class="n">bool</span> <span class="nf">vtable_is_value_in_text_section</span><span class="p">(</span><span class="n">RVTableContext</span> <span class="o">*</span><span class="n">context</span><span class="p">,</span> <span class="n">ut64</span> <span class="n">curAddress</span><span class="p">,</span> <span class="n">ut64</span> <span class="o">*</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">//value at the current address</span>
+  <span class="n">ut64</span> <span class="n">curAddressValue</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">context</span><span class="o">-&gt;</span><span class="n">read_addr</span> <span class="p">(</span><span class="n">context</span><span class="o">-&gt;</span><span class="n">anal</span><span class="p">,</span> <span class="n">curAddress</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">curAddressValue</span><span class="p">))</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="c1">//...</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>This is an unintialized memory region being readed, leading to Uninitialized Data Access vulnerability.</p>
+
+<p><br /></p>
+
+<h4 id="42-cve-2021-3608">4.2. CVE-2021-3608.</h4>
+
+<p>Consider the following C code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//////////////////////////////////////////////////////////////////////</span>
+<span class="c1">//XENO: Structure that isn't completely initialized</span>
+<span class="c1">//////////////////////////////////////////////////////////////////////</span>
+
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">PvrdmaRing</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="n">MAX_RING_NAME_SZ</span><span class="p">];</span>
+    <span class="n">PCIDevice</span> <span class="o">*</span><span class="n">dev</span><span class="p">;</span>
+    <span class="kt">uint32_t</span> <span class="n">max_elems</span><span class="p">;</span>
+    <span class="kt">size_t</span> <span class="n">elem_sz</span><span class="p">;</span>
+    <span class="n">PvrdmaRingState</span> <span class="o">*</span><span class="n">ring_state</span><span class="p">;</span> <span class="cm">/* used only for unmap */</span>
+    <span class="kt">int</span> <span class="n">npages</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="o">**</span><span class="n">pages</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">PvrdmaRing</span><span class="p">;</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////</span>
+<span class="c1">//XENO: Part of the path where incomplete initialized occurs AND uninitialized usage occurs</span>
+<span class="c1">//////////////////////////////////////////////////////////////////////</span>
+
+<span class="c1">//XENO: Assume dir_addr and num_pages are ACID</span>
+<span class="c1">//XENO: And assume that if the 2nd argument to rdma_pci_dma_map() is ACID</span>
+<span class="c1">//XENO: then it's basically just mapping more ACID data/structs into memory</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">init_dev_ring</span><span class="p">(</span><span class="n">PvrdmaRing</span> <span class="o">*</span><span class="n">ring</span><span class="p">,</span> <span class="n">PvrdmaRingState</span> <span class="o">**</span><span class="n">ring_state</span><span class="p">,</span>
+                         <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">,</span> <span class="n">PCIDevice</span> <span class="o">*</span><span class="n">pci_dev</span><span class="p">,</span>
+                         <span class="n">dma_addr_t</span> <span class="n">dir_addr</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">num_pages</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">uint64_t</span> <span class="o">*</span><span class="n">dir</span><span class="p">,</span> <span class="o">*</span><span class="n">tbl</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">rc</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="n">dir</span> <span class="o">=</span> <span class="n">rdma_pci_dma_map</span><span class="p">(</span><span class="n">pci_dev</span><span class="p">,</span> <span class="n">dir_addr</span><span class="p">,</span> <span class="n">TARGET_PAGE_SIZE</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">dir</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">rdma_error_report</span><span class="p">(</span><span class="s">"Failed to map to page directory (ring %s)"</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
+        <span class="n">rc</span> <span class="o">=</span> <span class="o">-</span><span class="n">ENOMEM</span><span class="p">;</span>
+        <span class="k">goto</span> <span class="n">out</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">tbl</span> <span class="o">=</span> <span class="n">rdma_pci_dma_map</span><span class="p">(</span><span class="n">pci_dev</span><span class="p">,</span> <span class="n">dir</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">TARGET_PAGE_SIZE</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">tbl</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">rdma_error_report</span><span class="p">(</span><span class="s">"Failed to map to page table (ring %s)"</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
+        <span class="n">rc</span> <span class="o">=</span> <span class="o">-</span><span class="n">ENOMEM</span><span class="p">;</span>
+        <span class="k">goto</span> <span class="n">out_free_dir</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="o">*</span><span class="n">ring_state</span> <span class="o">=</span> <span class="n">rdma_pci_dma_map</span><span class="p">(</span><span class="n">pci_dev</span><span class="p">,</span> <span class="n">tbl</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">TARGET_PAGE_SIZE</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!*</span><span class="n">ring_state</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">rdma_error_report</span><span class="p">(</span><span class="s">"Failed to map to ring state (ring %s)"</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
+        <span class="n">rc</span> <span class="o">=</span> <span class="o">-</span><span class="n">ENOMEM</span><span class="p">;</span>
+        <span class="k">goto</span> <span class="n">out_free_tbl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="cm">/* RX ring is the second */</span>
+    <span class="p">(</span><span class="o">*</span><span class="n">ring_state</span><span class="p">)</span><span class="o">++</span><span class="p">;</span>
+    <span class="n">rc</span> <span class="o">=</span> <span class="n">pvrdma_ring_init</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">pci_dev</span><span class="p">,</span>
+                          <span class="p">(</span><span class="n">PvrdmaRingState</span> <span class="o">*</span><span class="p">)</span><span class="o">*</span><span class="n">ring_state</span><span class="p">,</span>
+                          <span class="p">(</span><span class="n">num_pages</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">TARGET_PAGE_SIZE</span> <span class="o">/</span>
+                          <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">pvrdma_cqne</span><span class="p">),</span>
+                          <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">pvrdma_cqne</span><span class="p">),</span>
+                          <span class="p">(</span><span class="n">dma_addr_t</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">tbl</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">(</span><span class="n">dma_addr_t</span><span class="p">)</span><span class="n">num_pages</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">rc</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">rc</span> <span class="o">=</span> <span class="o">-</span><span class="n">ENOMEM</span><span class="p">;</span>
+        <span class="k">goto</span> <span class="n">out_free_ring_state</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">goto</span> <span class="n">out_free_tbl</span><span class="p">;</span>
+
+<span class="nl">out_free_ring_state:</span>
+    <span class="n">rdma_pci_dma_unmap</span><span class="p">(</span><span class="n">pci_dev</span><span class="p">,</span> <span class="o">*</span><span class="n">ring_state</span><span class="p">,</span> <span class="n">TARGET_PAGE_SIZE</span><span class="p">);</span>
+
+<span class="nl">out_free_tbl:</span>
+    <span class="n">rdma_pci_dma_unmap</span><span class="p">(</span><span class="n">pci_dev</span><span class="p">,</span> <span class="n">tbl</span><span class="p">,</span> <span class="n">TARGET_PAGE_SIZE</span><span class="p">);</span>
+
+<span class="nl">out_free_dir:</span>
+    <span class="n">rdma_pci_dma_unmap</span><span class="p">(</span><span class="n">pci_dev</span><span class="p">,</span> <span class="n">dir</span><span class="p">,</span> <span class="n">TARGET_PAGE_SIZE</span><span class="p">);</span>
+
+<span class="nl">out:</span>
+    <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">pvrdma_ring_init</span><span class="p">(</span><span class="n">PvrdmaRing</span> <span class="o">*</span><span class="n">ring</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">,</span> <span class="n">PCIDevice</span> <span class="o">*</span><span class="n">dev</span><span class="p">,</span>
+                     <span class="n">PvrdmaRingState</span> <span class="o">*</span><span class="n">ring_state</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">max_elems</span><span class="p">,</span>
+                     <span class="kt">size_t</span> <span class="n">elem_sz</span><span class="p">,</span> <span class="n">dma_addr_t</span> <span class="o">*</span><span class="n">tbl</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">npages</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">rc</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="n">pstrcpy</span><span class="p">(</span><span class="n">ring</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">,</span> <span class="n">MAX_RING_NAME_SZ</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
+    <span class="n">ring</span><span class="o">-&gt;</span><span class="n">dev</span> <span class="o">=</span> <span class="n">dev</span><span class="p">;</span>
+    <span class="n">ring</span><span class="o">-&gt;</span><span class="n">ring_state</span> <span class="o">=</span> <span class="n">ring_state</span><span class="p">;</span>
+    <span class="n">ring</span><span class="o">-&gt;</span><span class="n">max_elems</span> <span class="o">=</span> <span class="n">max_elems</span><span class="p">;</span>
+    <span class="n">ring</span><span class="o">-&gt;</span><span class="n">elem_sz</span> <span class="o">=</span> <span class="n">elem_sz</span><span class="p">;</span>
+    <span class="cm">/* TODO: Give a moment to think if we want to redo driver settings
+    qatomic_set(&amp;ring-&gt;ring_state-&gt;prod_tail, 0);
+    qatomic_set(&amp;ring-&gt;ring_state-&gt;cons_head, 0);
+    */</span>
+    <span class="n">ring</span><span class="o">-&gt;</span><span class="n">npages</span> <span class="o">=</span> <span class="n">npages</span><span class="p">;</span>
+    <span class="n">ring</span><span class="o">-&gt;</span><span class="n">pages</span> <span class="o">=</span> <span class="n">g_malloc</span><span class="p">(</span><span class="n">npages</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">));</span> <span class="c1">//XENO: array of npages pointers</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">npages</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">tbl</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
+            <span class="n">rdma_error_report</span><span class="p">(</span><span class="s">"npages=%d but tbl[%d] is NULL"</span><span class="p">,</span> <span class="n">npages</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+            <span class="k">continue</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="n">ring</span><span class="o">-&gt;</span><span class="n">pages</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">rdma_pci_dma_map</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="n">tbl</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">TARGET_PAGE_SIZE</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">ring</span><span class="o">-&gt;</span><span class="n">pages</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
+            <span class="n">rc</span> <span class="o">=</span> <span class="o">-</span><span class="n">ENOMEM</span><span class="p">;</span>
+            <span class="n">rdma_error_report</span><span class="p">(</span><span class="s">"Failed to map to page %d in ring %s"</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
+            <span class="k">goto</span> <span class="n">out_free</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">memset</span><span class="p">(</span><span class="n">ring</span><span class="o">-&gt;</span><span class="n">pages</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="n">TARGET_PAGE_SIZE</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">goto</span> <span class="n">out</span><span class="p">;</span>
+
+<span class="nl">out_free:</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">rdma_pci_dma_unmap</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="n">ring</span><span class="o">-&gt;</span><span class="n">pages</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">TARGET_PAGE_SIZE</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">g_free</span><span class="p">(</span><span class="n">ring</span><span class="o">-&gt;</span><span class="n">pages</span><span class="p">);</span>
+
+<span class="nl">out:</span>
+    <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Let’s observe that <em>dir_addr</em> being user-controlled implies <em>tbl</em> being user-controlled (along with <em>num_pages</em>) which both are passed as parameters to <em>pvrdma_ring_init()</em></p>
+
+<p>In this function, <em>num_pages</em> assumes the form of <em>npages</em> and <em>tbl</em> as <em>tbl</em> pointer, as two separate user-controller values, and there exists the following loop:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">npages</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">tbl</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
+        <span class="n">rdma_error_report</span><span class="p">(</span><span class="s">"npages=%d but tbl[%d] is NULL"</span><span class="p">,</span> <span class="n">npages</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+        <span class="k">continue</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">//...</span>
+</code></pre></div></div>
+
+<p>Observe that there are checking the same number of <em>tbl</em> entries and <em>npages</em>, however, since this two values are user-controlled, eventually a huge <em>npages</em> value and a small <em>tbl</em> array can lead to the program try to access undefenied, not-initialize, <em>tbl</em> entires, leading to Uninitialize Data Access vulnerability.</p>
+
+<p><br /></p>
+
+<h4 id="43-cve-2022-26712">4.3. CVE-2022-26712.</h4>
+
+<p>Processes on macOS and iOS can use XPC (Mac OS X inter-Process Communication) to send data between each other. XPC (cross-process communication) is Apple’s IPC mechanism for communication between processes, heavily used for privilege separation. When you send a message via XPC, you’re crossing process boundaries—different address spaces—so the data must be serialized (convert data to a stream of bytes to be reconstructed later).</p>
+
+<p>Consider the following code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">xpc_object_t</span> <span class="n">content</span> <span class="o">=</span> <span class="n">xpc_dictionary_get_value</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="s">"source"</span><span class="p">);</span>
+<span class="kt">size_t</span> <span class="n">count</span> <span class="o">=</span> <span class="n">xpc_array_get_count</span><span class="p">(</span><span class="n">content</span><span class="p">);</span> <span class="c1">//XENO: count SACI, based on number of array elements sent</span>
+<span class="kt">size_t</span> <span class="o">*</span><span class="n">descriptors</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">size_t</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">count</span><span class="p">);</span>
+<span class="kt">size_t</span> <span class="o">*</span><span class="n">accessBeginPointer</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">descriptors</span><span class="p">[</span><span class="n">count</span> <span class="o">*</span> <span class="mi">0</span><span class="p">],</span> <span class="o">*</span><span class="n">accessDataLength</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">descriptors</span><span class="p">[</span><span class="n">count</span> <span class="o">*</span> <span class="mi">1</span><span class="p">],</span> <span class="o">*</span><span class="n">mappedBaseAddress</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">descriptors</span><span class="p">[</span><span class="n">count</span> <span class="o">*</span> <span class="mi">2</span><span class="p">],</span> <span class="o">*</span><span class="n">mappedLength</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">descriptors</span><span class="p">[</span><span class="n">count</span> <span class="o">*</span> <span class="mi">3</span><span class="p">];</span>
+
+<span class="k">for</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">accessBeginPointer</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">accessDataLength</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">mappedBaseAddress</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">mappedLength</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="n">xpc_object_t</span> <span class="n">chunk</span> <span class="o">=</span> <span class="n">xpc_array_get_value</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">xpc_get_type</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span> <span class="o">==</span> <span class="n">XPC_TYPE_DATA</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/*...*/</span> <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">xpc_get_type</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span> <span class="o">==</span> <span class="n">XPC_TYPE_SHMEM</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">xpc_object_t</span> <span class="n">map</span> <span class="o">=</span> <span class="n">xpc_array_get_value</span><span class="p">(</span><span class="n">chunk</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="kt">size_t</span> <span class="n">offset</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">xpc_array_get_uint64</span><span class="p">(</span><span class="n">chunk</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mh">0xFFF</span><span class="p">),</span> <span class="c1">//XENO: offset SACI</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="n">xpc_array_get_uint64</span><span class="p">(</span><span class="n">chunk</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>                      <span class="c1">//XENO: size ACID</span>
+
+    <span class="kt">size_t</span> <span class="n">mapped_address</span><span class="p">;</span>
+    <span class="kt">size_t</span> <span class="n">mapped_size</span> <span class="o">=</span> <span class="n">xpc_shmem_map</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">mapped_address</span><span class="p">);</span>   <span class="c1">//XENO: mapped_size ACID</span>
+
+    <span class="n">size</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">mapped_size</span> <span class="o">-</span> <span class="n">offset</span><span class="p">);</span>
+    <span class="c1">// ...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// ...</span>
+<span class="c1">// cleanup</span>
+<span class="k">for</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">;</span> <span class="n">index</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">mappedLength</span><span class="p">[</span><span class="n">index</span><span class="p">])</span> <span class="p">{</span>
+    <span class="n">munmap</span><span class="p">(</span><span class="n">mappedBaseAddress</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">mappedLength</span><span class="p">[</span><span class="n">index</span><span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">free</span><span class="p">(</span><span class="n">descriptors</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Lets observe the following line:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">size_t</span> <span class="o">*</span><span class="n">descriptors</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">size_t</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">count</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Considering that count is in some form user-controlled and integer overflow can be present in the mathematic operation within the malloc passed parameter leading to an underallocation for <em>descriptor</em> pointer.</p>
+
+<p>Then, some pointers are defined through <em>descriptor</em> pointer:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">size_t</span> <span class="o">*</span><span class="n">accessBeginPointer</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">descriptors</span><span class="p">[</span><span class="n">count</span> <span class="o">*</span> <span class="mi">0</span><span class="p">],</span> 
+        <span class="o">*</span><span class="n">accessDataLength</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">descriptors</span><span class="p">[</span><span class="n">count</span> <span class="o">*</span> <span class="mi">1</span><span class="p">],</span> 
+        <span class="o">*</span><span class="n">mappedBaseAddress</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">descriptors</span><span class="p">[</span><span class="n">count</span> <span class="o">*</span> <span class="mi">2</span><span class="p">],</span> 
+        <span class="o">*</span><span class="n">mappedLength</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">descriptors</span><span class="p">[</span><span class="n">count</span> <span class="o">*</span> <span class="mi">3</span><span class="p">];</span> <span class="c1">//&lt;-- Interesting</span>
+</code></pre></div></div>
+
+<p>Observe that, despite some assignations are being made, the descriptors pointer still not-initialize memery regions.</p>
+
+<p>Thus, below, in the for loop, since count is a big value, eventually Out-Of-Bounds write and read happens:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">;</span> <span class="n">index</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">mappedLength</span><span class="p">[</span><span class="n">index</span><span class="p">])</span> <span class="p">{</span>
+    <span class="c1">//...</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h4 id="44-cve-2022-29968">4.4. CVE-2022-29968.</h4>
+
+<p>Consider the following C code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//////////////////////////////////////////////////////////////////////</span>
+<span class="c1">//XENO: Structure that isn't completely initialized</span>
+<span class="c1">//////////////////////////////////////////////////////////////////////</span>
+<span class="k">struct</span> <span class="n">io_kiocb</span> <span class="p">{</span>
+	<span class="k">union</span> <span class="p">{</span>
+		<span class="k">struct</span> <span class="n">file</span>		<span class="o">*</span><span class="n">file</span><span class="p">;</span>
+		<span class="k">struct</span> <span class="n">io_rw</span>		<span class="n">rw</span><span class="p">;</span>
+		<span class="k">struct</span> <span class="n">io_poll_iocb</span>	<span class="n">poll</span><span class="p">;</span>
+		<span class="k">struct</span> <span class="n">io_poll_update</span>	<span class="n">poll_update</span><span class="p">;</span>
+		<span class="k">struct</span> <span class="n">io_accept</span>	<span class="n">accept</span><span class="p">;</span>
+		<span class="k">struct</span> <span class="n">io_sync</span>		<span class="n">sync</span><span class="p">;</span>
+		<span class="k">struct</span> <span class="n">io_cancel</span>	<span class="n">cancel</span><span class="p">;</span>
+		<span class="k">struct</span> <span class="n">io_timeout</span>	<span class="n">timeout</span><span class="p">;</span>
+		<span class="k">struct</span> <span class="n">io_timeout_rem</span>	<span class="n">timeout_rem</span><span class="p">;</span>
+		<span class="k">struct</span> <span class="n">io_connect</span>	<span class="n">connect</span><span class="p">;</span>
+		<span class="k">struct</span> <span class="n">io_sr_msg</span>	<span class="n">sr_msg</span><span class="p">;</span>
+		<span class="k">struct</span> <span class="n">io_open</span>		<span class="n">open</span><span class="p">;</span>
+		<span class="k">struct</span> <span class="n">io_close</span>		<span class="n">close</span><span class="p">;</span>
+		<span class="k">struct</span> <span class="n">io_rsrc_update</span>	<span class="n">rsrc_update</span><span class="p">;</span>
+		<span class="k">struct</span> <span class="n">io_fadvise</span>	<span class="n">fadvise</span><span class="p">;</span>
+		<span class="k">struct</span> <span class="n">io_madvise</span>	<span class="n">madvise</span><span class="p">;</span>
+		<span class="k">struct</span> <span class="n">io_epoll</span>		<span class="n">epoll</span><span class="p">;</span>
+		<span class="k">struct</span> <span class="n">io_splice</span>	<span class="n">splice</span><span class="p">;</span>
+		<span class="k">struct</span> <span class="n">io_provide_buf</span>	<span class="n">pbuf</span><span class="p">;</span>
+		<span class="k">struct</span> <span class="n">io_statx</span>		<span class="n">statx</span><span class="p">;</span>
+		<span class="k">struct</span> <span class="n">io_shutdown</span>	<span class="n">shutdown</span><span class="p">;</span>
+		<span class="k">struct</span> <span class="n">io_rename</span>	<span class="n">rename</span><span class="p">;</span>
+		<span class="k">struct</span> <span class="n">io_unlink</span>	<span class="n">unlink</span><span class="p">;</span>
+		<span class="k">struct</span> <span class="n">io_mkdir</span>		<span class="n">mkdir</span><span class="p">;</span>
+		<span class="k">struct</span> <span class="n">io_symlink</span>	<span class="n">symlink</span><span class="p">;</span>
+		<span class="k">struct</span> <span class="n">io_hardlink</span>	<span class="n">hardlink</span><span class="p">;</span>
+		<span class="k">struct</span> <span class="n">io_msg</span>		<span class="n">msg</span><span class="p">;</span>
+	<span class="p">};</span>
+
+	<span class="n">u8</span>				<span class="n">opcode</span><span class="p">;</span>
+	<span class="n">u8</span>				<span class="n">iopoll_completed</span><span class="p">;</span>
+	<span class="n">u16</span>				<span class="n">buf_index</span><span class="p">;</span>
+	<span class="kt">unsigned</span> <span class="kt">int</span>			<span class="n">flags</span><span class="p">;</span>
+
+	<span class="n">u64</span>				<span class="n">user_data</span><span class="p">;</span>
+	<span class="n">u32</span>				<span class="n">result</span><span class="p">;</span>
+	<span class="k">union</span> <span class="p">{</span>
+		<span class="n">u32</span>			<span class="n">cflags</span><span class="p">;</span>
+		<span class="kt">int</span>			<span class="n">fd</span><span class="p">;</span>
+	<span class="p">};</span>
+
+	<span class="k">struct</span> <span class="n">io_ring_ctx</span>		<span class="o">*</span><span class="n">ctx</span><span class="p">;</span>
+	<span class="k">struct</span> <span class="n">task_struct</span>		<span class="o">*</span><span class="n">task</span><span class="p">;</span>
+
+	<span class="k">struct</span> <span class="n">percpu_ref</span>		<span class="o">*</span><span class="n">fixed_rsrc_refs</span><span class="p">;</span>
+	<span class="k">struct</span> <span class="n">io_mapped_ubuf</span>		<span class="o">*</span><span class="n">imu</span><span class="p">;</span>
+
+	<span class="k">union</span> <span class="p">{</span>
+		<span class="k">struct</span> <span class="n">io_wq_work_node</span>	<span class="n">comp_list</span><span class="p">;</span>
+		<span class="kt">int</span> <span class="n">apoll_events</span><span class="p">;</span>
+	<span class="p">};</span>
+	<span class="n">atomic_t</span>			<span class="n">refs</span><span class="p">;</span>
+	<span class="n">atomic_t</span>			<span class="n">poll_refs</span><span class="p">;</span>
+	<span class="k">struct</span> <span class="n">io_task_work</span>		<span class="n">io_task_work</span><span class="p">;</span>
+	<span class="k">struct</span> <span class="n">hlist_node</span>		<span class="n">hash_node</span><span class="p">;</span>
+	<span class="k">struct</span> <span class="n">async_poll</span>		<span class="o">*</span><span class="n">apoll</span><span class="p">;</span>
+	<span class="kt">void</span>				<span class="o">*</span><span class="n">async_data</span><span class="p">;</span>
+	<span class="k">struct</span> <span class="n">io_buffer</span>		<span class="o">*</span><span class="n">kbuf</span><span class="p">;</span>
+	<span class="k">struct</span> <span class="n">io_kiocb</span>			<span class="o">*</span><span class="n">link</span><span class="p">;</span>
+	<span class="k">const</span> <span class="k">struct</span> <span class="n">cred</span>		<span class="o">*</span><span class="n">creds</span><span class="p">;</span>
+	<span class="k">struct</span> <span class="n">io_wq_work</span>		<span class="n">work</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////</span>
+<span class="c1">//XENO: Part of the path where incomplete initialization occurs</span>
+<span class="c1">//////////////////////////////////////////////////////////////////////</span>
+
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">io_rw_init_file</span><span class="p">(</span><span class="k">struct</span> <span class="n">io_kiocb</span> <span class="o">*</span><span class="n">req</span><span class="p">,</span> <span class="n">fmode_t</span> <span class="n">mode</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">struct</span> <span class="n">kiocb</span> <span class="o">*</span><span class="n">kiocb</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">req</span><span class="o">-&gt;</span><span class="n">rw</span><span class="p">.</span><span class="n">kiocb</span><span class="p">;</span>
+	<span class="k">struct</span> <span class="n">io_ring_ctx</span> <span class="o">*</span><span class="n">ctx</span> <span class="o">=</span> <span class="n">req</span><span class="o">-&gt;</span><span class="n">ctx</span><span class="p">;</span>
+	<span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="n">file</span> <span class="o">=</span> <span class="n">req</span><span class="o">-&gt;</span><span class="n">file</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">ret</span><span class="p">;</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="n">unlikely</span><span class="p">(</span><span class="o">!</span><span class="n">file</span> <span class="o">||</span> <span class="o">!</span><span class="p">(</span><span class="n">file</span><span class="o">-&gt;</span><span class="n">f_mode</span> <span class="o">&amp;</span> <span class="n">mode</span><span class="p">)))</span>
+		<span class="k">return</span> <span class="o">-</span><span class="n">EBADF</span><span class="p">;</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">io_req_ffs_set</span><span class="p">(</span><span class="n">req</span><span class="p">))</span>
+		<span class="n">req</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">|=</span> <span class="n">io_file_get_flags</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">REQ_F_SUPPORT_NOWAIT_BIT</span><span class="p">;</span>
+
+	<span class="n">kiocb</span><span class="o">-&gt;</span><span class="n">ki_flags</span> <span class="o">=</span> <span class="n">iocb_flags</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+	<span class="n">ret</span> <span class="o">=</span> <span class="n">kiocb_set_rw_flags</span><span class="p">(</span><span class="n">kiocb</span><span class="p">,</span> <span class="n">req</span><span class="o">-&gt;</span><span class="n">rw</span><span class="p">.</span><span class="n">flags</span><span class="p">);</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">unlikely</span><span class="p">(</span><span class="n">ret</span><span class="p">))</span>
+		<span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+
+	<span class="k">if</span> <span class="p">((</span><span class="n">kiocb</span><span class="o">-&gt;</span><span class="n">ki_flags</span> <span class="o">&amp;</span> <span class="n">IOCB_NOWAIT</span><span class="p">)</span> <span class="o">||</span>
+	    <span class="p">((</span><span class="n">file</span><span class="o">-&gt;</span><span class="n">f_flags</span> <span class="o">&amp;</span> <span class="n">O_NONBLOCK</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">io_file_supports_nowait</span><span class="p">(</span><span class="n">req</span><span class="p">)))</span>
+		<span class="n">req</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">|=</span> <span class="n">REQ_F_NOWAIT</span><span class="p">;</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="n">ctx</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">IORING_SETUP_IOPOLL</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">kiocb</span><span class="o">-&gt;</span><span class="n">ki_flags</span> <span class="o">&amp;</span> <span class="n">IOCB_DIRECT</span><span class="p">)</span> <span class="o">||</span> <span class="o">!</span><span class="n">file</span><span class="o">-&gt;</span><span class="n">f_op</span><span class="o">-&gt;</span><span class="n">iopoll</span><span class="p">)</span>
+			<span class="k">return</span> <span class="o">-</span><span class="n">EOPNOTSUPP</span><span class="p">;</span>
+
+		<span class="n">kiocb</span><span class="o">-&gt;</span><span class="n">ki_flags</span> <span class="o">|=</span> <span class="n">IOCB_HIPRI</span> <span class="o">|</span> <span class="n">IOCB_ALLOC_CACHE</span><span class="p">;</span>
+		<span class="n">kiocb</span><span class="o">-&gt;</span><span class="n">ki_complete</span> <span class="o">=</span> <span class="n">io_complete_rw_iopoll</span><span class="p">;</span>
+		<span class="n">req</span><span class="o">-&gt;</span><span class="n">iopoll_completed</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">kiocb</span><span class="o">-&gt;</span><span class="n">ki_flags</span> <span class="o">&amp;</span> <span class="n">IOCB_HIPRI</span><span class="p">)</span>
+			<span class="k">return</span> <span class="o">-</span><span class="n">EINVAL</span><span class="p">;</span>
+		<span class="n">kiocb</span><span class="o">-&gt;</span><span class="n">ki_complete</span> <span class="o">=</span> <span class="n">io_complete_rw</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">io_read</span><span class="p">(</span><span class="k">struct</span> <span class="n">io_kiocb</span> <span class="o">*</span><span class="n">req</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">issue_flags</span><span class="p">){</span>
+	<span class="k">struct</span> <span class="n">io_rw_state</span> <span class="n">__s</span><span class="p">,</span> <span class="o">*</span><span class="n">s</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">__s</span><span class="p">;</span>
+	<span class="k">struct</span> <span class="n">iovec</span> <span class="o">*</span><span class="n">iovec</span><span class="p">;</span>
+	<span class="k">struct</span> <span class="n">kiocb</span> <span class="o">*</span><span class="n">kiocb</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">req</span><span class="o">-&gt;</span><span class="n">rw</span><span class="p">.</span><span class="n">kiocb</span><span class="p">;</span>
+	<span class="n">bool</span> <span class="n">force_nonblock</span> <span class="o">=</span> <span class="n">issue_flags</span> <span class="o">&amp;</span> <span class="n">IO_URING_F_NONBLOCK</span><span class="p">;</span>
+	<span class="k">struct</span> <span class="n">io_async_rw</span> <span class="o">*</span><span class="n">rw</span><span class="p">;</span>
+	<span class="kt">ssize_t</span> <span class="n">ret</span><span class="p">,</span> <span class="n">ret2</span><span class="p">;</span>
+	<span class="n">loff_t</span> <span class="o">*</span><span class="n">ppos</span><span class="p">;</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">req_has_async_data</span><span class="p">(</span><span class="n">req</span><span class="p">))</span> <span class="p">{</span>
+		<span class="n">ret</span> <span class="o">=</span> <span class="n">io_import_iovec</span><span class="p">(</span><span class="n">READ</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">iovec</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">issue_flags</span><span class="p">);</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">unlikely</span><span class="p">(</span><span class="n">ret</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">))</span>
+			<span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">req</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">REQ_F_BUFFER_SELECT</span><span class="p">)</span> <span class="p">{</span>
+			<span class="n">ret</span> <span class="o">=</span> <span class="n">io_import_iovec</span><span class="p">(</span><span class="n">READ</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">iovec</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">issue_flags</span><span class="p">);</span>
+			<span class="k">if</span> <span class="p">(</span><span class="n">unlikely</span><span class="p">(</span><span class="n">ret</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">))</span>
+				<span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+		<span class="p">}</span>
+
+		<span class="n">rw</span> <span class="o">=</span> <span class="n">req</span><span class="o">-&gt;</span><span class="n">async_data</span><span class="p">;</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">rw</span><span class="o">-&gt;</span><span class="n">s</span><span class="p">;</span>
+		<span class="n">iov_iter_restore</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">iter</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">iter_state</span><span class="p">);</span>
+		<span class="n">iovec</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="n">ret</span> <span class="o">=</span> <span class="n">io_rw_init_file</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">FMODE_READ</span><span class="p">);</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">unlikely</span><span class="p">(</span><span class="n">ret</span><span class="p">))</span> <span class="p">{</span>
+		<span class="n">kfree</span><span class="p">(</span><span class="n">iovec</span><span class="p">);</span>
+		<span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="n">req</span><span class="o">-&gt;</span><span class="n">result</span> <span class="o">=</span> <span class="n">iov_iter_count</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">iter</span><span class="p">);</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="n">force_nonblock</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">unlikely</span><span class="p">(</span><span class="o">!</span><span class="n">io_file_supports_nowait</span><span class="p">(</span><span class="n">req</span><span class="p">)))</span> <span class="p">{</span>
+			<span class="n">ret</span> <span class="o">=</span> <span class="n">io_setup_async_rw</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">iovec</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+			<span class="k">return</span> <span class="n">ret</span> <span class="o">?:</span> <span class="o">-</span><span class="n">EAGAIN</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="n">kiocb</span><span class="o">-&gt;</span><span class="n">ki_flags</span> <span class="o">|=</span> <span class="n">IOCB_NOWAIT</span><span class="p">;</span>
+	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+		<span class="n">kiocb</span><span class="o">-&gt;</span><span class="n">ki_flags</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">IOCB_NOWAIT</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="n">ppos</span> <span class="o">=</span> <span class="n">io_kiocb_update_pos</span><span class="p">(</span><span class="n">req</span><span class="p">);</span>
+
+	<span class="n">ret</span> <span class="o">=</span> <span class="n">rw_verify_area</span><span class="p">(</span><span class="n">READ</span><span class="p">,</span> <span class="n">req</span><span class="o">-&gt;</span><span class="n">file</span><span class="p">,</span> <span class="n">ppos</span><span class="p">,</span> <span class="n">req</span><span class="o">-&gt;</span><span class="n">result</span><span class="p">);</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">unlikely</span><span class="p">(</span><span class="n">ret</span><span class="p">))</span> <span class="p">{</span>
+		<span class="n">kfree</span><span class="p">(</span><span class="n">iovec</span><span class="p">);</span>
+		<span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="n">ret</span> <span class="o">=</span> <span class="n">io_iter_do_read</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">iter</span><span class="p">);</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="n">ret</span> <span class="o">==</span> <span class="o">-</span><span class="n">EAGAIN</span> <span class="o">||</span> <span class="p">(</span><span class="n">req</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">REQ_F_REISSUE</span><span class="p">))</span> <span class="p">{</span>
+		<span class="n">req</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">REQ_F_REISSUE</span><span class="p">;</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">req</span><span class="o">-&gt;</span><span class="n">opcode</span> <span class="o">==</span> <span class="n">IORING_OP_READ</span> <span class="o">&amp;&amp;</span> <span class="n">file_can_poll</span><span class="p">(</span><span class="n">req</span><span class="o">-&gt;</span><span class="n">file</span><span class="p">))</span>
+			<span class="k">return</span> <span class="o">-</span><span class="n">EAGAIN</span><span class="p">;</span>
+		<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">force_nonblock</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="p">(</span><span class="n">req</span><span class="o">-&gt;</span><span class="n">ctx</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">IORING_SETUP_IOPOLL</span><span class="p">))</span>
+			<span class="k">goto</span> <span class="n">done</span><span class="p">;</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">req</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">REQ_F_NOWAIT</span><span class="p">)</span>
+			<span class="k">goto</span> <span class="n">done</span><span class="p">;</span>
+		<span class="n">ret</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">ret</span> <span class="o">==</span> <span class="o">-</span><span class="n">EIOCBQUEUED</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">goto</span> <span class="n">out_free</span><span class="p">;</span>
+	<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">ret</span> <span class="o">==</span> <span class="n">req</span><span class="o">-&gt;</span><span class="n">result</span> <span class="o">||</span> <span class="n">ret</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="o">||</span> <span class="o">!</span><span class="n">force_nonblock</span> <span class="o">||</span>
+		   <span class="p">(</span><span class="n">req</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">REQ_F_NOWAIT</span><span class="p">)</span> <span class="o">||</span> <span class="o">!</span><span class="n">need_read_all</span><span class="p">(</span><span class="n">req</span><span class="p">))</span> <span class="p">{</span>
+
+		<span class="k">goto</span> <span class="n">done</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="n">iov_iter_restore</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">iter</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">iter_state</span><span class="p">);</span>
+
+	<span class="n">ret2</span> <span class="o">=</span> <span class="n">io_setup_async_rw</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">iovec</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">ret2</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">ret2</span><span class="p">;</span>
+
+	<span class="n">iovec</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+	<span class="n">rw</span> <span class="o">=</span> <span class="n">req</span><span class="o">-&gt;</span><span class="n">async_data</span><span class="p">;</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">rw</span><span class="o">-&gt;</span><span class="n">s</span><span class="p">;</span>
+
+	<span class="k">do</span> <span class="p">{</span>
+		<span class="n">iov_iter_advance</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">iter</span><span class="p">,</span> <span class="n">ret</span><span class="p">);</span>
+		<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">iov_iter_count</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">iter</span><span class="p">))</span>
+			<span class="k">break</span><span class="p">;</span>
+		<span class="n">rw</span><span class="o">-&gt;</span><span class="n">bytes_done</span> <span class="o">+=</span> <span class="n">ret</span><span class="p">;</span>
+		<span class="n">iov_iter_save_state</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">iter</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">iter_state</span><span class="p">);</span>
+
+		<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">io_rw_should_retry</span><span class="p">(</span><span class="n">req</span><span class="p">))</span> <span class="p">{</span>
+			<span class="n">kiocb</span><span class="o">-&gt;</span><span class="n">ki_flags</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">IOCB_WAITQ</span><span class="p">;</span>
+			<span class="k">return</span> <span class="o">-</span><span class="n">EAGAIN</span><span class="p">;</span>
+		<span class="p">}</span>
+
+		<span class="n">ret</span> <span class="o">=</span> <span class="n">io_iter_do_read</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">iter</span><span class="p">);</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">ret</span> <span class="o">==</span> <span class="o">-</span><span class="n">EIOCBQUEUED</span><span class="p">)</span>
+			<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+		<span class="n">kiocb</span><span class="o">-&gt;</span><span class="n">ki_flags</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">IOCB_WAITQ</span><span class="p">;</span>
+		<span class="n">iov_iter_restore</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">iter</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">iter_state</span><span class="p">);</span>
+	<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">ret</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">);</span>
+<span class="nl">done:</span>
+	<span class="n">kiocb_done</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">ret</span><span class="p">,</span> <span class="n">issue_flags</span><span class="p">);</span>
+<span class="nl">out_free:</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">iovec</span><span class="p">)</span>
+		<span class="n">kfree</span><span class="p">(</span><span class="n">iovec</span><span class="p">);</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="c1">//////////////////////////////////////////////////////////////////////</span>
+<span class="c1">//XENO: Part of the path where uninitialized access occurs eventually</span>
+<span class="c1">//////////////////////////////////////////////////////////////////////</span>
+
+
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">io_do_iopoll</span><span class="p">(</span><span class="k">struct</span> <span class="n">io_ring_ctx</span> <span class="o">*</span><span class="n">ctx</span><span class="p">,</span> <span class="n">bool</span> <span class="n">force_nonspin</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">struct</span> <span class="n">io_wq_work_node</span> <span class="o">*</span><span class="n">pos</span><span class="p">,</span> <span class="o">*</span><span class="n">start</span><span class="p">,</span> <span class="o">*</span><span class="n">prev</span><span class="p">;</span>
+	<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">poll_flags</span> <span class="o">=</span> <span class="n">BLK_POLL_NOSLEEP</span><span class="p">;</span>
+	<span class="n">DEFINE_IO_COMP_BATCH</span><span class="p">(</span><span class="n">iob</span><span class="p">);</span>
+	<span class="kt">int</span> <span class="n">nr_events</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="n">ctx</span><span class="o">-&gt;</span><span class="n">poll_multi_queue</span> <span class="o">||</span> <span class="n">force_nonspin</span><span class="p">)</span>
+		<span class="n">poll_flags</span> <span class="o">|=</span> <span class="n">BLK_POLL_ONESHOT</span><span class="p">;</span>
+
+	<span class="n">wq_list_for_each</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ctx</span><span class="o">-&gt;</span><span class="n">iopoll_list</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">struct</span> <span class="n">io_kiocb</span> <span class="o">*</span><span class="n">req</span> <span class="o">=</span> <span class="n">container_of</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="k">struct</span> <span class="n">io_kiocb</span><span class="p">,</span> <span class="n">comp_list</span><span class="p">);</span>
+		<span class="k">struct</span> <span class="n">kiocb</span> <span class="o">*</span><span class="n">kiocb</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">req</span><span class="o">-&gt;</span><span class="n">rw</span><span class="p">.</span><span class="n">kiocb</span><span class="p">;</span>
+		<span class="kt">int</span> <span class="n">ret</span><span class="p">;</span>
+
+		<span class="k">if</span> <span class="p">(</span><span class="n">READ_ONCE</span><span class="p">(</span><span class="n">req</span><span class="o">-&gt;</span><span class="n">iopoll_completed</span><span class="p">))</span>
+			<span class="k">break</span><span class="p">;</span>
+
+		<span class="n">ret</span> <span class="o">=</span> <span class="n">kiocb</span><span class="o">-&gt;</span><span class="n">ki_filp</span><span class="o">-&gt;</span><span class="n">f_op</span><span class="o">-&gt;</span><span class="n">iopoll</span><span class="p">(</span><span class="n">kiocb</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">iob</span><span class="p">,</span> <span class="n">poll_flags</span><span class="p">);</span> <span class="c1">//XENO: This calls iocb_bio_iopoll</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">unlikely</span><span class="p">(</span><span class="n">ret</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">))</span>
+			<span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+		<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+			<span class="n">poll_flags</span> <span class="o">|=</span> <span class="n">BLK_POLL_ONESHOT</span><span class="p">;</span>
+
+		<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">rq_list_empty</span><span class="p">(</span><span class="n">iob</span><span class="p">.</span><span class="n">req_list</span><span class="p">)</span> <span class="o">||</span>
+		    <span class="n">READ_ONCE</span><span class="p">(</span><span class="n">req</span><span class="o">-&gt;</span><span class="n">iopoll_completed</span><span class="p">))</span>
+			<span class="k">break</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">rq_list_empty</span><span class="p">(</span><span class="n">iob</span><span class="p">.</span><span class="n">req_list</span><span class="p">))</span>
+		<span class="n">iob</span><span class="p">.</span><span class="n">complete</span><span class="p">(</span><span class="o">&amp;</span><span class="n">iob</span><span class="p">);</span>
+	<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">pos</span><span class="p">)</span>
+		<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+
+	<span class="n">prev</span> <span class="o">=</span> <span class="n">start</span><span class="p">;</span>
+	<span class="n">wq_list_for_each_resume</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">prev</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">struct</span> <span class="n">io_kiocb</span> <span class="o">*</span><span class="n">req</span> <span class="o">=</span> <span class="n">container_of</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="k">struct</span> <span class="n">io_kiocb</span><span class="p">,</span> <span class="n">comp_list</span><span class="p">);</span>
+
+		<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">smp_load_acquire</span><span class="p">(</span><span class="o">&amp;</span><span class="n">req</span><span class="o">-&gt;</span><span class="n">iopoll_completed</span><span class="p">))</span>
+			<span class="k">break</span><span class="p">;</span>
+		<span class="n">nr_events</span><span class="o">++</span><span class="p">;</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">unlikely</span><span class="p">(</span><span class="n">req</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">REQ_F_CQE_SKIP</span><span class="p">))</span>
+			<span class="k">continue</span><span class="p">;</span>
+		<span class="n">__io_fill_cqe_req</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">req</span><span class="o">-&gt;</span><span class="n">result</span><span class="p">,</span> <span class="n">io_put_kbuf</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
+	<span class="p">}</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="n">unlikely</span><span class="p">(</span><span class="o">!</span><span class="n">nr_events</span><span class="p">))</span>
+		<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+
+	<span class="n">io_commit_cqring</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+	<span class="n">io_cqring_ev_posted_iopoll</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+	<span class="n">pos</span> <span class="o">=</span> <span class="n">start</span> <span class="o">?</span> <span class="n">start</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">:</span> <span class="n">ctx</span><span class="o">-&gt;</span><span class="n">iopoll_list</span><span class="p">.</span><span class="n">first</span><span class="p">;</span>
+	<span class="n">wq_list_cut</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ctx</span><span class="o">-&gt;</span><span class="n">iopoll_list</span><span class="p">,</span> <span class="n">prev</span><span class="p">,</span> <span class="n">start</span><span class="p">);</span>
+	<span class="n">io_free_batch_list</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">pos</span><span class="p">);</span>
+	<span class="k">return</span> <span class="n">nr_events</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="kt">int</span> <span class="nf">iocb_bio_iopoll</span><span class="p">(</span><span class="k">struct</span> <span class="n">kiocb</span> <span class="o">*</span><span class="n">kiocb</span><span class="p">,</span> <span class="k">struct</span> <span class="n">io_comp_batch</span> <span class="o">*</span><span class="n">iob</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">struct</span> <span class="n">bio</span> <span class="o">*</span><span class="n">bio</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+	<span class="n">rcu_read_lock</span><span class="p">();</span>
+	<span class="n">bio</span> <span class="o">=</span> <span class="n">READ_ONCE</span><span class="p">(</span><span class="n">kiocb</span><span class="o">-&gt;</span><span class="n">private</span><span class="p">);</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">bio</span> <span class="o">&amp;&amp;</span> <span class="n">bio</span><span class="o">-&gt;</span><span class="n">bi_bdev</span><span class="p">)</span>
+		<span class="n">ret</span> <span class="o">=</span> <span class="n">bio_poll</span><span class="p">(</span><span class="n">bio</span><span class="p">,</span> <span class="n">iob</span><span class="p">,</span> <span class="n">flags</span><span class="p">);</span>
+	<span class="n">rcu_read_unlock</span><span class="p">();</span>
+
+	<span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">bio_poll</span><span class="p">(</span><span class="k">struct</span> <span class="n">bio</span> <span class="o">*</span><span class="n">bio</span><span class="p">,</span> <span class="k">struct</span> <span class="n">io_comp_batch</span> <span class="o">*</span><span class="n">iob</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">struct</span> <span class="n">request_queue</span> <span class="o">*</span><span class="n">q</span> <span class="o">=</span> <span class="n">bdev_get_queue</span><span class="p">(</span><span class="n">bio</span><span class="o">-&gt;</span><span class="n">bi_bdev</span><span class="p">);</span>
+	<span class="n">blk_qc_t</span> <span class="n">cookie</span> <span class="o">=</span> <span class="n">READ_ONCE</span><span class="p">(</span><span class="n">bio</span><span class="o">-&gt;</span><span class="n">bi_cookie</span><span class="p">);</span>
+	<span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="n">cookie</span> <span class="o">==</span> <span class="n">BLK_QC_T_NONE</span> <span class="o">||</span>
+	    <span class="o">!</span><span class="n">test_bit</span><span class="p">(</span><span class="n">QUEUE_FLAG_POLL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">queue_flags</span><span class="p">))</span>
+		<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+
+	<span class="n">blk_flush_plug</span><span class="p">(</span><span class="n">current</span><span class="o">-&gt;</span><span class="n">plug</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="n">blk_queue_enter</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">BLK_MQ_REQ_NOWAIT</span><span class="p">))</span>
+		<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">queue_is_mq</span><span class="p">(</span><span class="n">q</span><span class="p">))</span> <span class="p">{</span>
+		<span class="n">ret</span> <span class="o">=</span> <span class="n">blk_mq_poll</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">cookie</span><span class="p">,</span> <span class="n">iob</span><span class="p">,</span> <span class="n">flags</span><span class="p">);</span>
+	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+		<span class="k">struct</span> <span class="n">gendisk</span> <span class="o">*</span><span class="n">disk</span> <span class="o">=</span> <span class="n">q</span><span class="o">-&gt;</span><span class="n">disk</span><span class="p">;</span>
+
+		<span class="k">if</span> <span class="p">(</span><span class="n">disk</span> <span class="o">&amp;&amp;</span> <span class="n">disk</span><span class="o">-&gt;</span><span class="n">fops</span><span class="o">-&gt;</span><span class="n">poll_bio</span><span class="p">)</span>
+			<span class="n">ret</span> <span class="o">=</span> <span class="n">disk</span><span class="o">-&gt;</span><span class="n">fops</span><span class="o">-&gt;</span><span class="n">poll_bio</span><span class="p">(</span><span class="n">bio</span><span class="p">,</span> <span class="n">iob</span><span class="p">,</span> <span class="n">flags</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="n">blk_queue_exit</span><span class="p">(</span><span class="n">q</span><span class="p">);</span>
+	<span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Check that the code that attempts to initialize <em>struct kiocb *kiocb</em> struct by the function <em>io_rw_init_file()</em>, and later in <em>iocb_bio_iopoll()</em> attempts to use <em>kiocb-&gt;private</em> field which is uninitialize, thus <em>bio</em> now has uninitilize data and barely all the operations performed with <em>bio</em> in *bio_poll() *are dangerous and potentially vulnerable since the code is making decisions with undefined data.</p>
+
+<p><br /></p>
+
+
+      </article>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#csoft">csoft</a>
+          
+        </div>
+      
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+<section id = "social-share-section">
+  <span class="sr-only">Share: </span>
+
+  
+    <a href="https://twitter.com/intent/tweet?text=Uninitialize+Data+Access.&url=http%3A%2F%2Flocalhost%3A4000%2F2025-12-23-UDA%2F"
+      class="btn btn-social-icon btn-twitter" title="Share on Twitter">
+      <span class="fab fa-fw fa-twitter" aria-hidden="true"></span>
+      <span class="sr-only">Twitter</span>
+    </a>
+  
+
+  
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F2025-12-23-UDA%2F"
+      class="btn btn-social-icon btn-facebook" title="Share on Facebook">
+      <span class="fab fa-fw fa-facebook" aria-hidden="true"></span>
+      <span class="sr-only">Facebook</span>
+    </a>
+  
+
+  
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F2025-12-23-UDA%2F"
+      class="btn btn-social-icon btn-linkedin" title="Share on LinkedIn">
+      <span class="fab fa-fw fa-linkedin" aria-hidden="true"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  
+
+  
+
+  
+
+</section>
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/2025-12-12-ControlFlow/" data-toggle="tooltip" data-placement="top" title="Control Flow.">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/2025-12-25-MathTest/" data-toggle="tooltip" data-placement="top" title="Introducción al Cálculo">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+      
+  
+  
+  
+
+  
+
+
+  
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="/feed.xml" title="RSS">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">RSS</span>
+    </a>
+  </li><li class="list-inline-item">
+    <a href="mailto:" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/Qv1nTv5" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://twitter.com/Qvintvs1" title="Twitter">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Twitter</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://linkedin.com/in/german-sanmillan-68b308229/" title="LinkedIn">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">LinkedIn</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        German
+        &nbsp;&bull;&nbsp;
+      
+      2026
+
+      
+
+      
+      </p>
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>

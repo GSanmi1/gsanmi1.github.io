@@ -12,7 +12,7 @@
   <title>Buffer Overflows</title>
 
   
-  <meta name="author" content="Qv1nTv5">
+  <meta name="author" content="German">
   
 
   <meta name="description" content="Buffer Overflows Basics.">
@@ -37,12 +37,12 @@
   
     
       
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
 
     
       
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 
     
@@ -67,6 +67,10 @@
   
 
   
+    
+      <link rel="stylesheet" href="/assets/css/custom-dark.css">
+    
+  
 
   
   
@@ -83,7 +87,7 @@
 
   
   <meta property="og:type" content="article">
-  <meta property="og:article:author" content="Qv1nTv5">
+  <meta property="og:article:author" content="German">
   <meta property="og:article:published_time" content="2023-11-08T00:00:00-05:00">
   <meta property="og:url" content="http://localhost:4000/2023-11-08-8.Buffer_Overflows/">
   <link rel="canonical" href="http://localhost:4000/2023-11-08-8.Buffer_Overflows/">
@@ -102,6 +106,33 @@
 
   
 
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+    document.querySelectorAll("script[type='math/tex; mode=display']").forEach(function(el) {
+      el.outerHTML = "\\[" + el.textContent + "\\]";
+    });
+    document.querySelectorAll("script[type='math/tex']").forEach(function(el) {
+      el.outerHTML = "\\(" + el.textContent + "\\)";
+    });
+    var script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js';
+    script.async = true;
+    document.head.appendChild(script);
+  });
+</script>
+
 
   
 
@@ -115,22 +146,23 @@
   
 
 
-  <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">Home</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+  <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">Home</a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="main-navbar">
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav ms-auto">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Program</a>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Program</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="/Cpage">C</a>
                   <a class="dropdown-item" href="/DHARMApage">Dharma</a>
+                  <a class="dropdown-item" href="/RUSTpage">Rust</a>
             </div>
           </li>
         
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pentest</a>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Web2</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="/BURPSUITEpage">Burp</a>
                   <a class="dropdown-item" href="/THMpage">Thm</a>
@@ -140,6 +172,23 @@
                   <a class="dropdown-item" href="/BLUETEAMBASICSpage">Blueteam</a>
                   <a class="dropdown-item" href="/REDESpage">Net</a>
                   <a class="dropdown-item" href="/2022-11-17-GitBasics">Git</a>
+                  <a class="dropdown-item" href="/CSOFTpage">MemCorrupt</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ZKP</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/MATHpage">Math</a>
+                  <a class="dropdown-item" href="/RUSTpage">Rust</a>
+                  <a class="dropdown-item" href="/NOIRpage">Noir</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Assembly</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/ASSEMpage">x86</a>
             </div>
           </li>
         
@@ -170,9 +219,177 @@
     var searchjson = '[ \
        \
         { \
+          "title"    : "P vs NP.", \
+          "category" : "math", \
+          "url"      : "/2026-01-11-PvsNP/", \
+          "date"     : "January 11, 2026" \
+        }, \
+       \
+        { \
+          "title"    : "Race Conditions.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-28-RaceCondition/", \
+          "date"     : "December 28, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Introducción al Cálculo", \
+          "category" : "matemáticas", \
+          "url"      : "/2025-12-25-MathTest/", \
+          "date"     : "December 25, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Uninitialize Data Access.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-23-UDA/", \
+          "date"     : "December 23, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Control Flow.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-12-ControlFlow/", \
+          "date"     : "December 12, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Other Integer Issues.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-05-OtherIntegerIssues/", \
+          "date"     : "December  5, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Integer Overflow/Underflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-05-IntegerOverflow-Underflow/", \
+          "date"     : "December  5, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Passing Parameters.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-04-Passing-Parameters/", \
+          "date"     : "December  4, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Stackframe; Local variables, Arrays and Structures.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-01-LocalVars_Arrays_structs/", \
+          "date"     : "December  1, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Out-Of-Bounds Write.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-26-Out-Of-Bounds-Write/", \
+          "date"     : "November 26, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Calling Functions.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-21-CallingFunctions/", \
+          "date"     : "November 21, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "(Linear) Heap Buffer Overflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-18-HBO/", \
+          "date"     : "November 18, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Basic Instructions.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-17-AssemblyBasicRegisters/", \
+          "date"     : "November 17, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Computer Registers.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-08-ComputerRegisters/", \
+          "date"     : "November  8, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "CVE-2021-20294.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-07-CVE-2021-20294/", \
+          "date"     : "November  7, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "(Linear) Stack Buffer Overflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-06-LSBO/", \
+          "date"     : "November  6, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Text Editor.", \
+          "category" : "C", \
+          "url"      : "/2025-08-11-Text-Editor/", \
+          "date"     : "August 11, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Garbage Collector.", \
+          "category" : "C", \
+          "url"      : "/2025-07-11-GarbageCollector/", \
+          "date"     : "July 11, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Hashtables.", \
+          "category" : "C", \
+          "url"      : "/2025-06-13-HashTable/", \
+          "date"     : "June 13, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Building my own malloc in C.", \
+          "category" : "C", \
+          "url"      : "/2025-06-09-BuildingOwnMalloc/", \
+          "date"     : "June  9, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Malloc Tutorial", \
+          "category" : "C", \
+          "url"      : "/2025-06-06-MallocTutorial/", \
+          "date"     : "June  6, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "SharedLibraries&amp;FunctionHooking", \
+          "category" : "C", \
+          "url"      : "/2025-04-26-SharedLibraries&FunctionHooking/", \
+          "date"     : "April 26, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "File Descritors", \
+          "category" : "C", \
+          "url"      : "/2025-03-04-FileDescriptors/", \
+          "date"     : "March  4, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Network Programming", \
+          "category" : "C", \
+          "url"      : "/2025-02-22-Network_Programming/", \
+          "date"     : "February 22, 2025" \
+        }, \
+       \
+        { \
           "title"    : "2. Constants and Literals in C.", \
           "category" : "C", \
-          "url"      : "/2024-12-10-1.ConstantsinC-copy/", \
+          "url"      : "/2024-12-10-2.ConstantsinC-copy/", \
           "date"     : "December 10, 2024" \
         }, \
        \
@@ -675,6 +892,13 @@
        \
        \
         { \
+          "title"    : "Assembly and Architecture Introduction.", \
+          "category" : "page", \
+          "url"      : "/ASSEMpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
           "title"    : "Blueteam Basics", \
           "category" : "page", \
           "url"      : "/BLUETEAMBASICSpage/", \
@@ -689,7 +913,14 @@
         }, \
        \
         { \
-          "title"    : "C programming subjects.", \
+          "title"    : "C-Family Software Memory Corruption Vulnerabilities", \
+          "category" : "page", \
+          "url"      : "/CSOFTpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "C &amp; Systems Fundamentals.", \
           "category" : "page", \
           "url"      : "/Cpage/", \
           "date"     : "January 1, 1970" \
@@ -720,6 +951,13 @@
           "title"    : "HackTheBox", \
           "category" : "page", \
           "url"      : "/HackTheBoxpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "TryHackMe", \
+          "category" : "page", \
+          "url"      : "/MATHpage/", \
           "date"     : "January 1, 1970" \
         }, \
        \
@@ -773,7 +1011,7 @@
         }, \
        \
         { \
-          "title"    : "Germán Sanmillán", \
+          "title"    : "", \
           "category" : "page", \
           "url"      : "/", \
           "date"     : "January 1, 1970" \
@@ -794,100 +1032,135 @@
         }, \
        \
         { \
-          "title"    : "Germán Sanmillán", \
+          "title"    : "", \
           "category" : "page", \
           "url"      : "/page2/", \
           "date"     : "January 1, 1970" \
         }, \
        \
         { \
-          "title"    : "Germán Sanmillán", \
+          "title"    : "", \
           "category" : "page", \
           "url"      : "/page3/", \
           "date"     : "January 1, 1970" \
         }, \
        \
         { \
-          "title"    : "Germán Sanmillán", \
+          "title"    : "", \
           "category" : "page", \
           "url"      : "/page4/", \
           "date"     : "January 1, 1970" \
         }, \
        \
         { \
-          "title"    : "Germán Sanmillán", \
+          "title"    : "", \
           "category" : "page", \
           "url"      : "/page5/", \
           "date"     : "January 1, 1970" \
         }, \
        \
         { \
-          "title"    : "Germán Sanmillán", \
+          "title"    : "", \
           "category" : "page", \
           "url"      : "/page6/", \
           "date"     : "January 1, 1970" \
         }, \
        \
         { \
-          "title"    : "Germán Sanmillán", \
+          "title"    : "", \
           "category" : "page", \
           "url"      : "/page7/", \
           "date"     : "January 1, 1970" \
         }, \
        \
         { \
-          "title"    : "Germán Sanmillán", \
+          "title"    : "", \
           "category" : "page", \
           "url"      : "/page8/", \
           "date"     : "January 1, 1970" \
         }, \
        \
         { \
-          "title"    : "Germán Sanmillán", \
+          "title"    : "", \
           "category" : "page", \
           "url"      : "/page9/", \
           "date"     : "January 1, 1970" \
         }, \
        \
         { \
-          "title"    : "Germán Sanmillán", \
+          "title"    : "", \
           "category" : "page", \
           "url"      : "/page10/", \
           "date"     : "January 1, 1970" \
         }, \
        \
         { \
-          "title"    : "Germán Sanmillán", \
+          "title"    : "", \
           "category" : "page", \
           "url"      : "/page11/", \
           "date"     : "January 1, 1970" \
         }, \
        \
         { \
-          "title"    : "Germán Sanmillán", \
+          "title"    : "", \
           "category" : "page", \
           "url"      : "/page12/", \
           "date"     : "January 1, 1970" \
         }, \
        \
         { \
-          "title"    : "Germán Sanmillán", \
+          "title"    : "", \
           "category" : "page", \
           "url"      : "/page13/", \
           "date"     : "January 1, 1970" \
         }, \
        \
         { \
-          "title"    : "Germán Sanmillán", \
+          "title"    : "", \
           "category" : "page", \
           "url"      : "/page14/", \
           "date"     : "January 1, 1970" \
         }, \
        \
         { \
-          "title"    : "Germán Sanmillán", \
+          "title"    : "", \
           "category" : "page", \
           "url"      : "/page15/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page16/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page17/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page18/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page19/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page20/", \
           "date"     : "January 1, 1970" \
         } \
        \
@@ -1986,27 +2259,27 @@ unsigned char buf[] =
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/usr/bin/python
 </span>
-<span class="n">badchars</span> <span class="o">=</span> <span class="sa">b</span><span class="s">""</span>
-<span class="n">badchars</span> <span class="o">+=</span> <span class="sa">b</span><span class="s">"</span><span class="se">\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10</span><span class="s">"</span>
-<span class="n">badchars</span> <span class="o">+=</span> <span class="sa">b</span><span class="s">"</span><span class="se">\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x20</span><span class="s">"</span>
-<span class="n">badchars</span> <span class="o">+=</span> <span class="sa">b</span><span class="s">"</span><span class="se">\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b\x2c\x2d\x2e\x2f\x30</span><span class="s">"</span>
-<span class="n">badchars</span> <span class="o">+=</span> <span class="sa">b</span><span class="s">"</span><span class="se">\x31\x32\x33\x34\x35\x36\x37\x38\x39\x3a\x3b\x3c\x3d\x3e\x3f\x40</span><span class="s">"</span>
-<span class="n">badchars</span> <span class="o">+=</span> <span class="sa">b</span><span class="s">"</span><span class="se">\x41\x42\x43\x44\x45\x46\x47\x48\x49\x4a\x4b\x4c\x4d\x4e\x4f\x50</span><span class="s">"</span>
-<span class="n">badchars</span> <span class="o">+=</span> <span class="sa">b</span><span class="s">"</span><span class="se">\x51\x52\x53\x54\x55\x56\x57\x58\x59\x5a\x5b\x5c\x5d\x5e\x5f\x60</span><span class="s">"</span>
-<span class="n">badchars</span> <span class="o">+=</span> <span class="sa">b</span><span class="s">"</span><span class="se">\x61\x62\x63\x64\x65\x66\x67\x68\x69\x6a\x6b\x6c\x6d\x6e\x6f\x70</span><span class="s">"</span>
-<span class="n">badchars</span> <span class="o">+=</span> <span class="sa">b</span><span class="s">"</span><span class="se">\x71\x72\x73\x74\x75\x76\x77\x78\x79\x7a\x7b\x7c\x7d\x7e\x7f\x80</span><span class="s">"</span>
-<span class="n">badchars</span> <span class="o">+=</span> <span class="sa">b</span><span class="s">"</span><span class="se">\x81\x82\x83\x84\x85\x86\x87\x88\x89\x8a\x8b\x8c\x8d\x8e\x8f\x90</span><span class="s">"</span>
-<span class="n">badchars</span> <span class="o">+=</span> <span class="sa">b</span><span class="s">"</span><span class="se">\x91\x92\x93\x94\x95\x96\x97\x98\x99\x9a\x9b\x9c\x9d\x9e\x9f\xa0</span><span class="s">"</span>
-<span class="n">badchars</span> <span class="o">+=</span> <span class="sa">b</span><span class="s">"</span><span class="se">\xa1\xa2\xa3\xa4\xa5\xa6\xa7\xa8\xa9\xaa\xab\xac\xad\xae\xaf\xb0</span><span class="s">"</span>
-<span class="n">badchars</span> <span class="o">+=</span> <span class="sa">b</span><span class="s">"</span><span class="se">\xb1\xb2\xb3\xb4\xb5\xb6\xb7\xb8\xb9\xba\xbb\xbc\xbd\xbe\xbf\xc0</span><span class="s">"</span>
-<span class="n">badchars</span> <span class="o">+=</span> <span class="sa">b</span><span class="s">"</span><span class="se">\xc1\xc2\xc3\xc4\xc5\xc6\xc7\xc8\xc9\xca\xcb\xcc\xcd\xce\xcf\xd0</span><span class="s">"</span>
-<span class="n">badchars</span> <span class="o">+=</span> <span class="sa">b</span><span class="s">"</span><span class="se">\xd1\xd2\xd3\xd4\xd5\xd6\xd7\xd8\xd9\xda\xdb\xdc\xdd\xde\xdf\xe0</span><span class="s">"</span>
-<span class="n">badchars</span> <span class="o">+=</span> <span class="sa">b</span><span class="s">"</span><span class="se">\xe1\xe2\xe3\xe4\xe5\xe6\xe7\xe8\xe9\xea\xeb\xec\xed\xee\xef\xf0</span><span class="s">"</span>
-<span class="n">badchars</span> <span class="o">+=</span> <span class="sa">b</span><span class="s">"</span><span class="se">\xf1\xf2\xf3\xf4\xf5\xf6\xf7\xf8\xf9\xfa\xfb\xfc\xfd\xfe\xff</span><span class="s">"</span>
+<span class="n">badchars</span> <span class="o">=</span> <span class="sa">b</span><span class="sh">""</span>
+<span class="n">badchars</span> <span class="o">+=</span> <span class="sa">b</span><span class="sh">"</span><span class="se">\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10</span><span class="sh">"</span>
+<span class="n">badchars</span> <span class="o">+=</span> <span class="sa">b</span><span class="sh">"</span><span class="se">\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x20</span><span class="sh">"</span>
+<span class="n">badchars</span> <span class="o">+=</span> <span class="sa">b</span><span class="sh">"</span><span class="se">\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b\x2c\x2d\x2e\x2f\x30</span><span class="sh">"</span>
+<span class="n">badchars</span> <span class="o">+=</span> <span class="sa">b</span><span class="sh">"</span><span class="se">\x31\x32\x33\x34\x35\x36\x37\x38\x39\x3a\x3b\x3c\x3d\x3e\x3f\x40</span><span class="sh">"</span>
+<span class="n">badchars</span> <span class="o">+=</span> <span class="sa">b</span><span class="sh">"</span><span class="se">\x41\x42\x43\x44\x45\x46\x47\x48\x49\x4a\x4b\x4c\x4d\x4e\x4f\x50</span><span class="sh">"</span>
+<span class="n">badchars</span> <span class="o">+=</span> <span class="sa">b</span><span class="sh">"</span><span class="se">\x51\x52\x53\x54\x55\x56\x57\x58\x59\x5a\x5b\x5c\x5d\x5e\x5f\x60</span><span class="sh">"</span>
+<span class="n">badchars</span> <span class="o">+=</span> <span class="sa">b</span><span class="sh">"</span><span class="se">\x61\x62\x63\x64\x65\x66\x67\x68\x69\x6a\x6b\x6c\x6d\x6e\x6f\x70</span><span class="sh">"</span>
+<span class="n">badchars</span> <span class="o">+=</span> <span class="sa">b</span><span class="sh">"</span><span class="se">\x71\x72\x73\x74\x75\x76\x77\x78\x79\x7a\x7b\x7c\x7d\x7e\x7f\x80</span><span class="sh">"</span>
+<span class="n">badchars</span> <span class="o">+=</span> <span class="sa">b</span><span class="sh">"</span><span class="se">\x81\x82\x83\x84\x85\x86\x87\x88\x89\x8a\x8b\x8c\x8d\x8e\x8f\x90</span><span class="sh">"</span>
+<span class="n">badchars</span> <span class="o">+=</span> <span class="sa">b</span><span class="sh">"</span><span class="se">\x91\x92\x93\x94\x95\x96\x97\x98\x99\x9a\x9b\x9c\x9d\x9e\x9f\xa0</span><span class="sh">"</span>
+<span class="n">badchars</span> <span class="o">+=</span> <span class="sa">b</span><span class="sh">"</span><span class="se">\xa1\xa2\xa3\xa4\xa5\xa6\xa7\xa8\xa9\xaa\xab\xac\xad\xae\xaf\xb0</span><span class="sh">"</span>
+<span class="n">badchars</span> <span class="o">+=</span> <span class="sa">b</span><span class="sh">"</span><span class="se">\xb1\xb2\xb3\xb4\xb5\xb6\xb7\xb8\xb9\xba\xbb\xbc\xbd\xbe\xbf\xc0</span><span class="sh">"</span>
+<span class="n">badchars</span> <span class="o">+=</span> <span class="sa">b</span><span class="sh">"</span><span class="se">\xc1\xc2\xc3\xc4\xc5\xc6\xc7\xc8\xc9\xca\xcb\xcc\xcd\xce\xcf\xd0</span><span class="sh">"</span>
+<span class="n">badchars</span> <span class="o">+=</span> <span class="sa">b</span><span class="sh">"</span><span class="se">\xd1\xd2\xd3\xd4\xd5\xd6\xd7\xd8\xd9\xda\xdb\xdc\xdd\xde\xdf\xe0</span><span class="sh">"</span>
+<span class="n">badchars</span> <span class="o">+=</span> <span class="sa">b</span><span class="sh">"</span><span class="se">\xe1\xe2\xe3\xe4\xe5\xe6\xe7\xe8\xe9\xea\xeb\xec\xed\xee\xef\xf0</span><span class="sh">"</span>
+<span class="n">badchars</span> <span class="o">+=</span> <span class="sa">b</span><span class="sh">"</span><span class="se">\xf1\xf2\xf3\xf4\xf5\xf6\xf7\xf8\xf9\xfa\xfb\xfc\xfd\xfe\xff</span><span class="sh">"</span>
 
-<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"exploit.txt"</span><span class="p">,</span> <span class="s">"wb"</span><span class="p">)</span>
-<span class="n">f</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">badchars</span><span class="p">)</span>
-<span class="n">f</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nf">open</span><span class="p">(</span><span class="sh">"</span><span class="s">exploit.txt</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">wb</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">f</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="n">badchars</span><span class="p">)</span>
+<span class="n">f</span><span class="p">.</span><span class="nf">close</span><span class="p">()</span>
 </code></pre></div></div>
 
 <p>El script anterior almacena en una variable una serie de caracteres hexadecimales en forma de bytes (por eso la ‘b’ delante) y escribe estos bytes sobre un fichero llamado exploit.txt</p>
@@ -2890,7 +3163,7 @@ f.close()
       <span class="sr-only">RSS</span>
     </a>
   </li><li class="list-inline-item">
-    <a href="mailto:sanmillan.german@gmail.com" title="Email me">
+    <a href="mailto:" title="Email me">
       <span class="fa-stack fa-lg" aria-hidden="true">
         <i class="fas fa-circle fa-stack-2x"></i>
         <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
@@ -2926,10 +3199,10 @@ f.close()
       
       <p class="copyright text-muted">
       
-        Qv1nTv5
+        German
         &nbsp;&bull;&nbsp;
       
-      2024
+      2026
 
       
 
@@ -2948,17 +3221,7 @@ f.close()
   
   
     
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
-
-
-  
-    
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-
-
-  
-    
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 
   

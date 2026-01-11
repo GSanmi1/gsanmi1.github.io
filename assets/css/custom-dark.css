@@ -1,0 +1,703 @@
+/* ============================================
+   MODERN BLOCKCHAIN RESEARCHER THEME
+   Dark Blue Professional Design
+   ============================================ */
+
+/* CSS Variables */
+:root {
+  /* Colors */
+  --primary-bg: #0a1929;
+  --secondary-bg: #132f4c;
+  --card-bg: #1a2332;
+  --code-bg: #0d1b2a;
+  --accent-blue: #3399ff;
+  --accent-hover: #66b3ff;
+  --border-color: rgba(51, 153, 255, 0.1);
+  --text-primary: #e7edf4;
+  --text-secondary: #8b9cb5;
+  --text-muted: #657a99;
+
+  /* Typography */
+  --font-primary: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "SF Mono", "Consolas", "Monaco", "Liberation Mono", monospace;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4rem;
+
+  /* Layout */
+  --max-width: 1200px;
+  --content-width: 760px;
+  --nav-height: 70px;
+}
+
+/* ============================================
+   BASE & RESET
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--primary-bg) !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font-primary);
+  font-size: 17px;
+  line-height: 1.7;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-top: 2em;
+  margin-bottom: 0.8em;
+  line-height: 1.3;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-top: 2.5em;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+p {
+  margin-bottom: 1.5em;
+}
+
+a {
+  color: var(--accent-blue);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+/* ============================================
+   MODERN NAVBAR
+   ============================================ */
+
+.navbar-custom {
+  background-color: rgba(13, 27, 42, 0.95) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0;
+  min-height: var(--nav-height);
+}
+
+.navbar-custom .navbar-brand {
+  color: var(--text-primary) !important;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  padding: 1.5rem 0;
+}
+
+.navbar-custom .nav-link {
+  color: var(--text-secondary) !important;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 1.5rem 1rem !important;
+  transition: color 0.2s ease;
+}
+
+.navbar-custom .nav-link:hover {
+  color: var(--accent-blue) !important;
+}
+
+.navbar-custom .dropdown-menu {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+}
+
+.navbar-custom .dropdown-item {
+  color: var(--text-secondary);
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.navbar-custom .dropdown-item:hover {
+  background-color: rgba(51, 153, 255, 0.1);
+  color: var(--accent-blue);
+}
+
+/* Container adjustments */
+.navbar-custom .container {
+  max-width: var(--max-width);
+}
+
+/* ============================================
+   MAIN CONTENT AREA
+   ============================================ */
+
+.main-content {
+  min-height: calc(100vh - var(--nav-height) - 200px);
+  padding-top: calc(var(--nav-height) + 2rem);
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* ============================================
+   HOME PAGE - MODERN GRID LAYOUT
+   ============================================ */
+
+.posts-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.post-preview {
+  background: linear-gradient(135deg, var(--card-bg) 0%, rgba(26, 35, 50, 0.6) 100%);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 2.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.post-preview::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-blue), #66b3ff);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.post-preview:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(51, 153, 255, 0.15);
+  border-color: rgba(51, 153, 255, 0.3);
+}
+
+.post-preview:hover::before {
+  opacity: 1;
+}
+
+.post-preview .post-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  line-height: 1.3;
+}
+
+.post-preview .post-title a {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.post-preview .post-title a:hover {
+  color: var(--accent-blue);
+}
+
+.post-preview .post-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.post-preview .post-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.post-preview .post-meta .fa {
+  margin-right: 0.4rem;
+  color: var(--accent-blue);
+}
+
+.post-preview .post-entry {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+.post-preview .post-read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent-blue);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.post-preview .post-read-more::after {
+  content: '→';
+  transition: transform 0.2s ease;
+}
+
+.post-preview:hover .post-read-more::after {
+  transform: translateX(4px);
+}
+
+/* ============================================
+   BLOG POST - MODERN ARTICLE LAYOUT
+   ============================================ */
+
+.blog-post {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.blog-post h1 {
+  font-size: 2.75rem;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.blog-post .post-subheading {
+  font-size: 1.3rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.blog-post .post-meta {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.5rem 0;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.blog-post p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1.8rem;
+}
+
+.blog-post img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
+.blog-post blockquote {
+  border-left: 4px solid var(--accent-blue);
+  background-color: rgba(51, 153, 255, 0.05);
+  padding: 1.5rem 2rem;
+  margin: 2rem 0;
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   TAGS - MODERN PILLS
+   ============================================ */
+
+.blog-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 2rem 0;
+}
+
+.blog-tags a {
+  background-color: rgba(51, 153, 255, 0.1);
+  color: var(--accent-blue);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid rgba(51, 153, 255, 0.2);
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.blog-tags a:hover {
+  background-color: var(--accent-blue);
+  color: var(--primary-bg);
+  border-color: var(--accent-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(51, 153, 255, 0.3);
+}
+
+/* ============================================
+   CODE BLOCKS - ENHANCED
+   ============================================ */
+
+code {
+  background-color: rgba(51, 153, 255, 0.1);
+  color: #89ddff;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  border: 1px solid rgba(51, 153, 255, 0.2);
+}
+
+pre {
+  background-color: var(--code-bg) !important;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  overflow-x: auto;
+  margin: 2rem 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.highlight {
+  background-color: var(--code-bg);
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
+/* ============================================
+   PAGINATION - MODERN
+   ============================================ */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 4rem 0;
+}
+
+.pagination .page-item .page-link {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.pagination .page-item .page-link:hover {
+  background-color: rgba(51, 153, 255, 0.1);
+  color: var(--accent-blue);
+  border-color: var(--accent-blue);
+}
+
+.pagination .page-item.active .page-link {
+  background-color: var(--accent-blue);
+  border-color: var(--accent-blue);
+  color: var(--primary-bg);
+}
+
+.pagination .page-item.disabled .page-link {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   FOOTER - MINIMAL
+   ============================================ */
+
+footer {
+  background-color: var(--code-bg) !important;
+  border-top: 1px solid var(--border-color);
+  padding: 3rem 0;
+  margin-top: 6rem;
+  text-align: center;
+}
+
+footer p {
+  color: var(--text-muted);
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+footer a {
+  color: var(--text-secondary);
+  margin: 0 1rem;
+  transition: color 0.2s ease;
+}
+
+footer a:hover {
+  color: var(--accent-blue);
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.social-links a {
+  font-size: 1.25rem;
+}
+
+/* ============================================
+   SEARCH - MODERN OVERLAY
+   ============================================ */
+
+#beautifuljekyll-search-overlay {
+  background-color: rgba(10, 25, 41, 0.98) !important;
+  backdrop-filter: blur(10px);
+}
+
+#nav-search-input {
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#nav-search-input:focus {
+  border-color: var(--accent-blue);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(51, 153, 255, 0.1);
+}
+
+#search-results-container {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  margin-top: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+}
+
+#search-results-container a {
+  color: var(--text-primary);
+  padding: 1.25rem 1.5rem;
+  display: block;
+  border-bottom: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+#search-results-container a:hover {
+  background-color: rgba(51, 153, 255, 0.1);
+  color: var(--accent-blue);
+  padding-left: 2rem;
+}
+
+#search-results-container a:last-child {
+  border-bottom: none;
+}
+
+/* ============================================
+   TABLES - MODERN
+   ============================================ */
+
+table {
+  width: 100%;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 2rem 0;
+}
+
+table thead {
+  background-color: rgba(51, 153, 255, 0.1);
+}
+
+table th {
+  padding: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--border-color);
+}
+
+table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+table tr:last-child td {
+  border-bottom: none;
+}
+
+table tr:hover {
+  background-color: rgba(51, 153, 255, 0.05);
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.btn-primary {
+  background-color: var(--accent-blue);
+  border: none;
+  color: var(--primary-bg);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(51, 153, 255, 0.3);
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+
+hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+  margin: 3rem 0;
+}
+
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+::selection {
+  background-color: var(--accent-blue);
+  color: var(--primary-bg);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-blue);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 60px;
+  }
+
+  body {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .post-preview {
+    padding: 1.5rem;
+  }
+
+  .post-preview .post-title {
+    font-size: 1.4rem;
+  }
+
+  .blog-post {
+    padding: 2rem 1rem;
+  }
+
+  .blog-post h1 {
+    font-size: 2rem;
+  }
+
+  .blog-post p {
+    font-size: 1rem;
+  }
+}
+
+/* ============================================
+   INTRO HEADER - MINIMAL
+   ============================================ */
+
+.intro-header {
+  background-color: transparent;
+  padding: 2rem 0;
+  border: none;
+}
+
+.intro-header .page-heading h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.intro-header .page-subheading {
+  font-size: 1.3rem;
+  color: var(--text-secondary);
+  max-width: 700px;
+}
