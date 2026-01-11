@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Text Editor.
-subtitle: Simple text exitor written in C.
-tags: [C]
+title: "Text Editor."
+subtitle: "Simple text exitor written in C."
+date: 2025-08-11 09:00:00 +0000
+categories: ['Past Blogs', 'Programming']
+tags: ['c-language', 'systems']
+author: German Sanmi
 ---
+
 
 ### Creating a text editor: kilo.
 

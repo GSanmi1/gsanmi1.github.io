@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Calling Functions.
-subtitle: Introduction to CALL, RET, MOV, ADD and SUB instructions.
-tags: [assem]
+title: "Calling Functions."
+subtitle: "Introduction to CALL, RET, MOV, ADD and SUB instructions."
+date: 2025-11-21 09:00:00 +0000
+categories: ['Past Blogs', 'Assembly']
+tags: ['x86', 'reverse-engineering']
+author: German Sanmi
 ---
+
 
 ### 1. Calling functions.
 

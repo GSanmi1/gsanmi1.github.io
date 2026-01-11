@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Integer Overflow/Underflow.
-subtitle: Notes from Integer Overflow course from OST2.
-tags: [csoft]
+title: "Integer Overflow/Underflow."
+subtitle: "Notes from Integer Overflow course from OST2."
+date: 2025-12-05 09:00:00 +0000
+categories: ['Past Blogs', 'Binary Exploitation']
+tags: ['memory-corruption', 'exploits']
+author: German Sanmi
 ---
+
 
 ### 1. Integer Overflow/Underflow vulnerabilities introduction.
 

@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Mi experiencia con el OSCP
-subtitle: Client Side attacks.
-tags: [pen]
+title: "Mi experiencia con el OSCP"
+subtitle: "Client Side attacks."
+date: 2023-11-19 09:00:00 +0000
+categories: ['Past Blogs', 'Pentesting']
+tags: ['penetration-testing', 'security']
+author: German Sanmi
 ---
+
 En este blog resumo las experiencias e ideas que he ido recogiendo a lo largo del curso PEN200.
 
 

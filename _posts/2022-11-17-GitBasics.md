@@ -1,21 +1,26 @@
 ---
 layout: post
-title: Git Basics
-subtitle: Introducción a Git y comandos de la cli git.
+title: "Git Basics"
+subtitle: "Introducción a Git y comandos de la cli git."
+date: 2022-11-17 09:00:00 +0000
+categories: ['Past Blogs', 'Pentesting']
+tags: ['penetration-testing', 'security']
+author: German Sanmi
 ---
+
 
 ### Git Intro.
 
 Git es un VCS (Systema de control de versiones) empleado fundamentalmente para operaciones de intercambio de código, seguimiento de los cambios del código compartido y seguimiento de aquellos individuos que modifican el código. Sin embargo, el procedimiento de Git es novedoso porque, a diferencia de otros VCS, que al realizar cambios a modo de conjuntos de diferencias que cambian en la copia online del código,
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/gitimg/Pasted image 20221116102951.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/gitimg/Pasted image 20221116102951.png' | relative_url }}" text-align="center"/>
 </div>
 
 Git cambia toda la copia en conjunto por otra copia modificada (snapshot) introduciendo así los cambios como una modificación total de la copia original existente.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/gitimg/Pasted image 20221116103022.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/gitimg/Pasted image 20221116103022.png' | relative_url }}" text-align="center"/>
 </div>
 
 Esto tiene la ventaja de que todas las modificaciones que se hacen del projecto son locales y sólo se produce un cambio online cuando el usuario ha terminado con todas las modificaciones y ejecuta la subida al servidor. Sin embargo, todas las pequeñas modificaciones del proyecto quedan almacenadas y registradas en la copia offline.
@@ -25,7 +30,7 @@ Además, en cada clonación (copia local) de un repositorio, git añade una pequ
 Así, git tiene tres pasos fundamentales a la hora de realizar cambios: modified (se han producido cambios pero no se han registrado en la base de datos), staged (Se marcan los ficheros modificados del repositorio para su posterior registro) and committed (El commit es el registro de los datos en la base de datos).
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/gitimg/Pasted image 20221116104400.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/gitimg/Pasted image 20221116104400.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -63,7 +68,7 @@ Una vez tenemos un repositorio que contiene un trabajo iremos poco a poco provoc
 Así por ejemplo cuando clonas un repositorio, todos los ficheros son 'tracked' en la medida en la que empiezas a modificar el repositorio y a añadir ficheros, todos esos ficheros recientes son untracket hasta que ejecutas 'git add' y posteriormente un 'git commit'. En ese momento git los registra y adquiere conocimiento de ellos con lo que pasan a ser 'tracked'
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/gitimg/Pasted image 20221116125454.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/gitimg/Pasted image 20221116125454.png' | relative_url }}" text-align="center"/>
 </div>
 
 
@@ -79,7 +84,7 @@ nothing to commit, working tree clean
 Pero en la medida en la que comenzáramos a trabajar obtendríamos:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/gitimg/Pasted image 20221116130742.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/gitimg/Pasted image 20221116130742.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -113,7 +118,7 @@ git diff <commit1> <commit2>
 Por defecto, el comando asumirá que el commit2 es el más antiguo y el commit1 el más reciente y siguiendo esta lógica desplegará el output. Así por ejemplo supongámos un caso sencillo de un repositorio en el que existe un fichero cuyo contenido a cambiado de "this is a git diff test example" a "this is a git example":
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/gitimg/Pasted image 20221117102304.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/gitimg/Pasted image 20221117102304.png' | relative_url }}" text-align="center"/>
 </div>
 
 Examinando el output más detenidamente encontramos las siguientes partes:
@@ -159,7 +164,7 @@ La línea -1 tenía el contenido "this is a git diff test example" y la línea +
 Veámos otro ejemplo. En este caso, encontramos que se ha incorporado un fichero nuevo al repositorio y el resto de elementos se han mantenido intactos:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/gitimg/Pasted image 20221117103731.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/gitimg/Pasted image 20221117103731.png' | relative_url }}" text-align="center"/>
 </div>
 
 Lo primero en lo que debemos fijarnos es que git diff encuentra diferencias en un fichero y además nos dice que se trata de un fichero nuevo, que antes no estaba. Por ello, podemos observar que la simbología atribuida al fichero del commit1 corresponde a /dev/null porque no existe. Además se nos informa de que en el primer fichero desde la línea 0 se han modificado 0 líneas y en el segundo fichero se ha añadido una que es "Holadios".
@@ -248,13 +253,13 @@ El funcionamiento de Git se asienta sobre los repositorios que son colecciones o
 Conjuntamente, existe el Git Branching. El Branching consiste en la separación de la línea de desarrollo de un proyecto en diferentes líneas que esencialmente son variantes del mismo proyecto que no convergen entre sí:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/gitimg/Pasted image 20221116101534.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/gitimg/Pasted image 20221116101534.png' | relative_url }}" text-align="center"/>
 </div>
 
 Podemos mostrar las ramas de un proyecto con el comando 'git branch' o 'git show-branch':
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/gitimg/Pasted image 20221117165133.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/gitimg/Pasted image 20221117165133.png' | relative_url }}" text-align="center"/>
 </div>
 
 Para intercambiar entre ramas utilizamos el comando 'git checkout':
@@ -266,6 +271,6 @@ git checkout dev
 <br />
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/gitimg/Pasted image 20221117165303.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/gitimg/Pasted image 20221117165303.png' | relative_url }}" text-align="center"/>
 </div>
 

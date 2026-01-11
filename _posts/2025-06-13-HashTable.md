@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Hashtables.
-subtitle: Explanation of hashtables in C.
-tags: [C]
+title: "Hashtables."
+subtitle: "Explanation of hashtables in C."
+date: 2025-06-13 09:00:00 +0000
+categories: ['Past Blogs', 'Programming']
+tags: ['c-language', 'systems']
+author: German Sanmi
 ---
+
 
 ### HashTables
 
@@ -342,7 +346,7 @@ The function attemps to include a new entry in the array of the hashtable.
 <br>
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/C/hashtable.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/C/hashtable.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br>

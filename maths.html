@@ -1,0 +1,30 @@
+---
+layout: default
+title: Matemáticas
+permalink: /maths.html
+---
+
+<div class="category-page">
+    <h1>Matemáticas</h1>
+    <p class="description">
+        Contenido matemático: teoría de complejidad, álgebra, teoría de números y fundamentos.
+    </p>
+
+    <ul class="post-list">
+        {% assign math_posts = site.posts | where_exp: "post", "post.categories contains 'Maths'" | sort: 'date' | reverse %}
+        {% for post in math_posts %}
+        <li class="post-list-item">
+            <h2 class="post-list-title">
+                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            </h2>
+            <p class="post-meta">
+                {{ post.date | date: "%d de %B, %Y" }}
+            </p>
+            {% if post.subtitle %}
+            <p class="post-excerpt">{{ post.subtitle }}</p>
+            {% endif %}
+            <a href="{{ post.url | relative_url }}" class="read-more">Leer más →</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>

@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Network Programming
-subtitle: Introduction to Network programming.
-tags: [C]
+title: "Network Programming"
+subtitle: "Introduction to Network programming."
+date: 2025-02-22 09:00:00 +0000
+categories: ['Past Blogs', 'Programming']
+tags: ['c-language', 'systems']
+author: German Sanmi
 ---
+
 ## Network Programming Introduction.
 
 Network Programming in C involves writting applications that communicate over a network, mainly using *Sockets*.
@@ -276,7 +280,7 @@ Once we have the clear the theory, we can proceed to write an example between a 
 The esqueme of functions and comunication is like follows:
 
 <div style="text-align:center">
-    <img src="{{ 'assets/img/C/Pasted image 20250218213858.png' | relative_url }}" text-align="center"/>
+    <img src="{{ '/assets/images/past-blogs/C/Pasted image 20250218213858.png' | relative_url }}" text-align="center"/>
 </div>
 
 

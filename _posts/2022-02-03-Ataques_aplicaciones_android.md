@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Ataques a aplicaciones Android
-subtitle: Introducción al sistema operativo Android y sus aplicaciones.
-tags: [redteam] 
+title: "Ataques a aplicaciones Android"
+subtitle: "Introducción al sistema operativo Android y sus aplicaciones."
+date: 2022-02-03 09:00:00 +0000
+categories: ['Past Blogs', 'Red Team']
+tags: ['offensive-security', 'tactics']
+author: German Sanmi
 ---
+
 
 # 1. Sistema operativo Android.
 
@@ -215,7 +219,7 @@ Actúa con Virtualbox, aunque lo más recomendable es no instalarse la versión 
 También es importante revisar la compatibilidad de Windows con este virtualizador pues la característica: **Plataforma de máquina virtual** y la plataforma del hipervisor de windows tienen que estar desactivadas.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M4/Pasted image 20220119114821.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M4/Pasted image 20220119114821.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -268,7 +272,7 @@ Las herramientas **adb** y **fastboot** son comandos que te permiten tomar el co
 Apktool es una herramienta que nos permite desempaquetar y empaquetar archivos como .apk.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M4/Pasted image 20220112124555.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M4/Pasted image 20220112124555.png' | relative_url }}" text-align="center"/>
 </div>
 
 
@@ -284,11 +288,11 @@ La herramieta **jadx-gui** es un decompilador que traduce el documento classes.d
 Al ejecutar este comando desde la terminal se abre una interfaz gráfica que nos da acceso a la aplicación y dentro de esta debemos abrir el paquete de la aplicación escrito en lenguaje Java.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M4/Pasted image 20220112135652.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M4/Pasted image 20220112135652.png' | relative_url }}" text-align="center"/>
 </div>
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M4/Pasted image 20220112135719.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M4/Pasted image 20220112135719.png' | relative_url }}" text-align="center"/>
 </div>
 
 Desde navegación podemos buscar una clase en concreto. Esto nos puede facilitar mucho la búsqueda.
@@ -310,7 +314,7 @@ En primer lugar tenemos el .apk descargado en kali. Vamos a llevar a cabo un an�
 Para ello empleamos la herramienta **jadx-gui** y buscamos el fichero LoginActivity utilizando la pestaña *Navegación*. En él, vemos una línea de código en el que analiza el valor de un elemento string cuyo nombre es "is_admin" y vemos que evalua con un condicional "if" si tiene por valor no. 
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M4/Pasted image 20220112135940.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M4/Pasted image 20220112135940.png' | relative_url }}" text-align="center"/>
 </div>
 
 De esta manera ya sabemos que existe un elemento que se denomina is_admin puesto por defecto en no que probablemente permita a la aplicación ejecutarse en modo administrador. Así, vamos a buscar ese elemento en el .apk y cambiar dicho valor de "no" a "yes". 
@@ -318,13 +322,13 @@ De esta manera ya sabemos que existe un elemento que se denomina is_admin puesto
 Procedemos a desempaquetarlo con apktool:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M4/Pasted image 20220112135142.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M4/Pasted image 20220112135142.png' | relative_url }}" text-align="center"/>
 </div>
 
 El código fuente de esta aplicación está dentro de la carpeta smali. De todas formas, buscaremos en todos los ficheros de la carpeta InsecureBankv2 en busca del término "is_admin".
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M4/Pasted image 20220112141754.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M4/Pasted image 20220112141754.png' | relative_url }}" text-align="center"/>
 </div>
 
 Con este comando primero buscamos todos los ficheros que pueda haber en la carpeta actual, y esa lista de rutas de ficheros se la pasamos a xargs que cogera cada línea y se lo pasará como un argumento al comando que le indiquemos, en este caso, grep.
@@ -332,13 +336,13 @@ Con este comando primero buscamos todos los ficheros que pueda haber en la carpe
 Podemos comprobar así que en el fichero **strings.xml** tenemos el elemento xml tipo string con valor no. Vamos a dicho fichero, buscamos el elemento y le cmbiamos el valor
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M4/Pasted image 20220112142246.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M4/Pasted image 20220112142246.png' | relative_url }}" text-align="center"/>
 </div>
 
 Una vez llevada a cabo la modificación, vamos a la carpeta de Software y volvemos a empaquetar la carpeta como un APK. Y seguidamente lo firmamos con un firmador de aplicaciones hechas con Java. En este caso, nos valdrá con utilizar uber-apk-signer que puede descargarse desde Github: https://github.com/patrickfav/uber-apk-signer/releases/
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M4/Pasted image 20220112143245.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M4/Pasted image 20220112143245.png' | relative_url }}" text-align="center"/>
 </div>
 
 Y ya tendríamos nuestra apk modificada y lista para utilizar en un dispositivo android.
@@ -347,24 +351,24 @@ Y ya tendríamos nuestra apk modificada y lista para utilizar en un dispositivo 
 También po 
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M4/Pasted image 20220110131500.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M4/Pasted image 20220110131500.png' | relative_url }}" text-align="center"/>
 </div>
 
 enjarify -o classes.jar classes.dex (el .jar no se puede abrir con java -jar).
 find . -type f | xargs grep is_admin 
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M4/Pasted image 20220110134913.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M4/Pasted image 20220110134913.png' | relative_url }}" text-align="center"/>
 </div>
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M4/Pasted image 20220110150932.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M4/Pasted image 20220110150932.png' | relative_url }}" text-align="center"/>
 </div>
 
 apktool d InsecureBankv2 -o InsecureBankv2_mod.apk  
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M4/Pasted image 20220110154420.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M4/Pasted image 20220110154420.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -400,14 +404,14 @@ sudo apt-get install python-venv
 A partir de aquí, el paquete habrá quedado instalado y para ejecutar MobSF hace falta correr el script ./run.sh 
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M4/Pasted image 20220112160307.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M4/Pasted image 20220112160307.png' | relative_url }}" text-align="center"/>
 </div>
 
 En dicha imágen podemos observar que crea un servidor que se puede acceder desde el loopback en el puerto 8000.
 
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M4/Pasted image 20220112160722.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M4/Pasted image 20220112160722.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -418,7 +422,7 @@ En la pestaña "Upload & Analyze" seleccionamos una aplicación movil para anali
 
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M4/Pasted image 20220112162003.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M4/Pasted image 20220112162003.png' | relative_url }}" text-align="center"/>
 </div>
 
 Aquí podremos ya generar un informe pdf del análisis estático.
@@ -447,13 +451,13 @@ La IP del máquina android se puede ver en el marco superior de la ventana de la
 
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M4/Pasted image 20220119115153.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M4/Pasted image 20220119115153.png' | relative_url }}" text-align="center"/>
 </div>
 
 Una vez llevadas a cabo esta operación MobSF debería de poder reconcer nuestro dispositivo y sólo debemos presionar el apartado Dynamic Analyzer y nos aparecerá la siguiente sección.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M4/Pasted image 20220112233336.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M4/Pasted image 20220112233336.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -466,18 +470,18 @@ Seguidamente se ejecutará la aplicación en el dispositivo y en MobSF se mostra
 
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M4/Pasted image 20220112234602.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M4/Pasted image 20220112234602.png' | relative_url }}" text-align="center"/>
 </div>
 
 
 Y le damos al botón verde correr aplicacion. Jugamos con la aplicación un poco y luego le damos al botón de generar informe:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M4/Pasted image 20220113000946.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M4/Pasted image 20220113000946.png' | relative_url }}" text-align="center"/>
 </div>
 
 Se nos redirigirá a esta página y abajo a la izquierda podremos ver cómo descargar el report realizado:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M4/Pasted image 20220113001415.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M4/Pasted image 20220113001415.png' | relative_url }}" text-align="center"/>
 </div>

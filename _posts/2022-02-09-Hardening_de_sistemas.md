@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Hardening de sistemas
-subtitle: Teoría y ejemplos del concepto de hardening.
-tags: [blueteam]
+title: "Hardening de sistemas"
+subtitle: "Teoría y ejemplos del concepto de hardening."
+date: 2022-02-09 09:00:00 +0000
+categories: ['Past Blogs', 'Blue Team']
+tags: ['defensive-security', 'hardening']
+author: German Sanmi
 ---
+
 # 1. Preparación. 
 
 Nos descargamos la máquina del enlace: https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/ y descargamos ![[Pasted image 20220208094223.png]].
@@ -12,13 +16,13 @@ Seguidamente comparamos el hash extraído con el hash proporcionado por la pági
 
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M10/Pasted image 20220208094320.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220208094320.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M10/Pasted image 20220208094340.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220208094340.png' | relative_url }}" text-align="center"/>
 </div>
 
 Y podemos observar que son idénticos aunque también podemos meter ambos strings en un fichero y pedir que se extraiga el contenido del fichero eliminando los repetidos. Si sólo se extrae una línea, significa que ambas caenas son idénticas y por tanto el archivo se ha descargado íntegro.
@@ -34,7 +38,7 @@ Vamos a instalar de manera manual la máquina recién descargada.
 Después de haber configurado la estructura de la máquina virtual en VirtualBox (unidad óptica, eliminar disquetes, ram, procesador, etc) iniciamos la instalación de la máquina:
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M10/Pasted image 20220208205548.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220208205548.png' | relative_url }}" text-align="center"/>
 </div>
 
 Seleccionamos idioma, distribución de teclado, región, etc.
@@ -60,7 +64,7 @@ Para el caso que nos ocupa, que es configurar un servidor web, nos interesa serp
 Para ello seguimos el siguiente procedimiento. Para empezar, seleccionamos el particionado manual de discos:
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M10/Pasted image 20220208210756.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220208210756.png' | relative_url }}" text-align="center"/>
 </div>
 
 
@@ -69,7 +73,7 @@ Seleccionamos nuestro disco duro y creamos una nueva tabla de particiones con to
 - **/boot**: La carpeta /boot será la carpeta a la que dedicaremos la primera partición primaria de 1 GB que alojaremos al principio del disco y que tendrá las siguientes características:
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220208212947.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220208212947.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	Notemos que para /boot la carpeta de arranque 
@@ -79,7 +83,7 @@ Seleccionamos nuestro disco duro y creamos una nueva tabla de particiones con to
 - **/**: La carpeta raíz le seguirá a la anterior como otra partición primaria de 10 GB que situaremos al principio justo después de la carpeta /boot:
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220208213111.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220208213111.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	<br />
@@ -88,7 +92,7 @@ Seleccionamos nuestro disco duro y creamos una nueva tabla de particiones con to
 
 	
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220208213247.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220208213247.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	<br />
@@ -97,7 +101,7 @@ Seleccionamos nuestro disco duro y creamos una nueva tabla de particiones con to
 
 	
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220208213859.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220208213859.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	<br />
@@ -106,7 +110,7 @@ Seleccionamos nuestro disco duro y creamos una nueva tabla de particiones con to
 
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220208213959.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220208213959.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 <br />
@@ -115,7 +119,7 @@ Seleccionamos nuestro disco duro y creamos una nueva tabla de particiones con to
 De manera que al final se queda como sigue:
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M10/Pasted image 20220208214126.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220208214126.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -137,7 +141,7 @@ Nos negamos a participar en la encuesta de compartir nuestros paquetes.
 Seguidamente configuramos los programas que queremos instalar, como lo que estamos configurando es un servidor web, seleccionamos las siguientes opciones:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220208224326.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220208224326.png' | relative_url }}" text-align="center"/>
 </div>
 
 Instalamos el GRUB en la partición. Y reiniciamos.
@@ -151,19 +155,19 @@ Ahora, siguiendo con el propósito inicial, vamos a modificar los permisos de la
 En primer lugar, para poder editar adecuadamente con vi ejecutamos:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220209101942.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220209101942.png' | relative_url }}" text-align="center"/>
 </div>
 
 Y seguidamente nos transformamos en super usuario para poder editar el fichero en cuestion.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220209102125.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220209102125.png' | relative_url }}" text-align="center"/>
 </div>
 
 Y ejecutamos: vi /etc/fstab.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220209102228.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220209102228.png' | relative_url }}" text-align="center"/>
 </div>
 
 Ahí podemos observar información acerca de cada partición y lo que contiene cada partición. Por ejemplo nos informa de que la carpeta /tmp está en la primera partición lógica referida como /dev/sda5, esto es; SataDiska5 o Disco Sata 'a' 5 (como es superior a 4 no puede ser primaria, luego es lógica).
@@ -175,7 +179,7 @@ Así, protegemos la carpeta /tmp y optimizamos la solución de erroes del sistem
 - En la línea de configuración de /dev/sda5 añadimos, separados por coma, al lado de defaults, **noexec**. Y como los ficheros que tiene /tmp no nos interesan, cambiamos el 2 por un 0 ya que no quiero que esta partición se examine si hay algún escaneo del disco duro.
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220209103329.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220209103329.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	<br />
@@ -183,7 +187,7 @@ Así, protegemos la carpeta /tmp y optimizamos la solución de erroes del sistem
 - Seguidamente, cambiamos la preferencia de análisis de archivos de la partición que contiene a /boot y / ya que queremos que la primera partición que se analize ante un escaneo del disco duro sea la partición de arranque y las demás después. 
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220209104027.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220209104027.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 <br />
@@ -270,14 +274,14 @@ A continuación vamos a ver una serie de ejemplos de hardening con la máquina D
 
 	
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220216101458.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220216101458.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	Para resolver este problema, vamos a hacer que la carpeta /tmp tenga su propio sistema de archivos. De esta manera un adminsitrador puede habilitar la opción **noexec** en el mount lo que hace que /tmp se vuelva inútil a la hora de que un atacante instale código ejecutable. Para estar más seguros buscamos información sobre la partición cuyo punto de montaje es /tmp buscando /tmp en 
 	
 	
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220217162757.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220217162757.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	<br />
@@ -291,21 +295,21 @@ A continuación vamos a ver una serie de ejemplos de hardening con la máquina D
 	
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220217164406.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220217164406.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	Esta tiene este aspecto, en él podemos comprobar que tiene el campo *options* en el que podemos introducir, seguido del default por una coma la opción *noexec*:
 	
 	
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220217165915.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220217165915.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	De esta manera nos aseguramos de que no se puedan ejecutar binarios en la partición que contiene la carpeta /tmp.
 	
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220217171655.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220217171655.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	<br />
@@ -327,7 +331,7 @@ A continuación vamos a ver una serie de ejemplos de hardening con la máquina D
 	- **mount**: Utilizar el comando *mount* para listar todos los dispositivos montados. Si existe una partición separada que cumpla la condición pedida tendrá que aparecer en dicha lista:
 
 		<div style="text-align:center">
-		<img src="{{ 'assets/img/M10/Pasted image 20220218100242.png' | relative_url }}" text-align="center"/>
+		<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220218100242.png' | relative_url }}" text-align="center"/>
 		</div>
 
 		Ahí podemos comprobar que /var está montada en el dispositivo /dev/sda3, es decir, en el sata disk 'a' 3 y es por tanto una partición primaria.
@@ -337,7 +341,7 @@ A continuación vamos a ver una serie de ejemplos de hardening con la máquina D
 	- **fstab**: También podemos comprobar si en *fstab*, que es un fichero que contiene información de configuración de los sistemas de ficheros almacenados en cada partición del disco duro, hay una partición que contenga la carpeta /var montada:	
 
 		<div style="text-align:center">
-		<img src="{{ 'assets/img/M10/Pasted image 20220218100548.png' | relative_url }}" text-align="center"/>
+		<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220218100548.png' | relative_url }}" text-align="center"/>
 		</div>
 
 		Y tenemos la misma información que obteníamos con el comando mount.
@@ -359,7 +363,7 @@ A continuación vamos a ver una serie de ejemplos de hardening con la máquina D
 	- Utilizando la opción **is-enabled** de systemctl y pasándole como argumento el nombre del programa que queremos ver:
 		
 		<div style="text-align:center">
-		<img src="{{ 'assets/img/M10/Pasted image 20220219103935.png' | relative_url }}" text-align="center"/>
+		<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220219103935.png' | relative_url }}" text-align="center"/>
 		</div>
 		
 		Podemos ver en este caso que no se reconoce como un programa instalado en el sistema.
@@ -369,7 +373,7 @@ A continuación vamos a ver una serie de ejemplos de hardening con la máquina D
 	- Utilizando el gestor de paquetes de debian, **dpkg**, que lleva un control de qué programas están o no instalados en la máquina.
 
 		<div style="text-align:center">
-		<img src="{{ 'assets/img/M10/Pasted image 20220219104327.png' | relative_url }}" text-align="center"/>
+		<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220219104327.png' | relative_url }}" text-align="center"/>
 		</div>
 		
 		En este caso también se nos informa de que no está instalado.
@@ -405,7 +409,7 @@ A continuación vamos a ver una serie de ejemplos de hardening con la máquina D
 	Comprobamos si tenemos **sudo** instalado con **dpkg**, el gestor de paquetes de debian.
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220219120916.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220219120916.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	En este caso podemos ver que no tenemos instalado ni **sudo** ni el programa de configuración del comando sudo; **sudo-ldap**, que se sirve del protocolo **LDAP** para configurar el archivo **sudoers** que gestiona los permisos del comando sudo.
@@ -415,13 +419,13 @@ A continuación vamos a ver una serie de ejemplos de hardening con la máquina D
 - **Resolución**: Instalamos sudo o sudo-ldap desde la apt.
 	
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220219132002.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220219132002.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	Y de esta manera:
 	
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220219132221.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220219132221.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	<br />
@@ -437,7 +441,7 @@ A continuación vamos a ver una serie de ejemplos de hardening con la máquina D
 	Estos son ficheros de configuración del comando sudo y albergan configuración de logs.
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220219235419.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220219235419.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	Lo que hemos introducido es un comando que filtrará (grep) el contenido de /etc/sudoers y de cualquier archivo que esté dentro del directorio /etc/sudoers.d/ según un patrón que se interpretará como una expresión regular (-E) y se ignorará si son mayúsculas o minúsculas (-i).
@@ -449,13 +453,13 @@ A continuación vamos a ver una serie de ejemplos de hardening con la máquina D
 - **Resolución**: Como no tenemos configurado este fichero log creamos uno y los describimos en el fichero /etc/sudoers mediante el siguiente comando:
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220220004647.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220220004647.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	Y de esta forma: 
 	
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220220012443.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220220012443.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	<br />
@@ -479,7 +483,7 @@ A continuación vamos a ver una serie de ejemplos de hardening con la máquina D
 - **Resolucion**: Vemos si hay algún parche de actualización con el siguiente comando:
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220222104255.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220222104255.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	En este caso no hay, pero si hubiera sencillamente haríamos un update.
@@ -495,7 +499,7 @@ A continuación vamos a ver una serie de ejemplos de hardening con la máquina D
 - **Auditoría**: Para saber si *ntp* está configurado adecuadamente vamos a ejecutar los siguientes comandos:  
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220222110532.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220222110532.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	Como no tenemos un fichero de configuración podemos deducir que ntp no está instalado y no hace falta hacer ninguna operación de modificación.
@@ -515,7 +519,7 @@ A continuación vamos a ver una serie de ejemplos de hardening con la máquina D
 - **Auditoría**: Vamos a comprobar si tenemos el servidor web habilitado:
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220222214505.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220222214505.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	
@@ -524,7 +528,7 @@ A continuación vamos a ver una serie de ejemplos de hardening con la máquina D
 - **Remediation**: Vamos a deshabilitar el servidor web.
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220222214943.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220222214943.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	<br />
@@ -534,7 +538,7 @@ A continuación vamos a ver una serie de ejemplos de hardening con la máquina D
 - **Descripción**: El paquete de *telnet* contiene el client que permite a los usuarios empezar conexiones a otros sistemas de una manera insegura y no cifrada. Por tanto debe ser deshabilitado.
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220222223427.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220222223427.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	<br />
@@ -542,7 +546,7 @@ A continuación vamos a ver una serie de ejemplos de hardening con la máquina D
 - **Resolución**: Borramos del sistema el paquete de telnet de la apt.
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220222223723.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220222223723.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	<br />
@@ -555,7 +559,7 @@ A continuación vamos a ver una serie de ejemplos de hardening con la máquina D
 - **Auditoría**: Vamos a verificar el valor de dichos flags.
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220222225220.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220222225220.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	Podemos ver que tiene valor 0 y por tanto no hace falta hacer nada más.
@@ -573,7 +577,7 @@ A continuación vamos a ver una serie de ejemplos de hardening con la máquina D
 - **Auditoria**: Verificar si rsyslog está configurado con el comando: **dpkg -s rsyslog**.
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220224165247.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220224165247.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	<br />
@@ -591,7 +595,7 @@ A continuación vamos a ver una serie de ejemplos de hardening con la máquina D
 - **Auditoria**: Vamos a verificar que rsyslog está habilitado con el siguiente comando:
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220224172646.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220224172646.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	<br />
@@ -613,7 +617,7 @@ A continuación vamos a ver una serie de ejemplos de hardening con la máquina D
 - **Auditoría**: Vamos a revisar el contenido de los archivos /etc/rsyslog.conf y /etc/rsyslog.d/\*.conf para asegurarnos de que se establece el registro apropiado. Además, ejecutamos el siguiente comando y verificamos que los archivos asociados están registrando información:
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220224173941.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220224173941.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	<br />
@@ -653,7 +657,7 @@ A continuación vamos a ver una serie de ejemplos de hardening con la máquina D
 - **Auditoría**: Vamos a revisar los ficheros de configuración para verificar que la información se envía a un host central:
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220224220902.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220224220902.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	Evidentemente, en nuestro caso no se envía ningún log a una máquina externa.
@@ -663,7 +667,7 @@ A continuación vamos a ver una serie de ejemplos de hardening con la máquina D
 - **Resolución**: Para añadir un host remoto al que enviar hosts utilizamos el siguiente comando:
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220224221745.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220224221745.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	<br />
@@ -677,7 +681,7 @@ A continuación vamos a ver una serie de ejemplos de hardening con la máquina D
 - **Auditoría**: Comprobamos con systemctl si cron está habilitado.
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220224222659.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220224222659.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	Como está habilitado no tenemos que hacer nada más pero de lo contrario habría que habilitarlo con systemctl como hemos hecho con otros servicios.
@@ -697,13 +701,13 @@ A continuación vamos a ver una serie de ejemplos de hardening con la máquina D
 - **Auditoría**: Vamos a comprobar quién tiene acceso y quién no en nuestro sistema a utilizar at y cron.
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220225093514.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220225093514.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	Evidentenmente nuestro sistema no tiene configurados dichos ficheros. En caso de necesidad se configurarían aportando usuarios específicos.
 	
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220225093935.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220225093935.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	<br />
@@ -717,7 +721,7 @@ A continuación vamos a ver una serie de ejemplos de hardening con la máquina D
 - **Auditoría**: 
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220225094710.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220225094710.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	Podemos comprobar que en el fichero */etc/sshd_config* no está la opción, y eso es equivalente a que esta tenga el valor por defecto que se puede ver más abajo gracias al comando sshd -T con el que podemos ver todos los parámetros de conexión.
@@ -727,7 +731,7 @@ A continuación vamos a ver una serie de ejemplos de hardening con la máquina D
 - **Resolución**: Introducimos la opción "PermitRootLogin no" en el fichero de configuración sshd_config:
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220225095654.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220225095654.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	<br />
@@ -741,7 +745,7 @@ A continuación vamos a ver una serie de ejemplos de hardening con la máquina D
 - **Auditoría**: Vamos a revisar el contenido del fichero */etc/pam.d/su*.
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M10/Pasted image 20220225100225.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M10/Pasted image 20220225100225.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	Observamos que en nuestro caso existe un grupo que tiene denegado la utilización del comando su, se trata del grupo **nosu**.

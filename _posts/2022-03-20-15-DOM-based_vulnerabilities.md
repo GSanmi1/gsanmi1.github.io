@@ -1,9 +1,13 @@
 ---
 layout: post
-title: 15.DOM-based XSS vulnerabilities.
-subtitle: Detección y explotación de vulnerabilidades XSS basados en DOM través de la herramienta BurpSuite.
-tags: [burp]
+title: "15.DOM-based XSS vulnerabilities."
+subtitle: "Detección y explotación de vulnerabilidades XSS basados en DOM través de la herramienta BurpSuite."
+date: 2022-03-20 09:00:00 +0000
+categories: ['Past Blogs', 'Web Security']
+tags: ['burp-suite', 'web-attacks']
+author: German Sanmi
 ---
+
 ## 0. Índice.
 - 1 Introducción al DOM.
 - 2 Taint-flow vulnerabilities.
@@ -45,7 +49,7 @@ Veámos cómo provocar un ataque basado en "web messages".
 En primer lugar, acudimos al laboratorio e inspeccionamos el script contenido en el código fuente. Podemos comprobar que posee un *addEventListener*:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/Burp/Pasted image 20220624110856.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/Burp/Pasted image 20220624110856.png' | relative_url }}" text-align="center"/>
 </div>
 
 Este escucha web messages. De esta forma abrimos el servidor del exploit e introducimos el siguiente contenido en el apartado body:
@@ -63,7 +67,7 @@ De esta forma, al cargar el *iframe* el postMessage() envía un mensaje a la pá
 En este caso, al inspeccionar el código fuente encontramos de nuevo un addEventListener sin embargo, además tiene el componente IndexOf() que comprueba si hay "http:" o "https:"
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/Burp/Pasted image 20220624113932.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/Burp/Pasted image 20220624113932.png' | relative_url }}" text-align="center"/>
 </div>
 
 Esto nos obliga a introducir un payload que contenga dicho string. Así, nos valdrá con el siguiente código "iframe":
@@ -85,7 +89,7 @@ Una medida de seguridad adicional consiste en un mecanismo de verificación del 
 Accedemos al laboratorio, inspeccionamos el código fuente y:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/Burp/Pasted image 20220624122353.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/Burp/Pasted image 20220624122353.png' | relative_url }}" text-align="center"/>
 </div>
 
 Podemos obsrervar que contiene un JSON.parse(), de esta forma introducimos el siguiente payload en el servidor del exploit:
@@ -107,7 +111,7 @@ Las vulnerabilidades de redirección abierta basadas en DOM surgen cuando un scr
 Acudimos al blog de los post e inspeccionamos el código fuente y observamos:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/Burp/Pasted image 20220624140744.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/Burp/Pasted image 20220624140744.png' | relative_url }}" text-align="center"/>
 </div>
 
 Es decir, que existe un botón que lleva a cabo una redirección vulnerable permitiendo cambiar la dirección a la que se le redirige al usuario que pulsa el botón:

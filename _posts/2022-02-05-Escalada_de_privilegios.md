@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Escalada de privilegios
-subtitle: Introducción a Escalada de Privilegios.
-tags: [redteam] 
+title: "Escalada de privilegios"
+subtitle: "Introducción a Escalada de Privilegios."
+date: 2022-02-05 09:00:00 +0000
+categories: ['Past Blogs', 'Red Team']
+tags: ['offensive-security', 'tactics']
+author: German Sanmi
 ---
+
 
 # 1. Escalada de privilegios.
 
@@ -54,19 +58,19 @@ En esencia, se tiene que lo que se hace en todos lo casos es montar una estructu
 	
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M7/Pasted image 20220124151634.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M7/Pasted image 20220124151634.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	Por otro lado, desde la máquina víctima nos conectamos al servidor montado llevando a cabo una petición **wget** **con el servicio que riga en el puerto en el que se ha montado el servidor en la máquina atacante**. En este caso a ser el puerto 80 nos corresponde una petición http.
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M7/Pasted image 20220124152014.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M7/Pasted image 20220124152014.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	<br />
 	
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M7/Pasted image 20220124152727.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M7/Pasted image 20220124152727.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	La misma operación se puede efectuar con **curl**:
@@ -86,19 +90,19 @@ En esencia, se tiene que lo que se hace en todos lo casos es montar una estructu
 	En primer lugar, con nmap investigamos los puertos que la máquina tiene abierto:
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M7/Pasted image 20220124155140.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M7/Pasted image 20220124155140.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	Observamos que tiene el puerto 22 abierto, indicio de que dicha máquina puede tener un servidor ssh abierto escuchando en el 22. Así, de esta manera se tiene que intentamos la conexión sabiendo además las credenciales de un usuario de la máquina:
 		
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M7/Pasted image 20220124155656.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M7/Pasted image 20220124155656.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	<br />
 	
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M7/Pasted image 20220124155721.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M7/Pasted image 20220124155721.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	Es conveniente notar que, en este caso, los papeles están invertidos; la máquina víctima ejerce el papel de servidor y nosotros somos el cliente que solicitamos una petición ssh a la máquina víctima mediante el comando **scp** que no es más que efectuar un **cp** a través de ssh.
@@ -108,25 +112,25 @@ En esencia, se tiene que lo que se hace en todos lo casos es montar una estructu
 - **Netcat**: Netcat es una herramienta que podemos utilizar para generar comunicaciones entre máquinas. Este se puede utilizar respectivamente para bien mandar una petición o fichero o bien para escuchar y recibir una peticion desde un determinado puerto:
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M7/Pasted image 20220124161628.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M7/Pasted image 20220124161628.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	En concreto, en el caso de la máquina víctima podemos pedir que escuche una petición con el modificador **-l**, en un determinado puerto con **-p** y que además verbalice las operaciones que hace con **-v** y lo que sea que escuche en dicho puerto lo rediriga al fichero que especifiquemos.
 	
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M7/Pasted image 20220124162504.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M7/Pasted image 20220124162504.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	Por otra parte, en la máquina atacante utilizamos netcat para pasar un fichero hacia una IP en un puerto y además añadimos el modificador **-w** para añadir un *timeout* y evitar que se bloquee dado que se trata de un fichero muy grande.
 	
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M7/Pasted image 20220124164615.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M7/Pasted image 20220124164615.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	<br />
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M7/Pasted image 20220124165048.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M7/Pasted image 20220124165048.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	<br />
@@ -134,13 +138,13 @@ En esencia, se tiene que lo que se hace en todos lo casos es montar una estructu
 - **FTP**: Vamos a montar un servidor ftp temporal utilizando el comando **twistd** y luego posteriormente bajar el archivo con **wget**. 
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M7/Pasted image 20220124172050.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M7/Pasted image 20220124172050.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	Como podemos observar se tiene que se ha generado un servidor web que escucha en el puerto 2121. Así, desde la máquina víctima:
 	
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M7/Pasted image 20220124172255.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M7/Pasted image 20220124172255.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	Y se habría descargado nuestro archivo.
@@ -175,7 +179,7 @@ Para el caso de windows vamos a utilizar dos máquinas, la metasploitable y la W
 		<br />
 
 		<div style="text-align:center">
-		<img src="{{ 'assets/img/M7/Pasted image 20220130103937.png' | relative_url }}" text-align="center"/>
+		<img src="{{ '/assets/images/past-blogs/M7/Pasted image 20220130103937.png' | relative_url }}" text-align="center"/>
 		</div>
 
 		<br />
@@ -190,7 +194,7 @@ Para el caso de windows vamos a utilizar dos máquinas, la metasploitable y la W
 		<br />
 
 		<div style="text-align:center">
-		<img src="{{ 'assets/img/M7/Pasted image 20220130103819.png' | relative_url }}" text-align="center"/>
+		<img src="{{ '/assets/images/past-blogs/M7/Pasted image 20220130103819.png' | relative_url }}" text-align="center"/>
 		</div>
 
 		<br />
@@ -207,7 +211,7 @@ Para el caso de windows vamos a utilizar dos máquinas, la metasploitable y la W
 		<br />
 
 		<div style="text-align:center">
-		<img src="{{ 'assets/img/M7/Pasted image 20220130104909.png' | relative_url }}" text-align="center"/>
+		<img src="{{ '/assets/images/past-blogs/M7/Pasted image 20220130104909.png' | relative_url }}" text-align="center"/>
 		</div>
 		
 		<br />
@@ -221,7 +225,7 @@ Para el caso de windows vamos a utilizar dos máquinas, la metasploitable y la W
 		<br />
 
 		<div style="text-align:center">
-		<img src="{{ 'assets/img/M7/Pasted image 20220130104845.png' | relative_url }}" text-align="center"/>
+		<img src="{{ '/assets/images/past-blogs/M7/Pasted image 20220130104845.png' | relative_url }}" text-align="center"/>
 		</div>
 	
 		<br />
@@ -239,7 +243,7 @@ Para el caso de windows vamos a utilizar dos máquinas, la metasploitable y la W
 		<br />
 
 		<div style="text-align:center">
-		<img src="{{ 'assets/img/M7/Pasted image 20220130111018.png' | relative_url }}" text-align="center"/>
+		<img src="{{ '/assets/images/past-blogs/M7/Pasted image 20220130111018.png' | relative_url }}" text-align="center"/>
 		</div>
 
 		<br />
@@ -253,7 +257,7 @@ Para el caso de windows vamos a utilizar dos máquinas, la metasploitable y la W
 		<br />
 
 		<div style="text-align:center">
-		<img src="{{ 'assets/img/M7/Pasted image 20220130111046.png' | relative_url }}" text-align="center"/>
+		<img src="{{ '/assets/images/past-blogs/M7/Pasted image 20220130111046.png' | relative_url }}" text-align="center"/>
 		</div>
 		
 	
@@ -346,19 +350,19 @@ GTFOBins es una lista seleccionada de archivos binarios de Unix que se pueden us
 Por ejemplo podemos observar que respecto a elevar privilegios podemos buscar respecto de nano el siguiente mecanismo:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M7/Pasted image 20220302233314.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M7/Pasted image 20220302233314.png' | relative_url }}" text-align="center"/>
 </div>
 
 De esta forma, si en un sistema operativo tuviéramos configurado utilizar nano como root sin emplear contraseña, es decir; si pudiéramos utilizar el comando **sudo nano**  sin poner contraseña empleariamos el comando anterior con el siguiente resultado: 
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M7/Pasted image 20220302235010.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M7/Pasted image 20220302235010.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M7/Pasted image 20220302235113.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M7/Pasted image 20220302235113.png' | relative_url }}" text-align="center"/>
 </div>
 
 Llevando a cabo una elevación de privilegios y tomando control de la máquina.

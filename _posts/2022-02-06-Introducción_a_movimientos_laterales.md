@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Movimientos Laterales
-subtitle: Introducción a pivoting y tunneling.
-tags: [redteam] 
+title: "Movimientos Laterales"
+subtitle: "Introducción a pivoting y tunneling."
+date: 2022-02-06 09:00:00 +0000
+categories: ['Past Blogs', 'Red Team']
+tags: ['offensive-security', 'tactics']
+author: German Sanmi
 ---
+
 
 # 1. Movimientos Laterales.
 
@@ -23,7 +27,7 @@ En la siguiente imágen se puede ver como dos máquinas (**host**) de dos redes 
 
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M9/Pasted image 20220203171616.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M9/Pasted image 20220203171616.png' | relative_url }}" text-align="center"/>
 </div>
 
 De forma que los pasos son los siguientes:
@@ -31,20 +35,20 @@ De forma que los pasos son los siguientes:
 - En primer lugar A construye un paquete IP con la IP de B.
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M9/Pasted image 20220203173642.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M9/Pasted image 20220203173642.png' | relative_url }}" text-align="center"/>
 </div>
 	
 - Seguidamente este paquete, dado que el host se encuentra en un marco Ethernet, recibe un envoltorio de red Ethernet y se dirige al enrutador multiprotocolo M1.
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M9/Pasted image 20220203174835.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M9/Pasted image 20220203174835.png' | relative_url }}" text-align="center"/>
 </div>
 	
 - Cuando M1 recibe el paquete, inserta el envoltorio IP como payload dentro de un paquete WAN que se envia al enrutador M2 perteneciente a la otra red.
 
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M9/Pasted image 20220203174937.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M9/Pasted image 20220203174937.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	De esta forma, el paquete IP viaja desde la red de A a la red de B como si estuviéran en una WAN.
@@ -53,7 +57,7 @@ De forma que los pasos son los siguientes:
 
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M9/Pasted image 20220203175034.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M9/Pasted image 20220203175034.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -67,7 +71,7 @@ En esencia lo que se ha hecho es encapsular un protocolo de red dentro de otro c
 El **tunneling** a menudo se emplea como recurso dentro del **pivoting** para utilizar pseudo redes formadas por dos máquinas que se intercambian paquetes entre sí:
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M9/Pasted image 20220203181108.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M9/Pasted image 20220203181108.png' | relative_url }}" text-align="center"/>
 </div>
 
 De esta manera se manda un paquete de un host a otro a travesando distintas máquinas a modo de enrutadores y evadiendo así múltiples sistemas de seguridad como firewalls, proxys, etc. Es algo así como **un mecanismo que permite camuflar tus datos en forma de tráfico legítimo entre dos máquinas** utilizando un encapsulamiento de un protocolo de red sobre otro.
@@ -85,14 +89,14 @@ En las comunicaciones que se llevan a cabo entre dos máquinas a través de ssh 
 Por otra parte, también es sabido que una misma máquina puede ser objeto de una petición por parte de otra y ejercer así el papel de servidor o puede llevar a cabo un petición de administración de un servidor remoto ejerciendo así el papel de cliente, con lo que necesita una configuración para cliente (**/etc/ssh/ssh_config**) y otra configuración para el servidor(**/etc/ssh/sshd_config**). 
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M9/Pasted image 20220203183302.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M9/Pasted image 20220203183302.png' | relative_url }}" text-align="center"/>
 </div>
 
 
 Dentro del fichero de configuración del servidor de ssh existe un montón de opciones que tienen asociadas un valor, entre ellas **AllowTcpForwarding** que permite el redireccionado de puertos TCP. Esto se trata de un fallo de configuración del servicio que permitiría a un atacante pivotar desde este servicio a otras máquinas de la misma red.
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M9/Pasted image 20220203183101.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M9/Pasted image 20220203183101.png' | relative_url }}" text-align="center"/>
 </div>
 
 
@@ -111,7 +115,7 @@ Una vez hemos entrado en una máquina y hemos realizado un trabajo de post-explo
 Los túneles locales SSH se basan en la redirección de puertos (**port forwarding**) desde una máquina local a una máquina remota. Es decir, tu te conectas desde una máquina local a una máquina intermedia a un puerto y esta redirige tu petición al puerto de una máquina remota que es la que realmente recibe los datos.
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M9/Pasted image 20220203190735.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M9/Pasted image 20220203190735.png' | relative_url }}" text-align="center"/>
 </div>
 
 Por ejemplo, en la imágen anterior, un atacante (Cliente SSH) quiere establecer conexión con una máquina (RDP) dentro de una red pero un firewall bloquea cualquier conexión no deseada.
@@ -119,13 +123,13 @@ Por ejemplo, en la imágen anterior, un atacante (Cliente SSH) quiere establecer
 Este atacante ya tiene acceso a una máquina (Servidor SSH) que sabe que permite la redirección de puertos SSH. De esta forma, primero penetra en la red, atravesando el firewall camuflando sus datos con el protocolo SSH (tunneling), 
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M9/Pasted image 20220205231730.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M9/Pasted image 20220205231730.png' | relative_url }}" text-align="center"/>
 </div>
 
 conectándose a la máquina servidor SSH que, mediante la redirección de puertos, redirige su petición al genuino receptor de la información, RDP (pivoting).
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M9/Pasted image 20220205231743.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M9/Pasted image 20220205231743.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -137,7 +141,7 @@ Veámos un ejemplo práctico con Kali, Ubuntu y Metasploitable. Lo que pretendem
 En primer lugar, nos aseguramos de que metasploitable tiene la opción AllowTcpForwarding permitida. Explorando el contenido del archivo podemos observar que dicha opción no está y por tanto, al tener nosotros control de la máquina, añadimos la opción para que permita el redireccionado de puertos y nos aseguramos de que sea posible (aunque sabemos que el hecho de que esta opción no este en el fichero es equivalente a que este comentada y, por tanto, estaría con el valor por defecto; yes, aún así lo añadimos por razones pedagógicas y por asegurarnos).
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/M9/Pasted image 20220203232830.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/M9/Pasted image 20220203232830.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -154,7 +158,7 @@ En primer lugar, nos aseguramos de que metasploitable tiene la opción AllowTcpF
 	Es decir, las peticiones que se envíen al puerto 'LPORT' (Local PORT) en nuestra máquina se redireccionarán al puerto 'RPORT' (Remote PORT) de la máquina destino 'RHOSTIP' (Remote HOST IP) mediante la acción de la máquina 'SERVIP' con usuario 'user'.
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M9/Pasted image 20220203233027.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M9/Pasted image 20220203233027.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	
@@ -165,7 +169,7 @@ En primer lugar, nos aseguramos de que metasploitable tiene la opción AllowTcpF
 	De forma que en nuestro navegador Firefox, al intentar acceder al puerto 9999 de nuestro bucle local, obtenemos:
 	
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M9/Pasted image 20220203233606.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M9/Pasted image 20220203233606.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	Aunque también habría dado resultado la IP 0.0.0.0
@@ -179,7 +183,7 @@ En primer lugar, nos aseguramos de que metasploitable tiene la opción AllowTcpF
 	Sin embargo, haciendo uso de la redirección local de opuertos a través de ssh nuestra conexión puede ser redirigida desde un puerto local a otro puerto remoto de la máquina Metasploitable del que podríamos obtener información como se ve en el siguiente ejemplo:
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M9/Pasted image 20220205194443.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M9/Pasted image 20220205194443.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	En dicha imágen redireccionamos nuestro puerto 9999 al puerto 80 y a la derecha efectúamos un nmap de nuestro bucle local (interno) y observamos que tan sólo hay un puerto abierto el 9999 que aloja el servicio http. En realidad ya se puede intuir que esta información es falsa, nuestro puerto 9999 pone en conexión a los paquetes de nmap con el puerto 80 de la metasploitable con lo que la información que se recopila del puerto 9999 de nuestra máquina es la información del puerto 80 de la máquina metasploitable.
@@ -187,13 +191,13 @@ En primer lugar, nos aseguramos de que metasploitable tiene la opción AllowTcpF
 	(Es un buen momento para mencionar que la redirección se efectúa desde una escucha interna, es decir, que si una máquina foránea intentáse ponerse en contacto con nuestro puerto 9999, se lo encontraría cerrado:
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M9/Pasted image 20220205194922.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M9/Pasted image 20220205194922.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	esto puede verse más claramente desde **lsof**:
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M9/Pasted image 20220205195123.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M9/Pasted image 20220205195123.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	Ahí podemos apreciar claramente que el puerto 9999 se encuentra en escucha activa a peticiones internas ya que escucha en TCP 127.0.0.1:9999)
@@ -212,7 +216,7 @@ En primer lugar, nos aseguramos de que metasploitable tiene la opción AllowTcpF
 
 	for Puerto in `seq 1 $1`
 		do
-			sshpass -p $ServerPass ssh -N -L 9999:$DestIP:$Puerto $ServerUser@$ServerIP 2> /dev/null & # Redirecicción de puertos.
+			sshpass -p $$ServerPass ssh -N -L 9999:$$DestIP:$$Puerto $$ServerUser@$ServerIP 2> /dev/null & # Redirecicción de puertos.
 			echo -n "$Puerto -> "
 			nmap -sV -T5 127.0.0.1 -p 9999 | grep 9999 # Nmap por pantalla.
 			kill `pidof sshpass` # Matamos la redirección de puertos para abrirla de nuevo con otro puerto en la siguiente iteración.
@@ -224,7 +228,7 @@ En primer lugar, nos aseguramos de que metasploitable tiene la opción AllowTcpF
 	Y obtendríamos algo así: 
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M9/Pasted image 20220205200532.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M9/Pasted image 20220205200532.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	
@@ -245,7 +249,7 @@ En primer lugar, nos aseguramos de que metasploitable tiene la opción AllowTcpF
 	1. Establecemos la redirección adecuadamente:
 
 		<div style="text-align:center">
-		<img src="{{ 'assets/img/M9/Pasted image 20220205203122.png' | relative_url }}" text-align="center"/>
+		<img src="{{ '/assets/images/past-blogs/M9/Pasted image 20220205203122.png' | relative_url }}" text-align="center"/>
 		</div>
 		
 		Como queremos abrir un shell con telnet, el puerto objetivo es el 23.
@@ -255,7 +259,7 @@ En primer lugar, nos aseguramos de que metasploitable tiene la opción AllowTcpF
 	2. Utilizamos el servicio de telnet y nos conectamos internamente a nuestro puerto local (indicado en el comando anterior) e introducimos las credenciales:
 
 		<div style="text-align:center">
-		<img src="{{ 'assets/img/M9/Pasted image 20220205203325.png' | relative_url }}" text-align="center"/>
+		<img src="{{ '/assets/images/past-blogs/M9/Pasted image 20220205203325.png' | relative_url }}" text-align="center"/>
 		</div>
 		
 		<br />
@@ -276,7 +280,7 @@ La **redirección remota** consiste en el proceso inverso: Una máquina remota s
 
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M9/Pasted image 20220205231025.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M9/Pasted image 20220205231025.png' | relative_url }}" text-align="center"/>
 </div>
 
 Teniendo en mente la imágen anterior: la máquina Cliente SSH ofrece un servicio en el puerto 3389 y la máquina RDP desea conectarse a ese puerto pero un firewall lo bloquea. La redirección de puertos remota permite poner en contacto el Cliente SSH y RDP a través de un túnel ssh en una máquina intermedia.
@@ -284,13 +288,13 @@ Teniendo en mente la imágen anterior: la máquina Cliente SSH ofrece un servici
 De esta forma, cuando la redirección remota se establece, la máquina intermedia queda en escucha en un puerto concreto (9090) y cuando la máquina RDP se conecta a ServidorSSH:9090 
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M9/Pasted image 20220205231855.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M9/Pasted image 20220205231855.png' | relative_url }}" text-align="center"/>
 </div>
 
 se redirecciona esta conexión a ClienteSSH:3389 poniéndo en contacto ambas máquinas a través de una conexión ssh (pivoting).
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M9/Pasted image 20220205232108.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M9/Pasted image 20220205232108.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -302,7 +306,7 @@ En este ejemplo vamos a utilizar una Ubuntu a modo de máquina local que ofrece 
 En primer lugar, para que la redirección de puertos remota pueda tener lugar hay que habilitar la opción **GatewayPorts** a yes en sshd_config en la máquina intermediaria que, recordemos, está seteada por defecto a no.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M9/Pasted image 20220205233703.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M9/Pasted image 20220205233703.png' | relative_url }}" text-align="center"/>
 </div>
 
 Seguidamente, desde nuestra máquina local, ejecutamos el comando de redirección:
@@ -314,7 +318,7 @@ ssh -L RPORT:LHOSTIP:LPORT user@SERVIP
 De manera que cualquier conexión que se realice sobre el puerto RPORT de la máquina SERVIP (intermediaria) será redireccionada sobre LHOSTIP:LPORT (nuestra máquina local en el puerto del servicio que ofertamos):
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M9/Pasted image 20220205234157.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M9/Pasted image 20220205234157.png' | relative_url }}" text-align="center"/>
 </div>
 
 Concretamente, en el ejemplo anterior activamos el puerto 9999 de la máquina intermediaria (10.0.2.11) para que cualquier máquina que se conecte a dicho host en dicho puerto sea automáticamente redireccionado por ssh a nuestra ubuntu en el puerto 80 (10.0.2.10).
@@ -322,7 +326,7 @@ Concretamente, en el ejemplo anterior activamos el puerto 9999 de la máquina in
 Ahora, con la kali convencional, abrimos firefox y escribimos la IP de la máquina intermediaria y el puerto:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M9/Pasted image 20220205234748.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M9/Pasted image 20220205234748.png' | relative_url }}" text-align="center"/>
 </div>
 
 Y podemos comprobar que efectivamente accedemos al servicio http de la Ubuntu.
@@ -332,14 +336,14 @@ Antes de concluir, vamos a analizar cómo cambia *GatewayPorts* el comportamient
 - En primer lugar, sin modificar la opción, ejecutamos el comando de redirección remota en la máquina local sobre el puerto 9999 hacia el 80 de nuestra Ubuntu y atendemos a los puertos que están escuchando en la máquina intermedia con lsof:
 
 	<div style="text-align:center">
-		<img src="{{ 'assets/img/M9/Pasted image 20220205235106.png' | relative_url }}" text-align="center"/>
+		<img src="{{ '/assets/images/past-blogs/M9/Pasted image 20220205235106.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	podemos por tanto observar que la escucha es interna y no son visibles para una máquina externa que pretenda conectarse y redirigirse sobre la Ubuntu:
 	
 
 	<div style="text-align:center">
-		<img src="{{ 'assets/img/M9/Pasted image 20220205235305.png' | relative_url }}" text-align="center"/>
+		<img src="{{ '/assets/images/past-blogs/M9/Pasted image 20220205235305.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	<br />
@@ -347,25 +351,25 @@ Antes de concluir, vamos a analizar cómo cambia *GatewayPorts* el comportamient
 - Ahora, introducimos la opción correctamente, reiniciamos el servicio ssh y volvemos a ejecutar el comando de redirección en la máquina local:
 
 	<div style="text-align:center">
-		<img src="{{ 'assets/img/M9/Pasted image 20220205235434.png' | relative_url }}" text-align="center"/>
+		<img src="{{ '/assets/images/past-blogs/M9/Pasted image 20220205235434.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	<br />
 
 	<div style="text-align:center">
-		<img src="{{ 'assets/img/M9/Pasted image 20220205235446.png' | relative_url }}" text-align="center"/>
+		<img src="{{ '/assets/images/past-blogs/M9/Pasted image 20220205235446.png' | relative_url }}" text-align="center"/>
 	</div>	
 
 	y volvemos sobre los puertos en escucha en la máquina intermedia:
 
 	<div style="text-align:center">
-		<img src="{{ 'assets/img/M9/Pasted image 20220205235538.png' | relative_url }}" text-align="center"/>
+		<img src="{{ '/assets/images/past-blogs/M9/Pasted image 20220205235538.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	Ahora sí son visibles para las máquinas externas:
 
 	<div style="text-align:center">
-		<img src="{{ 'assets/img/M9/Pasted image 20220205235608.png' | relative_url }}" text-align="center"/>
+		<img src="{{ '/assets/images/past-blogs/M9/Pasted image 20220205235608.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	(Observemos el servicio y versión que rigen en el puerto en cuestión, coinciden con los del puerto 80 de nuestra máquina local).

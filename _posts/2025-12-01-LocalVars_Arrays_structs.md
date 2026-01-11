@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Stackframe; Local variables, Arrays and Structures.
-subtitle: Assembly management of local variables, arrays and structures.
-tags: [assem]
+title: "Stackframe; Local variables, Arrays and Structures."
+subtitle: "Assembly management of local variables, arrays and structures."
+date: 2025-12-01 09:00:00 +0000
+categories: ['Past Blogs', 'Assembly']
+tags: ['x86', 'reverse-engineering']
+author: German Sanmi
 ---
+
 
 ### 1. Defintion.
 

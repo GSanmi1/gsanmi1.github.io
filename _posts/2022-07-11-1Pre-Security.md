@@ -1,9 +1,13 @@
 ---
 layout: post
-title: 1.Pre-Security path.
-subtitle: Notes of the TryHackMe's path Pre-Security.
-tags: [thm]
+title: "1.Pre-Security path."
+subtitle: "Notes of the TryHackMe's path Pre-Security."
+date: 2022-07-11 09:00:00 +0000
+categories: ['Past Blogs', 'CTF']
+tags: ['tryhackme', 'challenges']
+author: German Sanmi
 ---
+
 
 ## 0. Índice.
 
@@ -42,7 +46,7 @@ Vamos a comenzar definiendo que una Red es un conjunto de dispositivos conrectad
 Internet a su vez está constituida por redes más pequeñas conectadas entre sí.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220704171831.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220704171831.png' | relative_url }}" text-align="center"/>
 </div>
 
 Estas redes más pequeñas se denominan como "redes privadas".
@@ -59,7 +63,7 @@ Para que dos dispositivos puedan comunicarse deben de tener la capacidad de iden
 La dirección IP (no confundir con el protocolo IP) es un número que sirve para identificar un host (ordenador) dentro de una red. Más concretamente es un conjunto de números separados en cuatro octetos (debido a que en esencia los ordenadores procesan cada número en binario y cada uno de los cuatro números que componen la IP consta de 8 bits):
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220704173123.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220704173123.png' | relative_url }}" text-align="center"/>
 </div>
 
 En la imagen anterior lo que tenemos es una dirección IP expresada de forma decimal. Es importante saber que: **no pueden haber dos IPs iguales en la misma red**. A su vez, diferenciamos entre IPs públicas que no pueden estar repetidas en ningún caso, e IPs privadas que pueden estar repetidas en redes privadas distintas. Generalmente, los dispositivos que poseen una IP privada emplean un dispositivo con IP pública para comunicarse con otro dispositivo a través de una red pública como Internet.
@@ -69,7 +73,7 @@ Por otra parte, la dirección MAC es una dirección asociada a un chip interno q
 En esencia la dirección MAC es una dirección de 6 números hexadecimales. Los tres primeros identifican al vendedor del dispositivo y el segundo identifica a la interfaz de red del dispositivo:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220704175629.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220704175629.png' | relative_url }}" text-align="center"/>
 </div>
 
 Cabe decir que no todos los protocolos de comunicación emplean la MAC.
@@ -83,7 +87,7 @@ Ping es una herramienta fundamental en el campo del Networking. Este emplea el I
 Esta herramienta viene con frecuencia integrada en dispositivos en forma de comando del propio OS del dispositivo.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220704180818.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220704180818.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -100,7 +104,7 @@ Recordamos que una red es un conjunto de dispositivos conectados y la topología
 Los dispositivos de la red están individualmente conectados a un **switch**, es una de las más comúnes hoy en día:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220704210442.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220704210442.png' | relative_url }}" text-align="center"/>
 </div>
 
 Este esquema funciona conectando cada host a un dispositivo llamado switch que pone a todos ellos en contacto. Es una buena elección para manejar redes pequeñas pero la cosa cambia cuando la network crece.
@@ -112,7 +116,7 @@ Este esquema funciona conectando cada host a un dispositivo llamado switch que p
 En esta topología todos los ordenadores están conectados a un cable principal denominado "espina dorsal" (backbone) por el que circula la información:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220704212209.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220704212209.png' | relative_url }}" text-align="center"/>
 </div>
 
 El problema de este tipo topología es que se satura con facilidad. No puede manejar un exceso de información.
@@ -124,7 +128,7 @@ El problema de este tipo topología es que se satura con facilidad. No puede man
 En este caso, los ordenadores también están conectados entre sí formando un anillo:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220704212537.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220704212537.png' | relative_url }}" text-align="center"/>
 </div>
 
 Si observamos que si algunos de los dispositivos quedase incapacitado o el cable sufriese algún tipo de daño la comunicación se vería cortada sin remedio.
@@ -141,7 +145,7 @@ Como ya hemos indicado, la topología más importante por ser la más frecuente 
 Por otra parte, un **router** es un dispositivo que como su propio nombre indica, enruta la información hacia otra network.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220704214854.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220704214854.png' | relative_url }}" text-align="center"/>
 </div>
 
 De esta forma, el esquema general es que en una red de dispositivos, uno emite información contra el switch que es reenviada al router que la dirige sobre la network donde se encuentra el host de destino.
@@ -153,7 +157,7 @@ De esta forma, el esquema general es que en una red de dispositivos, uno emite i
 Subnetting es el término que hace referencia a la división de una network en redes de menor tamaño:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220705141115.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220705141115.png' | relative_url }}" text-align="center"/>
 </div>
 
 En este caso el ejemplo expone redes, grupos de ordenadores que comparten una categoría concreta. Para diferenciar entre cada pequeña subred se emplean las máscaras de red.
@@ -181,7 +185,7 @@ El término **ARP** responde sobre: Address Resolution Protocol y asocia una dir
 Funciona enviando un mensaje de difusión (broadcast) a todos los ordenadores de una red buscándo aquel dispositivo que tenga una IP concreta (ARP request), el dispositivo que posee dicha IP se identifica aportando al emisor del mensaje original su MAC (ARP replay) y este último guarda la misma en el **ARP cache** para no tener que repetir el proceso cada vez que quiera ponérse en contacto con dicho dispositivo.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220705164629.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220705164629.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -189,7 +193,7 @@ Funciona enviando un mensaje de difusión (broadcast) a todos los ordenadores de
 Por otro lado, el protocolo **DHCP** responde a Dynamic Host Configuration Protocol y se trata de un protocolo que asigna a un dispositivo nuevo en una red una dirección IP. El proceso consiste en que el dispositivo que no tiene todavía una dirección IP se pone en contacto con el servidor que gestiona dicho proceso a menudo referido como DHCP Server (DHCP Discover), este le proporciona una IP (DHCP Offer), el dispositivo la confirma (DHCP Request) y por último el servidor le manda una confirmación de su confirmación (DHCP ACK).
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220705170235.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220705170235.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -203,7 +207,7 @@ El modelo OSI (Open System Interconnection Model) es modelo fundamental empleado
 Se compone de 7 campos de abstracción, llamados *capas*, cada uno con un conjunto de responsabilidades distinto en las que operan una serie de protocolos (reglas de acción que manipulan los datos).
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220705220858.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220705220858.png' | relative_url }}" text-align="center"/>
 </div>
 
 **Los datos viajan a través de cada capa y en el proceso se le van añadiendo fragmentos de información relativos a cada campo**(encapsulamiento de datos).
@@ -215,7 +219,7 @@ Se compone de 7 campos de abstracción, llamados *capas*, cada uno con un conjun
 La capa de aplicación es la capa que en la operan aquellos protocolos que deciden cómo el usuario interactúa con los datos que recibe.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220705222016.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220705222016.png' | relative_url }}" text-align="center"/>
 </div>
 
 En muchas ocasiones, estos datos son transferidos a la interfaz **GUI** (Graphical User Interface) para que el usuario pueda interactuar con ellos de una manera más comoda.
@@ -254,7 +258,7 @@ El protocolo **TCP** que responde a *Transmision Control Protocol* esta diseñad
 De esta forma y en resumidas cuentas se puede afirmar que es seguro y fiable pero el conjunto de mecanismos que implementa para garantizar las características anteriores lo vuelven más lento de lo que inicialmente sería se enviará la información sin más además de que se puede volver aún más lento si la conexión entre ambos dispositivos no es la adecuada.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220705232658.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220705232658.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -282,7 +286,7 @@ Lo que tiene lugar en primera instancia es el routing, este determina la ruta po
 En esta capa, el componente más importante sobre el que se realiza todos los cálculos es la dirección IP que se adhiere en el paquete.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220706101724.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220706101724.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -317,7 +321,7 @@ Así, a modo de resumen, tenemos la siguiente tabla:
 De esta forma, si nosotros envíasemos un email, los datos que nosotros mandamos recorren las capas de abstracción del modelo OSI de mayor a menor (7 --> 1) sufriendo el proceso de encapsulación en cada capa hasta que los paquetes se envían y vuelven a recorrer dichas capas de abstracción de menor a mayor (1 --> 7) donde a medida que suben se "desencapsulan" y procesan cuando son recibidos por el receptor de los datos.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220706105841.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220706105841.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -335,7 +339,7 @@ Sin embargo, es importante tener en cuenta la siguiente diferencia:
 - Por otro lado, un **frame** es **aquello que se aporta en la capa inmediatamente posterior, de la capa 2, o de *Data Link*** del modelo OSI. Más concretamente, un frame es una unidad de transmisión de datos digitales, actúa como un contenedor de un único paquete de red por encapsulamiento.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220706124006.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220706124006.png' | relative_url }}" text-align="center"/>
 </div>
 
 Llegados a este punto, es seguro asumir que cuando hablamos de una dirección IP, estamos hablando de paquetes. Cuando se elimina la información de encapsulación, estamos hablando del marco en sí.
@@ -374,13 +378,13 @@ Vamos a ver algunas de las cabeceras más importantes que el paquete recopila en
 Ahora que conocemos las cabeceras más importantes, veámos cómo se produce una comunicación en el modelo TCP/IP. En este modelo que emplea el protocolo TCP (que recordemos es un *Connection-based protocol*) se emplea un Three-way handshaking consistente en una apertura formal en el que un dispositivo le manda un SYN (synchronise) a otro con la finalidad de abrir un canal de comunicación. Si el otro dispositivo está condiciones responderá con un SYN/ACK (SYNchronise ACKnowledge) y por último el emisor inicial devolverá un último ACK:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220706171753.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220706171753.png' | relative_url }}" text-align="center"/>
 </div>
 
 Para cerrar una conexión el emisor mandar un FIN, el receptor devuelve un ACK en señal de que ha recibido el mensaje y seguidamente manda otro FIN y por último el emisor emite un último ACK que devuelve la conexión:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220706171920.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220706171920.png' | relative_url }}" text-align="center"/>
 </div>
 
 De esta forma, se tiene que una comunicación TCP hay generalmetne la siguiente estructura:
@@ -414,7 +418,7 @@ Las cabeceras más importantes que acompañan al protocolo UDP son, entre otras:
 A modo de diferencia, el diagrama que representa una comunicación UDP entre dos dispositivos sería el siguiente:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220706180836.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220706180836.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -445,13 +449,13 @@ Concretamente, la redirección de puertos permite la redirección de comunicaci�
 Por ejemplo, supongámos una red internat (Intranet) como la siguiente:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220706194154.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220706194154.png' | relative_url }}" text-align="center"/>
 </div>
 
 Sin la redirección de puertos, todos los dispositivos quedarían restringidos a las funcionalidades presentes en los dispositivos de dicha red. Sin embargo, con el port forwarding se puede instaurar en el router un servicio que este coge de un dispositivo de una red externa. Más concretamente, cualquier conexión dirigida sobre el puerto 80 del router es redirigida sobre el mismo puerto en otro dispositivo accediendo a su contenido:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220706194601.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220706194601.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -481,7 +485,7 @@ Observemos que los firewall regulan el tráfico y lo redireccionan, con lo que a
 VPN es el acrónimo de Virtual Private Network y se trata de una tecnología que permite a dispositivos en redes separadas comunicarse de forma segura creando rutas entre ellas a lo largo de Internet más conocido como *túneles*. **Es precisamente a través de estos túneles mediante los que se forma una red privada de forma virtual**.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220706211150.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220706211150.png' | relative_url }}" text-align="center"/>
 </div>
 
 Así, los dispositivos conectados en la 3ª Network siguen formando parte de la 1ª y la 2ª respectivamente, sin embargo, al mismo tiempo ambos conforman un 3ª de forma virtual.
@@ -505,7 +509,7 @@ Como ya hemos comentado antes, el trabajo de un router es el enrutar (routing) e
 A su vez, el routing o enrutar involucra el crear una ruta entre redes de forma que los datos puedan llegar de forma rápida y segura a su destino. Operan sobre la capa 3 del modelo OSI. Sobre todo son útiles cuando ambos dispositivos están conectados a lo largo de muchas rutas:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220706214919.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220706214919.png' | relative_url }}" text-align="center"/>
 </div>
 
 En la imagen anterior podemos ver dos dispositivos conectados mediante diversas rutas. Qué ruta seguirán los datos es algo que el primer router decidirá en base a las siguientes cuestiones:
@@ -527,7 +531,7 @@ Un switch puede operar con una funcionalidad que le sitúa o bien en la capa 2 (
 Por otra parte, tenemos el concepto de **VLAN** o Virtual Local Area Network, que permite a dispositivos específicos dentro de la misma red.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220706230453.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220706230453.png' | relative_url }}" text-align="center"/>
 </div>
 
 Esto está construido con ayuda de los switches, y en este contexto ambos departamentos no pueden comunicarse entre sí pese a pertencer al mismo router.
@@ -623,7 +627,7 @@ Es en este punto en el que entra en juego la URL. Esta en la práctica no es má
 Una URL se compone de los siguientes componentes:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220707142103.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220707142103.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -641,7 +645,7 @@ Una URL se compone de los siguientes componentes:
 Una vez tenemos la URL, el buscador genera un documento HTTP con la siguiente forma:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220707152857.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220707152857.png' | relative_url }}" text-align="center"/>
 </div>
 
 Esta es la forma más básica que puede tener una request, está compuesta de una línea que específica el método de la request (GET) y la versión de HTTP en la que está diseñado el documento (HTTP/1.1).
@@ -651,7 +655,7 @@ Seguidamente, se añaden una serie de cabeceras que el servidor puede necesitar 
 Automáticamente el servidor nos devolverá una HTTP Response como la siguiente:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220707153240.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220707153240.png' | relative_url }}" text-align="center"/>
 </div>
 
 En el que además de lo anterior se añade el código HTML. El contenido y significado de las cabeceras se tratará más adelante.
@@ -740,7 +744,7 @@ Las cookies, son solo una pequeña parte de los datos que se almacenan en la má
 Las cookies se guardan cuando recibe un encabezado "Set-Cookie" de un servidor web. Luego, cada solicitud adicional que realice, enviará la cookie. Debido a que HTTP no tiene estado (no realiza un seguimiento de sus solicitudes anteriores).
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220707183745.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220707183745.png' | relative_url }}" text-align="center"/>
 </div>
 
 Las cookies pueden verse fácilmente desde el navegador desde Inspeccionar Elemento > Application (o Storage en firefox) > Cookie.
@@ -756,7 +760,7 @@ Ahora que tenemos una noción básica acerca de cómo funcionan los dos protocol
 Cuando visitas un sitio web desde el buscador el navegador construye una request a partir de la URL pidiendo información para cargar la página al sitio web que estás pidiendo. La respuesta contiene la información necesaria para que el navegador pueda renderizar la página:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220707211019.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220707211019.png' | relative_url }}" text-align="center"/>
 </div>
 
 De esta forma, distinguimos en lo que a una aplicación web se refiere, dos grandes componentes:
@@ -780,7 +784,7 @@ El Client-side de un sitio web se construye con tres componentes básicos:
 Nos centraremos en el documento HTML, este suele tener una estructura parecida la que sigue:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220707212301.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220707212301.png' | relative_url }}" text-align="center"/>
 </div>
 
 De forma que en ella podemos diferenciar los siguientes elementos:
@@ -815,7 +819,7 @@ El código JavaScript se inscrusta en el código HTML mediante la etiqueta \<scr
 También pueden cargarse desde una localizacion mediante el atributo "src":
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220707221249.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220707221249.png' | relative_url }}" text-align="center"/>
 </div>
 
 Además, existen eventos especificos de ciertas entidades HTML que cargan código JavaScropt como "onmouseover", "onclick", etc.
@@ -836,7 +840,7 @@ Tienen una importancia fundamental en servidores web expuestos a una gran cantid
 Se dedican a recibir el tráfico y desviarlo en función de un conjunto de algoritmos que le ayudan a decidir qué servidor puede lidiar, mejor con la request.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220708094625.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220708094625.png' | relative_url }}" text-align="center"/>
 </div>
 
 - *CDN*: El CDN o Content Delivery Networks puede ser un recurso excelente para cortar el tráfico de un sitio web ocupado.
@@ -922,7 +926,7 @@ Existen unos comandos que ejecutan instrucciones sobre el resultado de otros com
 También podemos conectarnos a una máquina Linux mediante SSH. SSH es un protocolo cryptográfico que posee una funcionalidad de administración remota que envía los datos cifrados.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220708184350.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220708184350.png' | relative_url }}" text-align="center"/>
 </div>
 
 Nos logeamos a una máquina remota en Linux con SSH mediante el siguiente comando:
@@ -965,7 +969,7 @@ Para obtener una ayuda de los distintos modificadores que pdoemos aplicar a un c
 Uno de los modificadores que exiten para el comando "ls" que lista el contenido de una carpeta es el '-l', que expone los detalles de los archivos listados:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220708204114.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220708204114.png' | relative_url }}" text-align="center"/>
 </div>
 
 Concretamente, nos interesa el dato proporcionado por la primera columna. Los permisos que los distintos usuarios del sistema tienen.
@@ -999,7 +1003,7 @@ Existen un conjunto de comandos especialmente útiles:
 - *wget*: Este comando permite descargar ficheros vis HTTP. Los ficheros puede abrirse con un navegador.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220709094911.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220709094911.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -1007,13 +1011,13 @@ Existen un conjunto de comandos especialmente útiles:
 - *scp*: Permite enviar ficheros de un host a otro via SSH.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220709100108.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220709100108.png' | relative_url }}" text-align="center"/>
 </div>
 
 Y para recuperarlo:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220709100143.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220709100143.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -1021,7 +1025,7 @@ Y para recuperarlo:
 - *curl*: Tiene el mismo propósito que curl
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220709100654.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220709100654.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -1029,13 +1033,13 @@ Y para recuperarlo:
 - *WebServers*: Podemos montar un servidor web mediante el siguiente comando:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220709100944.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220709100944.png' | relative_url }}" text-align="center"/>
 </div>
 
 De forma que desde otro sistema podría acceder a los archivos contenidos en nuestra máquina con wget:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220709101223.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220709101223.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -1047,13 +1051,13 @@ Proceso es un término que alude a un programa en ejecución registrado y numera
 El usuario puede acceder a la forma en la que el sistema ordena los procesos mediante un conjutno de comandos, como ps que muestra los procesos:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220709165536.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220709165536.png' | relative_url }}" text-align="center"/>
 </div>
 
 top, que los muestra de una forma dinámica:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220709165537.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220709165537.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -1092,7 +1096,7 @@ El sistema operativo Windows es actualmente el dominante tanto en redes corporat
 El escritorio de Windows emplea el GUI (Graphical User Interface) para mostrar un escritorio interactivo y visual en la máquina.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220709165538.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220709165538.png' | relative_url }}" text-align="center"/>
 </div>
 
 1. The Desktop
@@ -1118,7 +1122,7 @@ La apariencia del escritorio puede ser modificada al gusto así como los iconos 
 El "start" menu es una parte de Windows que da acceso completo a cualquier otra parte del dispositivo
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220709165539.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220709165539.png' | relative_url }}" text-align="center"/>
 </div>
 
 Se divide en la barra de búsqueda, las aplicaciones más recientemente añadidas y una sugerencia de Windows.
@@ -1145,13 +1149,13 @@ Entre algunas de las características más importantes están:
 - Write.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220709165540.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220709165540.png' | relative_url }}" text-align="center"/>
 </div>
 
 Los permisos pueden verse mediante los siguientes pasos: Click-derecho sobre carpeta > Propiedades > Seguridad > Usuario o grupo cuyos permisos se desean ver.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220709165541.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220709165541.png' | relative_url }}" text-align="center"/>
 </div>
 
 - Admite archivos comprimidos (ya sean carpetas o ficheros).
@@ -1167,13 +1171,13 @@ La carpeta "C:\\Windows" se conoce tradicionalmente como la carpeta que contiene
 Dentro de esta carpeta encontramos un montón de archivos:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220709165542.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220709165542.png' | relative_url }}" text-align="center"/>
 </div>
 
 Y entre todas esas carpetas encontramos específicamente la carpeta System 32:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220709165543.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220709165543.png' | relative_url }}" text-align="center"/>
 </div>
 
 Esta carpeta contiene archivos que pueden ser críticos para el sistema operativo, borrarlos podría resultar en una falta de funcionalidad por parte del sistema.
@@ -1203,13 +1207,13 @@ UAC son siglas que responde a User Account Control y se trata de una herramienta
 Concretamente, sirve para que cada vez que el usuario lleva a cabo una acción (él o una aplicación que él ejecuta) no tenga que elevarse a administrador sino sencillamente conceder permisos. Cada vez que se requiere salta una ventana que pide al usuario una concesión de permisos. Cada vez que esto pueda ser necesario para una aplicación aparecera un escudo junto al logotipo indicando que la UAC elevara privilegios al ejecutar el programa:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220709165544.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220709165544.png' | relative_url }}" text-align="center"/>
 </div>
 
 Una vez intentemos ejecutar el programa no saltara una ventanita como la siguiente:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220707183746.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220707183746.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -1219,13 +1223,13 @@ Una vez intentemos ejecutar el programa no saltara una ventanita como la siguien
 *Settings* y *Control Panel* son dos conjuntos de opciones donde podemos modificar preferencias a nuestro gusto Windows 10:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220707183747.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220707183747.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220707183748.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220707183748.png' | relative_url }}" text-align="center"/>
 </div>
 
 Desde opciones de configuración de cuentas, red, a apariencia del escritorio, etc.
@@ -1237,7 +1241,7 @@ Desde opciones de configuración de cuentas, red, a apariencia del escritorio, e
 El *Task Manager* (Administrador de tareas) proporciona información sobre las aplicaciones y los procesos que se ejecutan actualmente en el sistema. También hay disponible otra información, como la cantidad de CPU y RAM que se utilizan, que se incluye en Rendimiento.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220707183749.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220707183749.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -1249,7 +1253,7 @@ El *Task Manager* (Administrador de tareas) proporciona información sobre las a
 El *System Configuration* (msconfig) es una utilidad la resolución avanzada de problemas. Su propósito principal es el de ayudar a diagnosticar problemas del inicio del equipo.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220707183750.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220707183750.png' | relative_url }}" text-align="center"/>
 </div>
 
 Es probable que se necesiten permisos de administrador para utilizar esta herramienta.
@@ -1257,31 +1261,31 @@ Es probable que se necesiten permisos de administrador para utilizar esta herram
 Una vez hemos abierto esta herramienta encontramos cinco pestañas: General, Boot, Services, Startup, Tools.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220707183751.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220707183751.png' | relative_url }}" text-align="center"/>
 </div>
 
 - *General*: Desde esta pestaña podemos elegir qué dispositivos o servicios se inician desde el inicio del sistema.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220707183752.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220707183752.png' | relative_url }}" text-align="center"/>
 </div>
 
 - *Boot*: Definimos opciones de arranque del sistema.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220707183753.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220707183753.png' | relative_url }}" text-align="center"/>
 </div>
 
 - *Service*: Muestra una lista de todos los servicios (procesos en segundo plano) que corren en el sistema:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220707183754.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220707183754.png' | relative_url }}" text-align="center"/>
 </div>
 
 - *Tools*: Presenta una lista de herramientas que pueden configurarse y que esta instaladas.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220707183755.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220707183755.png' | relative_url }}" text-align="center"/>
 </div>
 
 Notemos el recuadro "Selected Command"
@@ -1293,7 +1297,7 @@ Notemos el recuadro "Selected Command"
 Se pueden cambiar los controles de la UAC para que sea menos restrictiva. Existen diversos niveles:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220707183756.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220707183756.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -1309,19 +1313,19 @@ Dentro del panel del *System Configuration* encontramos el *Computer Management*
 - *Event Viewer*: Nos permite acceder al registro de eventos. Existen 5 tipos de eventos:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220707183757.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220707183757.png' | relative_url }}" text-align="center"/>
 </div>
 
 Y cuatro tipos de logs:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220707183758.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220707183758.png' | relative_url }}" text-align="center"/>
 </div>
 
 - *Shared Folder*: Un listado completo de todas las carpetas compartidas a otros usuarios.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220707183759.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220707183759.png' | relative_url }}" text-align="center"/>
 </div>
 
 - *Local Users and Grupos*: Nos lleva al archivo "lusrmgr.msc" ya visto en la sección anterior.
@@ -1329,13 +1333,13 @@ Y cuatro tipos de logs:
 - *Perfomance*: Tenemos acceso al Perfomance Monitor (perfom).
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220707183760.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220707183760.png' | relative_url }}" text-align="center"/>
 </div>
 
 - *Storage*: En Storage podemos encontrar una interfaz que nos guía a lo largo del manejo del disco duro:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220707183761.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220707183761.png' | relative_url }}" text-align="center"/>
 </div>
 
 En esta interfaz podemos crear un nuevo espacio, extender una partición, partir una partición o asignar una letra a una parte del espacio vacío.
@@ -1355,19 +1359,19 @@ La información se divide en tres secciones principalmente:
 - Software Enviroment: Variables de entorno y Network.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220707183762.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220707183762.png' | relative_url }}" text-align="center"/>
 </div>
 
 Particularmente importante es la última sección:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220707183763.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220707183763.png' | relative_url }}" text-align="center"/>
 </div>
 
 Y la sección de Network:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220707183764.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220707183764.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -1406,7 +1410,7 @@ La **cmd** es la terminal de Windows. Existen algunos comandos importantes como:
 El Windows Registry es una base de datos jerarquica empleada para almacenar información necesaria para configurar el sistema para uno o más usuarios, aplicaciones, hardware, etc.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220707183765.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220707183765.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -1420,7 +1424,7 @@ Windows Update es un servicio proveido por Microsoft para obtner actualizaciones
 Las actualizaciones generalmente se lanzan el segundo Jueves de cada mes (Patch Tuesday).
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220711083528.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220711083528.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -1430,7 +1434,7 @@ Las actualizaciones generalmente se lanzan el segundo Jueves de cada mes (Patch 
 Windows Security es una herramienta de Microsoft para proteger el dispositivo
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220711083529.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220711083529.png' | relative_url }}" text-align="center"/>
 </div>
 
 Existen distintos controles de seguridad:
@@ -1447,7 +1451,7 @@ Existen marcadores de status para cada uno de estos campus.
 - Rojo: Alerta.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220711083530.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220711083530.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -1467,7 +1471,7 @@ Esta sección está dividida en dos partes:
 El *firewall* regula el flujo de tráfico entre dispositivos.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220711083531.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220711083531.png' | relative_url }}" text-align="center"/>
 </div>
 
 Como podemos ver, existen teers tipos de firewalls:
@@ -1483,13 +1487,13 @@ Al clickar en alguna de estas opciones accedemos a la posibilidad de activar o d
 Dentro de Windows Defender Firewall podemos habilitar a una aplicación a través del mismo:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220711085251.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220711085251.png' | relative_url }}" text-align="center"/>
 </div>
 
 Además puedes ver la configuración actual del perfil a través del botón "Details":
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220711085334.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220711085334.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -1499,13 +1503,13 @@ Además puedes ver la configuración actual del perfil a través del botón "Det
 En esta sección se puede cambiar la configuración de Microsoft Defender SmartScreen. Esta se trata de una herramienta que protege contra ataques de phising o malware de sitios web.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220711102546.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220711102546.png' | relative_url }}" text-align="center"/>
 </div>
 
 De forma que si intentamos ejecutar una aplicación desconocida en el sistema aparecerá el siguiente mensaje:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/THM/Pasted image 20220711102615.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/THM/Pasted image 20220711102615.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />

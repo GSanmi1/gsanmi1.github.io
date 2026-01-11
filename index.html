@@ -1,6 +1,34 @@
 ---
-layout: home
-title: 
-subtitle: 
+layout: default
+title: Inicio
 ---
-<h1>Last Posts</h1>
+
+<h2>Last Posts</h2>
+    <ul class="post-list">
+        {% for post in site.posts limit:5 %}
+        <li class="post-list-item">
+            <h3 class="post-list-title">
+                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            </h3>
+            <p class="post-meta">
+                {{ post.date | date: "%d de %B, %Y" }}
+                {% if post.categories %}
+                    {% for category in post.categories %}
+                        • <span class="category">{{ category }}</span>
+                    {% endfor %}
+                {% endif %}
+            </p>
+            {% if post.excerpt %}
+            <p class="post-excerpt">
+                {{ post.excerpt | strip_html | truncatewords: 50 }}
+                <a href="{{ post.url | relative_url }}" class="read-more">Leer más →</a>
+            </p>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+
+    <p style="text-align: center; margin-top: 30px;">
+        <a href="{{ '/posts.html' | relative_url }}" class="read-more">Ver todos los posts →</a>
+    </p>
+</div>

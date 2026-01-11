@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Gramáticas en Dharma
-subtitle: Introducción a la construcción de gramáticas para Dharma.
-tags: [DHA]
+title: "Gramáticas en Dharma"
+subtitle: "Introducción a la construcción de gramáticas para Dharma."
+date: 2024-09-24 09:00:00 +0000
+categories: ['Past Blogs', 'Programming']
+tags: ['dharma', 'projects']
+author: German Sanmi
 ---
+
 ### Dharma
 
 Dharma es un mutational-grammar-based que genera programas con inputs (llamadas a webAPIs) sintáctica y semánticamente correctos pero incorporando cambios (mutaciones) en cada input con el objetivo de provocar un fallo, un bug, en el engine de procesamiento de los programas que crea. 

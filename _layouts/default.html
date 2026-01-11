@@ -1,25 +1,82 @@
----
-layout: base
----
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ page.title }} | {{ site.title }}</title>
+    <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    {% seo %}
+    {% feed_meta %}
 
-<div class="intro-header"></div>
+    <!-- MathJax Configuration (MUST be BEFORE loading the script) -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$$', '$$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                tags: 'ams',
+                macros: {
+                    N: "\\mathbb{N}",
+                    Z: "\\mathbb{Z}",
+                    R: "\\mathbb{R}",
+                    C: "\\mathbb{C}"
+                }
+            },
+            options: {
+                // Include 'script' to process Kramdown's <script type="math/tex"> output
+                processHtmlClass: 'tex2jax_process|MathJax',
+                ignoreHtmlClass: 'tex2jax_ignore',
+                skipHtmlTags: ['noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            svg: {
+                fontCache: 'global'
+            },
+            startup: {
+                ready: () => {
+                    console.log('MathJax is loaded and ready!');
+                    MathJax.startup.defaultReady();
+                    // Process any Kramdown-generated script tags
+                    MathJax.startup.document.getMathItemsWithin(document.body);
+                }
+            }
+        };
+    </script>
+    <!-- MathJax Library -->
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="wrapper">
+            <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+            <nav class="site-nav">
+                <a href="{{ '/zkp.html' | relative_url }}">ZKP</a>
+                <a href="{{ '/maths.html' | relative_url }}">Maths</a>
+                <a href="{{ '/past-blogs.html' | relative_url }}">Past Blogs</a>
+            </nav>
+        </div>
+    </header>
 
-<div role="main" class="{% if page.full-width %} container-fluid {% else %} container-md {% endif %}">
-  {% if page.before-content %}
-    <div class="before-content">
-      {% for file in page.before-content %}
-        {% include {{ file }} %}
-      {% endfor %}
-    </div>
-  {% endif %}
+    <main class="page-content">
+        <div class="wrapper">
+            {{ content }}
+        </div>
+    </main>
 
-  {{ content }}
-
-  {% if page.after-content %}
-    <div class="after-content">
-      {% for file in page.after-content %}
-        {% include {{ file }} %}
-      {% endfor %}
-    </div>
-  {% endif %}
-</div>
+    <footer class="site-footer">
+        <div class="wrapper">
+            <p>&copy; {{ site.time | date: '%Y' }} {{ site.author }}. Investigación sobre Zero-Knowledge Proofs.</p>
+            <p>
+                {% if site.github_username %}
+                <a href="https://github.com/{{ site.github_username }}">GitHub</a>
+                {% endif %}
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

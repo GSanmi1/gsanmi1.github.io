@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Ataque a aplicaciones web.
-subtitle: Introducción a estructuras y ataques de aplicaciones web.
-tags: [redteam]
+title: "Ataque a aplicaciones web."
+subtitle: "Introducción a estructuras y ataques de aplicaciones web."
+date: 2022-02-02 09:00:00 +0000
+categories: ['Past Blogs', 'Red Team']
+tags: ['offensive-security', 'tactics']
+author: German Sanmi
 ---
+
 
 # 1. Introducción a las aplicaciones web, dirb y burpsuite I.
 
@@ -14,7 +18,7 @@ tags: [redteam]
 Recordamos que en internet las relaciones entre servidores y clientes existen peticiones y respuestas, estas peticiones y respuestas se concretan mediante un protocolo de comunicaciones entre el cliente y el servidor, el cual está descrito a continuación:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20211214095352.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20211214095352.png' | relative_url }}" text-align="center"/>
 </div>
 
 - En primer lugar un cliente, usuario, quiere pedir algo a una página web, de forma que el cliente lleva a cabo un HTTP request al servidor web. 
@@ -91,7 +95,7 @@ Una estructura predefinida de código abierto es LAMP (Linux, Apache, MySQL, Php
 Para Windows existe una aplicación servidor web desarrollado por Microsoft, llamado IIS, se trata de un servidor flexible, seguro y fácil de manejar
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20211214103426.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20211214103426.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -99,7 +103,7 @@ Para Windows existe una aplicación servidor web desarrollado por Microsoft, lla
 ## 1.3. Ataques a páginas web.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20211214103537.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20211214103537.png' | relative_url }}" text-align="center"/>
 </div>
 
 Consiste en generr una cantaidad de tráfico elevado de forma que colapsamos el servidor y su capacidad para atender a usuarios legítimos es mínima o nula.
@@ -107,31 +111,31 @@ Consiste en generr una cantaidad de tráfico elevado de forma que colapsamos el 
 La diferencia entre DoS y DDoS es el número de dispositivos que esten efectuando el ataque, puede ser una sola máquina o una botnet.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20211214104139.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20211214104139.png' | relative_url }}" text-align="center"/>
 </div>
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20211214104450.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20211214104450.png' | relative_url }}" text-align="center"/>
 </div>
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20211214104459.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20211214104459.png' | relative_url }}" text-align="center"/>
 </div>
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20211214104610.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20211214104610.png' | relative_url }}" text-align="center"/>
 </div>
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20211214104747.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20211214104747.png' | relative_url }}" text-align="center"/>
 </div>
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20211214104816.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20211214104816.png' | relative_url }}" text-align="center"/>
 </div>
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20211214104857.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20211214104857.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -194,7 +198,7 @@ $ nikto -h <IP_Web> -p <PORT>
 ```
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20211215211546.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20211215211546.png' | relative_url }}" text-align="center"/>
 </div>
 
 Aquí podemos ver, analizando la máquina Metasplotaible, que lleva a cabo una evaluación de todos los servicios que encuentra dentro de la máquina y las vulnerabilidades conocidas que detecta en dichos servicios.
@@ -204,13 +208,13 @@ Aquí podemos ver, analizando la máquina Metasplotaible, que lleva a cabo una e
 ## 1.5. Mapeo de un sitio web con BurpSuite.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20211214124736.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20211214124736.png' | relative_url }}" text-align="center"/>
 </div>
 
 Para mapear un sitio web con BurpSuite de un sitio web basta con interceptar una petición con el proxy y liberar la petición. Burpsuite hará un mapeo automático de los sitios web vinculados a la petición y alguna carpeta adyacente que se puede visualizar en la sección: **Tarjet > Site map**. 
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220108230012.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220108230012.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -250,13 +254,13 @@ Un **proxy** es una herramienta de intercepción que se coloca entre un cliente 
 En primer lugar, lo configuramos en BurpSuite:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20211217164204.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20211217164204.png' | relative_url }}" text-align="center"/>
 </div>
 
 Y seguidamente, en el navegador Firefox, en Edit > Preferences a bajo del todo en Network settings:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220104164646.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220104164646.png' | relative_url }}" text-align="center"/>
 </div>
 
 
@@ -268,14 +272,14 @@ Y seguidamente, en el navegador Firefox, en Edit > Preferences a bajo del todo e
 A continuación, dentro de Proxy, en 'Intercept is on'. 
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220104163352.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220104163352.png' | relative_url }}" text-align="center"/>
 </div>
 
 
 A partir de aquí cualquier petición que realizemos será interceptada por nuestro proxy y mostrada a través de la interfaz de la aplicación burpsuite.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220104164753.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220104164753.png' | relative_url }}" text-align="center"/>
 </div>
 
 
@@ -284,7 +288,7 @@ Y la página permanecerá en espera a que la request sea liberada del proxy de B
 También se puede interceptar la respuesta que te devuelve el servidor en options e "Interceptar respuesta del servidor".
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220104164827.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220104164827.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -310,7 +314,7 @@ Intruder contiene las siguientes pestañas. Una vez hemos interceptado la solici
 ![[Pasted image 20220104172026.png]]
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220104164827.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220104164827.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -320,7 +324,7 @@ Vamos a la etiqueta de intruder y encontramos varias pestañas: Target, Position
 - **Target**: En esta pestaña se configura la dirección de la máquina a la que va diriga la request:
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220104172320.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220104172320.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	Por defecto, al reenviar la petición desde el proxy siempre vendrá la dirección de destino por defecto y no hace falta tocar nada.
@@ -330,7 +334,7 @@ Vamos a la etiqueta de intruder y encontramos varias pestañas: Target, Position
 - **Positions**: El apartado de positions define los lugares de la request que se van a alterar y el tipo de ataque que queremos hacer. Estos fragmentos de códigos pueden ser identifcados porque se encuentran entre signos '§' envolviendo al mismo.
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220104164827.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220104164827.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	<br />
@@ -350,7 +354,7 @@ Vamos a la etiqueta de intruder y encontramos varias pestañas: Target, Position
 - **Payload**: En la pestaña payload definimos uno a uno como son los conjuntos de payloads que se van a enviar en la lista anterior. Podemos elegir entre varios tipos de payloads:
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220104211354.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220104211354.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	
@@ -373,13 +377,13 @@ Mandará una serie de request y devolverá la respuesta del servidor. La forma q
 El **Repeater** es una herramienta sencilla para manipular y volver a emitir manualmente mensajes HTTP y WebSocket individuales y analizar las respuestas de la aplicación.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220108231116.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220108231116.png' | relative_url }}" text-align="center"/>
 </div>
 
 Aquí podemos modificar una petición, enviarla y analizar la respuesta del servidor e incluso renderizar el documento HTML respuesta para ver la página como si la tuviéramos abierta en el navegador.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220108231513.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220108231513.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -541,7 +545,7 @@ De entre los métodos que podemos utilizar para llevar a cabo procesos de autent
 	Así por ejemplo: 
 	
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20211215114150.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20211215114150.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	Sin embargo, este proceso de autenticación tiene una serie de desventajas como:
@@ -566,7 +570,7 @@ De entre los métodos que podemos utilizar para llevar a cabo procesos de autent
 	
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20211215164005.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20211215164005.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	Es necesario puntualizar una serie de cosas:
@@ -582,7 +586,7 @@ De entre los métodos que podemos utilizar para llevar a cabo procesos de autent
 3. **Tokens**: En primer lugar, un **token** es un objeto informático (ya sea software o hardware) que representa el derecho a realizar una acción. Existen varios tipos de tokens: Session Token, Security Token, Access token... De manera que una aplicación que posea un token determinado tiene el derecho (sin introducir ningún tipo de credencial) de llevar a cabo una determinada acción dentro de un dispositivo.
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20211215180957.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20211215180957.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	Para el caso que nos ocupa nos interesan los JWT (JSON Web Token) que es un token tipo JSON (lenguaje de programación web derivado de JavaScript) utilizado por y entre aplicaciones web. Contiene las siguientes partes:
@@ -631,7 +635,7 @@ Las herramientas con las que vamos a trabajar necesitan de una lista de "strings
 
 	
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20211215184643.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20211215184643.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	Como se puede ver en la imágen, hemos introducido "cupp -i" en kali, nos ha pedido una serie de datos en relación a la víctima y ha contruido un fichero en el que ha guardado las palabras que ha contruido.
@@ -641,17 +645,17 @@ Las herramientas con las que vamos a trabajar necesitan de una lista de "strings
 	Instalamos DyMerge clonando el repositorio desde la página: https://github.com/k4m4/dymerge.
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20211215104224.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20211215104224.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	Una herramienta simple pero poderosa, escrita exclusivamente en Python, que toma listas de palabras dadas y las fusiona en un diccionario dinámico que luego se puede usar como munición para un ataque exitoso basado en diccionario (o de fuerza bruta).
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20211215180957.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20211215180957.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20211215110615.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20211215110615.png' | relative_url }}" text-align="center"/>
 	</div>
 
 <br />
@@ -677,7 +681,7 @@ Para entender cómo funciona sería conveniente ver un ejemplo a través de los 
 	<br />
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220103230510.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220103230510.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	<br />
@@ -696,7 +700,7 @@ Seguimos los siguientes pasos:
 2. Además, necesitamos el protocolo y el tipo de request para que hydra lleve a cabo el ataque. El tipo de request al ser una página http será evidentemente http, pero ¿qué método?. Obviamente, al tener que acreditarse mediante el relleno de campos dentro de la página se tratará necesariamente de un POST, pero para salir de dudas podemos comprobar que tipo de request se mandan utilizando DevTools e inspeccionando el apartado de NETWORK, mandamos un logeo de la página y vemos qué request se ha enviado, en nuestro caso un POST.
 	
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220103234618.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220103234618.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	Además de mostrarnos qué tipo de request es podemos ver también la forma y los parámetros que se envían en la petición, el payload, abajo a la derecha.
@@ -723,13 +727,13 @@ Seguimos los siguientes pasos:
 En definitiva, todos estos datos ayudan a hydra a entender cómo es la estructura de la web y así optimizar su ataque. El comando completo es:
 	
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220104000119.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220104000119.png' | relative_url }}" text-align="center"/>
 </div>
 
 y el resultado que nos da es:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220104000215.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220104000215.png' | relative_url }}" text-align="center"/>
 </div>
 
 Informándonos  de que ha encontrado unas credenciales válidas **admin:admin**.
@@ -743,7 +747,7 @@ Para llevar a cabo el ataque de fuerza bruta con burpsuite. Vamos a hacer uso de
 En primer lugar vamos a la DVWA y la abrimos y nos saldrá la parte de logeo. Vamos a descubrir la contraseña haciendo un ataque de fuerza bruta con diccionario.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220108234323.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220108234323.png' | relative_url }}" text-align="center"/>
 </div>
 
 En primer lugar intentamos llevar a cabo una petición de logeo introduciendo credenciales ficticias en todos los campos e interceptamos la petición con burpsuite.
@@ -751,7 +755,7 @@ En primer lugar intentamos llevar a cabo una petición de logeo introduciendo cr
 - **Proxy**: Usamos el proxy para interceptar la petición, analizarla y poder así configurar las requests que se realizará en el ataque de fuerza bruta. Esta petición contiene la información necesaria para efectuar un intento de logeo al servidor. Vamos a enviar esta información al Intruder. 
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220108234754.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220108234754.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	<br />
@@ -759,23 +763,23 @@ En primer lugar intentamos llevar a cabo una petición de logeo introduciendo cr
 - **Intruder**: Una vez con la información en el intruder definimos el tipo de ataque (pitchfork), ajustamos las posiciones de los payloads; que serán el username y el password y el conjunto de los payloads que irán en cada posición; que en este caso será una lista de nombres que habremos construido con las herramientas vistas más arriba:
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220109001024.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220109001024.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220109001045.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220109001045.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	En las opciones de los resultados le damos a seguir redirecciones siempre. Esto en este caso es conveniente porque de esta manera si nos logeamos nos redirigirán a otra página y si fallamos nos quedaremos en la misma. Esto alterará el tamaño del documento html recibido por el servidor y será un buen indicio para diferenciar entre un acierto y un fallo, ya que los fallos, la mayoría tendrán un documento html idéntico con el mismo peso. Exploraremos aquellas respuestas que ocupen un tamaño diferente de la media.
 	
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220109004855.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220109004855.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	Iniciamos el ataque y obtenemos:
 	
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220109005030.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220109005030.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	Por la razón que hemos comentado antes, vamos a explorar las opciones que tienen un tamaño distinto enviándolas al repetidor mediante el botón derecho.
@@ -786,7 +790,7 @@ En primer lugar intentamos llevar a cabo una petición de logeo introduciendo cr
 - **Repeater**: Una vez en el repetidor le damos a la etiqueta que indica "seguir redirección" y nos encontramos que, renderizando el documento html:
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220109005323.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220109005323.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	Tenemos acceso.
@@ -834,7 +838,7 @@ Destacamos los siguientes apartados:
 	<br />
 	
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20211221103307.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20211221103307.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	<br />
@@ -939,7 +943,7 @@ Un ejemplo de uso sería:
 
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220104152037.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220104152037.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -1179,13 +1183,13 @@ Más información en https://github.com/sqlmapproject/sqlmap/wiki/Usage
 Una vez nos hemos instalado SQLMap, o lo hemos obtenido como un script de python, lo abrimos en la terminal y desplegamos la ayuda para intentar ver cómo funciona.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220109010532.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220109010532.png' | relative_url }}" text-align="center"/>
 </div>
 
 Por otra parte, abrimos la aplicación web Mutillidae ( dentro de la vm ). Entramos en la sección "SQL injection". Una vez en ella necesitamos saber qué tipo de request hace para entender cómo debemos de poner los datos en sqlmap. Sencillamente vamos a inspeccionar elemento > Network y realizamos un request que se quedará guardado para que nosotros podamos inspeccionarlo:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220109013203.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220109013203.png' | relative_url }}" text-align="center"/>
 </div>
 
 En dicha foto podemos comprobar que se trata de un GET, cuáles son los parámetros, las cookies, etc.
@@ -1207,32 +1211,32 @@ Como no le hemos indicado que lleve a cabo ninguna operación en la URL la termi
 1. Si queremos ver la base de datos que se está utilizando actualmente añadiríamos: --current-db
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220109014228.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220109014228.png' | relative_url }}" text-align="center"/>
 	</div>
 
 2. Si queremos ver las tablas que componen una base de datos sencillamente indicamos con -D el nombre de la base de datos y el modificador --tables: -D nowasp --tables
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220109014620.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220109014620.png' | relative_url }}" text-align="center"/>
 	</div>
 
 3. Si dada una tabla quisiésemos ver sus columnas entonces tendríamos: -D nowasp -T accounts --columns
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220109014918.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220109014918.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 4. Si para una base de datos concreta quisiéramos ver un esquema completo de todas sus tablas: -D nowasp --schema
 	
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220109015652.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220109015652.png' | relative_url }}" text-align="center"/>
 	</div>
 	
 	
 5. Si quisiéramos volcar el contenido de una tabla ponemos: -D nowasp -T accounts --dump
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220109020751.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220109020751.png' | relative_url }}" text-align="center"/>
 	</div>
 
 <br />
@@ -1301,7 +1305,7 @@ En él la representacion gráfica de un elemento básico es la **tabla**:
 
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20211220133601.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20211220133601.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -1313,7 +1317,7 @@ Una tabla se compone de filas y columnas de forma que las filas se corresponden 
 	<br />
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20211220135219.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20211220135219.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	<br />
@@ -1323,7 +1327,7 @@ Una tabla se compone de filas y columnas de forma que las filas se corresponden 
 	<br />
 
 	<div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Imagen6012 1.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Imagen6012 1.png' | relative_url }}" text-align="center"/>
 	</div>
 
 	<br />
@@ -1371,7 +1375,7 @@ La **relación matemática** entre dos conjuntos no es más que una asociación 
 <br />
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20211220194025.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20211220194025.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -1406,7 +1410,7 @@ El SQL es un acrónimo para Structured Query Language, se trata del lenguaje de 
 <br />
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20211220185141.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20211220185141.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -1805,7 +1809,7 @@ Para realizar estos ejemplos, vamos a emplear una máquia virtual preparada que 
 Por un fallo de configuración de la web, el código que nosotros introducimos se añade en bruto al documento html que el servidor devuelve. Como no se filtra de ninguna manera, podemos poner un elemento html o un script de javascript y cuando el navegador renderice el documento respuesta se encontrará con un elemento html más que renderizar. De esta forma hemos conseguido alterar el normal funcionamiento del navegador demostrando que el sitio web es vulnerable. Se trata de un XSS Reflected porque añadimos una carga HTML al documento que enviamos al servidor y que este nos devuelve pero esta no se almacena en el servidor.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220301202954.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220301202954.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -1815,13 +1819,13 @@ Por un fallo de configuración de la web, el código que nosotros introducimos s
 En este caso nos encontramos ante un sitio web que nos da a elegir entre un conjunto de ficheros que luego despliega por pantalla:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220301203204.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220301203204.png' | relative_url }}" text-align="center"/>
 </div>
 
 Inspeccionando el elemento HTML de la opción que se muestra como posibilidad en el desplegable **Text File Name** nos encontramos con que el nombre que antecede como cabecera a la muestra del documento: **File: http://www.textfiles.com/hacking/auditool.txt** es igual al valor (value) que tiene el elemento html correspondiente a la opción del menú desplegable; **Intrusion Detection in Computers by Victor H. Marshall,** en el apartado inspeccionar elemento:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220301203242.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220301203242.png' | relative_url }}" text-align="center"/>
 </div>
 
 Esto puede ser indicio de que el servidor sencillamente coge el valor de la opción y lo recoloca en otra parte del documento html que devuelve como respuesta al cliente.
@@ -1829,7 +1833,7 @@ Esto puede ser indicio de que el servidor sencillamente coge el valor de la opci
 Si alguien modificara el texto del valor del elemento html y el servidor no filtrase ciertos tipos de caracteres se podría modificar el documento HTML para que el navegador se comportase de manera diferente al elegir dicha opción en el menú como se muestra a continuación:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220301203304.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220301203304.png' | relative_url }}" text-align="center"/>
 </div>
 
 Ya que dicho fragmento de texto se recolocaría en bruto en otra parte del documento html a la espera de que el navegador lo renderizase. De manera que el servidor es vulnerable a una inyección de código HTML o JavaScript.
@@ -1841,7 +1845,7 @@ Ya que dicho fragmento de texto se recolocaría en bruto en otra parte del docum
 En este caso nos encontramos ante una pantalla con una serie de campos en los que se puede meter información. De nuevo, esta información se muestra de vuelta en el navegador y como el servidor es vulnerable el código no se filtra con lo que podemos cambiar el comportamiento del navegador introduciendo elementos HTML como scripts de JavaScript.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220301203413.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220301203413.png' | relative_url }}" text-align="center"/>
 </div>
 
 En la imágen podemos observar que hemos introducido un hola en uno de los campos y el hola se nos devuelve en forma de resultados encontrados debajo de los campos.
@@ -1849,7 +1853,7 @@ En la imágen podemos observar que hemos introducido un hola en uno de los campo
 Si ahora ponemos \<h1> hola obtenemos…
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220301203441.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220301203441.png' | relative_url }}" text-align="center"/>
 </div>
 
 Recordamos que la inyección SQL es también posible en esta página pero esa no sería un XSS strike ya que el objetivo del anterior consiste modificar el **frontend** de un sitio web puesto que la víctima sería un cliente de dicha página mientras que en el ataque SQLi la víctima es el servidor y el objetivo del ataque es el backend de la aplicación web.
@@ -1861,7 +1865,7 @@ Recordamos que la inyección SQL es también posible en esta página pero esa no
 Esta vez estamos ante una aplicación que nos cambia el fondo de una parte de la pantalla. De nuevo, el código que nosotros introduzcamos se nos devolverá en bruto a modo de resultado y podemos aprovecharlo para introducir elementos html dentro del documento html respuesta que será renderizado por el navegador alterando así el comportamiento del mismo.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220301203759.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220301203759.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -1870,13 +1874,13 @@ Esta vez estamos ante una aplicación que nos cambia el fondo de una parte de la
 En esta página nos encontramos con un página que añade valores a una tabla en tiempo real. Esto significa que la página ejecuta código javascript que modifica el DOM (el entorno gráfico de la página) de la misma sin necesidad de llevar a cabo ninguna request. Además observamos que el nombre de los términos que nosotros introducimos sale por pantalla inmediatamente después de pulsar el botón:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220301204044.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220301204044.png' | relative_url }}" text-align="center"/>
 </div>
 
 De esta manera, si nostros introducimos en el primer campo un elemento HTML, y la página no filtra determinados caracteres, aunque no se produzca ninguna request, como la tabla se modifica el tiempo real, nuesttro código se ejecutará en tiempo real permitiendo alterar el comportamiento del navegador a través del DOM.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220301204102.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220301204102.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -1887,11 +1891,11 @@ En este caso nos aparece un mensaje que nos informa de que la página web está 
 Además nos pide que asumamos que la persona que está viendo los datos de la tabla lo hace a través de un navegador web sobre el fichero “captured-data.php”.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220301204144.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220301204144.png' | relative_url }}" text-align="center"/>
 </div>
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220301204153.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220301204153.png' | relative_url }}" text-align="center"/>
 </div>
 
 Teniendo en cuenta que se cogen los parámetros que se envían con nuestra request HTTP y se introducen en un fichero que se transforma en una tabla, podríamos probar a enviar, dentro del valor de algún parámetro, un elemento html para ver si este se ve destacado en la propia tabla.
@@ -1903,7 +1907,7 @@ De ser así, significa que la tabla no filtra ciertos caracteres a la hora de co
 Envíamos en nuestra URL un parámetro denominado payload=\<h1>HOLA\</h1> y vamos al enlace donde se construye la tabla.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220301204247.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220301204247.png' | relative_url }}" text-align="center"/>
 </div>
 
 Efectivamente, nuestro mensaje se ve resaltado y se trata de un sitio vulnerable a un ataque de inyección html pero no sólo eso. Como podemos observar se recogen casi todos los parámetros que se envían en el cuerpo de la request (Cookies, Refer,...), bastaría con modificar cualquiera de ellos adecuadamente para poder generar un ataque.
@@ -1913,11 +1917,11 @@ Efectivamente, nuestro mensaje se ve resaltado y se trata de un sitio vulnerable
 Además, esto no tiene que ver con la desarrollo del ejercicio en sí, pero tanto esta página como la página principal del ejercicio tienen un elemento html “href” que permiten que el sitio enlace documentos que no se encuentran dentro del esquema de ficheros de la página web. Esto significa que la página podría tener una vulnerabilidad conocida como vulnerabilidad de inclusión de ficheros, que se aprovecha de una mala programación de la web para crear una referencia sobre un archivo remoto que contiene información sensible.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220301204310.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220301204310.png' | relative_url }}" text-align="center"/>
 </div>
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220301204314.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220301204314.png' | relative_url }}" text-align="center"/>
 </div>
 
 
@@ -1926,7 +1930,7 @@ Además, esto no tiene que ver con la desarrollo del ejercicio en sí, pero tant
 En este caso estamos ante una página que nos da a elegir entre distintos ficheros a visualizar.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220301204522.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220301204522.png' | relative_url }}" text-align="center"/>
 </div>
 
 Y detalle importante a modo de cabecera se nos informa del nombre del fichero que estamos visualizando, en este caso “robots.txt”.
@@ -1936,13 +1940,13 @@ Y detalle importante a modo de cabecera se nos informa del nombre del fichero qu
 Inspeccionando el elemento html de la opción que elegimos a la hora de visualizar el documento podemos observar que el término “robots.txt” aparece como valor de “value” del elemento html. Esto de nuevo puede ser indicio de que este término se toma del valor de “value” y se transporta a otra parte del documento html sin filtrar caracteres inadecuados pudiendo ser, por tanto, vulnerable a un ataque de html inyection.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220301204540.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220301204540.png' | relative_url }}" text-align="center"/>
 </div>
 
 Un cambio de robots.txt a un elemento html como \<h1>HOLA\</h1> podría confirmar nuestra sospecha y así tenemos que:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220301204615.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220301204615.png' | relative_url }}" text-align="center"/>
 </div>
 
 Demostrando así que se puede alterar el correcto funcionamiento del navegador del usuario.
@@ -1953,7 +1957,7 @@ Demostrando así que se puede alterar el correcto funcionamiento del navegador d
 Esta es una página que válida el código xml que nosotros introducimos y nos lo devuelve por pantalla.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220302180437.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220302180437.png' | relative_url }}" text-align="center"/>
 </div>
 
 Aquí se nos plantea un problema ya que las marcas que comienzan una etiqueta html y una etiqueta xml son las mismas ‘<>’ y por tanto, aunque intentemos colar algún elemento html con la esperanza de que eso modifique el documento html al reproducirse el mismo texto más abajo, eso no surtirá ningún efecto debido a que al filtrarse el xml también se filtra el html y el documento no se modifica.
@@ -1963,7 +1967,7 @@ Sin embargo, la página tiene un gap de información puesto que cuando no metemo
 Si nosotros introducimos el término ‘TEST’ y nos acercamos un poco, podemos ver que el código que nosotros introducimos se procesa mediante la llamada a una función predefinida “loadXML” que se cierra con unas comillas y unos paréntesis.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220302180459.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220302180459.png' | relative_url }}" text-align="center"/>
 </div>
 
  De esta forma, y aprovechándonos de este exceso de información, podemos introducir nuestro código en dos partes:
@@ -1975,13 +1979,13 @@ Si nosotros introducimos el término ‘TEST’ y nos acercamos un poco, podemos
 Así:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220302180524.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220302180524.png' | relative_url }}" text-align="center"/>
 </div>
 
 y al validar se obtiene:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220302180539.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220302180539.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -1991,17 +1995,17 @@ y al validar se obtiene:
 En esta pagina se me da elegir entre diversaas opciones para votarlas y el nombre de la opción elegida se muestra abajo por pantalla. De nuevo este nombre se recoge del valor del elemento html de la opción y este valor puede modificarse desde inspeccionar elemento.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220302180610.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220302180610.png' | relative_url }}" text-align="center"/>
 </div>
 
 Cambiando dicho valor, introduciendo un elemento html y pulsando el botón obtenemos que:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220302180623.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220302180623.png' | relative_url }}" text-align="center"/>
 </div>
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220302180754.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220302180754.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -2010,13 +2014,13 @@ Cambiando dicho valor, introduciendo un elemento html y pulsando el botón obten
 Nos encontramos ante una página que crea una cuenta para un usuario con contraseña y demás elementos.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220302180919.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220302180919.png' | relative_url }}" text-align="center"/>
 </div>
 
 Cuando creamos una cuenta aparece un mensaje por pantalla que contiene el nombre del usuario para el que le hemos creado la cuenta.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220302180932.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220302180932.png' | relative_url }}" text-align="center"/>
 </div>
 
 Esto puede ser indicio de que el nombre del usuario se recoge y se traslada a otra parte del documento html sin filtrar caracteres maliciosos, lo cual expondría a la web a un ataque de HTML injection.
@@ -2024,7 +2028,7 @@ Esto puede ser indicio de que el nombre del usuario se recoge y se traslada a ot
 Introduciendo un elemento html en el campo de username, por ejemplo: \<h1>hola \</h1> obtenemos:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220302180948.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220302180948.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -2034,17 +2038,17 @@ Introduciendo un elemento html en el campo de username, por ejemplo: \<h1>hola \
 En esta página se nos muestra información de nuestro navegador recopilado en una tabla. En dicha tabla se puede observar que una de las cosas que se recopila son las cookies.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220302181027.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220302181027.png' | relative_url }}" text-align="center"/>
 </div>
 
 Así pues, yendo al apartado inspeccionar elemento Storage > Cookies > PHPSESSID tenemos el valor de las cookies y cambiando este por un elemento html y refrescando la página:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220302181109.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220302181109.png' | relative_url }}" text-align="center"/>
 </div>
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220302182052.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220302182052.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -2055,7 +2059,7 @@ En esta página se muestra un texto hablando de que los botones ‘back’ no so
 Concretamente, inspeccionando el elemento del botón podemos concretar cómo es este script que el botón ejecuta cuando es pulsado:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220302182342.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220302182342.png' | relative_url }}" text-align="center"/>
 </div>
 
 De esta forma, quitando ese código y poniendo un alert en su lugar obtenemos:
@@ -2063,13 +2067,13 @@ De esta forma, quitando ese código y poniendo un alert en su lugar obtenemos:
 
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220302182354.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220302182354.png' | relative_url }}" text-align="center"/>
 </div>
 
 y pulsando el botón:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220302182407.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220302182407.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -2079,13 +2083,13 @@ y pulsando el botón:
 En esta página nos topamos con un mensaje que nos dice “Sytling with Mutillidae” y fijándonos un poco en la URL observamos que el mismo comentario aparece al final de la URL, indicio de que la página está diseñada para mostrar pantalla la última parte de la URL.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220302182730.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220302182730.png' | relative_url }}" text-align="center"/>
 </div>
 
 Si este fragmento de texto se pone sin filtrar caracteres especiales, esta página podría ser vulnerable a un ataque de HTML injection. Así, tenemos que:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220302182937.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220302182937.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br />
@@ -2095,13 +2099,13 @@ Si este fragmento de texto se pone sin filtrar caracteres especiales, esta pági
 En este caso nos encontramos una página que genera contraseñas aleatorias dirigidas a un usuario. Observamos por otra parte que este usuario por defecto es “anonymous”, el mismo término que aparece en la URL como valor del parámetro de username.
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220302183030.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220302183030.png' | relative_url }}" text-align="center"/>
 </div>
 
 Esto puede ser indicio de que en el documento html aparece el valor en bruto del parámetro GET username. Así pues asignamos a través de la URL al parámetro username el valor \<h1>HOLA\</h1> y obtenemos:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220302183056.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220302183056.png' | relative_url }}" text-align="center"/>
 </div>
 
 Demostrando así que la página es vulnerable a un ataque de html injection.
@@ -2111,10 +2115,10 @@ También existe otra forma de demostrar la existencia de esta vulnerabilidad, me
 Inspeccionando el elemento y alterando el código JavaScript que ejecuta se obtiene:
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220302183117.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220302183117.png' | relative_url }}" text-align="center"/>
 </div>
 
 <div style="text-align:center">
-	<img src="{{ 'assets/img/M3/Pasted image 20220302183123.png' | relative_url }}" text-align="center"/>
+	<img src="{{ '/assets/images/past-blogs/M3/Pasted image 20220302183123.png' | relative_url }}" text-align="center"/>
 </div>
 

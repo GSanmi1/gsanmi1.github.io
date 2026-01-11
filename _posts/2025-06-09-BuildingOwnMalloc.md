@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Building my own malloc in C.
-subtitle: A malloc code written in C.
-tags: [C]
+title: "Building my own malloc in C."
+subtitle: "A malloc code written in C."
+date: 2025-06-09 09:00:00 +0000
+categories: ['Past Blogs', 'Programming']
+tags: ['c-language', 'systems']
+author: German Sanmi
 ---
+
 ### Defining the idea.
 
 In this section we will built a custom malloc() function with also a free() and later a garbage collector.
@@ -25,7 +29,7 @@ Since char datatype's size is one byte, our array is in fact a continous block o
 <br>
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/C/image-12.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/C/image-12.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br>
@@ -65,7 +69,7 @@ This structure have two fields, two main caracteristics of a chunk in the heap:
 <br>
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/C/image-13.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/C/image-13.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br>
@@ -90,7 +94,7 @@ We can see this structure like as we picture in the following image:
 <br>
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/C/image-10.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/C/image-10.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br>
@@ -251,7 +255,7 @@ Thus, since *start* is pointing to a char (remember Heap array) this is one byte
 <br>
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/C/image-11.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/C/image-11.png' | relative_url }}" text-align="center"/>
 </div>
 
 <br>

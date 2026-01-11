@@ -1,9 +1,13 @@
 ---
 layout: post
-title: Protocolos Relevantes
-subtitle: Presentación de los protocolos de red más importantes.
-tags: [redes] 
+title: "Protocolos Relevantes"
+subtitle: "Presentación de los protocolos de red más importantes."
+date: 2022-02-07 09:00:00 +0000
+categories: ['Past Blogs', 'Networks']
+tags: ['networking', 'protocols']
+author: German Sanmi
 ---
+
 
 # 1. Introducción.
 Los protocolos son un conjunto de reglas o pautas de actuación que permite a las máquinas y aplicaciones intercambiar información entre ellas. Tales protocolos deben de ser llevados a cabo por cualquier máquina que forme parte de la comunicación. on estos protocolos se consigue un intercambio ordenado de información, eficiente y fiable.
@@ -237,7 +241,7 @@ La principal característica del protocolo TCP es que se trata de un protocolo o
 Esta conexión previa se denomina como **3-way handshake** y consiste básicamente en que el cliente (que inica la conexión) envía un mesaje SYN al servidor (que recibe la conexión) y el servidor a su vez le enviará un SYS-ACK (un mensaje de confirmación de recibimiento del SYS) y el cliente responderá con ACK junto con el primer intercambio de datos.
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/Redes/Pasted image 20211127190548.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/Redes/Pasted image 20211127190548.png' | relative_url }}" text-align="center"/>
 </div>
 
 
@@ -260,7 +264,7 @@ Además, con TCP existe un ataque que consiste envíar desde múltiples host var
 Para finalizar la conexión el cliente envía un mensaje FIN y el servidor,  tras emitirlo responderá con un ACK y otro FIN a lo que el cliente responderá con un ACK al FIN del servidor y la conexión habrá terminado.
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/Redes/Pasted image 20211127191440.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/Redes/Pasted image 20211127191440.png' | relative_url }}" text-align="center"/>
 </div>
 
 
@@ -336,7 +340,7 @@ Se trata de un protocolo básico en cualquier intercambio de datos en la web que
 Así, por ejemplo, una página web resulta de la unión de muchos subdocumentos obtenidos a través de distintas peticiones a través del protocolo http a distintos servidores.
 
 <div style="text-align:center">
-<img src="{{ 'assets/img/Redes/Pasted image 20211216171122.png' | relative_url }}" text-align="center"/>
+<img src="{{ '/assets/images/past-blogs/Redes/Pasted image 20211216171122.png' | relative_url }}" text-align="center"/>
 </div>
 
 

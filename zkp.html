@@ -1,0 +1,28 @@
+---
+layout: default
+title: ZKP Research
+permalink: /zkp.html
+---
+
+<div class="category-page">
+    <h1>Zero-Knowledge Proofs Research</h1>
+    <p class="description">
+        Investigación, apuntes y análisis sobre Zero-Knowledge Proofs y criptografía aplicada.
+    </p>
+
+    <ul class="post-list">
+        {% assign zkp_posts = site.posts | where_exp: "post", "post.categories contains 'ZKP'" | sort: 'date' | reverse %}
+        {% for post in zkp_posts %}
+        <li class="post-list-item">
+            <h2 class="post-list-title">
+                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            </h2>
+            <p class="post-meta">
+                {{ post.date | date: "%d de %B, %Y" }}
+            </p>
+            <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 50 }}</p>
+            <a href="{{ post.url | relative_url }}" class="read-more">Leer más →</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
