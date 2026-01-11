@@ -1,0 +1,2546 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 5.0.0 | Copyright Dean Attali 2020 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>Other Integer Issues.</title>
+
+  
+  <meta name="author" content="German">
+  
+
+  <meta name="description" content="Notes from Other Integer Issues course from OST2.">
+
+  
+
+  
+
+  
+  <link rel="alternate" type="application/rss+xml" title="Home" href="http://localhost:4000/feed.xml">
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/custom-dark.css">
+    
+  
+
+  
+  
+  
+
+  
+
+  
+  <meta property="og:site_name" content="Home">
+  <meta property="og:title" content="Other Integer Issues.">
+  <meta property="og:description" content="Notes from Other Integer Issues course from OST2.">
+
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:article:author" content="German">
+  <meta property="og:article:published_time" content="2025-12-05T00:00:00-05:00">
+  <meta property="og:url" content="http://localhost:4000/2025-12-05-OtherIntegerIssues/">
+  <link rel="canonical" href="http://localhost:4000/2025-12-05-OtherIntegerIssues/">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:site" content="@Qvintvs1">
+  <meta name="twitter:creator" content="@Qvintvs1">
+
+  <meta property="twitter:title" content="Other Integer Issues.">
+  <meta property="twitter:description" content="Notes from Other Integer Issues course from OST2.">
+
+  
+
+  
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+    document.querySelectorAll("script[type='math/tex; mode=display']").forEach(function(el) {
+      el.outerHTML = "\\[" + el.textContent + "\\]";
+    });
+    document.querySelectorAll("script[type='math/tex']").forEach(function(el) {
+      el.outerHTML = "\\(" + el.textContent + "\\)";
+    });
+    var script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js';
+    script.async = true;
+    document.head.appendChild(script);
+  });
+</script>
+
+
+  
+
+  
+
+</head>
+
+
+<body>
+
+  
+
+
+  <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">Home</a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Program</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/Cpage">C</a>
+                  <a class="dropdown-item" href="/DHARMApage">Dharma</a>
+                  <a class="dropdown-item" href="/RUSTpage">Rust</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Web2</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/BURPSUITEpage">Burp</a>
+                  <a class="dropdown-item" href="/THMpage">Thm</a>
+                  <a class="dropdown-item" href="/HackTheBoxpage">Htb</a>
+                  <a class="dropdown-item" href="/PEN200page">BasicPentesting</a>
+                  <a class="dropdown-item" href="/REDTEAMBASICSpage">RedTeam</a>
+                  <a class="dropdown-item" href="/BLUETEAMBASICSpage">Blueteam</a>
+                  <a class="dropdown-item" href="/REDESpage">Net</a>
+                  <a class="dropdown-item" href="/2022-11-17-GitBasics">Git</a>
+                  <a class="dropdown-item" href="/CSOFTpage">MemCorrupt</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ZKP</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/MATHpage">Math</a>
+                  <a class="dropdown-item" href="/RUSTpage">Rust</a>
+                  <a class="dropdown-item" href="/NOIRpage">Noir</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Assembly</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/ASSEMpage">x86</a>
+            </div>
+          </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" id="nav-search-link" href="#" title="Search">
+            <span id="nav-search-icon" class="fa fa-search"></span>
+            <span id="nav-search-text">Search</span>
+          </a>
+        </li></ul>
+  </div>
+
+  
+
+  
+
+</nav>
+
+
+
+<div id="beautifuljekyll-search-overlay">
+
+  <div id="nav-search-exit" title="Exit search">✕</div>
+  <input type="text" id="nav-search-input" placeholder="Search">
+  <ul id="search-results-container"></ul>
+  
+  <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+  <script>
+    var searchjson = '[ \
+       \
+        { \
+          "title"    : "P vs NP.", \
+          "category" : "math", \
+          "url"      : "/2026-01-11-PvsNP/", \
+          "date"     : "January 11, 2026" \
+        }, \
+       \
+        { \
+          "title"    : "Race Conditions.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-28-RaceCondition/", \
+          "date"     : "December 28, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Introducción al Cálculo", \
+          "category" : "matemáticas", \
+          "url"      : "/2025-12-25-MathTest/", \
+          "date"     : "December 25, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Uninitialize Data Access.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-23-UDA/", \
+          "date"     : "December 23, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Control Flow.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-12-ControlFlow/", \
+          "date"     : "December 12, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Other Integer Issues.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-05-OtherIntegerIssues/", \
+          "date"     : "December  5, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Integer Overflow/Underflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-05-IntegerOverflow-Underflow/", \
+          "date"     : "December  5, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Passing Parameters.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-04-Passing-Parameters/", \
+          "date"     : "December  4, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Stackframe; Local variables, Arrays and Structures.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-01-LocalVars_Arrays_structs/", \
+          "date"     : "December  1, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Out-Of-Bounds Write.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-26-Out-Of-Bounds-Write/", \
+          "date"     : "November 26, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Calling Functions.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-21-CallingFunctions/", \
+          "date"     : "November 21, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "(Linear) Heap Buffer Overflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-18-HBO/", \
+          "date"     : "November 18, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Basic Instructions.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-17-AssemblyBasicRegisters/", \
+          "date"     : "November 17, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Computer Registers.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-08-ComputerRegisters/", \
+          "date"     : "November  8, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "CVE-2021-20294.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-07-CVE-2021-20294/", \
+          "date"     : "November  7, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "(Linear) Stack Buffer Overflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-06-LSBO/", \
+          "date"     : "November  6, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Text Editor.", \
+          "category" : "C", \
+          "url"      : "/2025-08-11-Text-Editor/", \
+          "date"     : "August 11, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Garbage Collector.", \
+          "category" : "C", \
+          "url"      : "/2025-07-11-GarbageCollector/", \
+          "date"     : "July 11, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Hashtables.", \
+          "category" : "C", \
+          "url"      : "/2025-06-13-HashTable/", \
+          "date"     : "June 13, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Building my own malloc in C.", \
+          "category" : "C", \
+          "url"      : "/2025-06-09-BuildingOwnMalloc/", \
+          "date"     : "June  9, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Malloc Tutorial", \
+          "category" : "C", \
+          "url"      : "/2025-06-06-MallocTutorial/", \
+          "date"     : "June  6, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "SharedLibraries&amp;FunctionHooking", \
+          "category" : "C", \
+          "url"      : "/2025-04-26-SharedLibraries&FunctionHooking/", \
+          "date"     : "April 26, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "File Descritors", \
+          "category" : "C", \
+          "url"      : "/2025-03-04-FileDescriptors/", \
+          "date"     : "March  4, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Network Programming", \
+          "category" : "C", \
+          "url"      : "/2025-02-22-Network_Programming/", \
+          "date"     : "February 22, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "2. Constants and Literals in C.", \
+          "category" : "C", \
+          "url"      : "/2024-12-10-2.ConstantsinC-copy/", \
+          "date"     : "December 10, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "1. Basics of C", \
+          "category" : "C", \
+          "url"      : "/2024-12-02-1.BasicsOfC/", \
+          "date"     : "December  2, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "Gramáticas en Dharma", \
+          "category" : "DHA", \
+          "url"      : "/2024-09-24-Dharma_Tutorial/", \
+          "date"     : "September 24, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "Gramáticas en Dharma", \
+          "category" : "fuzz", \
+          "url"      : "/2024-03-22-Dharma_Tutorial-copy/", \
+          "date"     : "March 22, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "Mi experiencia con el OSCP", \
+          "category" : "pen", \
+          "url"      : "/2023-11-19-PEN200_Experience/", \
+          "date"     : "November 19, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Client Side", \
+          "category" : "pen", \
+          "url"      : "/2023-11-17-17.Client_Side_Attacks/", \
+          "date"     : "November 17, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Deep Packet Tunneling", \
+          "category" : "pen", \
+          "url"      : "/2023-11-16-16.Tunneling_Through_Deep_Packet_Inspection/", \
+          "date"     : "November 16, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Report", \
+          "category" : "pen", \
+          "url"      : "/2023-11-15-15.Making_Reports/", \
+          "date"     : "November 15, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Metasploit", \
+          "category" : "pen", \
+          "url"      : "/2023-11-14-14.Metasploit/", \
+          "date"     : "November 14, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Password Attacks", \
+          "category" : "pen", \
+          "url"      : "/2023-11-13-13.Password_Attacks/", \
+          "date"     : "November 13, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Active Directory Attacks", \
+          "category" : "pen", \
+          "url"      : "/2023-11-12-12.Active_Directory_Attacks/", \
+          "date"     : "November 12, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Port Forwarding", \
+          "category" : "pen", \
+          "url"      : "/2023-11-11-11.Port_Forwarding/", \
+          "date"     : "November 11, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Privilege Escalation", \
+          "category" : "pen", \
+          "url"      : "/2023-11-10-10.Privilege_Escalation/", \
+          "date"     : "November 10, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "File Transfers", \
+          "category" : "pen", \
+          "url"      : "/2023-11-09-9.File_Tranfers/", \
+          "date"     : "November  9, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Buffer Overflows", \
+          "category" : "pen", \
+          "url"      : "/2023-11-08-8.Buffer_Overflows/", \
+          "date"     : "November  8, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Vulnerability Scanning.", \
+          "category" : "pen", \
+          "url"      : "/2023-11-07-7.Vulnerability_Scanning/", \
+          "date"     : "November  7, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Information Gathering", \
+          "category" : "pen", \
+          "url"      : "/2023-11-06-6.Active_Information_Gathering/", \
+          "date"     : "November  6, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Windows", \
+          "category" : "pen", \
+          "url"      : "/2023-11-05-5.Windows/", \
+          "date"     : "November  5, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Networking", \
+          "category" : "pen", \
+          "url"      : "/2023-11-04-4.Networking/", \
+          "date"     : "November  4, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Scripting", \
+          "category" : "pen", \
+          "url"      : "/2023-11-03-3.Scripting/", \
+          "date"     : "November  3, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Practical Tools", \
+          "category" : "pen", \
+          "url"      : "/2023-11-02-2.PracticalTools/", \
+          "date"     : "November  2, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Linux", \
+          "category" : "pen", \
+          "url"      : "/2023-11-01-1.Linux/", \
+          "date"     : "November  1, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Easy", \
+          "category" : "hack", \
+          "url"      : "/2022-12-01-Easy/", \
+          "date"     : "December  1, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Git Basics", \
+          "category" : "", \
+          "url"      : "/2022-11-17-GitBasics/", \
+          "date"     : "November 17, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Tier I", \
+          "category" : "hack", \
+          "url"      : "/2022-11-10-Tier_1/", \
+          "date"     : "November 10, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Tier 0", \
+          "category" : "hack", \
+          "url"      : "/2022-11-09-Tier_0/", \
+          "date"     : "November  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "7.BufferOverflow.", \
+          "category" : "thm", \
+          "url"      : "/2022-11-02-7.BufferOverflow/", \
+          "date"     : "November  2, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "6.Offensive Pentesting", \
+          "category" : "thm", \
+          "url"      : "/2022-11-01-6.OffensivePentesting/", \
+          "date"     : "November  1, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "5.RedTeam", \
+          "category" : "thm", \
+          "url"      : "/2022-10-30-5.RedTeam/", \
+          "date"     : "October 30, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "4.Windows", \
+          "category" : "thm", \
+          "url"      : "/2022-10-22-4.Windows/", \
+          "date"     : "October 22, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "3.Junior Penetrationtester path", \
+          "category" : "thm", \
+          "url"      : "/2022-09-02-3.JRPenetrationTester/", \
+          "date"     : "September  2, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "2.Complete Begginer path.", \
+          "category" : "thm", \
+          "url"      : "/2022-08-07-2.CompleteBegginer/", \
+          "date"     : "August  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "1.Pre-Security path.", \
+          "category" : "thm", \
+          "url"      : "/2022-07-11-1Pre-Security/", \
+          "date"     : "July 11, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "0.Scripting for pentesters.", \
+          "category" : "thm", \
+          "url"      : "/2022-07-10-0.Scripting_for_pentesters/", \
+          "date"     : "July 10, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Burp Certified Practitioner Practice Exam.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-30-PracticeExam/", \
+          "date"     : "March 30, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "22. OAuth Authentication.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-27-22.OAuth_authentication/", \
+          "date"     : "March 27, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "21. HTTP Request Smuggling.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-26-21.HTTP_request_smuggling/", \
+          "date"     : "March 26, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "20. HTTP Host Header Attacks.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-25-20.HTTP_Host_header_attacks/", \
+          "date"     : "March 25, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "19. Web Cache Poisoning.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-24-19.Web_cache_poisoning/", \
+          "date"     : "March 24, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "18. Server-Side Template Injection.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-23-18.Serve-side_template_injection/", \
+          "date"     : "March 23, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "17. Insecure Deserialization.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-22-17.Insecure_deserialization/", \
+          "date"     : "March 22, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "16. WebSockets.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-21-16.WebSockets/", \
+          "date"     : "March 21, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "15.DOM-based XSS vulnerabilities.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-20-15-DOM-based_vulnerabilities/", \
+          "date"     : "March 20, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "14. Clickjacking.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-19-14.Clickjacking/", \
+          "date"     : "March 19, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "13. Cross-Origin Resource Sharing.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-18-13.Cross-origin_resource_sharing_(CORS)/", \
+          "date"     : "March 18, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "12. Cross-Site Request Forgery.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-17-12.Cross-site_request_forgery_(CSRF)/", \
+          "date"     : "March 17, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "11. Cross-Site Scripting.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-16-11.Cross-site_scripting_(XSS)/", \
+          "date"     : "March 16, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "10. XXE Injection.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-15-10.XXE_injection/", \
+          "date"     : "March 15, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "9. Server-Side Request Forgery.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-14-9.Server-side_request_forgery/", \
+          "date"     : "March 14, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "8. File Upload.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-13-8.File_upload_vulnerabilities/", \
+          "date"     : "March 13, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "7. Access Control.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-12-7.Access_control/", \
+          "date"     : "March 12, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "6. Information Disclosure.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-11-6.Information_disclosure/", \
+          "date"     : "March 11, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "5. Bussiness Logic Vulnerabilities.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-10-5.Business_logic_vulnerabilities/", \
+          "date"     : "March 10, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "4. Command Injection.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-09-4.Command_Injection/", \
+          "date"     : "March  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "3. Directory Traversal.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-08-3.Directory_Traversal/", \
+          "date"     : "March  8, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "2. Authentication.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-07-2.Authentication/", \
+          "date"     : "March  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "1. SQLInjection", \
+          "category" : "burp", \
+          "url"      : "/2022-03-06-1.SQLInjection/", \
+          "date"     : "March  6, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Seguridad Perimetral", \
+          "category" : "blueteam", \
+          "url"      : "/2022-02-09-Seguridad_Perimetral/", \
+          "date"     : "February  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Hardening de sistemas", \
+          "category" : "blueteam", \
+          "url"      : "/2022-02-09-Hardening_de_sistemas/", \
+          "date"     : "February  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Bandit", \
+          "category" : "otw", \
+          "url"      : "/2022-02-08-Bandit/", \
+          "date"     : "February  8, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Proxy", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-Proxys/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Protocolos Relevantes", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-Protocolos_Importantes/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Curso Básico Redes", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-Precurso_Redes/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "IPs", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-IPs/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Movimientos Laterales", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-06-Introducci%C3%B3n_a_movimientos_laterales/", \
+          "date"     : "February  6, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Evasión de Defensas", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-05-Evasi%C3%B3n_de_Defensas/", \
+          "date"     : "February  5, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Escalada de privilegios", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-05-Escalada_de_privilegios/", \
+          "date"     : "February  5, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Metasploit", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-04-Metasploit_B%C3%A1sico/", \
+          "date"     : "February  4, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Ataques a aplicaciones Android", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-03-Ataques_aplicaciones_android/", \
+          "date"     : "February  3, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Ataque a aplicaciones web.", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-02-Ataques_a_aplicaciones_web/", \
+          "date"     : "February  2, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Ataques a Infraestructuras y Redes", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-01-Ataques_a_Infraestructuras_y_Redes/", \
+          "date"     : "February  1, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Análisis de Objetivos", \
+          "category" : "redteam", \
+          "url"      : "/2022-01-28-An%C3%A1lisis_de_Objetivos/", \
+          "date"     : "January 28, 2022" \
+        }, \
+       \
+       \
+        { \
+          "title"    : "Assembly and Architecture Introduction.", \
+          "category" : "page", \
+          "url"      : "/ASSEMpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Blueteam Basics", \
+          "category" : "page", \
+          "url"      : "/BLUETEAMBASICSpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "PortSwigger BurpSuite Course", \
+          "category" : "page", \
+          "url"      : "/BURPSUITEpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "C-Family Software Memory Corruption Vulnerabilities", \
+          "category" : "page", \
+          "url"      : "/CSOFTpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "C &amp; Systems Fundamentals.", \
+          "category" : "page", \
+          "url"      : "/Cpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Dharma Fuzzer language", \
+          "category" : "page", \
+          "url"      : "/DHARMApage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Exploiting &amp; Reversing", \
+          "category" : "page", \
+          "url"      : "/EXPREVpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Fuzzing JavaScript Engine", \
+          "category" : "page", \
+          "url"      : "/Fuzzpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "HackTheBox", \
+          "category" : "page", \
+          "url"      : "/HackTheBoxpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "TryHackMe", \
+          "category" : "page", \
+          "url"      : "/MATHpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "PEN200 notes", \
+          "category" : "page", \
+          "url"      : "/PEN200page/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Proyectos", \
+          "category" : "page", \
+          "url"      : "/PROJECTSpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Networking Basics", \
+          "category" : "page", \
+          "url"      : "/REDESpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "RedTeam Basics", \
+          "category" : "page", \
+          "url"      : "/REDTEAMBASICSpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Retired Machines", \
+          "category" : "page", \
+          "url"      : "/RetiredMachinespage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "TryHackMe", \
+          "category" : "page", \
+          "url"      : "/THMpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "About me", \
+          "category" : "page", \
+          "url"      : "/aboutme/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "THM", \
+          "category" : "page", \
+          "url"      : "/preOSCPpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Tag Index", \
+          "category" : "page", \
+          "url"      : "/tags/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page2/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page3/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page4/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page5/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page6/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page7/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page8/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page9/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page10/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page11/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page12/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page13/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page14/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page15/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page16/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page17/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page18/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page19/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page20/", \
+          "date"     : "January 1, 1970" \
+        } \
+       \
+    ]';
+    searchjson = JSON.parse(searchjson);
+
+    var sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('nav-search-input'),
+      resultsContainer: document.getElementById('search-results-container'),
+      json: searchjson
+    });
+  </script>
+</div>
+
+
+
+
+
+  <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Other Integer Issues.</h1>
+          
+            
+              <h2 class="post-subheading">Notes from Other Integer Issues course from OST2.</h2>
+            
+          
+
+          
+            <span class="post-meta">Posted on December 5, 2025</span>
+            
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+
+      
+
+      <article role="main" class="blog-post">
+        <h3 id="1-definition">1. Definition.</h3>
+
+<p>This section is an extension about Integers Overflow issues. We are going to cover three topics:</p>
+
+<ul>
+  <li>Incorrect Signed Sanity Checks.</li>
+  <li>Signed or unsigned integer truncation.</li>
+  <li>Signed Integer extension issues.</li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="2-incorrect-signed-sanity-checks">2. Incorrect Signed Sanity Checks.</h3>
+
+<h4 id="21-definition">2.1. Definition.</h4>
+
+<p>Incorrect Signed Sanity Checks refers to the idea of bad sanity checks implementation due to the unprevention of negative values being allowed and later cast into the execution flow as unsigned values effectively bypassing the sanitization measure.</p>
+
+<p>To be a bit more precise the issue arises when a signed integer is checked against an upper bound (len &lt; MAX_SIZE) but the check fails to account for negative values. When that signed integer is later used in a context that interprets it as unsigned (like memcpy(dst, src, len) where the len parameter is size_t),</p>
+
+<p><br /></p>
+
+<h4 id="22-examples">2.2. Examples.</h4>
+
+<h5 id="221-trivial-example">2.2.1 Trivial Example.</h5>
+
+<p>Let’s consider the following C code.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span>
+<span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[]){</span>
+    <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">size</span> <span class="o">=</span> <span class="n">strtoul</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">){</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Nice try *ATTACKER*! But I'm too clever for you!!!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">memcpy</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">size</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"We got an input string: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">buf</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>First, we declare an array of maximum 100 bytes width and then we capture the cli first argument from the user interpreted as a hexadecimal value to <em>size</em> /(a signed integer).</p>
+
+<p>Then, in order to prevent a Linear Stack Buffer Overflow a comparative check is performed over <em>size</em>:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span><span class="p">(</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">){</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Nice try *ATTACKER*! But I'm too clever for you!!!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>If size was an unsigned integer, this check would work just fine since every value bigger than 100 would be succesfully blocked and then pass as the third argument (length) to memcpy() function.</p>
+
+<p>However, there is a subtle problem. On the signature of a function, there are defined parameter to pass to that function as datatypes. This means that, whenever you pass a value to a function, this values gets cast to the funtion’s demanded datatype, for example, if we look over the memcpy() function definition:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="o">*</span> <span class="nf">memcpy</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span> <span class="n">destination</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">source</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">num</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>We can see that the third argument gets cast to a <em>size_t</em> datatype, which means that if a signed value lands as the length argument of memcpy() it will be interpreted as an unsigned integer.</p>
+
+<p>This link with the fact that <em>size</em> is a signed integer, so, lets consider that the user pass a negative value, for example, “0xFFFFFFFFFFFFFF9B” (-101), then the comparation -101 &gt; 100 is
+false, so the flow of execution goes towards memcpy, but when passed to memcpy “0xFFFFFFFFFFFFFF9B” is interpreted as an unsigned integer: “4,294,967,195”, provoking an overcopy in the memcpy() function.</p>
+
+<p>It is said that signed sanity checks 50% of the times works 100% of the time.</p>
+
+<p><br /></p>
+
+<h5 id="222-bad-sanity-check-1">2.2.2. Bad Sanity Check 1.</h5>
+
+<p>Another example of signed sanity checks can be the following:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">my_header</span><span class="p">{</span>
+        <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">magic</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">size</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">my_header_t</span><span class="p">;</span>
+
+<span class="c1">// Under-allocate, over-copy, bad sanity check</span>
+<span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[]){</span>
+        <span class="n">my_header_t</span> <span class="n">header</span><span class="p">;</span>
+        <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">alloc_size</span><span class="p">;</span>
+        <span class="n">header</span><span class="p">.</span><span class="n">magic</span> <span class="o">=</span> <span class="mh">0x6f6e6558</span><span class="p">;</span>
+        <span class="n">header</span><span class="p">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">strtoul</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">header</span><span class="p">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mh">0x1000</span><span class="p">){</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">"Nice try *ATTACKER*! But I'm too clever for you!!!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+                <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">alloc_size</span> <span class="o">=</span> <span class="n">header</span><span class="p">.</span><span class="n">size</span> <span class="o">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">my_header_t</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"String self-reported size = 0x%08X</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">header</span><span class="p">.</span><span class="n">size</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Allocation size = 0x%08X</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">alloc_size</span><span class="p">);</span>
+        <span class="kt">char</span> <span class="o">*</span> <span class="n">buf</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">alloc_size</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">buf</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"buf points to %p</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">buf</span><span class="p">);</span>
+        <span class="n">memcpy</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">header</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">my_header_t</span><span class="p">));</span>
+        <span class="n">buf</span> <span class="o">+=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">my_header_t</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"memcpy()ing 0x%08X bytes into buf of size 0x%08X</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">header</span><span class="p">.</span><span class="n">size</span><span class="p">,</span> <span class="n">alloc_size</span><span class="p">);</span>
+        <span class="n">memcpy</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">header</span><span class="p">.</span><span class="n">size</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"We copied input string: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">buf</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Again, cli argument from user gets passed to header.size (signed integer) and is used to first, alloc memory through an unsigned integer to a destination buffer which later is gonna be used in a memcpy() operation with user-controlled length:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//...</span>
+<span class="n">header</span><span class="p">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">strtoul</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>
+<span class="c1">//...</span>
+<span class="kt">char</span> <span class="o">*</span> <span class="n">buf</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">alloc_size</span><span class="p">);</span>
+<span class="n">memcpy</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">header</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">my_header_t</span><span class="p">));</span>
+<span class="n">buf</span> <span class="o">+=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">my_header_t</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"memcpy()ing 0x%08X bytes into buf of size 0x%08X</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">header</span><span class="p">.</span><span class="n">size</span><span class="p">,</span> <span class="n">alloc_size</span><span class="p">);</span>
+<span class="n">memcpy</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">header</span><span class="p">.</span><span class="n">size</span><span class="p">);</span>
+<span class="c1">//...</span>
+</code></pre></div></div>
+
+<p>Here the thing is kind of more convulate than the previous example, but vulnerable in anyway.</p>
+
+<p>A protection mechanism as an <em>if statement</em> to prevent header.size be bigger than certain value is implemented:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span><span class="p">(</span><span class="n">header</span><span class="p">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mh">0x1000</span><span class="p">){</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Nice try *ATTACKER*! But I'm too clever for you!!!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>the issue is that again, header.size is signed datatype and this comparison does not protect against big absolute negative numbers being pass in to the execution flow.</p>
+
+<p>Thus, if header.size was a value that satisfies:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">header</span><span class="p">.</span><span class="n">size</span> <span class="o">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">my_header_t</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<p>First, a one-byte allocation would be performed and <em>buf</em> pointer would point to that chunk, then , lets note that header.size has to be big absolute negative value by force since <em>sizeof(my_header_t) = 8</em> and would be pass as a size_t datatype (unsigned) to memcpy(), meaning that from a negative near-cero value, as an unsigned, it would become a big absolute value provoking an overflow.</p>
+
+<p><br /></p>
+
+<h5 id="223-bad-sanity-check-2">2.2.3. Bad Sanity Check 2.</h5>
+
+<p>Let’s consider the following C code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">my_header</span><span class="p">{</span>
+        <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">magic</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">size</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">my_header_t</span><span class="p">;</span>
+
+<span class="c1">// Under-allocate, over-copy, bad sanity check</span>
+<span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[]){</span>
+        <span class="n">my_header_t</span> <span class="n">header</span><span class="p">;</span>
+        <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">alloc_size</span><span class="p">;</span>
+        <span class="n">header</span><span class="p">.</span><span class="n">magic</span> <span class="o">=</span> <span class="mh">0x6f6e6558</span><span class="p">;</span>
+        <span class="n">header</span><span class="p">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">strtoul</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">header</span><span class="p">.</span><span class="n">size</span> <span class="o">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">my_header_t</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mh">0x100000000</span><span class="p">){</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">"Nice try *ATTACKER*! But I'm too clever for you!!!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+                <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">alloc_size</span> <span class="o">=</span> <span class="n">header</span><span class="p">.</span><span class="n">size</span> <span class="o">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">my_header_t</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"String self-reported size = 0x%08X</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">header</span><span class="p">.</span><span class="n">size</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Allocation size = 0x%08X</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">alloc_size</span><span class="p">);</span>
+        <span class="kt">char</span> <span class="o">*</span> <span class="n">buf</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">alloc_size</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">buf</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"buf points to %p</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">buf</span><span class="p">);</span>
+        <span class="n">memcpy</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">header</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">my_header_t</span><span class="p">));</span>
+        <span class="n">buf</span> <span class="o">+=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">my_header_t</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"memcpy()ing 0x%08X bytes into buf of size 0x%08X</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">header</span><span class="p">.</span><span class="n">size</span><span class="p">,</span> <span class="n">alloc_size</span><span class="p">);</span>
+        <span class="n">memcpy</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">header</span><span class="p">.</span><span class="n">size</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"We copied input string: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">buf</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This code is kind of similar to the one before, but instead of implement a one-value comparison, is establishing a comparison of an addition of two different-sign dataypes.</p>
+
+<p>Here, enters what in C is known as implicit conversions, an arithemtic operation of two values of the same datatypes and different signs results in the signed value to get automatically converted to the unsigned type before the arithmetic opeation resolution.</p>
+
+<p>This means that, header.size bits-pattern value is interpreted as unsigned, thus a near-to-cero negative value can be interpreted as big postiive number which in addition with sizeof(my_header_t) could trigger an integer overflow and become a small positive value bypassing the size constraint.</p>
+
+<p>Then, this addition is again performed and assignated to alloc_size (unsigned integer) resulting in an under-allocation:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">alloc_size</span> <span class="o">=</span> <span class="n">header</span><span class="p">.</span><span class="n">size</span> <span class="o">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">my_header_t</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"String self-reported size = 0x%08X</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">header</span><span class="p">.</span><span class="n">size</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"Allocation size = 0x%08X</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">alloc_size</span><span class="p">);</span>
+<span class="kt">char</span> <span class="o">*</span> <span class="n">buf</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">alloc_size</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>And later, a memcpy operation over this small memory region is performed passing header.size as length again as size_t (unsigned), thus triggering an over-copy.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">memcpy</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">header</span><span class="p">.</span><span class="n">size</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="3-integer-truncation">3. Integer Truncation.</h3>
+
+<p>As we disscussed in <a href="https://gsanmi1.github.io/2025-12-05-IntegerOverflow-Underflow/">Integer Overflow</a> paper, every C value has associated a datatype which has a size and sometimes a sign (if is an integer subtype). Essentially, a value is a bit pattern stored in memory that acquires full definition when gets interpreted by the CPU following the instructions generated by the compiler.</p>
+
+<p><em>Integer Truncation</em> is a phenomenon in which the bit-pattern of an integer gets chopped off when the value gets converted from a wider datatype to a narrower one transforming the data in a defined way.</p>
+
+<p>When this size-datatype downgrade gets defined, the compiler generates an instruction to copy part of the bit-string of the value to another location, then when executed, the instruction makes the CPU strip off the bitchain lefting the lowerbits and operating with them as a new different value in the next instructions.</p>
+
+<p>For example, consider the following conversion:</p>
+
+<p>​<code class="language-plaintext highlighter-rouge">c
+uint32_t wide = 0x0001FFFF;  // 131071 in decimal
+uint16_t narrow = wide;      // narrow = 0xFFFF (65535)
+​</code></p>
+
+<p>The 32-bit value ‘0x0001FFFF’ has the following bit pattern:</p>
+
+<p>​<code class="language-plaintext highlighter-rouge">less
+0000 0000 0000 0001 1111 1111 1111 1111
+|______upper 16____||____lower 16_____|
+      discarded           retained
+​</code></p>
+
+<p>When the C code gets compiled, the compiler would generate an instruction like the following:</p>
+
+<pre><code class="language-assem">mov eax, dword ptr [rbp - 8h]           ; In which original value exists
+mov word ptr [rbp - 10h], ax            ; Copying to a new location only the 16 retained bits
+</code></pre>
+
+<p>The original value was 131071, but after truncation it becomes 65535 — a completely different value, which can lead to serious vulnerabilities if the program logic assumes the full original value is preserved.</p>
+
+<p><br /></p>
+
+<h4 id="31-trivial-example">3.1. Trivial Example.</h4>
+
+<p>Let’s consider the following C code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">my_header</span><span class="p">{</span>
+        <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">magic</span><span class="p">;</span>
+        <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">size</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">my_header_t</span><span class="p">;</span>
+
+<span class="c1">// Under-allocate (via truncation), over-copy</span>
+<span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[]){</span>
+        <span class="n">my_header_t</span> <span class="n">header</span><span class="p">;</span>
+        <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">alloc_size</span><span class="p">;</span>
+        <span class="n">header</span><span class="p">.</span><span class="n">magic</span> <span class="o">=</span> <span class="mh">0x6f6e6558</span><span class="p">;</span>
+        <span class="n">header</span><span class="p">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">strtoul</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>
+        <span class="n">alloc_size</span> <span class="o">=</span> <span class="n">header</span><span class="p">.</span><span class="n">size</span> <span class="o">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">my_header_t</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"String self-reported size = 0x%08X</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">header</span><span class="p">.</span><span class="n">size</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Allocation size = 0x%08X</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">alloc_size</span><span class="p">);</span>
+        <span class="kt">char</span> <span class="o">*</span> <span class="n">buf</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">alloc_size</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">buf</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"buf points to %p</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">buf</span><span class="p">);</span>
+        <span class="n">memcpy</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">header</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">my_header_t</span><span class="p">));</span>
+        <span class="n">buf</span> <span class="o">+=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">my_header_t</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"memcpy()ing 0x%08X bytes into buf of size 0x%08X</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">header</span><span class="p">.</span><span class="n">size</span><span class="p">,</span> <span class="n">alloc_size</span><span class="p">);</span>
+        <span class="n">memcpy</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">header</span><span class="p">.</span><span class="n">size</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"We copied input string: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">buf</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This code is similar to the used in other examples but with the subtle differences that in this case, alloc_size is a short, not a int.</p>
+
+<p>Thus, for example, consider that the user pass as the first cli parameter to the program (argv[1]), which is an int and occupies 4 bytes, have the value 0xFFFF0000 (two hex-digits per byte, 4 pairs of digits), then, this value would end up in header.size and later would be used in an arithmetic operation:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">header</span><span class="p">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">strtoul</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>
+<span class="n">alloc_size</span> <span class="o">=</span> <span class="n">header</span><span class="p">.</span><span class="n">size</span> <span class="o">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">my_header_t</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Note that, at a first glance, 0xFFFF0000 + 0x00000008 = 0xFFFF0008 and nothing wrong happens regards to the integer overflow subject we studied before. However this int-wide value is now assigned to an narrower datatype (unsigned short), when performing the assignation, the compiler truncates the value to a short, keeping the two rightmost bytes effectively wrapping it to 0x0008 which is then saved in <em>alloc_size</em>.</p>
+
+<p>As a result, an under-allocation is performed and later, the complete int-wide value (header.size) is used to perfom an memcpy() operation, triggering an over-copy:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">char</span> <span class="o">*</span> <span class="n">buf</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">alloc_size</span><span class="p">);</span>
+<span class="c1">//...</span>
+<span class="n">memcpy</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">header</span><span class="p">.</span><span class="n">size</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="4-signed-arithmetics">4. Signed-Arithmetics.</h3>
+
+<h4 id="41-pointer-arithmetics-with-signed-integers">4.1. Pointer arithmetics with signed integers.</h4>
+<p>Consider the following code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span>
+<span class="c1">//Pointer arithmetic + sign extension - pase.c</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+        <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+        <span class="kt">char</span> <span class="o">*</span> <span class="n">ptr1</span><span class="p">,</span> <span class="o">*</span> <span class="n">ptr2</span><span class="p">;</span>
+        <span class="kt">short</span> <span class="n">size1</span> <span class="o">=</span> <span class="mh">0x8000</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">size2</span> <span class="o">=</span> <span class="mh">0x80000000</span><span class="p">;</span>
+        <span class="n">ptr1</span> <span class="o">=</span> <span class="n">buf</span> <span class="o">+</span> <span class="n">size1</span><span class="p">;</span>
+        <span class="n">ptr2</span> <span class="o">=</span> <span class="n">buf</span> <span class="o">+</span> <span class="n">size2</span><span class="p">;</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"buf =  %p</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">buf</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"ptr1 = %p</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ptr1</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"ptr2 = %p</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ptr2</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Pointer arithmetics are being performed with signed integers which result to be negative values, the MAX_SIZE for an integer hexadecimal value always is 0x7FF…, both values are one bit over the maximum positive value and thus are small negative numbers, thus the arithmetic operation with pointer is not an addition, but a substraction, the pointer now points above the buffer an, for example, use it in a data-copy operation would result in an out-of-bounds.</p>
+
+<p>As a result, any operation performed with a signed datatype can lead to a misscalculation resulting in a potential security issue and must be reviewed carefully.</p>
+
+<p><br /></p>
+
+<h4 id="42-signed-extension">4.2. Signed Extension.</h4>
+
+<p>Another example on how signed-datatype poorly handled can generate issue is through the sign extension mechanismo. In which a signed datatypes gets converted to a bigger size datatype preserving the sign:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">signed</span> <span class="kt">char</span> <span class="n">offset</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>           <span class="c1">// Malicious input: -1</span>
+<span class="kt">size_t</span> <span class="n">array_index</span> <span class="o">=</span> <span class="n">offset</span><span class="p">;</span>       <span class="c1">// Sign extended to large positive.</span>
+<span class="c1">// On 64-bit: array_index = 0xFFFFFFFFFFFFFFFF (huge number!)</span>
+</code></pre></div></div>
+
+<p>If later this sign extension is used as an unsigned integer troubles can arise:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>    
+<span class="n">buffer</span><span class="p">[</span><span class="n">array_index</span><span class="p">]</span> <span class="o">=</span> <span class="sc">'X'</span><span class="p">;</span>     <span class="c1">// Out-of-bounds access!</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="5-exercises">5. Exercises.</h3>
+
+<h4 id="51-cve-2019-15948">5.1. CVE-2019-15948.</h4>
+
+<p>Consider the following code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">////ACID: where ptr_ll_pkt points after assignment</span>
+<span class="c1">// Pseudocode from Ghidra decompilation</span>
+<span class="kt">void</span> <span class="nf">process_adv_ind_pdu</span><span class="p">(</span><span class="kt">int</span> <span class="n">ptr_some_struct</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">byte</span> <span class="n">bVar1</span><span class="p">;</span>
+  <span class="n">byte</span> <span class="n">ll_len</span><span class="p">;</span>
+  <span class="n">uint</span> <span class="n">n</span><span class="p">;</span>
+  <span class="n">uint</span> <span class="n">uVar2</span><span class="p">;</span>
+  <span class="n">byte</span> <span class="o">*</span><span class="n">ptr_ll_pkt</span><span class="p">;</span>
+  <span class="n">undefined</span> <span class="n">local_40</span><span class="p">;</span>
+  <span class="n">byte</span> <span class="n">local_3f</span><span class="p">;</span>
+  <span class="n">undefined</span> <span class="n">auStack62</span> <span class="p">[</span><span class="mh">0x6</span><span class="p">];</span>
+  <span class="n">undefined</span> <span class="n">local_38</span><span class="p">;</span>
+  <span class="n">undefined</span> <span class="n">stack_buffer</span> <span class="p">[</span><span class="mh">0x1f</span><span class="p">];</span>
+  <span class="n">undefined</span> <span class="n">local_18</span><span class="p">;</span>
+
+  <span class="n">ptr_ll_pkt</span> <span class="o">=</span> <span class="p">(</span><span class="n">byte</span> <span class="o">*</span><span class="p">)(</span><span class="n">DAT_0005b528</span> <span class="o">+</span> <span class="p">(</span><span class="n">uint</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">ushort</span> <span class="o">*</span><span class="p">)(</span><span class="n">ptr_some_struct</span> <span class="o">+</span> <span class="mh">0x8</span><span class="p">));</span>
+  <span class="n">bVar1</span> <span class="o">=</span> <span class="o">*</span><span class="n">ptr_ll_pkt</span><span class="p">;</span>
+  <span class="n">ll_len</span> <span class="o">=</span> <span class="n">ptr_ll_pkt</span><span class="p">[</span><span class="mh">0x1</span><span class="p">];</span>
+  <span class="n">uVar2</span> <span class="o">=</span> <span class="p">(</span><span class="n">uint</span><span class="p">)</span><span class="n">bVar1</span> <span class="o">&amp;</span> <span class="mh">0xf</span><span class="p">;</span>
+  <span class="n">local_3f</span> <span class="o">=</span> <span class="p">(</span><span class="n">byte</span><span class="p">)(((</span><span class="n">uint</span><span class="p">)</span><span class="n">bVar1</span> <span class="o">&lt;&lt;</span> <span class="mh">0x19</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mh">0x1f</span><span class="p">);</span>
+  <span class="n">FUN_00067554</span><span class="p">(</span><span class="n">auStack62</span><span class="p">,</span><span class="n">ptr_ll_pkt</span> <span class="o">+</span> <span class="mh">0x2</span><span class="p">,</span><span class="mh">0x6</span><span class="p">);</span>
+  <span class="n">n</span> <span class="o">=</span> <span class="p">((</span><span class="n">uint</span><span class="p">)</span><span class="n">ll_len</span> <span class="o">&amp;</span> <span class="mh">0x3f</span><span class="p">)</span> <span class="o">-</span> <span class="mh">0x6</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">;</span>
+  <span class="n">local_38</span> <span class="o">=</span> <span class="p">(</span><span class="n">undefined</span><span class="p">)</span><span class="n">n</span><span class="p">;</span>
+  <span class="n">memcpy</span><span class="p">(</span><span class="n">stack_buffer</span><span class="p">,</span><span class="n">ptr_ll_pkt</span> <span class="o">+</span> <span class="mh">0x8</span><span class="p">,</span><span class="n">n</span><span class="p">);</span>
+  <span class="n">local_18</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="n">undefined</span> <span class="o">*</span><span class="p">)(</span><span class="n">ptr_some_struct</span> <span class="o">+</span> <span class="mh">0xa</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">((</span><span class="n">bVar1</span> <span class="o">&amp;</span> <span class="mh">0xf</span><span class="p">)</span> <span class="o">==</span> <span class="mh">0x0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">local_40</span> <span class="o">=</span> <span class="mh">0x0</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">uVar2</span> <span class="o">==</span> <span class="mh">0x1</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">local_40</span> <span class="o">=</span> <span class="mh">0x1</span><span class="p">;</span>
+      <span class="n">local_38</span> <span class="o">=</span> <span class="mh">0x0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">uVar2</span> <span class="o">==</span> <span class="mh">0x2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">local_40</span> <span class="o">=</span> <span class="mh">0x3</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">else</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">uVar2</span> <span class="o">!=</span> <span class="mh">0x6</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">local_40</span> <span class="o">=</span> <span class="mh">0x2</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="n">FUN_000398e2</span><span class="p">(</span><span class="mh">0x1</span><span class="p">,</span><span class="o">&amp;</span><span class="n">local_40</span><span class="p">);</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Let’s observe that at first, a memcpy() operation is taking place:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">memcpy</span><span class="p">(</span><span class="n">stack_buffer</span><span class="p">,</span><span class="n">ptr_ll_pkt</span> <span class="o">+</span> <span class="mh">0x8</span><span class="p">,</span><span class="n">n</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Where,</p>
+
+<ul>
+  <li><em>stack_buffer</em> is stack-buffer of [\0x1f] slots.</li>
+  <li><em>ptr_ll_pkt</em> is user-controlled source.</li>
+  <li><em>n</em> is a user-controlled parameter with a fixed size.</li>
+</ul>
+
+<p>Let’s make counts:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n</span> <span class="o">=</span> <span class="p">((</span><span class="n">uint</span><span class="p">)</span><span class="n">ll_len</span> <span class="o">&amp;</span> <span class="mh">0x3f</span><span class="p">)</span> <span class="o">-</span> <span class="mh">0x6</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><em>ll_len</em> is user-conttrolled, since is casted as a unsigned integer, then “(uint)ll_len &amp; 0x3f” is also casted as unsigned integer and also the substraction “((uint)ll_len &amp; 0x3f) - 0x6” is unsigned. Then, is <em>ll_len</em> is a value that makes 0 the term “((uint)ll_len &amp; 0x3f)”, then, -0x6 is (as an unsigned integer), 0xFFFFFFFA which masked with 0xFF is 0xFA.</p>
+
+<p>So <em>n</em> can have as maxim value 0xFA versus the size of the array which is 0x1F, thus a stack buffer overflow arises.</p>
+
+<p><br /></p>
+
+<h4 id="52-cve-2020-15999">5.2. CVE-2020-15999.</h4>
+
+<p>Google Chrome uses the open source FreeType project, which renders fonts and PNG images embedded in fonts.</p>
+
+<p>Consider the following C code. The code attemps to process PNG images in fonts. Retrieves the images width and height from the header stores them in an special structure, calculates the bitmap size and allocates it back in store for that size.</p>
+
+<p>Then calls for another library function to copy data from the PNG int the allocate space before.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#if CHAR_BIT == 8 &amp;&amp; UCHAR_MAX == 255
+</span>   <span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">png_byte</span><span class="p">;</span>
+<span class="cp">#else
+#  error "libpng requires 8-bit bytes"
+#endif
+</span>
+<span class="k">typedef</span> <span class="kt">char</span>  <span class="n">FT_String</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">char</span>  <span class="n">FT_Byte</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="kt">signed</span> <span class="kt">char</span>  <span class="n">FT_Char</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">char</span>  <span class="n">FT_Bool</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="kt">signed</span> <span class="kt">short</span>  <span class="n">FT_FWord</span><span class="p">;</span>   <span class="cm">/* distance in FUnits */</span>
+<span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">short</span>  <span class="n">FT_UFWord</span><span class="p">;</span>  <span class="cm">/* unsigned distance */</span>
+<span class="k">typedef</span> <span class="kt">signed</span> <span class="kt">short</span>  <span class="n">FT_Short</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">short</span>  <span class="n">FT_UShort</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="kt">signed</span> <span class="kt">int</span>  <span class="n">FT_Int</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">int</span>  <span class="n">FT_UInt</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="kt">signed</span> <span class="kt">long</span>  <span class="n">FT_Long</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">long</span>  <span class="n">FT_ULong</span><span class="p">;</span>
+
+<span class="k">typedef</span> <span class="k">struct</span>  <span class="n">FT_Bitmap_</span>
+<span class="p">{</span>
+  <span class="kt">unsigned</span> <span class="kt">int</span>    <span class="n">rows</span><span class="p">;</span>
+  <span class="kt">unsigned</span> <span class="kt">int</span>    <span class="n">width</span><span class="p">;</span>
+  <span class="kt">int</span>             <span class="n">pitch</span><span class="p">;</span>
+  <span class="kt">unsigned</span> <span class="kt">char</span><span class="o">*</span>  <span class="n">buffer</span><span class="p">;</span>
+  <span class="kt">unsigned</span> <span class="kt">short</span>  <span class="n">num_grays</span><span class="p">;</span>
+  <span class="kt">unsigned</span> <span class="kt">char</span>   <span class="n">pixel_mode</span><span class="p">;</span>
+  <span class="kt">unsigned</span> <span class="kt">char</span>   <span class="n">palette_mode</span><span class="p">;</span>
+  <span class="kt">void</span><span class="o">*</span>           <span class="n">palette</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">FT_Bitmap</span><span class="p">;</span>
+
+<span class="k">typedef</span> <span class="k">struct</span>  <span class="n">TT_SBit_MetricsRec_</span>
+<span class="p">{</span>
+  <span class="n">FT_UShort</span>  <span class="n">height</span><span class="p">;</span>
+  <span class="n">FT_UShort</span>  <span class="n">width</span><span class="p">;</span>
+
+  <span class="n">FT_Short</span>   <span class="n">horiBearingX</span><span class="p">;</span>
+  <span class="n">FT_Short</span>   <span class="n">horiBearingY</span><span class="p">;</span>
+  <span class="n">FT_UShort</span>  <span class="n">horiAdvance</span><span class="p">;</span>
+
+  <span class="n">FT_Short</span>   <span class="n">vertBearingX</span><span class="p">;</span>
+  <span class="n">FT_Short</span>   <span class="n">vertBearingY</span><span class="p">;</span>
+  <span class="n">FT_UShort</span>  <span class="n">vertAdvance</span><span class="p">;</span>
+
+<span class="p">}</span> <span class="n">TT_SBit_MetricsRec</span><span class="p">,</span> <span class="o">*</span><span class="n">TT_SBit_Metrics</span><span class="p">;</span>
+
+<span class="c1">////ACID: data, png_len</span>
+  <span class="n">FT_LOCAL_DEF</span><span class="p">(</span> <span class="n">FT_Error</span> <span class="p">)</span>
+  <span class="n">Load_SBit_Png</span><span class="p">(</span> <span class="n">FT_GlyphSlot</span>     <span class="n">slot</span><span class="p">,</span>
+                 <span class="n">FT_Int</span>           <span class="n">x_offset</span><span class="p">,</span>
+                 <span class="n">FT_Int</span>           <span class="n">y_offset</span><span class="p">,</span>
+                 <span class="n">FT_Int</span>           <span class="n">pix_bits</span><span class="p">,</span>
+                 <span class="n">TT_SBit_Metrics</span>  <span class="n">metrics</span><span class="p">,</span>
+                 <span class="n">FT_Memory</span>        <span class="n">memory</span><span class="p">,</span>
+                 <span class="n">FT_Byte</span><span class="o">*</span>         <span class="n">data</span><span class="p">,</span>
+                 <span class="n">FT_UInt</span>          <span class="n">png_len</span><span class="p">,</span>
+                 <span class="n">FT_Bool</span>          <span class="n">populate_map_and_metrics</span><span class="p">,</span> <span class="c1">//KC: Assume true</span>
+                 <span class="n">FT_Bool</span>          <span class="n">metrics_only</span> <span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">FT_Bitmap</span>    <span class="o">*</span><span class="n">map</span>   <span class="o">=</span> <span class="o">&amp;</span><span class="n">slot</span><span class="o">-&gt;</span><span class="n">bitmap</span><span class="p">;</span>
+    <span class="n">FT_Error</span>      <span class="n">error</span> <span class="o">=</span> <span class="n">FT_Err_Ok</span><span class="p">;</span>
+    <span class="n">FT_StreamRec</span>  <span class="n">stream</span><span class="p">;</span>
+
+    <span class="n">png_structp</span>  <span class="n">png</span><span class="p">;</span>
+    <span class="n">png_infop</span>    <span class="n">info</span><span class="p">;</span>
+    <span class="n">png_uint_32</span>  <span class="n">imgWidth</span><span class="p">,</span> <span class="n">imgHeight</span><span class="p">;</span>
+    <span class="kt">int</span>         <span class="n">bitdepth</span><span class="p">,</span> <span class="n">color_type</span><span class="p">,</span> <span class="n">interlace</span><span class="p">;</span>
+    <span class="n">FT_Int</span>      <span class="n">i</span><span class="p">;</span>
+    <span class="n">png_byte</span><span class="o">*</span>  <span class="o">*</span><span class="n">rows</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span> <span class="cm">/* pacify compiler */</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="n">FT_Stream_OpenMemory</span><span class="p">(</span> <span class="o">&amp;</span><span class="n">stream</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">png_len</span> <span class="p">);</span> <span class="c1">//KC: data ACID-&gt; stream</span>
+
+    <span class="n">png</span> <span class="o">=</span> <span class="n">png_create_read_struct</span><span class="p">(</span> <span class="n">PNG_LIBPNG_VER_STRING</span><span class="p">,</span>
+                                  <span class="o">&amp;</span><span class="n">error</span><span class="p">,</span>
+                                  <span class="n">error_callback</span><span class="p">,</span>
+                                  <span class="n">warning_callback</span> <span class="p">);</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="n">png_set_read_fn</span><span class="p">(</span> <span class="n">png</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">stream</span><span class="p">,</span> <span class="n">read_data_from_FT_Stream</span> <span class="p">);</span> <span class="c1">//KC: stream ACID-&gt; png</span>
+
+    <span class="n">png_read_info</span><span class="p">(</span> <span class="n">png</span><span class="p">,</span> <span class="n">info</span> <span class="p">);</span>
+    <span class="n">png_get_IHDR</span><span class="p">(</span> <span class="n">png</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span>
+                  <span class="o">&amp;</span><span class="n">imgWidth</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">imgHeight</span><span class="p">,</span>
+                  <span class="o">&amp;</span><span class="n">bitdepth</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">color_type</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">interlace</span><span class="p">,</span>
+                  <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span> <span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span> <span class="n">error</span>                                    <span class="o">||</span>
+         <span class="p">(</span> <span class="o">!</span><span class="n">populate_map_and_metrics</span>              <span class="o">&amp;&amp;</span>
+           <span class="p">(</span> <span class="p">(</span><span class="n">FT_Int</span><span class="p">)</span><span class="n">imgWidth</span>  <span class="o">!=</span> <span class="n">metrics</span><span class="o">-&gt;</span><span class="n">width</span>  <span class="o">||</span>
+             <span class="p">(</span><span class="n">FT_Int</span><span class="p">)</span><span class="n">imgHeight</span> <span class="o">!=</span> <span class="n">metrics</span><span class="o">-&gt;</span><span class="n">height</span> <span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
+      <span class="k">goto</span> <span class="n">DestroyExit</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span> <span class="n">populate_map_and_metrics</span> <span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">metrics</span><span class="o">-&gt;</span><span class="n">width</span>  <span class="o">=</span> <span class="p">(</span><span class="n">FT_UShort</span><span class="p">)</span><span class="n">imgWidth</span><span class="p">;</span>
+      <span class="n">metrics</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">=</span> <span class="p">(</span><span class="n">FT_UShort</span><span class="p">)</span><span class="n">imgHeight</span><span class="p">;</span>
+
+      <span class="n">map</span><span class="o">-&gt;</span><span class="n">width</span>      <span class="o">=</span> <span class="n">metrics</span><span class="o">-&gt;</span><span class="n">width</span><span class="p">;</span>
+      <span class="n">map</span><span class="o">-&gt;</span><span class="n">rows</span>       <span class="o">=</span> <span class="n">metrics</span><span class="o">-&gt;</span><span class="n">height</span><span class="p">;</span>
+      <span class="n">map</span><span class="o">-&gt;</span><span class="n">pixel_mode</span> <span class="o">=</span> <span class="n">FT_PIXEL_MODE_BGRA</span><span class="p">;</span>
+      <span class="n">map</span><span class="o">-&gt;</span><span class="n">pitch</span>      <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)(</span> <span class="n">map</span><span class="o">-&gt;</span><span class="n">width</span> <span class="o">*</span> <span class="mi">4</span> <span class="p">);</span>
+      <span class="n">map</span><span class="o">-&gt;</span><span class="n">num_grays</span>  <span class="o">=</span> <span class="mi">256</span><span class="p">;</span>
+
+      <span class="cm">/* reject too large bitmaps similarly to the rasterizer */</span>
+      <span class="k">if</span> <span class="p">(</span> <span class="n">map</span><span class="o">-&gt;</span><span class="n">rows</span> <span class="o">&gt;</span> <span class="mh">0x7FFF</span> <span class="o">||</span> <span class="n">map</span><span class="o">-&gt;</span><span class="n">width</span> <span class="o">&gt;</span> <span class="mh">0x7FFF</span> <span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">error</span> <span class="o">=</span> <span class="n">FT_THROW</span><span class="p">(</span> <span class="n">Array_Too_Large</span> <span class="p">);</span>
+        <span class="k">goto</span> <span class="n">DestroyExit</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="k">if</span> <span class="p">(</span> <span class="n">populate_map_and_metrics</span> <span class="p">)</span>
+    <span class="p">{</span>
+      <span class="cm">/* this doesn't overflow: 0x7FFF * 0x7FFF * 4 &lt; 2^32 */</span>
+      <span class="n">FT_ULong</span>  <span class="n">size</span> <span class="o">=</span> <span class="n">map</span><span class="o">-&gt;</span><span class="n">rows</span> <span class="o">*</span> <span class="p">(</span><span class="n">FT_ULong</span><span class="p">)</span><span class="n">map</span><span class="o">-&gt;</span><span class="n">pitch</span><span class="p">;</span>
+
+
+      <span class="n">error</span> <span class="o">=</span> <span class="n">ft_glyphslot_alloc_bitmap</span><span class="p">(</span> <span class="n">slot</span><span class="p">,</span> <span class="n">size</span> <span class="p">);</span>
+      <span class="k">if</span> <span class="p">(</span> <span class="n">error</span> <span class="p">)</span>
+        <span class="k">goto</span> <span class="n">DestroyExit</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span> <span class="n">FT_NEW_ARRAY</span><span class="p">(</span> <span class="n">rows</span><span class="p">,</span> <span class="n">imgHeight</span> <span class="p">)</span> <span class="p">)</span> <span class="c1">//KC: realloc(rows, imgHeight*sizeof(ptr))</span>
+    <span class="p">{</span>                                      <span class="c1">//KC: and memset() to 0</span>
+      <span class="n">error</span> <span class="o">=</span> <span class="n">FT_THROW</span><span class="p">(</span> <span class="n">Out_Of_Memory</span> <span class="p">);</span>
+      <span class="k">goto</span> <span class="n">DestroyExit</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="p">(</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">FT_Int</span><span class="p">)</span><span class="n">imgHeight</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span> <span class="p">)</span>
+      <span class="n">rows</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">map</span><span class="o">-&gt;</span><span class="n">buffer</span> <span class="o">+</span> <span class="p">(</span> <span class="n">y_offset</span> <span class="o">+</span> <span class="n">i</span> <span class="p">)</span> <span class="o">*</span> <span class="n">map</span><span class="o">-&gt;</span><span class="n">pitch</span> <span class="o">+</span> <span class="n">x_offset</span> <span class="o">*</span> <span class="mi">4</span><span class="p">;</span>
+
+    <span class="n">png_read_image</span><span class="p">(</span> <span class="n">png</span><span class="p">,</span> <span class="n">rows</span> <span class="p">);</span> <span class="c1">//KC: Uses the same imgWidth/Height from png_get_IHDR() to read the PNG into rows[]</span>
+  <span class="p">}</span>
+
+<span class="cm">/* Pointers to pointers; i.e. arrays */</span>
+<span class="k">typedef</span> <span class="n">png_byte</span>        <span class="o">*</span> <span class="o">*</span> <span class="n">png_bytepp</span><span class="p">;</span>
+
+<span class="k">struct</span> <span class="n">png_struct_def</span>
+<span class="p">{</span>
+<span class="cp">#ifdef PNG_SETJMP_SUPPORTED
+</span>   <span class="kt">jmp_buf</span> <span class="n">jmp_buf_local</span><span class="p">;</span>     <span class="cm">/* New name in 1.6.0 for jmp_buf in png_struct */</span>
+   <span class="n">png_longjmp_ptr</span> <span class="n">longjmp_fn</span><span class="p">;</span><span class="cm">/* setjmp non-local goto function. */</span>
+   <span class="kt">jmp_buf</span> <span class="o">*</span><span class="n">jmp_buf_ptr</span><span class="p">;</span>      <span class="cm">/* passed to longjmp_fn */</span>
+   <span class="kt">size_t</span> <span class="n">jmp_buf_size</span><span class="p">;</span>       <span class="cm">/* size of the above, if allocated */</span>
+<span class="cp">#endif
+</span>   <span class="n">png_error_ptr</span> <span class="n">error_fn</span><span class="p">;</span>    <span class="cm">/* function for printing errors and aborting */</span>
+<span class="cp">#ifdef PNG_WARNINGS_SUPPORTED
+</span>   <span class="n">png_error_ptr</span> <span class="n">warning_fn</span><span class="p">;</span>  <span class="cm">/* function for printing warnings */</span>
+<span class="cp">#endif
+</span>   <span class="n">png_voidp</span> <span class="n">error_ptr</span><span class="p">;</span>       <span class="cm">/* user supplied struct for error functions */</span>
+   <span class="n">png_rw_ptr</span> <span class="n">write_data_fn</span><span class="p">;</span>  <span class="cm">/* function for writing output data */</span>
+   <span class="n">png_rw_ptr</span> <span class="n">read_data_fn</span><span class="p">;</span>   <span class="cm">/* function for reading input data */</span>
+   <span class="n">png_voidp</span> <span class="n">io_ptr</span><span class="p">;</span>          <span class="cm">/* ptr to application struct for I/O functions */</span>
+
+<span class="cp">#ifdef PNG_READ_USER_TRANSFORM_SUPPORTED
+</span>   <span class="n">png_user_transform_ptr</span> <span class="n">read_user_transform_fn</span><span class="p">;</span> <span class="cm">/* user read transform */</span>
+<span class="cp">#endif
+</span>
+<span class="cp">#ifdef PNG_WRITE_USER_TRANSFORM_SUPPORTED
+</span>   <span class="n">png_user_transform_ptr</span> <span class="n">write_user_transform_fn</span><span class="p">;</span> <span class="cm">/* user write transform */</span>
+<span class="cp">#endif
+</span>
+<span class="cm">/* These were added in libpng-1.0.2 */</span>
+<span class="cp">#ifdef PNG_USER_TRANSFORM_PTR_SUPPORTED
+#if defined(PNG_READ_USER_TRANSFORM_SUPPORTED) || \
+    defined(PNG_WRITE_USER_TRANSFORM_SUPPORTED)
+</span>   <span class="n">png_voidp</span> <span class="n">user_transform_ptr</span><span class="p">;</span> <span class="cm">/* user supplied struct for user transform */</span>
+   <span class="n">png_byte</span> <span class="n">user_transform_depth</span><span class="p">;</span>    <span class="cm">/* bit depth of user transformed pixels */</span>
+   <span class="n">png_byte</span> <span class="n">user_transform_channels</span><span class="p">;</span> <span class="cm">/* channels in user transformed pixels */</span>
+<span class="cp">#endif
+#endif
+</span>
+   <span class="n">png_uint_32</span> <span class="n">mode</span><span class="p">;</span>          <span class="cm">/* tells us where we are in the PNG file */</span>
+   <span class="n">png_uint_32</span> <span class="n">flags</span><span class="p">;</span>         <span class="cm">/* flags indicating various things to libpng */</span>
+   <span class="n">png_uint_32</span> <span class="n">transformations</span><span class="p">;</span> <span class="cm">/* which transformations to perform */</span>
+
+   <span class="n">png_uint_32</span> <span class="n">zowner</span><span class="p">;</span>        <span class="cm">/* ID (chunk type) of zstream owner, 0 if none */</span>
+   <span class="n">z_stream</span>    <span class="n">zstream</span><span class="p">;</span>       <span class="cm">/* decompression structure */</span>
+
+<span class="cp">#ifdef PNG_WRITE_SUPPORTED
+</span>   <span class="n">png_compression_bufferp</span> <span class="n">zbuffer_list</span><span class="p">;</span> <span class="cm">/* Created on demand during write */</span>
+   <span class="n">uInt</span>                    <span class="n">zbuffer_size</span><span class="p">;</span> <span class="cm">/* size of the actual buffer */</span>
+
+   <span class="kt">int</span> <span class="n">zlib_level</span><span class="p">;</span>            <span class="cm">/* holds zlib compression level */</span>
+   <span class="kt">int</span> <span class="n">zlib_method</span><span class="p">;</span>           <span class="cm">/* holds zlib compression method */</span>
+   <span class="kt">int</span> <span class="n">zlib_window_bits</span><span class="p">;</span>      <span class="cm">/* holds zlib compression window bits */</span>
+   <span class="kt">int</span> <span class="n">zlib_mem_level</span><span class="p">;</span>        <span class="cm">/* holds zlib compression memory level */</span>
+   <span class="kt">int</span> <span class="n">zlib_strategy</span><span class="p">;</span>         <span class="cm">/* holds zlib compression strategy */</span>
+<span class="cp">#endif
+</span><span class="cm">/* Added at libpng 1.5.4 */</span>
+<span class="cp">#ifdef PNG_WRITE_CUSTOMIZE_ZTXT_COMPRESSION_SUPPORTED
+</span>   <span class="kt">int</span> <span class="n">zlib_text_level</span><span class="p">;</span>            <span class="cm">/* holds zlib compression level */</span>
+   <span class="kt">int</span> <span class="n">zlib_text_method</span><span class="p">;</span>           <span class="cm">/* holds zlib compression method */</span>
+   <span class="kt">int</span> <span class="n">zlib_text_window_bits</span><span class="p">;</span>      <span class="cm">/* holds zlib compression window bits */</span>
+   <span class="kt">int</span> <span class="n">zlib_text_mem_level</span><span class="p">;</span>        <span class="cm">/* holds zlib compression memory level */</span>
+   <span class="kt">int</span> <span class="n">zlib_text_strategy</span><span class="p">;</span>         <span class="cm">/* holds zlib compression strategy */</span>
+<span class="cp">#endif
+</span><span class="cm">/* End of material added at libpng 1.5.4 */</span>
+<span class="cm">/* Added at libpng 1.6.0 */</span>
+<span class="cp">#ifdef PNG_WRITE_SUPPORTED
+</span>   <span class="kt">int</span> <span class="n">zlib_set_level</span><span class="p">;</span>        <span class="cm">/* Actual values set into the zstream on write */</span>
+   <span class="kt">int</span> <span class="n">zlib_set_method</span><span class="p">;</span>
+   <span class="kt">int</span> <span class="n">zlib_set_window_bits</span><span class="p">;</span>
+   <span class="kt">int</span> <span class="n">zlib_set_mem_level</span><span class="p">;</span>
+   <span class="kt">int</span> <span class="n">zlib_set_strategy</span><span class="p">;</span>
+<span class="cp">#endif
+</span>
+   <span class="n">png_uint_32</span> <span class="n">width</span><span class="p">;</span>         <span class="cm">/* width of image in pixels */</span>
+   <span class="n">png_uint_32</span> <span class="n">height</span><span class="p">;</span>        <span class="cm">/* height of image in pixels */</span>
+   <span class="n">png_uint_32</span> <span class="n">num_rows</span><span class="p">;</span>      <span class="cm">/* number of rows in current pass */</span>
+   <span class="n">png_uint_32</span> <span class="n">usr_width</span><span class="p">;</span>     <span class="cm">/* width of row at start of write */</span>
+   <span class="kt">size_t</span> <span class="n">rowbytes</span><span class="p">;</span>           <span class="cm">/* size of row in bytes */</span>
+   <span class="n">png_uint_32</span> <span class="n">iwidth</span><span class="p">;</span>        <span class="cm">/* width of current interlaced row in pixels */</span>
+   <span class="n">png_uint_32</span> <span class="n">row_number</span><span class="p">;</span>    <span class="cm">/* current row in interlace pass */</span>
+   <span class="n">png_uint_32</span> <span class="n">chunk_name</span><span class="p">;</span>    <span class="cm">/* PNG_CHUNK() id of current chunk */</span>
+   <span class="n">png_bytep</span> <span class="n">prev_row</span><span class="p">;</span>        <span class="cm">/* buffer to save previous (unfiltered) row.
+                               * While reading this is a pointer into
+                               * big_prev_row; while writing it is separately
+                               * allocated if needed.
+                               */</span>
+   <span class="n">png_bytep</span> <span class="n">row_buf</span><span class="p">;</span>         <span class="cm">/* buffer to save current (unfiltered) row.
+                               * While reading, this is a pointer into
+                               * big_row_buf; while writing it is separately
+                               * allocated.
+                               */</span>
+<span class="cp">#ifdef PNG_WRITE_FILTER_SUPPORTED
+</span>   <span class="n">png_bytep</span> <span class="n">try_row</span><span class="p">;</span>    <span class="cm">/* buffer to save trial row when filtering */</span>
+   <span class="n">png_bytep</span> <span class="n">tst_row</span><span class="p">;</span>    <span class="cm">/* buffer to save best trial row when filtering */</span>
+<span class="cp">#endif
+</span>   <span class="kt">size_t</span> <span class="n">info_rowbytes</span><span class="p">;</span>      <span class="cm">/* Added in 1.5.4: cache of updated row bytes */</span>
+
+   <span class="n">png_uint_32</span> <span class="n">idat_size</span><span class="p">;</span>     <span class="cm">/* current IDAT size for read */</span>
+   <span class="n">png_uint_32</span> <span class="n">crc</span><span class="p">;</span>           <span class="cm">/* current chunk CRC value */</span>
+   <span class="n">png_colorp</span> <span class="n">palette</span><span class="p">;</span>        <span class="cm">/* palette from the input file */</span>
+   <span class="n">png_uint_16</span> <span class="n">num_palette</span><span class="p">;</span>   <span class="cm">/* number of color entries in palette */</span>
+
+<span class="cm">/* Added at libpng-1.5.10 */</span>
+<span class="cp">#ifdef PNG_CHECK_FOR_INVALID_INDEX_SUPPORTED
+</span>   <span class="kt">int</span> <span class="n">num_palette_max</span><span class="p">;</span>       <span class="cm">/* maximum palette index found in IDAT */</span>
+<span class="cp">#endif
+</span>
+   <span class="n">png_uint_16</span> <span class="n">num_trans</span><span class="p">;</span>     <span class="cm">/* number of transparency values */</span>
+   <span class="n">png_byte</span> <span class="n">compression</span><span class="p">;</span>      <span class="cm">/* file compression type (always 0) */</span>
+   <span class="n">png_byte</span> <span class="n">filter</span><span class="p">;</span>           <span class="cm">/* file filter type (always 0) */</span>
+   <span class="n">png_byte</span> <span class="n">interlaced</span><span class="p">;</span>       <span class="cm">/* PNG_INTERLACE_NONE, PNG_INTERLACE_ADAM7 */</span>
+   <span class="n">png_byte</span> <span class="n">pass</span><span class="p">;</span>             <span class="cm">/* current interlace pass (0 - 6) */</span>
+   <span class="n">png_byte</span> <span class="n">do_filter</span><span class="p">;</span>        <span class="cm">/* row filter flags (see PNG_FILTER_ in png.h ) */</span>
+   <span class="n">png_byte</span> <span class="n">color_type</span><span class="p">;</span>       <span class="cm">/* color type of file */</span>
+   <span class="n">png_byte</span> <span class="n">bit_depth</span><span class="p">;</span>        <span class="cm">/* bit depth of file */</span>
+   <span class="n">png_byte</span> <span class="n">usr_bit_depth</span><span class="p">;</span>    <span class="cm">/* bit depth of users row: write only */</span>
+   <span class="n">png_byte</span> <span class="n">pixel_depth</span><span class="p">;</span>      <span class="cm">/* number of bits per pixel */</span>
+   <span class="n">png_byte</span> <span class="n">channels</span><span class="p">;</span>         <span class="cm">/* number of channels in file */</span>
+<span class="cp">#ifdef PNG_WRITE_SUPPORTED
+</span>   <span class="n">png_byte</span> <span class="n">usr_channels</span><span class="p">;</span>     <span class="cm">/* channels at start of write: write only */</span>
+<span class="cp">#endif
+</span>   <span class="n">png_byte</span> <span class="n">sig_bytes</span><span class="p">;</span>        <span class="cm">/* magic bytes read/written from start of file */</span>
+   <span class="n">png_byte</span> <span class="n">maximum_pixel_depth</span><span class="p">;</span>
+                              <span class="cm">/* pixel depth used for the row buffers */</span>
+   <span class="n">png_byte</span> <span class="n">transformed_pixel_depth</span><span class="p">;</span>
+                              <span class="cm">/* pixel depth after read/write transforms */</span>
+<span class="cp">#if ZLIB_VERNUM &gt;= 0x1240
+</span>   <span class="n">png_byte</span> <span class="n">zstream_start</span><span class="p">;</span>    <span class="cm">/* at start of an input zlib stream */</span>
+<span class="cp">#endif </span><span class="cm">/* Zlib &gt;= 1.2.4 */</span><span class="cp">
+#if defined(PNG_READ_FILLER_SUPPORTED) || defined(PNG_WRITE_FILLER_SUPPORTED)
+</span>   <span class="n">png_uint_16</span> <span class="n">filler</span><span class="p">;</span>           <span class="cm">/* filler bytes for pixel expansion */</span>
+<span class="cp">#endif
+</span>
+<span class="cp">#if defined(PNG_bKGD_SUPPORTED) || defined(PNG_READ_BACKGROUND_SUPPORTED) ||\
+   defined(PNG_READ_ALPHA_MODE_SUPPORTED)
+</span>   <span class="n">png_byte</span> <span class="n">background_gamma_type</span><span class="p">;</span>
+   <span class="n">png_fixed_point</span> <span class="n">background_gamma</span><span class="p">;</span>
+   <span class="n">png_color_16</span> <span class="n">background</span><span class="p">;</span>   <span class="cm">/* background color in screen gamma space */</span>
+<span class="cp">#ifdef PNG_READ_GAMMA_SUPPORTED
+</span>   <span class="n">png_color_16</span> <span class="n">background_1</span><span class="p">;</span> <span class="cm">/* background normalized to gamma 1.0 */</span>
+<span class="cp">#endif
+#endif </span><span class="cm">/* bKGD */</span><span class="cp">
+</span>
+<span class="cp">#ifdef PNG_WRITE_FLUSH_SUPPORTED
+</span>   <span class="n">png_flush_ptr</span> <span class="n">output_flush_fn</span><span class="p">;</span> <span class="cm">/* Function for flushing output */</span>
+   <span class="n">png_uint_32</span> <span class="n">flush_dist</span><span class="p">;</span>    <span class="cm">/* how many rows apart to flush, 0 - no flush */</span>
+   <span class="n">png_uint_32</span> <span class="n">flush_rows</span><span class="p">;</span>    <span class="cm">/* number of rows written since last flush */</span>
+<span class="cp">#endif
+</span>
+<span class="cp">#ifdef PNG_READ_GAMMA_SUPPORTED
+</span>   <span class="kt">int</span> <span class="n">gamma_shift</span><span class="p">;</span>      <span class="cm">/* number of "insignificant" bits in 16-bit gamma */</span>
+   <span class="n">png_fixed_point</span> <span class="n">screen_gamma</span><span class="p">;</span> <span class="cm">/* screen gamma value (display_exponent) */</span>
+
+   <span class="n">png_bytep</span> <span class="n">gamma_table</span><span class="p">;</span>     <span class="cm">/* gamma table for 8-bit depth files */</span>
+   <span class="n">png_uint_16pp</span> <span class="n">gamma_16_table</span><span class="p">;</span> <span class="cm">/* gamma table for 16-bit depth files */</span>
+<span class="cp">#if defined(PNG_READ_BACKGROUND_SUPPORTED) || \
+   defined(PNG_READ_ALPHA_MODE_SUPPORTED) || \
+   defined(PNG_READ_RGB_TO_GRAY_SUPPORTED)
+</span>   <span class="n">png_bytep</span> <span class="n">gamma_from_1</span><span class="p">;</span>    <span class="cm">/* converts from 1.0 to screen */</span>
+   <span class="n">png_bytep</span> <span class="n">gamma_to_1</span><span class="p">;</span>      <span class="cm">/* converts from file to 1.0 */</span>
+   <span class="n">png_uint_16pp</span> <span class="n">gamma_16_from_1</span><span class="p">;</span> <span class="cm">/* converts from 1.0 to screen */</span>
+   <span class="n">png_uint_16pp</span> <span class="n">gamma_16_to_1</span><span class="p">;</span> <span class="cm">/* converts from file to 1.0 */</span>
+<span class="cp">#endif </span><span class="cm">/* READ_BACKGROUND || READ_ALPHA_MODE || RGB_TO_GRAY */</span><span class="cp">
+#endif
+</span>
+<span class="cp">#if defined(PNG_READ_GAMMA_SUPPORTED) || defined(PNG_sBIT_SUPPORTED)
+</span>   <span class="n">png_color_8</span> <span class="n">sig_bit</span><span class="p">;</span>       <span class="cm">/* significant bits in each available channel */</span>
+<span class="cp">#endif
+</span>
+<span class="cp">#if defined(PNG_READ_SHIFT_SUPPORTED) || defined(PNG_WRITE_SHIFT_SUPPORTED)
+</span>   <span class="n">png_color_8</span> <span class="n">shift</span><span class="p">;</span>         <span class="cm">/* shift for significant bit transformation */</span>
+<span class="cp">#endif
+</span>
+<span class="cp">#if defined(PNG_tRNS_SUPPORTED) || defined(PNG_READ_BACKGROUND_SUPPORTED) \
+ || defined(PNG_READ_EXPAND_SUPPORTED) || defined(PNG_READ_BACKGROUND_SUPPORTED)
+</span>   <span class="n">png_bytep</span> <span class="n">trans_alpha</span><span class="p">;</span>           <span class="cm">/* alpha values for paletted files */</span>
+   <span class="n">png_color_16</span> <span class="n">trans_color</span><span class="p">;</span>  <span class="cm">/* transparent color for non-paletted files */</span>
+<span class="cp">#endif
+</span>
+   <span class="n">png_read_status_ptr</span> <span class="n">read_row_fn</span><span class="p">;</span>   <span class="cm">/* called after each row is decoded */</span>
+   <span class="n">png_write_status_ptr</span> <span class="n">write_row_fn</span><span class="p">;</span> <span class="cm">/* called after each row is encoded */</span>
+<span class="cp">#ifdef PNG_PROGRESSIVE_READ_SUPPORTED
+</span>   <span class="n">png_progressive_info_ptr</span> <span class="n">info_fn</span><span class="p">;</span> <span class="cm">/* called after header data fully read */</span>
+   <span class="n">png_progressive_row_ptr</span> <span class="n">row_fn</span><span class="p">;</span>   <span class="cm">/* called after a prog. row is decoded */</span>
+   <span class="n">png_progressive_end_ptr</span> <span class="n">end_fn</span><span class="p">;</span>   <span class="cm">/* called after image is complete */</span>
+   <span class="n">png_bytep</span> <span class="n">save_buffer_ptr</span><span class="p">;</span>        <span class="cm">/* current location in save_buffer */</span>
+   <span class="n">png_bytep</span> <span class="n">save_buffer</span><span class="p">;</span>            <span class="cm">/* buffer for previously read data */</span>
+   <span class="n">png_bytep</span> <span class="n">current_buffer_ptr</span><span class="p">;</span>     <span class="cm">/* current location in current_buffer */</span>
+   <span class="n">png_bytep</span> <span class="n">current_buffer</span><span class="p">;</span>         <span class="cm">/* buffer for recently used data */</span>
+   <span class="n">png_uint_32</span> <span class="n">push_length</span><span class="p">;</span>          <span class="cm">/* size of current input chunk */</span>
+   <span class="n">png_uint_32</span> <span class="n">skip_length</span><span class="p">;</span>          <span class="cm">/* bytes to skip in input data */</span>
+   <span class="kt">size_t</span> <span class="n">save_buffer_size</span><span class="p">;</span>          <span class="cm">/* amount of data now in save_buffer */</span>
+   <span class="kt">size_t</span> <span class="n">save_buffer_max</span><span class="p">;</span>           <span class="cm">/* total size of save_buffer */</span>
+   <span class="kt">size_t</span> <span class="n">buffer_size</span><span class="p">;</span>               <span class="cm">/* total amount of available input data */</span>
+   <span class="kt">size_t</span> <span class="n">current_buffer_size</span><span class="p">;</span>       <span class="cm">/* amount of data now in current_buffer */</span>
+   <span class="kt">int</span> <span class="n">process_mode</span><span class="p">;</span>                 <span class="cm">/* what push library is currently doing */</span>
+   <span class="kt">int</span> <span class="n">cur_palette</span><span class="p">;</span>                  <span class="cm">/* current push library palette index */</span>
+
+<span class="cp">#endif </span><span class="cm">/* PROGRESSIVE_READ */</span><span class="cp">
+</span>
+<span class="cp">#if defined(__TURBOC__) &amp;&amp; !defined(_Windows) &amp;&amp; !defined(__FLAT__)
+</span><span class="cm">/* For the Borland special 64K segment handler */</span>
+   <span class="n">png_bytepp</span> <span class="n">offset_table_ptr</span><span class="p">;</span>
+   <span class="n">png_bytep</span> <span class="n">offset_table</span><span class="p">;</span>
+   <span class="n">png_uint_16</span> <span class="n">offset_table_number</span><span class="p">;</span>
+   <span class="n">png_uint_16</span> <span class="n">offset_table_count</span><span class="p">;</span>
+   <span class="n">png_uint_16</span> <span class="n">offset_table_count_free</span><span class="p">;</span>
+<span class="cp">#endif
+</span>
+<span class="cp">#ifdef PNG_READ_QUANTIZE_SUPPORTED
+</span>   <span class="n">png_bytep</span> <span class="n">palette_lookup</span><span class="p">;</span> <span class="cm">/* lookup table for quantizing */</span>
+   <span class="n">png_bytep</span> <span class="n">quantize_index</span><span class="p">;</span> <span class="cm">/* index translation for palette files */</span>
+<span class="cp">#endif
+</span>
+<span class="cm">/* Options */</span>
+<span class="cp">#ifdef PNG_SET_OPTION_SUPPORTED
+</span>   <span class="n">png_uint_32</span> <span class="n">options</span><span class="p">;</span>           <span class="cm">/* On/off state (up to 16 options) */</span>
+<span class="cp">#endif
+</span>
+<span class="cp">#if PNG_LIBPNG_VER &lt; 10700
+</span><span class="cm">/* To do: remove this from libpng-1.7 */</span>
+<span class="cp">#ifdef PNG_TIME_RFC1123_SUPPORTED
+</span>   <span class="kt">char</span> <span class="n">time_buffer</span><span class="p">[</span><span class="mi">29</span><span class="p">];</span> <span class="cm">/* String to hold RFC 1123 time text */</span>
+<span class="cp">#endif
+#endif
+</span>
+<span class="cm">/* New members added in libpng-1.0.6 */</span>
+
+   <span class="n">png_uint_32</span> <span class="n">free_me</span><span class="p">;</span>    <span class="cm">/* flags items libpng is responsible for freeing */</span>
+
+<span class="cp">#ifdef PNG_USER_CHUNKS_SUPPORTED
+</span>   <span class="n">png_voidp</span> <span class="n">user_chunk_ptr</span><span class="p">;</span>
+<span class="cp">#ifdef PNG_READ_USER_CHUNKS_SUPPORTED
+</span>   <span class="n">png_user_chunk_ptr</span> <span class="n">read_user_chunk_fn</span><span class="p">;</span> <span class="cm">/* user read chunk handler */</span>
+<span class="cp">#endif
+#endif
+</span>
+<span class="cp">#ifdef PNG_SET_UNKNOWN_CHUNKS_SUPPORTED
+</span>   <span class="kt">int</span>          <span class="n">unknown_default</span><span class="p">;</span> <span class="cm">/* As PNG_HANDLE_* */</span>
+   <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">num_chunk_list</span><span class="p">;</span>  <span class="cm">/* Number of entries in the list */</span>
+   <span class="n">png_bytep</span>    <span class="n">chunk_list</span><span class="p">;</span>      <span class="cm">/* List of png_byte[5]; the textual chunk name
+                                  * followed by a PNG_HANDLE_* byte */</span>
+<span class="cp">#endif
+</span>
+<span class="cm">/* New members added in libpng-1.0.3 */</span>
+<span class="cp">#ifdef PNG_READ_RGB_TO_GRAY_SUPPORTED
+</span>   <span class="n">png_byte</span> <span class="n">rgb_to_gray_status</span><span class="p">;</span>
+   <span class="cm">/* Added in libpng 1.5.5 to record setting of coefficients: */</span>
+   <span class="n">png_byte</span> <span class="n">rgb_to_gray_coefficients_set</span><span class="p">;</span>
+   <span class="cm">/* These were changed from png_byte in libpng-1.0.6 */</span>
+   <span class="n">png_uint_16</span> <span class="n">rgb_to_gray_red_coeff</span><span class="p">;</span>
+   <span class="n">png_uint_16</span> <span class="n">rgb_to_gray_green_coeff</span><span class="p">;</span>
+   <span class="cm">/* deleted in 1.5.5: rgb_to_gray_blue_coeff; */</span>
+<span class="cp">#endif
+</span>
+<span class="cm">/* New member added in libpng-1.6.36 */</span>
+<span class="cp">#if defined(PNG_READ_EXPAND_SUPPORTED) &amp;&amp; \
+    defined(PNG_ARM_NEON_IMPLEMENTATION)
+</span>   <span class="n">png_bytep</span> <span class="n">riffled_palette</span><span class="p">;</span> <span class="cm">/* buffer for accelerated palette expansion */</span>
+<span class="cp">#endif
+</span>
+<span class="cm">/* New member added in libpng-1.0.4 (renamed in 1.0.9) */</span>
+<span class="cp">#if defined(PNG_MNG_FEATURES_SUPPORTED)
+</span><span class="cm">/* Changed from png_byte to png_uint_32 at version 1.2.0 */</span>
+   <span class="n">png_uint_32</span> <span class="n">mng_features_permitted</span><span class="p">;</span>
+<span class="cp">#endif
+</span>
+<span class="cm">/* New member added in libpng-1.0.9, ifdef'ed out in 1.0.12, enabled in 1.2.0 */</span>
+<span class="cp">#ifdef PNG_MNG_FEATURES_SUPPORTED
+</span>   <span class="n">png_byte</span> <span class="n">filter_type</span><span class="p">;</span>
+<span class="cp">#endif
+</span>
+<span class="cm">/* New members added in libpng-1.2.0 */</span>
+
+<span class="cm">/* New members added in libpng-1.0.2 but first enabled by default in 1.2.0 */</span>
+<span class="cp">#ifdef PNG_USER_MEM_SUPPORTED
+</span>   <span class="n">png_voidp</span> <span class="n">mem_ptr</span><span class="p">;</span>             <span class="cm">/* user supplied struct for mem functions */</span>
+   <span class="n">png_malloc_ptr</span> <span class="n">malloc_fn</span><span class="p">;</span>      <span class="cm">/* function for allocating memory */</span>
+   <span class="n">png_free_ptr</span> <span class="n">free_fn</span><span class="p">;</span>          <span class="cm">/* function for freeing memory */</span>
+<span class="cp">#endif
+</span>
+<span class="cm">/* New member added in libpng-1.0.13 and 1.2.0 */</span>
+   <span class="n">png_bytep</span> <span class="n">big_row_buf</span><span class="p">;</span>         <span class="cm">/* buffer to save current (unfiltered) row */</span>
+
+<span class="cp">#ifdef PNG_READ_QUANTIZE_SUPPORTED
+</span><span class="cm">/* The following three members were added at version 1.0.14 and 1.2.4 */</span>
+   <span class="n">png_bytep</span> <span class="n">quantize_sort</span><span class="p">;</span>          <span class="cm">/* working sort array */</span>
+   <span class="n">png_bytep</span> <span class="n">index_to_palette</span><span class="p">;</span>       <span class="cm">/* where the original index currently is
+                                        in the palette */</span>
+   <span class="n">png_bytep</span> <span class="n">palette_to_index</span><span class="p">;</span>       <span class="cm">/* which original index points to this
+                                         palette color */</span>
+<span class="cp">#endif
+</span>
+<span class="cm">/* New members added in libpng-1.0.16 and 1.2.6 */</span>
+   <span class="n">png_byte</span> <span class="n">compression_type</span><span class="p">;</span>
+
+<span class="cp">#ifdef PNG_USER_LIMITS_SUPPORTED
+</span>   <span class="n">png_uint_32</span> <span class="n">user_width_max</span><span class="p">;</span>
+   <span class="n">png_uint_32</span> <span class="n">user_height_max</span><span class="p">;</span>
+
+   <span class="cm">/* Added in libpng-1.4.0: Total number of sPLT, text, and unknown
+    * chunks that can be stored (0 means unlimited).
+    */</span>
+   <span class="n">png_uint_32</span> <span class="n">user_chunk_cache_max</span><span class="p">;</span>
+
+   <span class="cm">/* Total memory that a zTXt, sPLT, iTXt, iCCP, or unknown chunk
+    * can occupy when decompressed.  0 means unlimited.
+    */</span>
+   <span class="n">png_alloc_size_t</span> <span class="n">user_chunk_malloc_max</span><span class="p">;</span>
+<span class="cp">#endif
+</span>
+<span class="cm">/* New member added in libpng-1.0.25 and 1.2.17 */</span>
+<span class="cp">#ifdef PNG_READ_UNKNOWN_CHUNKS_SUPPORTED
+</span>   <span class="cm">/* Temporary storage for unknown chunk that the library doesn't recognize,
+    * used while reading the chunk.
+    */</span>
+   <span class="n">png_unknown_chunk</span> <span class="n">unknown_chunk</span><span class="p">;</span>
+<span class="cp">#endif
+</span>
+<span class="cm">/* New member added in libpng-1.2.26 */</span>
+   <span class="kt">size_t</span> <span class="n">old_big_row_buf_size</span><span class="p">;</span>
+
+<span class="cp">#ifdef PNG_READ_SUPPORTED
+</span><span class="cm">/* New member added in libpng-1.2.30 */</span>
+  <span class="n">png_bytep</span>        <span class="n">read_buffer</span><span class="p">;</span>      <span class="cm">/* buffer for reading chunk data */</span>
+  <span class="n">png_alloc_size_t</span> <span class="n">read_buffer_size</span><span class="p">;</span> <span class="cm">/* current size of the buffer */</span>
+<span class="cp">#endif
+#ifdef PNG_SEQUENTIAL_READ_SUPPORTED
+</span>  <span class="n">uInt</span>             <span class="n">IDAT_read_size</span><span class="p">;</span>   <span class="cm">/* limit on read buffer size for IDAT */</span>
+<span class="cp">#endif
+</span>
+<span class="cp">#ifdef PNG_IO_STATE_SUPPORTED
+</span><span class="cm">/* New member added in libpng-1.4.0 */</span>
+   <span class="n">png_uint_32</span> <span class="n">io_state</span><span class="p">;</span>
+<span class="cp">#endif
+</span>
+<span class="cm">/* New member added in libpng-1.5.6 */</span>
+   <span class="n">png_bytep</span> <span class="n">big_prev_row</span><span class="p">;</span>
+
+<span class="cm">/* New member added in libpng-1.5.7 */</span>
+   <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">read_filter</span><span class="p">[</span><span class="n">PNG_FILTER_VALUE_LAST</span><span class="o">-</span><span class="mi">1</span><span class="p">])(</span><span class="n">png_row_infop</span> <span class="n">row_info</span><span class="p">,</span>
+      <span class="n">png_bytep</span> <span class="n">row</span><span class="p">,</span> <span class="n">png_const_bytep</span> <span class="n">prev_row</span><span class="p">);</span>
+
+<span class="cp">#ifdef PNG_READ_SUPPORTED
+#if defined(PNG_COLORSPACE_SUPPORTED) || defined(PNG_GAMMA_SUPPORTED)
+</span>   <span class="n">png_colorspace</span>   <span class="n">colorspace</span><span class="p">;</span>
+<span class="cp">#endif
+#endif
+</span><span class="p">};</span>
+
+<span class="cm">/* Basic control structions.  Read libpng-manual.txt or libpng.3 for more info.
+ *
+ * png_struct is the cache of information used while reading or writing a single
+ * PNG file.  One of these is always required, although the simplified API
+ * (below) hides the creation and destruction of it.
+ */</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">png_struct_def</span> <span class="n">png_struct</span><span class="p">;</span>
+
+<span class="cp">#    ifndef PNG_RESTRICT
+#      define PNG_RESTRICT __restrict
+#    endif
+</span>
+<span class="cm">/* Types with names ending 'p' are pointer types.  The corresponding types with
+ * names ending 'rp' are identical pointer types except that the pointer is
+ * marked 'restrict', which means that it is the only pointer to the object
+ * passed to the function.  Applications should not use the 'restrict' types;
+ * it is always valid to pass 'p' to a pointer with a function argument of the
+ * corresponding 'rp' type.  Different compilers have different rules with
+ * regard to type matching in the presence of 'restrict'.  For backward
+ * compatibility libpng callbacks never have 'restrict' in their parameters and,
+ * consequentially, writing portable application code is extremely difficult if
+ * an attempt is made to use 'restrict'.
+ */</span>
+<span class="k">typedef</span> <span class="n">png_struct</span> <span class="o">*</span> <span class="n">PNG_RESTRICT</span> <span class="n">png_structrp</span><span class="p">;</span>
+
+
+<span class="cm">/* Read the entire image.  If the image has an alpha channel or a tRNS
+ * chunk, and you have called png_handle_alpha()[*], you will need to
+ * initialize the image to the current image that PNG will be overlaying.
+ * We set the num_rows again here, in case it was incorrectly set in
+ * png_read_start_row() by a call to png_read_update_info() or
+ * png_start_read_image() if png_set_interlace_handling() wasn't called
+ * prior to either of these functions like it should have been.  You can
+ * only call this function once.  If you desire to have an image for
+ * each pass of a interlaced image, use png_read_rows() instead.
+ *
+ * [*] png_handle_alpha() does not exist yet, as of this version of libpng
+ */</span>
+<span class="kt">void</span> <span class="n">PNGAPI</span>
+<span class="nf">png_read_image</span><span class="p">(</span><span class="n">png_structrp</span> <span class="n">png_ptr</span><span class="p">,</span> <span class="n">png_bytepp</span> <span class="n">image</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="n">png_uint_32</span> <span class="n">i</span><span class="p">,</span> <span class="n">image_height</span><span class="p">;</span>
+   <span class="kt">int</span> <span class="n">pass</span><span class="p">,</span> <span class="n">j</span><span class="p">;</span>
+   <span class="n">png_bytepp</span> <span class="n">rp</span><span class="p">;</span>
+
+   <span class="n">png_debug</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">"in png_read_image"</span><span class="p">);</span>
+
+   <span class="k">if</span> <span class="p">(</span><span class="n">png_ptr</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+      <span class="k">return</span><span class="p">;</span>
+
+<span class="cp">#ifdef PNG_READ_INTERLACING_SUPPORTED
+</span>   <span class="k">if</span> <span class="p">((</span><span class="n">png_ptr</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">PNG_FLAG_ROW_INIT</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="n">pass</span> <span class="o">=</span> <span class="n">png_set_interlace_handling</span><span class="p">(</span><span class="n">png_ptr</span><span class="p">);</span>
+      <span class="cm">/* And make sure transforms are initialized. */</span>
+      <span class="n">png_start_read_image</span><span class="p">(</span><span class="n">png_ptr</span><span class="p">);</span>
+   <span class="p">}</span>
+   <span class="k">else</span>
+   <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">png_ptr</span><span class="o">-&gt;</span><span class="n">interlaced</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span>
+          <span class="p">(</span><span class="n">png_ptr</span><span class="o">-&gt;</span><span class="n">transformations</span> <span class="o">&amp;</span> <span class="n">PNG_INTERLACE</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="p">{</span>
+         <span class="cm">/* Caller called png_start_read_image or png_read_update_info without
+          * first turning on the PNG_INTERLACE transform.  We can fix this here,
+          * but the caller should do it!
+          */</span>
+         <span class="n">png_warning</span><span class="p">(</span><span class="n">png_ptr</span><span class="p">,</span> <span class="s">"Interlace handling should be turned on when "</span>
+             <span class="s">"using png_read_image"</span><span class="p">);</span>
+         <span class="cm">/* Make sure this is set correctly */</span>
+         <span class="n">png_ptr</span><span class="o">-&gt;</span><span class="n">num_rows</span> <span class="o">=</span> <span class="n">png_ptr</span><span class="o">-&gt;</span><span class="n">height</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="cm">/* Obtain the pass number, which also turns on the PNG_INTERLACE flag in
+       * the above error case.
+       */</span>
+      <span class="n">pass</span> <span class="o">=</span> <span class="n">png_set_interlace_handling</span><span class="p">(</span><span class="n">png_ptr</span><span class="p">);</span>
+   <span class="p">}</span>
+<span class="cp">#else
+</span>   <span class="k">if</span> <span class="p">(</span><span class="n">png_ptr</span><span class="o">-&gt;</span><span class="n">interlaced</span><span class="p">)</span>
+      <span class="n">png_error</span><span class="p">(</span><span class="n">png_ptr</span><span class="p">,</span>
+          <span class="s">"Cannot read interlaced image -- interlace handler disabled"</span><span class="p">);</span>
+
+   <span class="n">pass</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="cp">#endif
+</span>
+   <span class="n">image_height</span><span class="o">=</span><span class="n">png_ptr</span><span class="o">-&gt;</span><span class="n">height</span><span class="p">;</span>
+
+   <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">pass</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="n">rp</span> <span class="o">=</span> <span class="n">image</span><span class="p">;</span>
+      <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">image_height</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+      <span class="p">{</span>
+         <span class="n">png_read_row</span><span class="p">(</span><span class="n">png_ptr</span><span class="p">,</span> <span class="o">*</span><span class="n">rp</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+         <span class="n">rp</span><span class="o">++</span><span class="p">;</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The key of this vulnerability, according to what we explain above resides on the following block:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//...</span>
+<span class="k">if</span> <span class="p">(</span> <span class="n">error</span>                                    <span class="o">||</span>
+        <span class="p">(</span> <span class="o">!</span><span class="n">populate_map_and_metrics</span>              <span class="o">&amp;&amp;</span>
+        <span class="p">(</span> <span class="p">(</span><span class="n">FT_Int</span><span class="p">)</span><span class="n">imgWidth</span>  <span class="o">!=</span> <span class="n">metrics</span><span class="o">-&gt;</span><span class="n">width</span>  <span class="o">||</span>
+        <span class="p">(</span><span class="n">FT_Int</span><span class="p">)</span><span class="n">imgHeight</span> <span class="o">!=</span> <span class="n">metrics</span><span class="o">-&gt;</span><span class="n">height</span> <span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
+<span class="k">goto</span> <span class="n">DestroyExit</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span> <span class="n">populate_map_and_metrics</span> <span class="p">)</span>
+<span class="p">{</span>
+<span class="n">metrics</span><span class="o">-&gt;</span><span class="n">width</span>  <span class="o">=</span> <span class="p">(</span><span class="n">FT_UShort</span><span class="p">)</span><span class="n">imgWidth</span><span class="p">;</span>
+<span class="n">metrics</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">=</span> <span class="p">(</span><span class="n">FT_UShort</span><span class="p">)</span><span class="n">imgHeight</span><span class="p">;</span>
+<span class="c1">//...</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The width and the height of the PNG which is used to allocate space gets truncated since gets both converted from <em>int</em> to <em>short</em> without correct validation. As we seen before, this could lead to an under-allocation and later to an over-copy.</p>
+
+<p><br /></p>
+
+<h4 id="53-cve-2020-17087">5.3. CVE-2020-17087.</h4>
+
+<p>Consider the following C code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">////ACID:SourceBuffer, SourceLength</span>
+<span class="n">NTSTATUS</span> <span class="nf">CfgAdtpFormatPropertyBlock</span><span class="p">(</span><span class="n">PBYTE</span> <span class="n">SourceBuffer</span><span class="p">,</span> <span class="n">USHORT</span> <span class="n">SourceLength</span><span class="p">,</span> <span class="n">PUNICODE_STRING</span> <span class="n">Destination</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">CONST</span> <span class="n">USHORT</span> <span class="n">DestinationSize</span> <span class="o">=</span> <span class="p">(</span><span class="n">USHORT</span><span class="p">)(</span><span class="mi">6</span> <span class="o">*</span> <span class="n">SourceLength</span><span class="p">);</span>
+	<span class="n">PWCHAR</span> <span class="n">OutputBuffer</span> <span class="o">=</span> <span class="n">BCryptAlloc</span><span class="p">(</span><span class="n">DestinationSize</span><span class="p">);</span>
+
+	<span class="k">for</span> <span class="p">(</span><span class="n">USHORT</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">SourceLength</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+		<span class="o">*</span><span class="n">OutputBuffer</span><span class="o">++</span> <span class="o">=</span> <span class="s">"0123456789abcdef"</span><span class="p">[</span><span class="o">*</span><span class="n">SourceBuffer</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span><span class="p">];</span>
+		<span class="o">*</span><span class="n">OutputBuffer</span><span class="o">++</span> <span class="o">=</span> <span class="s">"0123456789abcdef"</span><span class="p">[</span><span class="o">*</span><span class="n">SourceBuffer</span> <span class="o">&amp;</span> <span class="mh">0xF</span><span class="p">];</span>
+		<span class="o">*</span><span class="n">OutputBuffer</span><span class="o">++</span> <span class="o">=</span> <span class="sc">' '</span><span class="p">;</span>
+		<span class="n">SourceBuffer</span><span class="o">++</span><span class="p">;</span>
+	<span class="p">}</span>
+
+ 	<span class="n">Destination</span><span class="o">-&gt;</span><span class="n">MaximumLength</span> <span class="o">=</span> <span class="n">DestinationSize</span><span class="p">;</span>
+ 	<span class="n">Destination</span><span class="o">-&gt;</span><span class="n">Length</span> <span class="o">=</span> <span class="n">DestinationSize</span> <span class="o">-</span> <span class="mi">2</span><span class="p">;</span>
+ 	<span class="n">Destination</span><span class="o">-&gt;</span><span class="n">Buffer</span> <span class="o">=</span> <span class="n">OutputBuffer</span><span class="p">;</span>
+
+	<span class="k">return</span> <span class="n">STATUS_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This chunk of code is vulnerable to an overcopy due to underallocation result of integer overflow, OutputBuffer gets assignation in a for-loop when the break condition is i&lt; Source Length. But the allocated space for this Buffer is DestinationSize which is 6 times SourceLength, this could provoke (assuming BCryptAlloc does not prevent it) that if SourceLength is (MAX_SHORT_SIZE + 1) / 6, then an underallocation is performed and out-of-bounds write is done.</p>
+
+<p><br /></p>
+
+<h4 id="54-cve-2021-33909-sequoia">5.4. CVE-2021-33909. Sequoia.</h4>
+
+<p>Consider the following C code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">////NOTE: Start reading the code at seq_read_iter()</span>
+
+<span class="cm">/**
+ * seq_has_overflowed - check if the buffer has overflowed
+ * @m: the seq_file handle
+ *
+ * seq_files have a buffer which may overflow. When this happens a larger
+ * buffer is reallocated and all the data will be printed again.
+ * The overflow state is true when m-&gt;count == m-&gt;size.
+ *
+ * Returns true if the buffer received more than it can hold.
+ */</span>
+<span class="k">static</span> <span class="kr">inline</span> <span class="n">bool</span> <span class="nf">seq_has_overflowed</span><span class="p">(</span><span class="k">struct</span> <span class="n">seq_file</span> <span class="o">*</span><span class="n">m</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">return</span> <span class="n">m</span><span class="o">-&gt;</span><span class="n">count</span> <span class="o">==</span> <span class="n">m</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//------------------------------------------------------------------------</span>
+<span class="mi">135</span> <span class="k">static</span> <span class="kt">int</span> <span class="nf">show_mountinfo</span><span class="p">(</span><span class="k">struct</span> <span class="n">seq_file</span> <span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="k">struct</span> <span class="n">vfsmount</span> <span class="o">*</span><span class="n">mnt</span><span class="p">)</span> <span class="c1">//KC: called by "m-&gt;op-&gt;show(m, p)" </span>
+<span class="mi">136</span> <span class="p">{</span>
+<span class="p">...</span>
+<span class="mi">150</span>                 <span class="n">seq_dentry</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">mnt</span><span class="o">-&gt;</span><span class="n">mnt_root</span><span class="p">,</span> <span class="s">" </span><span class="se">\t\n\\</span><span class="s">"</span><span class="p">);</span>
+<span class="c1">//------------------------------------------------------------------------</span>
+<span class="mi">523</span> <span class="kt">int</span> <span class="n">seq_dentry</span><span class="p">(</span><span class="k">struct</span> <span class="n">seq_file</span> <span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="n">dentry</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">esc</span><span class="p">)</span>
+<span class="mi">524</span> <span class="p">{</span>
+<span class="mi">525</span>         <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">;</span>
+<span class="mi">526</span>         <span class="kt">size_t</span> <span class="n">size</span> <span class="o">=</span> <span class="n">seq_get_buf</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">buf</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="mi">529</span>         <span class="k">if</span> <span class="p">(</span><span class="n">size</span><span class="p">)</span> <span class="p">{</span>
+<span class="mi">530</span>                 <span class="kt">char</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">dentry_path</span><span class="p">(</span><span class="n">dentry</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span>
+<span class="c1">//------------------------------------------------------------------------</span>
+<span class="mi">380</span> <span class="kt">char</span> <span class="o">*</span><span class="n">dentry_path</span><span class="p">(</span><span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="n">dentry</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">int</span> <span class="n">buflen</span><span class="p">)</span>
+<span class="mi">381</span> <span class="p">{</span>
+<span class="mi">382</span>         <span class="kt">char</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="mi">385</span>         <span class="k">if</span> <span class="p">(</span><span class="n">d_unlinked</span><span class="p">(</span><span class="n">dentry</span><span class="p">))</span> <span class="p">{</span> <span class="c1">//KC: assume true</span>
+<span class="mi">386</span>                 <span class="n">p</span> <span class="o">=</span> <span class="n">buf</span> <span class="o">+</span> <span class="n">buflen</span><span class="p">;</span>
+<span class="mi">387</span>                 <span class="k">if</span> <span class="p">(</span><span class="n">prepend</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">buflen</span><span class="p">,</span> <span class="s">"//deleted"</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1">//------------------------------------------------------------------------</span>
+ <span class="mi">11</span> <span class="k">static</span> <span class="kt">int</span> <span class="n">prepend</span><span class="p">(</span><span class="kt">char</span> <span class="o">**</span><span class="n">buffer</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">buflen</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">str</span><span class="p">,</span> <span class="kt">int</span> <span class="n">namelen</span><span class="p">)</span>
+ <span class="mi">12</span> <span class="p">{</span>
+ <span class="mi">13</span>         <span class="o">*</span><span class="n">buflen</span> <span class="o">-=</span> <span class="n">namelen</span><span class="p">;</span>
+ <span class="mi">14</span>         <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">buflen</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+ <span class="mi">15</span>                 <span class="k">return</span> <span class="o">-</span><span class="n">ENAMETOOLONG</span><span class="p">;</span>
+ <span class="mi">16</span>         <span class="o">*</span><span class="n">buffer</span> <span class="o">-=</span> <span class="n">namelen</span><span class="p">;</span>
+ <span class="mi">17</span>         <span class="n">memcpy</span><span class="p">(</span><span class="o">*</span><span class="n">buffer</span><span class="p">,</span> <span class="n">str</span><span class="p">,</span> <span class="n">namelen</span><span class="p">);</span>
+<span class="c1">//------------------------------------------------------------------------</span>
+
+<span class="c1">////ACID: Assume the attacker can control the underlying seq_file to cause the while(1) loop to occur as many times as they want</span>
+<span class="mi">168</span> <span class="kt">ssize_t</span> <span class="n">seq_read_iter</span><span class="p">(</span><span class="k">struct</span> <span class="n">kiocb</span> <span class="o">*</span><span class="n">iocb</span><span class="p">,</span> <span class="k">struct</span> <span class="n">iov_iter</span> <span class="o">*</span><span class="n">iter</span><span class="p">)</span>
+<span class="mi">169</span> <span class="p">{</span>
+<span class="mi">170</span>         <span class="k">struct</span> <span class="n">seq_file</span> <span class="o">*</span><span class="n">m</span> <span class="o">=</span> <span class="n">iocb</span><span class="o">-&gt;</span><span class="n">ki_filp</span><span class="o">-&gt;</span><span class="n">private_data</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="mi">205</span>         <span class="cm">/* grab buffer if we didn't have one */</span>
+<span class="mi">206</span>         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">m</span><span class="o">-&gt;</span><span class="n">buf</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//KC: assume this is NULL on the first iteration</span>
+<span class="mi">207</span>                 <span class="n">m</span><span class="o">-&gt;</span><span class="n">buf</span> <span class="o">=</span> <span class="n">seq_buf_alloc</span><span class="p">(</span><span class="n">m</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">=</span> <span class="n">PAGE_SIZE</span><span class="p">);</span> <span class="c1">//KC: m-&gt;size is a size_t</span>
+<span class="p">...</span>
+<span class="mi">210</span>         <span class="p">}</span>
+<span class="p">...</span>
+<span class="mi">220</span>         <span class="c1">// get a non-empty record in the buffer</span>
+<span class="p">...</span>
+<span class="mi">223</span>         <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">...</span>
+<span class="mi">227</span>                 <span class="n">err</span> <span class="o">=</span> <span class="n">m</span><span class="o">-&gt;</span><span class="n">op</span><span class="o">-&gt;</span><span class="n">show</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">p</span><span class="p">);</span> <span class="c1">//KC: This calls to show_mountinfo()</span>
+<span class="p">...</span>
+<span class="mi">236</span>                 <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">seq_has_overflowed</span><span class="p">(</span><span class="n">m</span><span class="p">))</span> <span class="c1">// got it</span>
+<span class="mi">237</span>                         <span class="k">goto</span> <span class="n">Fill</span><span class="p">;</span>
+<span class="mi">238</span>                 <span class="c1">// need a bigger buffer</span>
+<span class="p">...</span>
+<span class="mi">240</span>                 <span class="n">kvfree</span><span class="p">(</span><span class="n">m</span><span class="o">-&gt;</span><span class="n">buf</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="mi">242</span>                 <span class="n">m</span><span class="o">-&gt;</span><span class="n">buf</span> <span class="o">=</span> <span class="n">seq_buf_alloc</span><span class="p">(</span><span class="n">m</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">&lt;&lt;=</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="mi">246</span>         <span class="p">}</span>
+</code></pre></div></div>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#csoft">csoft</a>
+          
+        </div>
+      
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+<section id = "social-share-section">
+  <span class="sr-only">Share: </span>
+
+  
+    <a href="https://twitter.com/intent/tweet?text=Other+Integer+Issues.&url=http%3A%2F%2Flocalhost%3A4000%2F2025-12-05-OtherIntegerIssues%2F"
+      class="btn btn-social-icon btn-twitter" title="Share on Twitter">
+      <span class="fab fa-fw fa-twitter" aria-hidden="true"></span>
+      <span class="sr-only">Twitter</span>
+    </a>
+  
+
+  
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F2025-12-05-OtherIntegerIssues%2F"
+      class="btn btn-social-icon btn-facebook" title="Share on Facebook">
+      <span class="fab fa-fw fa-facebook" aria-hidden="true"></span>
+      <span class="sr-only">Facebook</span>
+    </a>
+  
+
+  
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F2025-12-05-OtherIntegerIssues%2F"
+      class="btn btn-social-icon btn-linkedin" title="Share on LinkedIn">
+      <span class="fab fa-fw fa-linkedin" aria-hidden="true"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  
+
+  
+
+  
+
+</section>
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/2025-12-05-IntegerOverflow-Underflow/" data-toggle="tooltip" data-placement="top" title="Integer Overflow/Underflow.">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/2025-12-12-ControlFlow/" data-toggle="tooltip" data-placement="top" title="Control Flow.">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+      
+  
+  
+  
+
+  
+
+
+  
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="/feed.xml" title="RSS">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">RSS</span>
+    </a>
+  </li><li class="list-inline-item">
+    <a href="mailto:" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/Qv1nTv5" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://twitter.com/Qvintvs1" title="Twitter">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Twitter</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://linkedin.com/in/german-sanmillan-68b308229/" title="LinkedIn">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">LinkedIn</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        German
+        &nbsp;&bull;&nbsp;
+      
+      2026
+
+      
+
+      
+      </p>
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>

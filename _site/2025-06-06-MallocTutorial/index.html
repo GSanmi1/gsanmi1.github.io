@@ -1,0 +1,2384 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 5.0.0 | Copyright Dean Attali 2020 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>Malloc Tutorial</title>
+
+  
+  <meta name="author" content="German">
+  
+
+  <meta name="description" content="A brief tutorial about how malloc() and free() work internally.">
+
+  
+
+  
+
+  
+  <link rel="alternate" type="application/rss+xml" title="Home" href="http://localhost:4000/feed.xml">
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/custom-dark.css">
+    
+  
+
+  
+  
+  
+
+  
+
+  
+  <meta property="og:site_name" content="Home">
+  <meta property="og:title" content="Malloc Tutorial">
+  <meta property="og:description" content="A brief tutorial about how malloc() and free() work internally.">
+
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:article:author" content="German">
+  <meta property="og:article:published_time" content="2025-06-06T00:00:00-04:00">
+  <meta property="og:url" content="http://localhost:4000/2025-06-06-MallocTutorial/">
+  <link rel="canonical" href="http://localhost:4000/2025-06-06-MallocTutorial/">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:site" content="@Qvintvs1">
+  <meta name="twitter:creator" content="@Qvintvs1">
+
+  <meta property="twitter:title" content="Malloc Tutorial">
+  <meta property="twitter:description" content="A brief tutorial about how malloc() and free() work internally.">
+
+  
+
+  
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+    document.querySelectorAll("script[type='math/tex; mode=display']").forEach(function(el) {
+      el.outerHTML = "\\[" + el.textContent + "\\]";
+    });
+    document.querySelectorAll("script[type='math/tex']").forEach(function(el) {
+      el.outerHTML = "\\(" + el.textContent + "\\)";
+    });
+    var script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js';
+    script.async = true;
+    document.head.appendChild(script);
+  });
+</script>
+
+
+  
+
+  
+
+</head>
+
+
+<body>
+
+  
+
+
+  <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">Home</a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Program</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/Cpage">C</a>
+                  <a class="dropdown-item" href="/DHARMApage">Dharma</a>
+                  <a class="dropdown-item" href="/RUSTpage">Rust</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Web2</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/BURPSUITEpage">Burp</a>
+                  <a class="dropdown-item" href="/THMpage">Thm</a>
+                  <a class="dropdown-item" href="/HackTheBoxpage">Htb</a>
+                  <a class="dropdown-item" href="/PEN200page">BasicPentesting</a>
+                  <a class="dropdown-item" href="/REDTEAMBASICSpage">RedTeam</a>
+                  <a class="dropdown-item" href="/BLUETEAMBASICSpage">Blueteam</a>
+                  <a class="dropdown-item" href="/REDESpage">Net</a>
+                  <a class="dropdown-item" href="/2022-11-17-GitBasics">Git</a>
+                  <a class="dropdown-item" href="/CSOFTpage">MemCorrupt</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ZKP</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/MATHpage">Math</a>
+                  <a class="dropdown-item" href="/RUSTpage">Rust</a>
+                  <a class="dropdown-item" href="/NOIRpage">Noir</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Assembly</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/ASSEMpage">x86</a>
+            </div>
+          </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" id="nav-search-link" href="#" title="Search">
+            <span id="nav-search-icon" class="fa fa-search"></span>
+            <span id="nav-search-text">Search</span>
+          </a>
+        </li></ul>
+  </div>
+
+  
+
+  
+
+</nav>
+
+
+
+<div id="beautifuljekyll-search-overlay">
+
+  <div id="nav-search-exit" title="Exit search">✕</div>
+  <input type="text" id="nav-search-input" placeholder="Search">
+  <ul id="search-results-container"></ul>
+  
+  <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+  <script>
+    var searchjson = '[ \
+       \
+        { \
+          "title"    : "P vs NP.", \
+          "category" : "math", \
+          "url"      : "/2026-01-11-PvsNP/", \
+          "date"     : "January 11, 2026" \
+        }, \
+       \
+        { \
+          "title"    : "Race Conditions.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-28-RaceCondition/", \
+          "date"     : "December 28, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Introducción al Cálculo", \
+          "category" : "matemáticas", \
+          "url"      : "/2025-12-25-MathTest/", \
+          "date"     : "December 25, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Uninitialize Data Access.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-23-UDA/", \
+          "date"     : "December 23, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Control Flow.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-12-ControlFlow/", \
+          "date"     : "December 12, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Other Integer Issues.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-05-OtherIntegerIssues/", \
+          "date"     : "December  5, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Integer Overflow/Underflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-05-IntegerOverflow-Underflow/", \
+          "date"     : "December  5, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Passing Parameters.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-04-Passing-Parameters/", \
+          "date"     : "December  4, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Stackframe; Local variables, Arrays and Structures.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-01-LocalVars_Arrays_structs/", \
+          "date"     : "December  1, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Out-Of-Bounds Write.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-26-Out-Of-Bounds-Write/", \
+          "date"     : "November 26, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Calling Functions.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-21-CallingFunctions/", \
+          "date"     : "November 21, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "(Linear) Heap Buffer Overflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-18-HBO/", \
+          "date"     : "November 18, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Basic Instructions.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-17-AssemblyBasicRegisters/", \
+          "date"     : "November 17, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Computer Registers.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-08-ComputerRegisters/", \
+          "date"     : "November  8, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "CVE-2021-20294.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-07-CVE-2021-20294/", \
+          "date"     : "November  7, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "(Linear) Stack Buffer Overflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-06-LSBO/", \
+          "date"     : "November  6, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Text Editor.", \
+          "category" : "C", \
+          "url"      : "/2025-08-11-Text-Editor/", \
+          "date"     : "August 11, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Garbage Collector.", \
+          "category" : "C", \
+          "url"      : "/2025-07-11-GarbageCollector/", \
+          "date"     : "July 11, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Hashtables.", \
+          "category" : "C", \
+          "url"      : "/2025-06-13-HashTable/", \
+          "date"     : "June 13, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Building my own malloc in C.", \
+          "category" : "C", \
+          "url"      : "/2025-06-09-BuildingOwnMalloc/", \
+          "date"     : "June  9, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Malloc Tutorial", \
+          "category" : "C", \
+          "url"      : "/2025-06-06-MallocTutorial/", \
+          "date"     : "June  6, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "SharedLibraries&amp;FunctionHooking", \
+          "category" : "C", \
+          "url"      : "/2025-04-26-SharedLibraries&FunctionHooking/", \
+          "date"     : "April 26, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "File Descritors", \
+          "category" : "C", \
+          "url"      : "/2025-03-04-FileDescriptors/", \
+          "date"     : "March  4, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Network Programming", \
+          "category" : "C", \
+          "url"      : "/2025-02-22-Network_Programming/", \
+          "date"     : "February 22, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "2. Constants and Literals in C.", \
+          "category" : "C", \
+          "url"      : "/2024-12-10-2.ConstantsinC-copy/", \
+          "date"     : "December 10, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "1. Basics of C", \
+          "category" : "C", \
+          "url"      : "/2024-12-02-1.BasicsOfC/", \
+          "date"     : "December  2, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "Gramáticas en Dharma", \
+          "category" : "DHA", \
+          "url"      : "/2024-09-24-Dharma_Tutorial/", \
+          "date"     : "September 24, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "Gramáticas en Dharma", \
+          "category" : "fuzz", \
+          "url"      : "/2024-03-22-Dharma_Tutorial-copy/", \
+          "date"     : "March 22, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "Mi experiencia con el OSCP", \
+          "category" : "pen", \
+          "url"      : "/2023-11-19-PEN200_Experience/", \
+          "date"     : "November 19, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Client Side", \
+          "category" : "pen", \
+          "url"      : "/2023-11-17-17.Client_Side_Attacks/", \
+          "date"     : "November 17, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Deep Packet Tunneling", \
+          "category" : "pen", \
+          "url"      : "/2023-11-16-16.Tunneling_Through_Deep_Packet_Inspection/", \
+          "date"     : "November 16, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Report", \
+          "category" : "pen", \
+          "url"      : "/2023-11-15-15.Making_Reports/", \
+          "date"     : "November 15, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Metasploit", \
+          "category" : "pen", \
+          "url"      : "/2023-11-14-14.Metasploit/", \
+          "date"     : "November 14, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Password Attacks", \
+          "category" : "pen", \
+          "url"      : "/2023-11-13-13.Password_Attacks/", \
+          "date"     : "November 13, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Active Directory Attacks", \
+          "category" : "pen", \
+          "url"      : "/2023-11-12-12.Active_Directory_Attacks/", \
+          "date"     : "November 12, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Port Forwarding", \
+          "category" : "pen", \
+          "url"      : "/2023-11-11-11.Port_Forwarding/", \
+          "date"     : "November 11, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Privilege Escalation", \
+          "category" : "pen", \
+          "url"      : "/2023-11-10-10.Privilege_Escalation/", \
+          "date"     : "November 10, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "File Transfers", \
+          "category" : "pen", \
+          "url"      : "/2023-11-09-9.File_Tranfers/", \
+          "date"     : "November  9, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Buffer Overflows", \
+          "category" : "pen", \
+          "url"      : "/2023-11-08-8.Buffer_Overflows/", \
+          "date"     : "November  8, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Vulnerability Scanning.", \
+          "category" : "pen", \
+          "url"      : "/2023-11-07-7.Vulnerability_Scanning/", \
+          "date"     : "November  7, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Information Gathering", \
+          "category" : "pen", \
+          "url"      : "/2023-11-06-6.Active_Information_Gathering/", \
+          "date"     : "November  6, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Windows", \
+          "category" : "pen", \
+          "url"      : "/2023-11-05-5.Windows/", \
+          "date"     : "November  5, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Networking", \
+          "category" : "pen", \
+          "url"      : "/2023-11-04-4.Networking/", \
+          "date"     : "November  4, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Scripting", \
+          "category" : "pen", \
+          "url"      : "/2023-11-03-3.Scripting/", \
+          "date"     : "November  3, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Practical Tools", \
+          "category" : "pen", \
+          "url"      : "/2023-11-02-2.PracticalTools/", \
+          "date"     : "November  2, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Linux", \
+          "category" : "pen", \
+          "url"      : "/2023-11-01-1.Linux/", \
+          "date"     : "November  1, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Easy", \
+          "category" : "hack", \
+          "url"      : "/2022-12-01-Easy/", \
+          "date"     : "December  1, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Git Basics", \
+          "category" : "", \
+          "url"      : "/2022-11-17-GitBasics/", \
+          "date"     : "November 17, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Tier I", \
+          "category" : "hack", \
+          "url"      : "/2022-11-10-Tier_1/", \
+          "date"     : "November 10, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Tier 0", \
+          "category" : "hack", \
+          "url"      : "/2022-11-09-Tier_0/", \
+          "date"     : "November  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "7.BufferOverflow.", \
+          "category" : "thm", \
+          "url"      : "/2022-11-02-7.BufferOverflow/", \
+          "date"     : "November  2, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "6.Offensive Pentesting", \
+          "category" : "thm", \
+          "url"      : "/2022-11-01-6.OffensivePentesting/", \
+          "date"     : "November  1, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "5.RedTeam", \
+          "category" : "thm", \
+          "url"      : "/2022-10-30-5.RedTeam/", \
+          "date"     : "October 30, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "4.Windows", \
+          "category" : "thm", \
+          "url"      : "/2022-10-22-4.Windows/", \
+          "date"     : "October 22, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "3.Junior Penetrationtester path", \
+          "category" : "thm", \
+          "url"      : "/2022-09-02-3.JRPenetrationTester/", \
+          "date"     : "September  2, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "2.Complete Begginer path.", \
+          "category" : "thm", \
+          "url"      : "/2022-08-07-2.CompleteBegginer/", \
+          "date"     : "August  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "1.Pre-Security path.", \
+          "category" : "thm", \
+          "url"      : "/2022-07-11-1Pre-Security/", \
+          "date"     : "July 11, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "0.Scripting for pentesters.", \
+          "category" : "thm", \
+          "url"      : "/2022-07-10-0.Scripting_for_pentesters/", \
+          "date"     : "July 10, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Burp Certified Practitioner Practice Exam.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-30-PracticeExam/", \
+          "date"     : "March 30, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "22. OAuth Authentication.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-27-22.OAuth_authentication/", \
+          "date"     : "March 27, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "21. HTTP Request Smuggling.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-26-21.HTTP_request_smuggling/", \
+          "date"     : "March 26, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "20. HTTP Host Header Attacks.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-25-20.HTTP_Host_header_attacks/", \
+          "date"     : "March 25, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "19. Web Cache Poisoning.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-24-19.Web_cache_poisoning/", \
+          "date"     : "March 24, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "18. Server-Side Template Injection.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-23-18.Serve-side_template_injection/", \
+          "date"     : "March 23, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "17. Insecure Deserialization.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-22-17.Insecure_deserialization/", \
+          "date"     : "March 22, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "16. WebSockets.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-21-16.WebSockets/", \
+          "date"     : "March 21, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "15.DOM-based XSS vulnerabilities.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-20-15-DOM-based_vulnerabilities/", \
+          "date"     : "March 20, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "14. Clickjacking.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-19-14.Clickjacking/", \
+          "date"     : "March 19, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "13. Cross-Origin Resource Sharing.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-18-13.Cross-origin_resource_sharing_(CORS)/", \
+          "date"     : "March 18, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "12. Cross-Site Request Forgery.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-17-12.Cross-site_request_forgery_(CSRF)/", \
+          "date"     : "March 17, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "11. Cross-Site Scripting.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-16-11.Cross-site_scripting_(XSS)/", \
+          "date"     : "March 16, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "10. XXE Injection.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-15-10.XXE_injection/", \
+          "date"     : "March 15, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "9. Server-Side Request Forgery.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-14-9.Server-side_request_forgery/", \
+          "date"     : "March 14, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "8. File Upload.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-13-8.File_upload_vulnerabilities/", \
+          "date"     : "March 13, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "7. Access Control.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-12-7.Access_control/", \
+          "date"     : "March 12, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "6. Information Disclosure.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-11-6.Information_disclosure/", \
+          "date"     : "March 11, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "5. Bussiness Logic Vulnerabilities.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-10-5.Business_logic_vulnerabilities/", \
+          "date"     : "March 10, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "4. Command Injection.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-09-4.Command_Injection/", \
+          "date"     : "March  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "3. Directory Traversal.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-08-3.Directory_Traversal/", \
+          "date"     : "March  8, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "2. Authentication.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-07-2.Authentication/", \
+          "date"     : "March  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "1. SQLInjection", \
+          "category" : "burp", \
+          "url"      : "/2022-03-06-1.SQLInjection/", \
+          "date"     : "March  6, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Seguridad Perimetral", \
+          "category" : "blueteam", \
+          "url"      : "/2022-02-09-Seguridad_Perimetral/", \
+          "date"     : "February  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Hardening de sistemas", \
+          "category" : "blueteam", \
+          "url"      : "/2022-02-09-Hardening_de_sistemas/", \
+          "date"     : "February  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Bandit", \
+          "category" : "otw", \
+          "url"      : "/2022-02-08-Bandit/", \
+          "date"     : "February  8, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Proxy", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-Proxys/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Protocolos Relevantes", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-Protocolos_Importantes/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Curso Básico Redes", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-Precurso_Redes/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "IPs", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-IPs/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Movimientos Laterales", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-06-Introducci%C3%B3n_a_movimientos_laterales/", \
+          "date"     : "February  6, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Evasión de Defensas", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-05-Evasi%C3%B3n_de_Defensas/", \
+          "date"     : "February  5, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Escalada de privilegios", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-05-Escalada_de_privilegios/", \
+          "date"     : "February  5, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Metasploit", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-04-Metasploit_B%C3%A1sico/", \
+          "date"     : "February  4, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Ataques a aplicaciones Android", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-03-Ataques_aplicaciones_android/", \
+          "date"     : "February  3, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Ataque a aplicaciones web.", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-02-Ataques_a_aplicaciones_web/", \
+          "date"     : "February  2, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Ataques a Infraestructuras y Redes", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-01-Ataques_a_Infraestructuras_y_Redes/", \
+          "date"     : "February  1, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Análisis de Objetivos", \
+          "category" : "redteam", \
+          "url"      : "/2022-01-28-An%C3%A1lisis_de_Objetivos/", \
+          "date"     : "January 28, 2022" \
+        }, \
+       \
+       \
+        { \
+          "title"    : "Assembly and Architecture Introduction.", \
+          "category" : "page", \
+          "url"      : "/ASSEMpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Blueteam Basics", \
+          "category" : "page", \
+          "url"      : "/BLUETEAMBASICSpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "PortSwigger BurpSuite Course", \
+          "category" : "page", \
+          "url"      : "/BURPSUITEpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "C-Family Software Memory Corruption Vulnerabilities", \
+          "category" : "page", \
+          "url"      : "/CSOFTpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "C &amp; Systems Fundamentals.", \
+          "category" : "page", \
+          "url"      : "/Cpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Dharma Fuzzer language", \
+          "category" : "page", \
+          "url"      : "/DHARMApage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Exploiting &amp; Reversing", \
+          "category" : "page", \
+          "url"      : "/EXPREVpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Fuzzing JavaScript Engine", \
+          "category" : "page", \
+          "url"      : "/Fuzzpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "HackTheBox", \
+          "category" : "page", \
+          "url"      : "/HackTheBoxpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "TryHackMe", \
+          "category" : "page", \
+          "url"      : "/MATHpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "PEN200 notes", \
+          "category" : "page", \
+          "url"      : "/PEN200page/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Proyectos", \
+          "category" : "page", \
+          "url"      : "/PROJECTSpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Networking Basics", \
+          "category" : "page", \
+          "url"      : "/REDESpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "RedTeam Basics", \
+          "category" : "page", \
+          "url"      : "/REDTEAMBASICSpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Retired Machines", \
+          "category" : "page", \
+          "url"      : "/RetiredMachinespage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "TryHackMe", \
+          "category" : "page", \
+          "url"      : "/THMpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "About me", \
+          "category" : "page", \
+          "url"      : "/aboutme/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "THM", \
+          "category" : "page", \
+          "url"      : "/preOSCPpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Tag Index", \
+          "category" : "page", \
+          "url"      : "/tags/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page2/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page3/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page4/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page5/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page6/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page7/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page8/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page9/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page10/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page11/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page12/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page13/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page14/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page15/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page16/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page17/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page18/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page19/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page20/", \
+          "date"     : "January 1, 1970" \
+        } \
+       \
+    ]';
+    searchjson = JSON.parse(searchjson);
+
+    var sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('nav-search-input'),
+      resultsContainer: document.getElementById('search-results-container'),
+      json: searchjson
+    });
+  </script>
+</div>
+
+
+
+
+
+  <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Malloc Tutorial</h1>
+          
+            
+              <h2 class="post-subheading">A brief tutorial about how malloc() and free() work internally.</h2>
+            
+          
+
+          
+            <span class="post-meta">Posted on June 6, 2025</span>
+            
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+
+      
+
+      <article role="main" class="blog-post">
+        <h3 id="mallocs-tutorial">Malloc’s tutorial.</h3>
+
+<h4 id="introduction">Introduction.</h4>
+
+<p><em>Malloc</em> is the function to allocate memory blocks in a C program. The purpouse of this section is build a simple own-malloc version in order to understand the underlying concepts:</p>
+
+<ul>
+  <li>How memory is managed in a process.</li>
+  <li>Reallocation and freeing memory chunks.</li>
+</ul>
+
+<p><br /></p>
+
+<h4 id="presenting-malloc-principal-features--signature">Presenting Malloc. Principal features &amp; Signature.</h4>
+
+<p><em>Malloc</em> (referred as malloc(3) in Posix documentation), is a standard C library function (included in the standard C runtime library; libc, that any compliant C environment must provide) that <em>allocates</em> memory chunks. We will get into this later.</p>
+
+<p>This functions usually complies the following rules:</p>
+
+<ul>
+  <li><em>malloc</em> function allocates at least the number of bytes passed to the function by argument.</li>
+  <li><em>malloc</em> function returns a pointer that points to a space where the program can read or write successfully, (allocated memory space).</li>
+  <li><em>malloc</em> will not reuse allocated space unless the pointer which references it gets freed.</li>
+  <li><em>malloc</em> also has to be fast, deterministic and thread-safe. In short terms, it has to be a reliable function when use it.</li>
+</ul>
+
+<p>The signature of malloc is:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span><span class="o">*</span> <span class="nf">malloc</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">size</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>This means that malloc accepts only one argument which is the number of bytes of memory to be allocated an returns a void pointer, which is a pointer that can points to any data type (most likely it ought to be cast after call).</p>
+
+<p><br /></p>
+
+<h4 id="the-processs-memory-stack-and-heap">The Process’s Memory. Stack and Heap.</h4>
+
+<h5 id="process-and-virtual-address">Process and Virtual Address.</h5>
+
+<p>A process is the instance of a program loaded in memory. Each process has its own virtual address space dynamically translated into physical address by the <em>Memory Management Unit</em> and the <em>kernel</em>.</p>
+
+<p>This virtual space can be split in several parts. In general terms we have:</p>
+
+<ul>
+  <li>Some space for the code.</li>
+  <li>A stack where local and volatile data are stored.</li>
+  <li>Some space for constants and global variables.</li>
+  <li>Unorganized space for program’s data; HEAP.</li>
+</ul>
+
+<p><br /></p>
+
+<h5 id="the-heap">The heap.</h5>
+
+<h6 id="introducing-the-heap">Introducing the heap.</h6>
+
+<p>In C programming, from the allocator’s point of view, the heap is a continuous space of memory, meaning that handles memory as a linear space, with three bounds:</p>
+
+<ul>
+  <li>A starting point (start_brk); pointer which denotes the beginning of the heap segment.</li>
+  <li>A maximum limit (managed through sys/ressource.h’s functions getrlimit(2) and setrlimit(2)).</li>
+  <li><em>brk/program break</em>, a pointer which marks the end of the mapped memory space within the reserved memory space for the process.</li>
+</ul>
+
+<p><br /></p>
+
+<div style="text-align:center">
+<img src="/assets/img/C/image-1.png" text-align="center" />
+</div>
+
+<p><br /></p>
+
+<p>In the image above we can see the heap, is the space between the starting point and the break and it grows to upper memory addresses, this means; <em>memory address above the break point aren’t part of the heap</em></p>
+
+<p>Thus, when we call <em>malloc</em>, this functions gets a chunk from the unmapped heap region and allocate it, moving the <em>break</em> limit making the mapped region to grown and the unmmaped region to shrink.</p>
+
+<p><br /></p>
+
+<div style="text-align:center">
+<img src="/assets/img/C/image-2.png" text-align="center" />
+</div>
+
+<p><br /></p>
+
+<h6 id="brk-and-sbrk">brk and sbrk.</h6>
+
+<p><em>brk(2)</em> and <em>sbrk(2)</em> are both system calls provided directly by the Unix kernel to manage a process’s data segment (the heap). They are also both obsolote so in contrast with malloc, they aren’t part of the standard C library or the Posix-standard. Current dynamic memory managment is handled by mmap().</p>
+
+<ul>
+  <li>
+    <p><em>brk()</em>:</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kt">int</span> <span class="nf">brk</span><span class="p">(</span><span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">addr</span><span class="p">);</span>
+</code></pre></div>    </div>
+
+    <p>Place the break at the given address <em>addr</em> and returns 0 if operation is succesfull (-1 otherwise).</p>
+
+    <p><br /></p>
+  </li>
+  <li>
+    <p><em>sbrk(2)</em> This function is a wrapper of brk, (this means that internally calls brk()).This function moves the program break by the given increment in bytes. It returns the previous or the new break address. If faild it returns (void *) -1.</p>
+
+    <p>Is worth to mention that, when the increment is null, then the return value is the current break address and it can be used to retrieve the initial position of the heap:</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kt">void</span><span class="o">*</span> <span class="nf">sbrk</span><span class="p">(</span><span class="kt">intptr_t</span> <span class="n">incr</span><span class="p">);</span>
+  <span class="kt">int</span><span class="o">*</span> <span class="n">brkptr</span> <span class="o">=</span> <span class="n">sbrk</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> 
+</code></pre></div>    </div>
+
+    <p>We will use sbrk as our main tool to implement <em>malloc</em>.</p>
+
+    <p><br /></p>
+  </li>
+</ul>
+
+<h6 id="unmapped-region-and-no-mans-land">Unmapped Region and No-Man’s Land.</h6>
+
+<p>We saw earlier that the break mark the end of the mapped virtual adress space: accessing adresses above the break should trigger a bus error. The remaining space between the break and the maximum limit of the heap is not associated to physical memory by the virtual memory manager of the system (the MMU and the dedicated part of the kernel.).</p>
+
+<p>Physical memory and virtual memory is organize in <em>pages</em> (frames for the physical memory) of fixed size (on most actual system a page size is 4096 bytes). Thus, the break pointer may not be on pages boundary.</p>
+
+<p><br /></p>
+
+<div style="text-align:center">
+<img src="/assets/img/C/image-3.png" text-align="center" />
+</div>
+
+<p><br /></p>
+
+<p>The image above presents the previous memory organisation with page boundaries. We can see the break may not correspond to a page boundary. The status of the memory betwee the break and the next page boundary is, in fact, available.</p>
+
+<p>The issue is that you don’t have any clue on the position of the next boundary, you can find it but it is system dependant and badly advise. <strong>This no-man’s land is often a root of bugs</strong>. Some wrong manipulations of pointer outside of the heap can success most of the time with small tests and fail only when manipulating larger amount of data.</p>
+
+<p><br /></p>
+
+<h4 id="dummy-malloc">Dummy malloc.</h4>
+
+<p>First, we will play with sbrk(2) to code a dummy malloc. This malloc is probabily the
+worst one, even if it is the simplest and quiet the fastest one.</p>
+
+<p>The idea is very simple, each time malloc is called we move the break by the amount of space required and return the previous address of the break. This is the main functionality of <em>malloc</em>, to move the break pointer in order to release an amount of memory in the mapped section of the Heap.</p>
+
+<p>It is simple and fast, it takes only three lines, but we cannot do a real free and of course realloc is impossible.</p>
+
+<p>This malloc waste a lot of space in obsolete memory chunks. It is only here for educationnal purpose and to try the sbrk(2) syscall. For educationnal purposes, we will also add some error management to our malloc.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* Dummy malloc code */</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;sys/types.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span>
+<span class="kt">void</span><span class="o">*</span> <span class="nf">malloc</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">size</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="kt">void</span><span class="o">*</span> <span class="n">p</span><span class="p">;</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">sbrk</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">//The current break position pointer.</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">sbrk</span><span class="p">(</span><span class="n">size</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//Then, we move the break pointer a size of bytes up and check the result of the operation and return NUll if fails, other wise, we return the position of break.</span>
+        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">p</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>As a result, when we use this malloc we retrieve a pointer that points to the upper memory address of a new release memory chunk available to be write in in the mapped section.</p>
+
+<p><br /></p>
+
+<h4 id="organizing-the-heap">Organizing the Heap.</h4>
+
+<h5 id="defining-the-idea">Defining the idea.</h5>
+
+<p>The previous section we craft a dumby malloc since we have a lack of information about the Heap. In this section we will try to find an organisation of the heap so that we can have an efficient malloc but also a free and a realloc.</p>
+
+<p>We need extra-information at begining of each chunks indicating at least:</p>
+
+<ul>
+  <li>The size of the chunk</li>
+  <li>The address of the next one and whether its free or not.</li>
+</ul>
+
+<p>This can be achieved by adding a small block at the begining of each chunk containing the metadata that will consist in:</p>
+
+<ul>
+  <li>A pointer to the next chunk.</li>
+  <li>A flag to mark free chunks</li>
+  <li>The size.</li>
+</ul>
+
+<p>This block would be before the pointer rlinked list in eturned by malloc that points now, not to the first address of the chunk (that englobes the metadata too), but of the data block:</p>
+
+<p><br /></p>
+
+<div style="text-align:center">
+<img src="/assets/img/C/image-4.png" text-align="center" />
+</div>
+
+<p><br /></p>
+
+<p>So our memory chunk allocated by malloc now consist of the data chunk of the requested size and also a small chunk of metadata.</p>
+
+<p><br /></p>
+
+<h5 id="implementing-it-in-c">Implementing it in C.</h5>
+
+<h6 id="brief-annex-structure-padding-and-memory-alignament">Brief Annex: Structure Padding and Memory Alignament.</h6>
+
+<p>Lets start introducing some definitions:</p>
+
+<ul>
+  <li>
+    <p>A <em>struct</em> in C is just a contigous block of memory that holds different members often of different types (different sizes).</p>
+  </li>
+  <li>
+    <p>A <em>word</em> is the natural unit of data used by a processor, typically corresponding to the size of its general-purpose registers and the amount of data it can process or transfer in a single operation. This means that what a processor understands for a word is architecture-specific. (4 bytes in 32-bits processors, 8 for 64-bits).</p>
+
+    <p>This also means that the processor accesses memory in multiples of the word size. That is, if the word size is 4 bytes and the processor wants to read memory at address 0x1002, it will read from 0x1000 to 0x1004 in order to access 0x1002.</p>
+  </li>
+</ul>
+
+<p>With this clear, <em>Structure padding</em> is a mechanism implemented by operating systems in order to make more efficient processor’s access to memory.</p>
+
+<p>If we consider the following structure in a 32 bits architecture:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="n">abc</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="n">a</span><span class="p">;</span> <span class="c1">// 1 byte</span>
+    <span class="kt">char</span> <span class="n">b</span><span class="p">;</span> <span class="c1">// 1 byte</span>
+    <span class="kt">int</span> <span class="n">c</span><span class="p">;</span> <span class="c1">// 4 byte</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>We could think that the total size of the structure would be the amount of the size of his fields (1 + 1 + 4) but this is wrong.</p>
+
+<p>Then, we remember that, our procesor can only read a word’s size in a cycle, so it would read ‘a’, ‘b’ and the two first bytes of ‘c’, lefting two bytes for the second cycle:</p>
+
+<p><br /></p>
+
+<div style="text-align:center">
+<img src="/assets/img/C/image-5.png" text-align="center" />
+</div>
+
+<p><br /></p>
+
+<p>Two cicles are required to access contents of variable ‘c’ and this is not efficient since is an unnecesary wastage of CPU cycles whenever we want to access to ‘c’ value. Is necesary to implement a way that makes the procesor to use the minimum number of CPU cycles to access a variable value.</p>
+
+<p>So the processor implements the <em>structure padding</em> mechanism, in which the processor adds some empty bytes of memory in order to ensure the alignament of data members with the word size. Ensuring efficency in the requiered CPU cycles to access data in memory.</p>
+
+<p>Following the previous example, the efficent way to organize the data over the address we would be to create a empty space of two bytes between ‘b’ and ‘c’ variables. This would result to ‘c’ to be stored on a memory address location multiple of the word size (4 bytes).</p>
+
+<p><br /></p>
+
+<div style="text-align:center">
+<img src="/assets/img/C/image-6.png" text-align="center" />
+</div>
+
+<p><br /></p>
+
+<p>This initially would solve the problem and in fact change the size of the structure since we add the 2 bytes size of empty space for the padding:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>char + char + padding + int == 1 + 1 + 2 + 4 == 8
+</code></pre></div></div>
+
+<p>Note that the padding changes (and structure’s size) changes if the order of the data types changes. Lets consider the following sort:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="n">abc</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="n">a</span><span class="p">;</span> <span class="c1">// 1 byte</span>
+    <span class="kt">int</span> <span class="n">c</span><span class="p">;</span> <span class="c1">// 4 byte</span>
+    <span class="kt">char</span> <span class="n">b</span><span class="p">;</span> <span class="c1">// 1 byte</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This would provoke to add an empty space of 3 bytes between ‘a’ and ‘c’ and between ‘c’ and ‘b’ obtaining:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">char</span> <span class="o">+</span> <span class="n">padding</span> <span class="o">+</span> <span class="kt">int</span> <span class="o">+</span> <span class="n">padding</span> <span class="o">+</span> <span class="kt">char</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">8</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h6 id="linked-lists">Linked lists.</h6>
+
+<p>Now, we traslate the idea above in to C code through the <em>linked lists</em>.</p>
+
+<p>A <em>single linked list</em> is a linear data structure in C where each element (called node) is connected to the next one using pointers.</p>
+
+<ul>
+  <li>the data,</li>
+  <li>the pointer to the next node.</li>
+</ul>
+
+<p>The last node’s (also known as tail) pointers point to NULL to indicate the end of the linked list.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="n">Node</span> <span class="p">{</span>
+  
+  <span class="c1">// Data field - can be of any type and count</span>
+  <span class="kt">int</span> <span class="n">data</span><span class="p">;</span>
+  
+  <span class="c1">// Pointer to the next node</span>
+  <span class="k">struct</span> <span class="n">Node</span><span class="o">*</span> <span class="n">next</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The C code above was an example, in our case, it would turn out like the following:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">typedef</span> <span class="k">struct</span> <span class="n">s_block</span> <span class="o">*</span><span class="n">t_block</span><span class="p">;</span> <span class="c1">//Create a type allias 't_block' for a pointer to a structure.Is a reference to a type using another name.</span>
+
+<span class="k">struct</span> <span class="n">s_block</span> <span class="p">{</span>
+    <span class="kt">size_t</span> <span class="n">size</span><span class="p">;</span> <span class="c1">//Size of the chunk.</span>
+    <span class="n">t_block</span> <span class="n">next</span><span class="p">;</span> <span class="c1">//Pointer for the next chunk.</span>
+    <span class="kt">int</span> <span class="n">free</span><span class="p">;</span> <span class="c1">//Flag for the state.</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>Now, we have to allocate enough space with <em>sbrk()</em> for the struct’s size: (assuming 64bit system - 8 bytes word)</p>
+
+<ul>
+  <li>8 bytes –&gt; size_t size (unsigned long). This is 8 bytes in 64bc</li>
+  <li>8 bytes –&gt; t_block (pointer to structure s_block). A pointer type is 8 bytes in 64bit systems or 4 bytes in 32bit systems</li>
+  <li>4 bytes –&gt; int free (signed integer)</li>
+</ul>
+
+<p>Thus, when the compiler encounters an access to a struct field (like for example free as s.free) it just translates it to the base address of the struct instance plus the offset of the appropriate member/field desired to be accessed within the structure.</p>
+
+<p>However, we have to be careful with structure padding and member alignment when calculating structure member offsets and the structure size itself, as one could initially think that sizeof(struct s_block) would be 20 (8 + 8 + 4), but in reality it will be 24 due to member alignment (8 + 8 + 8) just as we seen in the annex before.</p>
+
+<p>Thus, when the compiler encounter an access to struct field (like for example free; s.free) it just translate it to the base address of the struct plus the sum of the length of the previous field without complex memory address operations.</p>
+
+<p>So we allocate enough space with sbrk() for the chunck (including the size of the meta-data plus the size of the data block) and put the address of the old break in a variable of type t_block.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">typedef</span> <span class="k">struct</span> <span class="n">s_block</span> <span class="o">*</span><span class="n">t_block</span><span class="p">;</span> <span class="c1">//Create a type allias 't_block' for a pointer to a structure.Is a reference to a type using another name.</span>
+
+<span class="k">struct</span> <span class="n">s_block</span> <span class="p">{</span>
+    <span class="kt">size_t</span> <span class="n">size</span><span class="p">;</span>
+    <span class="n">t_block</span> <span class="n">next</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">free</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">t_block</span> <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">t_block</span><span class="p">)</span><span class="n">sbrk</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">//We save the program break.</span>
+<span class="n">sbrk</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">s_block</span><span class="p">)</span> <span class="o">+</span> <span class="n">size</span><span class="p">);</span> <span class="c1">// Expand the heap by adding the needed space for the struct (metadata) and the size of the chunk (the memory chunk it self).</span>
+
+<span class="n">b</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">=</span> <span class="n">size</span><span class="p">;</span> <span class="c1">//Store the value of the requested size in the size field of the struct pointed to by b.</span>
+</code></pre></div></div>
+<p>We can notice that, we assign sbrk(0), a pointer to program break, to a t_block b data type; which is a pointer to a structure (s_block). This can be confusing at first time since the program break is not memory chunk, but when we then expand the heap, the previous program_break now points to the head of a totally valid new memory chunk:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>       Heap Start
+           |
+     [ used memory ]
+           |
+           v
++------------------------+
+|  struct s_block        |   &lt;-- b points here, previous break.
++------------------------+
+|  user data (size)      |
++------------------------+
+           |
+           v
+  [ new program break ]
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h4 id="a-first-fit-malloc">A First Fit Malloc.</h4>
+
+<p>Now that we know how to organize the heap, we will try to implement the classic <em>first fit</em> malloc.</p>
+
+<p>First Fit is one of the classic strategies for implementing malloc() — it’s how your custom memory allocator decides where to place a new allocation in the heap. We will do this <em>by going through the chunks list and stop when we find a free block with enough space for the requested allocation.</em></p>
+
+<p><br /></p>
+
+<h5 id="memory-alignament">Memory alignament.</h5>
+
+<p>Remembering what we said about <em>structure padding</em>, the same thing and for the same reason applies to pointers; <strong>memory addresses (pointers) must often be multiples of the size of the data type they point to.</strong></p>
+
+<p>Since the pointer holds the first address in which data is stored, if this address is not aligned with a multiple of the size of the data type (for example an integer), the data may be fetched between several CPU cycles rather than just one, making more likely the need of more CPU cycles than required to access the data referenced by the pointer.</p>
+
+<p><br /></p>
+
+<div style="text-align:center">
+<img src="/assets/img/C/image-7.png" text-align="center" />
+</div>
+
+<p><br /></p>
+
+<p>In the image above, the only valid address for a pointer to an integer are 0x996, 0x1000 or 0x1004. Every other memory in this segment would lead to the need of at least two CPU cycles to read our integer.</p>
+
+<p>This is what we call <em>memory alignment</em>, which enounces: <strong>any data type must be stored in a memory address multiple of his own size value.</strong> For example, an integer only can be stored in an address multiple of 4.</p>
+
+<p><br /></p>
+
+<h5 id="aligned-chunks-arithmetic-trick">Aligned Chunks. Arithmetic trick.</h5>
+
+<p>Going back to our memory chunk, since our meta-data block is already aligned, the only thing we need is to align the size of the data block. This means that if we when we allocate a block of memory (e.g., 13 bytes), you can’t just hand out 13 bytes we have to round it up to the next multiple of 4 (the word size), 16 bytes in this case, so that the next block or data remains aligned.</p>
+
+<p>Assuming, obviously, that a size is just an integer, we use the following arithmetic trick to get the next multiple of four since one given integer:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>m = (n - 1)/4 · 4 + 4 for any integer, n.
+</code></pre></div></div>
+
+<p>We can extrapole this to C by defining the following macro:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define align4(x) (((((x) -1) &gt; &gt;2) &lt; &lt;2)+4)
+</span></code></pre></div></div>
+
+<p>We can applie this to transform the size of any chunk into a multiple of 4.</p>
+
+<p><br /></p>
+
+<h5 id="finding-a-chunk-the-first-fit-algorithm">Finding a chunk: the First Fit Algorithm.</h5>
+
+<p>Now, we have to implement an algorithm in order to go to over a list and find sufficiently wide chunk for user requirements.</p>
+
+<p>We begin at the base addresss of the heap (we will get in to this later), then we test the current chunk, if fit; return his address, if not; we continue to the next chunk. In this process, the hole key thing is to keep the last visited chunk, in order to be able to expand the heap if we don’t find a suitable size.</p>
+
+<p>Let’s draw this in order to get a graphic vision of the algorithm:</p>
+
+<pre><code class="language-txt">heap_start --&gt; [used | 32] --&gt; [free | 64] --&gt; [used | 16] --&gt; NULL
+                                                         ↑
+                                                    last visited
+                                                   (program break)
+</code></pre>
+
+<p>Since the heap starts in lower address and grows upwards, then, the pointer to the last chunk coincides with the <em>program break</em> since is the toppest part of the heap. Thus, if we keep in each iteration with the previous pointer we visited, when we get a NULL when we iterates over the list we then we knoe that the previous pointer is in fact the program break.</p>
+
+<p>We apply this in C through the next function:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t_block</span> <span class="nf">find_block</span><span class="p">(</span><span class="n">t_block</span> <span class="o">*</span><span class="n">last</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">size</span><span class="p">){</span> <span class="c1">//This function needs two arguments, the requested size and a pointer to t_block (this is a pointer to a pointer to the metadata).</span>
+
+    <span class="c1">//Also, this function starts at the base of the heap and then go over the heap's chunks in order to find is there is any chunk that fits.</span>
+
+    <span class="n">t_block</span> <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">t_block</span><span class="p">)</span><span class="n">base</span><span class="p">;</span> <span class="c1">//We define a pointer to the s_block structure and assign it the base. This would serve us as the start point. Then, we define the following loop. </span>
+
+    <span class="k">while</span><span class="p">(</span><span class="n">b</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="p">(</span><span class="n">b</span><span class="o">-&gt;</span><span class="n">free</span> <span class="o">&amp;&amp;</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">&gt;=</span> <span class="n">size</span><span class="p">))</span> <span class="p">{</span> <span class="c1">//This means that, while b is not NULL pointer, and the chunk referenced is not free or chunk's size is less than the requested size. Then,</span>
+
+        <span class="o">*</span><span class="n">last</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span> <span class="c1">//We modify the the last pointer in order to retain the last chunk.</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span> <span class="c1">//Then, we assign b the pointer to the next chunk and reevaluate.</span>
+    
+    <span class="c1">//Thus, if we find a chunk we return it nd last will point to the previous chunk to that one, and if not we return NULL and *last will point to the program break</span>
+    <span class="p">}</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h5 id="extending-the-heap">Extending the Heap.</h5>
+
+<p>In the previous block we implement a algorthim which goes over a linked list of chunks in order to find one free and whichi fit the requested size.</p>
+
+<p>Now, we won’t always have a fitting chunk, and sometimes (especially at the begining of the
+program using our malloc) we need to extends the heap. This is quite simple: <em>we move the break and initialize a new block, of course we need to update the next field of the last block on the heap.</em></p>
+
+<p>First, we define a macro to hold the size of meta-data block:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define BLOCK_SIZE sizeof(struct s_block)
+</span></code></pre></div></div>
+
+<p>Then implement the following C code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t_block</span> <span class="nf">extend_heap</span><span class="p">(</span><span class="n">t_block</span> <span class="n">last</span> <span class="p">,</span> <span class="kt">size_t</span> <span class="n">s</span><span class="p">){</span>
+
+    <span class="n">t_block</span> <span class="n">b</span><span class="p">;</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">sbrk</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">//Save program break.</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">sbrk</span><span class="p">(</span><span class="n">BLOCK_SIZE</span> <span class="o">+</span> <span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c1">//Expand the heap by adding space for metadata and size of the chunk as we see previously and return NULL if fails and returns -1.</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nb">NULL</span> <span class="p">);</span>
+
+    <span class="n">b</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">=</span> <span class="n">s</span><span class="p">;</span>
+    <span class="n">b</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span> <span class="c1">//Since this is the last memory chunk, the valur to the 'next pointer' is NULL.</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">last</span><span class="p">)</span>
+        <span class="n">last</span> <span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span> <span class="c1">//If the pointer of the previous chunk is not NULL, then last's 'next pointer' will point to the current chunk. Program break previous heap's expanding.</span>
+
+    <span class="n">b</span><span class="o">-&gt;</span><span class="n">free</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//Then we sett current chunk as not free.</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">b</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>We just expand the heap as we see in previous sections and return NULL if sbrk fails or the pointer to the new chunk if succeed.</p>
+
+<p>(void<em>) -1 is a special value in C that typically represents an error return value for functions that return a void</em>, such as sbrk() or mmap().</p>
+
+<p><br /></p>
+
+<h5 id="spliting-blocks">Spliting blocks.</h5>
+
+<p>In the previous fit first algorithm, we just provide the first memory chunk that fit in the size, but this is not efficient since there is a wasted of a lot of space (request 2 bytes and find a block of 256 bytes):</p>
+
+<p><br /></p>
+
+<div style="text-align:center">
+<img src="/assets/img/C/image-8.png" text-align="center" />
+</div>
+
+<p><br /></p>
+
+<p>A first solution is to split blocks: when a chunk is wide enough to held the asked size plus a new chunk (at least BLOCK SIZE + 4, remember that 4 is in 32-bits system, our example, the word’s size bytes, so 4 bytes is the minimum extra space we need to ensure a new chunk is available), we insert a new chunk in the list:</p>
+
+<p><br /></p>
+
+<div style="text-align:center">
+<img src="/assets/img/C/image-9.png" text-align="center" />
+</div>
+
+<p><br /></p>
+
+<p>We can implement this split following the next two steps:</p>
+
+<ul>
+  <li>
+    <p>First, we just add a another field to struct s_block of <em>type characters array</em>:</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kt">char</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</code></pre></div>    </div>
+
+    <p>Sorted at the end of the s_block structure:</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">struct</span> <span class="n">s_block</span> <span class="p">{</span>
+      <span class="kt">size_t</span> <span class="n">size</span><span class="p">;</span>
+      <span class="n">t_block</span> <span class="n">next</span><span class="p">;</span>
+      <span class="kt">int</span> <span class="n">free</span><span class="p">;</span>
+      <span class="kt">char</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+  <span class="p">};</span>
+</code></pre></div>    </div>
+
+    <p>This array is formaly translate as a pointer to a char to the first element of the list, at placing it at the end of the list, this pointer is effectively telling us where the metadata of the chunks end, and where the chunk itself begins.</p>
+
+    <p>After this, of course we have to update the BLOCK_SIZE macro:</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="cp">#define BLOCK_SIZE 12 
+</span></code></pre></div>    </div>
+
+    <p>In an 32 bits architecture, the size of structure would be size_t + t_block + int + char ptr == 4 bytes + 4 bytes + 4 bytes + 1 byte (4 if we consider the structure padding). But, we defined above that the block size will be 12, this takes out of the equation the size of the data pointer, making that this pointer now points to the first address of the chunk it self.</p>
+
+    <p>If we instead get</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="cp">#define BLOCK_SIZE sizeof(struct s_block) 
+</span></code></pre></div>    </div>
+    <p>We would get 16 bytes (4+4+4+4 as we see before) including 4 bytes more between the metadata and the chunk.</p>
+
+    <p>So, in summary, we set the size to 12 in order to make the data pointer behave as a separator between the metadata and the s_block.</p>
+  </li>
+  <li>
+    <p>Ultimately, we define the following split_block function:</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kt">void</span> <span class="nf">split_block</span> <span class="p">(</span><span class="n">t_block</span> <span class="n">b</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">s</span><span class="p">){</span> <span class="c1">//Accepts as arguments the block which fits and the request space by the user.</span>
+      <span class="n">t_block</span> <span class="n">new</span><span class="p">;</span> <span class="c1">// We define a new chunk.</span>
+
+      <span class="n">new</span> <span class="o">=</span> <span class="p">(</span><span class="n">t_block</span><span class="p">)(</span><span class="n">b</span><span class="o">-&gt;</span><span class="n">data</span><span class="o">+</span><span class="n">s</span><span class="p">);</span> <span class="c1">// The pointer to point to the new block, points to the ends of the metadata plus the size request by the user.</span>
+      <span class="n">new</span> <span class="o">-&gt;</span><span class="n">size</span> <span class="o">=</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">-</span> <span class="n">s</span> <span class="o">-</span> <span class="n">BLOCK_SIZE</span> <span class="p">;</span> <span class="c1">// The new size of the chunk is the subtraction of the size requested by the user plus the metadata minus the original size.</span>
+      <span class="n">new</span> <span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span> <span class="c1">// The 'next pointer' of the new chunk obviously remains untouch.</span>
+      <span class="n">new</span> <span class="o">-&gt;</span><span class="n">free</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//The new chunks is a free chunk.</span>
+
+
+      <span class="n">b</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">=</span> <span class="n">s</span><span class="p">;</span> 
+      <span class="n">b</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">new</span><span class="p">;</span> <span class="c1">//Then we change the previous size of the original block and make its 'next pointer' to points to the new chunk.</span>
+  <span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p>So, in summary, this new function, gets as arguments the chunk and the request size and creates whithin a space for metadata just after the size request is meet. Then it changes the atributes value performing to separate blocks.</p>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h5 id="the-malloc-function">The malloc function.</h5>
+
+<p>Now, we can do our malloc function. This would be none but a wrapper around previous functions.</p>
+
+<p>Before implement this malloc function, we have to consider to:</p>
+
+<ul>
+  <li>
+    <p><strong>Align the request size:</strong> This means that when we request some memory allocation, this allocation must fit to the memory alignment requirements; be a multiple of the word’s size. For example;</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">malloc</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span> <span class="o">--&gt;</span> <span class="mi">13</span> <span class="n">should</span> <span class="n">get</span> <span class="n">alligned</span> <span class="n">to</span> <span class="mi">16</span><span class="p">.</span>
+  <span class="n">malloc</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span> <span class="o">--&gt;</span> <span class="mi">7</span> <span class="n">should</span> <span class="n">get</span> <span class="n">alligned</span> <span class="n">to</span> <span class="mi">8</span><span class="p">.</span>
+</code></pre></div>    </div>
+
+    <p>Without this regulation CPU can fall into penalties or crashes due to misaligned access.</p>
+
+    <p>For this task we will use the align macro we define before:</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="cp">#define align4(x) (((((x) -1) &gt; &gt;2) &lt; &lt;2)+4)
+</span></code></pre></div>    </div>
+
+    <p>Which finds the next multiple of 4 of the ‘x’ variable.</p>
+  </li>
+  <li>
+    <p><strong>Test if is malloc’s first call:</strong> We have to test if a call to malloc is the first, in order to create the linked lists and expand the heap. In subsequent calls, we will search a fit chunk in the list and then, if we not find a suitable chunk, expand the heap. This can be achieve through the base of the Heap as we will see.</p>
+
+    <p>First of all, we have to remember that the function ‘find_block’ use a global variable called ‘base’ which is a pointer to the start of the heap we haven’t define yet:</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kt">void</span> <span class="o">*</span><span class="n">base</span><span class="o">=</span><span class="nb">NULL</span><span class="p">;</span>
+</code></pre></div>    </div>
+
+    <p>It is a void pointer and it is NULL initialized. The first thing our malloc does is to test
+  base, if it NULL then this the first time we’re called, otherwise we start the previously described algorithm.</p>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<p>So, having this considerations, our malloc performs the following steps:</p>
+
+<ul>
+  <li>
+    <p>First align the requested size.</p>
+  </li>
+  <li>
+    <p>If <em>base</em> is initialized.</p>
+
+    <ul>
+      <li>
+        <p>Search for a free chunk wide enough;</p>
+
+        <ul>
+          <li>
+            <p>If we found a chunk:</p>
+
+            <ul>
+              <li>
+                <p>Try to split the block (the difference between the requested size and the size of the block is enough to store the meta-data and a minimal block, 4 bytes)</p>
+              </li>
+              <li>
+                <p>Mark the chunk as used (b-&gt;free=0;)</p>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p>Otherwise: we extend the heap. Note the use of the last: find block put the pointer to the last visited chunk in last, so we can access it during the extension without traversing the whole list again.</p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>Otherwise: we extended the heap (which is empty at that point.) Note that our function extend heap works here with last=NULL.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<p>The complete malloc code would be as follows:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stddef.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+#define BLOCK_SIZE 12 
+#define align4(x) (((((x)-1)&gt;&gt;2)&lt;&lt;2)+4)
+</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">s_block</span> <span class="o">*</span><span class="n">t_block</span><span class="p">;</span>
+<span class="kt">void</span> <span class="o">*</span><span class="n">base</span><span class="o">=</span><span class="nb">NULL</span><span class="p">;</span>
+
+<span class="k">struct</span> <span class="n">s_block</span> <span class="p">{</span>
+    <span class="kt">size_t</span> <span class="n">size</span><span class="p">;</span>
+    <span class="n">t_block</span> <span class="n">next</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">free</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="p">};</span>
+
+<span class="n">t_block</span> <span class="nf">extend_heap</span><span class="p">(</span><span class="n">t_block</span> <span class="n">last</span> <span class="p">,</span> <span class="kt">size_t</span> <span class="n">s</span><span class="p">){</span>
+    <span class="n">t_block</span> <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">t_block</span><span class="p">)</span><span class="n">sbrk</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">sbrk</span><span class="p">(</span><span class="n">BLOCK_SIZE</span> <span class="o">+</span> <span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+    
+    <span class="n">b</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">=</span> <span class="n">s</span><span class="p">;</span>
+    <span class="n">b</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">last</span><span class="p">)</span>
+        <span class="n">last</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
+
+    <span class="n">b</span><span class="o">-&gt;</span><span class="n">free</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    
+    <span class="k">return</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">t_block</span> <span class="nf">find_block</span><span class="p">(</span><span class="n">t_block</span> <span class="o">*</span><span class="n">last</span> <span class="p">,</span> <span class="kt">size_t</span> <span class="n">size</span> <span class="p">){</span>
+    <span class="n">t_block</span> <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">t_block</span><span class="p">)</span><span class="n">base</span><span class="p">;</span>
+
+    <span class="k">while</span><span class="p">(</span><span class="n">b</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="p">(</span><span class="n">b</span><span class="o">-&gt;</span><span class="n">free</span> <span class="o">&amp;&amp;</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">&gt;=</span> <span class="n">size</span><span class="p">))</span> <span class="p">{</span>
+        <span class="o">*</span><span class="n">last</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">b</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">split_block</span><span class="p">(</span><span class="n">t_block</span> <span class="n">b</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">s</span><span class="p">){</span>
+    <span class="n">t_block</span> <span class="n">new</span><span class="p">;</span>
+    <span class="n">new</span> <span class="o">=</span> <span class="p">(</span><span class="n">t_block</span><span class="p">)(</span><span class="n">b</span><span class="o">-&gt;</span><span class="n">data</span><span class="o">+</span><span class="n">s</span><span class="p">);</span>
+
+    <span class="n">new</span> <span class="o">-&gt;</span><span class="n">size</span> <span class="o">=</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">-</span> <span class="n">s</span> <span class="o">-</span> <span class="n">BLOCK_SIZE</span> <span class="p">;</span>
+    <span class="n">new</span> <span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="n">new</span> <span class="o">-&gt;</span><span class="n">free</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="n">b</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">=</span> <span class="n">s</span><span class="p">;</span>
+    <span class="n">b</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">new</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="o">*</span> <span class="nf">malloc</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">size</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//It only requires one argument, the size of the allocated memory.</span>
+
+    <span class="kt">size_t</span> <span class="n">s</span> <span class="o">=</span> <span class="n">align4</span><span class="p">(</span><span class="n">size</span><span class="p">);</span> <span class="c1">//Although the requested size, s, we need to align it with the following next multiple of the word's size value. This is because the memory alignment principle.</span>
+    <span class="n">t_block</span> <span class="n">b</span><span class="p">,</span> <span class="n">last</span><span class="p">;</span> <span class="c1">//t_block is an alias to a pointer of a structure which holds the metadata of the chunk in order to store some valueable information: size,</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">base</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//If base is not NULL, then we have to go over the heap in order to see if we find a valid free size-fit memory chunk.</span>
+
+        <span class="n">last</span> <span class="o">=</span> <span class="n">base</span><span class="p">;</span> <span class="c1">//We set the last pointer as the base of the heap.</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">find_block</span><span class="p">(</span><span class="o">&amp;</span><span class="n">last</span><span class="p">,</span><span class="n">s</span><span class="p">);</span> <span class="c1">//Then, we attemp to find a chunk.</span>
+
+        <span class="c1">//Then, we evaluate what find_block has returns us, if is not a NULL pointer, then it points to a chunk and we then evaluate if we can split it in order to evade memory wasting.</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">last</span> <span class="o">=</span> <span class="n">base</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">((</span><span class="n">b</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">-</span> <span class="n">s</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="n">BLOCK_SIZE</span> <span class="o">+</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">//We check if there is, without the size of the chunk it self (b-&gt;size - s), minimal space (at least the word's size: 4 bytes) to hold a new chunk (this is the metadata plus the chunk space: BLOCK_SIZE + 4).</span>
+                <span class="n">split_block</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">s</span><span class="p">);</span> 
+    
+            <span class="n">b</span><span class="o">-&gt;</span><span class="n">free</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//We set the chunk as not free.</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="c1">//If bis NULL, there is not suitable chunk and the extend the heap from the last chunk in the heap. Remember from find_block that if b is null, then last holds the program_break.</span>
+
+            <span class="n">last</span> <span class="o">=</span> <span class="n">base</span><span class="p">;</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="n">find_block</span><span class="p">(</span><span class="o">&amp;</span><span class="n">last</span><span class="p">,</span><span class="n">s</span><span class="p">);</span>
+            
+            <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">b</span><span class="p">)</span> <span class="c1">//We check if we manage to extend the heap.</span>
+                <span class="k">return</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+        <span class="p">}</span>
+
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">extend_heap</span><span class="p">(</span><span class="n">last</span><span class="p">,</span> <span class="n">s</span><span class="p">);</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">b</span><span class="p">)</span> <span class="c1">//We check if the pointer to the extended heap region is valid, if not return NULL.</span>
+            <span class="k">return</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+        
+        <span class="n">base</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span> <span class="c1">//Assign b pointer to base in order to not repeat this loop.</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span><span class="p">(</span><span class="n">b</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">);</span> <span class="c1">//At last we return the first memory address of the chunk (not a pointer to the metadata) Remember that data holds the first valid address of the allocated chunk it self.</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="calloc-free-and-realloc">Calloc, Free, and Realloc.</h3>
+
+<p>Now that we have pretty clear how malloc works lets deep in other functions that provides auxiliary functionality that complements to the behaviour of malloc.</p>
+
+<p><br /></p>
+
+<h4 id="calloc">Calloc.</h4>
+
+<p>Calloc is pretty the same as Malloc with the difference that calloc initiates the memory to 0. So we can implement calloc in C understanding it like a wrapper for malloc with extra functionality:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">size_t</span> <span class="o">*</span><span class="nf">calloc_custom</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">number</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">size</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//In this case, we accept the number of chunks to be allocated and the size of each chunk.</span>
+    <span class="kt">size_t</span> <span class="o">*</span><span class="n">ptr</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">number</span> <span class="o">*</span> <span class="n">size</span><span class="p">);</span> <span class="c1">//We allocate that memory and get the pointer.</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ptr</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//If operation is succesfull and ptr is not NULL, we get the number of words (4bytes in32 bits) which fit in the chunk and initiate those chunks to 0</span>
+        <span class="kt">size_t</span> <span class="n">total_words</span> <span class="o">=</span> <span class="p">(</span><span class="n">number</span> <span class="o">*</span> <span class="n">size</span><span class="p">)</span> <span class="o">/</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">size_t</span><span class="p">);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">total_words</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">ptr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//We zero every 4 bytes chunk.</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">ptr</span><span class="p">;</span> <span class="c1">//Then return pointer.</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>A brief incisión is that:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">*</span> <span class="n">ptr</span><span class="p">;</span>
+<span class="n">ptr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">==</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)(</span><span class="n">ptr</span> <span class="o">+</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">//Which means, write to '0' &lt;sizeof(int)&gt; bytes starting in the offset (0 + sizeof(int)*0) from the memory address holded in ptr.</span>
+<span class="n">ptr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">==</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)(</span><span class="n">ptr</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">//Which means, write to '0' &lt;sizeof(int)&gt; bytes starting in the offset (0 + sizeof(int)*1) from the memory address holded in ptr.</span>
+<span class="p">...</span>
+<span class="n">ptr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">==</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)(</span><span class="n">ptr</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span> <span class="c1">//Which means, write to '0' &lt;sizeof(int)&gt; bytes starting in the offset (0 + sizeof(int)*i) from the memory address holded in ptr.</span>
+</code></pre></div></div>
+
+<p>So in that loop we are writing to ‘0’ chunks of 4 bytes performing steps of 4 bytes, so we are writing all bytes to 0.</p>
+
+<p><br /></p>
+
+<h4 id="free">Free.</h4>
+
+<p>In short terms, <em>free()</em> function is used to deallocated allocated memory previously allocated with malloc or similar.</p>
+
+<p><br /></p>
+
+<h5 id="the-space-fragmentation-problem-fusion-function">The space fragmentation problem. Fusion() function.</h5>
+
+<p>A major issue of malloc is <em>fragmentation</em>: after several use of malloc and free, we end with a heap divided in many chunks individually to small to satify big malloc while the whole free space would have been sufficient.</p>
+
+<p>This issue is known as the space fragmentation problem. For example; when we select a free chunk wider enough to hold the requested allocation and another chunk, we split the current chunk. While this offer a better usage of the memory (the new chunk is free for further reservation) it introduces more fragmentation.</p>
+
+<p>We can implement some solutions to this problem:</p>
+
+<p>A solution to eliminate some fragmentation is to fusion free chunks. When we free a chunk, and its neighbors are also free, we can fusion them in one bigger chunk. All we have to do is to test the next and previous chunks. This also raises other problem; who do we find the previous chunk? We can double link our list.</p>
+
+<p>For this, we implement the following function. This function act with a modification of our s_block struct we will explain later.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t_block</span> <span class="nf">fusion</span><span class="p">(</span><span class="n">t_block</span> <span class="n">b</span><span class="p">){</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">&amp;&amp;</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">free</span><span class="p">){</span> <span class="c1">//If b-&gt;next pointer is not NULL, and b-&gt;next-&gt;free is not 0, this means the next chunk is free; then we fusion both blocks by updating the fields of the first:</span>
+        <span class="n">b</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">+=</span> <span class="n">BLOCK_SIZE</span> <span class="o">+</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">-&gt;</span><span class="n">size</span><span class="p">;</span> <span class="c1">//We add to the first's size the second's size along with the metadasize.</span>
+        <span class="n">b</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span> <span class="c1">//Then we assign the get out of the linked list the second chunk making it in fact invisible and occuping his space in the heap.</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span>
+            <span class="n">b</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">prev</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span><span class="c1">//This is part of a later modification of our structure s_block entity adding a prev field (double link). Here we are setting the prev field of the next pointer as b, again getting out the second chunk out of the linked list.</span>
+    <span class="p">}</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Fusion is straightforward: if the next chunk is free, we sum the sizes of the current chunk and the next one, plus the meta-data size. Then, the we make next field point to the successor of our successor and if this successor exists we update its predecessor.</p>
+
+<p><br /></p>
+
+<h5 id="finding-the-right-chunk">Finding the right chunk.</h5>
+
+<p>The other free’s issue is to find, efficiently, the correct chunk with only the pointer returned by malloc. In fact, there are several issues here:</p>
+
+<ul>
+  <li>
+    <p>Finding the metadata pointer.</p>
+
+    <p>When malloc returns a pointer, it dont returns a pointer to the s_block structure, it returns a pointer to the first memory address of the chunk itself as we see before. In order to get the address to the block we can implement the following code:</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">t_block</span> <span class="nf">get_block</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">p</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//Giving a pointer,</span>
+      <span class="kt">char</span> <span class="o">*</span><span class="n">tmp</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span> <span class="c1">//Convert p to a char* pointer.</span>
+      <span class="k">return</span> <span class="p">(</span><span class="n">p</span> <span class="o">=</span> <span class="n">tmp</span> <span class="o">-=</span> <span class="n">BLOCK_SIZE</span><span class="p">);</span> <span class="c1">//Then return the result of an arithmetic operation: subtract BLOCK_SIZE bytes (since tmp is char*, his size is 1 byte) to go back to the start of the metadata (struct s_block), and return it cast as t_block.</span>
+  <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Validating the input pointer (is it realy a malloc’ed pointer ?)</p>
+
+    <p>In order to solve this problem, we implement the following actions.</p>
+
+    <p>First, in order to identify valid pointers, this is; pointers which aims to malloc’eds chunks, we implement a self-contained match.</p>
+
+    <p>We add a new field on the s_block struct: a pointer <em>ptr</em> which points to the data pointer. Then, if we call free(p) and we can find the relation ‘p-&gt;ptr == p-&gt;data’, then we can be sure that ‘p’ points to malloc’ed chunk that can be free.</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">struct</span> <span class="n">s_block</span> <span class="p">{</span>
+      <span class="kt">size_t</span> <span class="n">size</span><span class="p">;</span>
+      <span class="k">struct</span> <span class="n">s_block</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
+      <span class="k">struct</span> <span class="n">s_block</span> <span class="o">*</span><span class="n">prev</span><span class="p">;</span>
+      <span class="kt">int</span> <span class="n">free</span><span class="p">;</span>
+      <span class="kt">void</span> <span class="o">*</span><span class="n">ptr</span><span class="p">;</span> <span class="c1">//Pointer which later will point to data.</span>
+      <span class="kt">char</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+      <span class="p">};</span>
+</code></pre></div>    </div>
+
+    <p>Then, the function that valids the rule described before.</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kt">int</span> <span class="nf">valid_addr</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">p</span><span class="p">){</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">base</span><span class="p">){</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="o">&gt;</span><span class="n">base</span> <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">&lt;</span><span class="n">sbrk</span><span class="p">(</span><span class="mi">0</span><span class="p">)){</span> <span class="c1">//First we check if p is between the program break and the heap's base, so we check if is exists within the heap</span>
+              <span class="k">return</span> <span class="p">(</span><span class="n">p</span> <span class="o">==</span> <span class="p">(</span><span class="n">get_block</span><span class="p">(</span><span class="n">p</span><span class="p">))</span><span class="o">-&gt;</span><span class="n">ptr</span><span class="p">);</span> <span class="c1">//Then, we get the metadata of the chunk and check the selfmatch describe above.</span>
+          <span class="p">}</span>
+      <span class="p">}</span>
+      <span class="k">return</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+  <span class="p">}</span>
+</code></pre></div>    </div>
+    <p><br /></p>
+  </li>
+</ul>
+
+<h5 id="the-free-function">The free function.</h5>
+
+<p>Now that we know how to check a chunk, this seems pretty easy. The free() function recieves a pointer, then validates it and mark it free.</p>
+
+<p>We an also try to release memory from the heap if the chunk is at the end of the heap.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">free</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="n">t_block</span> <span class="n">b</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">valid_addr</span><span class="p">(</span><span class="n">p</span><span class="p">))</span> <span class="c1">//If pointer is valid.</span>
+
+        <span class="n">b</span> <span class="o">=</span> <span class="n">get_block</span><span class="p">(</span><span class="n">p</span><span class="p">);</span> <span class="c1">//Get the metadata block.</span>
+        <span class="n">b</span><span class="o">-&gt;</span><span class="n">free</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="o">-&gt;</span><span class="n">prev</span> <span class="o">&amp;&amp;</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">prev</span><span class="o">-&gt;</span><span class="n">free</span><span class="p">)</span> <span class="c1">//If previous block exists and is free, we fusion.</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="n">fusion</span><span class="p">(</span><span class="n">b</span><span class="o">-&gt;</span><span class="n">prev</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">){</span> <span class="c1">//If next chunk is not NULL, we attempt to fusion.</span>
+            <span class="n">fusion</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+    
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="c1">//If b-&gt;next is NULL, then current chunk is the last chunk in the heap.</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="o">-&gt;</span><span class="n">prev</span><span class="p">)</span>
+                <span class="n">b</span><span class="o">-&gt;</span><span class="n">prev</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span> <span class="c1">//Then, prev 'next-pointer' points to NULL or</span>
+            <span class="k">else</span>
+                <span class="n">base</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span> <span class="c1">//b-&gt;prev is NULL thus, no more chunks in heap.</span>
+
+            <span class="n">brk</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="c1">//We set the program break to the b pointer, reducing the heap by freeing the b chunk.</span>
+        <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h4 id="realloc">Realloc.</h4>
+
+<p>In the other han, <em>realloc</em> function is straightforward. Basically, we only need a memory copy operation.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">copy_block</span><span class="p">(</span><span class="n">t_block</span> <span class="n">src</span><span class="p">,</span> <span class="n">t_block</span> <span class="n">dst</span><span class="p">){</span>
+
+    <span class="kt">int</span> <span class="o">*</span><span class="n">sdata</span><span class="p">,</span> <span class="o">*</span><span class="n">ddata</span><span class="p">;</span>
+    <span class="kt">size_t</span>  <span class="n">i</span><span class="p">;</span>
+    <span class="n">sdata</span> <span class="o">=</span> <span class="n">src</span><span class="o">-&gt;</span><span class="n">ptr</span><span class="p">;</span>
+    <span class="n">ddata</span> <span class="o">=</span> <span class="n">dst</span><span class="o">-&gt;</span><span class="n">ptr</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">*</span><span class="mi">4</span> <span class="o">&lt;</span> <span class="n">src</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">&amp;&amp;</span> <span class="n">i</span><span class="o">*</span><span class="mi">4</span> <span class="o">&lt;</span> <span class="n">dst</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="c1">//This loops ensure we don't copy beyodnd source/destiny limits. The multiplication by 4 is since we are copying word's size.</span>
+        <span class="n">ddata</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">sdata</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>With the copy operation defined, we can now write the realloc function.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t_block</span> <span class="nf">realloc</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">newsize</span><span class="p">){</span>
+
+    <span class="n">t_block</span> <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">t_block</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">newsize</span><span class="p">);</span> <span class="c1">//Allocate a new pointer with the new size.</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">b</span><span class="p">){</span> <span class="c1">//If malloc succed, then we copy the contents and free previous block.</span>
+        <span class="n">copy_block</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+        <span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Although, we can write something more efficient, we could validate if we really need to realloc or we can just:</p>
+
+<ul>
+  <li>Check if the size don’t change. In that case we do nothing.</li>
+  <li>If the new size is less than the original, we try to split the chunk if is posible.</li>
+  <li>If the new size is bigger than original and the next chunk is free, we attempt to fusion.</li>
+</ul>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="o">*</span><span class="nf">realloc</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">size</span><span class="p">){</span>
+
+    <span class="kt">size_t</span>  <span class="n">s</span><span class="p">;</span>
+    <span class="n">t_block</span> <span class="n">b</span><span class="p">,</span> <span class="n">new</span><span class="p">;</span>
+    <span class="kt">void</span>    <span class="o">*</span><span class="n">newp</span><span class="p">;</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">p</span><span class="p">)</span> <span class="c1">//If p is null, realloc behaves exactly as malloc.</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">malloc</span><span class="p">(</span><span class="n">size</span><span class="p">));</span>
+    
+    <span class="k">if</span><span class="p">(</span><span class="n">valid_addr</span><span class="p">(</span><span class="n">p</span><span class="p">)){</span>
+
+        <span class="n">s</span> <span class="o">=</span> <span class="n">align4</span><span class="p">(</span><span class="n">size</span><span class="p">);</span> <span class="c1">//We align the size.</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">get_block</span><span class="p">(</span><span class="n">p</span><span class="p">);</span> <span class="c1">//Get the metadata blok</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">b</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">&gt;=</span> <span class="n">s</span><span class="p">){</span> <span class="c1">//Check if current pointer stores a bigger size that requested.</span>
+
+            <span class="k">if</span><span class="p">(</span><span class="n">b</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">-</span><span class="n">s</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="n">BLOCK_SIZE</span> <span class="o">+</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">//If it is, and we can, we split the current bblock.</span>
+                <span class="n">split_block</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">s</span><span class="p">);</span>
+
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="c1">//If not, then we try to fusion with the net chunk if is possible.</span>
+
+            <span class="k">if</span><span class="p">(</span><span class="n">b</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">&amp;&amp;</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">free</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">b</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">+</span> <span class="n">BLOCK_SIZE</span> <span class="o">+</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span><span class="c1">//We check if the fusion of both chunks fulfill our requirements. Then, we fusion.</span>
+
+                <span class="n">fusion</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">-</span> <span class="n">s</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="n">BLOCK_SIZE</span> <span class="o">+</span><span class="mi">4</span><span class="p">))</span> <span class="c1">//If there is still some space available, we split.</span>
+                    <span class="n">split_block</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">s</span><span class="p">);</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="c1">//If not, realloc.</span>
+
+                <span class="n">newp</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+                <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">newp</span><span class="p">)</span>
+                    <span class="k">return</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+
+                <span class="n">new</span> <span class="o">=</span> <span class="n">get_block</span><span class="p">(</span><span class="n">newp</span><span class="p">);</span>
+                <span class="n">copy_block</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">new</span><span class="p">);</span>
+                <span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+                <span class="k">return</span><span class="p">(</span><span class="n">newp</span><span class="p">);</span>          
+            <span class="p">}</span>
+
+        <span class="p">}</span> 
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#C">C</a>
+          
+        </div>
+      
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+<section id = "social-share-section">
+  <span class="sr-only">Share: </span>
+
+  
+    <a href="https://twitter.com/intent/tweet?text=Malloc+Tutorial&url=http%3A%2F%2Flocalhost%3A4000%2F2025-06-06-MallocTutorial%2F"
+      class="btn btn-social-icon btn-twitter" title="Share on Twitter">
+      <span class="fab fa-fw fa-twitter" aria-hidden="true"></span>
+      <span class="sr-only">Twitter</span>
+    </a>
+  
+
+  
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F2025-06-06-MallocTutorial%2F"
+      class="btn btn-social-icon btn-facebook" title="Share on Facebook">
+      <span class="fab fa-fw fa-facebook" aria-hidden="true"></span>
+      <span class="sr-only">Facebook</span>
+    </a>
+  
+
+  
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F2025-06-06-MallocTutorial%2F"
+      class="btn btn-social-icon btn-linkedin" title="Share on LinkedIn">
+      <span class="fab fa-fw fa-linkedin" aria-hidden="true"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  
+
+  
+
+  
+
+</section>
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/2025-04-26-SharedLibraries&FunctionHooking/" data-toggle="tooltip" data-placement="top" title="SharedLibraries&amp;FunctionHooking">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/2025-06-09-BuildingOwnMalloc/" data-toggle="tooltip" data-placement="top" title="Building my own malloc in C.">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+      
+  
+  
+  
+
+  
+
+
+  
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="/feed.xml" title="RSS">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">RSS</span>
+    </a>
+  </li><li class="list-inline-item">
+    <a href="mailto:" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/Qv1nTv5" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://twitter.com/Qvintvs1" title="Twitter">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Twitter</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://linkedin.com/in/german-sanmillan-68b308229/" title="LinkedIn">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">LinkedIn</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        German
+        &nbsp;&bull;&nbsp;
+      
+      2026
+
+      
+
+      
+      </p>
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>

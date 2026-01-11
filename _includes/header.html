@@ -38,16 +38,15 @@
           {% endif %}
 
           {% if include.type == "post" %}
-            <span class="post-meta">Posted on {{ page.date | date: date_format }}</span>
-            {% if page.last-updated %}
-              <span class="post-meta">
-                <span class="d-none d-md-inline middot">&middot;</span>
-                Last updated {{ page.last-updated | date: date_format }}
-              </span>
-            {% endif %}
-            {% if page.readtime %}
-              {% include readtime.html %}
-            {% endif %}
+            <div class="post-meta">
+              <span><i class="fa fa-calendar"></i> {{ page.date | date: date_format }}</span>
+              {% if page.last-updated %}
+                <span><i class="fa fa-sync"></i> Updated {{ page.last-updated | date: date_format }}</span>
+              {% endif %}
+              {% if page.readtime %}
+                {% include readtime.html %}
+              {% endif %}
+            </div>
           {% endif %}
         </div>
       </div>
@@ -72,16 +71,15 @@
           {% endif %}
 
           {% if include.type == "post" %}
-            <span class="post-meta">Posted on {{ page.date | date: date_format }}</span>
-            {% if page.last-updated %}
-              <span class="post-meta">
-                <span class="d-none d-md-inline middot">&middot;</span>
-                Last updated {{ page.last-updated | date: date_format }}
-              </span>
-            {% endif %}
-            {% if page.readtime %}
-              {% include readtime.html %}
-            {% endif %}
+            <div class="post-meta">
+              <span><i class="fa fa-calendar"></i> {{ page.date | date: date_format }}</span>
+              {% if page.last-updated %}
+                <span><i class="fa fa-sync"></i> Updated {{ page.last-updated | date: date_format }}</span>
+              {% endif %}
+              {% if page.readtime %}
+                {% include readtime.html %}
+              {% endif %}
+            </div>
           {% endif %}
         </div>
       </div>

@@ -1,0 +1,2289 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 5.0.0 | Copyright Dean Attali 2020 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>Stackframe; Local variables, Arrays and Structures.</title>
+
+  
+  <meta name="author" content="German">
+  
+
+  <meta name="description" content="Assembly management of local variables, arrays and structures.">
+
+  
+
+  
+
+  
+  <link rel="alternate" type="application/rss+xml" title="Home" href="http://localhost:4000/feed.xml">
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/custom-dark.css">
+    
+  
+
+  
+  
+  
+
+  
+
+  
+  <meta property="og:site_name" content="Home">
+  <meta property="og:title" content="Stackframe; Local variables, Arrays and Structures.">
+  <meta property="og:description" content="Assembly management of local variables, arrays and structures.">
+
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:article:author" content="German">
+  <meta property="og:article:published_time" content="2025-12-01T00:00:00-05:00">
+  <meta property="og:url" content="http://localhost:4000/2025-12-01-LocalVars_Arrays_structs/">
+  <link rel="canonical" href="http://localhost:4000/2025-12-01-LocalVars_Arrays_structs/">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:site" content="@Qvintvs1">
+  <meta name="twitter:creator" content="@Qvintvs1">
+
+  <meta property="twitter:title" content="Stackframe; Local variables, Arrays and Structures.">
+  <meta property="twitter:description" content="Assembly management of local variables, arrays and structures.">
+
+  
+
+  
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+    document.querySelectorAll("script[type='math/tex; mode=display']").forEach(function(el) {
+      el.outerHTML = "\\[" + el.textContent + "\\]";
+    });
+    document.querySelectorAll("script[type='math/tex']").forEach(function(el) {
+      el.outerHTML = "\\(" + el.textContent + "\\)";
+    });
+    var script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js';
+    script.async = true;
+    document.head.appendChild(script);
+  });
+</script>
+
+
+  
+
+  
+
+</head>
+
+
+<body>
+
+  
+
+
+  <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">Home</a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Program</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/Cpage">C</a>
+                  <a class="dropdown-item" href="/DHARMApage">Dharma</a>
+                  <a class="dropdown-item" href="/RUSTpage">Rust</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Web2</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/BURPSUITEpage">Burp</a>
+                  <a class="dropdown-item" href="/THMpage">Thm</a>
+                  <a class="dropdown-item" href="/HackTheBoxpage">Htb</a>
+                  <a class="dropdown-item" href="/PEN200page">BasicPentesting</a>
+                  <a class="dropdown-item" href="/REDTEAMBASICSpage">RedTeam</a>
+                  <a class="dropdown-item" href="/BLUETEAMBASICSpage">Blueteam</a>
+                  <a class="dropdown-item" href="/REDESpage">Net</a>
+                  <a class="dropdown-item" href="/2022-11-17-GitBasics">Git</a>
+                  <a class="dropdown-item" href="/CSOFTpage">MemCorrupt</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ZKP</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/MATHpage">Math</a>
+                  <a class="dropdown-item" href="/RUSTpage">Rust</a>
+                  <a class="dropdown-item" href="/NOIRpage">Noir</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Assembly</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/ASSEMpage">x86</a>
+            </div>
+          </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" id="nav-search-link" href="#" title="Search">
+            <span id="nav-search-icon" class="fa fa-search"></span>
+            <span id="nav-search-text">Search</span>
+          </a>
+        </li></ul>
+  </div>
+
+  
+
+  
+
+</nav>
+
+
+
+<div id="beautifuljekyll-search-overlay">
+
+  <div id="nav-search-exit" title="Exit search">✕</div>
+  <input type="text" id="nav-search-input" placeholder="Search">
+  <ul id="search-results-container"></ul>
+  
+  <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+  <script>
+    var searchjson = '[ \
+       \
+        { \
+          "title"    : "P vs NP.", \
+          "category" : "math", \
+          "url"      : "/2026-01-11-PvsNP/", \
+          "date"     : "January 11, 2026" \
+        }, \
+       \
+        { \
+          "title"    : "Race Conditions.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-28-RaceCondition/", \
+          "date"     : "December 28, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Introducción al Cálculo", \
+          "category" : "matemáticas", \
+          "url"      : "/2025-12-25-MathTest/", \
+          "date"     : "December 25, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Uninitialize Data Access.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-23-UDA/", \
+          "date"     : "December 23, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Control Flow.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-12-ControlFlow/", \
+          "date"     : "December 12, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Other Integer Issues.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-05-OtherIntegerIssues/", \
+          "date"     : "December  5, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Integer Overflow/Underflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-05-IntegerOverflow-Underflow/", \
+          "date"     : "December  5, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Passing Parameters.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-04-Passing-Parameters/", \
+          "date"     : "December  4, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Stackframe; Local variables, Arrays and Structures.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-01-LocalVars_Arrays_structs/", \
+          "date"     : "December  1, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Out-Of-Bounds Write.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-26-Out-Of-Bounds-Write/", \
+          "date"     : "November 26, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Calling Functions.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-21-CallingFunctions/", \
+          "date"     : "November 21, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "(Linear) Heap Buffer Overflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-18-HBO/", \
+          "date"     : "November 18, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Basic Instructions.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-17-AssemblyBasicRegisters/", \
+          "date"     : "November 17, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Computer Registers.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-08-ComputerRegisters/", \
+          "date"     : "November  8, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "CVE-2021-20294.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-07-CVE-2021-20294/", \
+          "date"     : "November  7, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "(Linear) Stack Buffer Overflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-06-LSBO/", \
+          "date"     : "November  6, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Text Editor.", \
+          "category" : "C", \
+          "url"      : "/2025-08-11-Text-Editor/", \
+          "date"     : "August 11, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Garbage Collector.", \
+          "category" : "C", \
+          "url"      : "/2025-07-11-GarbageCollector/", \
+          "date"     : "July 11, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Hashtables.", \
+          "category" : "C", \
+          "url"      : "/2025-06-13-HashTable/", \
+          "date"     : "June 13, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Building my own malloc in C.", \
+          "category" : "C", \
+          "url"      : "/2025-06-09-BuildingOwnMalloc/", \
+          "date"     : "June  9, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Malloc Tutorial", \
+          "category" : "C", \
+          "url"      : "/2025-06-06-MallocTutorial/", \
+          "date"     : "June  6, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "SharedLibraries&amp;FunctionHooking", \
+          "category" : "C", \
+          "url"      : "/2025-04-26-SharedLibraries&FunctionHooking/", \
+          "date"     : "April 26, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "File Descritors", \
+          "category" : "C", \
+          "url"      : "/2025-03-04-FileDescriptors/", \
+          "date"     : "March  4, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Network Programming", \
+          "category" : "C", \
+          "url"      : "/2025-02-22-Network_Programming/", \
+          "date"     : "February 22, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "2. Constants and Literals in C.", \
+          "category" : "C", \
+          "url"      : "/2024-12-10-2.ConstantsinC-copy/", \
+          "date"     : "December 10, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "1. Basics of C", \
+          "category" : "C", \
+          "url"      : "/2024-12-02-1.BasicsOfC/", \
+          "date"     : "December  2, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "Gramáticas en Dharma", \
+          "category" : "DHA", \
+          "url"      : "/2024-09-24-Dharma_Tutorial/", \
+          "date"     : "September 24, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "Gramáticas en Dharma", \
+          "category" : "fuzz", \
+          "url"      : "/2024-03-22-Dharma_Tutorial-copy/", \
+          "date"     : "March 22, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "Mi experiencia con el OSCP", \
+          "category" : "pen", \
+          "url"      : "/2023-11-19-PEN200_Experience/", \
+          "date"     : "November 19, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Client Side", \
+          "category" : "pen", \
+          "url"      : "/2023-11-17-17.Client_Side_Attacks/", \
+          "date"     : "November 17, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Deep Packet Tunneling", \
+          "category" : "pen", \
+          "url"      : "/2023-11-16-16.Tunneling_Through_Deep_Packet_Inspection/", \
+          "date"     : "November 16, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Report", \
+          "category" : "pen", \
+          "url"      : "/2023-11-15-15.Making_Reports/", \
+          "date"     : "November 15, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Metasploit", \
+          "category" : "pen", \
+          "url"      : "/2023-11-14-14.Metasploit/", \
+          "date"     : "November 14, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Password Attacks", \
+          "category" : "pen", \
+          "url"      : "/2023-11-13-13.Password_Attacks/", \
+          "date"     : "November 13, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Active Directory Attacks", \
+          "category" : "pen", \
+          "url"      : "/2023-11-12-12.Active_Directory_Attacks/", \
+          "date"     : "November 12, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Port Forwarding", \
+          "category" : "pen", \
+          "url"      : "/2023-11-11-11.Port_Forwarding/", \
+          "date"     : "November 11, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Privilege Escalation", \
+          "category" : "pen", \
+          "url"      : "/2023-11-10-10.Privilege_Escalation/", \
+          "date"     : "November 10, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "File Transfers", \
+          "category" : "pen", \
+          "url"      : "/2023-11-09-9.File_Tranfers/", \
+          "date"     : "November  9, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Buffer Overflows", \
+          "category" : "pen", \
+          "url"      : "/2023-11-08-8.Buffer_Overflows/", \
+          "date"     : "November  8, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Vulnerability Scanning.", \
+          "category" : "pen", \
+          "url"      : "/2023-11-07-7.Vulnerability_Scanning/", \
+          "date"     : "November  7, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Information Gathering", \
+          "category" : "pen", \
+          "url"      : "/2023-11-06-6.Active_Information_Gathering/", \
+          "date"     : "November  6, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Windows", \
+          "category" : "pen", \
+          "url"      : "/2023-11-05-5.Windows/", \
+          "date"     : "November  5, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Networking", \
+          "category" : "pen", \
+          "url"      : "/2023-11-04-4.Networking/", \
+          "date"     : "November  4, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Scripting", \
+          "category" : "pen", \
+          "url"      : "/2023-11-03-3.Scripting/", \
+          "date"     : "November  3, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Practical Tools", \
+          "category" : "pen", \
+          "url"      : "/2023-11-02-2.PracticalTools/", \
+          "date"     : "November  2, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Linux", \
+          "category" : "pen", \
+          "url"      : "/2023-11-01-1.Linux/", \
+          "date"     : "November  1, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Easy", \
+          "category" : "hack", \
+          "url"      : "/2022-12-01-Easy/", \
+          "date"     : "December  1, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Git Basics", \
+          "category" : "", \
+          "url"      : "/2022-11-17-GitBasics/", \
+          "date"     : "November 17, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Tier I", \
+          "category" : "hack", \
+          "url"      : "/2022-11-10-Tier_1/", \
+          "date"     : "November 10, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Tier 0", \
+          "category" : "hack", \
+          "url"      : "/2022-11-09-Tier_0/", \
+          "date"     : "November  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "7.BufferOverflow.", \
+          "category" : "thm", \
+          "url"      : "/2022-11-02-7.BufferOverflow/", \
+          "date"     : "November  2, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "6.Offensive Pentesting", \
+          "category" : "thm", \
+          "url"      : "/2022-11-01-6.OffensivePentesting/", \
+          "date"     : "November  1, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "5.RedTeam", \
+          "category" : "thm", \
+          "url"      : "/2022-10-30-5.RedTeam/", \
+          "date"     : "October 30, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "4.Windows", \
+          "category" : "thm", \
+          "url"      : "/2022-10-22-4.Windows/", \
+          "date"     : "October 22, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "3.Junior Penetrationtester path", \
+          "category" : "thm", \
+          "url"      : "/2022-09-02-3.JRPenetrationTester/", \
+          "date"     : "September  2, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "2.Complete Begginer path.", \
+          "category" : "thm", \
+          "url"      : "/2022-08-07-2.CompleteBegginer/", \
+          "date"     : "August  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "1.Pre-Security path.", \
+          "category" : "thm", \
+          "url"      : "/2022-07-11-1Pre-Security/", \
+          "date"     : "July 11, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "0.Scripting for pentesters.", \
+          "category" : "thm", \
+          "url"      : "/2022-07-10-0.Scripting_for_pentesters/", \
+          "date"     : "July 10, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Burp Certified Practitioner Practice Exam.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-30-PracticeExam/", \
+          "date"     : "March 30, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "22. OAuth Authentication.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-27-22.OAuth_authentication/", \
+          "date"     : "March 27, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "21. HTTP Request Smuggling.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-26-21.HTTP_request_smuggling/", \
+          "date"     : "March 26, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "20. HTTP Host Header Attacks.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-25-20.HTTP_Host_header_attacks/", \
+          "date"     : "March 25, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "19. Web Cache Poisoning.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-24-19.Web_cache_poisoning/", \
+          "date"     : "March 24, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "18. Server-Side Template Injection.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-23-18.Serve-side_template_injection/", \
+          "date"     : "March 23, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "17. Insecure Deserialization.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-22-17.Insecure_deserialization/", \
+          "date"     : "March 22, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "16. WebSockets.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-21-16.WebSockets/", \
+          "date"     : "March 21, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "15.DOM-based XSS vulnerabilities.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-20-15-DOM-based_vulnerabilities/", \
+          "date"     : "March 20, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "14. Clickjacking.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-19-14.Clickjacking/", \
+          "date"     : "March 19, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "13. Cross-Origin Resource Sharing.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-18-13.Cross-origin_resource_sharing_(CORS)/", \
+          "date"     : "March 18, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "12. Cross-Site Request Forgery.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-17-12.Cross-site_request_forgery_(CSRF)/", \
+          "date"     : "March 17, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "11. Cross-Site Scripting.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-16-11.Cross-site_scripting_(XSS)/", \
+          "date"     : "March 16, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "10. XXE Injection.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-15-10.XXE_injection/", \
+          "date"     : "March 15, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "9. Server-Side Request Forgery.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-14-9.Server-side_request_forgery/", \
+          "date"     : "March 14, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "8. File Upload.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-13-8.File_upload_vulnerabilities/", \
+          "date"     : "March 13, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "7. Access Control.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-12-7.Access_control/", \
+          "date"     : "March 12, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "6. Information Disclosure.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-11-6.Information_disclosure/", \
+          "date"     : "March 11, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "5. Bussiness Logic Vulnerabilities.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-10-5.Business_logic_vulnerabilities/", \
+          "date"     : "March 10, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "4. Command Injection.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-09-4.Command_Injection/", \
+          "date"     : "March  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "3. Directory Traversal.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-08-3.Directory_Traversal/", \
+          "date"     : "March  8, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "2. Authentication.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-07-2.Authentication/", \
+          "date"     : "March  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "1. SQLInjection", \
+          "category" : "burp", \
+          "url"      : "/2022-03-06-1.SQLInjection/", \
+          "date"     : "March  6, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Seguridad Perimetral", \
+          "category" : "blueteam", \
+          "url"      : "/2022-02-09-Seguridad_Perimetral/", \
+          "date"     : "February  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Hardening de sistemas", \
+          "category" : "blueteam", \
+          "url"      : "/2022-02-09-Hardening_de_sistemas/", \
+          "date"     : "February  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Bandit", \
+          "category" : "otw", \
+          "url"      : "/2022-02-08-Bandit/", \
+          "date"     : "February  8, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Proxy", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-Proxys/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Protocolos Relevantes", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-Protocolos_Importantes/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Curso Básico Redes", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-Precurso_Redes/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "IPs", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-IPs/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Movimientos Laterales", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-06-Introducci%C3%B3n_a_movimientos_laterales/", \
+          "date"     : "February  6, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Evasión de Defensas", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-05-Evasi%C3%B3n_de_Defensas/", \
+          "date"     : "February  5, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Escalada de privilegios", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-05-Escalada_de_privilegios/", \
+          "date"     : "February  5, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Metasploit", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-04-Metasploit_B%C3%A1sico/", \
+          "date"     : "February  4, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Ataques a aplicaciones Android", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-03-Ataques_aplicaciones_android/", \
+          "date"     : "February  3, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Ataque a aplicaciones web.", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-02-Ataques_a_aplicaciones_web/", \
+          "date"     : "February  2, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Ataques a Infraestructuras y Redes", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-01-Ataques_a_Infraestructuras_y_Redes/", \
+          "date"     : "February  1, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Análisis de Objetivos", \
+          "category" : "redteam", \
+          "url"      : "/2022-01-28-An%C3%A1lisis_de_Objetivos/", \
+          "date"     : "January 28, 2022" \
+        }, \
+       \
+       \
+        { \
+          "title"    : "Assembly and Architecture Introduction.", \
+          "category" : "page", \
+          "url"      : "/ASSEMpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Blueteam Basics", \
+          "category" : "page", \
+          "url"      : "/BLUETEAMBASICSpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "PortSwigger BurpSuite Course", \
+          "category" : "page", \
+          "url"      : "/BURPSUITEpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "C-Family Software Memory Corruption Vulnerabilities", \
+          "category" : "page", \
+          "url"      : "/CSOFTpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "C &amp; Systems Fundamentals.", \
+          "category" : "page", \
+          "url"      : "/Cpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Dharma Fuzzer language", \
+          "category" : "page", \
+          "url"      : "/DHARMApage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Exploiting &amp; Reversing", \
+          "category" : "page", \
+          "url"      : "/EXPREVpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Fuzzing JavaScript Engine", \
+          "category" : "page", \
+          "url"      : "/Fuzzpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "HackTheBox", \
+          "category" : "page", \
+          "url"      : "/HackTheBoxpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "TryHackMe", \
+          "category" : "page", \
+          "url"      : "/MATHpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "PEN200 notes", \
+          "category" : "page", \
+          "url"      : "/PEN200page/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Proyectos", \
+          "category" : "page", \
+          "url"      : "/PROJECTSpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Networking Basics", \
+          "category" : "page", \
+          "url"      : "/REDESpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "RedTeam Basics", \
+          "category" : "page", \
+          "url"      : "/REDTEAMBASICSpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Retired Machines", \
+          "category" : "page", \
+          "url"      : "/RetiredMachinespage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "TryHackMe", \
+          "category" : "page", \
+          "url"      : "/THMpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "About me", \
+          "category" : "page", \
+          "url"      : "/aboutme/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "THM", \
+          "category" : "page", \
+          "url"      : "/preOSCPpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Tag Index", \
+          "category" : "page", \
+          "url"      : "/tags/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page2/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page3/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page4/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page5/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page6/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page7/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page8/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page9/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page10/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page11/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page12/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page13/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page14/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page15/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page16/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page17/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page18/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page19/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page20/", \
+          "date"     : "January 1, 1970" \
+        } \
+       \
+    ]';
+    searchjson = JSON.parse(searchjson);
+
+    var sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('nav-search-input'),
+      resultsContainer: document.getElementById('search-results-container'),
+      json: searchjson
+    });
+  </script>
+</div>
+
+
+
+
+
+  <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Stackframe; Local variables, Arrays and Structures.</h1>
+          
+            
+              <h2 class="post-subheading">Assembly management of local variables, arrays and structures.</h2>
+            
+          
+
+          
+            <span class="post-meta">Posted on December 1, 2025</span>
+            
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+
+      
+
+      <article role="main" class="blog-post">
+        <h3 id="1-defintion">1. Defintion.</h3>
+
+<p>Let’s consider the following code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">calculate</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">result</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">temp</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">calculate</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>We have a C code which returns a calculated value using a local function, <em>calculate()</em> which receives two parameters as data and then use their own local variables to calculate and return the value (temp, result).</p>
+
+<p>So let’s begin from the start. <strong>Local variables</strong> are temporary storage locations used within a function’s scope. Unlike global variables stored in the DATA segment, local variables are allocated on the stack and automatically destroyed when the function returns. Examples of local variables in the code above are <em>result</em> declared an later assigned or <em>temp</em> directly defined both within <em>calculate()</em> function.</p>
+
+<p><br /></p>
+
+<h3 id="2-local-variales-in-assembly">2. Local variales in assembly.</h3>
+
+<p>Let’s see how local variables are treated in assembly. We know that there is a structure called the stack in which things like local variables are pushed as part of the context of called function. The own system expands the stack in order to allocate in a sort order the elements that the function needs to properly works along with other things (saved registers, parameters and the return address), this expansion is what we call the <em>function’s stackframe</em>.</p>
+
+<p>The traslation to assembly of the code above would be:</p>
+
+<pre><code class="language-assem">calculate:
+0000000140001000 push   rbp
+0000000140001001 mov    rbp, rsp
+0000000140001004 sub    rsp, 10h
+0000000140001008 mov    DWORD PTR [rbp-4], ecx      ; parameter a
+000000014000100B mov    DWORD PTR [rbp-8], edx      ; parameter b
+000000014000100E mov    DWORD PTR [rbp-0Ch], 5      ; temp = 5
+0000000140001015 mov    eax, DWORD PTR [rbp-4]      ; load a
+0000000140001018 add    eax, DWORD PTR [rbp-8]      ; add b
+000000014000101B add    eax, DWORD PTR [rbp-0Ch]    ; add temp
+000000014000101E mov    DWORD PTR [rbp-10h], eax    ; result = ...
+0000000140001021 mov    eax, DWORD PTR [rbp-10h]    ; return result
+0000000140001024 add    rsp, 10h
+0000000140001028 pop    rbp
+0000000140001029 ret
+
+main:
+0000000140001030 push   rbp
+0000000140001031 mov    rbp, rsp
+0000000140001034 sub    rsp, 20h
+0000000140001038 mov    ecx, 0Ah                    ; first argument: 10
+000000014000103D mov    edx, 14h                    ; second argument: 20
+0000000140001042 call   calculate (0140001000h)
+0000000140001047 mov    DWORD PTR [rbp-4], eax      ; x = result
+000000014000104A mov    eax, DWORD PTR [rbp-4]      ; return x
+000000014000104D add    rsp, 20h
+0000000140001051 pop    rbp
+0000000140001052 ret
+</code></pre>
+
+<p>Where the RPI would contain the address 0000000140001030 at the start of the program (the main’s address).</p>
+
+<p><br /></p>
+
+<h3 id="3-stack-frame-creation">3. Stack Frame Creation.</h3>
+
+<h4 id="31-brief-warning">3.1. Brief warning.</h4>
+
+<p>Is worth mention that the creation of a stack frame using RBP is an optional procedure that’s primarily a compiler convention rather than a hardware requirement in oposition like for example RIP manipulation by CALL/RET.</p>
+
+<p>Note that despite CALL/RET perform operations over RIP, this is a hardware requirement and is done automatically by the CPU, you will never see reflected in the code the lines:</p>
+
+<pre><code class="language-assem">push RIP + jmp target (CALL)
+pop RIP + jmp RIP (RET)
+</code></pre>
+
+<p>But, instead we will see how RSP and RBP special-purpouse pointers get manipulated allong the following procedure. This is done for easier debugging, simpler code generation o dynamic stack allocation.</p>
+
+<p><br /></p>
+
+<h4 id="32-process-explanation">3.2. Process explanation.</h4>
+
+<h5 id="321-stackframe-creation-prologue">3.2.1. Stackframe Creation Prologue.</h5>
+
+<p>First, lets see how the stackframe for the local function is created.</p>
+
+<p>The code starts executing main function which is at: 0000000140001030, then the execution flow continues until <em>calculate()</em> is called. Then, the CALL instruction intervenes pushing 0000000140001047 onto the top of the stack and then introduces on RIP register the calculate function’s address: 0000000140001000. (Remember that RIP contains the address of the next instruction to be executed, it basically controls the execution flows of the code)</p>
+
+<p>Once the execution flow enters <em>calculate()</em> as a local function the creation of his stackframe in the stack begins:</p>
+
+<pre><code class="language-assem">0000000140001000 push   rbp
+0000000140001001 mov    rbp, rsp
+0000000140001004 sub    rsp, 10h
+</code></pre>
+
+<p>Let’s check carefully the register within the code above:</p>
+
+<ul>
+  <li>
+    <p>RBP -&gt; Base Pointer, points to the base of the current stackframe. Serves as a stable reference point for accessing local variables and parameters.</p>
+  </li>
+  <li>
+    <p>RSP -&gt; Stack Pointer, points to the top of the stack.</p>
+  </li>
+</ul>
+
+<p>So, first, we save the current RBP (the address of the current stackframe) pushing it on the stack and place a new <em>base stackframe</em> by copying the current RSP value (the lowest address pushed on the stack) onto RBP. Lastly, we lowered the RSP value in order to build a secure margin to the function context. Essentially, since the stack grows toward lower address and RSP points to the top of the stack, substracting RSP we are expanding the stack (this, despite being counter-intuitive, is neccesary due to processor’s execution patterns and the compiler’s code generation needs).</p>
+
+<pre><code class="language-assem">
+High Memory (Stack grows downward ↓)
+
+┌─────────────────────────────────────────┐
+│                  ...                    │
+├─────────────────────────────────────────┤
+│  Return address to main                 │  Pushed by CALL
+├─────────────────────────────────────────┤ ← RSP before prologue
+│  Saved RBP (old frame pointer)          │  Pushed by: push rbp
+├─────────────────────────────────────────┤ ← RBP (current frame base)
+│  [rbp-4]:  parameter a (10)             │
+├─────────────────────────────────────────┤
+│  [rbp-8]:  parameter b (20)             │
+├─────────────────────────────────────────┤
+│  [rbp-0Ch]: temp (5)                    │
+├─────────────────────────────────────────┤
+│  [rbp-10h]: result (35)                 │
+├─────────────────────────────────────────┤ ← RSP (current stack top)
+│                  ...                    │
+
+Low Memory
+</code></pre>
+
+<p>Note that local variables as well as paramters are accesed using “r/mX” notation.</p>
+
+<p><br /></p>
+
+<h5 id="322-accessing-local-variables-and-stackframe-epilogue">3.2.2. Accessing local variables and Stackframe epilogue.</h5>
+
+<p>Now that a stackframe has being created, then the local variables and parameters of the function are alocated within this stackframe.</p>
+
+<p>Those are accessed using the RBP base pointer plus an offset. Let’s check that:</p>
+
+<pre><code class="language-asem">0000000140001008 mov    DWORD PTR [rbp-4], ecx      ; parameter a
+000000014000100B mov    DWORD PTR [rbp-8], edx      ; parameter b
+000000014000100E mov    DWORD PTR [rbp-0Ch], 5      ; temp = 5
+0000000140001015 mov    eax, DWORD PTR [rbp-4]      ; load a
+0000000140001018 add    eax, DWORD PTR [rbp-8]      ; add b
+000000014000101B add    eax, DWORD PTR [rbp-0Ch]    ; add temp
+</code></pre>
+
+<p>First, the parameters of the function which by default are in RCX, RDX, R8, R9 gets stored inside te stackframe:</p>
+
+<pre><code class="language-assem">0000000140001008 mov    DWORD PTR [rbp-4], ecx      ; parameter a
+000000014000100B mov    DWORD PTR [rbp-8], edx      ; parameter b
+</code></pre>
+
+<p>Note that we are copying the contents of ECX (RCX variant in 32-bits) into a memory region behind RBP, the DWORD PTR term is used to refer that [rbp-4] is holding 32-bits data, is necesary since in the code 64-bits and 32-bits registers are mixed.</p>
+
+<p>Then, the local variables which are defined inside the function gets his value through an immediate:</p>
+
+<pre><code class="language-assem">000000014000100E mov    DWORD PTR [rbp-0Ch], 5      ; temp = 5
+</code></pre>
+
+<p>Then, the operations with the function values are performed, since data-copy between memory address is not allowed, the values with which the operations are going to be made must be passed to a register:</p>
+
+<pre><code class="language-assem">0000000140001015 mov    eax, DWORD PTR [rbp-4]      ; load a
+</code></pre>
+
+<p>Then, with the value in a register, the operation is performed and is stored in <em>result</em> local variable:</p>
+
+<pre><code class="language-assem">0000000140001018 add    eax, DWORD PTR [rbp-8]      ; add b
+000000014000101B add    eax, DWORD PTR [rbp-0Ch]    ; add temp
+000000014000101E mov    DWORD PTR [rbp-10h], eax    ; result = ...
+</code></pre>
+
+<p>Then, some redundance is performed and the epilogue of the stackframe is performed.</p>
+
+<pre><code class="language-assem">0000000140001021 mov    eax, DWORD PTR [rbp-10h]    ; return result
+0000000140001024 add    rsp, 10h
+0000000140001028 pop    rbp
+0000000140001029 ret
+</code></pre>
+
+<p>Note than the stackframe epilogue only consist in lift the RSP the same amount of memory that were lowered in the prologue, there is no need to zeroed or clean the data since is enough to label the memory as unused to be reutilized again. The memory isn’t actually “erased”, it just becomes invalid/unreliable. The values might still be there until overwritten by the next function call.</p>
+
+<p>The RET instruction is not part of the stackframe epilogue, is the counterpart of CALL and it pops out the next value on the stack on RIP register.</p>
+
+<p><br /></p>
+
+<h4 id="33-conclusion">3.3. Conclusion.</h4>
+
+<p>A few points taht are worth to have in mind are:</p>
+
+<ul>
+  <li>
+    <p>Stackframe mechanism allocates space for the local variables. Modern x86-64 calling conventions require the stack to be 16-byte aligned before a CALL instruction. This means RSP must be divisible by 16. The compiler often allocates more space than strictly needed to maintain this alignment.</p>
+  </li>
+  <li>
+    <p>Local variables are accessed using negative offsets from RBP: [rbp-4], [rbp-8], etc. The allocation and deallocation of the stackframe guarantee that local variable lifetime gets extended till the function termination. Without it, the local variable lifetime would also terminates with the local function termination but in a more caotic way and with more imprecissions.</p>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="4-array-as-a-local-variable-imul-movsxzx">4. Array as a local variable. Imul, Movsx/zx.</h3>
+
+<p>Lets consider the following C code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">short</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">short</span> <span class="n">a</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">b</span><span class="p">[</span><span class="mi">6</span><span class="p">];</span>
+    <span class="kt">long</span> <span class="kt">long</span> <span class="n">c</span><span class="p">;</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mh">0xbabe</span><span class="p">;</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="mh">0xbal</span><span class="n">b0abledbl100d</span><span class="p">;</span>
+    <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+    <span class="n">b</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">c</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">b</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The dissassembly is as follows:</p>
+
+<pre><code class="language-assem">0000000140001000  sub         rsp,38h  
+0000000140001004  mov         eax,0FFFFBABEh  
+0000000140001009  mov         word ptr [rsp],ax  
+000000014000100D  mov         rax,0BA1B0AB1EDB100Dh  
+0000000140001017  mov         qword ptr [c],rax  
+000000014000101C  mov         eax,4  
+0000000140001021  imul        rax,rax,1  
+0000000140001025  movsx       ecx,word ptr [rsp]  
+0000000140001029  mov         dword ptr b[rax],ecx  
+000000014000102D  mov         eax,4  
+0000000140001032  imul        rax,rax,1  
+0000000140001036  movsxd      rax,dword ptr b[rax]  
+000000014000103B  add         rax,qword ptr [c]  
+0000000140001040  mov         ecx,4  
+0000000140001045  imul        rcx,rcx,4  
+0000000140001049  mov         dword ptr b[rcx],eax  
+000000014000104D  mov         eax,4  
+0000000140001052  imul        rax,rax,4  
+0000000140001056  movzx       eax,word ptr b[rax]  
+000000014000105B  add         rsp,38h  
+000000014000105F  ret  
+</code></pre>
+
+<p>We can see that there are three new instructions, <em>imul</em>, <em>movsx</em>, <em>movzx</em>.</p>
+
+<p><br /></p>
+
+<h4 id="41-imul---signed-multiply">4.1. IMUL - Signed Multiply.</h4>
+
+<p>This is an instruction that have three forms in base of the number of operands used with (one, two or three) and is the signed version of MUL (Unsigned Multiply). Let’s start by the simplest form:</p>
+
+<ul>
+  <li>
+    <p><em>Two-operands</em> form: This is the more intuitive or predictable of the three forms. It just and extrapolation of the ADD/SUB instructions to the multiplication. It multiplies the destination by the source and store the result in the operand:</p>
+
+    <pre><code class="language-assem">  imul dest, source --&gt; dest = dest * source
+</code></pre>
+
+    <p>An example of usage can be:</p>
+
+    <pre><code class="language-assem">  imul reg, r/mX
+</code></pre>
+
+    <p>Note that the operands cannot be two memory address at the same time.</p>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<ul>
+  <li>
+    <p><em>Three-operands</em> form; This is an extension of the two-operands form but with an inmmediate acting as a scale of the source. The result is stored in the destination operand which is left out the operation:</p>
+
+    <pre><code class="language-assem">  imul dest, source, immediate --&gt; dest = source * immediate
+</code></pre>
+
+    <pre><code class="language-assem">  imul eax, ebx, 5 --&gt; eax = ebx * 5
+</code></pre>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<ul>
+  <li>
+    <p><em>One-operand</em> form; In this case, IMUL gets reduced to an unary operation which gets the <em>two-operands</em> form using AX/EAX/RAX register as destination everytime.</p>
+
+    <p>This is more complicated than what appears at first time, because multiply data often results in a size much larger than the size of the operands involved in the multiplication. Let’s see an example:</p>
+
+    <pre><code class="language-assem">  imul r/m8
+</code></pre>
+
+    <p>This operation is multiplying an 8-bit size by an 8-bit size generating a value that occupies 16-bit as maximum, lets do the maths:</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  Maximum 8-bit value = 0b11111111 = 255
+  Maximum 8^2-bit value =  255^2 = 65,025 &lt; 65,535 = 0b1111111111111111 = Maximum 16-bit value
+</code></pre></div>    </div>
+
+    <p><strong>The general rule: multiplying an N-bit number by an N-bit number produces at most a 2N-bit result.</strong></p>
+
+    <p>This essentially means that if we try to save the value in an 8-bit register like AL, the assembly operation would result in a truncated value.</p>
+
+    <p>So the solution, if the result of the operation cares, is in the majority of the cases to concatenate registers and store half of the bytes in one register and the other half in the other one. In the case of an 8-bit operation, remember that, in this case: AX = AH:AL –&gt; AX is the concatenation of AH (the most significant byte) and AL (the less significant byte)</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  | &lt;-- AX (16 bits) -&gt; |
+      AH (8) | AL (8)
+</code></pre></div>    </div>
+
+    <p>So, the operation would result in:</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  imul r/m8 --&gt; AX = AH:AL = AL * r/m8
+</code></pre></div>    </div>
+
+    <p>The same would apply to other widths:</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  | Form | Operation | Result location |
+  |------|-----------|-----------------|
+  | IMUL r/m8 | AL × operand | AX = AH:AL (16-bit) |
+  | IMUL r/m16 | AX × operand | DX:AX (32-bit) |
+  | IMUL r/m32 | EAX × operand | EDX:EAX (64-bit) |
+  | IMUL r/m64 | RAX × operand | RDX:RAX (128-bit) |
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p><strong>This truncation mechanism only applies to the unary form of IMUL, in the binary o triary form truncation can happens.</strong></p>
+
+<p><br /></p>
+
+<h4 id="42-movzx-movsx---move-with-zerosign-extend">4.2. MOVZX, MOVSX - Move with zero/sign extend.</h4>
+
+<p>This instructions move data from smaller register to a larger one and are very important when C performs a type conversion:</p>
+
+<p><br /></p>
+
+<p><strong>MOVZX (Move with Zeri Extend)</strong></p>
+
+<ul>
+  <li>Copies a smaller value to a larger destination</li>
+  <li>Fills the upper bits with zeros</li>
+  <li>Used for unsigned values</li>
+  <li>Preserves the numeric value for unsigned integers</li>
+</ul>
+
+<p><br /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MOVZX dest, source
+</code></pre></div></div>
+
+<p>An example of usage could be:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MOV AL, 0xFF        ; AL = 11111111b (255)
+MOVZX EAX, AL       ; EAX = 00000000 00000000 00000000 11111111b (255)
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p><strong>MOVSX (Move with Sign Extend)</strong></p>
+
+<ul>
+  <li>Copies a smaller value to a larger destination</li>
+  <li>Fills the upper bits by repeating the sign bit (MSB)</li>
+  <li>Used for signed values (2’s complement)</li>
+  <li>Preserves the numeric value for signed integers</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MOVSX dest, source
+</code></pre></div></div>
+
+<p>As an example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MOV AL, 0xFF        ; AL = 11111111b (-1 in signed)
+MOVSX EAX, AL       ; EAX = 11111111 11111111 11111111 11111111b (-1)
+
+MOV BL, 0x7F        ; BL = 01111111b (+127 in signed)
+MOVSX EBX, BL       ; EBX = 00000000 00000000 00000000 01111111b (+127)
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p><strong>Explanation of the use of each instruction</strong></p>
+
+<p>Then, for example, if we have a C code and we assign a <em>short</em> to a wider value like an <em>unsigned integer</em>, then we don’t just use MOV, since that would preserve the size, we use MOVZX to convert the value to a positive size-extended version of it self (2 bytes –&gt; 4 bytes):</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">;</span> <span class="kt">short</span> <span class="n">s</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span>
+<span class="n">mov</span>     <span class="n">word</span> <span class="n">ptr</span> <span class="p">[</span><span class="n">rsp</span><span class="o">+</span><span class="mi">10</span><span class="n">h</span><span class="p">],</span> <span class="mi">0</span><span class="n">FFFBh</span>    <span class="p">;</span> <span class="o">-</span><span class="mi">5</span> <span class="n">in</span> <span class="n">twos</span> <span class="nf">complement</span> <span class="p">(</span><span class="mi">16</span><span class="o">-</span><span class="n">bit</span><span class="p">)</span>
+
+<span class="p">;</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">u</span> <span class="o">=</span> <span class="n">s</span>
+<span class="n">movsx</span>   <span class="n">eax</span><span class="p">,</span> <span class="n">word</span> <span class="n">ptr</span> <span class="p">[</span><span class="n">rsp</span><span class="o">+</span><span class="mi">10</span><span class="n">h</span><span class="p">]</span>       <span class="p">;</span> <span class="n">sign</span><span class="o">-</span><span class="n">extend</span> <span class="n">to</span> <span class="mi">32</span><span class="o">-</span><span class="n">bit</span><span class="o">:</span> <span class="mh">0xFFFFFFFB</span>
+<span class="n">mov</span>     <span class="n">dword</span> <span class="n">ptr</span> <span class="p">[</span><span class="n">rsp</span><span class="o">+</span><span class="mi">14</span><span class="n">h</span><span class="p">],</span> <span class="n">eax</span>      <span class="p">;</span> <span class="n">store</span> <span class="n">as</span> <span class="nf">unsigned</span> <span class="p">(</span><span class="n">interprets</span> <span class="n">as</span> <span class="mi">4294967291</span><span class="p">)</span>
+
+<span class="p">;</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">s</span>
+<span class="n">movsx</span>   <span class="n">eax</span><span class="p">,</span> <span class="n">word</span> <span class="n">ptr</span> <span class="p">[</span><span class="n">rsp</span><span class="o">+</span><span class="mi">10</span><span class="n">h</span><span class="p">]</span>       <span class="p">;</span> <span class="n">sign</span><span class="o">-</span><span class="n">extend</span> <span class="n">to</span> <span class="mi">32</span><span class="o">-</span><span class="n">bit</span><span class="o">:</span> <span class="mh">0xFFFFFFFB</span>
+<span class="n">mov</span>     <span class="n">dword</span> <span class="n">ptr</span> <span class="p">[</span><span class="n">rsp</span><span class="o">+</span><span class="mi">18</span><span class="n">h</span><span class="p">],</span> <span class="n">eax</span>      <span class="p">;</span> <span class="n">store</span> <span class="n">as</span> <span class="kt">signed</span> <span class="p">(</span><span class="n">interprets</span> <span class="n">as</span> <span class="o">-</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>If instead we assign to a <em>signed integer</em>, then we use MOVSX in order to extend the size of the value preserving the sign (or giving a sign if wasn’t there before).</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">;</span> <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">us</span> <span class="o">=</span> <span class="mi">65531</span>
+<span class="n">mov</span>     <span class="n">word</span> <span class="n">ptr</span> <span class="p">[</span><span class="n">rsp</span><span class="o">+</span><span class="mi">10</span><span class="n">h</span><span class="p">],</span> <span class="mi">0</span><span class="n">FFFBh</span>
+
+<span class="p">;</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">u</span> <span class="o">=</span> <span class="n">us</span>
+<span class="n">movzx</span>   <span class="n">eax</span><span class="p">,</span> <span class="n">word</span> <span class="n">ptr</span> <span class="p">[</span><span class="n">rsp</span><span class="o">+</span><span class="mi">10</span><span class="n">h</span><span class="p">]</span>       <span class="p">;</span> <span class="n">zero</span><span class="o">-</span><span class="n">extend</span><span class="o">:</span> <span class="mh">0x0000FFFB</span> <span class="p">(</span><span class="mi">65531</span><span class="p">)</span>
+<span class="n">mov</span>     <span class="n">dword</span> <span class="n">ptr</span> <span class="p">[</span><span class="n">rsp</span><span class="o">+</span><span class="mi">14</span><span class="n">h</span><span class="p">],</span> <span class="n">eax</span>
+
+<span class="p">;</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">us</span>
+<span class="n">movzx</span>   <span class="n">eax</span><span class="p">,</span> <span class="n">word</span> <span class="n">ptr</span> <span class="p">[</span><span class="n">rsp</span><span class="o">+</span><span class="mi">10</span><span class="n">h</span><span class="p">]</span>       <span class="p">;</span> <span class="n">zero</span><span class="o">-</span><span class="n">extend</span><span class="o">:</span> <span class="mh">0x0000FFFB</span> <span class="p">(</span><span class="mi">65531</span><span class="p">)</span>
+<span class="n">mov</span>     <span class="n">dword</span> <span class="n">ptr</span> <span class="p">[</span><span class="n">rsp</span><span class="o">+</span><span class="mi">18</span><span class="n">h</span><span class="p">],</span> <span class="n">eax</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h4 id="43-understanding-arrays-in-assembly">4.3. Understanding arrays in assembly.</h4>
+
+<p>Now that we understood IMUL, MOVSX and MOVZX instructions, we can introduce how assembly handles array structures.</p>
+
+<p>Local variables gets accesed via directs stack offsets using RBP register as we see in previous examples. This is possible since the compiler knows the exact location of a local variable since this are defined (this is, they get a value) within the function.</p>
+
+<p>How ever, a value within an array takes other perspective, lets consider the following C code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">set_element</span><span class="p">(</span><span class="kt">int</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span> 
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>On it, <em>i</em> is an unknown variable from the compiler perspective and thus it can’t assign value parameter to a specific memory address as if were a local variable instead, it have to make that assignation dependant on the value of <em>i</em> which gets defined at runtime.</p>
+
+<p>The formula is:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>base_array_address + (index × element_size)
+</code></pre></div></div>
+
+<p>Note that, an array is nothing but a linear chunk of memory, we need to multiply the index by the scale of the datatype in order to map the address in which the slot denoted by the index is in the stack. The later addition with ‘base_array_address’ is just an ordinary way to find an address thorough ‘pointer + offset’</p>
+
+<p>And it applies at every array, note that in the example provide in the code above (presented again just below), the array assignation is everytime through constants (known by the compiler) so in fact the compiler knows the offset to access that specific memory address and it could accessed through stack offsets but it doesn’t because the standadrd method is what is explained above.</p>
+
+<p>So, let’s see how this formula is implemented in assembly when an array is presented.</p>
+
+<p>Consider the following code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="kt">char</span> <span class="n">buff</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+    <span class="kt">char</span> <span class="n">a</span> <span class="o">=</span> <span class="sc">'A'</span><span class="p">;</span>
+    <span class="n">buff</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This code declares an array of chars of 10 slots, and a local variable then it performes an assignation and then returns. Note that arrays gets allocated in the stack despite the uses of them; stackframe expands enough to hold every declaration inside the function.</p>
+
+<p>Consider the following disassembly:</p>
+
+<pre><code class="language-assem">0000000140001000 48 83 EC 28          sub         rsp,28h  
+0000000140001004 C6 04 24 41          mov         byte ptr [rsp],41h  
+0000000140001008 B8 01 00 00 00       mov         eax,1  
+000000014000100D 48 6B C0 05          imul        rax,rax,5  
+0000000140001011 0F B6 0C 24          movzx       ecx,byte ptr [rsp]  
+0000000140001015 88 4C 04 08          mov         byte ptr buff[rax],cl  
+0000000140001019 33 C0                xor         eax,eax  
+000000014000101B 48 83 C4 28          add         rsp,28h  
+000000014000101F C3                   ret 
+</code></pre>
+
+<p>In order to be able to apply the formula mentioned above, we need first to calculate index address, which is performed in the following instruction:</p>
+
+<pre><code class="language-assem">0000000140001008 B8 01 00 00 00       mov         eax,1 //Copy the size of the datatype (this time, char = 1) on the rax register.
+000000014000100D 48 6B C0 05          imul        rax,rax,5 //Then perform the multiplication using imul with rax register and the index; 5.
+</code></pre>
+
+<p>Now RAX register contains the offset (5) to be used along with the base address of the buffer. There is no ADD instruction since the processor already perform automatically that addition when perform the memory access, it just calculates de offset, stored it in RAX and then uses RAX in the following instruction:</p>
+
+<pre><code class="language-assem">0000000140001011 0F B6 0C 24          movzx       ecx,byte ptr [rsp]  
+0000000140001015 88 4C 04 08          mov         byte ptr buff[rax],cl
+</code></pre>
+
+<p>Which is accesssing that offset from the base_address of the buffer (buff), when accesing that memory address, copy the byte <em>cl</em> and then goes on.</p>
+
+<p>The <em>buff</em> is addressing mode, is resolved by the disassembler to mean “rsp + 0x8 + rax” (rsp + 0x8 is where the buffer starts on the stack). The full address computation would be:</p>
+
+<pre><code class="language-assem">rsp + 0x8 + rax == [rsp + 0x8] + (5 * 1)
+</code></pre>
+
+<p>satisfying the equation mentioned above.</p>
+
+<p>Also, is convenient to say that the code above is MCVS being extraordinary unefficient. Moder compilers like gcc would resolve the memory access to the <em>buff</em> as if were a local variable since the index is hardcoded and the compiler knows at compile-time what that index is so there’s no need to implement IMUL operations and make the assignation dependant on an unknown variable.</p>
+
+<p>If we compile the code above with gcc and open it with radare2 we would get:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ r2 -e asm.sub.var=false -A -qc "s main; pdf" test
+Warning: run r2 with -e bin.cache=true to fix relocations in disassembly
+            ; DATA XREF from entry0 @ 0x1078
+┌ 65: int main (int argc, char **argv, char **envp);
+│           ; var int64_t var_13h @ rbp-0x13
+│           ; var int64_t var_dh @ rbp-0xd
+│           ; var int64_t var_8h @ rbp-0x8
+│           0x00001149      f30f1efa       endbr64                               ; Intel CET Instruction
+│           0x0000114d      55             push rbp                              ; Stackframe prologue
+│           0x0000114e      4889e5         mov rbp, rsp
+│           0x00001151      4883ec20       sub rsp, 0x20
+│           0x00001155      64488b042528.  mov rax, qword fs:[0x28]              ; Stack canary (BOF security measure)
+│           0x0000115e      488945f8       mov qword [rbp - 8], rax              
+│           0x00001162      31c0           xor eax, eax
+│           0x00001164      c645ed41       mov byte [rbp - 0x13], 0x41 ; 'A'     ; char a = 'A'
+│           0x00001168      0fb645ed       movzx eax, byte [rbp - 0x13]          ; buff[5] = a;
+│           0x0000116c      8845f3         mov byte [rbp - 0xd], al
+│           0x0000116f      b800000000     mov eax, 0                            ; return 0
+│           0x00001174      488b55f8       mov rdx, qword [rbp - 8]              ; Check stack canary
+│           0x00001178      64482b142528.  sub rdx, qword fs:[0x28]
+│       ┌─&lt; 0x00001181      7405           je 0x1188
+│       │   0x00001183      e8c8feffff     call sym.imp.__stack_chk_fail
+│       │   ; CODE XREF from main @ 0x1181
+│       └─&gt; 0x00001188      c9             leave
+└           0x00001189      c3             ret      
+</code></pre></div></div>
+
+<p>As we can see, since the index is hardcode, the compiler already knows where is the referenced slot of the array exists in the stack:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0x00001168      0fb645ed       movzx eax, byte [rbp - 0x13]
+0x0000116c      8845f3         mov byte [rbp - 0xd], al
+</code></pre></div></div>
+
+<p>So, in conclusion, both forms of handle arrays exists and are completely valid.</p>
+
+<p><br /></p>
+
+<h3 id="5-struct-local-variable">5. Struct Local Variable.</h3>
+
+<p>Like <em>arrays</em>, <em>structs</em> in C are linear memory regions which are accesibles due to offset arithmetics but containing different datatypes elements.</p>
+
+<p>An important concept on how the compiler deals with the allocation of memory for a structure is the <em>memory alignment principle</em> which leaks in <em>structure padding</em>.</p>
+
+<p><br /></p>
+
+<h4 id="51-mermoy-alignment-principle">5.1. Mermoy Alignment Principle.</h4>
+
+<p>Memory alignment refers to how data is positioned in memory relative to addresses that are multiples of certain values (typically powers of 2).</p>
+
+<p>The fundamental reason is architectural and we already ass through it; CPUs access and work data through some special integrated devices called <em>registers</em> which have the width of a <em>word</em> (8 bytes in x64 architectures), it don’t fetch memory byte-by-byte. This mean that in a CPU cycle, the CPU reach exactly 8 bytes of data. So, consider the following example.</p>
+
+<p>Let’s suppouse we have 16 byes of data, this corresponds to two CPU cycles, this means, it takes (ideally) two times to the CPU to read the data stored in those bytes, then let’s suppose we have a long integer (8 bytes) occuping the half of thos 16 bytes, 4 in one octet and 4 in other octet. In order to be able to read the long the CPU would need two times instead of the minimum required per the size of the data type:</p>
+
+<p><br /></p>
+
+<p>MEMORY LAYOUT: MISALIGNED LONG (8 bytes spanning two octets)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                ┌───────────────────────────────────────────────────────────────┐
+                │                      16 BYTES OF MEMORY                       │
+                ├───────────────────────────────┬───────────────────────────────┤
+                │         FIRST OCTET           │        SECOND OCTET           │
+                │    (CPU Cycle 1 - 8 bytes)    │   (CPU Cycle 2 - 8 bytes)     │
+                ├───┬───┬───┬───┬───┬───┬───┬───┼───┬───┬───┬───┬───┬───┬───┬───┤
+                │ 0 │ 1 │ 2 │ 3 │ 4 │ 5 │ 6 │ 7 │ 8 │ 9 │10 │11 │12 │13 │14 │15 │
+                ├───┴───┴───┴───┼───┴───┴───┴───┴───┴───┴───┴───┼───┴───┴───┴───┤
+                │   (unused)    │◄──────── LONG (8 bytes) ─────►│   (unused)    │
+                │   4 bytes     │     4 bytes   │    4 bytes    │    4 bytes    │
+                └───────────────┴───────────────┴───────────────┴───────────────┘
+                                                ▲
+                                                │
+                                    OCTET BOUNDARY (address 0x08)
+
+
+                PROBLEM: To read the misaligned LONG, the CPU must:
+
+                    ┌─────────────────┐         ┌─────────────────┐
+                    │   CPU Cycle 1   │         │   CPU Cycle 2   │
+                    │  Fetch bytes    │         │  Fetch bytes    │
+                    │    0x00-0x07    │         │    0x08-0x0F    │
+                    │                 │         │                 │
+                    │  Extract bytes  │         │  Extract bytes  │
+                    │    4, 5, 6, 7   │         │   8, 9, 10, 11  │
+                    └────────┬────────┘         └────────┬────────┘
+                            │                           │
+                            └───────────┬───────────────┘
+                                        ▼
+                            ┌───────────────────────┐
+                            │  Combine fragments    │
+                            │  into complete LONG   │
+                            └───────────────────────┘
+
+            RESULT: 2 CPU cycles for data that should require only 1
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>This is extremely inefficient, the solution: force the data storage to start in a multiple of a word’s address.</p>
+
+<p>Thus, if we know for example have two integers (4 bytes each) and a char intercalates between each integer, then the data in memory would be stored following the memory allignment principle:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>            ┌───────────────────────────────────────────────────────────────┐
+            │                      16 BYTES OF MEMORY                       │
+            ├───────────────────────────────┬───────────────────────────────┤
+            │         FIRST WORD            │         SECOND WORD           │
+            │         (8 bytes)             │          (8 bytes)            │
+            ├───┬───┬───┬───┬───┬───┬───┬───┼───┬───┬───┬───┬───┬───┬───┬───┤
+            │ 0 │ 1 │ 2 │ 3 │ 4 │ 5 │ 6 │ 7 │ 8 │ 9 │10 │11 │12 │13 │14 │15 │
+            ├───┴───┴───┴───┼───┼───┴───┴───┼───┴───┴───┴───┼───┴───┴───┴───┤
+            │◄─ int a ─────►│ c │◄── gap ──►│◄─── int b ───►│  (available)  │
+            │    4 bytes    │(1)│  3 bytes  │    4 bytes    │    4 bytes    │
+            └───────────────┴───┴───────────┴───────────────┴───────────────┘
+                                            ▲
+                                            │
+                            WORD BOUNDARY (address 0x08)
+</code></pre></div></div>
+
+<p>Observe two things:</p>
+
+<ul>
+  <li>
+    <p>First, te char datatype is inside the first chunk because, per its size, the value fits in the gap leaved by the integer before inside the first word. This means that allignment don’t force every data value to be stored in a brand new 8-multiple-address-start octet, just those data values that don’t fit in the gap leave by other data stored before. This is the case of integer b (4 bytes can’t be stored on a 3-bytes gap) so it corresponds to be stored in a new correspondly alligned octet.</p>
+  </li>
+  <li>
+    <p>There exists unused bytes in memory (in our case, 5, 6 and 7) which corresponds to those bytes that fills gaps between alligned datatypes. Since memory has a linear nature, this bytes are lost and will never be reused until memory gets released more likely when program terminates most of the time.</p>
+  </li>
+</ul>
+
+<p>Since the two reasons above, the rule gets slitly changed to a more efficient approach: <em>a data type should be stored at an address that’s a multiple of its own size</em>. A 4-byte int at multiples of 4, an 8-byte long at multiples of 8, a 2-byte short at multiples of 2, and a 1-byte char anywhere (since every address is a multiple of 1). This is what we call <em>memory principle allignment</em>, and guarantee no data value gets stored between two CPU cycles.</p>
+
+<p><br /></p>
+
+<h4 id="52-structure-padding">5.2. Structure Padding.</h4>
+
+<p>The <em>memory alignment principle</em> applies every time data is stored in memory however some C entities does not seems to be affected, local variables or arrays are some examples. Arrays are linear memory regions reserved for same datatype values, then a fixed-size array of a specific datatype will always occupies the same, and barely equal for local variables.</p>
+
+<p>However, there is a problem when we talk about structures. We know that the size of a structure is the addition of the size of the fields that composes the struct.</p>
+
+<p>So if we get the following C code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">my_struct</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="n">b</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">c</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">struct_1</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="n">struct_1</span> <span class="n">foo</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"This struct is %ld bytes width"</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">foo</span><span class="p">));</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>We should spect that the output would be something like:</p>
+
+<pre><code class="language-less">OUTPUT:
+
+    This struct is 9 bytes width
+
+</code></pre>
+
+<p>But if we compile the code and check the result we will find out that is not, the actual size is 12. This is because we are no taking in consideration the unsued 3 left bytes between the char and the second integer due to memory alignment. The real count is:</p>
+
+<pre><code class="language-less">int a + char b + unused bytes + int c = 4 + 1 + 3 + 4 = 12
+</code></pre>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                12 BYTES OF STRUCTURE MEMORY
+
+    ├───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐               
+    │ 0 │ 1 │ 2 │ 3 │ 4 │ 5 │ 6 │ 7 │ 8 │ 9 │10 │11 │               
+    ├───┴───┴───┴───┼───┼───┴───┴───┼───┴───┴───┴───┤               
+    │◄─── int a ───►│ b │◄─padding─►│◄─── int c ───►│               
+    │    4 bytes    │(1)│  3 bytes  │    4 bytes    │               
+    └───────────────┴───┴───────────┴───────────────┘               
+                        ▲           ▲                               
+                        │           │                               
+                  offset 4      offset 8                            
+                (4 % 1 = 0 ✓)  (8 % 4 = 0 ✓)                       
+    ──────────────────────────────────────────────────
+</code></pre></div></div>
+
+<p>This effect is known as <em>structure padding</em>, when a C compiler automatically inserts extra bytes into a struct to align its members in memory.</p>
+
+<p>Structure padding is a consecuence of the memory allignement and actually exists beyond structures, it affects on how memory gets alloced along a linear region in a huge amount of posibles combinations (nested structures, structures with arrays, arrays of structures, etc).</p>
+
+<p><br /></p>
+
+<h4 id="53-structures-dissasembly">5.3. Structures Dissasembly.</h4>
+
+<p>Consider the following C code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">typedef</span> <span class="k">struct</span> <span class="n">mystruct</span> <span class="p">{</span>
+    <span class="kt">short</span> <span class="n">a</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">b</span><span class="p">[</span><span class="mi">6</span><span class="p">];</span>
+    <span class="kt">long</span> <span class="kt">long</span> <span class="n">c</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">mystruct_t</span><span class="p">;</span>
+
+<span class="kt">short</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">mystruct_t</span> <span class="n">foo</span><span class="p">;</span>
+    <span class="n">foo</span><span class="p">.</span><span class="n">a</span> <span class="o">=</span> <span class="mh">0xbabe</span><span class="p">;</span>
+    <span class="n">foo</span><span class="p">.</span><span class="n">c</span> <span class="o">=</span> <span class="mh">0xba1b0ab1edb100d</span><span class="p">;</span>
+    <span class="n">foo</span><span class="p">.</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">foo</span><span class="p">.</span><span class="n">a</span><span class="p">;</span>
+    <span class="n">foo</span><span class="p">.</span><span class="n">b</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">foo</span><span class="p">.</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">foo</span><span class="p">.</span><span class="n">c</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">foo</span><span class="p">.</span><span class="n">b</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This C code defines an structure with several datatypes including an array. This the memory layout of this structure is:</p>
+
+<p>-&gt; 2 bytes for short a
+-&gt; 2 bytes for padding
+-&gt; 4*6 contiguous bytes for each array entry
+-&gt; 4 bytes for padding (since 24 mod 8 = 0 but array started in non-aligned address)
+-&gt; 8 bytes (word) for long long c</p>
+
+<p>In total, 40 bytes, note that the stackframe expands 0x38, which is enough for the structure.</p>
+
+<p>If we compile the code in MCVS 2019, we obtain the following dissasembly:</p>
+
+<pre><code class="language-less">0000000140001000 48 83 EC 38          sub         rsp,38h  
+0000000140001004 B8 BE BA FF FF       mov         eax,0FFFFBABEh  
+0000000140001009 66 89 04 24          mov         word ptr [rsp],ax  
+000000014000100D 48 B8 0D 10 DB 1E AB B0 A1 0B mov         rax,0BA1B0AB1EDB100Dh  
+0000000140001017 48 89 44 24 20       mov         qword ptr [rsp+20h],rax  
+000000014000101C B8 04 00 00 00       mov         eax,4  
+0000000140001021 48 6B C0 01          imul        rax,rax,1  
+0000000140001025 0F BF 0C 24          movsx       ecx,word ptr [rsp]  
+0000000140001029 89 4C 04 04          mov         dword ptr [rsp+rax+4],ecx  
+000000014000102D B8 04 00 00 00       mov         eax,4  
+0000000140001032 48 6B C0 01          imul        rax,rax,1  
+0000000140001036 48 63 44 04 04       movsxd      rax,dword ptr [rsp+rax+4]  
+000000014000103B 48 03 44 24 20       add         rax,qword ptr [rsp+20h]  
+0000000140001040 B9 04 00 00 00       mov         ecx,4  
+0000000140001045 48 6B C9 04          imul        rcx,rcx,4  
+0000000140001049 89 44 0C 04          mov         dword ptr [rsp+rcx+4],eax  
+000000014000104D B8 04 00 00 00       mov         eax,4  
+0000000140001052 48 6B C0 04          imul        rax,rax,4  
+0000000140001056 0F B7 44 04 04       movzx       eax,word ptr [rsp+rax+4]  
+000000014000105B 48 83 C4 38          add         rsp,38h  
+000000014000105F C3                   ret  
+</code></pre>
+
+<p>Now, lets read the assembly code:</p>
+
+<ul>
+  <li>
+    <p>First, the stackframe prologue:</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  sub         rsp,38h 
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Asignations and operations:</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">foo</span><span class="p">.</span><span class="n">a</span> <span class="o">=</span> <span class="mh">0xbabe</span><span class="p">;</span>
+</code></pre></div>    </div>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  0000000140001004 B8 BE BA FF FF       mov         eax,0FFFFBABEh  
+  0000000140001009 66 89 04 24          mov         word ptr [rsp],ax
+</code></pre></div>    </div>
+
+    <p>First, the value “0FFFFBABEh” gets writted to eax, then ‘ax’ (the lower 16 bits of rax) are written to the left word of the contents of rsp. Remember that rsp points to the top of the stack, this means that the alocation in the stack has been done in opposite direction of the definition in the structure.</p>
+
+    <p><br /></p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">foo</span><span class="p">.</span><span class="n">c</span> <span class="o">=</span> <span class="mh">0xba1b0ab1edb100d</span><span class="p">;</span>
+</code></pre></div>    </div>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  000000014000100D 48 B8 0D 10 DB 1E AB B0 A1 0B   mov         rax,0BA1B0AB1EDB100Dh  
+  0000000140001017 48 89 44 24 20                  mov         qword ptr [rsp+20h],rax  
+</code></pre></div>    </div>
+
+    <p>Then, the value “0BA1B0AB1EDB100Dh” gets stored and rax and then, on ‘rsp + 0x20’. Let’s do some counts here: 0x20 = 2*16^1 + 0*16^0 = 32 bytes, this would not be possible if there was no padding, since the teorically distant between those two fields is 28 bytes (24 + 4).</p>
+
+    <p><br /></p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">foo</span><span class="p">.</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">foo</span><span class="p">.</span><span class="n">a</span><span class="p">;</span>
+</code></pre></div>    </div>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  000000014000101C B8 04 00 00 00       mov         eax,4  
+  0000000140001021 48 6B C0 01          imul        rax,rax,1  
+  0000000140001025 0F BF 0C 24          movsx       ecx,word ptr [rsp]  
+  0000000140001029 89 4C 04 04          mov         dword ptr [rsp+rax+4],ecx  
+</code></pre></div>    </div>
+
+    <p>As we see in the array part, MCSV uses the IMUL method to calculate the offset throught the index and the datatype size and then solves ‘base_address + index*element_size’ (rsp+rax+4). Then it gets the value from rsp (a) and copy it on the rsp+rax+4 address.</p>
+
+    <p>Note also that with this assignation, we are converting a <em>short</em> (a) to a <em>signed integer</em>, thus, when “rsp” is copied to “ecx” to later be copied to “rsp + rax + 4”, MOVSX is being used in order to give the value a sign (if it was an unsigned int, MOVZX would be used instead).</p>
+
+    <p><br /></p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">foo</span><span class="p">.</span><span class="n">b</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">foo</span><span class="p">.</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">foo</span><span class="p">.</span><span class="n">c</span><span class="p">;</span>
+</code></pre></div>    </div>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  000000014000102D B8 04 00 00 00       mov         eax,4  
+  0000000140001032 48 6B C0 01          imul        rax,rax,1  
+  0000000140001036 48 63 44 04 04       movsxd      rax,dword ptr [rsp+rax+4]  
+  000000014000103B 48 03 44 24 20       add         rax,qword ptr [rsp+20h]  
+  0000000140001040 B9 04 00 00 00       mov         ecx,4  
+  0000000140001045 48 6B C9 04          imul        rcx,rcx,4  
+  0000000140001049 89 44 0C 04          mov         dword ptr [rsp+rcx+4],eax 
+</code></pre></div>    </div>
+
+    <p>First, fetch “foo.b[1]” and stores its value in rax, then gets “foo.c” and adds that value to rax, now rax contains “foo.b[1] + foo.c” and this value gets stored on fourth slot of the array.</p>
+
+    <p><br /></p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">return</span> <span class="n">foo</span><span class="p">.</span><span class="n">b</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+</code></pre></div>    </div>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  0000000140001056 0F B7 44 04 04       movzx       eax,word ptr [rsp+rax+4]  
+  000000014000105B 48 83 C4 38          add         rsp,38h    ; Stackframe epilogue
+  000000014000105F C3                   ret 
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="6-instruction-exercises">6. Instruction exercises.</h3>
+
+<h4 id="61-movzx-exercises">6.1. MOVZX exercises</h4>
+
+<p>What value is in r14 after this code executes?</p>
+
+<pre><code class="language-assem">mov r12, 0x5B542050674CD692
+movzx r14, r12b
+</code></pre>
+
+<p>First, “0x5B542050674CD692” value gets copied over r12, then r12b gets copied over r14. r12b is accessing the lowest byte of r12 register which is 0x92, copying onto r14 and zeroing the rest of uppers bytes, so r14 has 0x0000000000000092 value.</p>
+
+<p><br /></p>
+
+<p>What value is in r12w after this code executes?</p>
+
+<pre><code class="language-assem">mov di, 0x4B39
+mov r13w, 0x6396
+movzx r12w, r13b
+</code></pre>
+
+<p>Then, it moves 2-bytes hexadecimal value to r13w which is the 16 lowest bits of r13 register, then moves the lowest byte of r13, which is 0x96, to the 16 lowest bits of r12 and zeroup the rest of bytes of the 16 bits within r12w. So de answer would be 0x0096</p>
+
+<p><br /></p>
+
+<p>What value is in rdx after this code executes?</p>
+
+<pre><code class="language-assem">mov rdi, 0xBCE7AA1E4633FA15
+add rdi, 0x4375165316635F7B
+movzx rdx, dil
+</code></pre>
+
+<p>dil the lower byte of rdi has 0x90.</p>
+
+<p><br /></p>
+
+<h4 id="62-movsx-exercises">6.2. MOVSX exercises.</h4>
+
+<p>What value is in esi after this code executes?</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mov rsp, 0xA440031B065793D1
+movsx esi, sp
+</code></pre></div></div>
+
+<p>The first instruction moves 0xA440031B065793D1 over rsp. Then, moves with sign extension sp, which is the 16 lowest bits of rsp, to esi.</p>
+
+<p>MOVSX is an isntruction that oneup or zeroup depending of the sign of the value. So first, we have to tell if the value is positive or negative:</p>
+
+<pre><code class="language-assem">rsp (64 bits) --&gt; 0xA440031B065793D1; sp (16 bits) --&gt; 0x93D1 --&gt; 0b1001001111010001
+</code></pre>
+
+<p>Per the first byte convention, the value is negative and this means that this value would be extended like follows:</p>
+
+<pre><code class="language-assem">sp --&gt; 0b1001001111010001 MOVSX esi --&gt; 0b1111111111111111001001111010001 -&gt; 0xFFFF93D1
+</code></pre>
+
+<p><br /></p>
+
+<p>What value is in r10 after this code executes?</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mov r10d, 0x67C1ABD2
+mov r8d, 0x7CBE1AFF
+movsxd r10, r8d
+</code></pre></div></div>
+
+<p>As we did before, r8d contents (doubleword is double of a word, 32-bits) is being moved with sign extension to r10, so first lets check the sign converting it to binary:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0x7CBE1AFF --&gt; 0b01111100101111100001101011111111
+</code></pre></div></div>
+
+<p>thus, the value is positive an the value in r10 must be zero-extended:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>r10 --&gt; 0x000000007CBE1AFF
+</code></pre></div></div>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#assem">assem</a>
+          
+        </div>
+      
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+<section id = "social-share-section">
+  <span class="sr-only">Share: </span>
+
+  
+    <a href="https://twitter.com/intent/tweet?text=Stackframe%3B+Local+variables%2C+Arrays+and+Structures.&url=http%3A%2F%2Flocalhost%3A4000%2F2025-12-01-LocalVars_Arrays_structs%2F"
+      class="btn btn-social-icon btn-twitter" title="Share on Twitter">
+      <span class="fab fa-fw fa-twitter" aria-hidden="true"></span>
+      <span class="sr-only">Twitter</span>
+    </a>
+  
+
+  
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F2025-12-01-LocalVars_Arrays_structs%2F"
+      class="btn btn-social-icon btn-facebook" title="Share on Facebook">
+      <span class="fab fa-fw fa-facebook" aria-hidden="true"></span>
+      <span class="sr-only">Facebook</span>
+    </a>
+  
+
+  
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F2025-12-01-LocalVars_Arrays_structs%2F"
+      class="btn btn-social-icon btn-linkedin" title="Share on LinkedIn">
+      <span class="fab fa-fw fa-linkedin" aria-hidden="true"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  
+
+  
+
+  
+
+</section>
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/2025-11-26-Out-Of-Bounds-Write/" data-toggle="tooltip" data-placement="top" title="Out-Of-Bounds Write.">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/2025-12-04-Passing-Parameters/" data-toggle="tooltip" data-placement="top" title="Passing Parameters.">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+      
+  
+  
+  
+
+  
+
+
+  
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="/feed.xml" title="RSS">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">RSS</span>
+    </a>
+  </li><li class="list-inline-item">
+    <a href="mailto:" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/Qv1nTv5" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://twitter.com/Qvintvs1" title="Twitter">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Twitter</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://linkedin.com/in/german-sanmillan-68b308229/" title="LinkedIn">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">LinkedIn</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        German
+        &nbsp;&bull;&nbsp;
+      
+      2026
+
+      
+
+      
+      </p>
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>

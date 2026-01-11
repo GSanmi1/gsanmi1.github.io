@@ -1,0 +1,2263 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 5.0.0 | Copyright Dean Attali 2020 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>Out-Of-Bounds Write.</title>
+
+  
+  <meta name="author" content="German">
+  
+
+  <meta name="description" content="Notes from Out-Of-Bounds Write course from OST2.">
+
+  
+
+  
+
+  
+  <link rel="alternate" type="application/rss+xml" title="Home" href="http://localhost:4000/feed.xml">
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/custom-dark.css">
+    
+  
+
+  
+  
+  
+
+  
+
+  
+  <meta property="og:site_name" content="Home">
+  <meta property="og:title" content="Out-Of-Bounds Write.">
+  <meta property="og:description" content="Notes from Out-Of-Bounds Write course from OST2.">
+
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:article:author" content="German">
+  <meta property="og:article:published_time" content="2025-11-26T00:00:00-05:00">
+  <meta property="og:url" content="http://localhost:4000/2025-11-26-Out-Of-Bounds-Write/">
+  <link rel="canonical" href="http://localhost:4000/2025-11-26-Out-Of-Bounds-Write/">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:site" content="@Qvintvs1">
+  <meta name="twitter:creator" content="@Qvintvs1">
+
+  <meta property="twitter:title" content="Out-Of-Bounds Write.">
+  <meta property="twitter:description" content="Notes from Out-Of-Bounds Write course from OST2.">
+
+  
+
+  
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+    document.querySelectorAll("script[type='math/tex; mode=display']").forEach(function(el) {
+      el.outerHTML = "\\[" + el.textContent + "\\]";
+    });
+    document.querySelectorAll("script[type='math/tex']").forEach(function(el) {
+      el.outerHTML = "\\(" + el.textContent + "\\)";
+    });
+    var script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js';
+    script.async = true;
+    document.head.appendChild(script);
+  });
+</script>
+
+
+  
+
+  
+
+</head>
+
+
+<body>
+
+  
+
+
+  <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">Home</a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Program</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/Cpage">C</a>
+                  <a class="dropdown-item" href="/DHARMApage">Dharma</a>
+                  <a class="dropdown-item" href="/RUSTpage">Rust</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Web2</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/BURPSUITEpage">Burp</a>
+                  <a class="dropdown-item" href="/THMpage">Thm</a>
+                  <a class="dropdown-item" href="/HackTheBoxpage">Htb</a>
+                  <a class="dropdown-item" href="/PEN200page">BasicPentesting</a>
+                  <a class="dropdown-item" href="/REDTEAMBASICSpage">RedTeam</a>
+                  <a class="dropdown-item" href="/BLUETEAMBASICSpage">Blueteam</a>
+                  <a class="dropdown-item" href="/REDESpage">Net</a>
+                  <a class="dropdown-item" href="/2022-11-17-GitBasics">Git</a>
+                  <a class="dropdown-item" href="/CSOFTpage">MemCorrupt</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ZKP</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/MATHpage">Math</a>
+                  <a class="dropdown-item" href="/RUSTpage">Rust</a>
+                  <a class="dropdown-item" href="/NOIRpage">Noir</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Assembly</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/ASSEMpage">x86</a>
+            </div>
+          </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" id="nav-search-link" href="#" title="Search">
+            <span id="nav-search-icon" class="fa fa-search"></span>
+            <span id="nav-search-text">Search</span>
+          </a>
+        </li></ul>
+  </div>
+
+  
+
+  
+
+</nav>
+
+
+
+<div id="beautifuljekyll-search-overlay">
+
+  <div id="nav-search-exit" title="Exit search">✕</div>
+  <input type="text" id="nav-search-input" placeholder="Search">
+  <ul id="search-results-container"></ul>
+  
+  <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+  <script>
+    var searchjson = '[ \
+       \
+        { \
+          "title"    : "P vs NP.", \
+          "category" : "math", \
+          "url"      : "/2026-01-11-PvsNP/", \
+          "date"     : "January 11, 2026" \
+        }, \
+       \
+        { \
+          "title"    : "Race Conditions.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-28-RaceCondition/", \
+          "date"     : "December 28, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Introducción al Cálculo", \
+          "category" : "matemáticas", \
+          "url"      : "/2025-12-25-MathTest/", \
+          "date"     : "December 25, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Uninitialize Data Access.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-23-UDA/", \
+          "date"     : "December 23, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Control Flow.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-12-ControlFlow/", \
+          "date"     : "December 12, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Other Integer Issues.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-05-OtherIntegerIssues/", \
+          "date"     : "December  5, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Integer Overflow/Underflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-12-05-IntegerOverflow-Underflow/", \
+          "date"     : "December  5, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Passing Parameters.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-04-Passing-Parameters/", \
+          "date"     : "December  4, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Stackframe; Local variables, Arrays and Structures.", \
+          "category" : "assem", \
+          "url"      : "/2025-12-01-LocalVars_Arrays_structs/", \
+          "date"     : "December  1, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Out-Of-Bounds Write.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-26-Out-Of-Bounds-Write/", \
+          "date"     : "November 26, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Calling Functions.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-21-CallingFunctions/", \
+          "date"     : "November 21, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "(Linear) Heap Buffer Overflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-18-HBO/", \
+          "date"     : "November 18, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Basic Instructions.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-17-AssemblyBasicRegisters/", \
+          "date"     : "November 17, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Computer Registers.", \
+          "category" : "assem", \
+          "url"      : "/2025-11-08-ComputerRegisters/", \
+          "date"     : "November  8, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "CVE-2021-20294.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-07-CVE-2021-20294/", \
+          "date"     : "November  7, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "(Linear) Stack Buffer Overflow.", \
+          "category" : "csoft", \
+          "url"      : "/2025-11-06-LSBO/", \
+          "date"     : "November  6, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Text Editor.", \
+          "category" : "C", \
+          "url"      : "/2025-08-11-Text-Editor/", \
+          "date"     : "August 11, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Garbage Collector.", \
+          "category" : "C", \
+          "url"      : "/2025-07-11-GarbageCollector/", \
+          "date"     : "July 11, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Hashtables.", \
+          "category" : "C", \
+          "url"      : "/2025-06-13-HashTable/", \
+          "date"     : "June 13, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Building my own malloc in C.", \
+          "category" : "C", \
+          "url"      : "/2025-06-09-BuildingOwnMalloc/", \
+          "date"     : "June  9, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Malloc Tutorial", \
+          "category" : "C", \
+          "url"      : "/2025-06-06-MallocTutorial/", \
+          "date"     : "June  6, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "SharedLibraries&amp;FunctionHooking", \
+          "category" : "C", \
+          "url"      : "/2025-04-26-SharedLibraries&FunctionHooking/", \
+          "date"     : "April 26, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "File Descritors", \
+          "category" : "C", \
+          "url"      : "/2025-03-04-FileDescriptors/", \
+          "date"     : "March  4, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "Network Programming", \
+          "category" : "C", \
+          "url"      : "/2025-02-22-Network_Programming/", \
+          "date"     : "February 22, 2025" \
+        }, \
+       \
+        { \
+          "title"    : "2. Constants and Literals in C.", \
+          "category" : "C", \
+          "url"      : "/2024-12-10-2.ConstantsinC-copy/", \
+          "date"     : "December 10, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "1. Basics of C", \
+          "category" : "C", \
+          "url"      : "/2024-12-02-1.BasicsOfC/", \
+          "date"     : "December  2, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "Gramáticas en Dharma", \
+          "category" : "DHA", \
+          "url"      : "/2024-09-24-Dharma_Tutorial/", \
+          "date"     : "September 24, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "Gramáticas en Dharma", \
+          "category" : "fuzz", \
+          "url"      : "/2024-03-22-Dharma_Tutorial-copy/", \
+          "date"     : "March 22, 2024" \
+        }, \
+       \
+        { \
+          "title"    : "Mi experiencia con el OSCP", \
+          "category" : "pen", \
+          "url"      : "/2023-11-19-PEN200_Experience/", \
+          "date"     : "November 19, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Client Side", \
+          "category" : "pen", \
+          "url"      : "/2023-11-17-17.Client_Side_Attacks/", \
+          "date"     : "November 17, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Deep Packet Tunneling", \
+          "category" : "pen", \
+          "url"      : "/2023-11-16-16.Tunneling_Through_Deep_Packet_Inspection/", \
+          "date"     : "November 16, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Report", \
+          "category" : "pen", \
+          "url"      : "/2023-11-15-15.Making_Reports/", \
+          "date"     : "November 15, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Metasploit", \
+          "category" : "pen", \
+          "url"      : "/2023-11-14-14.Metasploit/", \
+          "date"     : "November 14, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Password Attacks", \
+          "category" : "pen", \
+          "url"      : "/2023-11-13-13.Password_Attacks/", \
+          "date"     : "November 13, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Active Directory Attacks", \
+          "category" : "pen", \
+          "url"      : "/2023-11-12-12.Active_Directory_Attacks/", \
+          "date"     : "November 12, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Port Forwarding", \
+          "category" : "pen", \
+          "url"      : "/2023-11-11-11.Port_Forwarding/", \
+          "date"     : "November 11, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Privilege Escalation", \
+          "category" : "pen", \
+          "url"      : "/2023-11-10-10.Privilege_Escalation/", \
+          "date"     : "November 10, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "File Transfers", \
+          "category" : "pen", \
+          "url"      : "/2023-11-09-9.File_Tranfers/", \
+          "date"     : "November  9, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Buffer Overflows", \
+          "category" : "pen", \
+          "url"      : "/2023-11-08-8.Buffer_Overflows/", \
+          "date"     : "November  8, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Vulnerability Scanning.", \
+          "category" : "pen", \
+          "url"      : "/2023-11-07-7.Vulnerability_Scanning/", \
+          "date"     : "November  7, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Information Gathering", \
+          "category" : "pen", \
+          "url"      : "/2023-11-06-6.Active_Information_Gathering/", \
+          "date"     : "November  6, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Windows", \
+          "category" : "pen", \
+          "url"      : "/2023-11-05-5.Windows/", \
+          "date"     : "November  5, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Networking", \
+          "category" : "pen", \
+          "url"      : "/2023-11-04-4.Networking/", \
+          "date"     : "November  4, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Scripting", \
+          "category" : "pen", \
+          "url"      : "/2023-11-03-3.Scripting/", \
+          "date"     : "November  3, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Practical Tools", \
+          "category" : "pen", \
+          "url"      : "/2023-11-02-2.PracticalTools/", \
+          "date"     : "November  2, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Linux", \
+          "category" : "pen", \
+          "url"      : "/2023-11-01-1.Linux/", \
+          "date"     : "November  1, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Easy", \
+          "category" : "hack", \
+          "url"      : "/2022-12-01-Easy/", \
+          "date"     : "December  1, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Git Basics", \
+          "category" : "", \
+          "url"      : "/2022-11-17-GitBasics/", \
+          "date"     : "November 17, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Tier I", \
+          "category" : "hack", \
+          "url"      : "/2022-11-10-Tier_1/", \
+          "date"     : "November 10, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Tier 0", \
+          "category" : "hack", \
+          "url"      : "/2022-11-09-Tier_0/", \
+          "date"     : "November  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "7.BufferOverflow.", \
+          "category" : "thm", \
+          "url"      : "/2022-11-02-7.BufferOverflow/", \
+          "date"     : "November  2, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "6.Offensive Pentesting", \
+          "category" : "thm", \
+          "url"      : "/2022-11-01-6.OffensivePentesting/", \
+          "date"     : "November  1, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "5.RedTeam", \
+          "category" : "thm", \
+          "url"      : "/2022-10-30-5.RedTeam/", \
+          "date"     : "October 30, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "4.Windows", \
+          "category" : "thm", \
+          "url"      : "/2022-10-22-4.Windows/", \
+          "date"     : "October 22, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "3.Junior Penetrationtester path", \
+          "category" : "thm", \
+          "url"      : "/2022-09-02-3.JRPenetrationTester/", \
+          "date"     : "September  2, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "2.Complete Begginer path.", \
+          "category" : "thm", \
+          "url"      : "/2022-08-07-2.CompleteBegginer/", \
+          "date"     : "August  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "1.Pre-Security path.", \
+          "category" : "thm", \
+          "url"      : "/2022-07-11-1Pre-Security/", \
+          "date"     : "July 11, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "0.Scripting for pentesters.", \
+          "category" : "thm", \
+          "url"      : "/2022-07-10-0.Scripting_for_pentesters/", \
+          "date"     : "July 10, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Burp Certified Practitioner Practice Exam.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-30-PracticeExam/", \
+          "date"     : "March 30, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "22. OAuth Authentication.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-27-22.OAuth_authentication/", \
+          "date"     : "March 27, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "21. HTTP Request Smuggling.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-26-21.HTTP_request_smuggling/", \
+          "date"     : "March 26, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "20. HTTP Host Header Attacks.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-25-20.HTTP_Host_header_attacks/", \
+          "date"     : "March 25, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "19. Web Cache Poisoning.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-24-19.Web_cache_poisoning/", \
+          "date"     : "March 24, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "18. Server-Side Template Injection.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-23-18.Serve-side_template_injection/", \
+          "date"     : "March 23, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "17. Insecure Deserialization.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-22-17.Insecure_deserialization/", \
+          "date"     : "March 22, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "16. WebSockets.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-21-16.WebSockets/", \
+          "date"     : "March 21, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "15.DOM-based XSS vulnerabilities.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-20-15-DOM-based_vulnerabilities/", \
+          "date"     : "March 20, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "14. Clickjacking.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-19-14.Clickjacking/", \
+          "date"     : "March 19, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "13. Cross-Origin Resource Sharing.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-18-13.Cross-origin_resource_sharing_(CORS)/", \
+          "date"     : "March 18, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "12. Cross-Site Request Forgery.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-17-12.Cross-site_request_forgery_(CSRF)/", \
+          "date"     : "March 17, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "11. Cross-Site Scripting.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-16-11.Cross-site_scripting_(XSS)/", \
+          "date"     : "March 16, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "10. XXE Injection.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-15-10.XXE_injection/", \
+          "date"     : "March 15, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "9. Server-Side Request Forgery.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-14-9.Server-side_request_forgery/", \
+          "date"     : "March 14, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "8. File Upload.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-13-8.File_upload_vulnerabilities/", \
+          "date"     : "March 13, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "7. Access Control.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-12-7.Access_control/", \
+          "date"     : "March 12, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "6. Information Disclosure.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-11-6.Information_disclosure/", \
+          "date"     : "March 11, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "5. Bussiness Logic Vulnerabilities.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-10-5.Business_logic_vulnerabilities/", \
+          "date"     : "March 10, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "4. Command Injection.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-09-4.Command_Injection/", \
+          "date"     : "March  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "3. Directory Traversal.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-08-3.Directory_Traversal/", \
+          "date"     : "March  8, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "2. Authentication.", \
+          "category" : "burp", \
+          "url"      : "/2022-03-07-2.Authentication/", \
+          "date"     : "March  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "1. SQLInjection", \
+          "category" : "burp", \
+          "url"      : "/2022-03-06-1.SQLInjection/", \
+          "date"     : "March  6, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Seguridad Perimetral", \
+          "category" : "blueteam", \
+          "url"      : "/2022-02-09-Seguridad_Perimetral/", \
+          "date"     : "February  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Hardening de sistemas", \
+          "category" : "blueteam", \
+          "url"      : "/2022-02-09-Hardening_de_sistemas/", \
+          "date"     : "February  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Bandit", \
+          "category" : "otw", \
+          "url"      : "/2022-02-08-Bandit/", \
+          "date"     : "February  8, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Proxy", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-Proxys/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Protocolos Relevantes", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-Protocolos_Importantes/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Curso Básico Redes", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-Precurso_Redes/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "IPs", \
+          "category" : "redes", \
+          "url"      : "/2022-02-07-IPs/", \
+          "date"     : "February  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Movimientos Laterales", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-06-Introducci%C3%B3n_a_movimientos_laterales/", \
+          "date"     : "February  6, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Evasión de Defensas", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-05-Evasi%C3%B3n_de_Defensas/", \
+          "date"     : "February  5, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Escalada de privilegios", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-05-Escalada_de_privilegios/", \
+          "date"     : "February  5, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Metasploit", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-04-Metasploit_B%C3%A1sico/", \
+          "date"     : "February  4, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Ataques a aplicaciones Android", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-03-Ataques_aplicaciones_android/", \
+          "date"     : "February  3, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Ataque a aplicaciones web.", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-02-Ataques_a_aplicaciones_web/", \
+          "date"     : "February  2, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Ataques a Infraestructuras y Redes", \
+          "category" : "redteam", \
+          "url"      : "/2022-02-01-Ataques_a_Infraestructuras_y_Redes/", \
+          "date"     : "February  1, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Análisis de Objetivos", \
+          "category" : "redteam", \
+          "url"      : "/2022-01-28-An%C3%A1lisis_de_Objetivos/", \
+          "date"     : "January 28, 2022" \
+        }, \
+       \
+       \
+        { \
+          "title"    : "Assembly and Architecture Introduction.", \
+          "category" : "page", \
+          "url"      : "/ASSEMpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Blueteam Basics", \
+          "category" : "page", \
+          "url"      : "/BLUETEAMBASICSpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "PortSwigger BurpSuite Course", \
+          "category" : "page", \
+          "url"      : "/BURPSUITEpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "C-Family Software Memory Corruption Vulnerabilities", \
+          "category" : "page", \
+          "url"      : "/CSOFTpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "C &amp; Systems Fundamentals.", \
+          "category" : "page", \
+          "url"      : "/Cpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Dharma Fuzzer language", \
+          "category" : "page", \
+          "url"      : "/DHARMApage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Exploiting &amp; Reversing", \
+          "category" : "page", \
+          "url"      : "/EXPREVpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Fuzzing JavaScript Engine", \
+          "category" : "page", \
+          "url"      : "/Fuzzpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "HackTheBox", \
+          "category" : "page", \
+          "url"      : "/HackTheBoxpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "TryHackMe", \
+          "category" : "page", \
+          "url"      : "/MATHpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "PEN200 notes", \
+          "category" : "page", \
+          "url"      : "/PEN200page/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Proyectos", \
+          "category" : "page", \
+          "url"      : "/PROJECTSpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Networking Basics", \
+          "category" : "page", \
+          "url"      : "/REDESpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "RedTeam Basics", \
+          "category" : "page", \
+          "url"      : "/REDTEAMBASICSpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Retired Machines", \
+          "category" : "page", \
+          "url"      : "/RetiredMachinespage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "TryHackMe", \
+          "category" : "page", \
+          "url"      : "/THMpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "About me", \
+          "category" : "page", \
+          "url"      : "/aboutme/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "THM", \
+          "category" : "page", \
+          "url"      : "/preOSCPpage/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Tag Index", \
+          "category" : "page", \
+          "url"      : "/tags/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page2/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page3/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page4/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page5/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page6/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page7/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page8/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page9/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page10/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page11/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page12/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page13/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page14/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page15/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page16/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page17/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page18/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page19/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "category" : "page", \
+          "url"      : "/page20/", \
+          "date"     : "January 1, 1970" \
+        } \
+       \
+    ]';
+    searchjson = JSON.parse(searchjson);
+
+    var sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('nav-search-input'),
+      resultsContainer: document.getElementById('search-results-container'),
+      json: searchjson
+    });
+  </script>
+</div>
+
+
+
+
+
+  <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Out-Of-Bounds Write.</h1>
+          
+            
+              <h2 class="post-subheading">Notes from Out-Of-Bounds Write course from OST2.</h2>
+            
+          
+
+          
+            <span class="post-meta">Posted on November 26, 2025</span>
+            
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+
+      
+
+      <article role="main" class="blog-post">
+        <h3 id="1-definition">1. Definition.</h3>
+
+<p>In simple terms, Out-Of-Bounds Writes is a memory corruption vulnerability in which user-controlled data is used to calculate a memory location without proper security measures leading to data being write out of the intended destination in memory. In some ocasions user-controlled data can be written on a user-controlled memory location, this is an escalation of a <em>OOBW</em> to a <em>what-where</em> write vulnerability, in which a potential attacker controls what is being written and where is being written leading to a much more serious scenario.</p>
+
+<p>Is worth to mention that Linear Stack/Heap/Global (when the overflow affects a global variable on DATA/BSS segments) Buffer Overflows are a subset of Out-Of-Bounds Writes, but it deservers an isolated mention since not all BO are in fact OOBW.</p>
+
+<p><br /></p>
+
+<h3 id="2-common-causes">2. Common Causes.</h3>
+
+<p>There are two sets of causes in the OOBW problems:</p>
+
+<ol>
+  <li>
+    <p><strong>Intrinsic vulnerabilities</strong> in which there are problems related to the logic flow of the code:</p>
+
+    <p>Inside of this subset we can aim to poorly handled pointer arithmetic operations with user-controlled data. As a few examples:</p>
+
+    <p>User-controlled data is used to set the index of an array:</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">array</span><span class="p">[</span><span class="n">user_cont_data</span><span class="p">]</span> <span class="o">=</span> <span class="n">var</span> <span class="c1">//OOB Write</span>
+</code></pre></div>    </div>
+
+    <p>Pointer setted with user-controlled data and user-controlled data used to fulfill that pointer region:</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">ptr</span> <span class="o">=</span> <span class="n">base</span> <span class="o">+</span> <span class="n">user_cont_data1</span>
+ <span class="o">*</span><span class="n">ptr</span> <span class="o">=</span> <span class="n">user_cont_data2</span> <span class="c1">//OOB (this time; what-where) Write</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Manufactured vulnerabilities</strong> in which a Linear Buffer Overflow allows the corruption of data later used to calculated a memory address (like for example a pointer) and later overwrite with user-controled data the contents of that pointer. In this kind of vulnerabilities there is not a direct OOBW flaw and it can not come from the code it self but for example a dependency. Is important to note that a manufactured OOBW starts as some other vulnerability class.</p>
+  </li>
+</ol>
+
+<p><br /></p>
+
+<h3 id="3-trivial-example">3. Trivial Example.</h3>
+
+<p>Let’s consider the following C code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Out-Of-Bounds Write - oobw.c</span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[]){</span>
+    <span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">buf</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+    <span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="n">strtoull</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>
+    <span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">j</span> <span class="o">=</span> <span class="n">strtoull</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>
+    <span class="n">buf</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Wrote 0x%llx to buf[%llu]</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The attacker controls the first two arguments of the program the index and the content of a buffer. If the first argument is 8 or more, whatever what is the second argument, is gona get written out of the boundaries of the buffer.</p>
+
+<p><br /></p>
+
+<h3 id="4-exercises">4. Exercises.</h3>
+
+<h4 id="41-cve-2019-10540">4.1. CVE-2019-10540.</h4>
+
+<p>Qualcomm System on a Chip (SoC) are popular chips used on smartphones devices. Frequently provide functionality as primary Application Processor (AP) but also integrated peripheral processor for wireless capabilities such as cellular, Wifi, and Bluetooth.</p>
+
+<p>The vulnerability occurs when the WLAN NAN function processes NAN availability attributes without properly validating the count value. This lack of input validation allows an attacker to trigger a buffer overflow condition. The vulnerable chunk of code is as follows:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//user-controlled: Length, OTA_DataPtr</span>
+<span class="kt">char</span> <span class="n">GlobalBuffer</span><span class="p">[</span><span class="mi">10</span> <span class="o">*</span> <span class="mh">0xB0</span> <span class="o">+</span> <span class="mi">6</span><span class="p">];</span>
+
+<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">itemCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">Length</span><span class="p">;</span> <span class="n">i</span><span class="o">+=</span> <span class="mh">0x44</span><span class="p">){</span>
+    <span class="n">memcpy</span><span class="p">(</span><span class="n">GlobalBuffer</span> <span class="o">+</span> <span class="mi">6</span> <span class="o">+</span> <span class="n">itemCount</span> <span class="o">*</span> <span class="mh">0XB0</span><span class="p">,</span> <span class="n">OTA_DataPtr</span> <span class="o">+</span> <span class="n">i</span><span class="p">,</span> <span class="mh">0x44</span><span class="p">);</span>
+    <span class="n">itemCount</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The vulnerability is kind of trivial, we are in a user-controlled for-loop (Length is user-controlled data) in which the source of the data being copied is also user-controlled (OTA_DataPtr).</p>
+
+<p>Let’s note (again) why this isn’t a simple Linear Stack Buffer Overflow:</p>
+
+<ul>
+  <li>
+    <p>First, <em>memcpy(dst, src, n)</em> copies ‘n’ bytes from ‘src’ to ‘dst’ starting at the address pointed by ‘dst’ pointer.</p>
+  </li>
+  <li>
+    <p>If we look carefully, we will note that we are only copying 0x44 (68 bytes) in each iteration of the <em>for</em> loop so this would not be such a problem if also <em>Length</em> variable is user-controlled and <em>itemCount</em> increments once at a time.</p>
+  </li>
+  <li>
+    <p>At the end, since we can perform a huge amount of iterations, we can write what-where in memory (partially, due to the increments of the pointer are multiple of 0xBO, but dangerous enough). We can think of this as if we are taking control of an offset used to craft a pointer (the destination data) that is being used to write user-controlled data in memory (OTA_DataPtr + i).</p>
+  </li>
+</ul>
+
+<p>The key difference from a Linear Stack Buffer Overflow is that we’re not overflowing the buffer with a single large write. Instead, the vulnerability stems from an unchecked loop iteration count: each write is small (0x44 bytes), but the destination offset calculation (itemCount * 0xB0) grows unbounded. The loop lacks validation to ensure itemCount stays within the buffer’s capacity (10 items), allowing the destination pointer to advance beyond the allocated memory.”</p>
+
+<p><br /></p>
+
+<h4 id="42-cve-2020-0938">4.2. CVE-2020-0938.</h4>
+
+<p>CVE-2020-0938 is a remote code execution vulnerability in the Windows Adobe Type Manager Library (atmfd.dll) that handles Adobe Type 1 PostScript fonts.</p>
+
+<p>Let’s consider the following code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">////ACID: num_master</span>
+<span class="kt">int</span> <span class="nf">SetBlendDesignPositions</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">arg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">num_master</span><span class="p">;</span>
+  <span class="n">Fixed16_16</span> <span class="n">values</span><span class="p">[</span><span class="mi">16</span><span class="p">][</span><span class="mi">15</span><span class="p">];</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="n">num_master</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">;</span> <span class="n">num_master</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//KC: break if all tokens have been read from input stream</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">GetToken</span><span class="p">()</span> <span class="o">!=</span> <span class="n">TOKEN_OPEN</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="cm">/* KC: writes a SACI number (0-14) of fixed point values from an ACID token in
+     * input stream to &amp;values[num_master] */</span>
+    <span class="kt">int</span> <span class="n">values_read</span> <span class="o">=</span> <span class="n">GetOpenFixedArray</span><span class="p">(</span><span class="o">&amp;</span><span class="n">values</span><span class="p">[</span><span class="n">num_master</span><span class="p">],</span> <span class="mi">15</span><span class="p">);</span>
+    <span class="n">SetNumAxes</span><span class="p">(</span><span class="n">values_read</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="n">SetNumMasters</span><span class="p">(</span><span class="n">num_master</span><span class="p">);</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">num_master</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">procs</span><span class="o">-&gt;</span><span class="n">BlendDesignPositions</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In this block of code the user can control the tokens that have to be read, thus we have a for-loop with user-controlled break condition in which some user-controlled data is written to <em>&amp;values[num_master]</em> following <em>GetOpenFixedArray()</em> function. Since we have control both of the token (what is being write) and the location (num_master is the for-loop index iteration and we can make the loop iterate as we want) this is a what-where memory write vulnerability or Out-Of-Bounds Write vulnerability.</p>
+
+<p><br /></p>
+
+<h4 id="43-cve-2020-1020">4.3. CVE-2020-1020.</h4>
+
+<p>CVE-2020-1020 is a remote code execution vulnerability in the Windows Adobe Type Manager Library that was patched by Microsoft in April 2020. This vulnerability exists in the way Windows Adobe Type Manager Library (atmfd.dll) improperly handles specially crafted multi-master fonts, specifically when parsing Adobe Type 1 PostScript format fonts. The flaw allows for remote code execution when Windows processes malicious Adobe PostScript or OpenType fonts.</p>
+
+<p>Let’s check the code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">////ACID: g_font-&gt;numMasters</span>
+<span class="kt">int</span> <span class="nf">ParseBlendVToHOrigin</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">arg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">Fixed16_16</span><span class="o">*</span> <span class="n">ptrs</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+  <span class="n">Fixed16_16</span> <span class="n">values</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">g_font</span><span class="o">-&gt;</span><span class="n">numMasters</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//KC: 0 &lt;= g_font-&gt;numMasters &lt;= 16</span>
+    <span class="n">ptrs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">g_font</span><span class="o">-&gt;</span><span class="n">SomeArray</span><span class="p">[</span><span class="n">arg</span><span class="o">-&gt;</span><span class="n">SomeField</span> <span class="o">+</span> <span class="n">i</span><span class="p">];</span>
+  <span class="p">}</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>        <span class="c1">//KC: values becomes ACID here</span>
+    <span class="kt">int</span> <span class="n">values_read</span> <span class="o">=</span> <span class="n">GetOpenFixedArray</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">g_font</span><span class="o">-&gt;</span><span class="n">numMasters</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">values_read</span> <span class="o">!=</span> <span class="n">g_font</span><span class="o">-&gt;</span><span class="n">numMasters</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="o">-</span><span class="mi">8</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="n">g_font</span><span class="o">-&gt;</span><span class="n">numMasters</span><span class="p">;</span> <span class="n">num</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">ptrs</span><span class="p">[</span><span class="n">num</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="n">num</span><span class="p">];</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>We can see at first that an array of two slots to pointers to <em>Fixed16_16</em> is declared:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Fixed16_16</span><span class="o">*</span> <span class="n">ptrs</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+</code></pre></div></div>
+
+<p>Then, two for-loops take place:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">//...</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="n">g_font</span><span class="o">-&gt;</span><span class="n">numMasters</span><span class="p">;</span> <span class="n">num</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ptrs</span><span class="p">[</span><span class="n">num</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="n">num</span><span class="p">];</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Then, look that <em>ptrs[num]</em> denote the item of <em>ptrs[]</em> at index <em>num</em>, <em>ptrs[num][i]</em>, since <em>ptrs</em> elements are pointers, denote a pointer from a a bse plus an offset (of the type <em>ptrs[num] + i</em>).</p>
+
+<p>According to the array declaration, <em>num</em> possible values must be or 0 or 1, but since <em>g_font-&gt;numMasters</em> is user-controlled and no validation of this value is performed, an assignation beyond the intended bounds of the buffer can be performed. If <em>values[]</em> array’s items were also user-controlled (since we don’t know what <em>GetOpenFixedArray()</em> function does) this would be partially a what-where memory write vulnerability.</p>
+
+<p>Observe that, it does not matter that ptrs and values have only two items. In C, the program has an entire linear memory chunk with smalls blocks of memory being used by buffers an other stuff, this means that values[3] memory address exists independently that is not defined in the code and since:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">buffer</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="n">buffer</span> <span class="o">+</span> <span class="n">i</span><span class="p">).</span>
+</code></pre></div></div>
+
+<p>Where buffer is by definition a pointer to the first memory address of the array. The compiler just computes the address and dereferences it—there’s no bounds checking whatsoever. So values[3] becomes *(values + 3 * sizeof(Fixed16_16)), and the CPU will happily read or write whatever happens to be at that address.</p>
+
+<p><br /></p>
+
+<h4 id="44-cve-2020-13995">4.4. CVE-2020-13995.</h4>
+
+<p>CVE-2020-13995 is OOB write vulnerability in the <em>extract75</em> utility published by the US Air Force Sensor Data Management System (SDMS) River Loop Security. The vulnerability was found in a NITF (National Imagery Transmission Format) parser, specifically the extract75 utility from the Air Force Research Lab’s Sensor Data Management Systems River Loop Security. The flaw is a global buffer overflow that leads to a write-what-where condition.</p>
+
+<p>The tool originated from a DARPA program in 1998 and was designed to parse NITF imagery data River Loop Security. NITF is a format used for transmitting and storing imagery intelligence data.</p>
+
+<p>Let’s check the code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//XENO: Globals</span>
+<span class="kt">char</span> <span class="n">Gstr</span><span class="p">[</span><span class="mi">255</span><span class="p">];</span>
+<span class="kt">char</span> <span class="n">sBuffer</span><span class="p">[</span><span class="mi">1000</span><span class="p">];</span>
+<span class="c1">//...</span>
+<span class="cm">/* V2_0, V2_1 */</span>
+<span class="kt">int</span> <span class="n">number_of_DESs</span><span class="p">;</span>
+<span class="n">segment_info_type</span> <span class="o">*</span><span class="n">DES_info</span><span class="p">;</span>
+<span class="c1">//...</span>
+<span class="kt">long</span> <span class="nf">read_verify</span><span class="p">(</span><span class="kt">int</span> <span class="n">fh</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">destination</span><span class="p">,</span> <span class="kt">long</span> <span class="n">length</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">sErrorMessage</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">long</span> <span class="n">rc</span><span class="p">;</span>
+    <span class="kt">long</span> <span class="n">start</span><span class="p">;</span>
+    <span class="kt">long</span> <span class="n">file_len</span><span class="p">;</span>
+    <span class="k">static</span> <span class="kt">char</span> <span class="n">sTemp</span><span class="p">[</span><span class="mi">150</span><span class="p">];</span>
+
+    <span class="n">rc</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">length</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">rc</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">lseek</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SEEK_CUR</span><span class="p">);</span>
+        <span class="n">file_len</span> <span class="o">=</span> <span class="n">lseek</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SEEK_END</span><span class="p">);</span>
+        <span class="n">sprintf</span><span class="p">(</span><span class="n">sTemp</span><span class="p">,</span> <span class="s">"Error reading, read returned %ld. (start = %ld, \
+read length = %ld, file_length = %ld</span><span class="se">\n</span><span class="s">%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span>
+                    <span class="n">rc</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">file_len</span><span class="p">,</span> <span class="n">sErrorMessage</span><span class="p">);</span>
+        <span class="n">errmessage</span><span class="p">(</span><span class="n">sTemp</span><span class="p">);</span>
+        <span class="n">iQuit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">rc</span> <span class="o">!=</span> <span class="n">length</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">lseek</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SEEK_CUR</span><span class="p">)</span> <span class="o">-</span> <span class="n">rc</span><span class="p">;</span>
+        <span class="n">file_len</span> <span class="o">=</span> <span class="n">lseek</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SEEK_END</span><span class="p">);</span>
+        <span class="n">sprintf</span><span class="p">(</span><span class="n">sTemp</span><span class="p">,</span> <span class="s">"Error reading, read returned %ld. (start = %ld, \
+read length = %ld, file_length = %ld</span><span class="se">\n</span><span class="s">%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span>
+                    <span class="n">rc</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">file_len</span><span class="p">,</span> <span class="n">sErrorMessage</span><span class="p">);</span>
+        <span class="n">errmessage</span><span class="p">(</span><span class="n">sTemp</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"errno=%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">errno</span><span class="p">);</span>
+        <span class="n">iQuit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">////ACID: hNITF</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[]){</span>
+	<span class="c1">//...</span>
+    <span class="n">rc</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="n">sNITFfilename</span><span class="p">,</span> <span class="n">O_RDONLY</span><span class="o">|</span> <span class="n">O_BINARY</span><span class="p">);</span>
+	<span class="c1">//...</span>
+    <span class="n">hNITF</span> <span class="o">=</span> <span class="n">rc</span><span class="p">;</span>
+	<span class="c1">//...</span>
+	<span class="n">read_verify</span><span class="p">(</span><span class="n">hNITF</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span> <span class="n">sBuffer</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s">"error reading header (# extension segs"</span><span class="p">);</span>
+	    <span class="n">sBuffer</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="sc">'\0'</span><span class="p">;</span>
+	    <span class="n">number_of_DESs</span> <span class="o">=</span> <span class="n">atoi</span><span class="p">(</span><span class="n">sBuffer</span><span class="p">);</span>
+
+	    <span class="k">if</span> <span class="p">(</span><span class="n">number_of_DESs</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+	        <span class="cm">/* Allocate Space for extension segs information arrays */</span>
+	        <span class="n">DES_info</span> <span class="o">=</span> <span class="p">(</span><span class="n">segment_info_type</span> <span class="o">*</span><span class="p">)</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">segment_info_type</span><span class="p">)</span> <span class="o">*</span> <span class="n">number_of_DESs</span><span class="p">);</span>
+	        <span class="k">if</span> <span class="p">(</span><span class="n">DES_info</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+	            <span class="n">errmessage</span><span class="p">(</span><span class="s">"Error allocating memory for DES_info"</span><span class="p">);</span>
+	            <span class="n">iQuit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+	        <span class="p">}</span>
+
+	        <span class="cm">/* Read Image subheader / data lengths */</span>
+
+	        <span class="n">read_verify</span><span class="p">(</span><span class="n">hNITF</span><span class="p">,</span> <span class="n">sBuffer</span><span class="p">,</span> <span class="mi">13</span> <span class="o">*</span> <span class="n">number_of_DESs</span><span class="p">,</span> <span class="s">"Error reading header / image subheader data lengths"</span><span class="p">);</span>
+
+	        <span class="n">temp</span> <span class="o">=</span> <span class="n">sBuffer</span><span class="p">;</span>
+
+	        <span class="k">for</span> <span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">number_of_DESs</span><span class="p">;</span> <span class="n">x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+	            <span class="n">strncpy</span><span class="p">(</span><span class="n">Gstr</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+	            <span class="n">Gstr</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="sc">'\0'</span><span class="p">;</span>
+	            <span class="n">DES_info</span><span class="p">[</span><span class="n">x</span><span class="p">].</span><span class="n">length_of_subheader</span> <span class="o">=</span> <span class="n">atol</span><span class="p">(</span><span class="n">Gstr</span><span class="p">);</span>
+	            <span class="n">temp</span> <span class="o">+=</span> <span class="mi">4</span><span class="p">;</span>
+
+	            <span class="n">strncpy</span><span class="p">(</span><span class="n">Gstr</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="mi">9</span><span class="p">);</span>
+	            <span class="n">Gstr</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="sc">'\0'</span><span class="p">;</span>
+	            <span class="n">DES_info</span><span class="p">[</span><span class="n">x</span><span class="p">].</span><span class="n">length_of_data</span> <span class="o">=</span> <span class="n">atol</span><span class="p">(</span><span class="n">Gstr</span><span class="p">);</span>
+	            <span class="n">temp</span> <span class="o">+=</span> <span class="mi">9</span><span class="p">;</span>
+
+	            <span class="n">DES_info</span><span class="p">[</span><span class="n">x</span><span class="p">].</span><span class="n">pData</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+	            <span class="n">DES_info</span><span class="p">[</span><span class="n">x</span><span class="p">].</span><span class="n">bFile_written</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">;</span>
+	        <span class="p">}</span>
+	    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>Lets see that there are two buffers defined as global data:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">char</span> <span class="n">Gstr</span><span class="p">[</span><span class="mi">255</span><span class="p">];</span>
+<span class="kt">char</span> <span class="n">sBuffer</span><span class="p">[</span><span class="mi">1000</span><span class="p">];</span>
+<span class="c1">//...</span>
+<span class="cm">/* V2_0, V2_1 */</span>
+<span class="kt">int</span> <span class="n">number_of_DESs</span><span class="p">;</span>
+<span class="n">segment_info_type</span> <span class="o">*</span><span class="n">DES_info</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Is worth to mention that global variables are not stored on the stack neither on the heap, they get allocated in DATA/BSS segments.</p>
+
+<p>First, we start at the <em>main()</em> function, the user controlled data gets read from the file and stored on <em>hNITF</em> then, the buffer along with the user-controlled data gets introduced in the <em>read_verify()</em> function.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[]){</span>
+<span class="c1">//...</span>
+  <span class="n">rc</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="n">sNITFfilename</span><span class="p">,</span> <span class="n">O_RDONLY</span><span class="o">|</span> <span class="n">O_BINARY</span><span class="p">);</span>
+<span class="c1">//...</span>
+  <span class="n">hNITF</span> <span class="o">=</span> <span class="n">rc</span><span class="p">;</span>
+<span class="c1">//...</span>
+  <span class="n">read_verify</span><span class="p">(</span><span class="n">hNITF</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span> <span class="n">sBuffer</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s">"error reading header (# extension segs"</span><span class="p">);</span>
+<span class="c1">//...</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Let’s check now what <em>read_verify()</em> function does. At a first glance, it appears that the function is a wrapper to <em>read()</em> that reads ‘length’ data from ‘fh’ and store it on ‘destination’, in this case, the length is only 3 bytes, so only <em>sBuffer[0], sBuffer[1], sBuffer[2]</em>.</p>
+
+<p>But, later, something interesting happens, <em>sBuffer[3]</em> gets filled with a null-terminator byte and then the first string representation of the buffer gets converted to an integer which gets stored in <em>number_of_DESs</em> and later a memory chunk for <em>number_of_DESs</em> elements of <em>segment_info_type</em> data type.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sBuffer</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="sc">'\0'</span><span class="p">;</span>
+<span class="n">number_of_DESs</span> <span class="o">=</span> <span class="n">atoi</span><span class="p">(</span><span class="n">sBuffer</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">number_of_DESs</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="cm">/* Allocate Space for extension segs information arrays */</span>
+    <span class="n">DES_info</span> <span class="o">=</span> <span class="p">(</span><span class="n">segment_info_type</span> <span class="o">*</span><span class="p">)</span>
+              <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">segment_info_type</span><span class="p">)</span> <span class="o">*</span> <span class="n">number_of_DESs</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">DES_info</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">errmessage</span><span class="p">(</span><span class="s">"Error allocating memory for DES_info"</span><span class="p">);</span>
+        <span class="n">iQuit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="c1">//...</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This essentially means that both variables <em>number_of_DESs</em> and <em>DES_info</em> are used-controlled. Then, <em>read_verify()</em> function is called again, but this time with <em>length</em> parameter as <em>13 * number_of_DESs</em></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">read_verify</span><span class="p">(</span><span class="n">hNITF</span><span class="p">,</span> <span class="n">sBuffer</span><span class="p">,</span> <span class="mi">13</span> <span class="o">*</span> <span class="n">number_of_DESs</span><span class="p">,</span>
+    <span class="s">"Error reading header / image subheader data lengths"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>read_verify as a wrapper is reading into a fixed-size wrapper a user-controlled amount of data from user-controlled source, if there is not regulation on the wrapper this could potentially lead to a buffer overflow.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">long</span> <span class="nf">read_verify</span><span class="p">(</span><span class="kt">int</span> <span class="n">fh</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">destination</span><span class="p">,</span> <span class="kt">long</span> <span class="n">length</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">sErrorMessage</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">long</span> <span class="n">rc</span><span class="p">;</span>
+    <span class="kt">long</span> <span class="n">start</span><span class="p">;</span>
+    <span class="kt">long</span> <span class="n">file_len</span><span class="p">;</span>
+    <span class="k">static</span> <span class="kt">char</span> <span class="n">sTemp</span><span class="p">[</span><span class="mi">150</span><span class="p">];</span>
+
+    <span class="n">rc</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">length</span><span class="p">);</span>
+    <span class="c1">//...</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>However there is something more. If we assume that the second call of <em>read_verify()</em> leads to a global buffer overflow, then the global variables gets overwritten, this means that eventually <em>segment_info_type *DES_info</em> is a user-controlled pointer after the overflow.</p>
+
+<p>On the following diagram we can check how the buffer overflow of the <em>sBuffer</em> array eventually reachs BSS segment and <em>DES_info</em> pointer (remember that, despite memory allocation is towards lower-address, memory write direction always is towards higher address, thus the overwrite would follow:  sBuffer -&gt; number_of_DESs -&gt; DES_info).</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Higher Addresses
+┌─────────────────────────────────────────────────────────────┐
+│                           STACK                             │
+│                      (grows downward)                       │
+├─────────────────────────────────────────────────────────────┤
+│                        unused memory                        │
+├─────────────────────────────────────────────────────────────┤
+│                            HEAP                             │
+│                       (grows upward)                        │
+├─────────────────────────────────────────────────────────────┤
+│                             ...                             │
+├─────────────────────────────────────────────────────────────┤
+│                         BSS Segment                         │
+│            (Uninitialized global/static variables)          │
+├─────────────────────────────────────────────────────────────┤
+│        DES_info              │ 4-8 bytes (pointer)          │
+│        (uninitialized ptr)   │ initialized to NULL?         │
+├─────────────────────────────────────────────────────────────┤
+│        number_of_DESs        │ 4 bytes (int)                │
+│        (uninitialized)       │ value = 0?                   │
+├─────────────────────────────────────────────────────────────┤
+│                       DATA Segment                          │
+│           (Initialized global/static variables)             │
+├─────────────────────────────────────────────────────────────┤
+│        sBuffer[1000]         │ 1000 bytes                   │
+│        (char array)          │ all zeros initially?         │
+├─────────────────────────────────────────────────────────────┤
+│        Gstr[255]             │ 255 bytes                    │
+│        (char array)          │ all zeros initially?         │
+├─────────────────────────────────────────────────────────────┤
+│                       TEXT Segment                          │
+│                      (Program code)                         │
+└─────────────────────────────────────────────────────────────┘
+Lower Addresses
+</code></pre></div></div>
+
+<p>Thus, on the following for-loop, where the break-condition is user-controlled, several assignations are being performed to a user-controlled pointer destination (DES_info) and also the first 4 bytes of temp (our controlled-buffer) and the following 9 bytes are being copied to Gstr which later would be the source of the assignation. Thus, this is a what-where write vulnerability which borns from a global buffer-overflow.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">temp</span> <span class="o">=</span> <span class="n">sBuffer</span><span class="p">;</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">number_of_DESs</span><span class="p">;</span> <span class="n">x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">strncpy</span><span class="p">(</span><span class="n">Gstr</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+    <span class="n">Gstr</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="sc">'\0'</span><span class="p">;</span>
+    <span class="n">DES_info</span><span class="p">[</span><span class="n">x</span><span class="p">].</span><span class="n">length_of_subheader</span> <span class="o">=</span> <span class="n">atol</span><span class="p">(</span><span class="n">Gstr</span><span class="p">);</span>
+    <span class="n">temp</span> <span class="o">+=</span> <span class="mi">4</span><span class="p">;</span>
+
+    <span class="n">strncpy</span><span class="p">(</span><span class="n">Gstr</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="mi">9</span><span class="p">);</span>
+    <span class="n">Gstr</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="sc">'\0'</span><span class="p">;</span>
+    <span class="n">DES_info</span><span class="p">[</span><span class="n">x</span><span class="p">].</span><span class="n">length_of_data</span> <span class="o">=</span> <span class="n">atol</span><span class="p">(</span><span class="n">Gstr</span><span class="p">);</span>
+    <span class="n">temp</span> <span class="o">+=</span> <span class="mi">9</span><span class="p">;</span>
+
+    <span class="n">DES_info</span><span class="p">[</span><span class="n">x</span><span class="p">].</span><span class="n">pData</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="n">DES_info</span><span class="p">[</span><span class="n">x</span><span class="p">].</span><span class="n">bFile_written</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h4 id="45-cve-2021-26675">4.5. CVE-2021-26675.</h4>
+
+<p>CVE-2021-26675 is a stack-based buffer overflow vulnerability in the dnsproxy component of ConnMan (Connection Manager), the vulnerability stems from insufficient length checks before performing memory copy operations (memcpy) in the DNS proxy code. The fix involved adding length checks to prevent buffer overflow.</p>
+
+<p>Let’s check the code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">static</span> <span class="kt">char</span> <span class="o">*</span><span class="nf">uncompress</span><span class="p">(</span><span class="kt">int16_t</span> <span class="n">field_count</span><span class="p">,</span> 	<span class="cm">/*KC: ACID from packet header */</span>
+                        <span class="kt">char</span> <span class="o">*</span><span class="n">start</span><span class="p">,</span>            <span class="cm">/*KC: Starting header of ACID input packet */</span>
+                        <span class="kt">char</span> <span class="o">*</span><span class="n">end</span><span class="p">,</span>              <span class="cm">/*KC: End of ACID input packet */</span>
+                        <span class="kt">char</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span>              <span class="cm">/*KC: Current offset in ACID input packet */</span>
+                        <span class="kt">char</span> <span class="o">*</span><span class="n">uncompressed</span><span class="p">,</span>     <span class="cm">/*KC: Base of [1025] output buffer */</span>
+                        <span class="kt">int</span> <span class="n">uncomp_len</span><span class="p">,</span>         <span class="cm">/*KC: Hardcoded 1025 */</span>
+                        <span class="kt">char</span> <span class="o">**</span><span class="n">uncompressed_ptr</span><span class="p">)</span><span class="cm">/*KC: Offset to end of uncompressed data */</span>
+<span class="p">{</span>
+	<span class="kt">char</span> <span class="o">*</span><span class="n">uptr</span> <span class="o">=</span> <span class="o">*</span><span class="n">uncompressed_ptr</span><span class="p">;</span> <span class="cm">/* position in result buffer */</span>
+
+	<span class="n">debug</span><span class="p">(</span><span class="s">"count %d ptr %p end %p uptr %p"</span><span class="p">,</span> <span class="n">field_count</span><span class="p">,</span> <span class="n">ptr</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">uptr</span><span class="p">);</span>
+
+	<span class="k">while</span> <span class="p">(</span><span class="n">field_count</span><span class="o">--</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">ptr</span> <span class="o">&lt;</span> <span class="n">end</span><span class="p">)</span> <span class="p">{</span>
+		<span class="kt">int</span> <span class="n">dlen</span><span class="p">;</span>		<span class="cm">/* data field length */</span>
+		<span class="kt">int</span> <span class="n">ulen</span><span class="p">;</span>		<span class="cm">/* uncompress length */</span>
+		<span class="kt">int</span> <span class="n">pos</span><span class="p">;</span>		<span class="cm">/* position in compressed string */</span>
+		<span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="n">NS_MAXLABEL</span><span class="p">];</span> <span class="cm">/* tmp label */</span> <span class="cm">/*KC: fixed-size 63 byte buffer*/</span>
+		<span class="kt">uint16_t</span> <span class="n">dns_type</span><span class="p">,</span> <span class="n">dns_class</span><span class="p">;</span>
+		<span class="kt">int</span> <span class="n">comp_pos</span><span class="p">;</span>
+
+		<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">convert_label</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">ptr</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">NS_MAXLABEL</span><span class="p">,</span>
+					<span class="o">&amp;</span><span class="n">pos</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">comp_pos</span><span class="p">))</span>
+			<span class="k">goto</span> <span class="n">out</span><span class="p">;</span>
+
+		<span class="cm">/*
+		 * Copy the uncompressed resource record, type, class and \0 to
+		 * tmp buffer.
+		 */</span>
+
+		<span class="n">ulen</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+		<span class="n">strncpy</span><span class="p">(</span><span class="n">uptr</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">uncomp_len</span> <span class="o">-</span> <span class="p">(</span><span class="n">uptr</span> <span class="o">-</span> <span class="n">uncompressed</span><span class="p">));</span> <span class="cm">/*KC: 1025 - (current offset-base) */</span>
+
+		<span class="n">debug</span><span class="p">(</span><span class="s">"pos %d ulen %d left %d name %s"</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">ulen</span><span class="p">,</span>
+			<span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="n">uncomp_len</span> <span class="o">-</span> <span class="p">(</span><span class="n">uptr</span> <span class="o">-</span> <span class="n">uncompressed</span><span class="p">)),</span> <span class="n">uptr</span><span class="p">);</span>
+
+		<span class="n">uptr</span> <span class="o">+=</span> <span class="n">ulen</span><span class="p">;</span>
+		<span class="o">*</span><span class="n">uptr</span><span class="o">++</span> <span class="o">=</span> <span class="sc">'\0'</span><span class="p">;</span>
+
+		<span class="n">ptr</span> <span class="o">+=</span> <span class="n">pos</span><span class="p">;</span>
+
+		<span class="cm">/*
+		 * We copy also the fixed portion of the result (type, class,
+		 * ttl, address length and the address)
+		 */</span>
+		<span class="n">memcpy</span><span class="p">(</span><span class="n">uptr</span><span class="p">,</span> <span class="n">ptr</span><span class="p">,</span> <span class="n">NS_RRFIXEDSZ</span><span class="p">);</span> <span class="cm">/*KC: NS_RRFIXEDSZ = 10*/</span>
+
+		<span class="n">dns_type</span> <span class="o">=</span> <span class="n">uptr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span> <span class="o">|</span> <span class="n">uptr</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+		<span class="n">dns_class</span> <span class="o">=</span> <span class="n">uptr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span> <span class="o">|</span> <span class="n">uptr</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+
+		<span class="k">if</span> <span class="p">(</span><span class="n">dns_class</span> <span class="o">!=</span> <span class="n">ns_c_in</span><span class="p">)</span>
+			<span class="k">goto</span> <span class="n">out</span><span class="p">;</span>
+
+		<span class="n">ptr</span> <span class="o">+=</span> <span class="n">NS_RRFIXEDSZ</span><span class="p">;</span>
+		<span class="n">uptr</span> <span class="o">+=</span> <span class="n">NS_RRFIXEDSZ</span><span class="p">;</span>
+    <span class="c1">//...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>From comments we can see that the DNS received packet is user-controlled, in the <em>uncompress()</em> function, the parameters field_count, start, end and ptr are user-controlled data.</p>
+
+<p>Then, an assignation is performed and the code enters in a while loop with user-controlled break condtion:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	<span class="kt">char</span> <span class="o">*</span><span class="n">uptr</span> <span class="o">=</span> <span class="o">*</span><span class="n">uncompressed_ptr</span><span class="p">;</span> <span class="cm">/* position in result buffer */</span>
+
+	<span class="n">debug</span><span class="p">(</span><span class="s">"count %d ptr %p end %p uptr %p"</span><span class="p">,</span> <span class="n">field_count</span><span class="p">,</span> <span class="n">ptr</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">uptr</span><span class="p">);</span>
+
+	<span class="k">while</span> <span class="p">(</span><span class="n">field_count</span><span class="o">--</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">ptr</span> <span class="o">&lt;</span> <span class="n">end</span><span class="p">)</span> <span class="p">{</span>
+</code></pre></div></div>
+
+<p>Then some declarations are performed, a strncpy() operation aswell (but this is without interest since the parameters involved are not user-controlled) and then we find the following lines:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ptr</span> <span class="o">+=</span> <span class="n">pos</span><span class="p">;</span>
+
+<span class="cm">/*
+  * We copy also the fixed portion of the result (type, class,
+  * ttl, address length and the address)
+  */</span>
+<span class="n">memcpy</span><span class="p">(</span><span class="n">uptr</span><span class="p">,</span> <span class="n">ptr</span><span class="p">,</span> <span class="n">NS_RRFIXEDSZ</span><span class="p">);</span> <span class="cm">/*KC: NS_RRFIXEDSZ = 10*/</span>
+
+<span class="n">dns_type</span> <span class="o">=</span> <span class="n">uptr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span> <span class="o">|</span> <span class="n">uptr</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="n">dns_class</span> <span class="o">=</span> <span class="n">uptr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span> <span class="o">|</span> <span class="n">uptr</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">dns_class</span> <span class="o">!=</span> <span class="n">ns_c_in</span><span class="p">)</span>
+  <span class="k">goto</span> <span class="n">out</span><span class="p">;</span>
+
+<span class="n">ptr</span> <span class="o">+=</span> <span class="n">NS_RRFIXEDSZ</span><span class="p">;</span>
+<span class="n">uptr</span> <span class="o">+=</span> <span class="n">NS_RRFIXEDSZ</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>The first thing we must look at is that a memcpy operation is being performed with a user-controlled source to a destination but without control the length so at first this is valid and no overflow can be performed, after the operation, the destination and the source of the copy operation gets incremented.</p>
+
+<p>However, we must not forgot that the while loop has a user-controlled exit-condition, this means that essentially since neither of the two pointers gets restablished at the start of the loop, eventually <em>uptr</em> would point out of the bounds of the intedended structure, thus, this is a what-where memory write vulnerability.</p>
+
+<p><br /></p>
+
+<h4 id="46-cve-2021-28216">4.6. CVE-2021-28216.</h4>
+
+<p>Consider the following code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">////ACID: NV Var data returned in PerformanceVariable</span>
+<span class="c1">////NOT ACID: Variables named *Guid</span>
+<span class="c1">//</span>
+<span class="c1">// Update S3 boot records into the basic boot performance table.</span>
+<span class="c1">//</span>
+<span class="n">VarSize</span> <span class="o">=</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">PerformanceVariable</span><span class="p">);</span>
+<span class="n">Status</span> <span class="o">=</span> <span class="n">VariableServices</span><span class="o">-&gt;</span><span class="n">GetVariable</span><span class="p">(</span><span class="n">VariableServices</span><span class="p">,</span> <span class="n">EFI_FIRMWARE_PERFORMANCE_VARIABLE_NAME</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">gEfiFirmwarePerformanceGuid</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">VarSize</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">PerformanceVariable</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">EFI_ERROR</span> <span class="p">(</span><span class="n">Status</span><span class="p">))</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="n">Status</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">BootPerformanceTable</span> <span class="o">=</span> <span class="p">(</span><span class="n">UINT8</span><span class="o">*</span><span class="p">)</span> <span class="p">(</span><span class="n">UINTN</span><span class="p">)</span><span class="n">PerformanceVariable</span><span class="p">.</span><span class="n">BootPerformanceTablePointer</span><span class="p">;</span>
+<span class="c1">//</span>
+<span class="c1">// Dump PEI boot records</span>
+<span class="c1">//</span>
+<span class="n">FirmwarePerformanceTablePtr</span> <span class="o">=</span> <span class="p">(</span><span class="n">BootPerformanceTable</span> <span class="o">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">BOOT_PERFORMANCE_TABLE</span><span class="p">));</span>
+
+<span class="n">GuidHob</span> <span class="o">=</span> <span class="n">GetFirstGuidHob</span><span class="p">(</span><span class="o">&amp;</span><span class="n">gEdkiiFpdtExtendedFirmwarePerformanceGuid</span><span class="p">);</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="n">GuidHob</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">FirmwarePerformanceData</span> <span class="o">=</span> <span class="n">GET_GUID_HOB_DATA</span><span class="p">(</span><span class="n">GuidHob</span><span class="p">);</span>
+	<span class="n">PeiPerformanceLogHeader</span> <span class="o">=</span> <span class="p">(</span><span class="n">FPDT_PEI_EXT_PERF_HEADER</span> <span class="o">*</span><span class="p">)</span><span class="n">FirmwarePerformanceData</span><span class="p">;</span>
+	<span class="n">CopyMem</span><span class="p">(</span><span class="n">FirmwarePerformanceTablePtr</span><span class="p">,</span> <span class="n">FirmwarePerformanceData</span> <span class="o">+</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">FPDT_PEI_EXT_PERF_HEADER</span><span class="p">),</span> <span class="p">(</span><span class="n">UINTN</span><span class="p">)(</span><span class="n">PeiPerformanceLogHeader</span><span class="o">-&gt;</span><span class="n">SizeOfAllEntries</span><span class="p">));</span>
+
+	<span class="n">GuidHob</span> <span class="o">=</span> <span class="n">GetNextGuidHob</span><span class="p">(</span><span class="o">&amp;</span><span class="n">gEdkiiFpdtExtendedFirmwarePerformanceGuid</span><span class="p">,</span> <span class="n">GET_NEXT_HOB</span><span class="p">(</span><span class="n">GuidHob</span><span class="p">));</span>
+	<span class="n">FirmwarePerformanceTablePtr</span> <span class="o">+=</span> <span class="p">(</span><span class="n">UINTN</span><span class="p">)(</span><span class="n">PeiPerformanceLogHeader</span><span class="o">-&gt;</span><span class="n">SizeOfAllEntries</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">//</span>
+<span class="c1">// Update Table length.</span>
+<span class="c1">//</span>
+<span class="p">((</span><span class="n">BOOT_PERFORMANCE_TABLE</span> <span class="o">*</span><span class="p">)</span> <span class="n">BootPerformanceTable</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">Header</span><span class="p">.</span><span class="n">Length</span> <span class="o">=</span> <span class="p">(</span><span class="n">UINT32</span><span class="p">)((</span><span class="n">UINTN</span><span class="p">)</span><span class="n">FirmwarePerformanceTablePtr</span> <span class="o">-</span> <span class="p">(</span><span class="n">UINTN</span><span class="p">)</span><span class="n">BootPerformanceTable</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>In the code above, <em>PerformanceVariable</em> ends up in <em>BootPerformanceTable</em> which also ends up in <em>FirmwarePerformanceTablePtr</em> which is being used as a destination in <em>CopyMem</em> function. so a data-copy operation is being performed with a user-controlled value as the destination, this means that an attacker could make that uncontrolled data gets written any part in memory.</p>
+
+<p><br /></p>
+
+<h4 id="47-cve-2022-25636">4.7. CVE-2022-25636.</h4>
+
+<p>Netfilter is a lernel module that provides “firewalling, NAT and packet mangling for Linux”, it is commonly interacted with via the iptables firewall rule configuration mechanism.</p>
+
+<p>It is possible to specify a set of firewall rules via the “nft” userspace application, which will then be parsed and handled by the kernel module. Let’s check the code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="n">flow_action</span> <span class="p">{</span>
+	<span class="kt">unsigned</span> <span class="kt">int</span>               <span class="n">num_entries</span><span class="p">;</span>
+	<span class="k">struct</span> <span class="n">flow_action_entry</span>   <span class="n">entries</span><span class="p">[];</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">flow_rule</span> <span class="p">{</span>
+	<span class="k">struct</span> <span class="n">flow_match</span>          <span class="n">match</span><span class="p">;</span>
+	<span class="k">struct</span> <span class="n">flow_action</span>         <span class="n">action</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">nft_flow_rule</span> <span class="p">{</span>
+	<span class="n">__be16</span>                     <span class="n">proto</span><span class="p">;</span>
+	<span class="k">struct</span> <span class="n">nft_flow_match</span>      <span class="n">match</span><span class="p">;</span>
+	<span class="k">struct</span> <span class="n">flow_rule</span>           <span class="o">*</span><span class="n">rule</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">nft_offload_ctx</span> <span class="p">{</span>
+	<span class="k">struct</span> <span class="p">{</span>
+		<span class="k">enum</span> <span class="n">nft_offload_dep_type</span>   <span class="n">type</span><span class="p">;</span>
+		<span class="n">__be16</span>                      <span class="n">l3num</span><span class="p">;</span>
+		<span class="n">u8</span>                          <span class="n">protonum</span><span class="p">;</span>
+	<span class="p">}</span> <span class="n">dep</span><span class="p">;</span>
+	<span class="kt">unsigned</span> <span class="kt">int</span>               <span class="n">num_actions</span><span class="p">;</span>
+	<span class="k">struct</span> <span class="n">net</span>                 <span class="o">*</span><span class="n">net</span><span class="p">;</span>
+	<span class="k">struct</span> <span class="n">nft_offload_reg</span>     <span class="n">regs</span><span class="p">[</span><span class="n">NFT_REG32_15</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+<span class="p">};</span>
+
+<span class="cm">/**
+ * struct_size() - Calculate size of structure with trailing array.
+ * @p: Pointer to the structure.
+ * @member: Name of the array member.
+ * @count: Number of elements in the array.
+ *
+ * Calculates size of memory needed for structure @p followed by an
+ * array of @count number of @member elements.
+ *
+ * Return: number of bytes needed or SIZE_MAX on overflow.
+ */</span>
+
+<span class="cp">#define struct_size(p, member, count) __ab_c_size(count, sizeof(*(p)-&gt;member) + __must_be_array((p)-&gt;member), sizeof(*(p)))
+</span>
+<span class="cp">#define NFT_OFFLOAD_F_ACTION (1 &lt;&lt; 0)
+</span>
+<span class="k">struct</span> <span class="n">flow_rule</span> <span class="o">*</span><span class="nf">flow_rule_alloc</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">num_actions</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">struct</span> <span class="n">flow_rule</span> <span class="o">*</span><span class="n">rule</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+	<span class="c1">// XENO: allocates space for the rule-&gt;action.entries[num_actions] array</span>
+	<span class="n">rule</span> <span class="o">=</span> <span class="n">kzalloc</span><span class="p">(</span><span class="n">struct_size</span><span class="p">(</span><span class="n">rule</span><span class="p">,</span> <span class="n">action</span><span class="p">.</span><span class="n">entries</span><span class="p">,</span> <span class="n">num_actions</span><span class="p">),</span>
+		       <span class="n">GFP_KERNEL</span><span class="p">);</span>
+	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">rule</span><span class="p">)</span>
+		<span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+
+	<span class="n">rule</span><span class="o">-&gt;</span><span class="n">action</span><span class="p">.</span><span class="n">num_entries</span> <span class="o">=</span> <span class="n">num_actions</span><span class="p">;</span>
+	<span class="cm">/* Pre-fill each action hw_stats with DONT_CARE.
+	 * Caller can override this if it wants stats for a given action.
+	 */</span>
+	<span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">num_actions</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+		<span class="n">rule</span><span class="o">-&gt;</span><span class="n">action</span><span class="p">.</span><span class="n">entries</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">hw_stats</span> <span class="o">=</span> <span class="n">FLOW_ACTION_HW_STATS_DONT_CARE</span><span class="p">;</span>
+
+	<span class="k">return</span> <span class="n">rule</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="k">struct</span> <span class="n">nft_flow_rule</span> <span class="o">*</span><span class="nf">nft_flow_rule_alloc</span><span class="p">(</span><span class="kt">int</span> <span class="n">num_actions</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">struct</span> <span class="n">nft_flow_rule</span> <span class="o">*</span><span class="n">flow</span><span class="p">;</span>
+
+	<span class="n">flow</span> <span class="o">=</span> <span class="n">kzalloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">nft_flow_rule</span><span class="p">),</span> <span class="n">GFP_KERNEL</span><span class="p">);</span>
+	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">flow</span><span class="p">)</span>
+		<span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+
+	<span class="n">flow</span><span class="o">-&gt;</span><span class="n">rule</span> <span class="o">=</span> <span class="n">flow_rule_alloc</span><span class="p">(</span><span class="n">num_actions</span><span class="p">);</span>
+	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">flow</span><span class="o">-&gt;</span><span class="n">rule</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">kfree</span><span class="p">(</span><span class="n">flow</span><span class="p">);</span>
+		<span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="n">flow</span><span class="o">-&gt;</span><span class="n">rule</span><span class="o">-&gt;</span><span class="n">match</span><span class="p">.</span><span class="n">dissector</span>	<span class="o">=</span> <span class="o">&amp;</span><span class="n">flow</span><span class="o">-&gt;</span><span class="n">match</span><span class="p">.</span><span class="n">dissector</span><span class="p">;</span>
+	<span class="n">flow</span><span class="o">-&gt;</span><span class="n">rule</span><span class="o">-&gt;</span><span class="n">match</span><span class="p">.</span><span class="n">mask</span>		<span class="o">=</span> <span class="o">&amp;</span><span class="n">flow</span><span class="o">-&gt;</span><span class="n">match</span><span class="p">.</span><span class="n">mask</span><span class="p">;</span>
+	<span class="n">flow</span><span class="o">-&gt;</span><span class="n">rule</span><span class="o">-&gt;</span><span class="n">match</span><span class="p">.</span><span class="n">key</span>		<span class="o">=</span> <span class="o">&amp;</span><span class="n">flow</span><span class="o">-&gt;</span><span class="n">match</span><span class="p">.</span><span class="n">key</span><span class="p">;</span>
+
+	<span class="k">return</span> <span class="n">flow</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kr">inline</span> <span class="k">struct</span> <span class="n">nft_expr</span> <span class="o">*</span><span class="nf">nft_expr_first</span><span class="p">(</span><span class="k">const</span> <span class="k">struct</span> <span class="n">nft_rule</span> <span class="o">*</span><span class="n">rule</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">return</span> <span class="p">(</span><span class="k">struct</span> <span class="n">nft_expr</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">rule</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kr">inline</span> <span class="k">struct</span> <span class="n">nft_expr</span> <span class="o">*</span><span class="nf">nft_expr_last</span><span class="p">(</span><span class="k">const</span> <span class="k">struct</span> <span class="n">nft_rule</span> <span class="o">*</span><span class="n">rule</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">return</span> <span class="p">(</span><span class="k">struct</span> <span class="n">nft_expr</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">rule</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">rule</span><span class="o">-&gt;</span><span class="n">dlen</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kr">inline</span> <span class="n">bool</span> <span class="nf">nft_expr_more</span><span class="p">(</span><span class="k">const</span> <span class="k">struct</span> <span class="n">nft_rule</span> <span class="o">*</span><span class="n">rule</span><span class="p">,</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">nft_expr</span> <span class="o">*</span><span class="n">expr</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">return</span> <span class="n">expr</span> <span class="o">!=</span> <span class="n">nft_expr_last</span><span class="p">(</span><span class="n">rule</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">expr</span><span class="o">-&gt;</span><span class="n">ops</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="kt">int</span> <span class="nf">nft_fwd_dup_netdev_offload</span><span class="p">(</span><span class="k">struct</span> <span class="n">nft_offload_ctx</span> <span class="o">*</span><span class="n">ctx</span><span class="p">,</span> <span class="k">struct</span> <span class="n">nft_flow_rule</span> <span class="o">*</span><span class="n">flow</span><span class="p">,</span> <span class="k">enum</span> <span class="n">flow_action_id</span> <span class="n">id</span><span class="p">,</span> <span class="kt">int</span> <span class="n">oif</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">struct</span> <span class="n">flow_action_entry</span> <span class="o">*</span><span class="n">entry</span><span class="p">;</span>
+	<span class="k">struct</span> <span class="n">net_device</span> <span class="o">*</span><span class="n">dev</span><span class="p">;</span>
+
+	<span class="cm">/* nft_flow_rule_destroy() releases the reference on this device. */</span>
+	<span class="n">dev</span> <span class="o">=</span> <span class="n">dev_get_by_index</span><span class="p">(</span><span class="n">ctx</span><span class="o">-&gt;</span><span class="n">net</span><span class="p">,</span> <span class="n">oif</span><span class="p">);</span>
+	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">dev</span><span class="p">)</span>
+		<span class="k">return</span> <span class="o">-</span><span class="n">EOPNOTSUPP</span><span class="p">;</span>
+
+	<span class="n">entry</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">flow</span><span class="o">-&gt;</span><span class="n">rule</span><span class="o">-&gt;</span><span class="n">action</span><span class="p">.</span><span class="n">entries</span><span class="p">[</span><span class="n">ctx</span><span class="o">-&gt;</span><span class="n">num_actions</span><span class="o">++</span><span class="p">];</span>
+	<span class="n">entry</span><span class="o">-&gt;</span><span class="n">id</span> <span class="o">=</span> <span class="n">id</span><span class="p">;</span>
+	<span class="n">entry</span><span class="o">-&gt;</span><span class="n">dev</span> <span class="o">=</span> <span class="n">dev</span><span class="p">;</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kr">inline</span> <span class="kt">void</span> <span class="o">*</span><span class="nf">nft_expr_priv</span><span class="p">(</span><span class="k">const</span> <span class="k">struct</span> <span class="n">nft_expr</span> <span class="o">*</span><span class="n">expr</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">return</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="n">expr</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">nft_dup_netdev_offload</span><span class="p">(</span><span class="k">struct</span> <span class="n">nft_offload_ctx</span> <span class="o">*</span><span class="n">ctx</span><span class="p">,</span> <span class="k">struct</span> <span class="n">nft_flow_rule</span> <span class="o">*</span><span class="n">flow</span><span class="p">,</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">nft_expr</span> <span class="o">*</span><span class="n">expr</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">const</span> <span class="k">struct</span> <span class="n">nft_dup_netdev</span> <span class="o">*</span><span class="n">priv</span> <span class="o">=</span> <span class="n">nft_expr_priv</span><span class="p">(</span><span class="n">expr</span><span class="p">);</span> <span class="c1">// XENO: assume priv != ACID</span>
+	<span class="kt">int</span> <span class="n">oif</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">-&gt;</span><span class="n">regs</span><span class="p">[</span><span class="n">priv</span><span class="o">-&gt;</span><span class="n">sreg_dev</span><span class="p">].</span><span class="n">data</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+
+	<span class="k">return</span> <span class="n">nft_fwd_dup_netdev_offload</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">flow</span><span class="p">,</span> <span class="n">FLOW_ACTION_MIRRED</span> <span class="cm">/*5*/</span><span class="p">,</span> <span class="n">oif</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">////ACID: rule</span>
+<span class="k">struct</span> <span class="n">nft_flow_rule</span> <span class="o">*</span><span class="nf">nft_flow_rule_create</span><span class="p">(</span><span class="k">struct</span> <span class="n">net</span> <span class="o">*</span><span class="n">net</span><span class="p">,</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">nft_rule</span> <span class="o">*</span><span class="n">rule</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">struct</span> <span class="n">nft_offload_ctx</span> <span class="o">*</span><span class="n">ctx</span><span class="p">;</span>
+	<span class="k">struct</span> <span class="n">nft_flow_rule</span> <span class="o">*</span><span class="n">flow</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">num_actions</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">err</span><span class="p">;</span>
+	<span class="k">struct</span> <span class="n">nft_expr</span> <span class="o">*</span><span class="n">expr</span><span class="p">;</span>
+
+	<span class="n">expr</span> <span class="o">=</span> <span class="n">nft_expr_first</span><span class="p">(</span><span class="n">rule</span><span class="p">);</span>
+	<span class="k">while</span> <span class="p">(</span><span class="n">nft_expr_more</span><span class="p">(</span><span class="n">rule</span><span class="p">,</span> <span class="n">expr</span><span class="p">))</span> <span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">expr</span><span class="o">-&gt;</span><span class="n">ops</span><span class="o">-&gt;</span><span class="n">offload_flags</span> <span class="o">&amp;</span> <span class="n">NFT_OFFLOAD_F_ACTION</span><span class="p">)</span>
+			<span class="n">num_actions</span><span class="o">++</span><span class="p">;</span>
+
+		<span class="n">expr</span> <span class="o">=</span> <span class="n">nft_expr_next</span><span class="p">(</span><span class="n">expr</span><span class="p">);</span>
+	<span class="p">}</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="n">num_actions</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">ERR_PTR</span><span class="p">(</span><span class="o">-</span><span class="n">EOPNOTSUPP</span><span class="p">);</span>
+
+	<span class="n">flow</span> <span class="o">=</span> <span class="n">nft_flow_rule_alloc</span><span class="p">(</span><span class="n">num_actions</span><span class="p">);</span>
+	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">flow</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">ERR_PTR</span><span class="p">(</span><span class="o">-</span><span class="n">ENOMEM</span><span class="p">);</span>
+
+	<span class="n">expr</span> <span class="o">=</span> <span class="n">nft_expr_first</span><span class="p">(</span><span class="n">rule</span><span class="p">);</span>
+
+	<span class="n">ctx</span> <span class="o">=</span> <span class="n">kzalloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">nft_offload_ctx</span><span class="p">),</span> <span class="n">GFP_KERNEL</span><span class="p">);</span>
+	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">err</span> <span class="o">=</span> <span class="o">-</span><span class="n">ENOMEM</span><span class="p">;</span>
+		<span class="k">goto</span> <span class="n">err_out</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="n">ctx</span><span class="o">-&gt;</span><span class="n">net</span> <span class="o">=</span> <span class="n">net</span><span class="p">;</span>
+	<span class="n">ctx</span><span class="o">-&gt;</span><span class="n">dep</span><span class="p">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">NFT_OFFLOAD_DEP_UNSPEC</span><span class="p">;</span>
+
+	<span class="k">while</span> <span class="p">(</span><span class="n">nft_expr_more</span><span class="p">(</span><span class="n">rule</span><span class="p">,</span> <span class="n">expr</span><span class="p">))</span> <span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">expr</span><span class="o">-&gt;</span><span class="n">ops</span><span class="o">-&gt;</span><span class="n">offload</span><span class="p">)</span> <span class="p">{</span>
+			<span class="n">err</span> <span class="o">=</span> <span class="o">-</span><span class="n">EOPNOTSUPP</span><span class="p">;</span>
+			<span class="k">goto</span> <span class="n">err_out</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="n">err</span> <span class="o">=</span> <span class="n">expr</span><span class="o">-&gt;</span><span class="n">ops</span><span class="o">-&gt;</span><span class="n">offload</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">flow</span><span class="p">,</span> <span class="n">expr</span><span class="p">);</span> <span class="c1">//XENO: Calls nft_dup_netdev_offload()</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">err</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+			<span class="k">goto</span> <span class="n">err_out</span><span class="p">;</span>
+
+		<span class="n">expr</span> <span class="o">=</span> <span class="n">nft_expr_next</span><span class="p">(</span><span class="n">expr</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="n">nft_flow_rule_transfer_vlan</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">flow</span><span class="p">);</span>
+
+	<span class="n">flow</span><span class="o">-&gt;</span><span class="n">proto</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">-&gt;</span><span class="n">dep</span><span class="p">.</span><span class="n">l3num</span><span class="p">;</span>
+	<span class="n">kfree</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="n">flow</span><span class="p">;</span>
+<span class="nl">err_out:</span>
+	<span class="n">kfree</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span>
+	<span class="n">nft_flow_rule_destroy</span><span class="p">(</span><span class="n">flow</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="n">ERR_PTR</span><span class="p">(</span><span class="n">err</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>There are two importants parts of the code, the first one have to be with the allocation part:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="n">nft_flow_rule</span> <span class="o">*</span><span class="nf">nft_flow_rule_create</span><span class="p">(</span><span class="k">struct</span> <span class="n">net</span> <span class="o">*</span><span class="n">net</span><span class="p">,</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">nft_rule</span> <span class="o">*</span><span class="n">rule</span><span class="p">){</span>
+  <span class="c1">//...</span>
+	<span class="k">struct</span> <span class="n">nft_expr</span> <span class="o">*</span><span class="n">expr</span><span class="p">;</span>
+
+	<span class="n">expr</span> <span class="o">=</span> <span class="n">nft_expr_first</span><span class="p">(</span><span class="n">rule</span><span class="p">);</span>
+	<span class="k">while</span> <span class="p">(</span><span class="n">nft_expr_more</span><span class="p">(</span><span class="n">rule</span><span class="p">,</span> <span class="n">expr</span><span class="p">))</span> <span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">expr</span><span class="o">-&gt;</span><span class="n">ops</span><span class="o">-&gt;</span><span class="n">offload_flags</span> <span class="o">&amp;</span> <span class="n">NFT_OFFLOAD_F_ACTION</span><span class="p">)</span>
+			<span class="n">num_actions</span><span class="o">++</span><span class="p">;</span>
+
+		<span class="n">expr</span> <span class="o">=</span> <span class="n">nft_expr_next</span><span class="p">(</span><span class="n">expr</span><span class="p">);</span>
+	<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Is easy to see that num_actions++ value is user-controlled, this same value will be used alter in the code to allocate space for an array:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="n">flow_rule</span> <span class="o">*</span><span class="nf">flow_rule_alloc</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">num_actions</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">struct</span> <span class="n">flow_rule</span> <span class="o">*</span><span class="n">rule</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+	<span class="c1">// XENO: allocates space for the rule-&gt;action.entries[num_actions] array</span>
+	<span class="n">rule</span> <span class="o">=</span> <span class="n">kzalloc</span><span class="p">(</span><span class="n">struct_size</span><span class="p">(</span><span class="n">rule</span><span class="p">,</span> <span class="n">action</span><span class="p">.</span><span class="n">entries</span><span class="p">,</span> <span class="n">num_actions</span><span class="p">),</span>
+		       <span class="n">GFP_KERNEL</span><span class="p">);</span>
+	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">rule</span><span class="p">)</span>
+		<span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+
+	<span class="n">rule</span><span class="o">-&gt;</span><span class="n">action</span><span class="p">.</span><span class="n">num_entries</span> <span class="o">=</span> <span class="n">num_actions</span><span class="p">;</span>
+	<span class="cm">/* Pre-fill each action hw_stats with DONT_CARE.
+	 * Caller can override this if it wants stats for a given action.
+	 */</span>
+	<span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">num_actions</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+		<span class="n">rule</span><span class="o">-&gt;</span><span class="n">action</span><span class="p">.</span><span class="n">entries</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">hw_stats</span> <span class="o">=</span> <span class="n">FLOW_ACTION_HW_STATS_DONT_CARE</span><span class="p">;</span>
+
+	<span class="k">return</span> <span class="n">rule</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="k">struct</span> <span class="n">nft_flow_rule</span> <span class="o">*</span><span class="nf">nft_flow_rule_alloc</span><span class="p">(</span><span class="kt">int</span> <span class="n">num_actions</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">struct</span> <span class="n">nft_flow_rule</span> <span class="o">*</span><span class="n">flow</span><span class="p">;</span>
+
+	<span class="n">flow</span> <span class="o">=</span> <span class="n">kzalloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">nft_flow_rule</span><span class="p">),</span> <span class="n">GFP_KERNEL</span><span class="p">);</span>
+	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">flow</span><span class="p">)</span>
+		<span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+
+	<span class="n">flow</span><span class="o">-&gt;</span><span class="n">rule</span> <span class="o">=</span> <span class="n">flow_rule_alloc</span><span class="p">(</span><span class="n">num_actions</span><span class="p">);</span>
+	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">flow</span><span class="o">-&gt;</span><span class="n">rule</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">kfree</span><span class="p">(</span><span class="n">flow</span><span class="p">);</span>
+		<span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="n">flow</span><span class="o">-&gt;</span><span class="n">rule</span><span class="o">-&gt;</span><span class="n">match</span><span class="p">.</span><span class="n">dissector</span>	<span class="o">=</span> <span class="o">&amp;</span><span class="n">flow</span><span class="o">-&gt;</span><span class="n">match</span><span class="p">.</span><span class="n">dissector</span><span class="p">;</span>
+	<span class="n">flow</span><span class="o">-&gt;</span><span class="n">rule</span><span class="o">-&gt;</span><span class="n">match</span><span class="p">.</span><span class="n">mask</span>		<span class="o">=</span> <span class="o">&amp;</span><span class="n">flow</span><span class="o">-&gt;</span><span class="n">match</span><span class="p">.</span><span class="n">mask</span><span class="p">;</span>
+	<span class="n">flow</span><span class="o">-&gt;</span><span class="n">rule</span><span class="o">-&gt;</span><span class="n">match</span><span class="p">.</span><span class="n">key</span>		<span class="o">=</span> <span class="o">&amp;</span><span class="n">flow</span><span class="o">-&gt;</span><span class="n">match</span><span class="p">.</span><span class="n">key</span><span class="p">;</span>
+
+	<span class="k">return</span> <span class="n">flow</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//...</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">num_actions</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="k">return</span> <span class="nf">ERR_PTR</span><span class="p">(</span><span class="o">-</span><span class="n">EOPNOTSUPP</span><span class="p">);</span>
+
+<span class="n">flow</span> <span class="o">=</span> <span class="n">nft_flow_rule_alloc</span><span class="p">(</span><span class="n">num_actions</span><span class="p">);</span>
+<span class="c1">//...</span>
+</code></pre></div></div>
+
+<p>We can see that <em>nft_flow_rule_alloc()</em> is a wrapper for <em>kzalloc()</em> which is allocation space on <em>flow-&gt;rule</em> for the array of ‘num_actions’ items.</p>
+
+<p>Then, below in the code an assignation is perfomed:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kt">int</span> <span class="nf">nft_fwd_dup_netdev_offload</span><span class="p">(</span><span class="k">struct</span> <span class="n">nft_offload_ctx</span> <span class="o">*</span><span class="n">ctx</span><span class="p">,</span> <span class="k">struct</span> <span class="n">nft_flow_rule</span> <span class="o">*</span><span class="n">flow</span><span class="p">,</span> <span class="k">enum</span> <span class="n">flow_action_id</span> <span class="n">id</span><span class="p">,</span> <span class="kt">int</span> <span class="n">oif</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">struct</span> <span class="n">flow_action_entry</span> <span class="o">*</span><span class="n">entry</span><span class="p">;</span>
+	<span class="k">struct</span> <span class="n">net_device</span> <span class="o">*</span><span class="n">dev</span><span class="p">;</span>
+
+	<span class="cm">/* nft_flow_rule_destroy() releases the reference on this device. */</span>
+	<span class="n">dev</span> <span class="o">=</span> <span class="n">dev_get_by_index</span><span class="p">(</span><span class="n">ctx</span><span class="o">-&gt;</span><span class="n">net</span><span class="p">,</span> <span class="n">oif</span><span class="p">);</span>
+	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">dev</span><span class="p">)</span>
+		<span class="k">return</span> <span class="o">-</span><span class="n">EOPNOTSUPP</span><span class="p">;</span>
+
+	<span class="n">entry</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">flow</span><span class="o">-&gt;</span><span class="n">rule</span><span class="o">-&gt;</span><span class="n">action</span><span class="p">.</span><span class="n">entries</span><span class="p">[</span><span class="n">ctx</span><span class="o">-&gt;</span><span class="n">num_actions</span><span class="o">++</span><span class="p">];</span>
+	<span class="n">entry</span><span class="o">-&gt;</span><span class="n">id</span> <span class="o">=</span> <span class="n">id</span><span class="p">;</span>
+	<span class="n">entry</span><span class="o">-&gt;</span><span class="n">dev</span> <span class="o">=</span> <span class="n">dev</span><span class="p">;</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//...</span>
+
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">nft_dup_netdev_offload</span><span class="p">(</span><span class="k">struct</span> <span class="n">nft_offload_ctx</span> <span class="o">*</span><span class="n">ctx</span><span class="p">,</span> <span class="k">struct</span> <span class="n">nft_flow_rule</span> <span class="o">*</span><span class="n">flow</span><span class="p">,</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">nft_expr</span> <span class="o">*</span><span class="n">expr</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">const</span> <span class="k">struct</span> <span class="n">nft_dup_netdev</span> <span class="o">*</span><span class="n">priv</span> <span class="o">=</span> <span class="n">nft_expr_priv</span><span class="p">(</span><span class="n">expr</span><span class="p">);</span> <span class="c1">// XENO: assume priv != ACID</span>
+	<span class="kt">int</span> <span class="n">oif</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">-&gt;</span><span class="n">regs</span><span class="p">[</span><span class="n">priv</span><span class="o">-&gt;</span><span class="n">sreg_dev</span><span class="p">].</span><span class="n">data</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+
+	<span class="k">return</span> <span class="n">nft_fwd_dup_netdev_offload</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">flow</span><span class="p">,</span> <span class="n">FLOW_ACTION_MIRRED</span> <span class="cm">/*5*/</span><span class="p">,</span> <span class="n">oif</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//...</span>
+<span class="n">err</span> <span class="o">=</span> <span class="n">expr</span><span class="o">-&gt;</span><span class="n">ops</span><span class="o">-&gt;</span><span class="n">offload</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">flow</span><span class="p">,</span> <span class="n">expr</span><span class="p">);</span> <span class="c1">//XENO: Calls nft_dup_netdev_offload()</span>
+<span class="c1">//...</span>
+</code></pre></div></div>
+
+<p>Observe that <em>entry</em> is a pointer which is being assigned with the memory address that aims to the memory region allocated before with <em>num_actions</em>, since this is user-controlled parameter ti can be a near to 0 value as desired, so <em>entry</em> can be a memory region with space enough to one assignation and the consequent assignation</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">entry</span><span class="o">-&gt;</span><span class="n">id</span> <span class="o">=</span> <span class="n">id</span><span class="p">;</span>
+<span class="n">entry</span><span class="o">-&gt;</span><span class="n">dev</span> <span class="o">=</span> <span class="n">dev</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Are out-of-bounds.</p>
+
+<p><br /></p>
+
+
+      </article>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#csoft">csoft</a>
+          
+        </div>
+      
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+<section id = "social-share-section">
+  <span class="sr-only">Share: </span>
+
+  
+    <a href="https://twitter.com/intent/tweet?text=Out-Of-Bounds+Write.&url=http%3A%2F%2Flocalhost%3A4000%2F2025-11-26-Out-Of-Bounds-Write%2F"
+      class="btn btn-social-icon btn-twitter" title="Share on Twitter">
+      <span class="fab fa-fw fa-twitter" aria-hidden="true"></span>
+      <span class="sr-only">Twitter</span>
+    </a>
+  
+
+  
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F2025-11-26-Out-Of-Bounds-Write%2F"
+      class="btn btn-social-icon btn-facebook" title="Share on Facebook">
+      <span class="fab fa-fw fa-facebook" aria-hidden="true"></span>
+      <span class="sr-only">Facebook</span>
+    </a>
+  
+
+  
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F2025-11-26-Out-Of-Bounds-Write%2F"
+      class="btn btn-social-icon btn-linkedin" title="Share on LinkedIn">
+      <span class="fab fa-fw fa-linkedin" aria-hidden="true"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  
+
+  
+
+  
+
+</section>
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/2025-11-21-CallingFunctions/" data-toggle="tooltip" data-placement="top" title="Calling Functions.">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/2025-12-01-LocalVars_Arrays_structs/" data-toggle="tooltip" data-placement="top" title="Stackframe; Local variables, Arrays and Structures.">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+      
+  
+  
+  
+
+  
+
+
+  
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="/feed.xml" title="RSS">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">RSS</span>
+    </a>
+  </li><li class="list-inline-item">
+    <a href="mailto:" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/Qv1nTv5" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://twitter.com/Qvintvs1" title="Twitter">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Twitter</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://linkedin.com/in/german-sanmillan-68b308229/" title="LinkedIn">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">LinkedIn</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        German
+        &nbsp;&bull;&nbsp;
+      
+      2026
+
+      
+
+      
+      </p>
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>
