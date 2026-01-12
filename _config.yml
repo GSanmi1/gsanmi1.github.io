@@ -13,10 +13,7 @@ permalink: /:year/:month/:day/:title/
 
 # Configuración de Kramdown para LaTeX/MathJax
 kramdown:
-  math_engine: mathjax
-  math_engine_opts:
-    preview: true
-    preview_as_code: false
+  math_engine: mathjax  # Let Kramdown preprocess $$ delimiters for MathJax
   syntax_highlighter: rouge
   input: GFM
   hard_wrap: false

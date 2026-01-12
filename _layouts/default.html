@@ -14,7 +14,7 @@
     <script>
         window.MathJax = {
             tex: {
-                inlineMath: [['$$', '$$'], ['\\(', '\\)']],
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
                 displayMath: [['$$', '$$'], ['\\[', '\\]']],
                 processEscapes: true,
                 processEnvironments: true,
@@ -27,7 +27,7 @@
                 }
             },
             options: {
-                // Include 'script' to process Kramdown's <script type="math/tex"> output
+                // Process Kramdown's <script type="math/tex"> output
                 processHtmlClass: 'tex2jax_process|MathJax',
                 ignoreHtmlClass: 'tex2jax_ignore',
                 skipHtmlTags: ['noscript', 'style', 'textarea', 'pre', 'code']
