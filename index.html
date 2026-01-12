@@ -21,7 +21,7 @@ title: Inicio
             {% if post.excerpt %}
             <p class="post-excerpt">
                 {{ post.excerpt | strip_html | truncatewords: 50 }}
-                <a href="{{ post.url | relative_url }}" class="read-more">Leer más →</a>
+                <a href="{{ post.url | relative_url }}" class="read-more">Read more →</a>
             </p>
             {% endif %}
         </li>
