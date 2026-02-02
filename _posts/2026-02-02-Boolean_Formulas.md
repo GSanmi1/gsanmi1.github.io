@@ -232,7 +232,7 @@ $$\Pi (B) = 1 \iff \exists a : (B)_a = 1$$
 
 In this context, $a_0=1010$ is a witness for $B = out$. Considering a $V \in DTM$ that accepts a boolean formula $B$ of $m$ connectives and a evalution $a$. $V$ operates connectives simplifying expressions and obtaining the truth value, then we call $V$ our verifier and it would be $V(out,a_0) = 1$.
 
-Observe, that if it is $\B$ a boolean formula that has $m$ conectives, then $V(\B,a)$ operates simplfying one connective per step so it needs $m$ steps before give the truth value of $(B)_a$, thus is $t_V(n) \in \mathcal{O{(n^1)}}$ and runs in polynomial time, so; $\Pi \in NP$.
+Observe, that if it is $B$ a boolean formula that has $m$ conectives, then $V(B,a)$ operates simplfying one connective per step so it needs $m$ steps before give the truth value of $(B)_a$, thus is $t_V(n) \in \mathcal{O{(n^1)}}$ and runs in polynomial time, so; $\Pi \in NP$.
 
 <br>
 
