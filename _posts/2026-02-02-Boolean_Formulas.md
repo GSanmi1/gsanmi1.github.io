@@ -203,11 +203,13 @@ The valuation (or interpretation) is the process in which every propostional var
 
 $$ a: X  \to \Set{0,1}$$
 
-Often, since the propositional variables can be ordered, we can define $a$ as a string of the $\Set{0,1}$ alphabet satisfying $\vert a\vert  = \vert X\vert $. Then when we fix a valuation that maps each propositional variable to under a truth value, the formula evaluates to a unique truth value as well.
+Often, since the propositional variables can be ordered, we can define $a$ as a string of the $\Set{0,1}$ alphabet satisfying $\vert a\vert = \vert X\vert$. Then when we fix a valuation that maps each propositional variable to under a truth value, the formula evaluates to a unique truth value as well.
 
 <br>
 
-Thus; the boolean formulas are sintactically well formed strings involving prepositional variables and conectives which are suitable for be valuable or interpreted. They serve to plasm the relation about elements or statements represented in the propositional variables.
+Thus; the boolean formulas are sintactically well formed strings involving prepositional variables and conectives which are suitable for be valuable or interpreted. 
+
+They serve to plasm the relation about elements or statements represented in the propositional variables.
 
 <br>
 
