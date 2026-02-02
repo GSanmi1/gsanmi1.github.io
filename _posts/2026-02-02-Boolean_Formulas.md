@@ -95,7 +95,7 @@ As we say before, boolean-logic formalizes reasoning with truth values by relati
 
 A propositional variable is mathematical object that stands for a proposition. Is not a preposition itself, it becames a preposition under a valuation, which maps the preposition variable to a truth value. It the most basic syntactic units, consider the following set; $ Var = \{p_0,p_1,p_2,...\} $, any $ p \in Var $ is a propositional variable.
 
-As a intuitional approach, a propositional variable stands for an unspecified statement, with lack of specific content, which eventually can by valuable as true or false becoming straight to a proposition: $ v: Var \rarr \{0,1\}$. Variables are syntactic placeholders; truth arises only after a valuation is chosen.
+As a intuitional approach, a propositional variable stands for an unspecified statement, with lack of specific content, which eventually can by valuable as true or false becoming straight to a proposition: $ v: Var \to \{0,1\}$. Variables are syntactic placeholders; truth arises only after a valuation is chosen.
 
 <br>
 
@@ -217,7 +217,7 @@ Now, consider an example of arbitrary formula. $x_i \in Var: i = 1,2,3,4$, then 
 
 $$ out = (x_1 \vee \neg x_2 \vee \neg x_3)\ \wedge\ (\neg x_2 \vee x_3 \vee x_4)\ \wedge\ (x_1 \vee x_3 \vee \neg x_4)\ \wedge\ (\neg x_2 \vee \neg x_3 \vee \neg x_4)  $$
 
-Then, the question is, can we find values for $x_i: i = 1,2,3,4$ such makes $out$ true? This can be reformuled as, exists at least one *valuation* $a : \{x_1,x_2,x_3,x_4\} \rarr \{0,1\}$ which makes $out_{a} = 1$?
+Then, the question is, can we find values for $x_i: i = 1,2,3,4$ such makes $out$ true? This can be reformuled as, exists at least one *valuation* $a : \{x_1,x_2,x_3,x_4\} \to \{0,1\}$ which makes $out_{a} = 1$?
 
 Lets consider, $a_0 = 1010$, which means $ a_0(x_1) = 1, \ a_0(x_2) = 0, \ a_0(x_3) = 1, \ a_0(x_4) = 0 $, then:
 
@@ -230,7 +230,7 @@ $$\Pi (B) = 1 \iff \exists a : (B)_a = 1$$
 
 In this context, $a_0=1010$ is a witness for $B = out$. Considering a $V \in DTM$ that accepts a boolean formula $B$ of $m$ connectives and a evalution $a$. $V$ operates connectives simplifying expressions and obtaining the truth value, then we call $V$ our verifier and it would be $V(out,a_0) = 1$.
 
-Observe, that if it is $\Beta$ a boolean formula that has $m$ conectives, then $V(\Beta,a)$ operates simplfying one connective per step so it needs $m$ steps before give the truth value of $(B)_a$, thus is $t_V(n) \in \mathcal{O{(n^1)}}$ and runs in polynomial time, so; $\Pi \in NP$.
+Observe, that if it is $\B$ a boolean formula that has $m$ conectives, then $V(\B,a)$ operates simplfying one connective per step so it needs $m$ steps before give the truth value of $(B)_a$, thus is $t_V(n) \in \mathcal{O{(n^1)}}$ and runs in polynomial time, so; $\Pi \in NP$.
 
 <br>
 
@@ -308,8 +308,10 @@ $$p=q \iff (p \land q) \vee \neg (p \vee q)$$
 
 Essentially meaning that $p > q$ only if is $p$ is true and $q$ false. We can quicly check this result by comparing the true table:
 
+<br>
+
 | $p$ | $q$ | $p > q$ | $p \land \neg q$ | $p = q$ | $(p \land q) \vee \neg (p \vee q)$ |
-|:---:|:---:|:-----:|:---:|:---:|:---:|
+|:---:|:---:|:----:|:---:|:---:|:---:|
 | 0 | 0 | 0 | 0 | 1 | 1 |
 | 0 | 1 | 0 | 0 | 0 | 0 |
 | 1 | 0 | 1 | 1 | 0 | 0 |
