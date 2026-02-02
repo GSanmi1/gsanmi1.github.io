@@ -227,8 +227,7 @@ $$ (out)_{a_0} = (1 \vee \neg 0 \vee \neg 1)\ \wedge\ (\neg 0 \vee 1 \vee 0)\ \w
 
 Observe that, for we can consider the following problem $\Pi$. Being $\Sigma = \Set{Var} \bigcup \Set{\vee, \land, \neg }$: 
 
-$$\Pi: \Sigma^* \to \Set{0,1}$$
-$$\Pi (B) = 1 \iff \exists a : (B)_a = 1$$
+$$\Pi: \Sigma^* \to \Set{0,1}: \Big(\Pi (B) = 1  \iff \exists a : (B)_a = 1\Big)$$
 
 In this context, $a_0=1010$ is a witness for $B = out$. Considering a $V \in DTM$ that accepts a boolean formula $B$ of $m$ connectives and a evalution $a$. $V$ operates connectives simplifying expressions and obtaining the truth value, then we call $V$ our verifier and it would be $V(out,a_0) = 1$.
 
@@ -244,7 +243,7 @@ The reason why we introduce before the boolean formulas and demonstrate that the
 
 ## 3.1. SAT - Boolean Satisfiability Problem.
 
-$SAT$, also known as the Boolean satisfiability problem, asks whether there exists an interpretation that satisfies a given Boolean formula. What we provide above is a concrete case of a more extended language.
+$SAT$, also known as the *Boolean satisfiability problem*, asks whether there exists an interpretation that satisfies a given Boolean formula. What we provide above is a concrete case of a more extended language.
 
 Given an alphabet $\Sigma$ with all you need to create a boolean formula and consider as $\text{Form} \subset \Sigma^*$ all those strings which, as boolean formulas, are considered well-formed (in the behalf of simplity we will act as we all know what "well-formed" means so we don't have to provide a formal description about what $\text{Form}$ is). 
 
@@ -258,15 +257,23 @@ $$SAT := \Set{B | \exists a : (B)_a = 1} \subset \text{Form}$$
 
 **Reduction. Karp reduction.**
 
-Conceptually, a *reduction* is a way to translate one problem $A$ into another problem $B$ such that solving $B$ (on the translated input) automatically solves $A$. It gets formalized as a a function that preserves membership between reductable languages.
+A *reduction* is a *morphism* that pretends to preserve the solvability (and efficient solviability) property between problems. Conceptually, is a way to translate one problem $A$ into another problem $B$ such that solving $B$ (on the translated input) automatically solves $A$. 
 
-- First, we consider the **Many-one reduction (mapping reduction)**. Being $A,B \subseteq \Sigma^*$, then we say that $A \text{ is many-one reductible to } B$:
+Formally is a function that preserves membership between languages:
 
-    $$A \leq_m B \iff \exists f : \Sigma^* \to \Sigma^* : \forall x \in \Sigma^* \ \ (x \in A \iff f(x) \in B)$$
+- First, we consider the **Many-one reduction (solvable-morphism)**. Being $A,B \subseteq \Sigma^*$, then we say that $A \text{ is many-one reductible to } B$:
 
-- Then, we define the karp reduction as a polynomial-time many-one reduction. This is, if a exists a total function computable by a turing machine running in polynomial time.
+    $$A \leq_m B \iff \exists f : \Sigma^* \to \Sigma^* : \forall x \in \Sigma^* \ \ (x \in A \leftrightarrow f(x) \in B)$$
 
-    $$A \leq_p B \iff \exists f : \Sigma^* \to \Sigma^* : \Big(  x \in A \leftrightarrow  f(x) \in B \ \land \ \exists M \in TM : \big( \ t_M \in \mathcal{O}(n^k) \land M(x)=f(x) \ \ \forall x \in A\big)\Big)$$
+    As we say, this function preserves membership and once is defined between $A$ and $B$ solve either of the two problems solves the other one.
+
+    <br>
+
+- Then, we define the **Karp reduction (efficient solvable-morphism)** as a polynomial-time many-one reduction. This is, a many-one  reduction where $f$ is a total function computable by a turing machine running in polynomial time.
+
+    $$A \leq_p B \iff \exists f : \Sigma^* \to \Sigma^* :\begin{cases} x \in A \leftrightarrow  f(x) \in B \\ \exists M \in TM : \big( M(x)=f(x) \ \land \ t_M \in \mathcal{O}(n^k) \ \forall x \in A\big)\end{cases}$$
+
+    In this terms, as we saw above, relating $A$ with $B$ through $f$ means that solve efficiently either of the two garanties the efficient solving of the other one. In this terms, we say that $A$ is polynomially reductable to $B$.
 
     Note that the term $M(x)$ is non-standard but is a license to refer to the computation of $x$ by $M$.
 
@@ -274,28 +281,26 @@ Conceptually, a *reduction* is a way to translate one problem $A$ into another p
 
 **NP-completness**
 
-$NP-complete$ problems are the hardest of the problems to which solutions can be verified quickly. 
+$NP$-complete problems are the hardest of the problems to which solutions can be verified quickly. 
 
 A problem $L$ is $NP-complete$ when satisfies:
 
 - $L \in NP$
-- $L$ is $NP-hard$, this means; every other problem in $NP$ can be reduced to it in polynomial time:
+- $L$ is $NP$-hard, this means; every other problem $H \in NP$ can be reduced to $L$ in polynomial time:
 
     $$ \forall H \in NP \ \ H \leq_p L$$
 
-So NP-hard problems are “hard enough” (in complexity terms) to subsume the whole class NP via polynomial-time reductions.
+So $NP$-hard problems are “hard enough” (in complexity terms) to subsume the whole class NP via polynomial-time reductions.
 
 <br>
 
 ## 3.3. SAT is NP-complete.
 
-Suppose you have two binary numbers $P,Q$ and you want to know if $P>Q$. This can be formuled in terms of decision problem
+Until this point, we have now enough tools to understand what the statment "$SAT$ is $NP-complete$" means. 
 
-Until this point, we have now enough tools to understand what the statment "$SAT$ is $NP-complete$" means:
+$SAT$ is $NP$-complete means that any other problem in $NP$ can be polynomially reduced in terms of $SAT$ in the sense that deciding $SAT$ decides that problem. 
 
-It means that any other problem in NP can be reduced in terms of SAT, or said in other terms, any instance of an $NP$ problem can be translate as an instance of $SAT$, this way; verifying an input of a NP decision problem is equivalent to verify the satisfiability of one concrete boolean formula.
-
-Let's see a bunch of examples:
+Relative with ZKP, which is a discipline interested in the verifying process of computing, any instance of an $NP$ problem can be translate in polynomial time as an instance of $SAT$, this way; verifying an input of a $NP$ decision problem is equivalent to verify the satisfiability of one concrete boolean formula which can be done efficiently, or, as we say the start of the post, any problem's solution (in the vulgar way) can be verified by verifying a boolean formula that models the problem.  
 
 <br>
 
@@ -303,7 +308,7 @@ Let's see a bunch of examples:
  
 ## 4.1. Checking if a list is sorted using a boolean formula.
 
-Consider $p,q \in \Set{0,1} \wedge 1 > 0$ it is:
+Suppose you have two binary numbers $P,Q$ and you want to know if $P>Q$. This can be formuled in terms of decision problem. Consider $p,q \in \Set{0,1} \wedge 1 > 0$ it is:
 
 $$p > q \iff p \ \land \neg q$$
 $$p=q \iff (p \land q) \vee \neg (p \vee q)$$
