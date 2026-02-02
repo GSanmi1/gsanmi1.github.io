@@ -197,7 +197,7 @@ Note that, from the formulas above, we can safely assume that **every complex fo
 
 This way, a boolean formula is a well-formed syntactic object, semantically empty. Meaning that it does not have a truth value by itself until a valuation is performed.
 
-<brz>
+<br>
 
 The valuation (or interpretation) is the process in which every propostional variable involved with a boolean formula adquires a truth value. It is defined as an application. Being $X = \Set{x_1,...,x_n}\subset Var$, then a interpretation of that set is an application as: 
 
