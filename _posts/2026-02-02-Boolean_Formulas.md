@@ -905,7 +905,7 @@ $$q^s_1 \vee (p^s_1 \land (q^s_2 \vee (p^s_2 \land q^s_3)))$$
 
 Thus, for the $n(n-1)$ terms (observe that from the sequence we are eliminating those that correspond to the last row of $M_d^+$ which is zeroed) the complete accept path of $V((\alpha_s)_{s\in[n^2]},c_T)$ is:
 
-$$\bigwedge_{s=0}^{n(n-1)} \left[q^s_0 \vee (p^s_0 \land (q^s_1 \vee (p^s_1 \land q^s_2)))\right]$$
+$$\bigwedge_{s=0}^{n(n-1)} \left[q^s_1 \vee (p^s_1 \land (q^s_2 \vee (p^s_2 \land q^s_3)))\right]$$
 
 Meaning that for each term, check if it is $1$ or $0$ and if it is $1$, then compares through $c_T$. By SAT, verifying and input of $L$ is equivalent to find a valuation to that expression that makes it true. 
 
