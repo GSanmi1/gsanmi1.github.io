@@ -889,11 +889,15 @@ $$L = \Set{(\alpha_s)_{s\in[n^2]} | \exists c_T : [n] \to \Set{\alpha, \beta, \g
 
 In this terms, we can think in a verifier that admits a sucesion and a function as described above $V((\alpha_s)_{s\in[n^2]} ,c_T)$ and goes iterating over each term of the sequence $\alpha_s$ performing:
 
-0. $\begin{cases} s \leq n(n-1) \to (1) \land \alpha_s (q_1) \\ s> n(n-1) \to \text{ACCEPT STATE}\end{cases}$
+<br>
 
-1. $\begin{cases} \alpha_s = 1 \to (2) \land \alpha_s \\ \alpha_s = 0 \to (0) \land \alpha_{s+1}\end{cases}$
+- 0. $\begin{cases} s \leq n(n-1) \to (1) \land \alpha_s (q_1) \\\\ s> n(n-1) \to \text{ACCEPT STATE}\end{cases}$
 
-2. $\begin{cases} c_T\left(\left\lfloor \frac{s-1}{n}\right\rfloor +1\right) = c_T\left(((s-1)\mod n) +1\right) \to \text{ REJECT STATE } \\ c_T\left(\left\lfloor \frac{s-1}{n}\right\rfloor +1\right) \neq c_T\left(((s-1)\mod n) +1\right) \to (0) \land \alpha_{s+1}\end{cases}$
+- 1. $\begin{cases} \alpha_s = 1 \to (2) \land \alpha_s \\\\ \alpha_s = 0 \to (0) \land \alpha_{s+1}\end{cases}$
+
+- 2. $\begin{cases} c_T\left(\left\lfloor \frac{s-1}{n}\right\rfloor +1\right) = c_T\left(((s-1)\mod n) +1\right) \to \text{ REJECT STATE } \\ c_T\left(\left\lfloor \frac{s-1}{n}\right\rfloor +1\right) \neq c_T\left(((s-1)\mod n) +1\right) \to (0) \land \alpha_{s+1}\end{cases}$ 
+
+<br>
 
 Let's observe that calling each step $p^s_i,q^s_i$ for the term $s$ of the sequence from $i=0,1,2$, a non-rejected path for the term $\alpha_s \in (\alpha_s)_{s\in[n^2]}$ by $V$ can be described as:
 
