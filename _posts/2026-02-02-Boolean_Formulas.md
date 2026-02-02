@@ -262,7 +262,7 @@ Conceptually, a *reduction* is a way to translate one problem $A$ into another p
 
 - First, we consider the **Many-one reduction (mapping reduction)**. Being $A,B \subseteq \Sigma^*$, then we say that $A \text{ is many-one reductible to } B$:
 
-    $$A \leq_m B \iff \exists f : \Sigma^* \to \Sigma^* : \forall x \in A \iff f(x) \in B$$
+    $$A \leq_m B \iff \exists f : \Sigma^* \to \Sigma^* : \forall x \in \Sigma^* \ \ (x \in A \iff f(x) \in B)$$
 
 - Then, we define the karp reduction as a polynomial-time many-one reduction. This is, if a exists a total function computable by a turing machine running in polynomial time.
 
