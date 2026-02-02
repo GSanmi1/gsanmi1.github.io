@@ -739,9 +739,9 @@ The drawing (planar embedding) cuts the plane into regions (faces), one unbounde
 
 Formally;
 
-Being $G$ a connected planar graph and $\phi$ his drawing in $\mathbb{R}^2$. Then, we define the dual graph $G^*:= (V^*,E^*)$:
+Being $G$ a connected planar graph and $\phi$ his drawing in $\mathbb{R}^2$. Then, we define the dual graph as:
 
-$$\begin{align}V^* &:= F = \Set{f : f \text{ is a face of }(G,\phi)} \\ E^* &:= \Set{\Set{f_1,f_2} | \exists e \in E \text{ between } f_1 \text{ and } f_2 } \subseteq \binom{V^*}{2}\end{align}$$
+$$G^*:= (V^*,E^*):\begin{cases}V^* &:= F = \Set{f : f \text{ is a face of }(G,\phi)} \\ E^* &:= \Set{\Set{f_1,f_2} | \exists e \in E \text{ between } f_1 \text{ and } f_2 } \subseteq \binom{V^*}{2}\end{cases}$$
 
 Is important to understand that *Dual depends on the embedding*: Two different planar drawings of the same abstract planar graph can produce non-isomorphic duals. The dual is canonical only after you fix the embedding.
 
@@ -801,7 +801,11 @@ $$M^+_d \to G_T \ := ([d], E_T) :E_T = \Set{\Set{i,j}:a^+_{ij} = 1 \land i < j}$
 
 **Matrix Encoding**
 
-Let be $M_n := (a_{ij})_{i,j \in [n]}$, then, we can reorganize the $a_{ij}$ elements by following rows: 
+Let be:
+
+ $$M_n := (a_{ij})_{i,j \in [n]}$$
+ 
+Then, we can reorganize the $a_{ij}$ elements by following rows: 
 
 $$\langle M_n \rangle : = (a_{11}...,a_{1n},a_{21},...,a_{nn}) = (\alpha_s)_{s \in [n^2]} : a_{ij} = \alpha_{n·(i-1) + j}$$
 
@@ -868,7 +872,9 @@ This essentially means that, conceptually, we can ensure that $\chi(G) \leq 3$ i
 
 **Formalizing the language**
 
-Given the alphabet $\Sigma = \Set{0,1}$, then we just see above that any graph $G:=(V,E):\vert V \vert = n$ can be reduced to a square matrix $M^+_n$ and then to a string of $(\alpha_s)_{s\in[n^2]}  \in \Sigma^*$. 
+Given the alphabet $\Sigma = \Set{0,1}$, then we just see above that any graph  can be reduced as follows:
+
+$$G:=(V,E):\vert V \vert = n \ \simeq \ M^+_n := (a_{ij})_{i,j \in [n]} \ \simeq \ (\alpha_s)_{s\in[n^2]}  \in \Sigma^*$$
 
 Now, lets define:
 
