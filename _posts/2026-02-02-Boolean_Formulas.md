@@ -891,17 +891,17 @@ In this terms, we can think in a verifier that admits a sucesion and a function 
 
 <br>
 
-- 0. $\begin{cases} s \leq n(n-1) \to (1) \land \alpha_s (q_1) \\\\ s> n(n-1) \to \text{ACCEPT STATE}\end{cases}$
+1. $\begin{cases} s \leq n(n-1) \to (1) \land \alpha_s (q_1) \\\\ s> n(n-1) \to \text{ACCEPT STATE}\end{cases}$
 
-- 1. $\begin{cases} \alpha_s = 1 \to (2) \land \alpha_s \\\\ \alpha_s = 0 \to (0) \land \alpha_{s+1}\end{cases}$
+2. $\begin{cases} \alpha_s = 1 \to (2) \land \alpha_s \\\\ \alpha_s = 0 \to (0) \land \alpha_{s+1}\end{cases}$
 
-- 2. $\begin{cases} c_T\left(\left\lfloor \frac{s-1}{n}\right\rfloor +1\right) = c_T\left(((s-1)\mod n) +1\right) \to \text{ REJECT STATE } \\ c_T\left(\left\lfloor \frac{s-1}{n}\right\rfloor +1\right) \neq c_T\left(((s-1)\mod n) +1\right) \to (0) \land \alpha_{s+1}\end{cases}$ 
+3. $\begin{cases} c_T\left(\left\lfloor \frac{s-1}{n}\right\rfloor +1\right) = c_T\left(((s-1)\mod n) +1\right) \to \text{ REJECT STATE } \\\\ c_T\left(\left\lfloor \frac{s-1}{n}\right\rfloor +1\right) \neq c_T\left(((s-1)\mod n) +1\right) \to (0) \land \alpha_{s+1}\end{cases}$ 
 
 <br>
 
-Let's observe that calling each step $p^s_i,q^s_i$ for the term $s$ of the sequence from $i=0,1,2$, a non-rejected path for the term $\alpha_s \in (\alpha_s)_{s\in[n^2]}$ by $V$ can be described as:
+Let's observe that calling each step $p^s_i,q^s_i$ for the term $s$ of the sequence from $i=1,2,3$, a non-rejected path for the term $\alpha_s \in (\alpha_s)_{s\in[n^2]}$ by $V$ can be described as:
 
-$$q^s_0 \vee (p^s_0 \land (q^s_1 \vee (p^s_1 \land q^s_2)))$$
+$$q^s_1 \vee (p^s_1 \land (q^s_2 \vee (p^s_2 \land q^s_3)))$$
 
 Thus, for the $n(n-1)$ terms (observe that from the sequence we are eliminating those that correspond to the last row of $M_d^+$ which is zeroed) the complete accept path of $V((\alpha_s)_{s\in[n^2]},c_T)$ is:
 
