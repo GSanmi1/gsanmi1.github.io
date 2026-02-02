@@ -376,3 +376,41 @@ mjx-container::-webkit-scrollbar-thumb {
 mjx-container::-webkit-scrollbar-thumb:hover {
     background: var(--secondary-color);
 }
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5em 0;
+    background-color: var(--code-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table th,
+table td {
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    text-align: left;
+}
+
+table th {
+    background-color: var(--secondary-color);
+    color: #ffffff;
+    font-weight: 600;
+}
+
+table tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+table tr:hover {
+    background-color: rgba(74, 95, 127, 0.3);
+}
+
+table td code {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
