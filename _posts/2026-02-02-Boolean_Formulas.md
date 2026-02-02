@@ -15,47 +15,47 @@ author: German Sanmi
 
 2. Boolean Logic.
 
-- 2.1. Introduction.
+    - 2.1. Introduction.
 
-- 2.2. Boolean Formulas. Propositional variables and connectives.
+    - 2.2. Boolean Formulas. Propositional variables and connectives.
 
-- 2.3. Boolean formulas and Valuations.
+    - 2.3. Boolean formulas and Valuations.
 
 3. SAT is NP-complete: Cook–Levin Theorem.
 
-- 3.1. SAT – Boolean Satisfiability Problem.
+    - 3.1. SAT – Boolean Satisfiability Problem.
 
-- 3.2. NP-completeness. Reductions.
+    - 3.2. NP-completeness. Reductions.
 
-- 3.3. SAT is NP-complete.
+    - 3.3. SAT is NP-complete.
 
 4. Examples.
 
-- 4.1. Checking if a list is sorted using a boolean formula.
+    - 4.1. Checking if a list is sorted using a boolean formula.
 
-- 4.2. Map-coloring problem: Graph theory.
+    - 4.2. Map-coloring problem: Graph theory.
 
-    - 4.2.1. Introduction to Graph Theory.
+        - 4.2.1. Introduction to Graph Theory.
 
-        - 4.2.1.1. Graphs and Subgraphs. Vertices and Edges. Neighborhood.
+            - 4.2.1.1. Graphs and Subgraphs. Vertices and Edges. Neighborhood.
 
-        - 4.2.1.2. Graph coloring.
+            - 4.2.1.2. Graph coloring.
 
-        - 4.2.1.3. Plannar graphs. Drawings and faces. Euler’s formula.
+            - 4.2.1.3. Plannar graphs. Drawings and faces. Euler’s formula.
 
-        - 4.2.1.4. Dual graphs.
+            - 4.2.1.4. Dual graphs.
 
-    - 4.2.2. Formuling the problems. Three-coloring problem.
+        - 4.2.2. Formuling the problems. Three-coloring problem.
 
-        - 4.2.2.1. Describing the problem.
+            - 4.2.2.1. Describing the problem.
 
-        - 4.2.2.2. Graph Encoding.
+            - 4.2.2.2. Graph Encoding.
 
-            - 4.2.2.2.1. Matrix reduction.
+                - 4.2.2.2.1. Matrix reduction.
 
-            - 4.2.2.2.2. Matrix Encoding.
+                - 4.2.2.2.2. Matrix Encoding.
 
-        - 4.2.2.3. Verifying L.
+            - 4.2.2.3. Verifying L.
 
 5. Conclusion.
 
