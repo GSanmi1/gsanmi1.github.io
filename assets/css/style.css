@@ -18,7 +18,7 @@
    ========================================================================== */
 :root {
     /* Colors inspired by printed academic papers */
-    --page-bg: #faf6ed;           /* Soft off-white with subtle warmth */
+    --page-bg: #fcfaf5;           /* Very soft off-white */
     --text-color: #00356b;         /* Dark blue for main text */
     --text-secondary: #444444;     /* Gray for metadata */
     --link-color: #00356b;         /* Classic academic blue */
