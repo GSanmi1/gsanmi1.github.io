@@ -1,28 +1,32 @@
 ---
 layout: default
-title: ZKP Research
+title: Zero-Knowledge Proofs
 permalink: /zkp.html
 ---
 
-<div class="category-page">
-    <h1>Zero-Knowledge Proofs Research</h1>
+<section class="category-page">
+    <h1>Zero-Knowledge Proofs</h1>
     <p class="description">
-    Research, notes and analysis on Zero-Knowledge Proofs and applied cryptography.
+        Research notes and expositions on Zero-Knowledge Proofs, interactive proof systems,
+        and their applications in cryptography and theoretical computer science.
     </p>
 
     <ul class="post-list">
         {% assign zkp_posts = site.posts | where_exp: "post", "post.categories contains 'ZKP'" | sort: 'date' | reverse %}
         {% for post in zkp_posts %}
         <li class="post-list-item">
-            <h2 class="post-list-title">
+            <h3 class="post-list-title">
                 <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-            </h2>
+            </h3>
             <p class="post-meta">
-                {{ post.date | date: "%d de %B, %Y" }}
+                {% if post.author %}{{ post.author }} &mdash; {% endif %}{{ post.date | date: "%B %d, %Y" }}
             </p>
-            <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 50 }}</p>
-            <a href="{{ post.url | relative_url }}" class="read-more">Read more  →</a>
+            {% if post.subtitle %}
+            <p class="post-excerpt">{{ post.subtitle }}</p>
+            {% elsif post.excerpt %}
+            <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 40 }}</p>
+            {% endif %}
         </li>
         {% endfor %}
     </ul>
-</div>
+</section>

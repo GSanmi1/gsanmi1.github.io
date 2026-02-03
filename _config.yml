@@ -1,6 +1,6 @@
-# Configuración del sitio
+# Site configuration
 title: "GSanmi's blog"
-description: ""
+description: "Notes and papers on mathematics, cryptography, and theoretical computer science"
 author: "German Sanmi"
 email: your-email@example.com
 baseurl: "" # La subruta de tu sitio, ej: /blog

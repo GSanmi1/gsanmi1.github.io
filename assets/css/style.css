@@ -1,80 +1,220 @@
-/* Reset y estilos base */
-* {
+/* ==========================================================================
+   LaTeX-Style Academic Theme
+   Inspired by Computer Modern and traditional LaTeX documents
+   ========================================================================== */
+
+/* Import Computer Modern font (the classic LaTeX font) */
+@import url('https://cdn.jsdelivr.net/gh/aaaakshat/cm-web-fonts@latest/fonts.css');
+
+/* CSS Reset */
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* ==========================================================================
+   CSS Variables - LaTeX Color Palette
+   ========================================================================== */
 :root {
-    --primary-color: #f8f9fa;
-    --secondary-color: #1a5490;
-    --text-color: #e8e8e8;
-    --bg-color: #1a2332;
-    --border-color: #4a5f7f;
-    --code-bg: #1e2936;
-    --link-color: #2874b8;
+    /* Colors inspired by printed academic papers */
+    --page-bg: #faf6ed;           /* Soft off-white with subtle warmth */
+    --text-color: #00356b;         /* Dark blue for main text */
+    --text-secondary: #444444;     /* Gray for metadata */
+    --link-color: #00356b;         /* Classic academic blue */
+    --link-hover: #286dc0;         /* Lighter blue on hover */
+    --border-color: #111111;       /* Black borders like LaTeX rules */
+    --border-light: #cccccc;       /* Light gray for subtle dividers */
+    --code-bg: #f0ebe0;           /* Subtle contrast for code blocks */
+    --highlight-bg: #fffde7;       /* Subtle yellow highlight */
+
+    /* Typography */
+    --font-serif: 'Computer Modern Serif', 'Latin Modern Roman', 'Libertinus Serif', 'STIX Two Text', 'Times New Roman', Georgia, serif;
+    --font-sans: 'Computer Modern Sans', 'Latin Modern Sans', 'Libertinus Sans', 'Helvetica Neue', Arial, sans-serif;
+    --font-mono: 'Computer Modern Typewriter', 'Latin Modern Mono', 'Courier New', Courier, monospace;
+
+    /* Spacing */
+    --content-width: 55em;         /* Wider for comfortable screen reading */
+    --line-height: 1.5;            /* Comfortable reading */
+    --paragraph-spacing: 1em;
+}
+
+/* ==========================================================================
+   Base Styles
+   ========================================================================== */
+html {
+    font-size: 18px;               /* Base size for comfortable screen reading */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-    line-height: 1.6;
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    line-height: var(--line-height);
     color: var(--text-color);
-    background-color: var(--bg-color);
+    background-color: var(--page-bg);
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern" 1, "liga" 1;
+    padding: 0;
+    margin: 0;
 }
 
+/* Main content wrapper - mimics LaTeX margins */
 .wrapper {
-    max-width: 900px;
+    max-width: var(--content-width);
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 2rem;
 }
 
-/* Header */
+/* ==========================================================================
+   Typography - LaTeX Style
+   ========================================================================== */
+
+/* Headings - LaTeX uses bold serif for section headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    font-weight: bold;
+    line-height: 1.2;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    color: var(--text-color);
+}
+
+h1 {
+    font-size: 2em;
+    text-align: left;
+    margin-top: 1em;
+    margin-bottom: 0.3em;
+}
+
+h2 {
+    font-size: 1.4em;
+}
+
+h3 {
+    font-size: 1.2em;
+}
+
+h4 {
+    font-size: 1.1em;
+}
+
+/* Paragraphs */
+p {
+    margin-bottom: var(--paragraph-spacing);
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+}
+
+/* Lists */
+ul, ol {
+    margin-left: 2em;
+    margin-bottom: var(--paragraph-spacing);
+}
+
+li {
+    margin-bottom: 0.3em;
+    text-align: justify;
+}
+
+li > ul, li > ol {
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+}
+
+/* Links - subtle academic style */
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+/* Strong and emphasis */
+strong, b {
+    font-weight: bold;
+}
+
+em, i {
+    font-style: italic;
+}
+
+/* ==========================================================================
+   Header - Clean, minimal like a paper title
+   ========================================================================== */
 .site-header {
-    background-color: var(--bg-color);
-    border-bottom: 1px solid var(--border-color);
-    padding: 20px 0;
-    margin-bottom: 40px;
+    padding: 2rem 0 1.5rem;
+    border-bottom: 2px solid var(--border-color);
+    margin-bottom: 2rem;
+}
+
+.site-header .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .site-title {
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--primary-color);
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color);
     text-decoration: none;
-    display: inline-block;
-    margin-right: 30px;
+    letter-spacing: -0.02em;
+}
+
+.site-title:hover {
+    color: var(--text-color);
+    text-decoration: none;
 }
 
 .site-nav {
-    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
 }
 
 .site-nav a {
     color: var(--text-color);
     text-decoration: none;
-    margin-left: 20px;
-    font-size: 14px;
-    transition: color 0.3s;
+    margin-left: 1.5rem;
+    padding-bottom: 2px;
 }
 
 .site-nav a:hover {
-    color: var(--primary-color);
+    color: var(--link-color);
+    border-bottom: 1px solid var(--link-color);
+    text-decoration: none;
 }
 
-/* Main content */
+/* ==========================================================================
+   Main Content Area
+   ========================================================================== */
 .page-content {
-    min-height: calc(100vh - 200px);
+    min-height: calc(100vh - 250px);
+    padding-bottom: 2rem;
 }
 
-/* Posts list */
+/* ==========================================================================
+   Post List (Index/Archive) - Like a table of contents
+   ========================================================================== */
 .post-list {
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .post-list-item {
-    margin-bottom: 40px;
-    padding-bottom: 30px;
-    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-light);
 }
 
 .post-list-item:last-child {
@@ -82,335 +222,577 @@ body {
 }
 
 .post-list-title {
-    font-size: 28px;
-    margin-bottom: 10px;
+    font-size: 1.15rem;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+    margin-top: 0;
 }
 
 .post-list-title a {
-    color: var(--primary-color);
+    color: var(--text-color);
     text-decoration: none;
-    transition: color 0.3s;
 }
 
 .post-list-title a:hover {
-    color: var(--secondary-color);
+    color: var(--link-color);
 }
 
 .post-meta {
-    color: #a8b4c4;
-    font-size: 14px;
-    margin-bottom: 10px;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
 }
 
 .post-excerpt {
-    color: var(--text-color);
-    margin-top: 10px;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+    text-align: justify;
 }
 
 .read-more {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
     color: var(--link-color);
-    text-decoration: none;
-    font-weight: 500;
+    white-space: nowrap;
 }
 
-.read-more:hover {
-    text-decoration: underline;
-}
-
-/* Single post */
+/* ==========================================================================
+   Single Post/Article - Like a LaTeX paper
+   ========================================================================== */
 .post {
-    background: #1e2936;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
 }
 
 .post-header {
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid var(--border-color);
+    text-align: left;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
 }
 
 .post-title {
-    font-size: 36px;
-    color: var(--primary-color);
-    margin-bottom: 15px;
-    line-height: 1.2;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
 }
 
+.post-header .post-meta {
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+/* Post content - the main body */
 .post-content {
-    font-size: 16px;
-    line-height: 1.8;
+    font-size: 1rem;
+    line-height: var(--line-height);
 }
 
 .post-content h2 {
-    margin-top: 30px;
-    margin-bottom: 15px;
-    color: var(--primary-color);
-    font-size: 28px;
+    font-size: 1.4em;
+    margin-top: 2em;
+    margin-bottom: 0.8em;
 }
 
 .post-content h3 {
-    margin-top: 25px;
-    margin-bottom: 12px;
-    color: var(--primary-color);
-    font-size: 22px;
+    font-size: 1.2em;
+    margin-top: 1.5em;
+    margin-bottom: 0.6em;
+}
+
+.post-content h4 {
+    font-size: 1.1em;
+    margin-top: 1.2em;
+    margin-bottom: 0.5em;
 }
 
 .post-content p {
-    margin-bottom: 15px;
+    margin-bottom: 1em;
 }
 
-.post-content ul, .post-content ol {
-    margin-left: 25px;
-    margin-bottom: 15px;
+.post-content ul,
+.post-content ol {
+    margin-left: 2em;
+    margin-bottom: 1em;
 }
 
 .post-content li {
-    margin-bottom: 8px;
+    margin-bottom: 0.4em;
 }
 
+/* Code - monospace like LaTeX verbatim */
 .post-content code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
     background-color: var(--code-bg);
-    padding: 2px 6px;
-    border-radius: 3px;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 14px;
+    padding: 0.15em 0.4em;
+    border-radius: 2px;
+    border: 1px solid var(--border-light);
 }
 
 .post-content pre {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
     background-color: var(--code-bg);
-    padding: 15px;
-    border-radius: 6px;
+    padding: 1em 1.2em;
+    margin: 1.5em 0;
     overflow-x: auto;
-    margin-bottom: 15px;
+    border: 1px solid var(--border-light);
+    line-height: 1.4;
 }
 
 .post-content pre code {
     padding: 0;
     background: none;
+    border: none;
+    font-size: inherit;
 }
 
+/* Blockquotes - indented like LaTeX quote environment */
 .post-content blockquote {
-    border-left: 4px solid var(--secondary-color);
-    padding-left: 20px;
-    margin: 20px 0;
-    color: #a8b4c4;
+    margin: 1.5em 0;
+    margin-left: 2em;
+    margin-right: 2em;
+    padding-left: 1em;
+    border-left: 3px solid var(--border-light);
     font-style: italic;
+    color: var(--text-secondary);
 }
 
-.post-content a {
-    color: var(--link-color);
-    text-decoration: none;
+.post-content blockquote p:last-child {
+    margin-bottom: 0;
 }
 
-.post-content a:hover {
-    text-decoration: underline;
+/* Images */
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1.5em auto;
 }
 
-.post-tags {
-    margin-top: 30px;
-    padding-top: 20px;
+/* Horizontal rules - like LaTeX \hrule */
+.post-content hr {
+    border: none;
     border-top: 1px solid var(--border-color);
+    margin: 2em 0;
+}
+
+/* ==========================================================================
+   Tags and Categories
+   ========================================================================== */
+.post-tags {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-light);
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
 }
 
 .tag, .category {
     display: inline-block;
-    background-color: var(--secondary-color);
-    color: white;
-    padding: 4px 12px;
-    border-radius: 12px;
-    font-size: 12px;
-    margin-right: 8px;
-    margin-top: 5px;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    background-color: transparent;
+    border: 1px solid var(--border-light);
+    padding: 0.2em 0.6em;
+    margin-right: 0.4em;
+    margin-top: 0.3em;
+    border-radius: 2px;
 }
 
+.tag:hover, .category:hover {
+    border-color: var(--link-color);
+    color: var(--link-color);
+}
+
+/* ==========================================================================
+   Post Navigation
+   ========================================================================== */
 .post-navigation {
-    margin-top: 40px;
-    padding-top: 30px;
-    border-top: 1px solid var(--border-color);
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-light);
     display: flex;
     justify-content: space-between;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
 }
 
 .post-navigation a {
     color: var(--link-color);
     text-decoration: none;
-    font-weight: 500;
+    max-width: 45%;
 }
 
 .post-navigation a:hover {
     text-decoration: underline;
 }
 
-/* Footer */
+.post-navigation .prev::before {
+    content: "← ";
+}
+
+.post-navigation .next::after {
+    content: " →";
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
 .site-footer {
-    background-color: var(--bg-color);
-    border-top: 1px solid var(--border-color);
-    padding: 30px 0;
-    margin-top: 60px;
+    border-top: 2px solid var(--border-color);
+    padding: 1.5rem 0;
+    margin-top: 3rem;
     text-align: center;
-    color: #a8b4c4;
-    font-size: 14px;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.site-footer p {
+    text-align: center;
+    margin-bottom: 0.3rem;
 }
 
 .site-footer a {
     color: var(--link-color);
-    text-decoration: none;
-    margin: 0 10px;
 }
 
-.site-footer a:hover {
-    text-decoration: underline;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .site-header {
-        text-align: center;
-    }
-
-    .site-nav {
-        display: block;
-        margin-top: 15px;
-    }
-
-    .site-nav a {
-        margin: 0 10px;
-    }
-
-    .post {
-        padding: 20px;
-    }
-
-    .post-title {
-        font-size: 28px;
-    }
-
-    .post-navigation {
-        flex-direction: column;
-        gap: 10px;
-    }
-}
-
-/* Category pages */
+/* ==========================================================================
+   Category Pages
+   ========================================================================== */
 .category-page {
-    max-width: 900px;
+    max-width: var(--content-width);
     margin: 0 auto;
 }
 
-.category-page .description {
-    color: #a8b4c4;
-    font-size: 18px;
-    margin-bottom: 40px;
+.category-page h1 {
+    text-align: left;
+    margin-bottom: 0.5em;
 }
 
-.category-page .post-list-item {
-    margin-bottom: 35px;
-    padding-bottom: 25px;
+.category-page .description {
+    font-style: italic;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    text-align: justify;
+}
+
+/* ==========================================================================
+   Tables - Academic style with horizontal rules
+   ========================================================================== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5em 0;
+    font-size: 0.95em;
+}
+
+table th,
+table td {
+    padding: 0.6em 1em;
+    text-align: left;
+    border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
 }
 
-.category-page .post-list-item:last-child {
-    border-bottom: none;
+table th {
+    font-weight: bold;
+    border-top: 2px solid var(--border-color);
+    border-bottom: 2px solid var(--border-color);
 }
 
-.category-page .category {
-    display: inline-block;
-    background-color: var(--secondary-color);
-    color: white;
-    padding: 2px 8px;
-    border-radius: 8px;
-    font-size: 11px;
-    margin-left: 8px;
+table tbody tr:last-child td {
+    border-bottom: 2px solid var(--border-color);
 }
 
-/* MathJax styling for dark theme */
+/* Table caption */
+table caption {
+    font-style: italic;
+    margin-bottom: 0.5em;
+    text-align: left;
+}
+
+/* ==========================================================================
+   MathJax Styling - Blend seamlessly with text
+   ========================================================================== */
 mjx-container {
-    display: inline-block;
-    margin: 0.5em 0;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
 mjx-container[display="true"] {
     display: block;
-    margin: 1em 0;
+    margin: 1.2em 0;
     text-align: center;
 }
 
-/* Ensure math text is readable on dark background */
+/* Ensure math is the same color as text */
 .MathJax, .MathJax_Display, .MathJax_Preview {
     color: var(--text-color) !important;
 }
 
-/* Style for inline math */
+/* Inline math spacing */
 .post-content mjx-container[jax="SVG"][display="false"] {
     display: inline-block;
     vertical-align: middle;
-    margin: 0 0.2em;
+    margin: 0 0.1em;
 }
 
-/* Style for display math */
+/* Display math */
 .post-content mjx-container[jax="SVG"][display="true"] {
     display: block;
     margin: 1.5em auto;
     overflow-x: auto;
     overflow-y: hidden;
     max-width: 100%;
+    padding: 0.5em 0;
 }
 
 /* Scrollbar for long equations */
 mjx-container::-webkit-scrollbar {
-    height: 8px;
+    height: 6px;
 }
 
 mjx-container::-webkit-scrollbar-track {
     background: var(--code-bg);
-    border-radius: 4px;
 }
 
 mjx-container::-webkit-scrollbar-thumb {
-    background: var(--border-color);
-    border-radius: 4px;
+    background: var(--border-light);
+    border-radius: 3px;
 }
 
-mjx-container::-webkit-scrollbar-thumb:hover {
-    background: var(--secondary-color);
+/* Equation numbering - AMS style */
+.MathJax .mjx-mrow {
+    padding-right: 0;
 }
 
-/* Tables */
-table {
-    width: 100%;
-    border-collapse: collapse;
+/* ==========================================================================
+   Definition, Theorem, Proof blocks - LaTeX style
+   ========================================================================== */
+.definition, .theorem, .lemma, .proposition, .corollary, .proof, .remark, .example {
     margin: 1.5em 0;
-    background-color: var(--code-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    overflow: hidden;
+    padding: 0;
 }
 
-table th,
-table td {
-    padding: 12px 16px;
-    border: 1px solid var(--border-color);
-    text-align: left;
+.definition > strong:first-child,
+.theorem > strong:first-child,
+.lemma > strong:first-child,
+.proposition > strong:first-child,
+.corollary > strong:first-child,
+.proof > strong:first-child,
+.remark > strong:first-child,
+.example > strong:first-child {
+    font-weight: bold;
+    font-style: normal;
 }
 
-table th {
-    background-color: var(--secondary-color);
-    color: #ffffff;
-    font-weight: 600;
+.theorem, .lemma, .proposition, .corollary {
+    font-style: italic;
 }
 
-table tr:nth-child(even) {
-    background-color: rgba(0, 0, 0, 0.2);
+.proof {
+    font-style: normal;
 }
 
-table tr:hover {
-    background-color: rgba(74, 95, 127, 0.3);
+/* QED symbol */
+.proof::after {
+    content: "□";
+    float: right;
+    font-style: normal;
 }
 
-table td code {
-    background-color: rgba(0, 0, 0, 0.3);
-    padding: 2px 6px;
-    border-radius: 4px;
+/* ==========================================================================
+   Abstract
+   ========================================================================== */
+.abstract {
+    margin: 2em 3em;
+    font-size: 0.95em;
+}
+
+.abstract-title {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+@media (max-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+
+    .wrapper {
+        padding: 0 1.2rem;
+    }
+
+    .site-header .wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+    }
+
+    .site-nav {
+        width: 100%;
+    }
+
+    .site-nav a {
+        margin-left: 0;
+        margin-right: 1.2rem;
+    }
+
+    .post-title {
+        font-size: 1.5rem;
+    }
+
+    .post-content blockquote {
+        margin-left: 1em;
+        margin-right: 1em;
+    }
+
+    .post-navigation {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .post-navigation a {
+        max-width: 100%;
+    }
+
+    .category-page h1 {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 15px;
+    }
+
+    .wrapper {
+        padding: 0 1rem;
+    }
+
+    h1 {
+        font-size: 1.6em;
+    }
+
+    h2 {
+        font-size: 1.3em;
+    }
+
+    .post-content pre {
+        padding: 0.8em;
+        font-size: 0.8em;
+    }
+}
+
+/* ==========================================================================
+   Print Styles - For actual LaTeX-like output
+   ========================================================================== */
+@media print {
+    body {
+        font-size: 11pt;
+        background: white;
+        color: black;
+    }
+
+    .site-header,
+    .site-footer,
+    .post-navigation {
+        display: none;
+    }
+
+    .wrapper {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    a {
+        color: black;
+        text-decoration: none;
+    }
+
+    .post-content a::after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        color: #666;
+    }
+
+    h1, h2, h3, h4 {
+        page-break-after: avoid;
+    }
+
+    pre, blockquote, table {
+        page-break-inside: avoid;
+    }
+}
+
+/* ==========================================================================
+   Syntax Highlighting - Subtle, academic
+   ========================================================================== */
+.highlight .c,
+.highlight .c1,
+.highlight .cm {
+    color: #666666;
+    font-style: italic;
+}
+
+.highlight .k,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr,
+.highlight .kt {
+    color: #000000;
+    font-weight: bold;
+}
+
+.highlight .s,
+.highlight .s1,
+.highlight .s2,
+.highlight .sb,
+.highlight .sc,
+.highlight .sd,
+.highlight .se,
+.highlight .sh,
+.highlight .si,
+.highlight .sx,
+.highlight .sr,
+.highlight .ss {
+    color: #444444;
+}
+
+.highlight .n,
+.highlight .na,
+.highlight .nb,
+.highlight .nc,
+.highlight .nd,
+.highlight .ne,
+.highlight .nf,
+.highlight .ni,
+.highlight .nl,
+.highlight .nn,
+.highlight .no,
+.highlight .nt,
+.highlight .nv,
+.highlight .ow,
+.highlight .w,
+.highlight .mf,
+.highlight .mh,
+.highlight .mi,
+.highlight .mo,
+.highlight .m {
+    color: #111111;
 }
