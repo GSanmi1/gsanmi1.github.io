@@ -300,7 +300,7 @@ Until this point, we have now enough tools to understand what the statment "$SAT
 
 $SAT$ is $NP$-complete means that any other problem $H \in NP$ can be polynomially reduced in terms of $SAT$ in the sense that deciding $SAT$ decides that problem. Observe that we have the following chain of implications.
 
-Being $x \in \Sigma^*: H \subseteq \Sigma^*$ and $y \in \Sigma_0^* : SAT \subseteq \Sigma_0^* \land y=f(x)$ and $f:H \to SAT$ is polynomically computable, then:
+Being $x \in \Sigma^\ast: H \subseteq \Sigma^\ast$ and $y \in \Sigma_0^\ast : SAT \subseteq \Sigma_0^* \land y=f(x)$ and $f:H \to SAT$ is polynomically computable, then:
 
 $$\text{verify } y \text{ (along with a witness, }w \text{)} \implies y = f(x)\in SAT \ \underbrace{\iff}_{H \leq_p SAT} \ x \in H$$
 
@@ -461,7 +461,7 @@ $$ \bigwedge_{j=1}^{1-1} p_j = q_j  \iff \bigwedge_{j=1}^{0} (p_j \land q_j) \ve
 
 <br>
 
-Now, let's consider $\Pi_Q : Q \in \Set{0.1}^*$ the decision problemd defined as: $L_{\Pi_Q} := \Set{P \ \vert \ P >Q}$, note that there is no need to encode anything since $P$ and $Q$ are already strings from $\Set{0,1}^*$.
+Now, let's consider $\Pi$ as $L_{\Pi} := \Set{P \ \vert \ P >Q}$, note that there is no need to encode anything since $P$ and $Q$ are already strings from $\Set{0,1}^\ast$.
 
 Then the boolean formula we just crafted above models the problem in the sense that, for any $x \in \Set{0,1}^*$:
 
@@ -538,6 +538,8 @@ For a graph $G := (V,E)$:
     $$v_0...,v_t:\Set{v_{i-1},v_i} \in E \land v_i \neq v_j \ \ \forall i,j \in \mathbb{N}$$
 
 - A **cycle** is a walk $v_0,...,v_{t-1},v_0$ where $v_0,...,v_{t-1}$ is a path.
+
+    ![walk_path_cycle](/assets/images/Maths/DiscreteMath/walk_path_cycle.png)
 
 - A **complete** graph $G$ is a graph where every pair of vertices are connected by an edge:
 
