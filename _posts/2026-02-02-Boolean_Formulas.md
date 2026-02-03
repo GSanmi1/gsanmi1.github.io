@@ -3,7 +3,7 @@ layout: post
 title: "Boolean Formulas."
 subtitle: "Boolean Formulas. Reductable languages to SAT. Verifications."
 date: 2026-02-02 09:00:00 +0000
-categories: ['Maths','ZKP']
+categories: ['ZKP']
 tags: ['Maths', 'ZKP']
 author: German Sanmi
 ---
