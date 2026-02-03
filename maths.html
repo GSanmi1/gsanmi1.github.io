@@ -1,30 +1,32 @@
 ---
 layout: default
-title: Matemáticas
+title: Mathematics
 permalink: /maths.html
 ---
 
-<div class="category-page">
-    <h1>Maths</h1>
+<section class="category-page">
+    <h1>Mathematics</h1>
     <p class="description">
-        Math page. Several maths disciplines related with ZKP or not.
+        Notes and papers on various mathematical topics including discrete mathematics,
+        algebra, analysis, and foundations relevant to cryptography and computer science.
     </p>
 
     <ul class="post-list">
         {% assign math_posts = site.posts | where_exp: "post", "post.categories contains 'Maths'" | sort: 'date' | reverse %}
         {% for post in math_posts %}
         <li class="post-list-item">
-            <h2 class="post-list-title">
+            <h3 class="post-list-title">
                 <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-            </h2>
+            </h3>
             <p class="post-meta">
-                {{ post.date | date: "%d de %B, %Y" }}
+                {% if post.author %}{{ post.author }} &mdash; {% endif %}{{ post.date | date: "%B %d, %Y" }}
             </p>
             {% if post.subtitle %}
             <p class="post-excerpt">{{ post.subtitle }}</p>
+            {% elsif post.excerpt %}
+            <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 40 }}</p>
             {% endif %}
-            <a href="{{ post.url | relative_url }}" class="read-more">Read more  →</a>
         </li>
         {% endfor %}
     </ul>
-</div>
+</section>

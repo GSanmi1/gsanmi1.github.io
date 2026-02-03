@@ -20,26 +20,43 @@
                 processEnvironments: true,
                 tags: 'ams',
                 macros: {
+                    // Number sets
                     N: "\\mathbb{N}",
                     Z: "\\mathbb{Z}",
+                    Q: "\\mathbb{Q}",
                     R: "\\mathbb{R}",
-                    C: "\\mathbb{C}"
+                    C: "\\mathbb{C}",
+                    F: "\\mathbb{F}",
+                    // Common operators
+                    argmax: "\\operatorname{arg\\,max}",
+                    argmin: "\\operatorname{arg\\,min}",
+                    Pr: "\\operatorname{Pr}",
+                    E: "\\mathbb{E}",
+                    Var: "\\operatorname{Var}",
+                    Cov: "\\operatorname{Cov}",
+                    // Sets and logic
+                    st: "\\text{ s.t. }",
+                    // Cryptography
+                    negl: "\\operatorname{negl}",
+                    poly: "\\operatorname{poly}"
+                },
+                // Enable equation numbering
+                equationNumbers: {
+                    autoNumber: "AMS"
                 }
             },
             options: {
-                // Process Kramdown's <script type="math/tex"> output
                 processHtmlClass: 'tex2jax_process|MathJax',
                 ignoreHtmlClass: 'tex2jax_ignore',
                 skipHtmlTags: ['noscript', 'style', 'textarea', 'pre', 'code']
             },
             svg: {
-                fontCache: 'global'
+                fontCache: 'global',
+                scale: 1
             },
             startup: {
                 ready: () => {
-                    console.log('MathJax is loaded and ready!');
                     MathJax.startup.defaultReady();
-                    // Process any Kramdown-generated script tags
                     MathJax.startup.document.getMathItemsWithin(document.body);
                 }
             }
@@ -55,9 +72,9 @@
         <div class="wrapper">
             <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
             <nav class="site-nav">
-                <a href="{{ '/zkp.html' | relative_url }}">ZKP</a>
-                <a href="{{ '/maths.html' | relative_url }}">Maths</a>
-                <a href="{{ '/past-blogs.html' | relative_url }}">Past Blogs</a>
+                <a href="{{ '/zkp.html' | relative_url }}">Zero-Knowledge</a>
+                <a href="{{ '/maths.html' | relative_url }}">Mathematics</a>
+                <a href="{{ '/past-blogs.html' | relative_url }}">Archive</a>
             </nav>
         </div>
     </header>
@@ -70,7 +87,7 @@
 
     <footer class="site-footer">
         <div class="wrapper">
-            <p>&copy; {{ site.time | date: '%Y' }} {{ site.author }}. Investigación sobre Zero-Knowledge Proofs.</p>
+            <p>&copy; {{ site.time | date: '%Y' }} {{ site.author }}</p>
             <p>
                 {% if site.github_username %}
                 <a href="https://github.com/{{ site.github_username }}">GitHub</a>

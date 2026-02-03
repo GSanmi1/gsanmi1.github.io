@@ -1,24 +1,25 @@
 ---
 layout: default
-title: Past Blogs (2022-2026)
+title: Archive
 permalink: /past-blogs.html
 ---
 
-<div class="category-page">
-    <h1>Past Blogs (2022-2026)</h1>
+<section class="category-page">
+    <h1>Archive (2022&ndash;2026)</h1>
     <p class="description">
-    Complete archive of the previous blog: pentesting, web security, CTFs, programming and more.  
+        Historical archive of previous writings on security research, penetration testing,
+        CTF challenges, and systems programming.
     </p>
 
     <ul class="post-list">
         {% assign past_posts = site.posts | where_exp: "post", "post.categories contains 'Past Blogs'" | sort: 'date' | reverse %}
         {% for post in past_posts %}
         <li class="post-list-item">
-            <h2 class="post-list-title">
+            <h3 class="post-list-title">
                 <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-            </h2>
+            </h3>
             <p class="post-meta">
-                {{ post.date | date: "%d de %B, %Y" }}
+                {{ post.date | date: "%B %d, %Y" }}
                 {% for category in post.categories %}
                     {% if category != "Past Blogs" %}
                     <span class="category">{{ category }}</span>
@@ -31,4 +32,4 @@ permalink: /past-blogs.html
         </li>
         {% endfor %}
     </ul>
-</div>
+</section>

@@ -4,28 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Inicio | ZKP Research & Notes</title>
-    <meta name="description" content="Blog personal sobre Zero-Knowledge Proofs, investigación y apuntes técnicos">
+    <title>Home | GSanmi's blog</title>
+    <meta name="description" content="Notes and papers on mathematics, cryptography, and theoretical computer science">
     <link rel="stylesheet" href="/assets/css/style.css">
     <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Inicio | ZKP Research &amp; Notes</title>
+<title>Home | GSanmi&#39;s blog</title>
 <meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="Inicio" />
+<meta property="og:title" content="Home" />
 <meta name="author" content="German Sanmi" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Blog personal sobre Zero-Knowledge Proofs, investigación y apuntes técnicos" />
-<meta property="og:description" content="Blog personal sobre Zero-Knowledge Proofs, investigación y apuntes técnicos" />
+<meta name="description" content="Notes and papers on mathematics, cryptography, and theoretical computer science" />
+<meta property="og:description" content="Notes and papers on mathematics, cryptography, and theoretical computer science" />
 <link rel="canonical" href="http://localhost:4000/" />
 <meta property="og:url" content="http://localhost:4000/" />
-<meta property="og:site_name" content="ZKP Research &amp; Notes" />
+<meta property="og:site_name" content="GSanmi&#39;s blog" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Inicio" />
+<meta property="twitter:title" content="Home" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"German Sanmi"},"description":"Blog personal sobre Zero-Knowledge Proofs, investigación y apuntes técnicos","headline":"Inicio","name":"ZKP Research &amp; Notes","url":"http://localhost:4000/"}</script>
+{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"German Sanmi"},"description":"Notes and papers on mathematics, cryptography, and theoretical computer science","headline":"Home","name":"GSanmi&#39;s blog","url":"http://localhost:4000/"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="ZKP Research &amp; Notes" />
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="GSanmi&apos;s blog" />
 
     <!-- MathJax Configuration (MUST be BEFORE loading the script) -->
     <script>
@@ -37,26 +37,43 @@
                 processEnvironments: true,
                 tags: 'ams',
                 macros: {
+                    // Number sets
                     N: "\\mathbb{N}",
                     Z: "\\mathbb{Z}",
+                    Q: "\\mathbb{Q}",
                     R: "\\mathbb{R}",
-                    C: "\\mathbb{C}"
+                    C: "\\mathbb{C}",
+                    F: "\\mathbb{F}",
+                    // Common operators
+                    argmax: "\\operatorname{arg\\,max}",
+                    argmin: "\\operatorname{arg\\,min}",
+                    Pr: "\\operatorname{Pr}",
+                    E: "\\mathbb{E}",
+                    Var: "\\operatorname{Var}",
+                    Cov: "\\operatorname{Cov}",
+                    // Sets and logic
+                    st: "\\text{ s.t. }",
+                    // Cryptography
+                    negl: "\\operatorname{negl}",
+                    poly: "\\operatorname{poly}"
+                },
+                // Enable equation numbering
+                equationNumbers: {
+                    autoNumber: "AMS"
                 }
             },
             options: {
-                // Process Kramdown's <script type="math/tex"> output
                 processHtmlClass: 'tex2jax_process|MathJax',
                 ignoreHtmlClass: 'tex2jax_ignore',
                 skipHtmlTags: ['noscript', 'style', 'textarea', 'pre', 'code']
             },
             svg: {
-                fontCache: 'global'
+                fontCache: 'global',
+                scale: 1
             },
             startup: {
                 ready: () => {
-                    console.log('MathJax is loaded and ready!');
                     MathJax.startup.defaultReady();
-                    // Process any Kramdown-generated script tags
                     MathJax.startup.document.getMathItemsWithin(document.body);
                 }
             }
@@ -70,37 +87,39 @@
 <body>
     <header class="site-header">
         <div class="wrapper">
-            <a class="site-title" href="/">ZKP Research & Notes</a>
+            <a class="site-title" href="/">GSanmi's blog</a>
             <nav class="site-nav">
-                <a href="/zkp.html">ZKP</a>
-                <a href="/maths.html">Maths</a>
-                <a href="/past-blogs.html">Past Blogs</a>
+                <a href="/zkp.html">Zero-Knowledge</a>
+                <a href="/maths.html">Mathematics</a>
+                <a href="/past-blogs.html">Archive</a>
             </nav>
         </div>
     </header>
 
     <main class="page-content">
         <div class="wrapper">
-            <h2>Last Posts</h2>
+            <section class="category-page">
+    <h1>Recent Publications</h1>
+    <p class="description">
+        A collection of notes, papers, and expositions on mathematics, cryptography, and theoretical computer science.
+    </p>
+
     <ul class="post-list">
         
         <li class="post-list-item">
             <h3 class="post-list-title">
-                <a href="/posts/2026/01/11/Boolean_Formulas/">Boolean Formulas.</a>
+                <a href="/posts/2026/02/02/Boolean_Formulas/">Boolean Formulas.</a>
             </h3>
             <p class="post-meta">
-                11 de January, 2026
+                German Sanmi &mdash; February 02, 2026
                 
                     
-                        • <span class="category">Maths</span>
+                        <span class="category">ZKP</span>
                     
                 
             </p>
             
-            <p class="post-excerpt">
-                0. Index. Expressing problems and solutions as Boolean formulas. Boolean Logic. 2.1. Introduction. 2.2. Boolean Formulas. Propositional variables and connectives. 2.3. Boolean formulas and Valuations. SAT is NP-complete: Cook–Levin Theorem. 3.1. SAT – Boolean Satisfiability Problem. 3.2. NP-completeness. Reductions. 3.3. SAT is NP-complete. Examples. 4.1. Checking if a list is...
-                <a href="/posts/2026/01/11/Boolean_Formulas/" class="read-more">Read more →</a>
-            </p>
+            <p class="post-excerpt">Boolean Formulas. Reductable languages to SAT. Verifications.</p>
             
         </li>
         
@@ -109,18 +128,15 @@
                 <a href="/posts/2026/01/11/PvsNP/">P vs NP.</a>
             </h3>
             <p class="post-meta">
-                11 de January, 2026
+                German Sanmi &mdash; January 11, 2026
                 
                     
-                        • <span class="category">Maths</span>
+                        <span class="category">ZKP</span>
                     
                 
             </p>
             
-            <p class="post-excerpt">
-                0. Index. Introduction: Algorithms and Time Complexity. 1.1. Algorithms. 1.2. Time complexity. Solving problems and verifying solutions. 2.1. Problems. 2.2. Definitions. Languages, Decisions Problems, N/DTMs and Time in TMs. 2.2.1. Languages. 2.2.2. Decisions Problems and Languages. 2.2.3. Turing Machines. 2.2.4. Build a Turing machine that accepts a string and increments...
-                <a href="/posts/2026/01/11/PvsNP/" class="read-more">Read more →</a>
-            </p>
+            <p class="post-excerpt">Turing Machines and Complexity Clases. P vs NP asymmetry.</p>
             
         </li>
         
@@ -129,20 +145,17 @@
                 <a href="/posts/2025/12/28/RaceCondition/">Race Conditions.</a>
             </h3>
             <p class="post-meta">
-                28 de December, 2025
+                German Sanmi &mdash; December 28, 2025
                 
                     
-                        • <span class="category">Past Blogs</span>
+                        <span class="category">Past Blogs</span>
                     
-                        • <span class="category">Binary Exploitation</span>
+                        <span class="category">Binary Exploitation</span>
                     
                 
             </p>
             
-            <p class="post-excerpt">
-                1. Definition. 1.1. Race Condition definition. Race Condition is a term than refers to a set of bugs which arises when the behavior of a system depends on the relative timing or ordering of events, and that timing isn't properly controlled. The "race" is between two or more operations that...
-                <a href="/posts/2025/12/28/RaceCondition/" class="read-more">Read more →</a>
-            </p>
+            <p class="post-excerpt">Race Condition notes from OST2 course.</p>
             
         </li>
         
@@ -151,18 +164,15 @@
                 <a href="/posts/2025/12/25/MathTest/">Introducción al Cálculo</a>
             </h3>
             <p class="post-meta">
-                25 de December, 2025
+                German Sanmi &mdash; December 25, 2025
                 
                     
-                        • <span class="category">Maths</span>
+                        <span class="category">Maths</span>
                     
                 
             </p>
             
-            <p class="post-excerpt">
-                Teorema fundamental del cálculo La derivada de una integral es: \[\frac{d}{dx}\int_a^x f(t)dt = f(x)\] Ecuaciones inline También puedes usar ecuaciones dentro del texto, por ejemplo la famosa ecuación de Einstein \(E = mc^2\) o la identidad de Euler \(e^{i\pi} + 1 = 0\). Más ejemplos La fórmula cuadrática: \[x =...
-                <a href="/posts/2025/12/25/MathTest/" class="read-more">Read more →</a>
-            </p>
+            <p class="post-excerpt">Ejemplos de ecuaciones matemáticas con LaTeX</p>
             
         </li>
         
@@ -171,32 +181,128 @@
                 <a href="/posts/2025/12/23/UDA/">Uninitialize Data Access.</a>
             </h3>
             <p class="post-meta">
-                23 de December, 2025
+                German Sanmi &mdash; December 23, 2025
                 
                     
-                        • <span class="category">Past Blogs</span>
+                        <span class="category">Past Blogs</span>
                     
-                        • <span class="category">Binary Exploitation</span>
+                        <span class="category">Binary Exploitation</span>
                     
                 
             </p>
             
-            <p class="post-excerpt">
-                1. Definition. 1.1. Preface. Initialize vs Uninitialize data. First, let's introduce two memory regions in which the program data-storage happens at runtime, the stack and the heap. The stack is a LIFO structure in which fixed-size data within the function stackframe's owner scope gets stored. The heap is an amount...
-                <a href="/posts/2025/12/23/UDA/" class="read-more">Read more →</a>
+            <p class="post-excerpt">Uninitialice Data Access notes from OST2 course.</p>
+            
+        </li>
+        
+        <li class="post-list-item">
+            <h3 class="post-list-title">
+                <a href="/posts/2025/12/12/ControlFlow/">Control Flow.</a>
+            </h3>
+            <p class="post-meta">
+                German Sanmi &mdash; December 12, 2025
+                
+                    
+                        <span class="category">Past Blogs</span>
+                    
+                        <span class="category">Assembly</span>
+                    
+                
             </p>
+            
+            <p class="post-excerpt">Unconditional and conditional x86-64 instructions.</p>
+            
+        </li>
+        
+        <li class="post-list-item">
+            <h3 class="post-list-title">
+                <a href="/posts/2025/12/05/OtherIntegerIssues/">Other Integer Issues.</a>
+            </h3>
+            <p class="post-meta">
+                German Sanmi &mdash; December 05, 2025
+                
+                    
+                        <span class="category">Past Blogs</span>
+                    
+                        <span class="category">Binary Exploitation</span>
+                    
+                
+            </p>
+            
+            <p class="post-excerpt">Notes from Other Integer Issues course from OST2.</p>
+            
+        </li>
+        
+        <li class="post-list-item">
+            <h3 class="post-list-title">
+                <a href="/posts/2025/12/05/IntegerOverflow-Underflow/">Integer Overflow/Underflow.</a>
+            </h3>
+            <p class="post-meta">
+                German Sanmi &mdash; December 05, 2025
+                
+                    
+                        <span class="category">Past Blogs</span>
+                    
+                        <span class="category">Binary Exploitation</span>
+                    
+                
+            </p>
+            
+            <p class="post-excerpt">Notes from Integer Overflow course from OST2.</p>
+            
+        </li>
+        
+        <li class="post-list-item">
+            <h3 class="post-list-title">
+                <a href="/posts/2025/12/04/Passing-Parameters/">Passing Parameters.</a>
+            </h3>
+            <p class="post-meta">
+                German Sanmi &mdash; December 04, 2025
+                
+                    
+                        <span class="category">Past Blogs</span>
+                    
+                        <span class="category">Assembly</span>
+                    
+                
+            </p>
+            
+            <p class="post-excerpt">Calling Conventions and LEA instruction.</p>
+            
+        </li>
+        
+        <li class="post-list-item">
+            <h3 class="post-list-title">
+                <a href="/posts/2025/12/01/LocalVars_Arrays_structs/">Stackframe; Local variables, Arrays and Structures.</a>
+            </h3>
+            <p class="post-meta">
+                German Sanmi &mdash; December 01, 2025
+                
+                    
+                        <span class="category">Past Blogs</span>
+                    
+                        <span class="category">Assembly</span>
+                    
+                
+            </p>
+            
+            <p class="post-excerpt">Assembly management of local variables, arrays and structures.</p>
             
         </li>
         
     </ul>
 
+    <p style="margin-top: 2rem; text-align: center;">
+        <a href="/posts.html">View all publications &rarr;</a>
+    </p>
+</section>
 
         </div>
     </main>
 
     <footer class="site-footer">
         <div class="wrapper">
-            <p>&copy; 2026 German Sanmi. Investigación sobre Zero-Knowledge Proofs.</p>
+            <p>&copy; 2026 German Sanmi</p>
             <p>
                 
                 <a href="https://github.com/gsanmi1">GitHub</a>

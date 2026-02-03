@@ -1,30 +1,40 @@
 ---
 layout: default
-title: Inicio
+title: Home
 ---
 
-<h2>Last Posts</h2>
+<section class="category-page">
+    <h1>Recent Publications</h1>
+    <p class="description">
+        A collection of notes, papers, and expositions on mathematics, cryptography, and theoretical computer science.
+    </p>
+
     <ul class="post-list">
-        {% for post in site.posts limit:5 %}
+        {% for post in site.posts limit:10 %}
         <li class="post-list-item">
             <h3 class="post-list-title">
                 <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
             </h3>
             <p class="post-meta">
-                {{ post.date | date: "%d de %B, %Y" }}
+                {% if post.author %}{{ post.author }} &mdash; {% endif %}{{ post.date | date: "%B %d, %Y" }}
                 {% if post.categories %}
                     {% for category in post.categories %}
-                        • <span class="category">{{ category }}</span>
+                        <span class="category">{{ category }}</span>
                     {% endfor %}
                 {% endif %}
             </p>
-            {% if post.excerpt %}
+            {% if post.subtitle %}
+            <p class="post-excerpt">{{ post.subtitle }}</p>
+            {% elsif post.excerpt %}
             <p class="post-excerpt">
-                {{ post.excerpt | strip_html | truncatewords: 50 }}
-                <a href="{{ post.url | relative_url }}" class="read-more">Read more →</a>
+                {{ post.excerpt | strip_html | truncatewords: 40 }}
             </p>
             {% endif %}
         </li>
         {% endfor %}
     </ul>
 
+    <p style="margin-top: 2rem; text-align: center;">
+        <a href="{{ '/posts.html' | relative_url }}">View all publications &rarr;</a>
+    </p>
+</section>

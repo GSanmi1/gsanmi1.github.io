@@ -1,11 +1,14 @@
 ---
 layout: default
-title: Todos los Posts
+title: All Publications
+permalink: /posts.html
 ---
 
-<div class="posts-archive">
-    <h1>Todos los Posts</h1>
-    <p>Archivo completo de todos los artículos y apuntes sobre Zero-Knowledge Proofs.</p>
+<section class="category-page">
+    <h1>Complete Index</h1>
+    <p class="description">
+        Complete chronological listing of all publications, notes, and papers.
+    </p>
 
     <ul class="post-list">
         {% for post in site.posts %}
@@ -14,20 +17,19 @@ title: Todos los Posts
                 <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
             </h3>
             <p class="post-meta">
-                {{ post.date | date: "%d de %B, %Y" }}
+                {% if post.author %}{{ post.author }} &mdash; {% endif %}{{ post.date | date: "%B %d, %Y" }}
                 {% if post.categories %}
                     {% for category in post.categories %}
-                        • <span class="category">{{ category }}</span>
+                        <span class="category">{{ category }}</span>
                     {% endfor %}
                 {% endif %}
             </p>
-            {% if post.excerpt %}
-            <p class="post-excerpt">
-                {{ post.excerpt | strip_html | truncatewords: 50 }}
-                <a href="{{ post.url | relative_url }}" class="read-more">Leer más →</a>
-            </p>
+            {% if post.subtitle %}
+            <p class="post-excerpt">{{ post.subtitle }}</p>
+            {% elsif post.excerpt %}
+            <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
             {% endif %}
         </li>
         {% endfor %}
     </ul>
-</div>
+</section>
