@@ -296,11 +296,17 @@ So $NP$-hard problems are “hard enough” (in complexity terms) to subsume the
 
 ## 3.3. SAT is NP-complete.
 
-Until this point, we have now enough tools to understand what the statment "$SAT$ is $NP-complete$" means. 
+Until this point, we have now enough tools to understand what the statment "$SAT$ is $NP$-complete" means. 
 
-$SAT$ is $NP$-complete means that any other problem in $NP$ can be polynomially reduced in terms of $SAT$ in the sense that deciding $SAT$ decides that problem. 
+$SAT$ is $NP$-complete means that any other problem $H \in NP$ can be polynomially reduced in terms of $SAT$ in the sense that deciding $SAT$ decides that problem. Observe that we have the following chain of implications.
 
-Relative with ZKP, which is a discipline interested in the verifying process of computing, any instance of an $NP$ problem can be translate in polynomial time as an instance of $SAT$, this way; verifying an input of a $NP$ decision problem is equivalent to verify the satisfiability of one concrete boolean formula which can be done efficiently, or, as we say the start of the post, any problem's solution (in the vulgar way) can be verified by verifying a boolean formula that models the problem.  
+Being $x \in \Sigma^*: H \subseteq \Sigma^*$ and $y \in \Sigma_0^* : SAT \subseteq \Sigma_0^* \land y=f(x)$ and $f:H \to SAT$ is polynomically computable, then:
+
+$$\text{verify } y \text{ (along with a witness, }w \text{)} \implies y = f(x)\in SAT \ \underbrace{\iff}_{H \leq_p SAT} \ x \in H$$
+
+And, besides $w$ is not formally a witness of $x$ since $w \in \Sigma^* \land w \notin \Sigma_0^*$ and thus there isn't a verifier that $V(x,w)=1$, conceptually we can assume that $w$ is proof enough about the $x \in H$ statement through $f$.
+
+In other terms, in ZKP which is a discipline interested in the verifying process of computing, any instance of an $NP$ problem can be translate in polynomial time as an instance of $SAT$, this way; verifying an input of a $NP$ decision problem is equivalent to verify the satisfiability of one concrete boolean formula which can be done efficiently, or, as we say at the start of the post, any problem's solution (in the vulgar way) can be verified by verifying a boolean formula that models the problem.  
 
 <br>
 
@@ -455,7 +461,7 @@ $$ \bigwedge_{j=1}^{1-1} p_j = q_j  \iff \bigwedge_{j=1}^{0} (p_j \land q_j) \ve
 
 <br>
 
-Now, let's consider $\Pi_Q : Q \in \Set{0.1}^*$ the decision problemd defined as: $L_{\Pi_Q} := \Set{P \vert  P >Q}$.
+Now, let's consider $\Pi_Q : Q \in \Set{0.1}^*$ the decision problemd defined as: $L_{\Pi_Q} := \Set{P \ \vert \ P >Q}$, note that there is no need to encode anything since $P$ and $Q$ are already strings from $\Set{0,1}^*$.
 
 Then the boolean formula we just crafted above models the problem in the sense that, for any $x \in \Set{0,1}^*$:
 
