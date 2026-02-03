@@ -2,7 +2,7 @@
 layout: post
 title: "Boolean Formulas."
 subtitle: "."
-date: 2026-01-11 09:00:00 +0000
+date: 2026-02-02 09:00:00 +0000
 categories: ['Maths']
 tags: ['maths', 'ZKP']
 author: German Sanmi
