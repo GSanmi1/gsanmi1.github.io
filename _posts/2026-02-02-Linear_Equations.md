@@ -154,7 +154,7 @@ $\forall x ,y ,z \in F$:
 
 Let's observe that there are important relations between the identities of the additive and multiplicative structures:
 
- $$\begin{rcases} x · 0 = 0 \\ x·y=0 \iff (x = 0 \ \vee \ y=0) \ \end{rcases} \ \forall x,y \in F $$
+ $$\begin{cases} x · 0 = 0 \\ x·y=0 \iff (x = 0 \ \vee \ y=0) \ \end{cases} \ \forall x,y \in F $$
 
 1. First, lets proof that $x·0 = 0$. Taking the compatibility property of $F$, then:
 

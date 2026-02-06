@@ -5,14 +5,14 @@ permalink: /zkp-theory.html
 ---
 
 <section class="category-page">
-    <h1>ZKP Theory</h1>
+    <h1>Fundamentals</h1>
     <p class="description">
         Theoretical foundations of Zero-Knowledge Proofs: interactive proof systems,
         complexity classes, commitment schemes, and formal definitions.
     </p>
 
     <ul class="post-list">
-        {% assign zkpt_posts = site.posts | where_exp: "post", "post.categories contains 'ZKP Theory'" | sort: 'date' | reverse %}
+        {% assign zkpt_posts = site.posts | where_exp: "post", "post.categories contains 'ZKP Fundamentals'" | sort: 'date' | reverse %}
         {% for post in zkpt_posts %}
         <li class="post-list-item">
             <h3 class="post-list-title">
