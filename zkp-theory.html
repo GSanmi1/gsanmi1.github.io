@@ -12,7 +12,7 @@ permalink: /zkp-theory.html
     </p>
 
     <ul class="post-list">
-        {% assign zkpt_posts = site.posts | where_exp: "post", "post.categories contains 'ZKP Fundamentals'" | sort: 'date' | reverse %}
+        {% assign zkpt_posts = site.posts | where_exp: "post", "post.categories contains 'Fundamentals'" | sort: 'date' | reverse %}
         {% for post in zkpt_posts %}
         <li class="post-list-item">
             <h3 class="post-list-title">
