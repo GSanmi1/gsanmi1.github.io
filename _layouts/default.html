@@ -72,8 +72,33 @@
         <div class="wrapper">
             <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
             <nav class="site-nav">
-                <a href="{{ '/zkp.html' | relative_url }}">Zero-Knowledge</a>
-                <a href="{{ '/maths.html' | relative_url }}">Mathematics</a>
+                <div class="nav-dropdown">
+                    <a href="{{ '/zkp.html' | relative_url }}" class="nav-link">Zero-Knowledge</a>
+                    <ul class="dropdown-menu">
+                        <li class="has-submenu">
+                            <a href="#">Languages</a>
+                            <ul class="submenu">
+                                <li><a href="{{ '/zkp.html' | relative_url }}">Noir</a></li>
+                                <li><a href="{{ '/zkp.html' | relative_url }}">Circom</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{{ '/zkp-theory.html' | relative_url }}">Theory</a></li>
+                    </ul>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="{{ '/maths.html' | relative_url }}" class="nav-link">Mathematics</a>
+                    <ul class="dropdown-menu">
+                        <li class="has-submenu">
+                            <a href="#">Algebra</a>
+                            <ul class="submenu">
+                                <li><a href="{{ '/linear-algebra.html' | relative_url }}">Linear Algebra</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{{ '/maths.html' | relative_url }}">Analysis</a></li>
+                        <li><a href="{{ '/maths.html' | relative_url }}">Calculus</a></li>
+                        <li><a href="{{ '/probability.html' | relative_url }}">Probability</a></li>
+                    </ul>
+                </div>
                 <a href="{{ '/past-blogs.html' | relative_url }}">Archive</a>
             </nav>
         </div>
