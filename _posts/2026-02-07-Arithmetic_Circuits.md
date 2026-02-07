@@ -67,7 +67,11 @@ Relative to the state of the vertex in the graph we can talk about:
 - **Complete graph**: Every pairm of vertex are *adjacents*. They are notated simply as $K_n :=(V,E): \vert V \vert = n$ and satisfies: $u  \sim v \ \ \forall u,v \in V$
 - **Tree**: A connected graph with no cycles.
 
-<br>
+    <br>
+
+    ![tree](/assets/images/Maths/DiscreteMath/tree.png)
+
+    <br>
 
 ### 2.1.2. Tree characterization.
 
