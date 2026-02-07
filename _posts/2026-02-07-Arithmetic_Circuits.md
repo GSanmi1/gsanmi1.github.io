@@ -107,7 +107,7 @@ If $T:= (V,E)$ is a tree, then:
 
     - Considered true for some $n$, then $T'$ is a tree verfying $|V'| = n + 1$
     
-        Consider a leaf $t \in V' : |N(t)| = 1$ (by the leaf lemma, we can ensure his existance) and the induced graph:
+        Consider a leaf $t \in V' : \vert N(t) \vert = 1$ (by the leaf lemma, we can ensure his existance) and the induced graph:
         
         $$T:= (V,E) : \begin{cases} V = V' \setminus \Set{t} \\ E= E' \cap \binom{V' \setminus \Set{t}}{2}\end{cases}$$
         
