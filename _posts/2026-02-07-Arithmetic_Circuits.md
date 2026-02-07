@@ -83,7 +83,7 @@ Basically the statement stands that in any tree there are at least 2 leafs.
 
 Let's reason by the longest path. Be $T:=(V,E) : \vert V \vert = 2$ a tree, since $T$ is connected with can consider for $u,v \in V$ the path between them, so lets consider by convenience the longest path in $T$, $P=v_0,...,v_k$.
 
-Now consider $v_0$ (we could reason the same way for $v_k$), and let suppose that $|N(v_0)| \geq 2$, if it is, then we can consider some $u \in V : u \sim v_0$, lets see that this not possible. Relative to $P$ $u$ has two posibilities:
+Now consider $v_0$ (we could reason the same way for $v_k$), and let suppose that $\vert N(v_0) \vert \geq 2$, if it is, then we can consider some $u \in V : u \sim v_0$, lets see that this not possible. Relative to $P$ $u$ has two posibilities:
 
 - Is $u \in P$ contradicting the fact that $T$ is acyclic.
 - Is $u \notin P$, then $P' = u,v_0,...,v_k$ is the longest path contradicting the maximality asumption in $P$.
