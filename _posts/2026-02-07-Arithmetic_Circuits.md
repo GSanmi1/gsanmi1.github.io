@@ -105,7 +105,7 @@ If $T:= (V,E)$ is a tree, then:
 
         <br>
 
-    - Considered true for some $n$, then $T'$ is a tree verfying $|V'| = n + 1$
+    - Considered true for some $n$, then $T'$ is a tree verifying $\vert V' \vert = n + 1$
     
         Consider a leaf $t \in V' : \vert N(t) \vert = 1$ (by the leaf lemma, we can ensure his existance) and the induced graph:
         
