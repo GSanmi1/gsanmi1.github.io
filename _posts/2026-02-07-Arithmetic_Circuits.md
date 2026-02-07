@@ -67,21 +67,25 @@ Relative to the state of the vertex in the graph we can talk about:
 - **Complete graph**: Every pairm of vertex are *adjacents*. They are notated simply as $K_n :=(V,E): \vert V \vert = n$ and satisfies: $u  \sim v \ \ \forall u,v \in V$
 - **Tree**: A connected graph with no cycles.
 
-    <br>
 
-    ![tree](/assets/images/Maths/DiscreteMath/tree.png)
-
-    <br>
 
 ### 2.1.2. Tree characterization.
+
+Let's consider a tree $T:=(V,E)$:
+
+<br>
+
+![tree](/assets/images/Maths/DiscreteMath/tree.png)
+
+<br>
 
 **Leaf lemma**
 
 “Leaf lemma” refers to a basic fact in graph theory about *trees*. A tree is “all branches, no cycles”. If it has at least one edge, you can’t keep walking forever without either repeating a vertex (which would create a cycle) or getting stuck. The “stuck points” at the ends are leaves, and you must have at least two ends.
 
-If $T:=(V,E)$ is a tree, And $N := \Set{v \in V : \vert N(v) \vert = 1}$ the set of the leafs of $T$, then: 
+We define as $L := \Set{v \in V : \vert N(v) \vert = 1}$ the set of the leafs of $T$, then: 
 
-$$\vert V \vert \geq 2 \implies \vert N \vert \geq 2$$
+$$\vert V \vert \geq 2 \implies \vert L \vert \geq 2$$
 
 Basically the statement stands that in any tree there are at least 2 leafs. 
 
