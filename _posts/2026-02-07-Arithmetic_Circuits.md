@@ -1,0 +1,147 @@
+---
+layout: post
+title: "Arithmetic Circuits."
+subtitle: "Maths fundamentals in arithmetic circuits and appliances in ZKP."
+date: 2026-02-06 09:00:00 +0000
+categories: ['Fundamentals']
+tags: ['ZKP', 'Maths']
+author: German Sanmi
+---
+
+# 1. Introduction.
+
+As we established on [2.Boolean Formulas](https://gsanmi1.github.io/posts/2026/02/02/Boolean_Formulas/) post, any NP problem is Karp reductable to SAT implying that any instance of a NP problem can be verified by verifying some certain SAT instance, this is; finding a valuation that makes True a boolean circuit that models the problem.
+
+However, bits are very restricted, often a codification of an instance of a problem to a big-complex boolean structure is needed (quitting some expceptions) which often leads to unefficient (in terms of space and time) computations as we see in the examples of the post above. This is why *arithmetic circuits* are way preferable of use instead.
+
+Conceptually, an arithmetic circuit is a system of equations that models a problem in NP. 
+
+<br>
+
+# 2. Prerequisites.
+
+## 2.1. Discrete Math: Graphs and DAGs.
+
+### 2.1.1. Graph Theory Introduction.
+
+
+*Graph Theory*; is the discipline of mathematics which occupies about the study of discrete relation's structures and his properties. Conceptually, a *graph* is the minimal object that captures “pairwise relationships” between abstract entities.
+
+Formally a **graph** (undirected graph) to the pair $G := (V,E)$ where:
+
+- $V$ is a finite non-empty set whose elements are called *vertices*.
+- $E \subseteq \binom{V}{2}$ and his elements are called *edges*.
+
+<br>
+
+There are several notions associtated with the idea of a *graph*:
+
+- **Adjacency**: Two vertex $u,v \in V$ are said to be *adjacent*; $u \sim v \iff \Set{u,v} \in E$
+- **Neighborhood**: The neighborhood of $v \in V$ is the set $N(v) = \Set{u \in V : v \sim u}$
+- **Degree**: The number of adjacent vertex to a given one $v \in V$; $\text{deg}(v) = \vert N(v) \vert$
+- **Subgraph** of $G$ is any set: $H := (V_H, E_H) : V_H \subseteq V \land E_H \subseteq E \ \cap \ \binom{V_H}{2}$
+
+- **Induced subgraph**: $G[W] := (W, E \cap \binom{W}{2}): W \subseteq V$
+
+<br>
+
+Regarding to a collection of adjacent vertex, we can talk about:
+
+- **Walk**; a finite sequence of adjacent vertices: $v_0...,v_t: v_{i-1} \sim v_i \ \forall i \leq t \in \mathbb{N}$
+
+- **Path** is a walk with all the vertices distinct: $v_0...,v_t:v_{i-1} \sim v_i \ \forall i \leq t \in \mathbb{N} \ \land \ v_i \neq v_j \ \ \forall i,j \in \mathbb{N}$
+
+- **Cycle** is a walk $v_0,...,v_{t-1},v_0$ where $v_0,...,v_{t-1}$ is a path.
+
+- **Conneted Vertex**; Two vertices are said to be connected if one can reach the other through a path.
+
+<br>
+
+![walk_path_cycle](/assets/images/Maths/DiscreteMath/walk_path_cycle.png)
+
+<br>
+
+Relative to the state of the vertex in the graph we can talk about:
+
+- **Connected graph**: Every pair of vertex are *connected* vertex.
+- **Complete graph**: Every pairm of vertex are *adjacents*. They are notated simply as $K_n :=(V,E): \vert V \vert = n$ and satisfies: $u  \sim v \ \ \forall u,v \in V$
+- **Tree**: A connected graph with no cycles.
+
+<br>
+
+### 2.1.2. Tree characterization.
+
+**Leaf lemma**
+
+“Leaf lemma” refers to a basic fact in graph theory about *trees*. A tree is “all branches, no cycles”. If it has at least one edge, you can’t keep walking forever without either repeating a vertex (which would create a cycle) or getting stuck. The “stuck points” at the ends are leaves, and you must have at least two ends.
+
+If $T:=(V,E)$ is a tree, And $N := \Set{v \in V : \vert N(v) \vert = 1}$ the set of the leafs of $T$, then: 
+
+$$\vert V \vert \geq 2 \implies \vert N \vert \geq 2$$
+
+Basically the statement stands that in any tree there are at least 2 leafs. 
+
+Let's reason by the longest path. Be $T:=(V,E) : \vert V \vert = 2$ a tree, since $T$ is connected with can consider for $u,v \in V$ the path between them, so lets consider by convenience the longest path in $T$, $P=v_0,...,v_k$.
+
+Now consider $v_0$ (we could reason the same way for $v_k$), and let suppose that $|N(v_0)| \geq 2$, if it is, then we can consider some $u \in V : u \sim v_0$, lets see that this not possible. Relative to $P$ $u$ has two posibilities:
+
+- Is $u \in P$ contradicting the fact that $T$ is acyclic.
+- Is $u \notin P$, then $P' = u,v_0,...,v_k$ is the longest path contradicting the maximality asumption in $P$.
+
+So $deg(v_0) = deg(v_k) = 1$ and both are leaf in $T$.
+
+
+<br>
+
+**Equivalences**
+
+If $T:= (V,E)$ is a tree, then:
+
+1. $T$ is connected and $\vert E \vert = \vert V \vert - 1$
+
+    First, $T$ is connected by definition. Lets reason by induction.
+
+    - $n = 2$: Consider $T:= (V,E) : V :=\Set{u,v}$. Since $T$ is connected, $u,v \in V$ are connected and thus adjacent; $u \sim v \implies E := \Set{\Set{u,v}} \implies \vert E \vert  = 1 = \vert V \vert - 1$
+
+        <br>
+
+    - Considered true for some $n$, then $T'$ is a tree verfying $|V'| = n + 1$
+    
+        Consider a leaf $t \in V' : |N(t)| = 1$ (by the leaf lemma, we can ensure his existance) and the induced graph:
+        
+        $$T:= (V,E) : \begin{cases} V = V' \setminus \Set{t} \\ E= E' \cap \binom{V' \setminus \Set{t}}{2}\end{cases}$$
+        
+        
+        Observe that since $t$ is a leaft, then is an endpoint for some path in $T$ and removes it does not break connectivity.
+        
+        Thus $T$ is a graph with $n$ vertices and for $T'$ and the leaf lemma still being connected and acyclice, meaning it remains a tree. Thus $T,T'$ are two trees verifying: $\vert E \vert = n - 1 \land V' = V \cup \Set{t}$
+
+        Let's also observe that:
+
+        $$ E= E' \cap \binom{V' \setminus \Set{t}}{2} = E' \setminus \Set{\Set{l,t} \in E' : l \in V'}$$
+        Thus, we have:
+        
+        $$\vert E' \vert = \vert E\vert + \vert \Set{\Set{l,t} \in E': l \in V'} \vert = (n - 1) + 1 = \vert V' \vert-1$$
+
+        <br>
+
+2. $T$ is acyclic and $\vert E \vert = \vert V \vert - 1$. Is immediate from above.
+
+<br>
+
+3. Between two any vertices there is a unique path. Reasoning to the absurd, if between $l,t \in V$ would exists more than one path, lets say: $t,u_0,...,u_{k-1},l$ and $l,v_0,...,v_k{-1},t$, then $t,u_0,...,u_{k-1},l,v_0,...,v_k{-1},t$ would be a cycle contradicting acycling in trees.
+
+
+## 2.2. Basic Algebra: Rings and Fields.
+
+## 2.3. Polynomies.
+
+## 2.4. Discrete Probability.
+
+# 3. Arithmetic Circuits.
+
+## 3.1. Formal definition.
+
+## 3.2. Arithmetic Circuits and Complexity Theory.
+
+## 3.3. Arithmetic Circuits and Discrete Probability.
