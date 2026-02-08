@@ -139,6 +139,8 @@ The following statements are equivalent:
 
 3. Between two any vertices there is a unique path. Reasoning to the absurd, if between $l,t \in V$ would exists more than one path, lets say: $t,u_0,...,u_{k-1},l$ and $l,v_0,...,v_{k-1},t$, then $t,u_0,...,u_{k-1},l,v_0,...,v_k{-1},t$ would be a cycle contradicting acycling in trees.
 
+<br>
+
 4. $T$ is minimally connected: removing any edge disconnects it.
 
     Observe that this stems from the uniqueness of the path for any pair of vertices. Meaning that, if $e=\Set{u,v} \in E$, then exists a *unique* path $P = t,...,u,v,...l$ in $T$ and removing $e$ from $E$ leaves no path between $u$ and $v$ contradicting the connectness premise on $T$ as a tree.
@@ -147,10 +149,10 @@ The following statements are equivalent:
 
 5. $T$ is maximally acyclic: adding any missing edge creates a cycle.
 
-    Let's consider $u,v \in V : $u \ \cancel{\sim} \ v$, then, since $T$ is connected, exists a path $u,...,v \in T$ and forcing $\Set{u,v} \in E \implies C = u,...v,u \subset T$ contradicting acyclicness.
+    Let's consider $u,v \in V : u \ \cancel{\sim} \ v$, then, since $T$ is connected, exists a path $u,...,v \in T$ and forcing $\Set{u,v} \in E \implies C = u,...v,u \subset T$ contradicting acyclicness.
 
     <br>
-    
+
 ## 2.2. Basic Algebra: Rings and Fields.
 
 ## 2.3. Polynomies.
