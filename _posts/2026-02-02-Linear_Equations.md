@@ -274,9 +274,11 @@ We can enunciate a set of operations between $P_i:i \in [m]$ that form a equival
 
     $$S := \bigcap_{i=1}^m S_{P_i} = S_{\gamma P + \lambda Q} \cap \bigcap_{i=1}^m S_{P_i} $$
 
-    Implying that the sistem: $ M' := (\gamma P + \lambda Q) \wedge \displaystyle\bigwedge_{i=1}^m P_i \equiv\bigwedge_{i=1}^m P_i = M$ Let's also observe that we loose information in the sense that force the addition of two numbers $y_p + y_q$ to be equal to a third does not determines neither of the two, but giving a value to any of those automatically determines the other one. 
+    Implying that the sistem: $ M' := (\gamma P + \lambda Q) \wedge \displaystyle\bigwedge_{i=1}^m P_i \equiv\bigwedge_{i=1}^m P_i = M$ 
+    
+    Let's also observe that we loose information in the sense that force the addition of two numbers $y_p,y_q$ to be equal to a third, $c$; $y_p + y_q = c$, does not determines neither of the two, exists a variety of solutions for $(y_p,y_q) \in F^2$ but giving a value to any of those, $y_i$ automatically determines the other one $y_j = c - y_i$. 
 
-    This means that, if you have $x \in F^n:P + \lambda Q \wedge Q \implies P$ leading to the correct replacing rule:
+    This can be extrapoled to or predicates, $x \in F^n:(P + \lambda Q) \wedge Q \implies P$ leading to the correct replacing rule which is $(P + \lambda Q) \wedge Q \iff P \wedge Q$, and in terms of the solution set:
     
     $$S_{\gamma P + \lambda Q} \cap S_Q = S_P \cap S_Q$$
 
