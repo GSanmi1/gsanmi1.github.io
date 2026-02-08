@@ -205,7 +205,7 @@ The system is called *homogeneous* if the unique solution available is $0 \in F^
 
 <br>
 
-## 2.3. Equivalent Systems. Operations between constraints.
+## 2.3. Equivalent Systems. Operations between predicates.
 
 ### 2.3.1. System equations as predicates. Equivalence.
 
