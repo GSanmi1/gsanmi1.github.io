@@ -22,8 +22,9 @@ Conceptually, an arithmetic circuit is a system of equations that models a probl
 
 ## 2.1. Discrete Math: Graphs and DAGs.
 
-### 2.1.1. Graph Theory Introduction.
+### 2.1.1. Undirected Graphs.
 
+#### 2.1.1.1. Introduction.
 
 *Graph Theory*; is the discipline of mathematics which occupies about the study of discrete relation's structures and his properties. Conceptually, a *graph* is the minimal object that captures “pairwise relationships” between abstract entities.
 
@@ -69,7 +70,7 @@ Relative to the state of the vertex in the graph we can talk about:
 
 
 
-### 2.1.2. Tree characterization.
+#### 2.1.1.2. Tree characterization.
 
 Let's consider a tree $T:=(V,E)$:
 
@@ -79,7 +80,7 @@ Let's consider a tree $T:=(V,E)$:
 
 <br>
 
-**Leaf lemma**
+##### 2.1.1.2.1. Leaf lemma.
 
 “Leaf lemma” refers to a basic fact in graph theory about *trees*. A tree is “all branches, no cycles”. If it has at least one edge, you can’t keep walking forever without either repeating a vertex (which would create a cycle) or getting stuck. The “stuck points” at the ends are leaves, and you must have at least two ends.
 
@@ -95,18 +96,18 @@ Now consider $v_0$ (we could reason the same way for $v_k$), and let suppose tha
 
 
 - If $u \in P \implies C_u:= u,...,v_0,v_1,u \subset T$ contradicting the acyclicness property.
-- If $u \notin P$, then $P' = u,v_0,...,v_k$ would be the longest path contradicting the maximality asumption in $P$.
+- If $u \notin P$, then $P' = u,v_0,...,v_k$ would be the longest path contradicting the maximality asumption of $P$.
 
 So $deg(v_0) = deg(v_k) = 1$ and both are leaf in $T$.
 
 
 <br>
 
-**Equivalences**
+##### 2.1.1.2.2. Equivalences statements of Trees.
 
-The following statements are equivalent:
+The following statements are equivalent for a tree $T:=(V,E)$
 
-1. $T$ is connected and $\vert E \vert = \vert V \vert - 1$
+1. $T$ is **connected** and $\vert E \vert = \vert V \vert - 1$
 
     First, $T$ is connected by definition. Lets reason by induction.
 
@@ -134,25 +135,62 @@ The following statements are equivalent:
 
         <br>
 
-2. $T$ is acyclic and $\vert E \vert = \vert V \vert - 1$. Is immediate from above.
+2. $T$ is **acyclic** and $\vert E \vert = \vert V \vert - 1$. Is immediate from above.
 
     <br>
 
-3. Between two any vertices there is a unique path. Reasoning to the absurd, if between $l,t \in V$ would exists more than one path, lets say: $t,u_0,...,u_{k-1},l$ and $l,v_0,...,v_{k-1},t$, then $t,u_0,...,u_{k-1},l,v_0,...,v_k{-1},t$ would be a cycle contradicting acycling in trees.
+3. **Between two any vertices there is a unique path**. Reasoning to the absurd, if between $l,t \in V$ would exists more than one path, lets say: $t,u_0,...,u_{k-1},l$ and $l,v_0,...,v_{k-1},t$, then $t,u_0,...,u_{k-1},l,v_0,...,v_k{-1},t$ would be a cycle contradicting acycling in trees.
 
     <br>
 
-4. $T$ is minimally connected: removing any edge disconnects it.
+4. $T$ is **minimally connecte**d: removing any edge disconnects it.
 
     Observe that this stems from the uniqueness of the path for any pair of vertices. Meaning that, if $e=\Set{u,v} \in E$, then exists a *unique* path $P = t,...,u,v,...l$ in $T$ and removing $e$ from $E$ leaves no path between $u$ and $v$ contradicting the connectness premise on $T$ as a tree.
 
     <br>
 
-5. $T$ is maximally acyclic: adding any missing edge creates a cycle.
+5. $T$ is **maximally acyclic**: adding any missing edge creates a cycle.
 
     Let's consider $u,v \in V : u \ \cancel{\sim} \ v$, then, since $T$ is connected, exists a path $u,...,v \in T$ and forcing $\Set{u,v} \in E \implies C_u = u,...v,u \subset T$ contradicting acyclicness.
 
     <br>
+
+##### 2.1.1.2.3. Handshaking lemma for trees.
+
+The *handshaking lemma* stays for: 
+
+$$\sum_{v \in V} deg(v) = 2 \vert E \vert$$
+
+Let's see that we can proof this by induction:
+
+- Consider: $|V| = 2 \implies \displaystyle\sum_{v \in V} deg(v) = 2 = 2 \vert E \vert$
+- Consider now $\vert V \vert = n+1$, then we can consider by the leaf lemma $t \in V: deg(t) =1$:
+
+    $$ T' :=(V',E'): \begin{cases} V' = V \setminus \set{t} \\ E' = E \cap \binom{V'}{2}\end{cases}$$
+
+    Let observe that $T'$ is a tree with $n$ vertices, then, by the induction premise $\displaystyle\sum_{v \in V'} deg(v) = 2 \vert E' \vert$, and also, being $u \in V : u \sim t$, then $E = E' \cup \Set{u,t}$ meaning that:
+
+    $$ \sum_{v \in V} deg(v) = \sum_{v \in V'} deg(v) + 2 = 2 \vert E' \vert + 2 = 2(\vert E' \vert + 1) = 2\vert E \vert$$
+
+<br>
+
+Observe that this also means that there is an even number of odd-degrees.
+
+<br>
+
+#### 2.1.1.3. Eulerian and Hamiltonian graphs.
+
+*Eulerian graphs* is a class of graphs that can be traversed using each edge exactly once. *Hamiltonian graphs* is a class of graph that can be traversed using each vertex exactly once.
+
+<br>
+
+##### 2.1.1.3.1. Eulerian graphs.
+
+
+### 2.1.2. Directed graphs.
+
+
+<br>
 
 ## 2.2. Basic Algebra: Rings and Fields.
 
