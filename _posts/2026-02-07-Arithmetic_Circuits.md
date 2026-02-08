@@ -135,11 +135,11 @@ The following statements are equivalent:
 
 2. $T$ is acyclic and $\vert E \vert = \vert V \vert - 1$. Is immediate from above.
 
-<br>
+    <br>
 
 3. Between two any vertices there is a unique path. Reasoning to the absurd, if between $l,t \in V$ would exists more than one path, lets say: $t,u_0,...,u_{k-1},l$ and $l,v_0,...,v_{k-1},t$, then $t,u_0,...,u_{k-1},l,v_0,...,v_k{-1},t$ would be a cycle contradicting acycling in trees.
 
-<br>
+    <br>
 
 4. $T$ is minimally connected: removing any edge disconnects it.
 
