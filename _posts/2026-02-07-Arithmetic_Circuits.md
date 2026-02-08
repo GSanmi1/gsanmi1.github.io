@@ -89,12 +89,13 @@ $$\vert V \vert \geq 2 \implies \vert L \vert \geq 2$$
 
 Basically the statement stands that in any tree there are at least 2 leafs. 
 
-Let's reason by the longest path. Be $T:=(V,E) : \vert V \vert = 2$ a tree, since $T$ is connected with can consider for $u,v \in V$ the path between them, so lets consider by convenience the longest path in $T$, $P=v_0,...,v_k$.
+Let's reason by the longest path. Be $T:=(V,E) : \vert V \vert \geq 2$ a tree, since $T$ is connected with can consider for $l,t \in V$ the path between them, so lets consider by convenience the longest path in $T$, $P_{lt}:=v_0,...,v_k$.
 
-Now consider $v_0$ (we could reason the same way for $v_k$), and let suppose that $\vert N(v_0) \vert \geq 2$, if it is, then we can consider some $u \in V : u \sim v_0$, lets see that this not possible. Relative to $P$ $u$ has two posibilities:
+Now consider $v_0$ (we could reason the same way for $v_k$), and let suppose that $\vert N(v_0) \vert \geq 2$, if it is, then we can consider some $u \in V : u \sim v_0 \land u \neq v_1$, then: 
 
-- Is $u \in P$ contradicting the fact that $T$ is acyclic.
-- Is $u \notin P$, then $P' = u,v_0,...,v_k$ is the longest path contradicting the maximality asumption in $P$.
+
+- If $u \in P \implies C_u:= u,...,v_0,v_1,u \subset T$ contradicting the acyclicness property.
+- If $u \notin P$, then $P' = u,v_0,...,v_k$ would be the longest path contradicting the maximality asumption in $P$.
 
 So $deg(v_0) = deg(v_k) = 1$ and both are leaf in $T$.
 
@@ -149,7 +150,7 @@ The following statements are equivalent:
 
 5. $T$ is maximally acyclic: adding any missing edge creates a cycle.
 
-    Let's consider $u,v \in V : u \ \cancel{\sim} \ v$, then, since $T$ is connected, exists a path $u,...,v \in T$ and forcing $\Set{u,v} \in E \implies C = u,...v,u \subset T$ contradicting acyclicness.
+    Let's consider $u,v \in V : u \ \cancel{\sim} \ v$, then, since $T$ is connected, exists a path $u,...,v \in T$ and forcing $\Set{u,v} \in E \implies C_u = u,...v,u \subset T$ contradicting acyclicness.
 
     <br>
 
