@@ -252,7 +252,7 @@ We can enunciate a set of operations between $P_i:i \in [m]$ that form a equival
 
     <br>
 
-2. **Add two equations and add**: $P,Q \in M \wedge \gamma ,\lambda \in F \setminus \Set{0} \implies S_{\gamma P + \lambda Q} \subset S_{P} \cap S_Q$
+2. **Add two equations and add**: $P,Q \in M \wedge \gamma ,\lambda \in F \setminus \Set{0} \implies S_{\gamma P + \lambda Q} \cap S_Q = S_P \cap S_Q $
 
     Again, we consider that $P(x):=p_1x_1 \cdots + p_nx_n = y_p$ and $Q(x):=q_1x_1 \cdots + q_nx_n = y_q$ thus:
 
@@ -260,7 +260,7 @@ We can enunciate a set of operations between $P_i:i \in [m]$ that form a equival
 
     $$ \implies  \gamma p_1x_1 \cdots + \gamma p_nx_n - \gamma y_p = -\lambda q_1x_1 \cdots - \lambda q_nx_n + \lambda y_q  \iff $$
 
-    $$ \iff (\gamma p_1 + \lambda q_1) x_1 \cdots (\gamma p_n + \lambda q_n) x_n = \gamma y_p + \lambda y_q \iff x \in S_{\gamma P + \lambda Q}$$
+    $$ \iff (\gamma p_1 + \lambda q_1) x_1 \cdots +(\gamma p_n + \lambda q_n) x_n = \gamma y_p + \lambda y_q \iff x \in S_{\gamma P + \lambda Q}$$
 
     Which means, $S_P \cap S_Q \subseteq S_{\gamma P + \lambda Q}$
 
@@ -270,11 +270,17 @@ We can enunciate a set of operations between $P_i:i \in [m]$ that form a equival
 
     Then, clearly, $x \in S_{1P_1 + 1Q_1} \subset S_{\gamma P + \lambda Q} \wedge x \notin S_P \cap S_Q$, meaning that we loose information and we cannot replace those sets between them, we only can add it to the global intersection.
 
-    In other words, since $S_P \cap S_Q \subseteq S_{\gamma P + \lambda Q} \implies (S_P \cap S_Q) \cap S_{\gamma P + \lambda Q} = S_P \cap S_Q$, then:
+    In other words, since $S_P \cap S_Q \subset S_{\gamma P + \lambda Q} \implies (S_P \cap S_Q) \cap S_{\gamma P + \lambda Q} = S_P \cap S_Q$, then:
 
     $$S := \bigcap_{i=1}^m S_{P_i} = S_{\gamma P + \lambda Q} \cap \bigcap_{i=1}^m S_{P_i} $$
 
-    Implying that the sistem: $ M' := (\gamma P + \lambda Q) \wedge \displaystyle\bigwedge_{i=1}^m P_i \equiv\bigwedge_{i=1}^m P_i = M$
+    Implying that the sistem: $ M' := (\gamma P + \lambda Q) \wedge \displaystyle\bigwedge_{i=1}^m P_i \equiv\bigwedge_{i=1}^m P_i = M$ Let's also observe that we loose information in the sense that force the addition of two numbers $y_p + y_q$ to be equal to a third does not determines neither of the two, but giving a value to any of those automatically determines the other one. 
+
+    This means that, if you have $x \in F^n:P + \lambda Q \wedge Q \implies P$ leading to the correct replacing rule:
+    
+    $$S_{\gamma P + \lambda Q} \cap S_Q = S_P \cap S_Q$$
+
+    And, being $P_j = P$, then  $M' := (\gamma P + \lambda Q) \wedge \displaystyle\bigwedge_{i\neq j} P_i \equiv\bigwedge_{i} P_i = M$
 
 
 
