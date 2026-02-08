@@ -163,7 +163,7 @@ $$\sum_{v \in V} deg(v) = 2 \vert E \vert$$
 
 Let's see that we can proof this by induction:
 
-- Consider: $|V| = 2 \implies \displaystyle\sum_{v \in V} deg(v) = 2 = 2 \vert E \vert$
+- Consider: $\vert V \vert = 2 \implies \displaystyle\sum_{v \in V} deg(v) = 2 = 2 \vert E \vert$
 - Consider now $\vert V \vert = n+1$, then we can consider by the leaf lemma $t \in V: deg(t) =1$:
 
     $$ T' :=(V',E'): \begin{cases} V' = V \setminus \set{t} \\ E' = E \cap \binom{V'}{2}\end{cases}$$
