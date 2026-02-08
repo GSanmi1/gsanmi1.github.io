@@ -178,9 +178,104 @@ Let's observe that there are important relations between the identities of the a
 
 ## 2.1. Brief introduction. Linear meaning.
 
-In maths, “Linear” means no interactions between variables and no bending. In this context, a linear combination of a finite set of variables $\Set{x,y,...}$ means:
+In maths, “Linear” means no interactions between variables and no bending. In this context, a linear combination of a finite set of variables $\Set{x,y,\cdots}$ means:
 
 - No interactions betweem elements in $\Set{x,y,..}$; no products $(xy)$, squares $(x^n): n \in \mathbb{R}$, etc.
 - A change in the inputs (“add” or “scale”), provokes a proportional change in the output.
+
+Then, a **system of linear equations** is a collection of constraints or predicates of the form of linear expressions on a finite number of unknowns. The solutions of the whole system are the points that satisfy all constraints at once, the intersection of the predicates.
+
+<br>
+
+## 2.2. Formal definition.
+
+Let be $F$ a field and $m,n \geq 1$, then a finite system of $m$ linear equations in $n$ unknowns over $F$ is specified by:
+
+- Coefficients: $a_{ij} \in F: 1 \leq j \leq m, 1 \leq j \leq n$
+- Unknowns:  $x_{ij} \in F: 1 \leq j \leq m, 1 \leq j \leq n$
+- Constants: $b_i \in F: 1 \leq i \leq m$
+
+Related as:
+
+$$\begin{cases} \displaystyle\sum_{j = 1}^na_{1j}x_{j} = b_1 \\ \ \  \vdots \\ \displaystyle\sum_{j = 1}^na_{mj}x_{j} = b_m\end{cases} \iff \begin{cases} a_{11}x_{11} \cdots + a_{1n}x_{1n} = b_1 \\ \ \ \ \ \ \ \ \ \ \ \ \ \ \  \vdots \\ a_{m1}x_1 \cdots + a_{mn}x_{n} = b_m\end{cases} $$
+
+Then, any tuple $(x_1,\cdots,x_n) \in F^n$ that satisfies all the constraints simultaneusly is called a *solution* of the system.
+
+The system is called *homogeneous* if the unique solution available is $0 \in F^n$.
+
+<br>
+
+## 2.3. Equivalent Systems. Operations between constraints.
+
+### 2.3.1. System equations as predicates. Equivalence.
+
+As we said in the introduction, a lineal equation $a_1x_1\cdots + a_nx_n = b$ in a field $F$, can be understanded as a predicate $P(x):x \in F^n$. 
+
+Then, a finite system of $m$ linear equations in $n$ unknowns over $F$ ($M$) can be understanded as the intersection of each predicate $P_i(x) : i \in [m]$:
+
+<br>
+
+$$M:=\begin{cases} a_{11}x_{11} \cdots + a_{1n}x_{1n} = b_1 \\ \ \ \ \ \ \ \ \ \ \ \ \ \ \  \vdots \\ a_{m1}x_1 \cdots + a_{mn}x_{n} = b_m\end{cases} \ \ \equiv \ \ \bigwedge_{i=1}^m P_i(x) : x \in F^n $$
+
+<br>
+
+In this terms, we can consider the set:
+
+$$S_P := \Set{x \in F_n \ \vert \ P(x) \equiv \top}$$
+
+Thus, the system $M$ describes the those $x \in F^n$ that satisfies the interseccions of the $S_{P_i}$ sets:
+
+$$S:= \bigcap_{i=1}^m S_{P_i} = \Set{x \in F^n \ \vert \ M := \bigwedge_{i=1}^m P_i(x) \equiv \top}$$
+
+We say that two equation systems, $M, M'$ are *equivalents* $M \equiv M'$ if they describes the same solution set $S$:
+
+$$M \equiv M' \iff S = \Set{x \ \vert \ M \equiv \top} = \Set{x \ \vert \ M' \equiv \top}$$
+
+<br>
+
+### 2.3.2. Equivalence preservation.
+
+As we see before, from the first order logic perspective, given a system $M:= P_1 \cdots \land P_m$ make a family of predicates $P_i':i \in [m]$ that preservers $S$ makes $M \equiv M':= P'_1 \cdots \land P'_m$
+
+We can enunciate a set of operations between $P_i:i \in [m]$ that form a equivalent family of predicates that describes $M$ in the same way.
+
+1. **Multiply by an scalar and replace**: $P \in M \wedge \lambda \in F\setminus \Set{0} \implies S_{\lambda P} = S_P $
+
+    Let's observe that, if $P(x):=a_1x_1 \cdots + a_nx_n = y$, we define $\lambda P(x):=\lambda a_1x_1 \cdots + \lambda a_n x_n = \lambda y$, and now observe that be $x = (x_1,...,x_n) \in F^n$:
+
+    $$x\in S_P \iff a_1x_1 \cdots + a_nx_n = y \iff$$
+    $$\lambda(a_1x_1 \cdots + a_nx_n) = \lambda a_1 x_1 \cdots + \lambda a_n x_n = \lambda y \iff x \in S_{\lambda P}$$
+
+    Thus, we can replace $S_{\lambda P}$ for $S_P$ without change $S$. 
+    
+    Then, being $P = P_j$ in $M$, we have that  $M':=  \lambda P \wedge \displaystyle\bigwedge_{i \neq j} P_i \equiv M$.
+
+    <br>
+
+2. **Add two equations and add**: $P,Q \in M \wedge \gamma ,\lambda \in F \setminus \Set{0} \implies S_{\gamma P + \lambda Q} \subset S_{P} \cap S_Q$
+
+    Again, we consider that $P(x):=p_1x_1 \cdots + p_nx_n = y_p$ and $Q(x):=q_1x_1 \cdots + q_nx_n = y_q$ thus:
+
+    $$x \in S_P \cap S_Q \iff \begin{cases} p_1x_1 \cdots + p_nx_n = y_p \\ q_1x_1 \cdots + q_nx_n = y_q\end{cases} \iff  \begin{cases} \gamma p_1x_1 \cdots + \gamma p_nx_n - \gamma y_p = 0 \\ -\lambda q_1x_1 \cdots - \lambda q_nx_n + \lambda y_q = 0\end{cases}$$
+
+    $$ \implies  \gamma p_1x_1 \cdots + \gamma p_nx_n - \gamma y_p = -\lambda q_1x_1 \cdots - \lambda q_nx_n + \lambda y_q  \iff $$
+
+    $$ \iff (\gamma p_1 + \lambda q_1) x_1 \cdots (\gamma p_n + \lambda q_n) x_n = \gamma y_p + \lambda y_q \iff x \in S_{\gamma P + \lambda Q}$$
+
+    Which means, $S_P \cap S_Q \subseteq S_{\gamma P + \lambda Q}$
+
+    How ever, is not true that $S_{\gamma P + \lambda Q} \subset S_P \cap S_Q$, being $\gamma = \lambda = 1$ and $y_q = y_p = 1$, then being $x \in F^n$ such:
+    
+    $$\begin{cases}p_1x_1 \cdots p_nx_n = 0 \\ q_1x_1 \cdots q_nx_n = 2 \end{cases}$$
+
+    Then, clearly, $x \in S_{1P_1 + 1Q_1} \subset S_{\gamma P + \lambda Q} \wedge x \notin S_P \cap S_Q$, meaning that we loose information and we cannot replace those sets between them, we only can add it to the global intersection.
+
+    In other words, since $S_P \cap S_Q \subseteq S_{\gamma P + \lambda Q} \implies (S_P \cap S_Q) \cap S_{\gamma P + \lambda Q} = S_P \cap S_Q$, then:
+
+    $$S := \bigcap_{i=1}^m S_{P_i} = S_{\gamma P + \lambda Q} \cap \bigcap_{i=1}^m S_{P_i} $$
+
+    Implying that the sistem: $ M' := (\gamma P + \lambda Q) \wedge \displaystyle\bigwedge_{i=1}^m P_i \equiv\bigwedge_{i=1}^m P_i = M$
+
+
 
 <br>
