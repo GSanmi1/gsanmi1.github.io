@@ -186,6 +186,25 @@ Observe that this also means that there is an even number of odd-degrees.
 
 ##### 2.1.1.3.1. Eulerian graphs.
 
+**Main notions and definitions**
+
+Be $G:=(V,E)$ a graph, then we define the following terms:
+
+- **Euler walk**, is a walk that goes through every edge of $E$ exactly once.
+- **Euler circuit**, is an *eulerian walk* that starts and ends at the same vertex.
+
+Then, 
+
+- $G$ is said to be *semi-eulerian* if it admits an eulerian trail but not an eulerian circuit. 
+- $G$ is said to be *eulerian* if it admits an eulerian circuit.
+
+<br>
+
+**Characterization**
+
+
+
+<br>
 
 ### 2.1.2. Directed graphs.
 
