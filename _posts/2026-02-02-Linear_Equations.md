@@ -287,132 +287,151 @@ We can enunciate a set of operations between $P_i:i \in [m]$ that form a equival
 
 <br>
 
-**Exercises**
+### 2.3.3. Exercises.
 
-1. Verify that the set of complex numbers $F:= \Set{z \ \vert \ \exists x,y \in \mathbb{Q} : z = x + y\sqrt{2}}$ is a subfield of $\mathbb{C}$.
+**1. Verify that the set of complex numbers $F:= \Set{z \ \vert \ \exists x,y \in \mathbb{Q} : z = x + y\sqrt{2}}$ is a subfield of $\mathbb{C}$.**
 
-    Verifying that $\Set{F,+, \ ·}$ is a subfield of $\mathbb{C}$ requires to verify:
+Verifying that $\Set{F,+, \ ·}$ is a subfield of $\mathbb{C}$ requires to verify:
 
-    - $F \subset \mathbb{C}$, which is true by definition.
-    - $\Set{F, + , \ ·}$ is a field which implies to verify that $\Set{F,+}$ and $\Set{F\setminus \Set{0}, \ ·}$ are two compatible abelian groups.
+- $F \subset \mathbb{C}$, which is true by definition.
+- $\Set{F, + , \ ·}$ is a field which implies to verify that $\Set{F,+}$ and $\Set{F\setminus \Set{0}, \ ·}$ are two compatible abelian groups.
 
-    Thus first, $\Set{F, +}$ verifies:
+Thus first, $\Set{F, +}$ verifies:
 
-    - **Closure**:
+- **Closure**:
 
-        Being $z_1,z_2 \in F$, then, leveraging that $\mathbb{Q}$ is a field: 
+    Being $z_1,z_2 \in F$, then, leveraging that $\mathbb{Q}$ is a field: 
 
-        $$z_1 + z_2 = x_1 + y_1\sqrt{2} + x_2 + y_2\sqrt{2} = (x_1 + x_2) + (y_1 + y_2)\sqrt{2}$$
-        
-        Thus, calling $x_3 = x_1 + x_2$ and $y_3 = y_1 + y_2$, then:
-        
-        $$\exists x, y \in \mathbb{Q}: z_1 + z_2 = x + y\sqrt{2} \iff z_1 + z_2 \in F$$
+    $$z_1 + z_2 = x_1 + y_1\sqrt{2} + x_2 + y_2\sqrt{2} = (x_1 + x_2) + (y_1 + y_2)\sqrt{2}$$
+    
+    Thus, calling $x_3 = x_1 + x_2$ and $y_3 = y_1 + y_2$, then:
+    
+    $$\exists x, y \in \mathbb{Q}: z_1 + z_2 = x + y\sqrt{2} \iff z_1 + z_2 \in F$$
 
-        <br>
+    <br>
 
-    - **Associativity**:
+- **Associativity**:
 
-        Being $z_1,z_2,z_3 \in F$, then:
+    Being $z_1,z_2,z_3 \in F$, then:
 
-        $$z_1 + (z_2 + z_3) = [x_1 + (x_2 + x_3)] + [y_1 + (y_2 + y_3)]\sqrt{2} = \\ [(x_1 + x_2) + x_3] + [(y_1 + y_2) + y_3]\sqrt{2} = (z_1 + z_2) + z_3$$
+    $$z_1 + (z_2 + z_3) = [x_1 + (x_2 + x_3)] + [y_1 + (y_2 + y_3)]\sqrt{2} = \\ [(x_1 + x_2) + x_3] + [(y_1 + y_2) + y_3]\sqrt{2} = (z_1 + z_2) + z_3$$
 
-        <br>
+    <br>
 
-    - **Conmutativity**:
+- **Conmutativity**:
 
-        Being $z_1,z_2 \in F$, then:
+    Being $z_1,z_2 \in F$, then:
 
-        $$z_1 + z_2 = (x_1 + x_2) + (y_1 + y_2)\sqrt{2} = \\ (x_2 + x_1) + (y_2 + y_1)\sqrt{2} = z_2 + z_1$$
+    $$z_1 + z_2 = (x_1 + x_2) + (y_1 + y_2)\sqrt{2} = \\ (x_2 + x_1) + (y_2 + y_1)\sqrt{2} = z_2 + z_1$$
 
-        <br>
+    <br>
 
-    - **Unique Identity**:
+- **Unique Identity**:
 
-        Be $0 = 0 + 0\sqrt{2}$, then $z_1 + 0 = (x_1 + 0) + (y_1 + 0)\sqrt{2} = x_1 + y_1\sqrt{2} = z_1$
+    Be $0 = 0 + 0\sqrt{2}$, then $z_1 + 0 = (x_1 + 0) + (y_1 + 0)\sqrt{2} = x_1 + y_1\sqrt{2} = z_1$
 
-        <br>
+    <br>
 
-    - **Unique Inverse**: 
+- **Unique Inverse**: 
 
-        Be $z = x + y\sqrt{2}$, then $-z = -x - y\sqrt{2}$ verifies:
+    Be $z = x + y\sqrt{2}$, then $-z = -x - y\sqrt{2}$ verifies:
 
-        $$z + (-z) = [x + (-x)] + [y + (-y)]\sqrt{2} = 0 + 0\sqrt{2} = 0$$
+    $$z + (-z) = [x + (-x)] + [y + (-y)]\sqrt{2} = 0 + 0\sqrt{2} = 0$$
 
-        <br>
+    <br>
 
-    All this rules confirms that $\Set{F,+}$ is an *abelian group*. Let's begin with $\Set{F\setminus \Set{0}, \ ·}$:
+All this rules confirms that $\Set{F,+}$ is an *abelian group*. Let's begin with $\Set{F\setminus \Set{0}, \ ·}$:
 
-    - **Closure**
+- **Closure**
 
-        Be, $z_1,z_2 \in F$, then proceding like above:
+    Be, $z_1,z_2 \in F$, then proceding like above:
 
-        $$z_1z_2 = (x_1 + y_1\sqrt{2})(x_2 + y_2\sqrt{2}) =\underbrace{(x_1x_2 + 2y_1y_2)}_{x} + \underbrace{(x_1y_2 + y_1x_2)}_{y}\sqrt{2} \in F$$
+    $$z_1z_2 = (x_1 + y_1\sqrt{2})(x_2 + y_2\sqrt{2}) =\underbrace{(x_1x_2 + 2y_1y_2)}_{x} + \underbrace{(x_1y_2 + y_1x_2)}_{y}\sqrt{2} \in F$$
 
-        <br>
+    <br>
 
-    - **Associativity**:
+- **Associativity**:
 
-        Be $z_1,z_2,z_3 \in F$, then:
+    Be $z_1,z_2,z_3 \in F$, then:
 
-        $$z_1(z_2z_3) = (x_1 + y_1\sqrt{2})\big[(x_2x_3 + 2y_2y_3) + (x_2y_3 + y_2x_3)\sqrt{2}\big]=$$
-        
-        $$x_1(x_2x_3 + 2y_2y_3) + x_1(x_2y_3 + y_2x_3)\sqrt{2} + y_1\sqrt{2}(x_2x_3 + 2y_2y_3) + y_1\sqrt{2}(x_2y_3 + y_2x_3)\sqrt{2}=$$
-        
-        $$x_1(x_2x_3 + 2y_2y_3) + 2y_1(x_2y_3 + y_2x_3) + \big[x_1(x_2y_3 + y_2x_3) + y_1(x_2x_3 + 2y_2y_3)\big]\sqrt{2}=$$
-        
-        $$\big(x_1x_2x_3 + 2x_1y_2y_3 + 2y_1x_2y_3 + 2y_1y_2x_3\big) + \big(x_1x_2y_3 + x_1y_2x_3 + y_1x_2x_3 + 2y_1y_2y_3\big)\sqrt{2}$$
-
-
-        And also;
-
-        $$(z_1z_2)z_3 = \big[(x_1x_2 + 2y_1y_2) + (x_1y_2 + y_1x_2)\sqrt{2}\big](x_3 + y_3\sqrt{2}) =$$
-
-        $$\big(x_1x_2x_3 + 2y_1y_2x_3 + 2x_1y_2y_3 + 2y_1x_2y_3\big)+ \big(x_1x_2y_3 + 2y_1y_2y_3 + x_1y_2x_3 + y_1x_2x_3\big)\sqrt{2}$$
-
-        Thus, $z_1(z_2z_3) = (z_1z_2)z_3$
-
-        <br>
-
-    - **Conmutativity**:
-
-        $$z_1z_2 = (x_1 + y_1\sqrt{2})(x_2 + y_2\sqrt{2}) = (x_1x_2 + 2y_1y_2) + (x_1y_2 + y_1x_2)\sqrt{2}$$
-
-        $$z_2z_1 = (x_2 + y_2\sqrt{2})(x_1 + y_1\sqrt{2}) = (x_2x_1 + 2y_2y_1) + (y_2x_1 + x_2y_2)\sqrt{2}$$
-        And both expressions are equivallent due to conmutativity in $\mathbb{Q}$
-
-        <br>
-
-    - **Unique Identity**: 
-
-        Being $1 = 1 + 0\sqrt{2} \neq 0 + 0\sqrt{2} = 0$, then:
-
-        $$z·1 = (x + y\sqrt{2})(1 + 0\sqrt{2}) = x + y\sqrt{2} = z$$
-
-        <br>
-
-    - **Unique Inverse**:
-
-        Being $z=x+y\sqrt{2}\in F$, we define the multiplicative inverse of $z$ as an element $z^{-1}\in F$ such that;
-
-        $$z\neq 0 \;\Longrightarrow\; \exists\, z^{-1}\in F:\; z\cdot z^{-1}=1$$
-
-        Equivalently, writing $z^{-1}=u+v\sqrt{2}$ with $u,v\in\mathbb{Q}$, the condition $z\cdot z^{-1}=1$ means
-        
-        $$(x+y\sqrt{2})(u+v\sqrt{2})=1+0\sqrt{2}$$
-        
-        $$(xu+2yv) + (xv+yu)\sqrt{2}=1+0\sqrt{2}$$
-        
-        Hence it is equivalent to the system
-        
-        $$\begin{cases}xu+2yv=1,\\ xv+yu=0. \end{cases}$$
-
-        <br>
+    $$z_1(z_2z_3) = (x_1 + y_1\sqrt{2})\big[(x_2x_3 + 2y_2y_3) + (x_2y_3 + y_2x_3)\sqrt{2}\big]=$$
+    
+    $$x_1(x_2x_3 + 2y_2y_3) + x_1(x_2y_3 + y_2x_3)\sqrt{2} + y_1\sqrt{2}(x_2x_3 + 2y_2y_3) + y_1\sqrt{2}(x_2y_3 + y_2x_3)\sqrt{2}=$$
+    
+    $$x_1(x_2x_3 + 2y_2y_3) + 2y_1(x_2y_3 + y_2x_3) + \big[x_1(x_2y_3 + y_2x_3) + y_1(x_2x_3 + 2y_2y_3)\big]\sqrt{2}=$$
+    
+    $$\big(x_1x_2x_3 + 2x_1y_2y_3 + 2y_1x_2y_3 + 2y_1y_2x_3\big) + \big(x_1x_2y_3 + x_1y_2x_3 + y_1x_2x_3 + 2y_1y_2y_3\big)\sqrt{2}$$
 
 
-    Lets now demonstrate that both abelians groups are compatible, but this is obvious for the arithmetic properties in $\mathbb{Q}$:
+    And also;
 
-    $$z_1(z_2 + z_3) = (x_1+y_1\sqrt{2})[(x_2+y_2\sqrt{2} + x_3+y_3\sqrt{2})] = \\ (x_1+y_1\sqrt{2})x_2 + (x_1+y_1\sqrt{2})y_3\sqrt{2} + (x_1+y_1\sqrt{2})x_3 + (x_1+y_1\sqrt{2})y_3\sqrt{2}= \\ (x_1+y_1\sqrt{2})(x_2 + y_2\sqrt{2}) + (x_1+y_1\sqrt{2})(x_3+y_3\sqrt{2}) = z_1z_2 + z_1z_3$$
+    $$(z_1z_2)z_3 = \big[(x_1x_2 + 2y_1y_2) + (x_1y_2 + y_1x_2)\sqrt{2}\big](x_3 + y_3\sqrt{2}) =$$
+
+    $$\big(x_1x_2x_3 + 2y_1y_2x_3 + 2x_1y_2y_3 + 2y_1x_2y_3\big)+ \big(x_1x_2y_3 + 2y_1y_2y_3 + x_1y_2x_3 + y_1x_2x_3\big)\sqrt{2}$$
+
+    Thus, $z_1(z_2z_3) = (z_1z_2)z_3$
+
+    <br>
+
+- **Conmutativity**:
+
+    $$z_1z_2 = (x_1 + y_1\sqrt{2})(x_2 + y_2\sqrt{2}) = (x_1x_2 + 2y_1y_2) + (x_1y_2 + y_1x_2)\sqrt{2}$$
+
+    $$z_2z_1 = (x_2 + y_2\sqrt{2})(x_1 + y_1\sqrt{2}) = (x_2x_1 + 2y_2y_1) + (y_2x_1 + x_2y_2)\sqrt{2}$$
+    And both expressions are equivallent due to conmutativity in $\mathbb{Q}$
+
+    <br>
+
+- **Unique Identity**: 
+
+    Being $1 = 1 + 0\sqrt{2} \neq 0 + 0\sqrt{2} = 0$, then:
+
+    $$z·1 = (x + y\sqrt{2})(1 + 0\sqrt{2}) = x + y\sqrt{2} = z$$
+
+    <br>
+
+- **Unique Inverse**:
+
+    Being $z=x+y\sqrt{2}\in F$, we define the multiplicative inverse of $z$ as an element $z^{-1}\in F$ such that;
+
+    $$z\neq 0 \;\Longrightarrow\; \exists\, z^{-1}\in F:\; z\cdot z^{-1}=1$$
+
+    Equivalently, writing $z^{-1}=u+v\sqrt{2}$ with $u,v\in\mathbb{Q}$, the condition $z\cdot z^{-1}=1$ means
+    
+    $$(x+y\sqrt{2})(u+v\sqrt{2})=1+0\sqrt{2}$$
+    
+    $$(xu+2yv) + (xv+yu)\sqrt{2}=1+0\sqrt{2}$$
+    
+    Hence it is equivalent to the system
+    
+    $$\begin{cases}xu+2yv=1,\\ xv+yu=0. \end{cases}$$
 
     <br>
 
 
+Lets now demonstrate that both abelians groups are compatible, but this is obvious for the arithmetic properties in $\mathbb{Q}$:
+
+$$z_1(z_2 + z_3) = (x_1+y_1\sqrt{2})[(x_2+y_2\sqrt{2} + x_3+y_3\sqrt{2})] = \\ (x_1+y_1\sqrt{2})x_2 + (x_1+y_1\sqrt{2})y_3\sqrt{2} + (x_1+y_1\sqrt{2})x_3 + (x_1+y_1\sqrt{2})y_3\sqrt{2}= \\ (x_1+y_1\sqrt{2})(x_2 + y_2\sqrt{2}) + (x_1+y_1\sqrt{2})(x_3+y_3\sqrt{2}) = z_1z_2 + z_1z_3$$
+
+<br>
+
+**2. Let $F$ be the field of complex numbers. Are the following two systems of linear equations equivalent? If so, express each equation in each system as a linear combination of the equations in the other system.**
+
+$$\begin{gather} \ x_1 - x_2 = 0 \ \ \ \ \ \ \ \ \ 3x_1 + x_2 = 0\\ 2x_1 + x_2 = 0 \ \ \ \ \ \ \ \ \ x_1 + x_2 = 0 \end{gather}$$
+
+<br>
+
+First, to demonstrate that $M$ and $M'$ are equivallents we can solve it describying the sets $S$ and $S'$ and demonstrating that $S = S'$.
+
+Solving $M$ we find that the first equation tell us that $x_1 = x_2$ and the second, $x_1 = 0$ so $S =\Set{(0,0)} \subset F$. Easily we can check that $S' = \Set{(0,0)} = S$, thus $M \equiv M'$.
+
+<br>
+
+**3. Test the following systems of equations as in Exercise 2.**
+
+$$\begin{cases}
+-x_1 + x_2 + 4x_3 = 0 \ \ \ \ \ \ x_1 - x_3 = 0\\
+x_1 + 3x_2 + 8x_3 = 0 \ \ \ \ \ \ \ x_2 + 3x_3 = 0\\
+\frac{1}{2}x_1 + x_2 + \frac{5}{2}x_3 = 0\\
+\end{cases}
+$$
