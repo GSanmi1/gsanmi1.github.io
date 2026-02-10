@@ -202,9 +202,29 @@ Then,
 
 **Characterization**
 
+Being $G$ a connected graph, then:
 
+$$G \text{ is eulerian } \iff deg(v) \vert 2 \ \ \ \forall v \in V$$
 
 <br>
+
+First, let's that if $G$:
+
+- $G \text{ is eulerian } \implies  deg(v) \vert 2 \ \ \ \forall v \in V$
+
+    If we consider $G:=(V,E)$ connected that admints and eulearian circuit, then, we can think on a walk that traverse every edge without repeat any of it.
+
+    Thus, for the walk to not repeat edges and to end in the same vertex that started, for every vertex $v \in V$ which is not the start of the walk there is at least two edges; one that enters in $\Set{u,v}$ and other that gets out from $\Set{v,w}$, for every time the walk visit a vertex in $V$ (this also applies whenever the vertex gets repeated in the walk).
+    
+    Also, if $r \in V$ is the root vertex from which the walk start, then if this vertex gets visited more than once then applies the rule above and also has the first edge from which start the walk and the last edge of the walk that ends returning in $r$.
+    
+    So any $v \in V$ is adjacent to an even number of vertex and thus $deg(v) \vert 2$.
+
+<br>
+
+- $ deg(v) \vert 2 \ \ \ \forall v \in V \implies G \text{ admits and eulerian circuit}$
+
+    Lets observe that we can consider a connected subgraph of $G'$ so we can assume without ambiguity that $G$ is connected. Then, if $G$ is connected and each $v \in V$ verifies $deg(v)|2$, let
 
 ### 2.1.2. Directed graphs.
 
