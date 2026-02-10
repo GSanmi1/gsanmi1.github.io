@@ -409,8 +409,10 @@ We can enunciate a set of operations between $P_i:i \in [m]$ that form a equival
         <br>
 
 
-    Lets now demonstrate that both abelians groups are compatible;
+    Lets now demonstrate that both abelians groups are compatible, but this is obvious for the arithmetic properties in $\mathbb{Q}$:
 
-    $$z
+    $$z_1(z_2 + z_3) = (x_1+y_1\sqrt{2})[(x_2+y_2\sqrt{2} + x_3+y_3\sqrt{2})] = \\ (x_1+y_1\sqrt{2})x_2 + (x_1+y_1\sqrt{2})y_3\sqrt{2} + (x_1+y_1\sqrt{2})x_3 + (x_1+y_1\sqrt{2})y_3\sqrt{2}= \\ (x_1+y_1\sqrt{2})(x_2 + y_2\sqrt{2}) + (x_1+y_1\sqrt{2})(x_3+y_3\sqrt{2}) = z_1z_2 + z_1z_3$$
+
+    <br>
 
 

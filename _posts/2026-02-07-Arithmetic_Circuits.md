@@ -224,7 +224,7 @@ First, let's that if $G$:
 
 - $ deg(v) \vert 2 \ \ \ \forall v \in V \implies G \text{ admits and eulerian circuit}$
 
-    Lets observe that we can consider a connected subgraph of $G'$ so we can assume without ambiguity that $G$ is connected. Then, if $G$ is connected and each $v \in V$ verifies $deg(v)|2$, let
+    Lets observe that we can consider a connected subgraph of $G'$ so we can assume without ambiguity that $G$ is connected. Then, if $G$ is connected and each $v \in V$ verifies $deg(v)\vert 2$, let
 
 ### 2.1.2. Directed graphs.
 
