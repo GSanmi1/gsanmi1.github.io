@@ -368,7 +368,9 @@ All this rules confirms that $\Set{F,+}$ is an *abelian group*. Let's begin with
     
     $$x_1(x_2x_3 + 2y_2y_3) + x_1(x_2y_3 + y_2x_3)\sqrt{2} + y_1\sqrt{2}(x_2x_3 + 2y_2y_3) + y_1\sqrt{2}(x_2y_3 + y_2x_3)\sqrt{2}= $$
     
-    $$x_1(x_2x_3 + 2y_2y_3) + 2y_1(x_2y_3 + y_2x_3) + \big[x_1(x_2y_3 + y_2x_3) + y_1(x_2x_3 + 2y_2y_3)\big]\sqrt{2}=$$ $$\big(x_1x_2x_3 + 2x_1y_2y_3 + 2y_1x_2y_3 + 2y_1y_2x_3\big) + \big(x_1x_2y_3 + x_1y_2x_3 + y_1x_2x_3 + 2y_1y_2y_3\big)\sqrt{2}$$
+    $$x_1(x_2x_3 + 2y_2y_3) + 2y_1(x_2y_3 + y_2x_3) + \big[x_1(x_2y_3 + y_2x_3) + y_1(x_2x_3 + 2y_2y_3)\big]\sqrt{2}=$$
+    
+    $$\big(x_1x_2x_3 + 2x_1y_2y_3 + 2y_1x_2y_3 + 2y_1y_2x_3\big) + \big(x_1x_2y_3 + x_1y_2x_3 + y_1x_2x_3 + 2y_1y_2y_3\big)\sqrt{2}$$
 
 
     And also;
