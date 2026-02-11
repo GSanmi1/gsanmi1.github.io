@@ -256,7 +256,7 @@ We can enunciate a set of operations between $P_i:i \in [m]$ that form a equival
 
     Again, we consider that $P(x):=p_1x_1 \cdots + p_nx_n = y_p$ and $Q(x):=q_1x_1 \cdots + q_nx_n = y_q$ thus:
 
-    $$x \in S_P \cap S_Q \iff \begin{cases} p_1x_1 \cdots + p_nx_n = y_p \\\\ q_1x_1 \cdots + q_nx_n = y_q\end{cases} \iff  \begin{cases} \gamma p_1x_1 \cdots + \gamma p_nx_n - \gamma y_p = 0 \\\\ -\lambda q_1x_1 \cdots - \lambda q_nx_n + \lambda y_q = 0\end{cases}$$
+    $$x \in S_P \cap S_Q \iff \begin{cases} p_1x_1 \cdots + p_nx_n = y_p \\ q_1x_1 \cdots + q_nx_n = y_q\end{cases} \iff  \begin{cases} \gamma p_1x_1 \cdots + \gamma p_nx_n - \gamma y_p = 0 \\ -\lambda q_1x_1 \cdots - \lambda q_nx_n + \lambda y_q = 0\end{cases}$$
 
     $$ \implies  \gamma p_1x_1 \cdots + \gamma p_nx_n - \gamma y_p = -\lambda q_1x_1 \cdots - \lambda q_nx_n + \lambda y_q  \iff $$
 
@@ -266,7 +266,7 @@ We can enunciate a set of operations between $P_i:i \in [m]$ that form a equival
 
     How ever, is not true that $S_{\gamma P + \lambda Q} \subset S_P \cap S_Q$, being $\gamma = \lambda = 1$ and $y_q = y_p = 1$, then being $x \in F^n$ such:
     
-    $$\begin{cases}p_1x_1 \cdots p_nx_n = 0 \\\\ q_1x_1 \cdots q_nx_n = 2 \end{cases}$$
+    $$\begin{cases}p_1x_1 \cdots p_nx_n = 0 \\ q_1x_1 \cdots q_nx_n = 2 \end{cases}$$
 
     Then, clearly, $x \in S_{1P_1 + 1Q_1} \subset S_{\gamma P + \lambda Q} \wedge x \notin S_P \cap S_Q$, meaning that we loose information and we cannot replace those sets between them, we only can add it to the global intersection.
 
@@ -319,7 +319,7 @@ Thus first, $\Set{F, +}$ verifies:
 
     Being $z_1,z_2,z_3 \in F$, then:
 
-    $$z_1 + (z_2 + z_3) = [x_1 + (x_2 + x_3)] + [y_1 + (y_2 + y_3)]\sqrt{2} = \\\\ [(x_1 + x_2) + x_3] + [(y_1 + y_2) + y_3]\sqrt{2} = (z_1 + z_2) + z_3$$
+    $$z_1 + (z_2 + z_3) = [x_1 + (x_2 + x_3)] + [y_1 + (y_2 + y_3)]\sqrt{2} = \\ [(x_1 + x_2) + x_3] + [(y_1 + y_2) + y_3]\sqrt{2} = (z_1 + z_2) + z_3$$
 
     <br>
 
@@ -360,12 +360,12 @@ All this rules confirms that $\Set{F,+}$ is an *abelian group*. Let's begin with
 
     Be $z_1,z_2,z_3 \in F$, then:
 
-    $$z_1(z_2z_3) = (x_1 + y_1\sqrt{2})\big[(x_2x_3 + 2y_2y_3) + (x_2y_3 + y_2x_3)\sqrt{2}\big]= \\\\ x_1(x_2x_3 + 2y_2y_3) + x_1(x_2y_3 + y_2x_3)\sqrt{2} + y_1\sqrt{2}(x_2x_3 + 2y_2y_3) + y_1\sqrt{2}(x_2y_3 + y_2x_3)\sqrt{2}= \\\\x_1(x_2x_3 + 2y_2y_3) + 2y_1(x_2y_3 + y_2x_3) + \big[x_1(x_2y_3 + y_2x_3) + y_1(x_2x_3 + 2y_2y_3)\big]\sqrt{2}= \\\\ \big(x_1x_2x_3 + 2x_1y_2y_3 + 2y_1x_2y_3 + 2y_1y_2x_3\big) + \big(x_1x_2y_3 + x_1y_2x_3 + y_1x_2x_3 + 2y_1y_2y_3\big)\sqrt{2}$$
+    $$z_1(z_2z_3) = (x_1 + y_1\sqrt{2})\big[(x_2x_3 + 2y_2y_3) + (x_2y_3 + y_2x_3)\sqrt{2}\big]= \\ x_1(x_2x_3 + 2y_2y_3) + x_1(x_2y_3 + y_2x_3)\sqrt{2} + y_1\sqrt{2}(x_2x_3 + 2y_2y_3) + y_1\sqrt{2}(x_2y_3 + y_2x_3)\sqrt{2}= \\x_1(x_2x_3 + 2y_2y_3) + 2y_1(x_2y_3 + y_2x_3) + \big[x_1(x_2y_3 + y_2x_3) + y_1(x_2x_3 + 2y_2y_3)\big]\sqrt{2}= \\ \big(x_1x_2x_3 + 2x_1y_2y_3 + 2y_1x_2y_3 + 2y_1y_2x_3\big) + \big(x_1x_2y_3 + x_1y_2x_3 + y_1x_2x_3 + 2y_1y_2y_3\big)\sqrt{2}$$
 
 
     And also;
 
-    $$(z_1z_2)z_3 = \big[(x_1x_2 + 2y_1y_2) + (x_1y_2 + y_1x_2)\sqrt{2}\big](x_3 + y_3\sqrt{2}) =\\\\ \big(x_1x_2x_3 + 2y_1y_2x_3 + 2x_1y_2y_3 + 2y_1x_2y_3\big)+ \big(x_1x_2y_3 + 2y_1y_2y_3 + x_1y_2x_3 + y_1x_2x_3\big)\sqrt{2}$$
+    $$(z_1z_2)z_3 = \big[(x_1x_2 + 2y_1y_2) + (x_1y_2 + y_1x_2)\sqrt{2}\big](x_3 + y_3\sqrt{2}) =\\ \big(x_1x_2x_3 + 2y_1y_2x_3 + 2x_1y_2y_3 + 2y_1x_2y_3\big)+ \big(x_1x_2y_3 + 2y_1y_2y_3 + x_1y_2x_3 + y_1x_2x_3\big)\sqrt{2}$$
 
     Thus, $z_1(z_2z_3) = (z_1z_2)z_3$
 
@@ -373,7 +373,7 @@ All this rules confirms that $\Set{F,+}$ is an *abelian group*. Let's begin with
 
 - **Conmutativity**:
 
-    $$z_1z_2 = (x_1 + y_1\sqrt{2})(x_2 + y_2\sqrt{2}) = (x_1x_2 + 2y_1y_2) + (x_1y_2 + y_1x_2)\sqrt{2} \\\\ z_2z_1 = (x_2 + y_2\sqrt{2})(x_1 + y_1\sqrt{2}) = (x_2x_1 + 2y_2y_1) + (y_2x_1 + x_2y_2)\sqrt{2}$$
+    $$z_1z_2 = (x_1 + y_1\sqrt{2})(x_2 + y_2\sqrt{2}) = (x_1x_2 + 2y_1y_2) + (x_1y_2 + y_1x_2)\sqrt{2} \\ z_2z_1 = (x_2 + y_2\sqrt{2})(x_1 + y_1\sqrt{2}) = (x_2x_1 + 2y_2y_1) + (y_2x_1 + x_2y_2)\sqrt{2}$$
     And both expressions are equivallent due to conmutativity in $\mathbb{Q}$
 
     <br>
@@ -431,7 +431,7 @@ $$\alpha_1P + \beta_1Q = P' \iff \alpha_1(x_1 - x_2) + \beta_1(2x_1 + x_2) = 3x_
 
 Since we are interested in match coefficients for each unknown, we can form the following equations from the above:
 
-$$\begin{cases} \alpha_1x_1 + \beta_12x_1 = 3x_1 \\\\ -\alpha_1x_2 + \beta_1x_2 = x_2\end{cases} \iff \begin{cases} \alpha_1+ 2\beta_1 = 3 \\\\ -\alpha_1 + \beta_1 = 1\end{cases} \iff \alpha_1 = \frac{1}{3} \ \wedge \ \beta_1 = \frac{4}{3}$$
+$$\begin{cases} \alpha_1x_1 + \beta_12x_1 = 3x_1 \\ -\alpha_1x_2 + \beta_1x_2 = x_2\end{cases} \iff \begin{cases} \alpha_1+ 2\beta_1 = 3 \\ -\alpha_1 + \beta_1 = 1\end{cases} \iff \alpha_1 = \frac{1}{3} \ \wedge \ \beta_1 = \frac{4}{3}$$
 
 Proceeding the same way with $Q'$; 
 
@@ -455,6 +455,6 @@ On the other hand, for $M$ it is:
 
 $$2P - Q = P':-3x_1 -x_2 = 0 \iff x_1 = -\frac{1}{3}x_2$$
 
-Applying this results to $Q,T$, then:
+Applying this results to $Q,T$, then we get:
 
 $$$$
