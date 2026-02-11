@@ -233,6 +233,8 @@ First, let's that if $G$:
     ![cycle1](/assets/images/Maths/DiscreteMath/cycle1.png)
 
     This way, reaching this point, if no more non-traversed edges last, then we would finished, if not, then we can repeat the same steps into another cycle. 
+    
+    The point is to understand that, whenever exists a vertex involved in an non-traversed edge, by the features of the graph, this edge goes on in a path with another non-traversed edges that eventually ends up again in the same started vertex, thus our eulerian circuit is a walk that goes through a main cycle and completes subcycles when the access to this ones are presented.
 
     Thus this conditions are sufficent to ensure the existance of an eulerian circuit.
 
