@@ -360,12 +360,12 @@ All this rules confirms that $\Set{F,+}$ is an *abelian group*. Let's begin with
 
     Be $z_1,z_2,z_3 \in F$, then:
 
-    $$z_1(z_2z_3) = (x_1 + y_1\sqrt{2})\big[(x_2x_3 + 2y_2y_3) + (x_2y_3 + y_2x_3)\sqrt{2}\big]= \\\\ x_1(x_2x_3 + 2y_2y_3) + x_1(x_2y_3 + y_2x_3)\sqrt{2} + y_1\sqrt{2}(x_2x_3 + 2y_2y_3) + y_1\sqrt{2}(x_2y_3 + y_2x_3)\sqrt{2}= \\x_1(x_2x_3 + 2y_2y_3) + 2y_1(x_2y_3 + y_2x_3) + \big[x_1(x_2y_3 + y_2x_3) + y_1(x_2x_3 + 2y_2y_3)\big]\sqrt{2}= \\ \big(x_1x_2x_3 + 2x_1y_2y_3 + 2y_1x_2y_3 + 2y_1y_2x_3\big) + \big(x_1x_2y_3 + x_1y_2x_3 + y_1x_2x_3 + 2y_1y_2y_3\big)\sqrt{2}$$
+    $$z_1(z_2z_3) = (x_1 + y_1\sqrt{2})\big[(x_2x_3 + 2y_2y_3) + (x_2y_3 + y_2x_3)\sqrt{2}\big]=$$ $$x_1(x_2x_3 + 2y_2y_3) + x_1(x_2y_3 + y_2x_3)\sqrt{2} + y_1\sqrt{2}(x_2x_3 + 2y_2y_3) + y_1\sqrt{2}(x_2y_3 + y_2x_3)\sqrt{2}= $$ $$x_1(x_2x_3 + 2y_2y_3) + 2y_1(x_2y_3 + y_2x_3) + \big[x_1(x_2y_3 + y_2x_3) + y_1(x_2x_3 + 2y_2y_3)\big]\sqrt{2}=$$ $$\big(x_1x_2x_3 + 2x_1y_2y_3 + 2y_1x_2y_3 + 2y_1y_2x_3\big) + \big(x_1x_2y_3 + x_1y_2x_3 + y_1x_2x_3 + 2y_1y_2y_3\big)\sqrt{2}$$
 
 
     And also;
 
-    $$(z_1z_2)z_3 = \big[(x_1x_2 + 2y_1y_2) + (x_1y_2 + y_1x_2)\sqrt{2}\big](x_3 + y_3\sqrt{2}) =\\ \big(x_1x_2x_3 + 2y_1y_2x_3 + 2x_1y_2y_3 + 2y_1x_2y_3\big)+ \big(x_1x_2y_3 + 2y_1y_2y_3 + x_1y_2x_3 + y_1x_2x_3\big)\sqrt{2}$$
+    $$(z_1z_2)z_3 = \big[(x_1x_2 + 2y_1y_2) + (x_1y_2 + y_1x_2)\sqrt{2}\big](x_3 + y_3\sqrt{2}) =$$ $$\big(x_1x_2x_3 + 2y_1y_2x_3 + 2x_1y_2y_3 + 2y_1x_2y_3\big)+ \big(x_1x_2y_3 + 2y_1y_2y_3 + x_1y_2x_3 + y_1x_2x_3\big)\sqrt{2}$$
 
     Thus, $z_1(z_2z_3) = (z_1z_2)z_3$
 
@@ -373,7 +373,7 @@ All this rules confirms that $\Set{F,+}$ is an *abelian group*. Let's begin with
 
 - **Conmutativity**:
 
-    $$z_1z_2 = (x_1 + y_1\sqrt{2})(x_2 + y_2\sqrt{2}) = (x_1x_2 + 2y_1y_2) + (x_1y_2 + y_1x_2)\sqrt{2} \\ z_2z_1 = (x_2 + y_2\sqrt{2})(x_1 + y_1\sqrt{2}) = (x_2x_1 + 2y_2y_1) + (y_2x_1 + x_2y_2)\sqrt{2}$$
+    $$z_1z_2 = (x_1 + y_1\sqrt{2})(x_2 + y_2\sqrt{2}) = (x_1x_2 + 2y_1y_2) + (x_1y_2 + y_1x_2)\sqrt{2}$$ $$z_2z_1 = (x_2 + y_2\sqrt{2})(x_1 + y_1\sqrt{2}) = (x_2x_1 + 2y_2y_1) + (y_2x_1 + x_2y_2)\sqrt{2}$$
 
     
     And both expressions are equivallent due to conmutativity in $\mathbb{Q}$
@@ -409,7 +409,7 @@ All this rules confirms that $\Set{F,+}$ is an *abelian group*. Let's begin with
 
 Lets now demonstrate that both abelians groups are compatible, but this is obvious for the arithmetic properties in $\mathbb{Q}$:
 
-$$z_1(z_2 + z_3) = (x_1+y_1\sqrt{2})[(x_2+y_2\sqrt{2} + x_3+y_3\sqrt{2})] = \\ (x_1+y_1\sqrt{2})x_2 + (x_1+y_1\sqrt{2})y_3\sqrt{2} + (x_1+y_1\sqrt{2})x_3 + (x_1+y_1\sqrt{2})y_3\sqrt{2}= \\ (x_1+y_1\sqrt{2})(x_2 + y_2\sqrt{2}) + (x_1+y_1\sqrt{2})(x_3+y_3\sqrt{2}) = z_1z_2 + z_1z_3$$
+$$z_1(z_2 + z_3) = (x_1+y_1\sqrt{2})[(x_2+y_2\sqrt{2} + x_3+y_3\sqrt{2})] =$$ $$(x_1+y_1\sqrt{2})x_2 + (x_1+y_1\sqrt{2})y_3\sqrt{2} + (x_1+y_1\sqrt{2})x_3 + (x_1+y_1\sqrt{2})y_3\sqrt{2}=$$ $$(x_1+y_1\sqrt{2})(x_2 + y_2\sqrt{2}) + (x_1+y_1\sqrt{2})(x_3+y_3\sqrt{2}) = z_1z_2 + z_1z_3$$
 
 <br>
 
