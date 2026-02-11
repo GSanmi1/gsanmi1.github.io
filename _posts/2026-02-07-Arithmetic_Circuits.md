@@ -224,7 +224,19 @@ First, let's that if $G$:
 
 - $ deg(v) \vert 2 \ \ \ \forall v \in V \implies G \text{ admits and eulerian circuit}$
 
-    Lets observe that we can consider a connected subgraph of $G'$ so we can assume without ambiguity that $G$ is connected. Then, if $G$ is connected and each $v \in V$ verifies $deg(v)\vert 2$, let
+    Lets observe that we can consider a connected subgraph of $G'$ so we can assume without ambiguity that $G$ is connected. 
+    
+    Then, if $G$ is connected and each $v \in V$ verifies $deg(v)\vert 2$, let see that if we consider a path $P_r$ starting in $r \in V$, then since $deg(v) \vert 2 \ \ \forall v \in V$ there are no leafs and we can't get stuck in any point and always can go thourgh a non-traversed edge until we reach the same starting point $r$. This means that we can consider the cycle $C_r = P_r,r$ of no repeated edges. If $C_r$ goes through every edge in $E$, then is an eulerian circuit, if not and there are still edges which have not been traversed.
+    
+    ![cycle1](/assets/images/Maths/DiscreteMath/cycle1.png)
+
+    Let's suppose there are leaf edfes, again, since $G$ is connected then at least one vertex of the cycle is included on an non-traversed edge. Let's be this vertex $r$ again (since a cycle can be looped on any point, we can make this assumption without loosing generality) then, $r$ is connected to another vertex $t$ (which can be in the cycle or not) through an non-traversed edge $\Set{r,t}$, since $deg(t) \vert 2$, then we can ensure the existance of another non-traversed edge in which $t$ is included $\Set{t,l}$ (if not, by the logic described above, would be $deg(t)$ odd) let's see that applying the same logic than in the first cycle, this circuit eventually ends up in $r$ conforming another cycle of non-traversed edges that can be continued from the first cycle in an eulerian circuit.
+    
+    ![cycle2](/assets/images/Maths/DiscreteMath/cycle2.png) 
+    
+    This way, reaching this point, if no more non-traversed edges last, then we would finished, if not, then we can repeat the same steps into another cycle. 
+
+    Thus this conditions are sufficent to ensure the existance of an eulerian circuit.
 
 ### 2.1.2. Directed graphs.
 

@@ -284,6 +284,11 @@ We can enunciate a set of operations between $P_i:i \in [m]$ that form a equival
 
     And, being $P_j = P$, then  $M' := (\gamma P + \lambda Q) \wedge \displaystyle\bigwedge_{i\neq j} P_i \equiv\bigwedge_{i} P_i = M$
 
+Let's observe that two equivalent non-trivial sistems ($S \neq \varnothing$) define the same set of solutions by imposing in some sense the same restrictions. Meaning that any predicate on $M$ can be derivated from $M'$ am viceversa. Although this is not a mathematical explanation, it is convenient to us to know that:
+
+$$\forall i \leq t \ \exists \alpha = (\alpha_1,...,\alpha_l) \in F^l: S_P = S_{\alpha_1P'_1 \cdots + \alpha_lP'_l}$$
+
+The proof for this statement will be presented later.
 
 <br>
 
@@ -327,6 +332,7 @@ Thus first, $\Set{F, +}$ verifies:
     <br>
 
 - **Unique Identity**:
+
 
     Be $0 = 0 + 0\sqrt{2}$, then $z_1 + 0 = (x_1 + 0) + (y_1 + 0)\sqrt{2} = x_1 + y_1\sqrt{2} = z_1$
 
