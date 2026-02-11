@@ -360,7 +360,7 @@ All this rules confirms that $\Set{F,+}$ is an *abelian group*. Let's begin with
 
     Be $z_1,z_2,z_3 \in F$, then:
 
-    $$z_1(z_2z_3) = (x_1 + y_1\sqrt{2})\big[(x_2x_3 + 2y_2y_3) + (x_2y_3 + y_2x_3)\sqrt{2}\big]= \\ x_1(x_2x_3 + 2y_2y_3) + x_1(x_2y_3 + y_2x_3)\sqrt{2} + y_1\sqrt{2}(x_2x_3 + 2y_2y_3) + y_1\sqrt{2}(x_2y_3 + y_2x_3)\sqrt{2}= \\x_1(x_2x_3 + 2y_2y_3) + 2y_1(x_2y_3 + y_2x_3) + \big[x_1(x_2y_3 + y_2x_3) + y_1(x_2x_3 + 2y_2y_3)\big]\sqrt{2}= \\ \big(x_1x_2x_3 + 2x_1y_2y_3 + 2y_1x_2y_3 + 2y_1y_2x_3\big) + \big(x_1x_2y_3 + x_1y_2x_3 + y_1x_2x_3 + 2y_1y_2y_3\big)\sqrt{2}$$
+    $$z_1(z_2z_3) = (x_1 + y_1\sqrt{2})\big[(x_2x_3 + 2y_2y_3) + (x_2y_3 + y_2x_3)\sqrt{2}\big]= \\\\ x_1(x_2x_3 + 2y_2y_3) + x_1(x_2y_3 + y_2x_3)\sqrt{2} + y_1\sqrt{2}(x_2x_3 + 2y_2y_3) + y_1\sqrt{2}(x_2y_3 + y_2x_3)\sqrt{2}= \\x_1(x_2x_3 + 2y_2y_3) + 2y_1(x_2y_3 + y_2x_3) + \big[x_1(x_2y_3 + y_2x_3) + y_1(x_2x_3 + 2y_2y_3)\big]\sqrt{2}= \\ \big(x_1x_2x_3 + 2x_1y_2y_3 + 2y_1x_2y_3 + 2y_1y_2x_3\big) + \big(x_1x_2y_3 + x_1y_2x_3 + y_1x_2x_3 + 2y_1y_2y_3\big)\sqrt{2}$$
 
 
     And also;
@@ -374,6 +374,8 @@ All this rules confirms that $\Set{F,+}$ is an *abelian group*. Let's begin with
 - **Conmutativity**:
 
     $$z_1z_2 = (x_1 + y_1\sqrt{2})(x_2 + y_2\sqrt{2}) = (x_1x_2 + 2y_1y_2) + (x_1y_2 + y_1x_2)\sqrt{2} \\ z_2z_1 = (x_2 + y_2\sqrt{2})(x_1 + y_1\sqrt{2}) = (x_2x_1 + 2y_2y_1) + (y_2x_1 + x_2y_2)\sqrt{2}$$
+
+    
     And both expressions are equivallent due to conmutativity in $\mathbb{Q}$
 
     <br>
@@ -449,7 +451,7 @@ $$\begin{cases}
 
 Solving the problem we can say that, for $M'$ is:
 
-$$x_1 = x_3 \wedge x_2 = - \frac{1}{3}x_3 \wedge x_3 \in F \implies S_{M'}:=\Set{x \in F^3 \ \vert \ x = (\alpha, -\frac{1}{3}\alpha, \alpha) : \alpha \in F}$$
+$$x_1 = x_3 \wedge x_2 = - 3x_3 \wedge x_3 \in F \implies S_{M'}:=\Set{x \in F^3 \ \vert \ x = (\alpha, -3\alpha, \alpha) : \alpha \in F}$$
 
 On the other hand, for $M$ it is:
 
@@ -457,4 +459,13 @@ $$2P - Q = P':-3x_1 -x_2 = 0 \iff x_1 = -\frac{1}{3}x_2$$
 
 Applying this results to $Q,T$, then we get:
 
-$$$$
+$$\begin{cases}
+\ x_1 + 3x_2 + 8x_3 = 0 :Q \\
+\frac{1}{2}x_1 + x_2 + \frac{5}{2}x_3 = 0 :T
+\end{cases} \implies \begin{cases}
+\ -\frac{1}{3}x_2 + 3x_2 + 8x_3 = \frac{8}{3}x_2 + 8x_3 = 0 \\
+-\frac{1}{6}x_2 + x_2 + \frac{5}{2}x_3 = \frac{5}{6} x_2 + \frac{5}{2} x_3 =  0 
+\end{cases} \implies x_2 = -3x_3$$
+
+And $x_3 \in F$, so $S_M = S_{M'}$ and both are equivalent systems.
+
