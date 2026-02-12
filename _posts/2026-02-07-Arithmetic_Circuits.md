@@ -246,6 +246,32 @@ First, let's that if $G$:
 
     Thus this conditions are sufficent to ensure the existance of an eulerian circuit.
 
+    <br>
+
+Now, taking $G:=(V,E)$ as a connected graph:
+
+$$G \text{ is semi-eulerian } \iff |\{x \in V : \deg(x)\ \text{odd}\}| = 2$$
+
+- Let's see first that $ |\{x \in V : \deg(x)\ \text{odd}\}| = 2 \implies G \text{ is semi-eulerian }$
+
+    In the terms of in/out, having two unique vertex $u,v \in V$ with an odd-degree mean that this two vertex are endpoints, in the sense that you can depart from but never finish back (despite walk iterations over the same vertex), or you can get in but never get out through a non-traversed edge, any of the two cases would implie an even degree.
+
+    Thus, let's consider $P_{uv}$, this is our main walk, if this path covers all edges in $E$, then we would be finish. If not, lets see that we already take in $P_{uv}$ the odd adjacencies, in the sense that, out of $P$, every non-traversal edges involves vertex with an even degree value like in our eulerian graph in the example above. Every non-traversal edge out $P$, let's say $\Set{t,l}$ continues over another non-traversal edge until the starting point $t$ is meeted, completing a cycle. 
+
+    This in conjuntion with the fact that $G$ is connected, (meaning that if there are non-traversed edges by $P$ this can be reachable through $P$; at least one of those non-traversed edges involves a vertex in $P$) makes our eulerian trail as a walk that goes through $P_{uv}$ from $u$, completing subcycles whenever this are presented, ending up in $v$.
+
+    <br>
+
+- Now, check that: $G \text{ is semi-eulerian } \implies |\{x \in V : \deg(x)\ \text{odd}\}| = 2$
+
+    If $G$ is semi-eulerian, then it admits an eulerian trail. Thus, necesarily is connected because in a single walk we can traverse all edges, meaning that all vertex are connected. 
+
+    Also, this trail starts and end in two distinct points $u,v \in V$. This are the depart point and the arrival points, and thus this ones have odd-degrees as we said above. Also, any other vertex in $V$ have an in/out edges (despite iterations over the trial) meaning that they have even degree. Thus, $|\{x \in V : \deg(x)\ \text{odd}\}| = 2$ 
+
+    <br>
+
+##### 2.1.1.3.2. Hamiltonian graphs.
+
 ### 2.1.2. Directed graphs.
 
 
