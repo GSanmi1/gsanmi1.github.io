@@ -487,5 +487,41 @@ $$\begin{cases}
 
 And $x_3 \in F$, so $S_M = S_{M'}$ and both are equivalent systems. Let's take now the lineal combination of $M$ from $M'$:
 
-$$\alpha_1P' + \beta_1Q' = P \iff $$
+$$\alpha_1P' + \beta_1Q' = P \iff \alpha_1(x_1 - x_3) + \beta_1(x_2+3x_3) = -x_1 + x_2 + 4x_3 \implies$$
 
+$$\begin{cases} \alpha_1 x_1 = -x_1 \\ \beta_1x_2 = x_2 \\ -\alpha_1x_3 + 3\beta_1x_3 = 4x_3 \end{cases} \iff \begin{cases} \alpha_1 = -1 \\ \beta_1 = 1 \\ -\alpha_1 + 3\beta_1 = 4 \end{cases}$$
+
+Thus, $-(x_1 - x_3) + (x_2+3x_3) = -x_1 + x_3 + x_2 3x_3 = -x_1 +x_2 + 4x_3$ and we verified the solution is correct.
+
+Also, 
+
+$$\alpha_2P' + \beta_2Q' = Q \iff \alpha_2(x_1 - x_3) + \beta_2(x_2+3x_3) = x_1 + 3x_2 + 8x_3 \implies$$
+
+$$\begin{cases} \alpha_2 x_1 = x_1 \\ \beta_2x_2 = 3x_2 \\ -\alpha_2x_3 + 3\beta_2x_3 = 8x_3 \end{cases} \iff \begin{cases} \alpha_2 = 1 \\ \beta_2 = 3 \\ -\alpha_2 + 3\beta_2 = 8 \end{cases}$$
+
+And: $(x_1 - x_3) + 3(x_2+3x_3) = x_1 +3x_2 + 8x_3$
+
+Lastly:
+
+$$\alpha_3P' + \beta_3Q' = T \iff \alpha_3(x_1 - x_3) + \beta_3(x_2+3x_3) = \frac{1}{2}x_1 + x_2 + \frac{5}{2}x_3 \implies$$
+
+$$\begin{cases} \alpha_3 x_1 = x_1/2 \\ \beta_3x_2 = x_2 \\ -\alpha_3x_3 + 3\beta_3x_3 = \frac{5}{2}x_3 \end{cases} \iff \begin{cases} \alpha_3 = 1/2 \\ \beta_3 = 1 \\ -\alpha_3 + 3\beta_3 = 5/2 \end{cases}$$
+
+We will prove it by: $\frac{1}{2}(x_1 - x_3) + (x_2+3x_3) = \frac{1}{2}x_1 + x_2 + \frac{5}{2}x_3 = 0$
+
+<br>
+
+**4. Test the following systems as in Exercise 2.**
+
+$$\begin{cases}
+2x_1 + (-1+i)x_2 + x_4 = 0:P\ \ \ \ \ \left(1+\frac{i}{2}\right)x_1 + 8x_2 - ix_3 - x_4 = 0:P'\\
+3x_2 - 2ix_3 + 5x_4 = 0:Q\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \frac{2}{3}x_1 - \frac{1}{2}x_2 + x_3 + 7x_4 = 0:Q'
+\end{cases}$$
+
+Let's try to solve the first system.
+
+First, take sistem $M$, and let's call $x_2 = \lambda$, $x_4 = \gamma$, then the sistem is:
+
+$$\begin{cases} 2x_1 + (-1+i)\lambda + \gamma = 0 \\ 3\lambda - 2ix_3+ 5\gamma = 0\end{cases} \iff \begin{cases} x_1 = \frac{1}{2}(1-\lambda - \gamma) \\ x_2 = \frac{1}{3} (2i\lambda- 5\gamma)\end{cases} \implies x_3= \frac{1}{6}(1 - i)(2i\lambda -5\gamma) - \gamma $$
+
+<br>
