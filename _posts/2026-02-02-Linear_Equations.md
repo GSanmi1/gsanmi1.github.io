@@ -522,6 +522,67 @@ Let's try to solve the first system.
 
 First, take sistem $M$, and let's call $x_2 = \lambda$, $x_4 = \gamma$, then the sistem is:
 
-$$\begin{cases} 2x_1 + (-1+i)\lambda + \gamma = 0 \\ 3\lambda - 2ix_3+ 5\gamma = 0\end{cases} \iff \begin{cases} x_1 = \frac{1}{2}(1-\lambda - \gamma) \\ x_2 = \frac{1}{3} (2i\lambda- 5\gamma)\end{cases} \implies x_3= \frac{1}{6}(1 - i)(2i\lambda -5\gamma) - \gamma $$
+$$\begin{cases} 2x_1 + (-1+i)\lambda + \gamma = 0 \\ 3\lambda - 2ix_3+ 5\gamma = 0\end{cases} \iff \begin{cases} x_1 = \frac{1}{2}((1-i)\lambda - \gamma) \\ x_3 = \frac{1}{2i} (3\lambda+ 5\gamma)\end{cases}$$
+
+Then, $S_M = \Set{x \ \vert \ x = (\frac{1}{2}((1-i)\lambda - \gamma), \lambda,\frac{1}{2i} (3\lambda+ 5\gamma),\gamma) : \lambda, \gamma \in F} \subset F^4$
 
 <br>
+
+In the second system, we again call $x_2 = \lambda$, $x_4 = \gamma$, then the system is:
+
+$$\begin{cases} \left(1+\frac{i}{2}\right)x_1 + 8\lambda - ix_3 - \gamma = 0 \\ \frac{2}{3}x_1 - \frac{1}{2}\lambda + x_3 + 7\gamma = 0\end{cases} \iff \begin{cases} \left(1+\frac{i}{2}\right)x_1 + 8\lambda - ix_3 - \gamma = 0 \\ x_3= \frac{1}{2}\lambda - \frac{2}{3}x_1-7\lambda\end{cases} \implies $$
+
+$$\left(1+\frac{i}{2}\right)x_1 + 8\lambda - i(\frac{1}{2}\lambda - \frac{2}{3}x_1-7\lambda) - \gamma = 0$$
+
+Getting $x_1$ is obvious that both systemas are not equivalent since the solution set $S_M$ and $S_M'$ are not the same.
+
+<br>
+
+**5. Be $F := \Set{0,1}$, and the following operations:**
+
+$$\begin{array}{c|cc}
++ & 0 & 1\\ \hline
+0 & 0 & 1\\
+1 & 1 & 0
+\end{array}
+\qquad
+\begin{array}{c|cc}
+\cdot & 0 & 1\\ \hline
+0 & 0 & 0\\
+1 & 0 & 1
+\end{array}$$
+
+**Then, proof that $\Set{F,+, \ ·}$ is a field**
+
+As we see above, we have to see if $\Set{F,+}$ and  $\Set{F \setminus \Set{0}, \ ·}$ are compatible abelian groups:
+
+- Being $\Set{F,+}$, then:
+
+    - **Closure** From the table, the result of any composition of the elements of $F$ through $+$ is an element of $F$.
+
+    - **Associativity**: Let's be $a,b,c \in F$, then let's impose that: $a + (b + c) \neq (a + b) + c$. Without loosing generality we can assume that:
+
+        $$\underbrace{a + (b + c)}_{0} \neq \underbrace{(a + b) + c}_{1}$$
+
+        So we can craft the solutions to the equations:
+
+        $$ a + (b + c) = 0 \implies \begin{cases} a = 1 \wedge b + c = 1 \implies \begin{cases} a \wedge b \wedge \neg c \\ a \wedge \neg b \wedge c\end{cases}\\ a = 0 \wedge b + c = 0 \implies \begin{cases} \neg a \wedge \neg b \wedge \neg c \\ \neg a \wedge b \wedge c \end{cases}\end{cases}$$
+        
+        
+        $$(a + b) + c = 1 \implies \begin{cases} a + b = 0 \wedge c = 1 \implies \begin{cases} a \wedge b \wedge c \\ \neg a \wedge \neg b \wedge c \end{cases} \\ a+b = 1 \wedge c = 0 \implies \begin{cases} a \wedge \neg b \wedge \neg c \\ \neg a \wedge b \wedge \neg c \end{cases}\end{cases}$$
+
+        Thus, observe that none of the solution matches between the two equations, meaning that there are no values solving the predicate $a + (b + c) \neq (a + b) + c$.
+
+        So we can ensure that $a + (b + c) = (a + b) + c \ \ \ \forall a,b,c \in F$.
+
+        <br>
+
+    - **Identity**: Observe that $0 + a = a + 0 = a \ \ \ \forall a \in F$
+
+    - **Inverse**: For every element $a \in F$, $a$ is his own inverse:
+
+        $$ 0 + 0 = 0 \wedge 1 + 1 = 0$$
+
+        <br>
+
+- 
