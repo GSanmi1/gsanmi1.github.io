@@ -250,9 +250,9 @@ First, let's that if $G$:
 
 Now, taking $G:=(V,E)$ as a connected graph:
 
-$$G \text{ is semi-eulerian } \iff |\{x \in V : \deg(x)\ \text{odd}\}| = 2$$
+$$G \text{ is semi-eulerian } \iff \vert \{x \in V : \deg(x)\ \text{odd}\} \vert = 2$$
 
-- Let's see first that $ |\{x \in V : \deg(x)\ \text{odd}\}| = 2 \implies G \text{ is semi-eulerian }$
+- Let's see first that $ \vert \{x \in V : \deg(x)\ \text{odd}\} \vert = 2 \implies G \text{ is semi-eulerian }$
 
     In the terms of in/out, having two unique vertex $u,v \in V$ with an odd-degree mean that this two vertex are endpoints, in the sense that you can depart from but never finish back (despite walk iterations over the same vertex), or you can get in but never get out through a non-traversed edge, any of the two cases would implie an even degree.
 
@@ -262,7 +262,7 @@ $$G \text{ is semi-eulerian } \iff |\{x \in V : \deg(x)\ \text{odd}\}| = 2$$
 
     <br>
 
-- Now, check that: $G \text{ is semi-eulerian } \implies |\{x \in V : \deg(x)\ \text{odd}\}| = 2$
+- Now, check that: $G \text{ is semi-eulerian } \implies \vert \{x \in V : \deg(x)\ \text{odd}\} \vert = 2$
 
     If $G$ is semi-eulerian, then it admits an eulerian trail. Thus, necesarily is connected because in a single walk we can traverse all edges, meaning that all vertex are connected. 
 
