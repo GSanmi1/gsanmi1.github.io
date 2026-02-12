@@ -266,7 +266,7 @@ $$G \text{ is semi-eulerian } \iff \vert \{x \in V : \deg(x)\ \text{odd}\} \vert
 
     If $G$ is semi-eulerian, then it admits an eulerian trail. Thus, necesarily is connected because in a single walk we can traverse all edges, meaning that all vertex are connected. 
 
-    Also, this trail starts and end in two distinct points $u,v \in V$. This are the depart point and the arrival points, and thus this ones have odd-degrees as we said above. Also, any other vertex in $V$ have an in/out edges (despite iterations over the trial) meaning that they have even degree. Thus, $|\{x \in V : \deg(x)\ \text{odd}\}| = 2$ 
+    Also, this trail starts and end in two distinct points $u,v \in V$. This are the depart point and the arrival points, and thus this ones have odd-degrees as we said above. Also, any other vertex in $V$ have an in/out edges (despite iterations over the trial) meaning that they have even degree. Thus, $\vert \{x \in V : \deg(x)\ \text{odd}\} \vert = 2$ 
 
     <br>
 
