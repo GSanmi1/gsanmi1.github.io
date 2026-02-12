@@ -485,5 +485,7 @@ $$\begin{cases}
 -\frac{1}{6}x_2 + x_2 + \frac{5}{2}x_3 = \frac{5}{6} x_2 + \frac{5}{2} x_3 =  0 
 \end{cases} \implies x_2 = -3x_3$$
 
-And $x_3 \in F$, so $S_M = S_{M'}$ and both are equivalent systems.
+And $x_3 \in F$, so $S_M = S_{M'}$ and both are equivalent systems. Let's take now the lineal combination of $M$ from $M'$:
+
+$$\alpha_1P' + \beta_1Q' = P \iff $$
 
