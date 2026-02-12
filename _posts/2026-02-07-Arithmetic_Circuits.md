@@ -236,6 +236,14 @@ First, let's that if $G$:
     
     The point is to understand that, whenever exists a vertex involved in an non-traversed edge, by the features of the graph, this edge goes on in a path with another non-traversed edges that eventually ends up again in the same started vertex, thus our eulerian circuit is a walk that goes through a main cycle and completes subcycles when the access to this ones are presented.
 
+    ![EulerianCircuit](/assets/images/Maths/DiscreteMath/EulerianCircuit.png)
+
+    In the example above, we wold start our walk in $r$, then $e:=r,c_2,t$ and in $t$ we entener in a subcycle $C_t:=t,l,c_7,r,t$, thus is $e:=r,c_2,C_t$.
+
+    Now we continue our walk throught the maincycle until we reach $c_4$ in which we get another subcycle: $C_c:= c_4,c_{41},c_{42},c_4$ thus, $e:=r,c_2,C_t,C_c$ and we finish our main cycle. Our eulerian circuit will look as:
+
+    $$e:=r,c_2,C_t,C_c,l,c_6,c_7,c_8,r$$
+
     Thus this conditions are sufficent to ensure the existance of an eulerian circuit.
 
 ### 2.1.2. Directed graphs.
