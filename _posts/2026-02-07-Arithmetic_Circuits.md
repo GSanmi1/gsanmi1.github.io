@@ -274,15 +274,17 @@ $$G \text{ is semi-eulerian } \iff \vert \{x \in V : \deg(x)\ \text{odd}\} \vert
 
 **Main notions and definitions**
 
-- A *Hamiltonian path* is a path that visits every vertex exactly once.
+Being $G:=(V,E)$ a graph. Then we have the following definitions:
 
-- A *Hamiltonian cycle* is a cycle that visits every vertex exactly once.
+- A *Hamiltonian path*, $P_{H,uv}$ is a path that visits every vertex $t \in V$ exactly once.
 
-We say that $G$ is Hamiltonian if admits a hamiltonian cycle.
+- A *Hamiltonian cycle*, $C_u$ is a cycle formed through a Hamiltonian path,$P_{H,uv}$ meaning that visits every vertex exactly once with the exception of the starting point: $C_u := P_{H,uv},u$
+
+We say that $G$ is Hamiltonian if admits a *hamiltonian cycle*.
 
 <br>
 
-**Implications (not characterization)**
+**Implications (NOT Characterization)**
 
 Being $G:=(V,E)$ a hamiltonian graph, then:
 
@@ -294,6 +296,26 @@ Being $G:=(V,E)$ a hamiltonian graph, then:
 
     ![hamiltonian1](/assets/images/Maths/DiscreteMath/hamiltonian1.png)
 
+    <br>
+
+**Sufficient conditions (NOT Characterization)**
+
+These are classic “if the graph is dense enough, it must be Hamiltonian” results:
+
+- **Ore’s theorem:** $H:=(V,E) : \big( \vert V \vert \geq 3 \wedge deg(u) + deg(v) \geq \vert V \vert \ \forall u,v \in V : u \not \sim v\big) \implies H \text{ is Hamiltonian}$
+
+    Let's start seeing that $H$ as defined, is connected. Being $u,v \in V$, then consider $P_u := \Set{v \in V | \exists P_{uv} \subset H}$, 
+    
+    Observe that: $\nexists P_{uv} \text{ in } H \implies \ P_u \cap P_v = \varnothing \implies \vert P_u \cup P_v \vert = \vert P_u \vert + \vert P_v \vert \leq \vert V \vert$. 
+
+    $$deg(t) + deg(l) \leq \vert P_u \vert -1 + \vert P_v \vert -1 = \vert V \vert - 2 < \vert V \vert \ \ \ \forall t \in P_u \wedge \forall l \in P_v$$
+
+    Observe that obviously $t \not \sim l$ .
+    
+    This contradicts the initial presumption of $H$, so $H$ is connected and we can safely think in a path for any pair of vertex in $V$.
+
+
+<br>
 
 ### 2.1.2. Directed graphs.
 
