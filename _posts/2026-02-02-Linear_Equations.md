@@ -609,6 +609,22 @@ As we see above, we have to see if $\Set{F,+}$ and  $\Set{F \setminus \Set{0}, \
         <br>
 
 
-- Lastly, demonstrate compatibility between the addition and the product define above in $F$:
+- Lastly, demonstrate compatibility between the addition and the product define above in $F$. Let's suppose $a,b,c \in F$, then let's force: $a(b+c) \neq ab + ac$ or, in other terms: $a(b+c)  = 0 \wedge ab + ac = 1$.
 
+    Let's see that:
 
+    - $a(b+c) = 0 \implies \neg a \vee [(b \wedge c) \vee (\neg b \wedge \neg c)] : P$
+    - $ab + ac \ = 1 \implies  \ \ a \wedge [(b \wedge \neg c) \vee (\neg b \wedge c)]\  : Q$
+
+    Let's note that $Q$ forces $a$ to be $1$ and needs $b$ and $c$ to have different value; $S_Q:=\Set{(1,\alpha, \neg \alpha)}\subset F^3$. 
+    
+    $P$ admits $a$ to be $1$ but then it forces to $b$ and $c$ to share te same value; $S_P:=\Set{(\alpha,\beta, \gamma): \alpha \rightarrow (\beta = \gamma)}$ 
+    
+    
+    Thus, there is no solution for the system equation since applying $S_P$ condition to $S_Q$ results in a contradiction, or in other terms:
+    
+    $$S_P \cap S_Q := \Set{(\alpha, \beta, \gamma) \in F^3 \ \vert \  \alpha \wedge (\beta \neq \gamma) \wedge [\alpha \rightarrow (\beta = \gamma)]} = \varnothing$$
+
+    Observe that $\alpha \wedge (\beta \neq \gamma) \equiv \neg [(\neg \alpha) \vee (\beta = \gamma)] \equiv \neg[\alpha \to (\beta = \gamma)] \implies \alpha \wedge (\beta \neq \gamma) \wedge [\alpha \rightarrow (\beta = \gamma)] = \bot$
+
+    The case $a(b+c)  = 1 \wedge ab + ac = 0$ admits an analogous proof. Thus, always is $a(b+c) = ab + ac$
