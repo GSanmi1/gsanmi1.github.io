@@ -571,7 +571,9 @@ As we see above, we have to see if $\Set{F,+}$ and  $\Set{F \setminus \Set{0}, \
         
         $$(a + b) + c = 1 \implies \begin{cases} a + b = 0 \wedge c = 1 \implies \begin{cases} a \wedge b \wedge c \\ \neg a \wedge \neg b \wedge c \end{cases} \\ a+b = 1 \wedge c = 0 \implies \begin{cases} a \wedge \neg b \wedge \neg c \\ \neg a \wedge b \wedge \neg c \end{cases}\end{cases}$$
 
-        Thus, observe that none of the solution matches between the two equations, meaning that there are no values solving the predicate $a + (b + c) \neq (a + b) + c$.
+        (The propostional notation, $a, \neg a$ is more than justified assuming that there are only two possible values in $F$)
+
+        Thus, observe that none of the solution matches between the two equations, meaning that since the intersection of the solution set of both equations is empty, there are no values solving the predicate $a + (b + c) \neq (a + b) + c$.
 
         So we can ensure that $a + (b + c) = (a + b) + c \ \ \ \forall a,b,c \in F$.
 
@@ -585,4 +587,28 @@ As we see above, we have to see if $\Set{F,+}$ and  $\Set{F \setminus \Set{0}, \
 
         <br>
 
-- 
+- Being $\Set{F, \ ·}$, then lets demonstrate that is a group.
+
+    - **Closure**: By definition, any composition of the elements of $F$ by $·$ is an element of $F$.
+
+        <br>
+
+    - **Associativity**: Observe that the result in the composition is always $0$ except for the case in which the both elements are $1$, so:
+
+        $$a · (b·c) = \begin{cases} 1 \ \ a = b= c = 1 \\ 0 \end{cases}$$
+
+        $$(a·b)·c = \begin{cases} 1 \ \ a = b= c = 1 \\ 0 \end{cases}$$
+
+        Thus, always $a · (b·c) = (a·b)·c$.
+
+        <br>
+
+    - **Identity**: Check that $a·0 = 0·a = 0 \ \ \forall a \in F$
+    - **Inverse**: Observe that $a·a = a \ \ \forall a \in F$
+
+        <br>
+
+
+- Lastly, demonstrate compatibility between the addition and the product define above in $F$:
+
+
