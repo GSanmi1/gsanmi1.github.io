@@ -272,6 +272,29 @@ $$G \text{ is semi-eulerian } \iff \vert \{x \in V : \deg(x)\ \text{odd}\} \vert
 
 ##### 2.1.1.3.2. Hamiltonian graphs.
 
+**Main notions and definitions**
+
+- A *Hamiltonian path* is a path that visits every vertex exactly once.
+
+- A *Hamiltonian cycle* is a cycle that visits every vertex exactly once.
+
+We say that $G$ is Hamiltonian if admits a hamiltonian cycle.
+
+<br>
+
+**Implications (not characterization)**
+
+Being $G:=(V,E)$ a hamiltonian graph, then:
+
+- **$G$ is connected**; If every single vertex is contained in a path, then for every pari of vertex exists a path that contains those vertex so $G$ is connected.
+
+- **$deg(v) \geq 2 \ \ \forall v \in V$**. If the graph admits a hamiltonian cycle, then exists a cycle that traverse al the vertex returning to the starting point, meaning that all vertex $v \in V$ has an in/out edge, thus at least is two although can be more, thus $deg(v) \geq 2$.
+
+- **There are no "cut-vertex"**. Meaning that removing one vertex does not disconnect the graph, because removing a vertex results in the hamiltonian cycle to derive in a hamiltonian path, thus all vertex remains connected:
+
+    ![hamiltonian1](/assets/images/Maths/DiscreteMath/hamiltonian1.png)
+
+
 ### 2.1.2. Directed graphs.
 
 
