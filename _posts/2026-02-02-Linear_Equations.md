@@ -201,7 +201,7 @@ $$\begin{cases} \displaystyle\sum_{j = 1}^na_{1j}x_{j} = b_1 \\ \ \  \vdots \\ \
 
 Then, any tuple $(x_1,\cdots,x_n) \in F^n$ that satisfies all the constraints simultaneusly is called a *solution* of the system.
 
-The system is called *homogeneous* if the unique solution available is $0 \in F^n$.
+The system is called *homogeneous* if $b_i = 0 \ \forall i \in [m]$.
 
 <br>
 
@@ -292,9 +292,9 @@ The proof for this statement will be presented later.
 
 <br>
 
-### 2.3.3. Exercises.
+## 2.4. Exercises.
 
-**1. Verify that the set of complex numbers $F:= \Set{z \ \vert \ \exists x,y \in \mathbb{Q} : z = x + y\sqrt{2}}$ is a subfield of $\mathbb{C}$.**
+### 2.4.1. Verify that the set of complex numbers $F:= \Set{z \ \vert \ \exists x,y \in \mathbb{Q} : z = x + y\sqrt{2}}$ is a subfield of $\mathbb{C}$.
 
 Verifying that $\Set{F,+, \ ·}$ is a subfield of $\mathbb{C}$ requires to verify:
 
@@ -431,7 +431,7 @@ $$(x_1+y_1\sqrt{2})(x_2 + y_2\sqrt{2}) + (x_1+y_1\sqrt{2})(x_3+y_3\sqrt{2}) = z_
 
 <br>
 
-**2. Let $F$ be the field of complex numbers. Are the following two systems of linear equations equivalent? If so, express each equation in each system as a linear combination of the equations in the other system.**
+### 2.4.2. Let $F$ be the field of complex numbers. Are the following two systems of linear equations equivalent? If so, express each equation in each system as a linear combination of the equations in the other system.
 
 $$\begin{gather} \ x_1 - x_2 = 0 :P \ \ \ \ \ \ \ \ \ 3x_1 + x_2 = 0 :P'\\ 2x_1 + x_2 = 0 :Q \ \ \ \ \ \ \ \ \ x_1 + x_2 = 0 : Q' \end{gather}$$
 
@@ -459,7 +459,7 @@ From $\alpha_2P + \beta_2Q = Q' \iff \alpha_2(x_1 - x_2) + \beta_2(2x_1 + x_2) =
 
 <br>
 
-**3. Test the following systems of equations as in Exercise 2.**
+### 2.4.3. Test the following systems of equations as in Exercise 2.
 
 $$\begin{cases}
 -x_1 + x_2 + 4x_3 = 0 :P \ \ \ \ \ \ \ x_1 - x_3 = 0 :P'\\
@@ -511,7 +511,7 @@ We will prove it by: $\frac{1}{2}(x_1 - x_3) + (x_2+3x_3) = \frac{1}{2}x_1 + x_2
 
 <br>
 
-**4. Test the following systems as in Exercise 2.**
+### 2.4.4. Test the following systems as in Exercise 2.
 
 $$\begin{cases}
 2x_1 + (-1+i)x_2 + x_4 = 0:P\ \ \ \ \ \left(1+\frac{i}{2}\right)x_1 + 8x_2 - ix_3 - x_4 = 0:P'\\
@@ -538,7 +538,7 @@ Getting $x_1$ is obvious that both systemas are not equivalent since the solutio
 
 <br>
 
-**5. Be $F := \Set{0,1}$, and the following operations:**
+### 2.4.5. Be $F := \Set{0,1}$, proof that $\Set{F,+, \ ·}$ is a field.
 
 $$\begin{array}{c|cc}
 + & 0 & 1\\ \hline
@@ -552,7 +552,7 @@ $$\begin{array}{c|cc}
 1 & 0 & 1
 \end{array}$$
 
-**Then, proof that $\Set{F,+, \ ·}$ is a field**
+
 
 As we see above, we have to see if $\Set{F,+}$ and  $\Set{F \setminus \Set{0}, \ ·}$ are compatible abelian groups:
 
@@ -628,3 +628,26 @@ As we see above, we have to see if $\Set{F,+}$ and  $\Set{F \setminus \Set{0}, \
     Observe that $\alpha \wedge (\beta \neq \gamma) \equiv \neg [(\neg \alpha) \vee (\beta = \gamma)] \equiv \neg[\alpha \to (\beta = \gamma)] \implies \alpha \wedge (\beta \neq \gamma) \wedge [\alpha \rightarrow (\beta = \gamma)] \equiv \bot$
 
     The case $a(b+c)  = 1 \wedge ab + ac = 0$ admits an analogous proof. Thus, always is $a(b+c) = ab + ac$
+
+    <br>
+
+### 2.4.6. Prove that if two homogeneous systems of linear equations in two unknowns have the same solutions, then they are equivalent.
+
+Lets consider that first, we can safely assume that we have two system of two equations on two incognits, if there were $m \geq 3$, then there will be $m-2$ redundant equations, meaning that they do not add information to the sistem and can be safely excluded.
+
+Also, in this context, as there are only two unknowns, this equations are expressing predicates over points in $\mathbb{R}^2$, specifically, this systems are two lines on $\mathbb{R^2}$ (we assume indepency between this two equations):
+
+$$\begin{cases}
+u_1 x +u_2y = 0 \\
+v_1 x +v_2y = 0  
+\end{cases} \ \ \ \ \ \begin{cases} w_1x + w_2y = 0\\ p_1x_1 + p_2y = 0 \end{cases}$$
+
+
+Geometrically is easy to see that there is a lineal combination dependency between the direction vectors:
+
+$$\alpha(u_2,-u_1) + \beta(v_2,-v_1) = (w_2,-w_1)$$
+$$\lambda(u_2,-u_1) + \gamma(v_2,-v_1) = (p_2,-p_1)$$
+
+Then, this scalars exists and can be calculated forming an equation system with the coordinates:
+
+$$\begin{cases} \alpha u_2 + \beta v_2 = w_2 \\ \alpha u_1 + \beta v_1 =  w_1  \end{cases}$$
