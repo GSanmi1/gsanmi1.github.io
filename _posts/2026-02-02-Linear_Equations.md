@@ -284,9 +284,9 @@ We can enunciate a set of operations between $P_i:i \in [m]$ that form a equival
 
     And, being $P_j = P$, then  $M' := (\gamma P + \lambda Q) \wedge \displaystyle\bigwedge_{i\neq j} P_i \equiv\bigwedge_{i} P_i = M$
 
-Let's observe that two equivalent non-trivial sistems ($S \neq \varnothing$) define the same set of solutions by imposing in some sense the same restrictions. Meaning that any predicate on $M$ can be derivated from $M'$ am viceversa. Although this is not a mathematical explanation, it is convenient to us to know that:
+Let's observe that two equivalent non-trivial sistems ($S \neq \varnothing$) define the same solutions set by imposing in some sense the same constraints on $F$. Meaning that any predicate on $M$ can be derivated from $M'$ am viceversa. Despite this isn't a mathematical explanation, it is convenient to us to know the following fact:
 
-$$\forall i \leq t \ \exists \alpha = (\alpha_1,...,\alpha_l) \in F^l: S_P = S_{\alpha_1P'_1 \cdots + \alpha_lP'_l}$$
+$$M = \displaystyle\bigwedge_{i}^t P_i \wedge M'=\displaystyle\bigwedge_{i}^l P'_i: M \equiv M' \wedge S \neq \varnothing \implies \forall i \leq t \ \exists \alpha_1,...,\alpha_l \in F: S_{P_i} = S_{\alpha_1P'_1 \cdots + \alpha_lP'_l}$$
 
 The proof for this statement will be presented later.
 
@@ -625,6 +625,6 @@ As we see above, we have to see if $\Set{F,+}$ and  $\Set{F \setminus \Set{0}, \
     
     $$S_P \cap S_Q := \Set{(\alpha, \beta, \gamma) \in F^3 \ \vert \  \alpha \wedge (\beta \neq \gamma) \wedge [\alpha \rightarrow (\beta = \gamma)]} = \varnothing$$
 
-    Observe that $\alpha \wedge (\beta \neq \gamma) \equiv \neg [(\neg \alpha) \vee (\beta = \gamma)] \equiv \neg[\alpha \to (\beta = \gamma)] \implies \alpha \wedge (\beta \neq \gamma) \wedge [\alpha \rightarrow (\beta = \gamma)] = \bot$
+    Observe that $\alpha \wedge (\beta \neq \gamma) \equiv \neg [(\neg \alpha) \vee (\beta = \gamma)] \equiv \neg[\alpha \to (\beta = \gamma)] \implies \alpha \wedge (\beta \neq \gamma) \wedge [\alpha \rightarrow (\beta = \gamma)] \equiv \bot$
 
     The case $a(b+c)  = 1 \wedge ab + ac = 0$ admits an analogous proof. Thus, always is $a(b+c) = ab + ac$
