@@ -119,7 +119,7 @@ Formally, a field is a triple $(F,+,·)$ where $F$ is a non-empty set and $+$ an
 
 1. $\{F,+\}$ and $\{F \setminus \{0\}, \ ·\}$ are abelian groups.
 
-2. The addition and multiplicative operations get related through:
+2. The addition and multiplicative operations satisfies the *distributive* property:
 
     $$a \ · (b + c) = a · b + a·c \ \ \forall a,b,c \in F$$
 
@@ -652,3 +652,38 @@ $$\lambda(u_2,-u_1) + \gamma(v_2,-v_1) = (p_2,-p_1)$$
 Then, this scalars exists and can be calculated forming an equation system with the coordinates:
 
 $$\begin{cases} \alpha u_2 + \beta v_2 = w_2 \\ \alpha u_1 + \beta v_1 =  w_1  \end{cases}$$
+
+<br>
+
+### 2.4.7. Prove that each subfield of the field of complex numbers contains every rational number. 
+
+Be $\Set{F,+, \ ·} : F \subseteq \mathbb{C}$ a field, then we have to prove that $q \in F \ \ \forall q \in \mathbb{Q}$
+
+
+
+
+Be $q \in \mathbb{Q}$, then $\exists a,b \in \mathbb{Z} : \displaystyle q=\frac{a}{b}$, then we can understand that $\mathbb{Z} \subset F \implies \mathbb{Q} \subset F$ since by the closure property $ab^{-1} \in F$. 
+
+Let's see that $1 + 0i = 1_{\mathbb{C}} \in F$  and $1_{\mathbb{C}} = 1_F$. Since $F \subset \mathbb{C}$, then in $\mathbb{C}$ $F$'s elements have $1_\mathbb{C}$ as his identity, so since this identity is unique must be $1_F = 1_\mathbb{C}$ inside $F$ (if where any other element $e \in F:e=1_F$, in $\mathbb{C}$ must be $e = 1_\mathbb{C}$ and thus $1_F = 1_\mathbb{C}$).
+
+Let's observe that $1 \in F \implies \mathbb{Z} \subset F$ since Pean \implies \mathbb{Q} \subset F$.
+
+<br>
+
+### 2.4.8. Prove that each field of characteristic zero contains a copy of the rational number field. 
+
+Given a field $F$ of ·characteristic zero".
+
+So we can build a function that design, along with the adition, the sucesor of each element and through an homomorfism $h$, identify $h(\mathbb{Z}) = K$ for some $K \subset F$ due to the fact that this function in $K$ never colapse into 0.
+
+Also, we can think in another homomorfism $k$ that identifies $t(\mathbb{Q}) = T$ for some $T \subset F$. The argument is the same that above, since $F$ is a field, then for each element $a \in F$ exists an inverse $a^{-1} \in F$ and also $\Set{F, \ ·}$ is closed meaning that $ab \in F \ \ \forall a,b \in F$ so a copy of $\mathbb{Q}$ exists in $F$ if a copy $\mathbb{Z}$ can be proved.
+
+$$\exists (K \subset F \wedge h:\mathbb{Z} \to K) : h(a + b)=h(a) + h(b) \ \ \forall a,b \in \mathbb{Z} \implies $$
+
+$$\exists (T \subset F \wedge t:\mathbb{Q} \to T) : h(ab)=h(a) · h(b) \ \ \forall a,b \in \mathbb{Q}$$
+
+<br>
+
+
+
+
