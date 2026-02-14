@@ -635,7 +635,7 @@ As we see above, we have to see if $\Set{F,+}$ and  $\Set{F \setminus \Set{0}, \
 
 Lets consider that first, we can safely assume that we have two system of two equations on two incognits, if there were $m \geq 3$, then there will be $m-2$ redundant equations, meaning that they do not add information to the sistem and can be safely excluded.
 
-Also, in this context, as there are only two unknowns, this equations are expressing predicates over points in $\mathbb{R}^2$, specifically, this systems are two lines on $\mathbb{R^2}$ (we assume indepency between this two equations):
+Also, in this context, as there are only two unknowns, this equations are expressing predicates over points in $\mathbb{R}^2$, specifically, this systems are four lines on $\mathbb{R^2}$ (we assume indepency between this two equations):
 
 $$\begin{cases}
 u_1 x +u_2y = 0 \\
