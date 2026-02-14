@@ -304,7 +304,7 @@ These are classic “if the graph is dense enough, it must be Hamiltonian” res
 
 - **Ore’s theorem:** $H:=(V,E) : \big( \vert V \vert \geq 3 \wedge deg(u) + deg(v) \geq \vert V \vert \ \forall u,v \in V : u \not \sim v\big) \implies H \text{ is Hamiltonian}$
 
-    Let's start seeing that $H$ as defined, is connected. Being $u,v \in V$, then consider $P_u := \Set{v \in V | \exists P_{uv} \subset H}$, 
+    Let's start seeing that $H$ as defined, is connected. Being $u,v \in V$, then consider $P_u := \Set{v \in V \vert \exists P_{uv} \subset H}$, 
     
     Observe that: $\nexists P_{uv} \text{ in } H \implies \ P_u \cap P_v = \varnothing \implies \vert P_u \cup P_v \vert = \vert P_u \vert + \vert P_v \vert \leq \vert V \vert$. 
 
