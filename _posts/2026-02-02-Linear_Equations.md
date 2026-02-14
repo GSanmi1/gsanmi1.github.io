@@ -646,6 +646,7 @@ v_1 x +v_2y = 0
 Geometrically is easy to see that there is a lineal combination dependency between the direction vectors:
 
 $$\alpha(u_2,-u_1) + \beta(v_2,-v_1) = (w_2,-w_1)$$
+
 $$\lambda(u_2,-u_1) + \gamma(v_2,-v_1) = (p_2,-p_1)$$
 
 Then, this scalars exists and can be calculated forming an equation system with the coordinates:
