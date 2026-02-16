@@ -304,6 +304,8 @@ These are classic “if the graph is dense enough, it must be Hamiltonian” res
 
 - **Ore’s theorem:** $H:=(V,E) : \big( \vert V \vert \geq 3 \wedge deg(u) + deg(v) \geq \vert V \vert \ \forall u,v \in V : u \not \sim v\big) \implies H \text{ is Hamiltonian}$
 
+    <br>
+
     Let's start seeing that $H$ as defined, is connected. Being $u,v \in V$, then consider $P_u := \Set{v \in V \vert \exists P_{uv} \subset H}$, 
     
     Observe that: $\nexists P_{uv} \text{ in } H \implies \ P_u \cap P_v = \varnothing \implies \vert P_u \cup P_v \vert = \vert P_u \vert + \vert P_v \vert \leq \vert V \vert$. 
@@ -312,7 +314,42 @@ These are classic “if the graph is dense enough, it must be Hamiltonian” res
 
     Observe that obviously $t \not \sim l$ .
     
-    This contradicts the initial presumption of $H$, so $H$ is connected and we can safely think in a path for any pair of vertex in $V$.
+    This contradicts the initial Ore's presumption of $H$, so $H$ is connected and we can safely think in a path for any pair of vertex in $V$.
+
+    <br>
+
+    Let's also observe that $deg(v) \geq 2 \ \ \forall v \in V$. If $H$ is a complete graph then is nothing to proove, then let's suppose that:
+
+    $$\exists u,v \in V: u \not \sim v \wedge deg(v) =1 \implies deg(u) + deg(v) = deg(u) + 1 \geq \vert V \vert \implies deg(u) \geq \vert V  \vert - 1$$
+
+    Also, since $\vert V \vert > deg(u) \wedge deg(u) \in  \mathbb{N} \implies deg(u) = \vert V \vert -1$
+
+    This would mean that  that $N(u) = V \setminus \Set{u} \implies v \in N(u) \implies u \sim v$ contradicting the no adjacency premise. So there are no leafs in $H$.
+
+    <br>
+    
+    Let's also observe that in $H$:
+    
+    $$N(v) \cap N(u) \neq \varnothing \wedge \vert N(v) \cap N(u) \vert \geq 2 \ \ \forall u,v \in V: u \not \sim v $$
+    
+    Note that $u \not \sim v \implies \Big(deg(v) + deg(u) = \vert N(u) \vert + \vert N(v) \vert \geq \vert V \vert \Big) \wedge \Big( N(u) \cup N(v) \subset V \setminus \Set{u,v}\Big)$
+    
+    Then applying $\vert A \cup B \vert = \vert A \vert + \vert B \vert - \vert A \cap B \vert$, and $deg(u) + deg(v) \geq \vert V \vert$ is: 
+
+    $$\vert V \vert -2 \geq \vert N(v) \cup N(u) \vert = \vert N(u) \vert +  \vert N(v) \vert - \vert N(u) \cap N(v) \vert \geq \vert V \vert - \vert N(u) \cap N(v) \vert $$
+
+    Meaning that $\vert N(u) \cap N(v) \vert \geq 2$ necesarily. Then, $\exists t,l \in V : t,l \in  N(u) \cap N(v) \ \ \forall u,v \in V: u \not \sim v$.
+
+    <br>
+    
+    Let's observe that, been $P := v_1,...,v_k$, the longuest path on $H$, then $v \in P \ \ \forall v \in N(v_i) : i=1,k$, meaning that all the neighborhs of $v_1$ and $v_k$ are included in $P$.
+
+    $$S:=\Set{i \in [k] \setminus \Set{1}} \wedge T:=\Set{i \in [k-1]}$$
+
+    
+
+
+
 
 
 <br>

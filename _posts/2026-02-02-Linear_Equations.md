@@ -152,6 +152,8 @@ $\forall x ,y ,z \in F$:
 
 ### 1.3.3. Identities relations lemma.
 
+Being $\Set{F,+, \ ·}$ a field.
+
 Let's observe that there are important relations between the identities of the additive and multiplicative structures:
 
  $$\begin{cases} x · 0 = 0 \\ x·y=0 \iff (x = 0 \ \vee \ y=0) \ \end{cases} \ \forall x,y \in F $$
@@ -174,6 +176,12 @@ Let's observe that there are important relations between the identities of the a
 
     <br>
 
+3. Let's also observe that: $1_K = 1_F \wedge 0_K = 0_F \ \ \forall K \subset F : \Set{K, +, \ ·}$ is a field.
+
+    For the elements of $K$ in $F$, the identity is $1_F$, then due to uniqueness of this identity, in $1_K = 1_F$ and the same can be applied to $0$, meaning that any subfield inherit the identity of the main field.
+
+<br>
+
 # 2. System of Linear Equations.
 
 ## 2.1. Brief introduction. Linear meaning.
@@ -183,7 +191,7 @@ In maths, “Linear” means no interactions between variables and no bending. I
 - No interactions betweem elements in $\Set{x,y,..}$; no products $(xy)$, squares $(x^n): n \in \mathbb{R}$, etc.
 - A change in the inputs (“add” or “scale”), provokes a proportional change in the output.
 
-Then, a **system of linear equations** is a collection of constraints or predicates of the form of linear expressions on a finite number of unknowns. The solutions of the whole system are the points that satisfy all constraints at once, the intersection of the predicates.
+Then, a **system of linear equations** is a collection of constraints or predicates in the form of linear expressions on a finite number of unknowns. The solutions of the whole system are the points that satisfy all constraints at once, the intersection of the predicates.
 
 <br>
 
@@ -197,7 +205,7 @@ Let be $F$ a field and $m,n \geq 1$, then a finite system of $m$ linear equation
 
 Related as:
 
-$$\begin{cases} \displaystyle\sum_{j = 1}^na_{1j}x_{j} = b_1 \\ \ \  \vdots \\ \displaystyle\sum_{j = 1}^na_{mj}x_{j} = b_m\end{cases} \iff \begin{cases} a_{11}x_{11} \cdots + a_{1n}x_{1n} = b_1 \\ \ \ \ \ \ \ \ \ \ \ \ \ \ \  \vdots \\ a_{m1}x_1 \cdots + a_{mn}x_{n} = b_m\end{cases} $$
+$$\begin{cases} \displaystyle\sum_{j = 1}^na_{1j}x_{j} = b_1 \\ \ \  \vdots \\ \displaystyle\sum_{j = 1}^na_{mj}x_{j} = b_m\end{cases} \iff \begin{cases} a_{11}x_{1} \cdots + a_{1n}x_{n} = b_1 \\ \ \ \ \ \ \ \ \ \ \ \ \ \ \  \vdots \\ a_{m1}x_1 \cdots + a_{mn}x_{n} = b_m\end{cases} $$
 
 Then, any tuple $(x_1,\cdots,x_n) \in F^n$ that satisfies all the constraints simultaneusly is called a *solution* of the system.
 
@@ -666,7 +674,7 @@ Be $q \in \mathbb{Q}$, then $\exists a,b \in \mathbb{Z} : \displaystyle q=\frac{
 
 Let's see that $1 + 0i = 1_{\mathbb{C}} \in F$  and $1_{\mathbb{C}} = 1_F$. Since $F \subset \mathbb{C}$, then in $\mathbb{C}$ $F$'s elements have $1_\mathbb{C}$ as his identity, so since this identity is unique must be $1_F = 1_\mathbb{C}$ inside $F$ (if where any other element $e \in F:e=1_F$, in $\mathbb{C}$ must be $e = 1_\mathbb{C}$ and thus $1_F = 1_\mathbb{C}$).
 
-Let's observe that $1 \in F \implies \mathbb{Z} \subset F$ since Pean \implies \mathbb{Q} \subset F$.
+Let's observe that $1 \in F \underbrace{\implies}_{Peano} \mathbb{Z} \subset F\implies \mathbb{Q} \subset F$.
 
 <br>
 
@@ -684,6 +692,123 @@ $$\exists (T \subset F \wedge t:\mathbb{Q} \to T) : h(ab)=h(a) · h(b) \ \ \fora
 
 <br>
 
+# 3. Matrices and Elementary Row Operations.
+
+## 3.1. Equivalent representation.
+
+When forming linear combinations of linear equations there is only need to compute with the coefficients $a_{ij}: i \in [m] \wedge j \in [n]$ and  scalars $y_i:i \in [m]$ hence there is no need to continue writing the 'unknowns', $x_i : i \in [n]$ since there is only necesary .
+
+Thus, we now abbreviate the system as:
+
+<br>
+
+$$\begin{cases} \displaystyle\sum_{j = 1}^na_{1j}x_{j} = b_1 \\ \ \  \vdots \\ \displaystyle\sum_{j = 1}^na_{mj}x_{j} = b_m\end{cases} \iff \begin{cases} a_{11}x_{1} \cdots + a_{1n}x_{n} = b_1 \\ \ \ \ \ \ \ \ \ \ \ \ \ \ \  \vdots \\ a_{m1}x_1 \cdots + a_{mn}x_{n} = b_m\end{cases} \iff AX = B$$
+
+<br>
+
+Where:
+
+- $A$ is the **matrix of coeficients**:
+
+    $$A= \begin{bmatrix}A_{11} & \cdots & A_{1n}\\\vdots & \ddots & \vdots\\A_{m1} & \cdots & A_{mn}\end{bmatrix}$$
+
+    Strictly speaking, the rectangular array displayed above is not a matrix, but is a representation of a matrix, a concrete display or codification of the mathematical object we don't presente yet.
+
+    <br>
+
+- $X$ is the **matrix of unknowns**:
+
+    $$X= \begin{bmatrix}X_{1} \\\vdots \\ X_{n}\end{bmatrix}$$
+
+    <br>
+
+- $Y$ is the **matrix of constants**:
+
+    $$Y= \begin{bmatrix}Y_{1} \\\vdots \\ Y_{m}\end{bmatrix}$$
+
+    <br>
+
+The whole representation of the same equation system is:
+
+<br>
+
+$$\begin{bmatrix}A_{11} & \cdots & A_{1n}\\\vdots & \ddots & \vdots\\A_{m1} & \cdots & A_{mn}\end{bmatrix}· \begin{bmatrix}X_{1} \\\vdots \\ X_{n}\end{bmatrix} = \begin{bmatrix}Y_{1} \\\vdots \\ Y_{m}\end{bmatrix}$$
+
+<br>
+
+Before getting any deep, let's formally understand what a matrix is.
+
+<br>
+
+## 3.2. Matrix.
+
+### 3.2.1. Definition and conceptual meaning.
+
+**Conceptual approach**
+
+A *matrix* is a device to package information linearly codified. Is a structured way to record how a linear rule takes inputs to outputs (along with coordinates). 
+
+Lets dedicate a few words about what 'linear' means. As we say above, *linear* refers to no bending. Is a term that refers to the way on how data is formuled to interact; at the simpliest level relative to the addition and the scaling, without products or powers over the unknowns (again, no bending). 
+
+Thus a matrix encode information in a linear rule, respecting addition and scaling in concrete terms. At the most basic level, an $m \times n$ matrix describes a function that ingest an $n$-colum-component and spits out an $m$-colum-component by taking additions and scaling combinations of the input components.
+
+<br>
+
+**Formal definition and representation**
+
+Be $\Set{F,+, \ ·}$ a field and $m,n \in \mathbb{N}$, then, we define a matrix $A$ as a function:
+
+<br>
+
+$$ A : [m] \times [n] \to  F$$
+
+$$A(i,j) = a_{ij}$$
+
+<br>
+
+We say that $A$ is a matrix of $m \times n$ order. 
+
+We denote the set of all matrix of order $m \times n$ over $F$ as $M_{m \times n}(F)$
+
+In this terms, now the representation of the matrix we've seen above gets some sense:
+
+<br>
+
+$$A= \begin{bmatrix}A_{11} & \cdots & A_{1n}\\\vdots & \ddots & \vdots\\A_{m1} & \cdots & A_{mn}\end{bmatrix} = \begin{bmatrix}A(1,1) & \cdots & A(1,n)\\\vdots & \ddots & \vdots\\A(m,1) & \cdots & A(m,n)\end{bmatrix} = \begin{bmatrix} a_{11} & \cdots & a_{1n}\\\vdots & \ddots & \vdots\\ a_{m1} & \cdots & a_{mn}\end{bmatrix} = (a_{ij})_{i,j \in \mathbb{N}}$$
+
+<br>
+
+In the same way:
+
+$$ X : [1] \times [n] \to  F$$
+
+$$X(j) = x_{j}$$
+
+<br>
+
+$$X= \begin{bmatrix}X_{1} \\\vdots \\ \ X_{n} \end{bmatrix} = \begin{bmatrix}X(1) \\ \vdots\\ X(n) \end{bmatrix} = \begin{bmatrix} x_{1}\\\vdots \\ x_{n} \end{bmatrix} = (x_{j})_{j \in \mathbb{N}}$$
+
+<br>
+
+$$ A : [m] \times [1] \to  F$$
+
+$$A(i) = a_{i}$$
+
+$$Y= \begin{bmatrix}Y_{1} \\\vdots \\ \ Y_{m} \end{bmatrix} = \begin{bmatrix}Y(1) \\ \vdots\\ Y(m) \end{bmatrix} = \begin{bmatrix} y_{1}\\\vdots \\ y_{m} \end{bmatrix} = (y_{i})_{i \in \mathbb{N}}$$
+
+<br>
+
+### 3.2.2. Matrix operations.
+
+For the time being, $AX = Y$ is nothing more than a shorthand notation for our system of linear equations. Later, when we have defined a multiplication for matrices, it will mean that $Y$ is the product of $A$ and $X$. 
+
+We wish now to consider operations on the rows of the matrix $A$, which correspond to forming linear combinations of the equations in the system $AX = Y$. We restrict our attention to three elementary row operations on an $m \times n$ matrix $A$ over the field $F$. 
 
 
+Conceptually these are the three “row moves” that change the representation of a matrix in a controlled way; formally they are functions $M_{m \times n} \to M_{m \times n}$ 
+
+- Multiplication of one row of $A$ by a non-zero scalar $c$. 
+
+
+<br>
 
