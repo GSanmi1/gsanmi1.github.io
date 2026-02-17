@@ -270,7 +270,7 @@ $$G \text{ is semi-eulerian } \iff \vert \{x \in V : \deg(x)\ \text{odd}\} \vert
 
     <br>
 
-##### 2.1.1.3.2. Hamiltonian graphs.
+##### 2.1.1.3.2. Hamiltonian graphs. Ore's theorem.
 
 **Main notions and definitions**
 
@@ -298,58 +298,80 @@ Being $G:=(V,E)$ a hamiltonian graph, then:
 
     <br>
 
-**Sufficient conditions (NOT Characterization)**
+**Ore's premise and some immediate results**
 
-These are classic “if the graph is dense enough, it must be Hamiltonian” results:
+Ore's premise says something as “if the graph is dense enough, it must be Hamiltonian”: 
 
-- **Ore’s theorem:** $H:=(V,E) : \big( \vert V \vert \geq 3 \wedge deg(u) + deg(v) \geq \vert V \vert \ \forall u,v \in V : u \not \sim v\big) \implies H \text{ is Hamiltonian}$
+$H:=(V,E) : \big( \vert V \vert \geq 3 \wedge deg(u) + deg(v) \geq \vert V \vert \ \forall u,v \in V : u \not \sim v\big) \implies H \text{ is Hamiltonian}$
+
+<br>
+
+Let's start seeing that $H$ as defined, is connected. Being $u,v \in V$, then consider $P_u := \Set{v \in V \vert \exists P_{uv} \subset H}$, 
+
+Observe that: $\nexists P_{uv} \text{ in } H \implies \ P_u \cap P_v = \varnothing \implies \vert P_u \cup P_v \vert = \vert P_u \vert + \vert P_v \vert \leq \vert V \vert$. 
+
+$$deg(t) + deg(l) \leq \vert P_u \vert -1 + \vert P_v \vert -1 = \vert V \vert - 2 < \vert V \vert \ \ \ \forall t \in P_u \wedge \forall l \in P_v$$
+
+Observe that obviously $t \not \sim l$ .
+
+This contradicts the initial Ore's presumption of $H$, so $H$ is connected and we can safely think in a path for any pair of vertex in $V$.
+
+<br>
+
+Let's also observe that $deg(v) \geq 2 \ \ \forall v \in V$. If $H$ is a complete graph then is nothing to proove, then let's suppose that:
+
+$$\exists u,v \in V: u \not \sim v \wedge deg(v) =1 \implies deg(u) + deg(v) = deg(u) + 1 \geq \vert V \vert \implies deg(u) \geq \vert V  \vert - 1$$
+
+Also, since $\vert V \vert > deg(u) \wedge deg(u) \in  \mathbb{N} \implies deg(u) = \vert V \vert -1$
+
+This would mean that  that $N(u) = V \setminus \Set{u} \implies v \in N(u) \implies u \sim v$ contradicting the no adjacency premise. So there are no leafs in $H$.
+
+<br>
+
+Let's also observe that in $H$:
+
+$$N(v) \cap N(u) \neq \varnothing \wedge \vert N(v) \cap N(u) \vert \geq 2 \ \ \forall u,v \in V: u \not \sim v $$
+
+Note that $u \not \sim v \implies \Big(deg(v) + deg(u) = \vert N(u) \vert + \vert N(v) \vert \geq \vert V \vert \Big) \wedge \Big( N(u) \cup N(v) \subset V \setminus \Set{u,v}\Big)$
+
+Then applying $\vert A \cup B \vert = \vert A \vert + \vert B \vert - \vert A \cap B \vert$, and $deg(u) + deg(v) \geq \vert V \vert$ is: 
+
+$$\vert V \vert -2 \geq \vert N(v) \cup N(u) \vert = \vert N(u) \vert +  \vert N(v) \vert - \vert N(u) \cap N(v) \vert \geq \vert V \vert - \vert N(u) \cap N(v) \vert $$
+
+Meaning that $\vert N(u) \cap N(v) \vert \geq 2$ necesarily. Then, $\exists t,l \in V : t,l \in  N(u) \cap N(v) \ \ \forall u,v \in V: u \not \sim v$.
+
+<br>
+
+**Bondy-Chvátal Lemma**
+
+Being $G:=(V,E) : \vert V \vert = n \geq 3 \wedge deg(u) + deg(v) \geq n$, then we define $G + uv :=(V,E \cup \Set{u,v})$, observe that obviously: $u \sim v \text{ in } G \implies G = G +uv$. 
+
+This lemma stands that:
+
+$$ G \text{ is hamiltonian } \iff G + uv \text{ is hamiltonian }$$
+
+Let's proof the lemme.
+
+- Observe quicly that $ G \text{ is hamiltonian } \implies G + uv \text{ is hamiltonian }$, since adding edges (supposing $u \not \sim v$) does not destroys cycles.
+
+- If $G + uv \text{ is hamiltonian }$, then if the cycles does not use $\Set{u,v}$ then $G \text{ is hamiltonian }$, thus lets suppose that the cycles does use $\Set{u,v}$.
+
+    Consider the hamiltonian path $P_{H,uv} \subset G$ (which exists since $G + uv$ is hamiltonian and the hamiltonian cycle does use $\Set{u,v} \in E$). If we consider that $A:=\Set{i \in \Set{2,...,n}: v_i \sim u} \wedge B:=\Set{i \in \Set{1,...,n-i}: v_i \sim v}$ then, obviously $A$ and $B$ are the set of the neigbourhs shifted by one relative to the other, let's observe that, as we discusse before: 
+    
+    $$N(u) \cap N(v) \neq \varnothing \implies A - 1 := \Set{i-1: i \in A}\cap B \neq \varnothing \implies \exists i: u \sim v_{i-1} \wedge v_i \sim v$$
+
+    Thus, taking a redirection of the path: $P:=u,...,v_{i-1},v,...,v_i,u$, we have our hamiltonian cycle.
+
 
     <br>
 
-    Let's start seeing that $H$ as defined, is connected. Being $u,v \in V$, then consider $P_u := \Set{v \in V \vert \exists P_{uv} \subset H}$, 
-    
-    Observe that: $\nexists P_{uv} \text{ in } H \implies \ P_u \cap P_v = \varnothing \implies \vert P_u \cup P_v \vert = \vert P_u \vert + \vert P_v \vert \leq \vert V \vert$. 
+**Ore's theorem**
 
-    $$deg(t) + deg(l) \leq \vert P_u \vert -1 + \vert P_v \vert -1 = \vert V \vert - 2 < \vert V \vert \ \ \ \forall t \in P_u \wedge \forall l \in P_v$$
+Let's observe that, from the result before, the Ore's premise garantee $G \text{ is hamiltonian } \iff G + uv \text{ is hamiltonian }$, and this premise can be implemented iteratively, meaning:
 
-    Observe that obviously $t \not \sim l$ .
-    
-    This contradicts the initial Ore's presumption of $H$, so $H$ is connected and we can safely think in a path for any pair of vertex in $V$.
+$$G \text{ is hamiltonian} \iff G + uv \text{ is hamiltonian}\iff (G + uv) + lt\text{ is hamiltonian} \iff \cdots \iff K_n\text{ is hamiltonian}$$
 
-    <br>
-
-    Let's also observe that $deg(v) \geq 2 \ \ \forall v \in V$. If $H$ is a complete graph then is nothing to proove, then let's suppose that:
-
-    $$\exists u,v \in V: u \not \sim v \wedge deg(v) =1 \implies deg(u) + deg(v) = deg(u) + 1 \geq \vert V \vert \implies deg(u) \geq \vert V  \vert - 1$$
-
-    Also, since $\vert V \vert > deg(u) \wedge deg(u) \in  \mathbb{N} \implies deg(u) = \vert V \vert -1$
-
-    This would mean that  that $N(u) = V \setminus \Set{u} \implies v \in N(u) \implies u \sim v$ contradicting the no adjacency premise. So there are no leafs in $H$.
-
-    <br>
-    
-    Let's also observe that in $H$:
-    
-    $$N(v) \cap N(u) \neq \varnothing \wedge \vert N(v) \cap N(u) \vert \geq 2 \ \ \forall u,v \in V: u \not \sim v $$
-    
-    Note that $u \not \sim v \implies \Big(deg(v) + deg(u) = \vert N(u) \vert + \vert N(v) \vert \geq \vert V \vert \Big) \wedge \Big( N(u) \cup N(v) \subset V \setminus \Set{u,v}\Big)$
-    
-    Then applying $\vert A \cup B \vert = \vert A \vert + \vert B \vert - \vert A \cap B \vert$, and $deg(u) + deg(v) \geq \vert V \vert$ is: 
-
-    $$\vert V \vert -2 \geq \vert N(v) \cup N(u) \vert = \vert N(u) \vert +  \vert N(v) \vert - \vert N(u) \cap N(v) \vert \geq \vert V \vert - \vert N(u) \cap N(v) \vert $$
-
-    Meaning that $\vert N(u) \cap N(v) \vert \geq 2$ necesarily. Then, $\exists t,l \in V : t,l \in  N(u) \cap N(v) \ \ \forall u,v \in V: u \not \sim v$.
-
-    <br>
-    
-    Let's observe that, been $P := v_1,...,v_k$, the longuest path on $H$, then $v \in P \ \ \forall v \in N(v_i) : i=1,k$, meaning that all the neighborhs of $v_1$ and $v_k$ are included in $P$.
-
-    $$S:=\Set{i \in [k] \setminus \Set{1}} \wedge T:=\Set{i \in [k-1]}$$
-
-    
-
-
-
+Observe we eventually reach a complete graph since $V$ is finite and so is the number of edges that can be included.
 
 
 <br>
