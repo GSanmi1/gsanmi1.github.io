@@ -362,6 +362,9 @@ Let's proof the lemme.
 
     Thus, taking a redirection of the path: $P:=u,...,v_{i-1},v,...,v_i,u$, we have our hamiltonian cycle.
 
+    ![Bondy_Chvatal](/assets/images/Maths/DiscreteMath/Bondy_Chvatal.png)
+
+    The image above pretends to ilustrate the result of the lemma, for simplicity, innecesary edges have been omited.
 
     <br>
 
