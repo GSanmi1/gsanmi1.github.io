@@ -621,9 +621,8 @@ As we see above, we have to see if $\Set{F,+}$ and  $\Set{F \setminus \Set{0}, \
 
     Let's see that:
 
-    $$a(b+c) = 0 \implies \neg a \vee [(b \wedge c) \vee (\neg b \wedge \neg c)] : P$$
-
-    $$ab + ac \ = 1 \implies  \ \ a \wedge [(b \wedge \neg c) \vee (\neg b \wedge c)]\  : Q$$
+    - $a(b+c) = 0 \implies \neg a \vee [(b \wedge c) \vee (\neg b \wedge \neg c)] : P$
+    - $ab + ac \ = 1 \implies  \ \ a \wedge [(b \wedge \neg c) \vee (\neg b \wedge c)]\  : Q$
 
     Let's note that $Q$ forces $a$ to be $1$ and needs $b$ and $c$ to have different value; $S_Q:=\Set{(1,\alpha, \neg \alpha)}\subset F^3$. 
     
