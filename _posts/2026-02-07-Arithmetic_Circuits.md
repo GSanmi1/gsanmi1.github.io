@@ -270,7 +270,7 @@ $$G \text{ is semi-eulerian } \iff \vert \{x \in V : \deg(x)\ \text{odd}\} \vert
 
     <br>
 
-##### 2.1.1.3.2. Hamiltonian graphs. Ore's theorem.
+##### 2.1.1.3.2. Hamiltonian graphs. Main theorem.
 
 **Main notions and definitions**
 
@@ -374,8 +374,236 @@ Let's observe that, from the result before, the Ore's premise garantee $G \text{
 
 $$G \text{ is hamiltonian} \iff G + uv \text{ is hamiltonian}\iff (G + uv) + lt\text{ is hamiltonian} \iff \cdots \iff K_n\text{ is hamiltonian}$$
 
-Observe we eventually reach a complete graph since $V$ is finite and so is the number of edges that can be included.
+Observe we eventually reach a complete graph since $V$ is finite and so is the number of edges that can be included. 
 
+
+<br>
+
+**Dirac's theorem**
+
+Let observe that there is another direct result that can be derivate from Ore's theorem. Being $G:=(V,E) : \vert V \vert = n \geq 3$, then:
+
+$$deg(v) \geq \frac{n}{2} \ \ \forall v \in V \implies deg(v) + deg(u) \geq n \ \ \forall u,v \in V : u \not \sim v$$
+
+Thus, we can say that:
+
+$$deg(v) \geq \left\lceil \frac{n}{2}\right\rceil \quad \forall v \in V \implies G \text{ is Hamiltonian }$$
+
+Being $\displaystyle\left\lceil \frac{n}{2}\right\rceil \quad := min \Set{z \in \mathbb{Z} \ \vert \ z \geq \frac{n}{2}}$ 
+
+<br>
+
+##### 2.1.1.3.3. Relation.
+
+Eulerian cares about degree parity and edge coverage; Hamiltonian cares about global structure and vertex coverage. 
+
+Eulerian existence has a clean parity characterization. Hamiltonian existence does not have a comparable local invariant characterization; deciding Hamiltonicity is [$NP$-complete](https://gsanmi1.github.io/posts/2026/02/02/Boolean_Formulas/) (even for many restricted graph families).
+
+<br>
+
+#### 2.1.1.4. Graph coloring.
+
+Being, $G := (V,E)$, then a $k\text{-coloring}$ of $G$ is an application:
+
+$$c : V \to \Set{1,...,k} : \forall \Set{u,v} \in E \ \ c(u)  \neq c(v)$$
+
+For $G$, we define his **chromatic number** as the minimum number for which exists a coloration:
+
+$$\chi(G) := min\Set{k | \exists c : V \to \Set{1,...,k} \text{ is a } k\text{-coloring}}$$
+
+Observe that this means that the Four Colour theorem exposes $\chi(G) \leq 4 \ \ \forall G$ and the 3-coloring problem ask whether, $\chi(G) \leq 3$.
+
+<br>
+
+Let's observe that:
+
+1. For a complete graph $K_n$ (where $\vert V_K\vert  = n$), is: $\chi(K_n) = n$.
+
+    - First, let's see that $c : V_K \to \Set{1,...,n}$ is *injective* ($\vert V_K\vert  = \vert \Set{1,...,n}\vert $) and it verifies:
+
+        $$\forall u,v \in V_K : u \neq v \implies c(u) \neq c(v)$$
+
+        Also, since $K_n$ is a complete graph, $\forall u,v \in V_K : u \neq v \iff \Set{u,v} \in E_K$, thus:
+
+        $$\forall \Set{u,v} \in E_K \ \  c(u) \neq c(v)$$
+
+        And $c$ is a coloration.
+
+        <br>
+
+    - Let's see now that $\neg (\exists i < n : c : V_K \to \Set{1,...,i} \text{ is a coloration})$.
+
+        Simply, considering $c : V_K \to \Set{1,...,i}$ with $ i < n$, then $c$ is *no injective* and it verifies the *pigeonhole principle*:
+
+        $$\exists u,v \in V_K : u \neq v \land c(u) = c(v)$$
+
+        Again, for $\forall u,v \in K_n \ \ u \neq v \iff \Set{u,v} \in E_K$ and thus:
+
+        $$\exists \Set{u,v} \in E_K : c(u) = c(v)$$
+
+        And $c$ is no coloration.
+
+        <br>
+
+2. For a cycle $C_n$, $\chi(C_n) = 2$ if $n$ is even and $\chi(C_n) = 3$ if $n$ is odd.
+
+    First, let's define what a cycle graph is: 
+    
+    $$C_n := (V_C, E_C) : \begin{cases} V_C = \Set{v_0,...,v_{n-1}} \\ E_C = \Set{\Set{v_{i-1},v_i} : i \in \Set{1,...,n-1}} \cup \Set{\Set{v_{n-1},v_0}} \end{cases}$$
+
+    Let's observe that, as defined, the sequence: $v_0,...,v_{n-1}$ is a path, thus $v_0,...,v_{n-1},v_0$ is a cycle.
+
+    - Now, consider the case $\exists m : n = 2m$, then, we define:
+
+        $$c : V_C \to \Set{1,2} : c(v_i) = \begin{cases}  1 \ \text{ if } i  \text{ is even}\\ 2 \ \text{ if } i  \text{ is odd} \end{cases}$$
+
+        It is clear that even and odd numbers alternates each in a consecutive numeric sequence. So:
+
+        $$c(v_{i-1}) \neq c(v_i) \ \ \forall v_{i-1},v_i \in v_0,...,v_{n-1} \implies c(v_{i-1}) \neq c(v_i) \ \ \forall \Set{v_{i-1},v_i} \in E_C $$
+
+        For the same reason, if $n$ is even, then $n-1$ is odd and $c(v_{n-1}) \neq c(v_0)$, thus, in conclusion:
+
+        $$c(u) \neq c(v)  \ \ \forall \Set{u,v} \in E_C$$
+
+        And $c$ is a $2-coloring$ of $C_n$. Obviously since $E_C \neq \varnothing$ it can't be $\chi(C_n) = 1$.
+
+        <br>
+
+    - If $n = 2m + 1$ and we suppose the existence of a $2-coloring$, $c$ over $C_n$, then: 
+
+        $$c(u) \neq c(v) \ \ \forall \Set{u,v} \in E_C \implies c(v_{i-1}) \neq c(v_i) \ \ \forall \Set{v_{i-1},v_i} \in E_C \iff$$
+        $$ \iff c(v_{i-1}) \neq c(v_i) \ \ \forall v_{i-1},v_i \in v_0,...,v_{n-1}$$
+
+        Or, in other words, any consecutive vertex in the path $v_0,...,v_{n-1}$ has different image under $c$. 
+        
+        Thus, is easy to see that:
+        
+        - Since in a $2-coloring$ there are only two possible images values 
+        
+        - And $n-1$ is even (because $n$ is odd), 
+        
+        Then $v_0$ and $v_{n-1}$ share the same image under $c$ and it is:
+        
+        $$c(v_{n-1}) = c(v_0) \land \Set{v_{n-1},v_0} \in E_C$$
+        
+        Triggering a contradiction with the $2-coloring$ requirement.
+
+        Getting the example of $c$ provided above, is easy to see that:
+
+        $$c : V_c \to \Set{1,2,3} : c(v_i) = \begin{cases}  1 \ \text{ if } i  \text{ is even } \land i \neq n -1\\ 2 \ \text{ if } i  \text{ is odd} \\  3 \end{cases}$$
+
+        Is a $3-coloring$ of $C_n$.
+
+        <br>
+
+3. **Bipartite Graphs**.
+
+    A bipartite graph is a graph $G_B$ satisfying:
+
+    $$G_B := (V_B,E_B): \begin{cases}V_B := A \sqcup B \ \ (V = A\cup B \land A \cap B = \varnothing) \\ E_B \subset \binom{V_B}{2} : a \in A \land b \in B \ \ \forall \Set{a,b} \in E_B \end{cases}$$
+
+    Then, consider 
+    
+    $$c : V_B \to \Set{1,2} : c(v) =\begin{cases}  1 \ \ \text{ if } v \in A\\ 2 \ \ \text{ if } v \in B \end{cases}$$
+
+    Then:
+
+    $$\forall \Set{u,v} \in E_B \ \  \begin{cases} u \in A  \Rightarrow c(u) = 1 \\ v \in B \Rightarrow c(v) = 2 \end{cases} \implies c(u) \neq c(v)$$
+
+    And $c$ is a $2-coloring$ of $G_B$. Of course, $E_B \neq \varnothing \implies \chi(G_B) \neq 1$.
+
+    <br>
+
+4. **2-colorability theorem**.
+
+    The 2-colorability caracterization stands for, being $G := (V,E)$ a graph, then:
+
+    $$\chi(G)=2 \iff G \text{ is bipartite } \iff \neg \exists\,\text{cycle } C \subseteq G : |C|\ \text{ is odd} $$
+
+    Observe that we already demonstrate that:
+
+    - $G \text{ is bipartite } \implies \chi(G)=2$
+    - $\chi(G)=2 \implies \neg \exists\,\text{cycle } C \subseteq G : \vert C\vert \ \text{ is odd}$ (since all odd cycle has a 3 as a chromatic number).
+    - $\chi(G)=2 \implies G \text{ is bipartite }$
+
+       Observe that
+
+        $$\chi(G)=2 \implies \exists c :V \to \Set{1,2} : c(u) \neq c(v) \ \ \forall \set{u,v} \in E$$
+
+        We define: 
+
+        $$\begin{cases}A := \Set{u \in V | c(u) = 1} \\ B:= \Set{u \in V | c(u) = 2}\end{cases}$$
+
+        In this context, since $c$ is an application we have:
+
+        - $v \in V \Rightarrow c(v) = 1 \vee c(v) =2 \Leftrightarrow v \in A \vee v \in B \Rightarrow V = A \cup B$
+
+        - $A \cap B = \varnothing$
+
+        - $\forall \Set{u,v} \in E \implies c(u) \neq c(v) \implies  (u \in A \land v \in B) \vee (v \in A \land u \in B)$
+
+        <br>
+
+        Thus, $G$ verifies:
+        $$\begin{cases}V := A \sqcup B \ \ (V = A\cup B \land A \cap B = \varnothing) \\ E \subset \binom{V}{2} : a \in A \land b \in B \ \ \forall \Set{a,b} \in E \end{cases}$$
+
+    Now, only last to demonstrate that:
+
+    - $\neg \exists\,\text{cycle } C \subseteq G : \vert C\vert \ \text{ is odd} \implies G$ is bipartite. 
+
+        The premise can be negated in two ways:
+
+        - First, $\neg \exists C \subseteq G : C \text{ is a cycle}$, then consider a vertex we call $r$ and: $A = \Set{u \vert  dist(r,u) \text{ is even}}$ and $B = \Set{u \vert  dist(r,u) \text{ is odd}}$. Then is pretty obvius that $A \cup B$ and we impose that $A \cap B = \varnothing$, let's observe that this impossition requires no odd cycles.
+
+            Being $C \subseteq G : C \text{ is odd}$, then, $C:=v_0,...,v_{n-1},v_0$ where $v_0,...,v_{n-1}$ is a path and $\Set{v_{n-1},v_0} \in E$. Lets say $r : dist(r,v_0) \land r \notin C$. Then, since $C$ is a cycle there are two paths to measure the distance between $r$ and $v_{n-1}$:
+
+            $$dist(r,v_{n-1}) = dist(r,v_0) + dist(v_0,v_{n-1})$$
+
+            Since $\Set{v_{n-1},v_0} \in E \Rightarrow dist(v_0,v_{n-1}) = 1 \Rightarrow dist(r,v_{n-1}) = 2 \text{ (even)}$, but also, since $C$ is odd, $n-1$ is even (meaning that $dist(v_0,v_{n-1})$ is even and $1 + dist(v_0,v_{n-1}) = dist(r,v_{n-1})$ is odd). So in summary: $A \cap B \neq \varnothing$
+
+           <br>
+
+#### 2.1.1.5. Plannar graphs. Drawings and faces. Euler's formula.
+
+A *planar graph* is a graph that admits a graphical representation on a plane such its edges do not cross each other. For example, Complete graph $K_3$ do admit a representation in which the edges not cross, but $K_5$ do not.
+
+Let be $G:=(V,E)$ a finite simple graph, then an embedding of $G$ into $\mathbb{R}^2$ is a function $\phi: G \to \mathbb{R}^2$ that:
+
+- $\forall u,v \in V \ \ \left(\phi(u), \phi(v) \in \mathbb{R}^2 \land u \neq v \implies \phi(u) \neq \phi(v) \right)$
+
+- $\forall e, f \in E \ \ \left( \phi(e) = \gamma_{e_1e_2}, \phi(f) = \gamma_{f_1f_2}  \in \mathbb{R}^2 : e \neq f \implies \phi(e) \cap \phi(f) \subseteq \Set{\phi(e_1),\phi(e_2),\phi(f_1),\phi(f_2)} \right)$
+
+
+Where $\gamma_{uv}$ is a simple arc (non-self-intersecting, continuous curve) from $\phi(u)$ to $\phi(v)$. $\phi$ maps the edges of $G$ ensuring that two different arcs only share endpoints as much.
+
+Then, $G$ is said to be planar if admits a embedding $\phi$ in $\mathbb{R}^2$ as above.
+
+<br>
+
+Associated to a drawing of a planar graph are the so called *faces*, grouped in the set $F$; which are enclosed regions of the plane $\mathbb{R}^2$ by the planar drawing of the graph (here is included the unbound outer face extranl to the graph). The Euler's formula specifies that, for a complete planar graph $G:= (V,E)$, being $F$ the set of the faces of the drawing graph, then:
+
+$$|V| - |E| + |F| = 2$$
+
+<br>
+
+#### 2.1.1.6. Dual graphs.
+
+Given a connected planar graph $G$, then, the *dual graph* is what you get when you turn faces into vertices in a planar embedding of $G$. 
+
+The drawing (planar embedding) cuts the plane into regions (faces), one unbounded “outside” face plus the bounded ones, then the dual $G^*$ is built by:
+
+- Putting one vertex inside each face of $G$.
+- For each $e \in E$ there exists one $e^* \in E^*$ crossing once $e$, connecting two faces.
+
+Formally;
+
+Being $G$ a connected planar graph and $\phi$ his drawing in $\mathbb{R}^2$. Then, we define the dual graph as:
+
+$$G^*:= (V^*,E^*):\begin{cases}V^* &:= F = \Set{f : f \text{ is a face of }(G,\phi)} \\ E^* &:= \Set{\Set{f_1,f_2} | \exists e \in E \text{ between } f_1 \text{ and } f_2 } \subseteq \binom{V^*}{2}\end{cases}$$
+
+Is important to understand that *Dual depends on the embedding*: Two different planar drawings of the same abstract planar graph can produce non-isomorphic duals. The dual is canonical only after you fix the embedding.
+
+In this context, a map coloring is equal to color a dual graph. A map representation is in fact a dual graph.
 
 <br>
 
