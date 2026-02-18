@@ -8,7 +8,7 @@ tags: ['Maths']
 author: German Sanmi
 ---
 
-0. Index
+# 0. Index
 
 1. Introduction
    - 1.1. Formal definition and main concepts
