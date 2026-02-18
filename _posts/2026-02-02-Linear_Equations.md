@@ -675,7 +675,7 @@ Be $q \in \mathbb{Q}$, then $\exists a,b \in \mathbb{Z} : \displaystyle q=\frac{
 Let's see that 
 
 - $1 + 0i = 1_{\mathbb{C}} \in F$
-- $1_F$ is inherited from the superfield $\mathbb{C}$;. 
+- $1$ in $F$ is inherited from the superfield $\mathbb{C}$;. 
 
 
 
