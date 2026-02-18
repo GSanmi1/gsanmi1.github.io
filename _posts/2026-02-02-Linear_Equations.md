@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Linear Equations."
-subtitle: "Fields and Linear Equations in a field."
+title: "Linear Equations & Matrix."
+subtitle: "Fields, Linear Equations and Matrix on a field."
 date: 2026-02-06 09:00:00 +0000
 categories: ['Linear Algebra']
 tags: ['Hoffman&Kunze', 'Algebra']
@@ -807,8 +807,47 @@ We wish now to consider operations on the rows of the matrix $A$, which correspo
 
 Conceptually these are the three “row moves” that change the representation of a matrix in a controlled way; formally they are functions $M_{m \times n} \to M_{m \times n}$ 
 
-- Multiplication of one row of $A$ by a non-zero scalar $c$. 
+- Multiplication of one row of $A$ by a non-zero scalar $\lambda$. 
+- Replace row, $r$ by; $r + \lambda s$
+- Swap row $r \leftrightarrow s$
 
+For now on, consider:
+
+- $F$ a field and $A:=(a_{ij})_{i \in [m], j \in [n]} \in M_{m \times n}(F)$
+- Some index $r,s \in [m] : r \neq s$ 
+- A scalar $\lambda \in F$.
 
 <br>
 
+**Scalar a row.**
+
+
+We define the process of *scaling* row $r$ through $\lambda \neq 0$ to the definition of the function:
+
+$$\mathcal{E}_{\lambda r}^r(A):=(e_{ij})_{i \in [m], j \in [n]} : e_{ij} := \begin{cases}  \lambda a_{ij} \ \ i = r \\ \   a_{ij} \ \ \ i \neq r\end{cases}$$
+
+<br>
+
+**Row replacement with a linear combination.**
+
+We define the process of *replace* row $r$ with the linear combination $r + \lambda s$ to the definition of the function:
+
+$$\mathcal{E}_{r + \lambda s}^r(A):=(e_{ij})_{i \in [m], j \in [n]} : e_{ij} := \begin{cases}  a_{ij} + \lambda a_{sj} \ \ i = r \\ \  \ \ \ \ \   a_{ij} \ \ \ \ \  \ \ \ i \neq r\end{cases}$$
+
+<br>
+
+**Swap rows.**
+
+We define the process of *swap* the rows $r$ and $s$; $r \leftrightarrow s$ to the definition of the function:
+
+$$\mathcal{E}_{r  \leftrightarrow s}^r(A):=(e_{ij})_{i \in [m], j \in [n]} : e_{ij} := \begin{cases}  a_{sj}  \ \ \ \ \ \ i = r \\  a_{rj}  \ \ \ \  \ \ i = s \\ a_{ij} \ \ i \notin \Set{r,s}\end{cases}$$
+
+<br>
+
+All this function $\mathcal{E}$ eventually relates $A$ with the matrices $E_{\lambda r}^r, E_{r + \lambda s}^r, E_{r  \leftrightarrow s}^r$
+
+The definition of this matrices are coherent with the system $AX = Y$, in the sense that the operations preserve system equivalence after apply the same change to $Y$:
+
+$$[AX = Y] \equiv [E_{\lambda r}^rAX = E_{\lambda r}^rY] \equiv [E_{r + \lambda s}^rAX = E_{r + \lambda s}^rY] \equiv [E_{r  \leftrightarrow s}^rAX = E_{r  \leftrightarrow s}^rY]$$
+
+This will make sense when we presentate the matricial product and check that the resulting system of equations is the result of apply a property that respects the equivalence as we saw that the start of this post.
