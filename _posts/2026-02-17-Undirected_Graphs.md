@@ -1,32 +1,61 @@
 ---
 layout: post
-title: "Arithmetic Circuits."
-subtitle: "Maths fundamentals in arithmetic circuits and appliances in ZKP."
-date: 2026-02-06 09:00:00 +0000
-categories: ['Fundamentals']
-tags: ['ZKP', 'Maths']
+title: "Simple (undirected) Graphs"
+subtitle: "Introduction to graph theory."
+date: 2026-02-17 09:00:00 +0000
+categories: ['Graphs']
+tags: ['Maths']
 author: German Sanmi
 ---
 
+0. Index
+
+1. Introduction
+   - 1.1. Formal definition and main concepts
+        - 1.1.1. Definition
+        - 1.1.2. Main notions
+2. Tree characterization
+   - 2.1. Leafs (leaf lemma)
+   - 2.2. Equivalent statements of trees
+   - 2.3. Handshaking lemma for trees
+
+3. Eulerian and Hamiltonian graphs
+   - 3.1. Eulerian graphs
+        - 3.1.1. Eulerian parity characterization
+        - 3.1.2. Semieulerian caracterization
+   - 3.2. Hamiltonian graphs
+        - 3.2.1. Main notions and definitions
+        - 3.2.2. Implications (NOT Characterization)
+        - 3.2.3. Sufficient conditions (Ore's theorem & Dirac's theorem)
+              - 3.2.3.1. Ore's premise and some immediate results
+              - 3.2.3.2. Bondy-Chvátal Lemma
+              - 3.2.3.3. Ore's theorem
+              - 3.2.3.4. Dirac's theorem
+   - 3.3. Relation
+
+4. Graph coloring
+   - 4.1. Definition
+   - 4.2. Chromatic number
+   - 4.3. Chromatic number of well-known graphs
+        - 4.3.1. For a complete graph K_n
+        - 4.3.2. For a cycle C_n
+        - 4.3.3. For a bipartite graph G
+   - 4.4. 2-colorability theorem
+
+5. Plannar graphs
+
+6. Dual graphs
+
+
 # 1. Introduction.
 
-As we established on [2.Boolean Formulas](https://gsanmi1.github.io/posts/2026/02/02/Boolean_Formulas/) post, any NP problem is Karp reductable to SAT implying that any instance of a NP problem can be verified by verifying some certain SAT instance, this is; finding a valuation that makes True a boolean circuit that models the problem.
-
-However, bits are very restricted, often a codification of an instance of a problem to a big-complex boolean structure is needed (quitting some expceptions) which often leads to unefficient (in terms of space and time) computations as we see in the examples of the post above. This is why *arithmetic circuits* are way preferable of use instead.
-
-Conceptually, an arithmetic circuit is a system of equations that models a problem in NP. 
+*Graph Theory*; is the discipline of mathematics which occupies about the study of discrete relation's structures and his properties. Conceptually, a *graph* is the minimal object that captures “pairwise relationships” between abstract entities.
 
 <br>
 
-# 2. Prerequisites.
+## 1.1. Formal definition and main concepts.
 
-## 2.1. Discrete Math: Graphs and DAGs.
-
-### 2.1.1. Undirected Graphs.
-
-#### 2.1.1.1. Introduction.
-
-*Graph Theory*; is the discipline of mathematics which occupies about the study of discrete relation's structures and his properties. Conceptually, a *graph* is the minimal object that captures “pairwise relationships” between abstract entities.
+### 1.1.1. Definition.
 
 Formally a **graph** (undirected graph) to the pair $G := (V,E)$ where:
 
@@ -34,6 +63,8 @@ Formally a **graph** (undirected graph) to the pair $G := (V,E)$ where:
 - $E \subseteq \binom{V}{2}$ and his elements are called *edges*.
 
 <br>
+
+### 1.1.2. Main notions.
 
 There are several notions associtated with the idea of a *graph*:
 
@@ -68,9 +99,10 @@ Relative to the state of the vertex in the graph we can talk about:
 - **Complete graph**: Every pairm of vertex are *adjacents*. They are notated simply as $K_n :=(V,E): \vert V \vert = n$ and satisfies: $u  \sim v \ \ \forall u,v \in V$
 - **Tree**: A connected graph with no cycles.
 
+<br>
 
 
-#### 2.1.1.2. Tree characterization.
+# 2. Tree characterization.
 
 Let's consider a tree $T:=(V,E)$:
 
@@ -80,7 +112,7 @@ Let's consider a tree $T:=(V,E)$:
 
 <br>
 
-##### 2.1.1.2.1. Leaf lemma.
+## 2.1. Leafs (leaf lemma).
 
 “Leaf lemma” refers to a basic fact in graph theory about *trees*. A tree is “all branches, no cycles”. If it has at least one edge, you can’t keep walking forever without either repeating a vertex (which would create a cycle) or getting stuck. The “stuck points” at the ends are leaves, and you must have at least two ends.
 
@@ -103,7 +135,7 @@ So $deg(v_0) = deg(v_k) = 1$ and both are leaf in $T$.
 
 <br>
 
-##### 2.1.1.2.2. Equivalences statements of Trees.
+## 2.2. Equivalent statements of trees.
 
 The following statements are equivalent for a tree $T:=(V,E)$
 
@@ -155,7 +187,7 @@ The following statements are equivalent for a tree $T:=(V,E)$
 
     <br>
 
-##### 2.1.1.2.3. Handshaking lemma for trees.
+## 2.3. Handshaking lemma for trees.
 
 The *handshaking lemma* stays for: 
 
@@ -178,13 +210,13 @@ Observe that this also means that there is an even number of odd-degrees.
 
 <br>
 
-#### 2.1.1.3. Eulerian and Hamiltonian graphs.
+# 3. Eulerian and Hamiltonian graphs.
 
 *Eulerian graphs* is a class of graphs that can be traversed using each edge exactly once. *Hamiltonian graphs* is a class of graph that can be traversed using each vertex exactly once.
 
 <br>
 
-##### 2.1.1.3.1. Eulerian graphs.
+## 3.1. Eulerian graphs.
 
 **Main notions and definitions**
 
@@ -200,7 +232,7 @@ Then,
 
 <br>
 
-**Characterization**
+### 3.1.1. Eulerian parity characterization.
 
 Being $G$ a connected graph, then:
 
@@ -248,6 +280,8 @@ First, let's that if $G$:
 
     <br>
 
+### 3.1.2. Semieulerian caracterization.
+
 Now, taking $G:=(V,E)$ as a connected graph:
 
 $$G \text{ is semi-eulerian } \iff \vert \{x \in V : \deg(x)\ \text{odd}\} \vert = 2$$
@@ -270,9 +304,9 @@ $$G \text{ is semi-eulerian } \iff \vert \{x \in V : \deg(x)\ \text{odd}\} \vert
 
     <br>
 
-##### 2.1.1.3.2. Hamiltonian graphs. Main theorem.
+## 3.2. Hamiltonian graphs.
 
-**Main notions and definitions**
+### 3.2.1. Main notions and definitions.
 
 Being $G:=(V,E)$ a graph. Then we have the following definitions:
 
@@ -284,7 +318,7 @@ We say that $G$ is Hamiltonian if admits a *hamiltonian cycle*.
 
 <br>
 
-**Implications (NOT Characterization)**
+### 3.2.2. Implications (NOT Characterization).
 
 Being $G:=(V,E)$ a hamiltonian graph, then:
 
@@ -298,7 +332,11 @@ Being $G:=(V,E)$ a hamiltonian graph, then:
 
     <br>
 
-**Ore's premise and some immediate results**
+### 3.2.3. Sufficient conditions (Ore's theorem & Dirac's theorem).
+
+We are going to see sufficient conditions that implicates for a graph to be hamiltonian. We will expose the premise and then we will begin to derivate results slowly, reaching the fundamental *Bondy-Chvátal Lemma* from which Ore's theorem is an easy corolary. Then Dirac's theorem is an immediate result for Ore's theorem.
+
+#### 3.2.3.1. Ore's premise and some immediate results.
 
 Ore's premise says something as “if the graph is dense enough, it must be Hamiltonian”: 
 
@@ -342,7 +380,7 @@ Meaning that $\vert N(u) \cap N(v) \vert \geq 2$ necesarily. Then, $\exists t,l 
 
 <br>
 
-**Bondy-Chvátal Lemma**
+#### 3.2.3.2. Bondy-Chvátal Lemma.
 
 Being $G:=(V,E) : \vert V \vert = n \geq 3 \wedge deg(u) + deg(v) \geq n$, then we define $G + uv :=(V,E \cup \Set{u,v})$, observe that obviously: $u \sim v \text{ in } G \implies G = G +uv$. 
 
@@ -368,7 +406,7 @@ Let's proof the lemme.
 
     <br>
 
-**Ore's theorem**
+#### 3.2.3.3. Ore's theorem.
 
 Let's observe that, from the result before, the Ore's premise garantee $G \text{ is hamiltonian } \iff G + uv \text{ is hamiltonian }$, and this premise can be implemented iteratively, meaning:
 
@@ -379,7 +417,7 @@ Observe we eventually reach a complete graph since $V$ is finite and so is the n
 
 <br>
 
-**Dirac's theorem**
+#### 3.2.3.4. Dirac's theorem.
 
 Let observe that there is another direct result that can be derivate from Ore's theorem. Being $G:=(V,E) : \vert V \vert = n \geq 3$, then:
 
@@ -393,7 +431,7 @@ Being $\displaystyle\left\lceil \frac{n}{2}\right\rceil \quad := min \Set{z \in 
 
 <br>
 
-##### 2.1.1.3.3. Relation.
+## 3.3. Relation.
 
 Eulerian cares about degree parity and edge coverage; Hamiltonian cares about global structure and vertex coverage. 
 
@@ -401,171 +439,179 @@ Eulerian existence has a clean parity characterization. Hamiltonian existence do
 
 <br>
 
-#### 2.1.1.4. Graph coloring.
+# 4. Graph coloring.
+
+## 4.1. Definition.
 
 Being, $G := (V,E)$, then a $k\text{-coloring}$ of $G$ is an application:
 
-$$c : V \to \Set{1,...,k} : \forall \Set{u,v} \in E \ \ c(u)  \neq c(v)$$
+$$c : V \to \Set{1,...,k} :  \big(c(u)  \neq c(v) \ \ \ \forall \Set{u,v} \in E \big)$$
+
+<br>
+
+## 4.2. Chromatic number.
 
 For $G$, we define his **chromatic number** as the minimum number for which exists a coloration:
 
-$$\chi(G) := min\Set{k | \exists c : V \to \Set{1,...,k} \text{ is a } k\text{-coloring}}$$
+$$\chi(G) := min\Set{k \ \vert \  \exists c : V \to \Set{1,...,k} \text{ is a } k\text{-coloring}}$$
 
 Observe that this means that the Four Colour theorem exposes $\chi(G) \leq 4 \ \ \forall G$ and the 3-coloring problem ask whether, $\chi(G) \leq 3$.
 
 <br>
 
+## 4.3. Chromatic number of well-known graphs.
+
 Let's observe that:
 
-1. For a complete graph $K_n$ (where $\vert V_K\vert  = n$), is: $\chi(K_n) = n$.
+### 4.3.1. For a complete graph $K_n$ (where $\vert V_K\vert  = n$), is: $\chi(K_n) = n$.
 
-    - First, let's see that $c : V_K \to \Set{1,...,n}$ is *injective* ($\vert V_K\vert  = \vert \Set{1,...,n}\vert $) and it verifies:
+- First, let's see that $c : V_K \to \Set{1,...,n}$ is *injective* ($\vert V_K\vert  = \vert \Set{1,...,n}\vert $) and it verifies:
 
-        $$\forall u,v \in V_K : u \neq v \implies c(u) \neq c(v)$$
+    $$u \neq v \implies c(u) \neq c(v) \ \ \ \forall u,v \in V_K$$
 
-        Also, since $K_n$ is a complete graph, $\forall u,v \in V_K : u \neq v \iff \Set{u,v} \in E_K$, thus:
+    Also, since $K_n$ is a complete graph, $\forall u,v \in V_K : u \neq v \iff \Set{u,v} \in E_K$, thus:
 
-        $$\forall \Set{u,v} \in E_K \ \  c(u) \neq c(v)$$
+    $$c(u) \neq c(v) \ \ \ \forall \Set{u,v} \in E_K$$
 
-        And $c$ is a coloration.
-
-        <br>
-
-    - Let's see now that $\neg (\exists i < n : c : V_K \to \Set{1,...,i} \text{ is a coloration})$.
-
-        Simply, considering $c : V_K \to \Set{1,...,i}$ with $ i < n$, then $c$ is *no injective* and it verifies the *pigeonhole principle*:
-
-        $$\exists u,v \in V_K : u \neq v \land c(u) = c(v)$$
-
-        Again, for $\forall u,v \in K_n \ \ u \neq v \iff \Set{u,v} \in E_K$ and thus:
-
-        $$\exists \Set{u,v} \in E_K : c(u) = c(v)$$
-
-        And $c$ is no coloration.
-
-        <br>
-
-2. For a cycle $C_n$, $\chi(C_n) = 2$ if $n$ is even and $\chi(C_n) = 3$ if $n$ is odd.
-
-    First, let's define what a cycle graph is: 
-    
-    $$C_n := (V_C, E_C) : \begin{cases} V_C = \Set{v_0,...,v_{n-1}} \\ E_C = \Set{\Set{v_{i-1},v_i} : i \in \Set{1,...,n-1}} \cup \Set{\Set{v_{n-1},v_0}} \end{cases}$$
-
-    Let's observe that, as defined, the sequence: $v_0,...,v_{n-1}$ is a path, thus $v_0,...,v_{n-1},v_0$ is a cycle.
-
-    - Now, consider the case $\exists m : n = 2m$, then, we define:
-
-        $$c : V_C \to \Set{1,2} : c(v_i) = \begin{cases}  1 \ \text{ if } i  \text{ is even}\\ 2 \ \text{ if } i  \text{ is odd} \end{cases}$$
-
-        It is clear that even and odd numbers alternates each in a consecutive numeric sequence. So:
-
-        $$c(v_{i-1}) \neq c(v_i) \ \ \forall v_{i-1},v_i \in v_0,...,v_{n-1} \implies c(v_{i-1}) \neq c(v_i) \ \ \forall \Set{v_{i-1},v_i} \in E_C $$
-
-        For the same reason, if $n$ is even, then $n-1$ is odd and $c(v_{n-1}) \neq c(v_0)$, thus, in conclusion:
-
-        $$c(u) \neq c(v)  \ \ \forall \Set{u,v} \in E_C$$
-
-        And $c$ is a $2-coloring$ of $C_n$. Obviously since $E_C \neq \varnothing$ it can't be $\chi(C_n) = 1$.
-
-        <br>
-
-    - If $n = 2m + 1$ and we suppose the existence of a $2-coloring$, $c$ over $C_n$, then: 
-
-        $$c(u) \neq c(v) \ \ \forall \Set{u,v} \in E_C \implies c(v_{i-1}) \neq c(v_i) \ \ \forall \Set{v_{i-1},v_i} \in E_C \iff$$
-        $$ \iff c(v_{i-1}) \neq c(v_i) \ \ \forall v_{i-1},v_i \in v_0,...,v_{n-1}$$
-
-        Or, in other words, any consecutive vertex in the path $v_0,...,v_{n-1}$ has different image under $c$. 
-        
-        Thus, is easy to see that:
-        
-        - Since in a $2-coloring$ there are only two possible images values 
-        
-        - And $n-1$ is even (because $n$ is odd), 
-        
-        Then $v_0$ and $v_{n-1}$ share the same image under $c$ and it is:
-        
-        $$c(v_{n-1}) = c(v_0) \land \Set{v_{n-1},v_0} \in E_C$$
-        
-        Triggering a contradiction with the $2-coloring$ requirement.
-
-        Getting the example of $c$ provided above, is easy to see that:
-
-        $$c : V_c \to \Set{1,2,3} : c(v_i) = \begin{cases}  1 \ \text{ if } i  \text{ is even } \land i \neq n -1\\ 2 \ \text{ if } i  \text{ is odd} \\  3 \end{cases}$$
-
-        Is a $3-coloring$ of $C_n$.
-
-        <br>
-
-3. **Bipartite Graphs**.
-
-    A bipartite graph is a graph $G_B$ satisfying:
-
-    $$G_B := (V_B,E_B): \begin{cases}V_B := A \sqcup B \ \ (V = A\cup B \land A \cap B = \varnothing) \\ E_B \subset \binom{V_B}{2} : a \in A \land b \in B \ \ \forall \Set{a,b} \in E_B \end{cases}$$
-
-    Then, consider 
-    
-    $$c : V_B \to \Set{1,2} : c(v) =\begin{cases}  1 \ \ \text{ if } v \in A\\ 2 \ \ \text{ if } v \in B \end{cases}$$
-
-    Then:
-
-    $$\forall \Set{u,v} \in E_B \ \  \begin{cases} u \in A  \Rightarrow c(u) = 1 \\ v \in B \Rightarrow c(v) = 2 \end{cases} \implies c(u) \neq c(v)$$
-
-    And $c$ is a $2-coloring$ of $G_B$. Of course, $E_B \neq \varnothing \implies \chi(G_B) \neq 1$.
+    And $c$ is a coloration.
 
     <br>
 
-4. **2-colorability theorem**.
+- Let's see now that $\neg (\exists i < n : c : V_K \to \Set{1,...,i} \text{ is a coloration})$.
 
-    The 2-colorability caracterization stands for, being $G := (V,E)$ a graph, then:
+    Simply, considering $c : V_K \to \Set{1,...,i}$ with $ i < n$, then $c$ is *no injective* and it verifies the *pigeonhole principle*:
 
-    $$\chi(G)=2 \iff G \text{ is bipartite } \iff \neg \exists\,\text{cycle } C \subseteq G : |C|\ \text{ is odd} $$
+    $$\exists u,v \in V_K : \big (u \neq v \land c(u) = c(v)\big)$$
 
-    Observe that we already demonstrate that:
+    Again, for $\forall u,v \in K_n \ \ u \neq v \iff \Set{u,v} \in E_K$ and thus:
 
-    - $G \text{ is bipartite } \implies \chi(G)=2$
-    - $\chi(G)=2 \implies \neg \exists\,\text{cycle } C \subseteq G : \vert C\vert \ \text{ is odd}$ (since all odd cycle has a 3 as a chromatic number).
-    - $\chi(G)=2 \implies G \text{ is bipartite }$
+    $$\exists \Set{u,v} \in E_K : c(u) = c(v)$$
 
-       Observe that
+    And $c$ is no coloration.
 
-        $$\chi(G)=2 \implies \exists c :V \to \Set{1,2} : c(u) \neq c(v) \ \ \forall \set{u,v} \in E$$
+    <br>
 
-        We define: 
+### 4.3.2. For a cycle $C_n$, $\chi(C_n) = 2$ if $n$ is even and $\chi(C_n) = 3$ if $n$ is odd.
 
-        $$\begin{cases}A := \Set{u \in V | c(u) = 1} \\ B:= \Set{u \in V | c(u) = 2}\end{cases}$$
+First, let's define what a cycle graph is: 
 
-        In this context, since $c$ is an application we have:
+$$C_n := (V_C, E_C) : \begin{cases} V_C = \Set{v_0,...,v_{n-1}} \\ E_C = \Set{\Set{v_{i-1},v_i} : i \in \Set{1,...,n-1}} \cup \Set{\Set{v_{n-1},v_0}} \end{cases}$$
 
-        - $v \in V \Rightarrow c(v) = 1 \vee c(v) =2 \Leftrightarrow v \in A \vee v \in B \Rightarrow V = A \cup B$
+Let's observe that, as defined, the sequence: $v_0,...,v_{n-1}$ is a path, thus $v_0,...,v_{n-1},v_0$ is a cycle.
 
-        - $A \cap B = \varnothing$
+- Now, consider the case $\exists m : n = 2m$, then, we define:
 
-        - $\forall \Set{u,v} \in E \implies c(u) \neq c(v) \implies  (u \in A \land v \in B) \vee (v \in A \land u \in B)$
+    $$c : V_C \to \Set{1,2} : c(v_i) = \begin{cases}  1 \ \text{ if } i  \text{ is even}\\ 2 \ \text{ if } i  \text{ is odd} \end{cases}$$
+
+    It is clear that even and odd numbers alternates each in a consecutive numeric sequence. So:
+
+    $$c(v_{i-1}) \neq c(v_i) \ \ \forall v_{i-1},v_i \in v_0,...,v_{n-1} \implies c(v_{i-1}) \neq c(v_i) \ \ \forall \Set{v_{i-1},v_i} \in E_C $$
+
+    For the same reason, if $n$ is even, then $n-1$ is odd and $c(v_{n-1}) \neq c(v_0)$, thus, in conclusion:
+
+    $$c(u) \neq c(v)  \ \ \forall \Set{u,v} \in E_C$$
+
+    And $c$ is a $2-coloring$ of $C_n$. Obviously since $E_C \neq \varnothing$ it can't be $\chi(C_n) = 1$.
+
+    <br>
+
+- If $n = 2m + 1$ and we suppose the existence of a $2-coloring$, $c$ over $C_n$, then: 
+
+    $$c(u) \neq c(v) \ \ \forall \Set{u,v} \in E_C \implies c(v_{i-1}) \neq c(v_i) \ \ \forall \Set{v_{i-1},v_i} \in E_C \iff$$
+    $$ \iff c(v_{i-1}) \neq c(v_i) \ \ \forall v_{i-1},v_i \in v_0,...,v_{n-1}$$
+
+    Or, in other words, any consecutive vertex in the path $v_0,...,v_{n-1}$ has different image under $c$. 
+    
+    Thus, is easy to see that:
+    
+    - Since in a $2-coloring$ there are only two possible images values 
+    
+    - And $n-1$ is even (because $n$ is odd), 
+    
+    Then $v_0$ and $v_{n-1}$ share the same image under $c$ and it is:
+    
+    $$c(v_{n-1}) = c(v_0) \land \Set{v_{n-1},v_0} \in E_C$$
+    
+    Triggering a contradiction with the $2-coloring$ requirement.
+
+    Getting the example of $c$ provided above, is easy to see that:
+
+    $$c : V_c \to \Set{1,2,3} : c(v_i) = \begin{cases}  1 \ \text{ if } i  \text{ is even } \land i \neq n -1\\ 2 \ \text{ if } i  \text{ is odd} \\  3 \end{cases}$$
+
+    Is a $3-coloring$ of $C_n$.
+
+    <br>
+
+### 4.3.3. For a bipartite graph $G$, $\chi(C_n) = 2$
+
+A bipartite graph is a graph $G_B$ satisfying:
+
+$$G_B := (V_B,E_B): \begin{cases}V_B := A \sqcup B \ \ (V = A\cup B \land A \cap B = \varnothing) \\ E_B \subset \binom{V_B}{2} : a \in A \land b \in B \ \ \forall \Set{a,b} \in E_B \end{cases}$$
+
+Then, consider 
+
+$$c : V_B \to \Set{1,2} : c(v) =\begin{cases}  1 \ \ \text{ if } v \in A\\ 2 \ \ \text{ if } v \in B \end{cases}$$
+
+Then:
+
+$$\forall \Set{u,v} \in E_B \ \  \begin{cases} u \in A  \Rightarrow c(u) = 1 \\ v \in B \Rightarrow c(v) = 2 \end{cases} \implies c(u) \neq c(v)$$
+
+And $c$ is a $2-coloring$ of $G_B$. Of course, $E_B \neq \varnothing \implies \chi(G_B) \neq 1$.
+
+<br>
+
+## 4.4. 2-colorability theorem.
+
+The 2-colorability caracterization stands for, being $G := (V,E)$ a graph, then:
+
+$$\chi(G)=2 \iff G \text{ is bipartite } \iff \neg \exists\,\text{cycle } C \subseteq G : \ \vert \ C\ \vert \ \ \text{ is odd} $$
+
+Observe that we already demonstrate that:
+
+- $G \text{ is bipartite } \implies \chi(G)=2$
+- $\chi(G)=2 \implies \neg \exists\,\text{cycle } C \subseteq G : \vert C\vert \ \text{ is odd}$ (since all odd cycle has a 3 as a chromatic number).
+- $\chi(G)=2 \implies G \text{ is bipartite }$
+
+    Observe that
+
+    $$\chi(G)=2 \implies \exists c :V \to \Set{1,2} : c(u) \neq c(v) \ \ \forall \set{u,v} \in E$$
+
+    We define: 
+
+    $$\begin{cases}A := \Set{u \in V \ \vert \  c(u) = 1} \\ B:= \Set{u \in V \ \vert \  c(u) = 2}\end{cases}$$
+
+    In this context, since $c$ is an application we have:
+
+    - $v \in V \Rightarrow c(v) = 1 \vee c(v) =2 \Leftrightarrow v \in A \vee v \in B \Rightarrow V = A \cup B$
+
+    - $A \cap B = \varnothing$
+
+    - $\forall \Set{u,v} \in E \implies c(u) \neq c(v) \implies  (u \in A \land v \in B) \vee (v \in A \land u \in B)$
+
+    <br>
+
+    Thus, $G$ verifies:
+    $$\begin{cases}V := A \sqcup B \ \ (V = A\cup B \land A \cap B = \varnothing) \\ E \subset \binom{V}{2} : a \in A \land b \in B \ \ \forall \Set{a,b} \in E \end{cases}$$
+
+Now, only last to demonstrate that:
+
+- $\neg \exists\,\text{cycle } C \subseteq G : \vert C\vert \ \text{ is odd} \implies G$ is bipartite. 
+
+    The premise can be negated in two ways:
+
+    - First, $\neg \exists C \subseteq G : C \text{ is a cycle}$, then consider a vertex we call $r$ and: $A = \Set{u \vert  dist(r,u) \text{ is even}}$ and $B = \Set{u \vert  dist(r,u) \text{ is odd}}$. Then is pretty obvius that $A \cup B$ and we impose that $A \cap B = \varnothing$, let's observe that this impossition requires no odd cycles.
+
+        Being $C \subseteq G : C \text{ is odd}$, then, $C:=v_0,...,v_{n-1},v_0$ where $v_0,...,v_{n-1}$ is a path and $\Set{v_{n-1},v_0} \in E$. Lets say $r : dist(r,v_0) \land r \notin C$. Then, since $C$ is a cycle there are two paths to measure the distance between $r$ and $v_{n-1}$:
+
+        $$dist(r,v_{n-1}) = dist(r,v_0) + dist(v_0,v_{n-1})$$
+
+        Since $\Set{v_{n-1},v_0} \in E \Rightarrow dist(v_0,v_{n-1}) = 1 \Rightarrow dist(r,v_{n-1}) = 2 \text{ (even)}$, but also, since $C$ is odd, $n-1$ is even (meaning that $dist(v_0,v_{n-1})$ is even and $1 + dist(v_0,v_{n-1}) = dist(r,v_{n-1})$ is odd). So in summary: $A \cap B \neq \varnothing$
 
         <br>
 
-        Thus, $G$ verifies:
-        $$\begin{cases}V := A \sqcup B \ \ (V = A\cup B \land A \cap B = \varnothing) \\ E \subset \binom{V}{2} : a \in A \land b \in B \ \ \forall \Set{a,b} \in E \end{cases}$$
+# 5. Plannar graphs. 
 
-    Now, only last to demonstrate that:
-
-    - $\neg \exists\,\text{cycle } C \subseteq G : \vert C\vert \ \text{ is odd} \implies G$ is bipartite. 
-
-        The premise can be negated in two ways:
-
-        - First, $\neg \exists C \subseteq G : C \text{ is a cycle}$, then consider a vertex we call $r$ and: $A = \Set{u \vert  dist(r,u) \text{ is even}}$ and $B = \Set{u \vert  dist(r,u) \text{ is odd}}$. Then is pretty obvius that $A \cup B$ and we impose that $A \cap B = \varnothing$, let's observe that this impossition requires no odd cycles.
-
-            Being $C \subseteq G : C \text{ is odd}$, then, $C:=v_0,...,v_{n-1},v_0$ where $v_0,...,v_{n-1}$ is a path and $\Set{v_{n-1},v_0} \in E$. Lets say $r : dist(r,v_0) \land r \notin C$. Then, since $C$ is a cycle there are two paths to measure the distance between $r$ and $v_{n-1}$:
-
-            $$dist(r,v_{n-1}) = dist(r,v_0) + dist(v_0,v_{n-1})$$
-
-            Since $\Set{v_{n-1},v_0} \in E \Rightarrow dist(v_0,v_{n-1}) = 1 \Rightarrow dist(r,v_{n-1}) = 2 \text{ (even)}$, but also, since $C$ is odd, $n-1$ is even (meaning that $dist(v_0,v_{n-1})$ is even and $1 + dist(v_0,v_{n-1}) = dist(r,v_{n-1})$ is odd). So in summary: $A \cap B \neq \varnothing$
-
-           <br>
-
-#### 2.1.1.5. Plannar graphs. Drawings and faces. Euler's formula.
-
-A *planar graph* is a graph that admits a graphical representation on a plane such its edges do not cross each other. For example, Complete graph $K_3$ do admit a representation in which the edges not cross, but $K_5$ do not.
+A *planar graph* is a graph that admits a graphical representation on a plane such its edges do not cross each other. For example, complete graph $K_3$ do admit a representation in which the edges not cross, but $K_5$ do not.
 
 Let be $G:=(V,E)$ a finite simple graph, then an embedding of $G$ into $\mathbb{R}^2$ is a function $\phi: G \to \mathbb{R}^2$ that:
 
@@ -582,11 +628,11 @@ Then, $G$ is said to be planar if admits a embedding $\phi$ in $\mathbb{R}^2$ as
 
 Associated to a drawing of a planar graph are the so called *faces*, grouped in the set $F$; which are enclosed regions of the plane $\mathbb{R}^2$ by the planar drawing of the graph (here is included the unbound outer face extranl to the graph). The Euler's formula specifies that, for a complete planar graph $G:= (V,E)$, being $F$ the set of the faces of the drawing graph, then:
 
-$$|V| - |E| + |F| = 2$$
+$$\ \vert \ V\ \vert \  - \ \vert \ E\ \vert \  + \ \vert \ F\ \vert \  = 2$$
 
 <br>
 
-#### 2.1.1.6. Dual graphs.
+# 6. Dual graphs.
 
 Given a connected planar graph $G$, then, the *dual graph* is what you get when you turn faces into vertices in a planar embedding of $G$. 
 
@@ -599,29 +645,10 @@ Formally;
 
 Being $G$ a connected planar graph and $\phi$ his drawing in $\mathbb{R}^2$. Then, we define the dual graph as:
 
-$$G^*:= (V^*,E^*):\begin{cases}V^* &:= F = \Set{f : f \text{ is a face of }(G,\phi)} \\ E^* &:= \Set{\Set{f_1,f_2} | \exists e \in E \text{ between } f_1 \text{ and } f_2 } \subseteq \binom{V^*}{2}\end{cases}$$
+$$G^*:= (V^*,E^*):\begin{cases}V^* &:= F = \Set{f : f \text{ is a face of }(G,\phi)} \\ E^* &:= \Set{\Set{f_1,f_2} \ \vert \  \exists e \in E \text{ between } f_1 \text{ and } f_2 } \subseteq \binom{V^*}{2}\end{cases}$$
 
 Is important to understand that *Dual depends on the embedding*: Two different planar drawings of the same abstract planar graph can produce non-isomorphic duals. The dual is canonical only after you fix the embedding.
 
 In this context, a map coloring is equal to color a dual graph. A map representation is in fact a dual graph.
 
 <br>
-
-### 2.1.2. Directed graphs.
-
-
-<br>
-
-## 2.2. Basic Algebra: Rings and Fields.
-
-## 2.3. Polynomies.
-
-## 2.4. Discrete Probability.
-
-# 3. Arithmetic Circuits.
-
-## 3.1. Formal definition.
-
-## 3.2. Arithmetic Circuits and Complexity Theory.
-
-## 3.3. Arithmetic Circuits and Discrete Probability.
