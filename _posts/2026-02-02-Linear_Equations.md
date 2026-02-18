@@ -814,7 +814,9 @@ Conceptually these are the three “row moves” that change the representation 
 
 For now on, consider:
 
-- $F$ a field and $A:=(a_{ij})_{i \in [m], j \in [n]} \in M_{m \times n}(F)$
+- $F$ a field.
+- The matrix: 
+    $$A:=(a_{ij})_{i \in [m], j \in [n]} \in M_{m \times n}(F)$$
 - Some index $r,s \in [m] : r \neq s$ 
 - A scalar $\lambda \in F$.
 
