@@ -672,9 +672,16 @@ Be $\Set{F,+, \ ·} : F \subseteq \mathbb{C}$ a field, then we have to prove tha
 
 Be $q \in \mathbb{Q}$, then $\exists a,b \in \mathbb{Z} : \displaystyle q=\frac{a}{b}$, then we can understand that $\mathbb{Z} \subset F \implies \mathbb{Q} \subset F$ since by the closure property $ab^{-1} \in F$. 
 
-Let's see that $1 + 0i = 1_{\mathbb{C}} \in F$  and $1_{\mathbb{C}} = 1_F$. Since $F \subset \mathbb{C}$, then in $\mathbb{C}$ $F$'s elements have $1_\mathbb{C}$ as his identity, so since this identity is unique must be $1_F = 1_\mathbb{C}$ inside $F$ (if where any other element $e \in F:e=1_F$, in $\mathbb{C}$ must be $e = 1_\mathbb{C}$ and thus $1_F = 1_\mathbb{C}$).
+Let's see that 
 
-Let's observe that $1 \in F \underbrace{\implies}_{Peano} \mathbb{Z} \subset F\implies \mathbb{Q} \subset F$.
+- $1 + 0i = 1_{\mathbb{C}} \in F$
+- $1_F$ is inherited from the superfield $\mathbb{C}$;. 
+
+
+
+Let's observe that:
+
+$$1_\mathbb{C} \in F \underbrace{\implies}_{Peano} \mathbb{Z} \subset F\implies \mathbb{Q} \subset F$$
 
 <br>
 
