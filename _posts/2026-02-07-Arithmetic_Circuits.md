@@ -648,7 +648,7 @@ And is read as $u$ *implies* $v$.
 
 <br>
 
-**Adjacent vertex structures.**
+**Implicated vertex structures.**
 
 <br>
 

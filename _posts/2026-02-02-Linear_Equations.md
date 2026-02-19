@@ -805,14 +805,16 @@ $$Y= \begin{bmatrix}Y_{1} \\\vdots \\ \ Y_{m} \end{bmatrix} = \begin{bmatrix}Y(1
 
 <br>
 
-### 3.2.2. Matrix operations.
+### 3.2.2. Elementary operations.
+
+#### 3.2.2.1. Direct operations.
 
 For the time being, $AX = Y$ is nothing more than a shorthand notation for our system of linear equations. Later, when we have defined a multiplication for matrices, it will mean that $Y$ is the product of $A$ and $X$. 
 
 We wish now to consider operations on the rows of the matrix $A$, which correspond to forming linear combinations of the equations in the system $AX = Y$. We restrict our attention to three elementary row operations on an $m \times n$ matrix $A$ over the field $F$. 
 
 
-Conceptually these are the three “row moves” that change the representation of a matrix in a controlled way; formally they are functions $M_{m \times n} \to M_{m \times n}$ 
+Conceptually these are the three “row moves” that change the representation of a matrix in a controlled way; formally they are functions $\mathcal{E}:M_{m \times n} \to M_{m \times n}$ 
 
 - Multiplication of one row of $A$ by a non-zero scalar $\lambda$. 
 - Replace row, $r$ by; $r + \lambda s$
@@ -849,14 +851,52 @@ $$\mathcal{E}_{r + \lambda s}^r(A):=(e_{ij})_{i \in [m], j \in [n]} : e_{ij} := 
 
 We define the process of *swap* the rows $r$ and $s$; $r \leftrightarrow s$ to the definition of the function:
 
-$$\mathcal{E}_{r  \leftrightarrow s}^r(A):=(e_{ij})_{i \in [m], j \in [n]} : e_{ij} := \begin{cases}  a_{sj}  \ \ \ \ \ \ i = r \\  a_{rj}  \ \ \ \  \ \ i = s \\ a_{ij} \ \ i \notin \Set{r,s}\end{cases}$$
+$$\mathcal{E}_{r  \leftrightarrow s}(A):=(e_{ij})_{i \in [m], j \in [n]} : e_{ij} := \begin{cases}  a_{sj}  \ \ \ \ \ \ i = r \\  a_{rj}  \ \ \ \  \ \ i = s \\ a_{ij} \ \ i \notin \Set{r,s}\end{cases}$$
 
 <br>
 
-All this function $\mathcal{E}$ eventually relates $A$ with the matrices $E_{\lambda r}^r, E_{r + \lambda s}^r, E_{r  \leftrightarrow s}^r$
+All this function $\mathcal{E}$ eventually relates $A$ with the matrices $E_{\lambda r}^r, E_{r + \lambda s}^r, E_{r  \leftrightarrow s}$
 
 The definition of this matrices are coherent with the system $AX = Y$, in the sense that the operations preserve system equivalence after apply the same change to $Y$:
 
-$$[AX = Y] \equiv [E_{\lambda r}^rAX = E_{\lambda r}^rY] \equiv [E_{r + \lambda s}^rAX = E_{r + \lambda s}^rY] \equiv [E_{r  \leftrightarrow s}^rAX = E_{r  \leftrightarrow s}^rY]$$
+$$[AX = Y] \equiv [E_{\lambda r}^rAX = E_{\lambda r}^rY] \equiv [E_{r + \lambda s}^rAX = E_{r + \lambda s}^rY] \equiv [E_{r  \leftrightarrow s}AX = E_{r  \leftrightarrow s}Y]$$
 
-This will make sense when we presentate the matricial product and check that the resulting system of equations is the result of apply a property that respects the equivalence as we saw that the start of this post.
+This will make sense when we presentate the matricial product and check that the resulting system of equations is the result of apply a property that respects the equivalence as we saw at the start of this post.
+
+<br>
+
+#### 3.2.2.2. Inverse Operations.
+
+Also observe that each function has a *reverse operation*. 
+
+Let's take: $\mathcal{E}_{\lambda r}^r : M_{m \times n} \to M_{m \times n} : \lambda \neq 0$, observe that this function is *injective*. Reasoning to the opposite, consider an $A, B, C \in M_{m \times n} (F): \mathcal{E}_{\lambda r}^r(A) := \Set{(b_{ij}),(c_{ij})}$. 
+
+Then is: 
+
+$$b_{rj} = \lambda a_{rj} = c_{rj} \ \ \forall j \in [n] \implies B = C  \implies \forall A \ \  \exists! B : \mathcal{E}_{\lambda r}^r(A) := B$$
+
+Let's also observe that, since the domain and the codomain coincides, then is also surjective and thus, bijective and we can consider the existance of an inverse; $\mathcal{E}^{-1}$ verifying: $\mathcal{E}^{-1} \circ \mathcal{E} = \mathcal{E} \circ \mathcal{E}^{-1} = I_{M_{m \times n} (F)}$
+
+A very similar argument can be provided to $\mathcal{E}_{r + \lambda s}^r$ and $\mathcal{E}_{r  \leftrightarrow s}^r$, so lets now present the inverse of each function.
+
+ - For $\mathcal{E}_{\lambda r}^r$, the function defined as: $\mathcal{E}_{\lambda^{-1} r}^r(A):=(e_{ij})_{i \in [m], j \in [n]} : e_{ij} := \begin{cases}  \lambda^{-1} a_{ij} \ \ i = r \\ \  \ \  a_{ij}  \ \ \ \ \ i \neq r\end{cases}$, verifies:
+
+    $$\mathcal{E}_{\lambda^{-1} r}^r(\mathcal{E}_{\lambda r}^r(A)) = A = \mathcal{E}_{\lambda r}^r(\mathcal{E}_{\lambda^{-1} r}^r(A))$$
+
+    Considering only the operation over the row $r$, is $\lambda^{-1} \lambda a_{rj} = \lambda \lambda^{-1}a_{rj} = a_{rj} \ \ \forall j \in [n]$
+
+    <br>
+
+- For, $\mathcal{E}_{r + \lambda s}^r$, we can consider: $\mathcal{E}_{r - \lambda s}^r(A):=(e_{ij})_{i \in [m], j \in [n]} : e_{ij} := \begin{cases}  a_{ij} - \lambda a_{sj} \ \ i = r \\ \   \ \ \ \ \ a_{ij}  \ \ \ \ \ \ \ \ \ i \neq r\end{cases}$, which verifies:
+
+    $$\mathcal{E}_{r + \lambda s}^r(\mathcal{E}_{r - \lambda s}^r(A)) = A = \mathcal{E}_{r - \lambda s}^r(\mathcal{E}_{ r + \lambda s}^r(A))$$
+
+    Again, considering only the row $r$; $(a_{rj}  - \lambda a_{sj}) + \lambda a_{sj} = a_{rj} = (a_{rj}  + \lambda a_{sj}) - \lambda a_{sj}  \ \ \forall j \in [n]$
+
+    <br>
+
+- Lastly, obviously, for, $\mathcal{E}_{r \leftrightarrow s}^r$, we can consider $\mathcal{E}_{s \leftrightarrow r}^r$
+
+    <br>
+
+This basically means that any of the three operations are reversible. In other words, the inverse operation (function) of an elementary row operation exists and is an elementary row operation of the same type. 
