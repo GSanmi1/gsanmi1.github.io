@@ -178,7 +178,7 @@ Let's observe that there are important relations between the identities of the a
 
 3. Let's also observe that: $1_K = 1_F \wedge 0_K = 0_F \ \ \forall K \subset F : \Set{K, +, \ ·}$ is a field.
 
-    For the elements of $K$ in $F$, the identity is $1_F$, then due to uniqueness of this identity, in $1_K = 1_F$ and the same can be applied to $0$, meaning that any subfield inherit the identity of the main field.
+    In $F$, the identity is $1_F$, then due to uniqueness of this identity in $F$ is $1_K = 1_F$ for the elements of $K$ in $F$, so isolating $K$ from $F$ necesarily is $1_{F} \in K$ and the same can be applied to $0$, meaning that any subfield inherit the identity of the superfield.
 
 <br>
 

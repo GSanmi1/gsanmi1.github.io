@@ -609,6 +609,46 @@ In this context, a map coloring is equal to color a dual graph. A map representa
 
 ### 2.1.2. Directed graphs.
 
+A *directed acyclic graph* (DAG) is a directed graph that encodes a *one-way dependency* or *precedence relation*.
+
+As an example, being $u,v$ two predicates related as $u \to v$, then a DAG would represent this relation by an arrow of $u$ to $v$ meaning that $v$ depends on $u$ (or $u$ must happen before $v$). 
+
+Thus, DAGs are a way to abstract implication relationships between multiples agents in a discrete relation structure.
+
+<br>
+
+#### 2.1.2.1. Formal Definition.
+
+A direct graph gets defined as a pair: $D:= (V,E)$, where:
+
+- $V$ is a finite set of elements.
+- $E \subseteq V^2$ is a set of ordered pairs. Let's observe that in a simple graph $E \subseteq \displaystyle \binom{V}{2}$ was defined as not-ordered pairs, in this case we define an order to reference the implication order. An element $(u,v) \in E$ gets read as $u$ preceds $v$ or $u$ implicates $v$. 
+
+<br>
+
+#### 2.1.2.2. Main notions.
+
+**In/Out Degrees. Impliance.**
+
+This is an important notion in directed graphs since, in contrast with simple graphs, there are two notions of degres in directed graphs.
+
+As a brief reminder, if $G:=(V',E')$ is a simple graph, and $v \in V'$, then we know that the neighborhood of $v$ is the set $N(v):= \Set{u \ \vert \ \set{u,v} \in E'}$, then the degree of $v$ was the number of neigbourhs it has $deg(v) := \vert N(v) \vert$
+
+A similar concept apply to a directed graph $D:=(V,E)$ but counting with the direction of the relation in the graph. Again, be $v \in V$, then:
+
+- The *out-degree* to the number: $deg^+(v) := \vert \Set{u \ \vert \ (v,u) \in E} \vert$
+
+- The *in-degree* to the number: $deg^-(v) := \vert \Set{u \ \vert \ (u,v) \in E} \vert$
+
+We also say that, being $u,v \in V \in D$ then:
+
+$$u \to v \iff (u,v) \in E$$
+
+And is read as $u$ *implies* $v$. 
+
+<br>
+
+**Adjacent vertex structures.**
 
 <br>
 
