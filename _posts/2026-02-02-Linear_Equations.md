@@ -869,9 +869,9 @@ This will make sense when we presentate the matricial product and check that the
 
 Also observe that each function has a *reverse operation*. 
 
-Let's take: $\mathcal{E}_{\lambda r}^r : M_{m \times n} \to M_{m \times n} : \lambda \neq 0$, observe that this function is *injective*. Reasoning to the opposite, consider an $A, B, C \in M_{m \times n} (F): \mathcal{E}_{\lambda r}^r(A) := \Set{(b_{ij}),(c_{ij})}$. 
+Let's take: $\mathcal{E}_{\lambda r}^r (·) : \lambda \neq 0$, observe that this function is *injective*. 
 
-Then is: 
+Reasoning to the opposite, consider matrix $A, B, C: \mathcal{E}_{\lambda r}^r(A) := \Set{B, C}$. Then is: 
 
 $$b_{rj} = \lambda a_{rj} = c_{rj} \ \ \forall j \in [n] \implies B = C  \implies \forall A \ \  \exists! B : \mathcal{E}_{\lambda r}^r(A) := B$$
 
