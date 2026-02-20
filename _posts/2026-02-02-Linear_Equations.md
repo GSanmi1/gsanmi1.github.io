@@ -877,25 +877,25 @@ $$b_{rj} = \lambda a_{rj} = c_{rj} \ \ \forall j \in [n] \implies B = C  \implie
 
 Let's also observe that, since the domain and the codomain coincides, then is also surjective and thus, bijective and we can consider the existance of an inverse; $\mathcal{E}^{-1}$ verifying: $\mathcal{E}^{-1} \circ \mathcal{E} = \mathcal{E} \circ \mathcal{E}^{-1} = I\_{M\_{m \times n} (F)}$
 
-A very similar argument can be provided to $\mathcal{E}_{r + \lambda s}^r$ and $\mathcal{E}_{r  \leftrightarrow s}^r$, so lets now present the inverse of each function.
+A very similar argument can be provided to $\mathcal{E}\_{r + \lambda s}^r$ and $\mathcal{E}\_{r  \leftrightarrow s}^r$, so lets now present the inverse of each function.
 
- - For $\mathcal{E}_{\lambda r}^r$, the function defined as: $\mathcal{E}_{\lambda^{-1} r}^r(A):=(e_{ij})_{i \in [m], j \in [n]} : e_{ij} := \begin{cases}  \lambda^{-1} a_{ij} \ \ i = r \\ \  \ \  a_{ij}  \ \ \ \ \ i \neq r\end{cases}$, verifies:
+ - For $\mathcal{E}\_{\lambda r}^r$, the function defined as: $\mathcal{E}\_{\lambda^{-1} r}^r(A):=(e\_{ij})\_{i \in [m], j \in [n]} : e\_{ij} := \begin{cases}  \lambda^{-1} a\_{ij} \ \ i = r \\ \  \ \  a\_{ij}  \ \ \ \ \ i \neq r\end{cases}$, verifies:
 
     $$\mathcal{E}_{\lambda^{-1} r}^r(\mathcal{E}_{\lambda r}^r(A)) = A = \mathcal{E}_{\lambda r}^r(\mathcal{E}_{\lambda^{-1} r}^r(A))$$
 
-    Considering only the operation over the row $r$, is $\lambda^{-1} \lambda a_{rj} = \lambda \lambda^{-1}a_{rj} = a_{rj} \ \ \forall j \in [n]$
+    Considering only the operation over the row $r$, is $\lambda^{-1} \lambda a\_{rj} = \lambda \lambda^{-1}a\_{rj} = a\_{rj} \ \ \forall j \in [n]$
 
     <br>
 
-- For, $\mathcal{E}_{r + \lambda s}^r$, we can consider: $\mathcal{E}_{r - \lambda s}^r(A):=(e_{ij})_{i \in [m], j \in [n]} : e_{ij} := \begin{cases}  a_{ij} - \lambda a_{sj} \ \ i = r \\ \   \ \ \ \ \ a_{ij}  \ \ \ \ \ \ \ \ \ i \neq r\end{cases}$, which verifies:
+- For, $\mathcal{E}\_{r + \lambda s}^r$, we can consider: $\mathcal{E}\_{r - \lambda s}^r(A):=(e\_{ij})\_{i \in [m], j \in [n]} : e\_{ij} := \begin{cases}  a\_{ij} - \lambda a\_{sj} \ \ i = r \\ \   \ \ \ \ \ a\_{ij}  \ \ \ \ \ \ \ \ \ i \neq r\end{cases}$, which verifies:
 
     $$\mathcal{E}_{r + \lambda s}^r(\mathcal{E}_{r - \lambda s}^r(A)) = A = \mathcal{E}_{r - \lambda s}^r(\mathcal{E}_{ r + \lambda s}^r(A))$$
 
-    Again, considering only the row $r$; $(a_{rj}  - \lambda a_{sj}) + \lambda a_{sj} = a_{rj} = (a_{rj}  + \lambda a_{sj}) - \lambda a_{sj}  \ \ \forall j \in [n]$
+    Again, considering only the row $r$; $(a\_{rj}  - \lambda a\_{sj}) + \lambda a\_{sj} = a\_{rj} = (a\_{rj}  + \lambda a\_{sj}) - \lambda a\_{sj}  \ \ \forall j \in [n]$
 
     <br>
 
-- Lastly, obviously, for, $\mathcal{E}_{r \leftrightarrow s}^r$, we can consider $\mathcal{E}_{s \leftrightarrow r}^r$
+- Lastly, obviously, for, $\mathcal{E}\_{r \leftrightarrow s}^r$, we can consider $\mathcal{E}\_{s \leftrightarrow r}^r$
 
     <br>
 
