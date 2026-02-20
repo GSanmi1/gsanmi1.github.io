@@ -650,6 +650,43 @@ And is read as $u$ *implies* $v$.
 
 **Implicated vertex structures.**
 
+- **Directed Walk**; is a sequence $(v_0,...,v_k) : (v_{i-1},v_i) \in E \ \ \forall i \in [k] \wedge k \in \mathbb{N}$
+
+- **Directed Path**; is a directed walk with all vertices distinct.
+
+- **Directed Cycle**; is a directed walk $(v_0,...,v_k,v_0) : (v_0,...,v_k)$ is a path.
+
+![direct_structures](/assets/images/Maths/DiscreteMath/direct_structures.png)
+
+<br>
+
+#### 2.1.2.3. Directed Acyclic Graphs (DAGs).
+
+A Directed Acylic Graph (DAG) is a directed graph with no cycles.
+
+<br>
+
+##### 2.1.2.3.1. Sources and sinks.
+
+Being $D:=(V,E)$ a DAG, then:, we define:
+
+- **Sources**; vertex $v \in V : deg^-(v)=0 \iff \nexists u \in V : u \to v$ 
+- **Sinks**; vertex $v \in V : deg^+(v)=0 \iff \nexists u \in V : v\to u$ 
+
+![source_sink](/assets/images/Maths/DiscreteMath/source_sink.png)
+
+In $D$ always exists at least one sink and one source:
+
+$$D:=(V,E) \text{ a DAG } : \vert V \vert \geq 2\implies \exists u,v\in V : \big(deg^-(u)=deg^+(v)=0 \wedge u \neq v \big)$$
+
+Let's reason to the opposite, let's suppose that $\neg \Big(\exists u,v\in V : \big(deg^-(u)=deg^+(v)=0 \wedge u \neq v \big)\Big)$, we can negate this premise in two ways:
+
+- First, $u=v$, meaning: $\exists u,v\in V : \big(deg^-(u)=deg^+(v)=0 \wedge u = v \big)$, then $u$ (or $v$) is an isolated vertex (despite the trivial case when $\vert V \vert = 1$) and we are going to consider (conveniently) that $D$ (for $\vert V \vert \geq 1$) as a DAG is connected (in the simple graph conception which is totally acceptable). In this terms, $D$ wouldn't be a DAG since the premise contradict connection in $D$.
+
+- Second, consider now that $D$ is connected and $(deg^+(u) \geq 1 \wedge deg^-(u) \geq 1) \ \ \forall u \in V$. In this context consider the longuest path $P:=(u_1,...,u_k)$. 
+
+    Due to maximality all out-neigbourhs of $u_k$ are included in $P$ (otherwise you could extend $P$ contradicting maximality), meaning that $\exists i \in [k] : u_k \to u_i \wedge u_i \in P$, thus we can consider the cycle $C:= (u_i,...,u_k,u_i)$ since $(u_i,...,u_k) \subset P$ is a path.
+
 <br>
 
 ## 2.2. Basic Algebra: Rings and Fields.
