@@ -871,7 +871,7 @@ Also observe that each function has a *reverse operation*.
 
 Let's take: $\mathcal{E}_{\lambda r}^r (·) : \lambda \neq 0$, observe that this function is *injective*. 
 
-Reasoning to the opposite, consider matrix $A, B, C: \mathcal{E}_{\lambda r}^r(A) := \Set{B, C}$. Then is: 
+Reasoning to the opposite, consider matrix $A, B, C \in M\_{m \times n}(F): \mathcal{E}\_{\lambda r}^r(A) := \Set{(b\_{ij}), (c\_{ij})}$. Then is: 
 
 $$b_{rj} = \lambda a_{rj} = c_{rj} \ \ \forall j \in [n] \implies B = C  \implies \forall A \ \  \exists! B : \mathcal{E}_{\lambda r}^r(A) := B$$
 
