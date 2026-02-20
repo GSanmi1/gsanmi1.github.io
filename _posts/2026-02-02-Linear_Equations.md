@@ -875,7 +875,7 @@ Reasoning to the opposite, consider matrix $A, B, C: \mathcal{E}_{\lambda r}^r(A
 
 $$b_{rj} = \lambda a_{rj} = c_{rj} \ \ \forall j \in [n] \implies B = C  \implies \forall A \ \  \exists! B : \mathcal{E}_{\lambda r}^r(A) := B$$
 
-Let's also observe that, since the domain and the codomain coincides, then is also surjective and thus, bijective and we can consider the existance of an inverse; $\mathcal{E}^{-1}$ verifying: $\mathcal{E}^{-1} \circ \mathcal{E} = \mathcal{E} \circ \mathcal{E}^{-1} = I_{M_{m \times n} (F)}$
+Let's also observe that, since the domain and the codomain coincides, then is also surjective and thus, bijective and we can consider the existance of an inverse; $\mathcal{E}^{-1}$ verifying: $\mathcal{E}^{-1} \circ \mathcal{E} = \mathcal{E} \circ \mathcal{E}^{-1} = I\_{M\_{m \times n} (F)}$
 
 A very similar argument can be provided to $\mathcal{E}_{r + \lambda s}^r$ and $\mathcal{E}_{r  \leftrightarrow s}^r$, so lets now present the inverse of each function.
 
