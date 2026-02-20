@@ -879,7 +879,7 @@ Let's also observe that, since the domain and the codomain coincides, then is al
 
 A very similar argument can be provided to $\mathcal{E}\_{r + \lambda s}^r$ and $\mathcal{E}\_{r  \leftrightarrow s}^r$, so lets now present the inverse of each function.
 
- - For $\mathcal{E}\_{\lambda r}^r$, the function defined as: $\mathcal{E}\_{\lambda^{-1} r}^r(A):=(e\_{ij})\_{i \in [m], j \in [n]} : e\_{ij} := \begin{cases}  \lambda^{-1} a\_{ij} \ \ i = r \\ \  \ \  a\_{ij}  \ \ \ \ \ i \neq r\end{cases}$, verifies:
+ - For $\mathcal{E}\_{\lambda r}^r$, the function defined as: $\mathcal{E}\_{\lambda^{-1} r}^r(A):=(e\_{ij})\_{i \in [m], j \in [n]} : e\_{ij} := \begin{cases}  \lambda^{-1} a\_{ij} \ \ i = r \\\\ \  \ \  a\_{ij}  \ \ \ \ \ i \neq r\end{cases}$, verifies:
 
     $$\mathcal{E}_{\lambda^{-1} r}^r(\mathcal{E}_{\lambda r}^r(A)) = A = \mathcal{E}_{\lambda r}^r(\mathcal{E}_{\lambda^{-1} r}^r(A))$$
 
@@ -887,7 +887,7 @@ A very similar argument can be provided to $\mathcal{E}\_{r + \lambda s}^r$ and 
 
     <br>
 
-- For, $\mathcal{E}\_{r + \lambda s}^r$, we can consider: $\mathcal{E}\_{r - \lambda s}^r(A):=(e\_{ij})\_{i \in [m], j \in [n]} : e\_{ij} := \begin{cases}  a\_{ij} - \lambda a\_{sj} \ \ i = r \\ \   \ \ \ \ \ a\_{ij}  \ \ \ \ \ \ \ \ \ i \neq r\end{cases}$, which verifies:
+- For, $\mathcal{E}\_{r + \lambda s}^r$, we can consider: $\mathcal{E}\_{r - \lambda s}^r(A):=(e\_{ij})\_{i \in [m], j \in [n]} : e\_{ij} := \begin{cases}  a\_{ij} - \lambda a\_{sj} \ \ i = r \\\\ \   \ \ \ \ \ a\_{ij}  \ \ \ \ \ \ \ \ \ i \neq r\end{cases}$, which verifies:
 
     $$\mathcal{E}_{r + \lambda s}^r(\mathcal{E}_{r - \lambda s}^r(A)) = A = \mathcal{E}_{r - \lambda s}^r(\mathcal{E}_{ r + \lambda s}^r(A))$$
 
