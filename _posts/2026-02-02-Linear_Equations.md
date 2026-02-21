@@ -903,14 +903,51 @@ This basically means that any of the three operations are reversible. In other w
 
 <br>
 
-### 3.2.3. Row-equivalence of Matrices.
+### 3.2.3. Row-equivalence of Matrices and equivalence of system equations.
 
-Being $A, B \in M_{m \times n} (F)$ then we say that $A$ and $B$ are *row-equivalent* if one can be obtained throught the other after a finite composition of elementary row operations $\mathcal{E} : M\_{m \times n} \to M\_{m \times n}$ formally:
+Being $A, B \in M_{m \times n} (F)$ then we say that $A$ and $B$ are *row-equivalent* if one can be obtained from the other through a finite composition of elementary row operations $\mathcal{E} : M\_{m \times n} \to M\_{m \times n}$ formally:
 
-$$A \equiv B \iff \exists k \in  \mathbb{N} : \mathcal{E}_1 \cdots \circ \mathcal{E}_k(A) = B $$
+$$A \equiv_r B \iff \exists k \in  \mathbb{N} : \mathcal{E}_1 \cdots \circ \mathcal{E}_k(A) = B $$
 
-Let's observe that the term "equivalence" in row-equivalence is specifically choosen because, if we consider again $A, B \in M_{m \times n-1} (F)$ and $M, M'$ two equation systems such: $M := AX = Y \wedge M' := BX = Y'$, then:
+Let's observe that the term "equivalence" in row-equivalence is specifically choosen because, if we consider again $A, A' \in M_{m \times n-1} (F)$ and $M, M'$ two equation systems such: $M := AX = Y \wedge M' := A'X = Y'$, then:
 
-$$A \vert Y \equiv B\vert Y' \iff M \equiv M'$$
+$$A \vert Y \equiv_r A'\vert Y' \iff M \equiv M'$$
 
-Where $A\vert Y \in M_{m \times n}(F)$ is the matrix resulting in adding to $A$ the colum $Y \in M_{m \times 1}(F)$. This is obviously because each elementary operation $\mathcal{E}$ has a transference over an operation of
+We gonna see this equivalence choosen one elementary row operation but others admits a similar demonstration.
+
+- $\Rightarrow$ 
+
+    Where $A\vert Y \in M_{m \times n}(F)$ is the matrix resulting in adding to $A$ the colum $Y \in M_{m \times 1}(F)$. This is obviously because each elementary operation $\mathcal{E}$ can be identified with a change that presevers equivalence between linear systems presented above:
+
+    $$\begin{cases} \ \mathcal{E}^r_{\lambda r} & \simeq \big(P_r \in M \wedge \lambda \in F\setminus \Set{0} \implies S_{\lambda P_r} = S_{P_r} \big) \\ \ \mathcal{E}^r_{r+\lambda s} &\simeq \big(P_r,P_s \in M \wedge \lambda \in F \setminus \Set{0} \implies S_{P_r + \lambda P_s} \cap S_{P_s} = S_{P_r} \cap S_{P_s}) \\ \ \mathcal{E}^r_{r \leftrightarrow s} &\simeq \big(P_r,P_s \in M \implies S_{P_r}\cap S_{P_s} = S_{P_s} \cap S_{P_r})\end{cases}$$
+
+    Consider $M:= \displaystyle\bigwedge_i P_i \equiv [AX = Y]$, then, we form the system $M':=P_{\lambda r} \wedge \displaystyle\bigwedge_{i \neq r}P_i \equiv [A'X = Y']$, until this point we do know that $M \equiv M'$, let's see that $[A \vert Y] \equiv_r [A' \vert Y']$.
+
+    If: 
+
+    $$M := \begin{cases} \ a_{11}x_{1} \cdots + a_{1n}x_{n} = y_1 \\   \ \ \ \ \vdots \\\ a_{r1}x_{1} \cdots + a_{rn}x_{n} = y_r \ \ \ \\ \ \ \  \  \vdots \\ \ a_{m1}x_1 \cdots + a_{mn}x_{n} = y_m\end{cases} \equiv \begin{bmatrix} a_{11} & \cdots & a_{1n}\\ \vdots \\ a_{r1} & \cdots & a_{rn} \\ \vdots \\ a_{m1} & \cdots & a_{mn}\end{bmatrix} \begin{bmatrix} x_{1}\\\vdots \\ x_{n} \end{bmatrix} = \begin{bmatrix} y_{1}\\\vdots \\ y_r \\ \vdots \\ y_{m} \end{bmatrix}$$
+
+    $$M' := \begin{cases} \ a_{11}x_{1} \cdots + a_{1n}x_{n} = y_1 \\   \ \ \ \ \vdots \\\ \lambda a_{r1}x_{1} \cdots + \lambda a_{rn}x_{n} = \lambda y_r \ \ \ \\ \ \ \  \  \vdots \\ \ a_{m1}x_1 \cdots + a_{mn}x_{n} = y_m\end{cases} \equiv \begin{bmatrix} a_{11} & \cdots & a_{1n}\\ \vdots \\ \lambda a_{r1} & \cdots & \lambda a_{rn} \\ \vdots \\ a_{m1} & \cdots & a_{mn}\end{bmatrix} \begin{bmatrix} x_{1}\\\vdots \\ x_{n} \end{bmatrix} = \begin{bmatrix} y_{1}\\\vdots \\ \lambda y_r \\ \vdots \\ y_{m} \end{bmatrix}$$
+
+    And thus:
+
+    $$ [A \vert Y] := \begin{bmatrix} a_{11} & \cdots & a_{1n} \ \ \ y_1\\ \vdots \\ a_{r1} & \cdots & a_{rn} \ \ \ y_r \\ \vdots \\ a_{m1} & \cdots & a_{mn} \ \ \ y_m \end{bmatrix} \ \ \ \  [A \vert Y] := \begin{bmatrix} a_{11} & \cdots & a_{1n} \ \ \ y_1\\ \vdots \\ \lambda a_{r1} & \cdots & \lambda a_{rn} \ \ \ \lambda y_r \\ \vdots \\ a_{m1} & \cdots & a_{mn} \ \ \ y_m \end{bmatrix}$$
+
+    <br>
+
+    And obviously $\mathcal{E}^r_{\lambda r} ([A \vert Y]) = [A' \vert Y'] \implies [A \vert Y] \equiv_r [A' \vert Y']$.
+
+    <br>
+
+- $\Leftarrow$ 
+
+    Observe that this relationship is reciproc, in the sense that from: 
+
+    $$[A \vert Y] , [A' \vert Y'] \in M_{m \times {n+1}}(F) : \mathcal{E}^r_{\lambda r} ([A \vert Y]) = [A' \vert Y']$$
+
+    we can craft the systems $[AX = Y]:=\bigwedge P_i$ and  $[A'X=Y'] :=\bigwedge P'_i$ and is $P_i = P'_i \ \ i \neq r \wedge P_r = \lambda P_r$ and, as we see above, is $S_P = S_{\lambda P}$, thus $[AX = Y] \equiv [A'X = Y']$
+
+    Meaning that from *row-equivalent* matrices we can derivate equivalent equation systems and from equivalent equation systems we cand derivate row-equivalent matrix.
+
+
+
