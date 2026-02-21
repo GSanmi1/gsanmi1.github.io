@@ -957,4 +957,6 @@ $$\begin{cases} \ \mathcal{E}^r_{\lambda r} & \simeq \big(P_r \in M \wedge \lamb
 
 **Observe that while linear equation systemas defined over a field $F^n$ are linear constraints over points of $F^n$, matrices are sofisticate packages of the linear information storage in the linear system which with is easier to manipulate an understand.**
 
+<br>
+
 
