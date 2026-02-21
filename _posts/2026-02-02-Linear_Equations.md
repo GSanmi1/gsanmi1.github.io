@@ -913,6 +913,8 @@ Let's observe that the term "equivalence" in row-equivalence is specifically cho
 
 $$A \vert Y \equiv_r A'\vert Y' \iff M \equiv M'$$
 
+(Notice that we are not considering inconsistent systems, meaning that $S_M \neq \varnothing$, in the sense that $M$ and $M'$ are not equivalent because they solution set is empty, there are a lot of equation system equivalents because they are incosistent and one cannot be obtained throught the other by elementary row operations)
+
 We gonna see this equivalence choosen one elementary row operation but others admits a similar demonstration.
 
 Where $A\vert Y \in M_{m \times n}(F)$ is the matrix resulting in adding to $A$ the colum $Y \in M_{m \times 1}(F)$. This is obviously because each elementary operation $\mathcal{E}$ can be identified with a change that presevers equivalence between linear systems presented above:
@@ -945,7 +947,7 @@ $$\begin{cases} \ \mathcal{E}^r_{\lambda r} & \simeq \big(P_r \in M \wedge \lamb
 
     Observe that this relationship is reciproc, in the sense that from: 
 
-    $$[A \vert Y] , [A' \vert Y'] \in M_{m \times {n+1}}(F) : \mathcal{E}^r_{\lambda r} ([A \vert Y]) = [A' \vert Y']$$
+    $$[A \vert Y] , [A' \vert Y'] \in M_{m \times n}(F) : \mathcal{E}^r_{\lambda r} ([A \vert Y]) = [A' \vert Y']$$
 
     we can craft the systems $[AX = Y]:=\bigwedge P\_i$ and  $[A'X=Y'] :=\bigwedge P'\_i$ and is $P\_i = P'\_i \ \ i \neq r \wedge P\_r = \lambda P\_r$ and, as we see above, is $S\_P = S\_{\lambda P} \implies [AX = Y] \equiv [A'X = Y']$
 
@@ -953,6 +955,6 @@ $$\begin{cases} \ \mathcal{E}^r_{\lambda r} & \simeq \big(P_r \in M \wedge \lamb
 
     <br>
 
-Observe that while linear equation systemas defined over a field $F$ are linear constraints over points of $F$, matrix are sofisticate packages of the linear information storage in the linear system which with is easier to manipulate an understand.
+**Observe that while linear equation systemas defined over a field $F^n$ are linear constraints over points of $F^n$, matrices are sofisticate packages of the linear information storage in the linear system which with is easier to manipulate an understand.**
 
 
