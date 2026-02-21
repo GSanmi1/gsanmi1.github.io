@@ -900,3 +900,17 @@ A very similar argument can be provided to $\mathcal{E}\_{r + \lambda s}^r$ and 
     <br>
 
 This basically means that any of the three operations are reversible. In other words, the inverse operation (function) of an elementary row operation exists and is an elementary row operation of the same type. 
+
+<br>
+
+### 3.2.3. Row-equivalence of Matrices.
+
+Being $A, B \in M_{m \times n} (F)$ then we say that $A$ and $B$ are *row-equivalent* if one can be obtained throught the other after a finite composition of elementary row operations $\mathcal{E} : M\_{m \times n} \to M\_{m \times n}$ formally:
+
+$$A \equiv B \iff \exists k \in  \mathbb{N} : \mathcal{E}_1 \cdots \circ \mathcal{E}_k(A) = B $$
+
+Let's observe that the term "equivalence" in row-equivalence is specifically choosen because, if we consider again $A, B \in M_{m \times n-1} (F)$ and $M, M'$ two equation systems such: $M := AX = Y \wedge M' := BX = Y'$, then:
+
+$$A \vert Y \equiv B\vert Y' \iff M \equiv M'$$
+
+Where $A\vert Y \in M_{m \times n}(F)$ is the matrix resulting in adding to $A$ the colum $Y \in M_{m \times 1}(F)$. This is obviously because each elementary operation $\mathcal{E}$ has a transference over an operation of
