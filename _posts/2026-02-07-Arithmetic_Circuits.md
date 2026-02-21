@@ -677,15 +677,33 @@ Being $D:=(V,E)$ a DAG, then:, we define:
 
 In $D$ always exists at least one sink and one source:
 
-$$D:=(V,E) \text{ a DAG } : \vert V \vert \geq 2\implies \exists u,v\in V : \big(deg^-(u)=deg^+(v)=0 \wedge u \neq v \big)$$
+$$D:=(V,E) \text{ a DAG } \implies  \exists u,v\in V : \big(deg^-(u)=deg^+(v)=0 \wedge u \neq v \big)$$
 
-Let's reason to the opposite, let's suppose that $\neg \Big(\exists u,v\in V : \big(deg^-(u)=deg^+(v)=0 \wedge u \neq v \big)\Big)$, we can negate this premise in two ways:
+Let's consider $\vert V \vert = 1$, then $u \in V$ is an isolated vertex and obviously $deg^-(u)=deg^+(v)=0$. 
 
-- First, $u=v$, meaning: $\exists u,v\in V : \big(deg^-(u)=deg^+(v)=0 \wedge u = v \big)$, then $u$ (or $v$) is an isolated vertex (despite the trivial case when $\vert V \vert = 1$) and we are going to consider (conveniently) that $D$ (for $\vert V \vert \geq 1$) as a DAG is connected (in the simple graph conception which is totally acceptable). In this terms, $D$ wouldn't be a DAG since the premise contradict connection in $D$.
+Now consider $\vert V \vert \geq 2$, again if there is some isolated vertex the result is immediate, so lets assume $D$ is connected (or, failing that, just consider a connected subgraph $D'$) and reason to the opposite, let's suppose that:
 
-- Second, consider now that $D$ is connected and $(deg^+(u) \geq 1 \wedge deg^-(u) \geq 1) \ \ \forall u \in V$. In this context consider the longuest path $P:=(u_1,...,u_k)$. 
+$$\neg \Big(\exists u,v\in V : (deg^-(u)=deg^+(v)=0 \wedge u \neq v)\Big) \iff (deg^+(u) \geq 1 \vee deg^-(v) \geq 1 \vee u = v) \ \ \forall u,v \in V$$
 
-    Due to maximality all out-neigbourhs of $u_k$ are included in $P$ (otherwise you could extend $P$ contradicting maximality), meaning that $\exists i \in [k] : u_k \to u_i \wedge u_i \in P$, thus we can consider the cycle $C:= (u_i,...,u_k,u_i)$ since $(u_i,...,u_k) \subset P$ is a path.
+in $D$, we can negate this premise in three ways:
+
+- First, this two vertex do exists, but are the same $\exists u,v\in V : \big(deg^-(u)=deg^+(v)=0 \wedge u = v \big)$, then $u$ is an isolated vertex contradicting connection in $D$.
+
+    <br>
+
+- Second, all vertex are sources; $deg^+(u)\geq 1 \ \ \forall u \in V$
+
+    $$\neg \Big(\exists u,v\in V : deg^-(u)=deg^+(v)=0 \wedge u \neq v\Big)\implies  (deg^+(u) \geq 1 \vee deg^-(v) \geq 1) \ \ \forall u,v \in V : u \neq v$$
+ 
+    In this context consider the longuest path $P:=(u_1,...,u_k)$
+
+    Due to maximality all out-neigbourhs of $u_k$ (whose existence is garanteed due to the premise) are included in $P$ (otherwise you could extend $P$ contradicting maximality), meaning that $\exists i \in [k] : u_k \to u_i \wedge u_i \in P$, thus we can consider the cycle given as $C:= (u_i,...,u_k,u_i)$ since $(u_i,...,u_k) \subset P$ is a path contradicting acyclicness in $D$.
+
+    <br>
+
+- Third, all vertex are sinks; $deg^-(u)\geq 1 \ \ \forall u \in V$
+
+    Similarly to the argument given before, we can consider the longuest path $P := (u_1,...,u_k)$ and due to the premisse $N^-(u_1) \neq \varnothing$ and also, due to maximality $v \in P \ \ \forall v \in N^-(u_1)$ meaning that $\exists i \in [k] : u_i \to u_1 \wedge u_i \in P$ and we can consider the cycle $C:=(u_i,u_1,...,u_i)$ (since $(u_1,...,u_i)\subset P $ is a path). 
 
 <br>
 
