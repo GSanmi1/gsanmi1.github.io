@@ -736,6 +736,10 @@ As a usefull conceptualization, this topological order allow us to dispose the g
 
 <br>
 
+![torder](/assets/images/Maths/DiscreteMath/torder.png)
+
+<br>
+
 ## 2.2. Basic Algebra: Rings and Fields.
 
 ## 2.3. Polynomies.
