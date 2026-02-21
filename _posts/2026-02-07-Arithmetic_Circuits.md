@@ -609,7 +609,7 @@ In this context, a map coloring is equal to color a dual graph. A map representa
 
 ### 2.1.2. Directed graphs.
 
-A *directed acyclic graph* (DAG) is a directed graph that encodes a *one-way dependency* or *precedence relation*.
+A *directed acyclic graph* (DAG) is a directed graph that encodes a *one-way dependency* or *precedence relation*; *causality* with no circularity.
 
 As an example, being $u,v$ two predicates related as $u \to v$, then a DAG would represent this relation by an arrow of $u$ to $v$ meaning that $v$ depends on $u$ (or $u$ must happen before $v$). 
 
@@ -634,7 +634,9 @@ This is an important notion in directed graphs since, in contrast with simple gr
 
 As a brief reminder, if $G:=(V',E')$ is a simple graph, and $v \in V'$, then we know that the neighborhood of $v$ is the set $N(v):= \Set{u \ \vert \ \set{u,v} \in E'}$, then the degree of $v$ was the number of neigbourhs it has $deg(v) := \vert N(v) \vert$
 
-A similar concept apply to a directed graph $D:=(V,E)$ but counting with the direction of the relation in the graph. Again, be $v \in V$, then:
+A similar concept apply to a directed graph $D:=(V,E)$ but counting with the direction of the relation in the graph. Again, be $v \in V$, then, we define:
+
+- 
 
 - The *out-degree* to the number: $deg^+(v) := \vert \Set{u \ \vert \ (v,u) \in E} \vert$
 
@@ -677,11 +679,11 @@ Being $D:=(V,E)$ a DAG, then:, we define:
 
 In $D$ always exists at least one sink and one source:
 
-$$D:=(V,E) \text{ a DAG } \implies  \exists u,v\in V : \big(deg^-(u)=deg^+(v)=0 \wedge u \neq v \big)$$
+$$D:=(V,E) \text{ a DAG } \implies  \exists u,v\in V : \big(deg^-(u)=deg^+(v)=0 \big)$$
 
 Let's consider $\vert V \vert = 1$, then $u \in V$ is an isolated vertex and obviously $deg^-(u)=deg^+(v)=0$. 
 
-Now consider $\vert V \vert \geq 2$, again if there is some isolated vertex the result is immediate, so lets assume $D$ is connected (or, failing that, just consider a connected subgraph $D'$) and reason to the opposite, let's suppose that:
+Now consider $\vert V \vert \geq 2$, again if there is some isolated vertex the result is immediate, so lets assume $D$ is connected and reason to the opposite, let's suppose that:
 
 $$\neg \Big(\exists u,v\in V : (deg^-(u)=deg^+(v)=0 \wedge u \neq v)\Big) \iff (deg^+(u) \geq 1 \vee deg^-(v) \geq 1 \vee u = v) \ \ \forall u,v \in V$$
 
@@ -704,6 +706,10 @@ in $D$, we can negate this premise in three ways:
 - Third, all vertex are sinks; $deg^-(u)\geq 1 \ \ \forall u \in V$
 
     Similarly to the argument given before, we can consider the longuest path $P := (u_1,...,u_k)$ and due to the premisse $N^-(u_1) \neq \varnothing$ and also, due to maximality $v \in P \ \ \forall v \in N^-(u_1)$ meaning that $\exists i \in [k] : u_i \to u_1 \wedge u_i \in P$ and we can consider the cycle $C:=(u_i,u_1,...,u_i)$ (since $(u_1,...,u_i)\subset P $ is a path). 
+
+    <br>
+
+This basically means that $DAG$ as conceptualized always has at least one starting point and one endpoint.
 
 <br>
 
