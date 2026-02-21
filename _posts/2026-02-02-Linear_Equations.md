@@ -953,6 +953,6 @@ $$\begin{cases} \ \mathcal{E}^r_{\lambda r} & \simeq \big(P_r \in M \wedge \lamb
 
     <br>
 
-Observe that while linear equation systemas defined over a field $F$ are linear constraints for points over a field 
+Observe that while linear equation systemas defined over a field $F$ are linear constraints over points of $F$, matrix are sofisticate packages of the linear information storage in the linear system which with is easier to manipulate an understand.
 
 
