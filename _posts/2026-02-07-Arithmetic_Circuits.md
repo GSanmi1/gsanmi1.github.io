@@ -622,43 +622,50 @@ Thus, DAGs are a way to abstract implication relationships between multiples age
 A direct graph gets defined as a pair: $D:= (V,E)$, where:
 
 - $V$ is a finite set of elements.
-- $E \subseteq V^2$ is a set of ordered pairs. Let's observe that in a simple graph $E \subseteq \displaystyle \binom{V}{2}$ was defined as not-ordered pairs, in this case we define an order to reference the implication order. An element $(u,v) \in E$ gets read as $u$ preceds $v$ or $u$ implicates $v$. 
-
+- $E \subseteq V^2$ is a set of ordered pairs.
 <br>
 
 #### 2.1.2.2. Main notions.
 
-**In/Out Degrees. Impliance.**
+**Impliance**
 
-This is an important notion in directed graphs since, in contrast with simple graphs, there are two notions of degres in directed graphs.
+The first main notion we want to introduce is how the vertex (which are maintained from the simple graph conception) gets related in a directed graph.
 
-As a brief reminder, if $G:=(V',E')$ is a simple graph, and $v \in V'$, then we know that the neighborhood of $v$ is the set $N(v):= \Set{u \ \vert \ \set{u,v} \in E'}$, then the degree of $v$ was the number of neigbourhs it has $deg(v) := \vert N(v) \vert$
+Being $G:=(V,E)$ a graph, then $E \subseteq \binom{V}{2}$ is the set of edges $\Set{u,v} \in E$ and we say that $u,v \in V$ are adjacent $u \sim v \iff \Set{u,v} \in E$. This is how two elementes gets related in the simple graph conception. $\Set{u,v}$, as a simple set, doesn't care about order so the relation is bidirectional, $u$ is adjacent to $v$ exactly as $v$ is adjacent back to $u$.
 
-A similar concept apply to a directed graph $D:=(V,E)$ but counting with the direction of the relation in the graph. Again, be $v \in V$, then, we define:
+In the directional conception, there is no adjacency but impliance and this relation gets formalized through ordered sets. Remember that $D := (V,E)$ is a directed graph when $E \subseteq V^2$ meaning that the elements of $E$ are pairs $(u,v)$. In this context, we introduce the notion of *impliance*.
 
-- 
+Being $u,v \in V$ then we say $u$ implies $v$, $u \to v \iff (u,v) \in E$. We can also say that $u$ preceds $v$. 
 
-- The *out-degree* to the number: $deg^+(v) := \vert \Set{u \ \vert \ (v,u) \in E} \vert$
+Note that this relation is not reciproc, $u \to v \not \Rightarrow v \to u$
 
-- The *in-degree* to the number: $deg^-(v) := \vert \Set{u \ \vert \ (u,v) \in E} \vert$
+<br>
 
-We also say that, being $u,v \in V \in D$ then:
+**In/Out neighborhood**
 
-$$u \to v \iff (u,v) \in E$$
+Based in the notion of impliance defined before as a substitue of te adjacency for direct graphs, we consider the following sets:
 
-And is read as $u$ *implies* $v$. 
+- *In-neighborhood*; $N^{+}(u)=\{\,v\in V : u\to v\,\}$
+- *Out-neighborhood*; $N^{-}(u)=\{\,v\in V : v\to u\,\}$
+
+This are nothing but the paralalel concept of neigbourhood in simpe graphs $N(v) := \Set{u \ \vert \ u \sim v }$ but based in the order of the impliance.
+
+Also, we can consider the following numbers:
+
+- The *out-degree* to the number: $deg^+(v) := \vert N^{+}(v) \vert$
+- The *in-degree* to the number: $deg^-(v) := \vert N^{-}(u) \vert$
 
 <br>
 
 **Implicated vertex structures.**
 
-- **Directed Walk**; is a sequence $(v_0,...,v_k) : (v_{i-1},v_i) \in E \ \ \forall i \in [k] \wedge k \in \mathbb{N}$
+- **Directed Walk**; is a sequence $(v_0,...,v_k) : v_{i-1} \to v_i \ \ \forall i \in [k] \wedge k \in \mathbb{N}$
 
 - **Directed Path**; is a directed walk with all vertices distinct.
 
 - **Directed Cycle**; is a directed walk $(v_0,...,v_k,v_0) : (v_0,...,v_k)$ is a path.
 
-![direct_structures](/assets/images/Maths/DiscreteMath/direct_structures.png)
+![direct_structures](/assets/images/MathWs/DiscreteMath/direct_structures.png)
 
 <br>
 
@@ -668,7 +675,7 @@ A Directed Acylic Graph (DAG) is a directed graph with no cycles.
 
 <br>
 
-##### 2.1.2.3.1. Sources and sinks.
+##### 2.1.2.3.1. Definition. Sources and sinks.
 
 Being $D:=(V,E)$ a DAG, then:, we define:
 
@@ -709,7 +716,23 @@ in $D$, we can negate this premise in three ways:
 
     <br>
 
-This basically means that $DAG$ as conceptualized always has at least one starting point and one endpoint.
+This basically means that $DAG$ as defined always has at least one starting point and one endpoint.
+
+<br>
+
+##### 2.1.2.3.2. Topological Order. Characterization.
+
+*Topology* is the branch of mathematics concerned with the properties of a geometric object that are preserved under continuous deformations, meaning that are not related with spacial disposition of the object.
+
+Thus, related with direct graphs, *topological order* is the formal way to sort the vertices of a directed graph based on their *impliance* relation. 
+
+<br>
+
+The formal definition is, given $D:= (V,E): \vert V \vert = n$ a direct graph, then, a *topological order* over $D$ is a bijection:
+
+$$\tau : V \to [n] : \tau(u) < \tau(v) \ \ \forall (u,v) \in E$$
+
+As a usefull conceptualization, this topological order allow us to dispose the graph in a natural line it’s a sequence $(v_1,...,v_n)$ containing each vertex exactly once, such that for every direct edge; $u \to v$ vertex $u$ appears earlier in the sequence than $v$.
 
 <br>
 
