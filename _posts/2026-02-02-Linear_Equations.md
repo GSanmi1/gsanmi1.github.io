@@ -178,7 +178,7 @@ Let's observe that there are important relations between the identities of the a
 
 3. Let's also observe that: $1_K = 1_F \wedge 0_K = 0_F \ \ \forall K \subset F : \Set{K, +, \ ·}$ is a field.
 
-    In $F$, the identity is $1_F$, then due to uniqueness of this identity in $F$ is $1_K = 1_F$ for the elements of $K$ in $F$, so isolating $K$ from $F$ necesarily is $1_{F} \in K$ and the same can be applied to $0$, meaning that any subfield inherit the identity of the superfield.
+    In $F$, the identity is $1\_F$, then due to uniqueness of this identity in $F$ is $1\_K = 1\_F$ for the elements of $K$ in $F$, so isolating $K$ from $F$ necesarily is $1\_{F} \in K$ and the same can be applied to $0$, meaning that any subfield inherit the identity of the superfield.
 
 <br>
 
@@ -915,12 +915,14 @@ $$A \vert Y \equiv_r A'\vert Y' \iff M \equiv M'$$
 
 We gonna see this equivalence choosen one elementary row operation but others admits a similar demonstration.
 
+Where $A\vert Y \in M_{m \times n}(F)$ is the matrix resulting in adding to $A$ the colum $Y \in M_{m \times 1}(F)$. This is obviously because each elementary operation $\mathcal{E}$ can be identified with a change that presevers equivalence between linear systems presented above:
+
+$$\begin{cases} \ \mathcal{E}^r_{\lambda r} & \simeq \big(P_r \in M \wedge \lambda \in F\setminus \Set{0} \implies S_{\lambda P_r} = S_{P_r} \big) \\ \ \mathcal{E}^r_{r+\lambda s} &\simeq \big(P_r,P_s \in M \wedge \lambda \in F \setminus \Set{0} \implies S_{P_r + \lambda P_s} \cap S_{P_s} = S_{P_r} \cap S_{P_s}) \\ \ \mathcal{E}^r_{r \leftrightarrow s} &\simeq \big(P_r,P_s \in M \implies S_{P_r}\cap S_{P_s} = S_{P_s} \cap S_{P_r})\end{cases}$$
+
+<br>
+
 - $\Rightarrow$ 
-
-    Where $A\vert Y \in M_{m \times n}(F)$ is the matrix resulting in adding to $A$ the colum $Y \in M_{m \times 1}(F)$. This is obviously because each elementary operation $\mathcal{E}$ can be identified with a change that presevers equivalence between linear systems presented above:
-
-    $$\begin{cases} \ \mathcal{E}^r_{\lambda r} & \simeq \big(P_r \in M \wedge \lambda \in F\setminus \Set{0} \implies S_{\lambda P_r} = S_{P_r} \big) \\ \ \mathcal{E}^r_{r+\lambda s} &\simeq \big(P_r,P_s \in M \wedge \lambda \in F \setminus \Set{0} \implies S_{P_r + \lambda P_s} \cap S_{P_s} = S_{P_r} \cap S_{P_s}) \\ \ \mathcal{E}^r_{r \leftrightarrow s} &\simeq \big(P_r,P_s \in M \implies S_{P_r}\cap S_{P_s} = S_{P_s} \cap S_{P_r})\end{cases}$$
-
+    
     Consider $M:= \displaystyle\bigwedge_i P_i \equiv [AX = Y]$, then, we form the system $M':=P_{\lambda r} \wedge \displaystyle\bigwedge_{i \neq r}P_i \equiv [A'X = Y']$, until this point we do know that $M \equiv M'$, let's see that $[A \vert Y] \equiv_r [A' \vert Y']$.
 
     If: 
@@ -945,9 +947,12 @@ We gonna see this equivalence choosen one elementary row operation but others ad
 
     $$[A \vert Y] , [A' \vert Y'] \in M_{m \times {n+1}}(F) : \mathcal{E}^r_{\lambda r} ([A \vert Y]) = [A' \vert Y']$$
 
-    we can craft the systems $[AX = Y]:=\bigwedge P_i$ and  $[A'X=Y'] :=\bigwedge P'_i$ and is $P_i = P'_i \ \ i \neq r \wedge P_r = \lambda P_r$ and, as we see above, is $S_P = S_{\lambda P}$, thus $[AX = Y] \equiv [A'X = Y']$
+    we can craft the systems $[AX = Y]:=\bigwedge P\_i$ and  $[A'X=Y'] :=\bigwedge P'\_i$ and is $P\_i = P'\_i \ \ i \neq r \wedge P\_r = \lambda P\_r$ and, as we see above, is $S\_P = S\_{\lambda P} \implies [AX = Y] \equiv [A'X = Y']$
 
     Meaning that from *row-equivalent* matrices we can derivate equivalent equation systems and from equivalent equation systems we cand derivate row-equivalent matrix.
 
+    <br>
+
+Observe that while linear equation systemas defined over a field $F$ are linear constraints for points over a field 
 
 
