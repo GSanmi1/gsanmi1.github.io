@@ -722,7 +722,7 @@ This basically means that $DAG$ as defined always has at least one starting poin
 
 ##### 2.1.2.3.2. Topological Order. Characterization.
 
-*Topology* is the branch of mathematics concerned with the properties of a geometric object that are preserved under continuous deformations, meaning that are not related with spacial disposition of the object.
+*Topology* is the branch of mathematics concerned with the properties of a geometric object preserved under continuous deformations, meaning that are not related with spacial disposition of the object.
 
 Thus, related with direct graphs, *topological order* is the formal way to sort the vertices of a directed graph based on their *impliance* relation. 
 
@@ -732,13 +732,39 @@ The formal definition is, given $D:= (V,E): \vert V \vert = n$ a direct graph, t
 
 $$\tau : V \to [n] : \tau(u) < \tau(v) \ \ \forall (u,v) \in E$$
 
-As a usefull conceptualization, this topological order allow us to dispose the graph in a natural line it’s a sequence $(v_1,...,v_n)$ containing each vertex exactly once, such that for every direct edge; $u \to v$ vertex $u$ appears earlier in the sequence than $v$.
+As a usefull conceptualization, this topological order allow us to dispose the graph in a natural line, as a sequence $(v_1,...,v_n)$ containing each vertex exactly once, such that for every direct edge; $u \to v$ vertex $u$ appears earlier in the sequence than $v$.
 
 <br>
 
 ![torder](/assets/images/Maths/DiscreteMath/torder.png)
 
 <br>
+
+Having presented the topological order, lets see that the existance of a topolofical order for a direct graph is what ensure that his graph is acyclic:
+
+$$ D \text{ is a DAG } \iff \exists \text{ a bijection } \tau :  V \to [n] : \big(\tau(u) < \tau(v) \ \ \forall (u,v) \in E \big)$$
+
+- $\Rightarrow$
+
+    Let's see that if $D$ is a DAG and there are no cycles, then, being $v \in V$, we call $rank(v) \in \mathbb{Z}$ to the number of vertex that preceed $v$ on the larguest path (observe that by "preceed" we mean those who implicates $v$ and also any vertex that implicates those who implicates $v$ and so on). So for example any $v \in V : deg^+(v) = 0$ has $rank(v)=0$. An hipotetic set of vertex such $v,u,t \in V: v \to u \to t$ has $rank(v) = 0, rank(u) = 1, rank(t)=2$, if also it was $l \in V : l \to t$, the larguest path is $v \to u \to t$, thus still $rank(t)=2$.
+
+    In this context, we define a function $f: V \to [n]$ that, calling $R_i = \Set{ u \ \vert \ rank(u) = i}$, $f$ verifies:
+
+    - $max\Set{f(u) : u \in R_{i-1}} < f(u) \ \ \forall u \in \Set{u \ \vert \ rank(u) = i}$
+
+    - $f(u) \neq f(v) \ \ \ \forall u,v \in V : u \neq v$
+
+    Let's observe that this function is injective (we are impossing it) and also, since every vertes has a rank, every vertex has an image through $f$ and since there is $n$ vertex, the function is 'surjective' and is a bijection.
+
+    Also, is obvious that $u \to v \implies rank(u) < rank(v) \implies f(u) < f(v)$ os $f$ is a topological order over $D$.
+
+    <br>
+
+- $\Leftarrow$
+
+    Is obvious since if $D$ is a direct graph that admits a bijection defined as above, it can't be cycles or the function requisite: $\tau(u) < \tau(v) \ \forall (u,v) \in E$ wouldn't be satisfied.
+
+    <br>
 
 ## 2.2. Basic Algebra: Rings and Fields.
 
