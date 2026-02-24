@@ -753,7 +753,9 @@ Before getting any deep, let's formally understand what a matrix is.
 
 **Conceptual approach**
 
-A *matrix* is a device to package information linearly codified. Is a structured way to record how a linear rule takes inputs to outputs (along with coordinates). 
+Observe that while linear equation system, defined over a field $F^n$, are linear constraints over points of $F^n$, matrices are sofisticate packages of the linear information storage in the linear system which make it is easier to manipulate and measure.
+
+Then, a *matrix* is a device to package information linearly codified. Is a structured way to record how a linear rule takes inputs to outputs (along with coordinates). 
 
 Lets dedicate a few words about what 'linear' means. As we say above, *linear* refers to no bending. Is a term that refers to the way on how data is formuled to interact; at the simpliest level relative to the addition and the scaling, without products or powers over the unknowns (again, no bending). 
 
@@ -951,11 +953,25 @@ $$\begin{cases} \ \mathcal{E}^r_{\lambda r} & \simeq \big(P_r \in M \wedge \lamb
 
     we can craft the systems $[AX = Y]:=\bigwedge P\_i$ and  $[A'X=Y'] :=\bigwedge P'\_i$ and is $P\_i = P'\_i \ \ i \neq r \wedge P\_r = \lambda P\_r$ and, as we see above, is $S\_P = S\_{\lambda P} \implies [AX = Y] \equiv [A'X = Y']$
 
-    Meaning that from *row-equivalent* matrices we can derivate equivalent equation systems and from equivalent equation systems we cand derivate row-equivalent matrix.
+    Meaning that from *row-equivalent* matrices we can derivate equivalent equation systems and from equivalent (non-inconsistent) equation systems we can derivate row-equivalent matrix. 
 
     <br>
 
-**Observe that while linear equation systemas defined over a field $F^n$ are linear constraints over points of $F^n$, matrices are sofisticate packages of the linear information storage in the linear system which with is easier to manipulate an understand.**
+### 3.2.4. Row-reduced forms.
+
+At this point, we already know that being $A \in M_{m \times n}(F)$, then any elementary row-operation applied to $A$ do not change the solution set of the system $AX = Y$. 
+
+Thus, we can think in the simplier form of $A$ through elementary row operations, this is what get called as *reduced row echelon form* (RREF) $R \equiv_r A$, and can be conceptualized as the matricial representiation of a certain amount of information using a minimal cuantity of resources.
+
+A matrix $R \in M_{m \times n}(F)$ is in reduced row echelon form if:
+
+- (Zero rows last) All zero rows (if any) are below all nonzero rows.
+
+- (Leading 1s) In each nonzero row, the first nonzero entry is $1$. This entry is called a leading 1 (or pivot).
+
+- (Staircase) If row $i$ has its leading $1$ in column $c_i$, then $c_1 < c_2 < \cdots $ 
+
+- (Pivot columns are clean) In each pivot column, the leading 1 is the only nonzero entry in that column (zeros above and below it).
 
 <br>
 
