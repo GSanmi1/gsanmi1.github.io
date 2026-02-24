@@ -720,7 +720,81 @@ This basically means that $DAG$ as defined always has at least one starting poin
 
 <br>
 
-##### 2.1.2.3.2. Topological Order. Characterization.
+##### 2.1.2.3.2. Order in DAGs.
+
+######  2.1.2.3.2.1. Order definition.
+
+**Binary Relations and Orders.**
+
+Given a set $X$, a binary relation on $X$ is a subset: $R \subseteq X \times X$ and we write as a shorthand, being $x,y \in X$, then:
+
+$$xRy \iff (x,y) \in R$$
+
+We call to $R$ as an order, and, defined along certains conditions, we abstract the idea that $x$ preceeds $y$ through $R$ and we represent it such as $(x,y) \in R$
+
+Then, any binary relation $R$ must satisfy the following three condition to be called a *order*:
+
+- **Reflexive**: $xRx \ \ \forall x \in X$
+- **Transitive**: $xRy \wedge yRz \implies xRz \ \ \forall x,y,z \in X$
+- **Antisimetric**: $xRy \wedge yRx \implies x = y \ \ \forall x,y \in X$
+
+<br>
+
+**Partial and Total Order**
+
+When we define a binary relation $R$ over a set $X$ then is pertinent to ask if:
+
+$$xRy \vee yRx \ \ \ \forall x,y \in R$$
+
+If $x$ and $y$ are incomparable then we write:
+
+$$\neg(xRy) \wedge \neg (yRx) \iff x \ \vert \vert \ y$$
+
+We say that $R$ defined in $X$ is: 
+
+$$R \text{ is a partial order } \iff \exists x,y \in X : x \ \vert \vert \ y$$
+$$R \text{ is a total order } \iff xRy \vee yRx \ \ \ \forall x,y \in R$$
+
+<br>
+
+**Strict and non-strict order**
+
+An order can be defined considering if some element can relate with him self or not ($xRx$) in the sense that if non-strict or strict order.
+
+Being $X$ a set and $R$ a binary relation, then:
+
+$$ R \text{ is non-strict order} \iff xRx \ \forall x \in R$$
+$$ R \text{ is strict order} \iff \exists x \in X : (x,x) \notin R$$
+
+Let's observe that, being $M_{xy}$ predicates over $x$ and $y$ that must be satisfied to be $xRy$, then in the non-strict order is always $M_{xx} \equiv \top$, then we can say: 
+
+$$xRy \iff M_{xy} \vee x = y : M_{xy} \otimes M_{yx}$$
+
+Let's observe that by how the predicates $M$ are defined, $R$ as a non-strict order verifies:
+
+$$xRy \wedge yRx \iff x = y$$
+
+Equivalently, if exist at least one $x \in X: (x,x) \notin R$, then $R$ definition must impose diferenciation between two elements for these to be relatable:
+
+$$xRy \iff M_{xy} \wedge x \neq y$$
+
+<br>
+
+**Partial Order in DAGs**
+
+Consider $D$ a DAG, then, we can define the following subset 
+
+$$\preceq  \ \subseteq V^2: x \preceq y \longleftrightarrow \exists \text{ a directed path } P_{xy}$$
+
+Observe that this relation is an order since:
+
+- *Reflexive*: $v \preceq v \ \ \forall v \in V$ since $(v,v) \in E$
+- *Transitive*: $v \preceq u \wedge u \preceq w \implies P_{vw} = P_{vu},P_{uw} \implies v \preceq w$
+- *Antisimetric*: $v \preceq u \wedge u \preceq v \implies u = v$ since not cycles are allowed.
+
+<br>
+
+###### 2.1.2.3.2.2. Topological Order. Characterization of DAGs.
 
 *Topology* is the branch of mathematics concerned with the properties of a geometric object preserved under continuous deformations, meaning that are not related with spacial disposition of the object.
 
@@ -765,6 +839,10 @@ $$ D \text{ is a DAG } \iff \exists \text{ a bijection } \tau :  V \to [n] : \bi
     Is obvious since if $D$ is a direct graph that admits a bijection defined as above, it can't be cycles or the function requisite: $\tau(u) < \tau(v) \ \forall (u,v) \in E$ wouldn't be satisfied.
 
     <br>
+
+Note that the topological order is a total order in a DAG. This conclusion is obvious taking the line-up the vertex perspective of $D$.
+
+<br>
 
 ## 2.2. Basic Algebra: Rings and Fields.
 
