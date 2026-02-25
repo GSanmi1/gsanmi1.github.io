@@ -963,16 +963,21 @@ At this point, we already know that being $A \in M_{m \times n}(F)$, then any el
 
 Thus, we can think in the simplier form of $A$ through elementary row operations, this is what get called as *reduced row echelon form* (RREF) $R \equiv_r A$, and can be conceptualized as the matricial representiation of a certain amount of information using a minimal cuantity of resources.
 
+First, let's see the simple *row-reduced* concept
+
 A matrix $R \in M_{m \times n}(F)$ is in reduced row echelon form if:
 
-- (Zero rows last) All zero rows (if any) are below all nonzero rows.
+- the first non-zero entry in each non-zero is equal to 1, 
 
-- (Leading 1s) In each nonzero row, the first nonzero entry is $1$. This entry is called a leading 1 (or pivot).
-
-- (Staircase) If row $i$ has its leading $1$ in column $c_i$, then $c_1 < c_2 < \cdots $ 
-
-- (Pivot columns are clean) In each pivot column, the leading 1 is the only nonzero entry in that column (zeros above and below it).
+- the leading 1 is the only nonzero entry in that column (zeros above and below it).
 
 <br>
 
+An example of a row-reduced form is the identity matrix which verifies:
+
+$$I = (I_{ij})_{i,j \in [n]} \in M_{n \times n} : I_{ij}= 
+\begin{cases}
+1 &  i=j\\
+0 &  i\ne j
+\end{cases}$$
 
