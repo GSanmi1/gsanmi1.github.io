@@ -782,7 +782,7 @@ $$xRy \iff M_{xy} \wedge x \neq y$$
 
 **Partial Order in DAGs**
 
-Consider $D$ a DAG, then, we can define the following subset 
+Consider $D$ a $DAG$, then, we can define the following subset 
 
 $$\preceq  \ \subseteq V^2: x \preceq y \longleftrightarrow \exists \text{ a directed path } P_{xy}$$
 
@@ -840,7 +840,43 @@ $$ D \text{ is a DAG } \iff \exists \text{ a bijection } \tau :  V \to [n] : \bi
 
     <br>
 
-Note that the topological order is a total order in a DAG. This conclusion is obvious taking the line-up the vertex perspective of $D$.
+Note that the topological order is a total order in a $DAG$. This conclusion is obvious taking the line-up the vertex perspective of $D$.
+
+<br>
+
+##### 2.1.2.3.3. Basic Properties in DAGs.
+
+**Maximum number of edges**
+
+Given a directed graph $D$ (no parallel edges) a $DAG$, since no cycles are allowed, then:
+
+$$\neg \big((u,v) \in E \wedge (v,u) \in E\big) \ \ \forall u,v \in V$$
+
+Meaning that for any unordered set $\Set{u,v}$ is at most $(u,v)$ or $(v,u)$ in $E$, meaning that:
+
+$$ \vert E \vert \leq \vert \binom{V}{2} \vert = \binom{\vert V \vert}{2}$$
+
+Meaning that at most one of the two (or none of the two) 
+
+<br>
+
+**Strongly connected components are trivial**
+
+We call a strongly connected component a subgraph $S \subseteq D$ such $S = K_n : n \leq \vert V \vert$. Obviously for $n \geq 3$, $S$ would allow a cycle, so in a $DAG$ any strongly component is reduced to a set of two connected vertex.
+
+<br>
+
+**Longest walks in DAGs**
+
+In a DAG, the longest path $walk$ is $\vert P \vert \leq \vert V \vert -1$ since there can't be cycles, a walk cannot repeat vertex so path and walks collapses in $DAGs$ and the longuest possible walk has at least $\vert V \vert$ vertex or $\vert V \vert-1$ edges.
+
+<br>
+
+##### 2.1.2.3.4. Canonical constructions and theorems.
+
+**Transitive closure**
+
+
 
 <br>
 
