@@ -97,7 +97,7 @@ Also, we can consider the following numbers:
 
 - **Directed Cycle**; is a directed walk $(v_0,...,v_k,v_0) : (v_0,...,v_k)$ is a path.
 
-![direct_structures](/assets/images/MathWs/DiscreteMath/direct_structures.png)
+![direct_structures](/assets/images/Maths/DiscreteMath/direct_structures.png)
 
 <br>
 
