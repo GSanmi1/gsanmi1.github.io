@@ -297,7 +297,7 @@ We call a strongly connected component a subgraph $S \subseteq D$ such $S = K_n 
 
 <br>
 
-### 2.4.3. Longest walks in DAGs**
+### 2.4.3. Longest walks in DAGs.
 
 In a DAG, the longest path $walk$ is $\vert P \vert \leq \vert V \vert -1$ since there can't be cycles, a walk cannot repeat vertex so path and walks collapses in $DAGs$ and the longuest possible walk has at least $\vert V \vert$ vertex or $\vert V \vert-1$ edges.
 
