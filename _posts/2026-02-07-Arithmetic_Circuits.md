@@ -784,7 +784,7 @@ $$xRy \iff M_{xy} \wedge x \neq y$$
 
 Consider $D$ a $DAG$, then, we can define the following subset 
 
-$$\preceq  \ \subseteq V^2: x \preceq y \longleftrightarrow \exists \text{ a directed path } P_{xy}$$
+$$\preceq  \ \subseteq V^2: x \preceq y \longleftrightarrow \exists \text{ a directed path } P_{xy} \ (x \rightsquigarrow y)$$
 
 Observe that this relation is an order since:
 
@@ -792,6 +792,7 @@ Observe that this relation is an order since:
 - *Transitive*: $v \preceq u \wedge u \preceq w \implies P_{vw} = P_{vu},P_{uw} \implies v \preceq w$
 - *Antisimetric*: $v \preceq u \wedge u \preceq v \implies u = v$ since not cycles are allowed.
 
+Observe that the *reflexive* property of $\preceq$ makes it automatically a non-strict order, and we define the strict variant of the partial order as: $\prec \ \subseteq \  V^2 : u \prec v \iff  u \preceq v \wedge u \neq v$. 
 <br>
 
 ###### 2.1.2.3.2.2. Topological Order. Characterization of DAGs.
@@ -874,9 +875,33 @@ In a DAG, the longest path $walk$ is $\vert P \vert \leq \vert V \vert -1$ since
 
 ##### 2.1.2.3.4. Canonical constructions and theorems.
 
-**Transitive closure**
+**Transitive Closure**
 
+The *transitive closure* of a $DAG$, $D:=(V,E)$ is a digraph defined as follows: 
 
+$$D^+:=(V,E'): (u,v) \in E' \iff u \rightsquigarrow_D v$$
+
+This is what you get when treat reachbility as edges in a digraph, obtaining an ampliation of the impliance relation of the vertex $D$ in the sense that in $D^+$ $u$ implies $v$ if exists a chain of impliances from $u$ to $v$ in $D^+$.
+
+<br>
+
+**Transitive Reduction**
+
+The transitive reduction of a $DAG$, $D$ is a minimally reachable version of thegraph $R$ on the same vertex set, in the sense that remove an edge breaks the reachability the graph.
+
+$$R:=(V,E'): E' \subset E \wedge \big[(u,v) \in E \setminus E' \iff  \exists P_{uv} \subset D \setminus \Set{(u,v)} \big]$$
+
+Let's observe that is the opposite conception of the closure, while the closure satures the implications on $D$, the *reduction* minimize those same implications, both of them are variations of the number of connections in the graph mainting the partial order relation $\preceq$ between the vertexs.
+
+<br>
+
+##### 2.1.2.3.5. Algorithmic Consequences.
+
+Until this point, we've seeing that a $DAG$ is a dependency structure with no circular dependencies (cycles). No cycles allows to evaluate/optimice/count and schedule things by a single forward/backward pass without backtracking.
+
+Let's expand this idea. In general, computate consist in take an object and operate with it in order to extract some value or conclusion, but objects can be dependant between each others, in the sense that often an object is the result of the computation of other object (like get a point in a field is the result of solving a system equatiom since the point must verify some constraints). This dependency can be ilustrate in a directed graph $u \to v$.
+
+Then, acyclicness in a directed graph means that you don't get circular dependencies (Circular dependencies requires to computate simultaneously two dependant objects which is traduced to a complex operations or iteration until convergence). $DAGs$ avoids that; acyclicity turns global problems into local propagation. Observe that in some way this is reflected in the existance of the partial order $\preceq$ and the topological order which basically garantee the transformation of a $DAG$ into a chain of implications.
 
 <br>
 
