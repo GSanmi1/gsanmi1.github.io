@@ -973,11 +973,36 @@ A matrix $R \in M_{m \times n}(F)$ is in reduced row echelon form if:
 
 <br>
 
-An example of a row-reduced form is the identity matrix which verifies:
+An example of a row-reduced form is for example:
 
-$$I = (I_{ij})_{i,j \in [n]} \in M_{n \times n} : I_{ij}= 
-\begin{cases}
-1 &  i=j\\
-0 &  i\ne j
+$$\begin{bmatrix}
+2 & -1 & 3 & 2\\
+1 & 4 & 0 & -1\\
+2 & 6 & -1 & 5
+\end{bmatrix} \equiv_r
+\left[
+\begin{array}{cccc}
+0 & 0 & 1 & -\frac{11}{3}\\
+1 & 0 & 0 & \frac{17}{3}\\
+0 & 1 & 0 & -\frac{5}{3}
+\end{array}
+\right]$$
+
+This would mean that the equation systems 
+
+$$M:= \begin{cases}
+2x_1 - x_2 + 3x_3 = 2,\\
+x_1 + 4x_2 + 0x_3 = -1,\\
+2x_1 + 6x_2 - x_3 = 5.
+\end{cases}, \quad \quad M':=\begin{cases}
+0x_1 + 0x_2 + x_3 = -\dfrac{11}{3},\\
+x_1 + 0x_2 + 0x_3 = \dfrac{17}{3},\\
+0x_1 + x_2 + 0x_3 = -\dfrac{5}{3}.
 \end{cases}$$
+
+Are equivalents, being $M'$ trivial. 
+
+Observe that is easy to see that any matrix $A \in M_{m \times n}(F)$ is row-equivalent to a row-reduced matrix.
+
+<br>
 
