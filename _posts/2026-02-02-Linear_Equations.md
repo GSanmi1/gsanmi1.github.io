@@ -1006,3 +1006,132 @@ Observe that is easy to see that any matrix $A \in M_{m \times n}(F)$ is row-equ
 
 <br>
 
+**Row-reduced exercises**
+
+1. **Find all solutions to the system of equations:**
+
+    $$\begin{cases}
+    (1-i)x_{1}-ix_{2}=0,\\
+    2x_{1}+(1-i)x_{2}=0.
+    \end{cases}$$
+
+    $$A = \begin{bmatrix} 1-i & -i \\ 2 & 1-i \end{bmatrix}$$
+
+    Observe that making: $r_2 := r_2 - (1+i)\,r_1$ we obtain:
+
+    $$(1+i)\,r_1 = \bigl((1+i)(1-i),\; (1+i)(-i)\bigr) = (2,\; 1-i)$$
+
+    $$\begin{bmatrix} 1-i & -i \\ 2-2 & (1-i)-(1-i) \end{bmatrix} = \begin{bmatrix} 1-i & -i \\ 0 & 0 \end{bmatrix}$$
+
+    Meaning basically that this is a redundant system of two equations whose simplified from is:
+
+    -  $r_1 := \dfrac{1}{1-i}\,r_1 = \dfrac{1+i}{2}\,r_1$
+
+    $$\dfrac{1+i}{2}\,r_1 = \left(\dfrac{(1+i)(1-i)}{2},\; \dfrac{(1+i)(-i)}{2}\right) = \left(1,\; \dfrac{1-i}{2}\right)$$
+
+    $$\begin{bmatrix} 1 & \dfrac{1-i}{2} \\ 0 & 0 \end{bmatrix}$$
+
+    <br>
+
+    $$S = \left\{\, t\left(-\dfrac{1-i}{2},\; 1\right) \;\mid\; t \in \mathbb{C} \,\right\}$$
+
+    <br>
+
+2. **Giving $A$ as**:
+
+    $$A= \begin{bmatrix}
+    3 & -1 & 2\\
+    2 & 1 & 1\\
+    1 & -3 & 0
+    \end{bmatrix}$$
+
+    **Find all the solutions for $AX = 0$.**
+    
+    
+    We do know that any row-equivalent matrix to A share the solution set for the equation system, so lets produce the row-reduce form of $A$ which is identity $I_3$ and thus the equation system $AX=0$ is trivial; $x=y=z=0$
+
+    <br>
+
+3. **Giving**:
+
+    $$A=
+    \begin{bmatrix}
+    6 & -4 & 0\\
+    4 & -2 & 0\\
+    -1 & 0 & 3
+    \end{bmatrix}$$
+
+    **over the field $F$, then, solve $AX=2X$ and $AX=3X$ (Assuming that if $c \in F$, then $cX$ is scale every row of $X$ by the scalar $c$)**
+
+    For $AX=2X$ we have the system equation: 
+
+    $$\begin{cases}
+    6x - 4y + 0z = 2x \\
+    4x - 2y + 0z = 2y\\
+    -1x + 0y + 3z = 2z
+    \end{cases} \quad \equiv \quad \begin{cases}
+                        4x - 4y = 0 \\
+                        4x - 4y = 0 \\
+                        -x + z = 0
+                        \end{cases} \quad \equiv \quad \begin{cases}
+                                            x - y = 0 \\
+                                            z - x = 0
+                                            \end{cases}$$
+
+    Calling $x = \lambda \in F$, then the solution system is $\Set{(\lambda, \lambda, \lambda) \ \vert \ \lambda \in F}$
+
+    <br>
+
+    On the other hand we take: $AX = 3X$:
+
+    $$\begin{cases}
+    6x - 4y + 0z &= 3x \\
+    4x - 2y + 0z &= 3y\\
+    -1x + 0y + 3z &= 3z
+    \end{cases} \quad \equiv \quad \begin{cases}
+                        3x - 4y & = 0 \\
+                        4x - 5y & = 0 \\
+                             -x & = 0
+                        \end{cases} \quad \equiv \quad \begin{cases}
+                                                        y = 0 \\
+                                                        x = 0
+                                                        \end{cases}$$
+
+    And the solution set is: $\Set{(0,0,\lambda) \ \vert \ \lambda \in F }$
+
+    <br>
+
+4. **Find a row-reduced matrix row-equivalent to:**
+
+    $$A=\begin{bmatrix}
+        i & -(1+i) & 0\\
+        1 & -2 & 1\\
+        1 & 2i & -1
+        \end{bmatrix}$$
+
+    **Defined over the field $\mathbb{C}$**
+
+    Let's check that performing elemantal row operations over $A$ we eventually reach:
+
+    $$A=\begin{bmatrix}
+    1 & \frac{-(1+i)}{i} & 0\\
+    0 & 1 & \frac{1}{-2+\frac{(1+i)}{i}}\\
+    0 & 0 & -\frac{1}{2i + \frac{1+i}{i}} - \frac{1}{-2 + \frac{1+i}{í}}
+    \end{bmatrix}$$
+
+    In this context, we could think in the error of trivially simplify:
+
+    $$A=\begin{bmatrix}
+    1 & \frac{-(1+i)}{i} & 0\\
+    0 & 1 & \frac{1}{-2+\frac{(1+i)}{i}}\\
+    0 & 0 & -\frac{1}{2i + \frac{1+i}{i}} - \frac{1}{-2 + \frac{1+i}{í}}
+    \end{bmatrix} \quad \equiv_r \quad \begin{bmatrix}
+    1 & 0 & 0\\
+    0 & 1 & 0\\
+    0 & 0 & -\frac{1}{2i + \frac{1+i}{i}} - \frac{1}{-2 + \frac{1+i}{í}}
+    \end{bmatrix}$$
+
+    But this is not correct since the expression $-\frac{1}{2i + \frac{1+i}{i}} - \frac{1}{-2 + \frac{1+i}{í}} = 0$ ($\frac{1+i}{i}=1-i$) so we can't use it to perform the row operation that makes $a_{23} = 0$ and this we cannot use $r_2$ to make $a_{12}=0$. This is a friendly reminder to remember that $\mathbb{C}$ is not a trivial extension of $\mathbb{R}$ and your visual intuition can betray you when decide if some complex expresion do not collapse to 0. 
+
+    As a practice rule, every time simplifie some expression to be sure is not equal to 0.
+
