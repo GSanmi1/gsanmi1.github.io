@@ -11,31 +11,33 @@ author: German Sanmi
 # 0. Index
 
 1. Directed Graphs
-   1.1. Formal Definition
-   1.2. Main Notions
-        1.2.1. Impliance (u → v)
-        1.2.2. In/Out Neighborhood and In/Out Degree
-        1.2.3. Directed Walks, Paths, and Cycles
+   - 1.1. Formal Definition
+   - 1.2. Main Notions
+        - 1.2.1. Impliance (u → v)
+        - 1.2.2. In/Out Neighborhood and In/Out Degree
+        - 1.2.3. Directed Walks, Paths, and Cycles
 
 2. Directed Acyclic Graphs (DAGs)
-   2.1. Definition: Sources and Sinks (existence)
-   2.2. Order in DAGs
-        2.2.1. Binary Relations and Orders
-        2.2.2. Partial vs Total Order
-        2.2.3. Strict vs Non-strict Order
-        2.2.4. Reachability Order (≼) induced by a DAG
-   2.3. Topological Order and Characterization of DAGs
-   2.4. Basic Properties of DAGs
-        2.4.1. Maximum Number of Edges
-        2.4.2. Strongly Connected Components are Trivial
-        2.4.3. Longest Walks/Paths in DAGs
-   2.5. Canonical Constructions and Theorems
-        2.5.1. Transitive Closure
-        2.5.2. Transitive Reduction
+   - 2.1. Definition: Sources and Sinks (existence)
+   - 2.2. Order in DAGs
+        - 2.2.1. Binary Relations and Orders
+        - 2.2.2. Partial vs Total Order
+        - 2.2.3. Strict vs Non-strict Order
+        - 2.2.4. Reachability Order (≼) induced by a DAG
+   - 2.3. Topological Order and Characterization of DAGs
+   - 2.4. Basic Properties of DAGs
+        - 2.4.1. Maximum Number of Edges
+        - 2.4.2. Strongly Connected Components are Trivial
+        - 2.4.3. Longest Walks/Paths in DAGs
+   - 2.5. Canonical Constructions and Theorems
+        - 2.5.1. Transitive Closure
+        - 2.5.2. Transitive Reduction
 
 3. Algorithmic Consequences
-   3.1. DAGs as Dependency Structures (no circular dependencies)
-   3.2. Local Propagation via Topological Order (forward/backward passes)
+   - 3.1. DAGs as Dependency Structures (no circular dependencies)
+   - 3.2. Local Propagation via Topological Order (forward/backward passes)
+
+   <br>
 
 # 1. Directed graphs.
 
