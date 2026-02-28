@@ -1,0 +1,31 @@
+---
+layout: default
+title: Linear Algebra
+permalink: /linear-algebra.html
+---
+
+<section class="category-page">
+    <h1>Linear Algebra</h1>
+    <p class="description">
+        Notes on linear algebra: vector spaces, linear transformations, matrices, and related topics.
+    </p>
+
+    <ul class="post-list">
+        {% assign la_posts = site.posts | where_exp: "post", "post.categories contains 'analisis_rudin'" | sort: 'date' | reverse %}
+        {% for post in la_posts %}
+        <li class="post-list-item">
+            <h3 class="post-list-title">
+                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            </h3>
+            <p class="post-meta">
+                {% if post.author %}{{ post.author }} &mdash; {% endif %}{{ post.date | date: "%B %d, %Y" }}
+            </p>
+            {% if post.subtitle %}
+            <p class="post-excerpt">{{ post.subtitle }}</p>
+            {% elsif post.excerpt %}
+            <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 40 }}</p>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</section>
