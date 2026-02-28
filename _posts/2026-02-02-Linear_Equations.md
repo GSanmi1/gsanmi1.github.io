@@ -1189,19 +1189,19 @@ finite sequence of elementary row operations of the other two types.**
 
     <br>
 
-8. Consider the system of equations $AX=0$, where:
+8. **Consider the system of equations $AX=0$, where**:
     
     $$A \in M_2(F) : A :=\begin{bmatrix} a & b \\ c & d\end{bmatrix}$$
 
-    Prove the following, being $M:= [AX=0]$, then:
+    **Prove the following, being $M:= [AX=0]$, then**:
 
-    - If $a_{ij} = 0 \ \ \forall i \forall j \implies   S_M := \Set{(\alpha, \beta) : \alpha, \beta \in F}$
+    - **If**$a_{ij} = 0 \ \ \forall i \forall j \implies   S_M := \Set{(\alpha, \beta) : \alpha, \beta \in F}$
 
         Let's check quickly that the result is trivial, if al entries are 0, the unique constraing formulated by the system equation $AX=0$ is $0x + 0y = 0$ which is satisfied by any pair $(x,y) \in F^2$
 
         <br>
     
-    - If $ad - bc \neq 0 \implies S_M:= \Set{(0, 0)}$
+    - **If** $ad - bc \neq 0 \implies S_M:= \Set{(0, 0)}$
 
         First let's consider that $a \neq 0$ then, we can reduce:
 
