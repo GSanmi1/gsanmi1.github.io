@@ -959,6 +959,8 @@ $$\begin{cases} \ \mathcal{E}^r_{\lambda r} & \simeq \big(P_r \in M \wedge \lamb
 
 ### 3.2.4. Row-reduced forms.
 
+#### 3.2.4.1. Row-reduced.
+
 At this point, we already know that being $A \in M_{m \times n}(F)$, then any elementary row-operation applied to $A$ do not change the solution set of the system $AX = Y$. 
 
 Thus, we can think in the simplier form of $A$ through elementary row operations, this is what get called as *reduced row echelon form* (RREF) $R \equiv_r A$, and can be conceptualized as the matricial representiation of a certain amount of information using a minimal cuantity of resources.
@@ -1135,3 +1137,90 @@ Observe that is easy to see that any matrix $A \in M_{m \times n}(F)$ is row-equ
 
     As a practice rule, every time simplifie some expression to be sure is not equal to 0.
 
+    <br>
+
+5. **Prove that the follopwing two matrices are not row-equivalent**:
+
+    $$A:= \begin{bmatrix}
+    2 & 0 & 0\\
+    a & -1 & 0\\
+    b & c & 3
+    \end{bmatrix}
+    \qquad
+    B:= \begin{bmatrix}
+    1 & 1 & 2\\
+    -2 & 0 & -1\\
+    1 & 3 & 5
+    \end{bmatrix}$$
+
+    Let's observe that $A \equiv_r B \implies M:= [AX = 0] \equiv M':= [BX = 0]$. However, solving $M$ and $M'$ we see that they don't share the same solution set, $S_M := \Set{(0,0,0)}$ and $S_{M'}:= \Set{(-\frac{1}{2}\lambda, - \frac{3}{2}\lambda, \lambda) : \lambda \in F}$
+
+    <br>
+
+6. **Let $A \in M_2(\mathbb{C}): A:=\begin{bmatrix} a & b \\ c & d\end{bmatrix} : \sum a_{ij} = 0 \wedge A \text{ is row-reduced}$. Prove that there are only three such matrices.**
+
+    Let's remember what a row-reduced form is. A row-reduced form is a matrix verifying:
+
+    - The first non-zero entry in each non-zero row is $1$ (pivot).
+    - Each column which contains the leading non-zero entry of some row has all its other entries. 
+
+    This imposes a finite forms for $A$. We could think of $A$ as a row-reduced form as a combination of two rows that verifies some conditions; 
+    
+    $$A:= \begin{cases} r_1:=(a,b) \\ r_2:=(c,d)\end{cases}$$
+
+    In this sense, we can giving values to $a,b,c,d$ and aplying restrictions of the row-reduced form and the premise $\sum a_{ij} = 0$ giving at the end:
+
+    $$\begin{bmatrix} 1 & -1 \\ 0 & 0  \end{bmatrix},  \begin{bmatrix} 0 & 0 \\ 1 & -1 \end{bmatrix}, \begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}$$
+
+    The rest of forms do not verifies the condition.
+
+    <br>
+
+7. **Prove that the interchange of two rows of a matrix can be accomplished by a
+finite sequence of elementary row operations of the other two types.** 
+
+    Let's consider $F$ a field and $A \in M_{m \times n}(F)$ and $r_i, r_j$ two rows of $A$. Then we can operate using the follwing elementary row-operations:
+
+    - $r'_j \to r_j + r_i$
+    - $r'_i \to r_i - r'_j$ and then $r''_i \to -r'_i$ resulting efectively in $r''_i = r_j$ 
+    - Lastly; $r''_j \to r'_j - r''_i$ resulting in $r''_j = r_i$
+
+    Having ultimately doing $r_i \leftrightarrow r_j$ in $A$ by elementary row-operations different than ordinal swapping. 
+
+    <br>
+
+8. Consider the system of equations $AX=0$, where:
+    
+    $$A \in M_2(F) : A :=\begin{bmatrix} a & b \\ c & d\end{bmatrix}$$
+
+    Prove the following, being $M:= [AX=0]$, then:
+
+    - If $a_{ij} = 0 \ \ \forall i \forall j \implies   S_M := \Set{(\alpha, \beta) : \alpha, \beta \in F}$
+
+        Let's check quickly that the result is trivial, if al entries are 0, the unique constraing formulated by the system equation $AX=0$ is $0x + 0y = 0$ which is satisfied by any pair $(x,y) \in F^2$
+
+        <br>
+    
+    - If $ad - bc \neq 0 \implies S_M:= \Set{(0, 0)}$
+
+        First let's consider that $a \neq 0$ then, we can reduce:
+
+
+        $$A :=\begin{bmatrix} a & b \\ c & d\end{bmatrix} \equiv_r \begin{bmatrix} 1 & \frac{b}{a} \\ c & d\end{bmatrix} \equiv_r \begin{bmatrix} 1 & \frac{b}{a} \\ 0 & d - \frac{b}{a} c\end{bmatrix}$$
+
+        Then, $d - \frac{b}{a}c = 0 \ \underbrace{\iff}_{a \neq 0} \ ad - bc = 0$ and let's observe that if $d - \frac{b}{a}c \neq 0$ then the system only accepts the trivial solution $(0,0)$ and if it is 0, the system accepts any solution in $(\lambda, \frac{a}{b} - \lambda)$.
+
+        If $a = 0$ then we can swap rows and we only care about the predicate $b = 0 \vee c = 0$ or not. If not, then observe that $\cancel{ad} -bc = -bc \neq 0$ and the equation system only admits $(0,0)$ as a solution. 
+
+        If the predicate is true, then, first $ad -bc = 0$, and the solution set decays over one of the two forms: $S_M := \Set{(\lambda,0): \lambda \in F}$ o $S_M := \Set{(0,\lambda) : \lambda \in F}$
+
+        In last instance, we can see that $ad - bc \neq 0$ implies $S_M := \Set{(0,0)}$.
+
+        <br>
+
+#### 3.2.4.2. Row-reduced echelon.
+
+
+
+
+<br>
