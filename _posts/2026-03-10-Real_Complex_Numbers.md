@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "The Real and Complex Number Systems"
-subtitle: "DAGs and its importance in computation"
+subtitle: "$\mathbb{R} and \mathbb{C} fields presentation and properties."
 date: 2026-02-27 09:00:00 +0000
 categories: ['analisis_rudin']
 tags: ['Maths']
