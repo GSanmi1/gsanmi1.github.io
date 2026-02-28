@@ -1,14 +1,13 @@
 ---
 layout: default
 title: Linear Algebra
-permalink: /linear-algebra.html
+permalink: /analisis_rudin.html
 ---
 
 <section class="category-page">
     <h1>Linear Algebra</h1>
     <p class="description">
-        Notes on linear algebra: vector spaces, linear transformations, matrices, and related topics.
-    </p>
+        Notes of the lecture of Principle of Mathematical Analisis, by Walter Rudin.
 
     <ul class="post-list">
         {% assign la_posts = site.posts | where_exp: "post", "post.categories contains 'analisis_rudin'" | sort: 'date' | reverse %}
