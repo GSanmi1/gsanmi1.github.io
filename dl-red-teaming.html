@@ -1,0 +1,32 @@
+---
+layout: default
+title: Deep Learning — Red Teaming LLMs
+permalink: /dl-red-teaming.html
+---
+
+<section class="category-page">
+    <h1>Red Teaming LLMs</h1>
+    <p class="description">
+        Research on the safety, robustness, and adversarial evaluation of large language models:
+        prompt injection, jailbreaking, alignment failures, and defensive techniques.
+    </p>
+
+    <ul class="post-list">
+        {% assign posts = site.posts | where_exp: "post", "post.categories contains 'DL-RedTeaming'" | sort: 'date' | reverse %}
+        {% for post in posts %}
+        <li class="post-list-item">
+            <h3 class="post-list-title">
+                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            </h3>
+            <p class="post-meta">
+                {% if post.author %}{{ post.author }} &mdash; {% endif %}{{ post.date | date: "%B %d, %Y" }}
+            </p>
+            {% if post.subtitle %}
+            <p class="post-excerpt">{{ post.subtitle }}</p>
+            {% elsif post.excerpt %}
+            <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 40 }}</p>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</section>
