@@ -957,6 +957,18 @@ $$\begin{cases} \ \mathcal{E}^r_{\lambda r} & \simeq \big(P_r \in M \wedge \lamb
 
     <br>
 
+**Row-equivalent class**
+
+The relation $\equiv_r$ on $M_{m \times n}(F)$ is an equivalence relation (reflexivity, symmetry, and transitivity follow from the identity operation, the existence of inverse operations, and composition of elementary operations respectively). 
+
+Each equivalence class:
+
+$$[A]_r := \Set{B \in M_{m \times n}(F) \mid B \equiv_r A}$$
+
+collects all matrices that encode the same linear constraints on $F^n$, in the sense that if $A \equiv_r B$ then the systems $AX = Y$ and $BX = Y'$ (where $Y'$ is obtained by applying the same sequence of elementary operations to $Y$) share the same solution set $S$. The row-reduced echelon form serves as the canonical representative of each class: every matrix in $[A]_r$ reduces to the same RREF, providing a computable invariant that decides membership in the class. We will introduce this concept in the next section.
+
+<br>
+
 ### 3.2.4. Row-reduced forms.
 
 #### 3.2.4.1. Row-reduced.
@@ -1195,7 +1207,7 @@ finite sequence of elementary row operations of the other two types.**
 
     **Prove the following, being $M:= [AX=0]$, then**:
 
-    - **If**$a_{ij} = 0 \ \ \forall i \forall j \implies   S_M := \Set{(\alpha, \beta) : \alpha, \beta \in F}$
+    - **If** $a_{ij} = 0 \ \ \forall i \forall j \implies   S_M := \Set{(\alpha, \beta) : \alpha, \beta \in F}$
 
         Let's check quickly that the result is trivial, if al entries are 0, the unique constraing formulated by the system equation $AX=0$ is $0x + 0y = 0$ which is satisfied by any pair $(x,y) \in F^2$
 
@@ -1220,7 +1232,15 @@ finite sequence of elementary row operations of the other two types.**
 
 #### 3.2.4.2. Row-reduced echelon.
 
+Let's observe that, meanwhile then *row-reduced* form do maximazes the simplification of the information relative to the system of equations asociated with the equivalent class of those row-equivalent matrix to the mentioned reduced forms.
 
+For example, the exercise $6$ shows: 
 
+$$\begin{bmatrix} 1 & -1 \\ 0 & 0  \end{bmatrix} \quad \quad  \begin{bmatrix} 0 & 0 \\ 1 & -1 \end{bmatrix}$$
+
+Which are two row-reduced forms row-equivalent matrix, thus both are in the same equivalent class and the linear system that represent is the same.
+
+Thus, we introduce a canonical row-reduced representation, is the representant of the equivalent class for any matrix row-equivalent between them.
 
 <br>
+
