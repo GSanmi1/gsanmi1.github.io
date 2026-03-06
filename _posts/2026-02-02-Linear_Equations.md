@@ -1232,6 +1232,8 @@ finite sequence of elementary row operations of the other two types.**
 
 #### 3.2.4.2. Row-reduced echelon.
 
+**Definition**
+
 Let's observe that, meanwhile then *row-reduced* form do maximazes the simplification of the information relative to the system of equations asociated with the equivalent class of those row-equivalent matrix to the mentioned reduced forms.
 
 For example, the exercise $6$ shows: 
@@ -1240,7 +1242,65 @@ $$\begin{bmatrix} 1 & -1 \\ 0 & 0  \end{bmatrix} \quad \quad  \begin{bmatrix} 0 
 
 Which are two row-reduced forms row-equivalent matrix, thus both are in the same equivalent class and the linear system that represent is the same.
 
-Thus, we introduce a canonical row-reduced representation, is the representant of the equivalent class for any matrix row-equivalent between them.
+Thus, we introduce a canonical row-reduced representation, is the representant of the equivalent class for any matrix row-equivalent between them. This matrix $R$ satisfies:
+
+1. $R$ is row-reduced.
+2. Every row of $R$ with all $0$ entries, is below any row with a non-zero entry.
+3. If $1,...,r$ are the non-zero rows of $R$ then, and the first non-zero entry is in the colum $k_i  : i=1,...,r$, then $k_1 < \cdots < k_r$.
+
+As an example of row-reduced echelon matrix:
+
+$$\begin{bmatrix}
+0 & 1 & -3 & 0 & \frac{1}{2} \\
+0 & 0 & 0 & 1 & 2 \\
+0 & 0 & 0 & 0 & 0
+\end{bmatrix}$$
+
+Let's observe that any row-reduced form is row-equivalent to a RREM through a finite amount of swaps.
 
 <br>
 
+**Properties**
+
+-  **If $A$ is an $m \times n$ matrix and $m < n$, then the homogeneous system of linear equations $AX = 0$ has a non-trivial solution.** 
+
+    Observe that $A$ is row-equivalent to a RREM $R$, with a number $r \leq m$ of non-zero rows, by the shape of the matrix $R$ is $RX=0$ have non-trivial solution and by the fact that both matrix are row-equivalent, both system verifies: $[AX=0] \equiv [RX=0]$
+
+    <br>
+
+- **$A \in M_{n}(F)$ then $A \equiv_r I_n \iff S_{[AX=0]} := \Set{0 \in F^n}$**
+
+    - $\Rightarrow$ Let's observe that $I_n$ is a RREM, and accept only the trivial solution.
+    - $\Leftarrow$ Also $I_nX=0$ accepts only the trivial solution and any system $M$ given by a matrix row-equivalent to $I_n$ share the same solution.
+
+<br>
+
+### 3.2.5. Augmented Matrix.
+
+Until now, we've discussed homogeneous systems, equation systems of the form $AX=0$. Let us now ask what elementary row operations do toward solving a system of linear equations $AX = Y: A \in M_{m \times n}(F)$. We already discuss the method but we didn't give it a name, which is form the *augmented matrix*; adding to the matrix of coefficients $A$ the colum of constants $Y$: 
+
+<br>
+
+$$A' = [A | Y] \in M_{m \times n+1}(F): (a'_{ij}):= \begin{cases} a_{ij} \ \ j \leq n \\ y_{ij} \ \  j = n + 1\end{cases}$$
+
+<br>
+
+For this matrix the same properties that we discussed before also applies, in the sense that, suppose we perform a sequence of elementary row operations on $A$, arriving at a row-reduced echelon matrix $R$. If we perform this same sequence of row operations on the augmented matrix A’, we will arrive at a matrix $R’$ whose first $n$ columns are the columns of $R$ and whose last column contains certain scalars $z_1, . . . , z_m$, which results from applying the sequence of row operations to the matrix $Y$. 
+
+<br>
+
+$$R' = [R | Z] : Z = \begin{bmatrix} z_1 \\ \vdots \\ z_m \end{bmatrix}$$
+
+<br>
+
+Let's observe that $[AX = Y] \equiv [RX=Z]$ since both system are row-equivalent so they share their solution set. 
+
+This essentially means that the same rule that we use to simplify the information on an homogeneous system also serves to simplify non-homogeneous systems.
+
+<br>
+
+**RREM and Augmented matrix exercises.**
+
+
+
+<br>
