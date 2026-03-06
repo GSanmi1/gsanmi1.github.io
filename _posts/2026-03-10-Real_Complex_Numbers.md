@@ -150,4 +150,6 @@ We consider that $0 \in \mathbb{Q}^+$, so:
 
 <br>
 
-So $\leq$ is an order, is easy to see without demonstration that is a partial order, since we can't talk about any two non-comparable rationals
+So $\leq$ is an order, let's see that also is a total order. 
+
+Being $p,q \in \mathbb{Q} \implies \exists m,n,s,t \in \mathbb{Z}: \displaystyle p = m + \frac{t'}{t} : 1 \leq t' \leq t \wedge q = n + \frac{s'}{s} : 1 \leq t,s$, then also we can apply the *Fundamental Remainder Theorem*. Let's observe that since the sign is shared between $m,n$ for $p$ and between $s,t$ for $q$, then we can assume that there is at least on positive integer in the pairs $(m,s) \in \mathbb{Z}^2$ and $(n,t) \in \mathbb{Z}^2$. 
