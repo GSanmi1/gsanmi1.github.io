@@ -3,7 +3,7 @@ layout: post
 title: "The Real and Complex Number Systems"
 subtitle: "$\mathbb{R} and \mathbb{C} fields presentation and properties."
 date: 2026-03-05 09:00:00 +0000
-categories: ['Maths, analisis_rudin']
+categories: ['Maths', 'analisis_rudin']
 tags: ['Maths']
 author: German Sanmi
 ---
