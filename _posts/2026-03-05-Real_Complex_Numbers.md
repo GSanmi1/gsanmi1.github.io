@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "The Real and Complex Number Systems"
-subtitle: "$Real and Complex fields presentation and properties."
+subtitle: "Real and Complex fields presentation and properties."
 date: 2026-03-05 09:00:00 +0000
 categories: ['Maths', 'analisis_rudin']
 tags: ['Maths']
@@ -134,22 +134,60 @@ $$xRy \iff M_{xy} \wedge x \neq y$$
 
 <br>
 
-## 2.2. Ordered Sets. Bounds.
+## 2.2. Ordered Sets. Bounds. 
+
+**Definition, order in $\mathbb{Q}$**
 
 An ordered set is simply a set in which an order relation has been defined. Let's consider for example $\mathbb{Q}$ the set of rational numbers and the binary relation:
 
-$$\leq \  \subseteq \mathbb{Q} \times \mathbb{Q}: q \leq p \iff \exists t \in \mathbb{Q}^+ :p =  q + t$$
+$$\leq \  \subseteq \mathbb{Q} \times \mathbb{Q}: q \leq p \iff p - q \in \mathbb{Q}^+ \cup \Set{0}$$
 
-We consider that $0 \in \mathbb{Q}^+$, so:
+We consider:
 
-- $p = p + 0 \iff p \leq p \ \ \forall p \in \mathbb{Q}$ (Reflexivity)
+- $p - p = 0 \iff p \leq p \ \ \forall p \in \mathbb{Q}$ (Reflexivity)
 
-- $q \leq p \wedge t \leq q \implies \exists n,m \in \mathbb{Q} : p = q + n = (t + m) + n = t + (m + n) \implies t \leq p$ (transitivity)
+- $q \leq p \wedge t \leq q \implies p - t = (p - q) + (q - t) \in \mathbb{Q}^+ \cup \Set{0} \implies t \leq p$ (Transitivity)
 
-- $p \leq q \wedge q \leq p \implies \exists m,n : \begin{cases} p = q + n \\ q = p + m\end{cases} \implies m -n = 0 \iff m = n \implies p = q$ (Antisimetric)
+- $p \leq q \wedge q \leq p \implies p - q \in \mathbb{Q}^+ \cup \Set{0} \wedge q - p = -(p-q) \in \mathbb{Q}^+ \cup \Set{0} \implies p - q = 0 \iff p = q$ (Antisimetric)
 
 <br>
 
-So $\leq$ is an order, let's see that also is a total order. 
+So $\leq$ is an order, let's see that also is a total order: $p-q \geq 0 \vee q - p \geq 0  \ \ \forall p,q \in \mathbb{Q} \implies p \leq q \vee q \leq p \ \ \forall p,q \in \mathbb{Q}$
 
-Being $p,q \in \mathbb{Q} \implies \exists m,n,s,t \in \mathbb{Z}: \displaystyle p = m + \frac{t'}{t} : 1 \leq t' \leq t \wedge q = n + \frac{s'}{s} : 1 \leq t,s$, then also we can apply the *Fundamental Remainder Theorem*. Let's observe that since the sign is shared between $m,n$ for $p$ and between $s,t$ for $q$, then we can assume that there is at least on positive integer in the pairs $(m,s) \in \mathbb{Z}^2$ and $(n,t) \in \mathbb{Z}^2$. 
+<br>
+
+**Bounded. Upper and Lower bounds of a set. Supremum and Infimum.**
+
+Consider now $S$ and ordered set and $E \subset S$, then we say that:
+
+$$E \text{ is upperbounded} \iff \exists \alpha \in S: x \leq \alpha \ \ \ \forall x \in E $$
+
+We define as lower upperbound to  
+
+$$\alpha ' \in S : x \leq \alpha ' \ \ \ \forall x \in E \wedge (\alpha ' \leq \alpha \ \ \forall \alpha \in S: x \leq \alpha \ \ \forall x \in E )$$
+
+And we denote it as $\alpha ' = sup E$ and call it the supremum of $E$.
+
+This same idea applies to lowerbounds:
+
+$$E \text{ is lowerbounded} \iff \exists \alpha \in S: x \geq \alpha \ \ \ \forall x \in E $$
+
+And we define the *ínfimum* of $E$ (and we denote it to $\alpha ' = inf E$) to:
+
+$$\alpha ' \in S : x \geq \alpha ' \ \ \ \forall x \in E \wedge (\alpha ' \geq \alpha \ \ \forall \alpha \in S: x \geq \alpha \ \ \forall x \in E )$$
+
+<br>
+
+**Example of bounds in subsets of $Q$**
+
+1. Let's consider again $A:= \Set{p \ \vert \ p^2 < 2 }, B:= \Set{p \ \vert \ p^2 > 2 } \subset \mathbb{Q}$. Note check that both are ordered subsets of the rational numbers.
+
+    The set $A$ is bounded above. In fact, the upper bounds of $A$ are exactly the members of $B$. Since $B$ contains no smallest member, $A$ has no least upper bound in $\mathbb{Q}$. Similarly, $B$ is lowerbounded and the lower bounds of $B$ are the elements of $A$. 
+
+    <br>
+
+2. Being $E \subset S$ , then $\exists \alpha = supE$ implies that $\alpha$ may or may not be member of $E$. For instance, $E_1:=\Set{r \ \vert \ r < 0}$ and $E_2:=\Set{r \ \vert \ r \leq 0}$ then $\alpha = supE_1 = supE_2 = 0 \wedge \alpha \notin E_1 \wedge \alpha \in E_2$
+
+    <br>
+
+3. Let be, $E:=\Set{ \left(\frac{1}{n}\right)_{n \in \mathbb{N}}}$, then $supE = 1 \in E \wedge infE = 0\notin E$
