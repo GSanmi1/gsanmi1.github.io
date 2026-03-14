@@ -1302,5 +1302,99 @@ This essentially means that the same rule that we use to simplify the informatio
 **RREM and Augmented matrix exercises.**
 
 
+1. **Find all solutions to the following system of equations by row-reducing the coefficient matrix:**
+
+    $$\begin{cases}
+    \frac{1}{3}x_1 + 2x_2 - 6x_3 = 0,\\
+    -4x_1 + 5x_3 = 0,\\
+    -3x_1 + 6x_2 - 13x_3 = 0,\\
+    -\frac{7}{3}x_1 + 2x_2 - \frac{8}{3}x_3 = 0.
+    \end{cases}$$
+
+    <br>
+
+
+    $$A = \begin{pmatrix} \frac{1}{3} & 2 & -6 \\ -4 & 0 & 5 \\ -3 & 6 & -13 \\ -\frac{7}{3} & 2 & -\frac{8}{3} \end{pmatrix} R_1 \leftarrow 3R_1 \begin{pmatrix} 1 & 6 & -18 \\ -4 & 0 & 5 \\ -3 & 6 & -13 \\ -\frac{7}{3} & 2 & -\frac{8}{3} \end{pmatrix} \begin{cases}R_2 \leftarrow R_2 + 4R_1 \\ R_3 \leftarrow R_3 + 3R_1 \\ R_4 \leftarrow R_4 + \tfrac{7}{3}R_1 \end{cases} \begin{pmatrix} 1 & 6 & -18 \\ 0 & 24 & -67 \\ 0 & 24 & -67 \\ 0 & 16 & -\frac{134}{3} \end{pmatrix}$$
+
+    $$\begin{cases}R_3 \leftarrow R_3 - R_2, \\ R_4 \leftarrow R_4 - \tfrac{2}{3}R_2 \end{cases} \begin{pmatrix} 1 & 6 & -18 \\ 0 & 24 & -67 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix} R_2 \leftarrow \tfrac{1}{24}R_2 \begin{pmatrix} 1 & 6 & -18 \\ 0 & 1 & -\frac{67}{24} \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix} R_1 \leftarrow R_1 - 6R_2 \begin{pmatrix} 1 & 0 & -\frac{5}{4} \\ 0 & 1 & -\frac{67}{24} \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}$$
+
+
+    Thus, the solution of the system is the same for the equation system:
+
+    $$\begin{cases} x - \frac{5}{4}z = 0 \\ y - \frac{67}{24}z = 0 \end{cases} \implies \left(\frac{5 \lambda}{4}, \frac{67 \lambda}{24} , \lambda \right)$$
 
 <br>
+
+2. **Find a row-reduced echelon matrix which is row-equivalent to**
+
+    $$A=
+    \begin{bmatrix}
+    1 & -i\\
+    2 & 2\\
+    i & 1+i
+    \end{bmatrix}.
+    $$
+
+    Row-reducin the matrix we get:
+
+    $$\begin{bmatrix}1 & 0\\0 & 1\\0 & 0\end{bmatrix}$$
+
+    Thus, the system $AX=0$ only accepts $(0,0)$ as a solution.
+
+    <br>
+
+3. **Describe explicitly all $2 \times 2$ row-reduced echelon matrices.**
+
+    So, let's check what are the condition of the RREM matrix:
+
+    1. $R$ is row-reduced.
+    2. Every row of $R$ with all $0$ entries, is below any row with a non-zero entry.
+    3. If $1,...,r$ are the non-zero rows of $R$ then, and the first non-zero entry is in the colum $k_i  : i=1,...,r$, then $k_1 < \cdots < k_r$.
+
+    So let's start by retriving those $M_2(F) : M \text{ is row-reduced}$. A matrix is row-reduced if he first non-zero entry in each non-zero is equal to 1 and if the leading 1 is the only nonzero entry in that column (zeros above and below it).
+
+    $$\begin{bmatrix}1 & 0\\0 & 1\end{bmatrix}, \begin{bmatrix}1 & 0\\0 & 0\end{bmatrix}, \begin{bmatrix}0 & 1\\0 & 0\end{bmatrix}, \begin{bmatrix}0 & 0\\1 & 0\end{bmatrix}, \begin{bmatrix}0 & 0\\0 & 1\end{bmatrix} $$
+
+    $$\begin{bmatrix}0 & 1\\1 & 0\end{bmatrix}, \begin{bmatrix}1 & \alpha\\0 & 0\end{bmatrix}, \begin{bmatrix}0 & 0 \\1 & \alpha\end{bmatrix}$$
+
+    Now, we apply the second condition, and we only get the following matrix eliminating those that have any 0-row above:
+
+    $$\begin{bmatrix}1 & 0\\0 & 1\end{bmatrix}, \begin{bmatrix}0 & 1\\1 & 0\end{bmatrix}, \begin{bmatrix}1 & 0\\0 & 0\end{bmatrix}, \begin{bmatrix}0 & 1\\0 & 0\end{bmatrix}, \begin{bmatrix}1 & \alpha\\0 & 0\end{bmatrix}$$
+
+    Lastly, we eliminate the last matrix applying the last condition:
+
+    $$\begin{bmatrix}1 & 0\\0 & 1\end{bmatrix}, \begin{bmatrix}1 & 0\\0 & 0\end{bmatrix}, \begin{bmatrix}0 & 1\\0 & 0\end{bmatrix}, \begin{bmatrix}1 & \alpha\\0 & 0\end{bmatrix}: \alpha \in F \setminus \Set{0}$$
+
+    <br>
+
+4. **Consider the system of equations.**
+
+    $$\begin{cases}
+    x_1 - x_2 + 2x_3 = 1,\\
+    2x_1 + 2x_3 = 1,\\
+    x_1 - 3x_2 + 4x_3 = 2.
+    \end{cases}$$
+
+    **Does this system have a solution? If so, describe explicitly all solutions.** 
+
+    Row-reducing we get: 
+
+    $$\begin{bmatrix}
+    1 & 0 & 1 & \frac{1}{2} \\
+    0 & 1 & -1 & -\frac{1}{2} \\
+    0 & 0 & 0 & 0
+    \end{bmatrix}$$
+
+    So the solution set is: $\left(\frac{1}{2}-\alpha, -\frac{1}{2}+\alpha, \alpha\right), \quad \alpha \in F$
+
+    <br>
+
+5. **Give an example of a system of two linear equations in two unknowns which has no solution.**
+
+    $$\begin{cases} x + y = 0 \\ x + y = 1 \end{cases}$$
+
+    Observe that this are two lines that do not intersect in any point, so there is no solution.
+
+    <br>
+
+6. 
