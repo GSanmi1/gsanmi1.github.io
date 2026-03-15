@@ -1,18 +1,18 @@
 ---
 layout: default
-title: Deep Learning
-permalink: /deep-learning.html
+title: Machine Learning
+permalink: /machine-learning.html
 ---
 
 <section class="category-page">
     <h1>Deep Learning</h1>
     <p class="description">
-        Notes and research on deep learning, covering foundational theory, natural language processing,
+        Notes and research on Machine Learning and Deep learning, covering foundational theory, natural language processing,
         and the security and robustness of large language models.
     </p>
 
     <ul class="post-list">
-        {% assign dl_posts = site.posts | where_exp: "post", "post.categories contains 'DeepLearning'" | sort: 'date' | reverse %}
+        {% assign dl_posts = site.posts | where_exp: "post", "post.categories contains 'ML'" | sort: 'date' | reverse %}
         {% for post in dl_posts %}
         <li class="post-list-item">
             <h3 class="post-list-title">
