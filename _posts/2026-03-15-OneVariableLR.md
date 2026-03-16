@@ -77,7 +77,7 @@ This training model relays on the fact that the program count with a collection 
 
 In this sense, *supervised* learning refers that during training (algorthim execution), every input, $x$ comes with a label $y$; a correct answer that "supervises" the learning process. 
 
-In this sense, the task of supervised learning is, given the training the set: $\mathcal{D} = \{ (x^{(i)}, y^{(i)}) \}_{i=1}^{n} \subset \mathcal{X} \times \mathcal{Y}$ find some hipotesis $h : \mathcal{X} \to \mathcal{Y}$ of some hipotesis class $\mathcal{H}$ that minimizes the *expected risk* given by: $R(h) = \mathbb{E}_{(X,Y)}\bigl[\ell(h(X),Y)\bigr]$, where the function  $\ell : \mathcal{Y} \times \mathcal{Y} \to \mathbb{R}_{\ge 0}$ is the *loss function*; measuring prediction error. 
+In this sense, the task of supervised learning is, given the training the set: $\mathcal{D} = \{ (x^{(i)}, y^{(i)}) \}\_{i=1}^{n} \subset \mathcal{X} \times \mathcal{Y}$ find some hipotesis $h : \mathcal{X} \to \mathcal{Y}$ of some hipotesis class $\mathcal{H}$ that minimizes the *expected risk* given by: $R(h) = \mathbb{E}\_{(X,Y)}\bigl[\ell(h(X),Y)\bigr]$, where the function  $\ell : \mathcal{Y} \times \mathcal{Y} \to \mathbb{R}\_{\ge 0}$ is the *loss function*; measuring prediction error. 
 
 Also, taking again that $f$ is a simplification of $P$, in general, what is measured is the *empirical risk* instead:
 
@@ -299,3 +299,9 @@ It is also worth noting that, as $J$ gets closer to the minimum, the derivative 
 
 <br>
 
+Observe that applying this two our linear regression model:
+
+$$J(w,b) := \frac{1}{2m} \sum_{i=1}^{m} \bigl(f_{w,b}(x^{(i)}) - y^{(i)}\bigr)^2 \implies \nabla J(w,b) := \begin{pmatrix} \frac{\partial J(w,b)}{\partial w} \\ \frac{\partial J(w,b)}{\partial b}  \end{pmatrix}$$
+
+Where:
+$$\begin{cases}\frac{\partial J(w,b)}{\partial w} =\frac{1}{m} \sum_{i=1}^{m} \bigl(f_{w,b}(x^{(i)}) - y^{(i)}\bigr)x \\ \frac{\partial J(w,b)}{\partial b} = \frac{1}{m} \sum_{i=1}^{m} \bigl(f_{w,b}(x^{(i)}) - y^{(i)}\bigr)  \end{cases}$$
