@@ -10,20 +10,20 @@ author: German Sanmi
 
 # 0. Index.
 
-- 1. Machine Learning.
+1. Machine Learning.
     - 1.2. Learning Models.
         - 1.2.1. Supervised Learning.
             - 1.2.1.1. Definition.
             - 1.2.1.2.  Linear Regression: The simpliest Supervised Learning Model instantiation.
         - 1.2.2. Unsupervised Learning. Clustering.
-- 2. Regression Model.
+2. Regression Model.
     - 2.1. Linear Regression Overview.
     - 2.2. Training the machine.
     - 2.3. Cost Function.
         - 2.3.1. Squared Error.
         - 2.3.2. Interpretation. Optimization Problem.
 
-- 3. Gradient Descent.
+3. Gradient Descent.
     - 3.1. Introducing the problem.
     - 3.2. Gradient Descent Algorithm.
 
