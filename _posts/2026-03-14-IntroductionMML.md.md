@@ -8,7 +8,6 @@ tags: ['Maths']
 author: German Sanmi
 ---
 
-
 # 1. Introduction.
 
 ## 1.1. Introducing machine learning.
