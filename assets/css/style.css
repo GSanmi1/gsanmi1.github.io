@@ -847,59 +847,139 @@ mjx-container::-webkit-scrollbar-thumb {
 }
 
 /* ==========================================================================
-   Syntax Highlighting - Subtle, academic
+   Syntax Highlighting - Academic color scheme
    ========================================================================== */
+
+/* Comments - muted gray, italic */
 .highlight .c,
 .highlight .c1,
-.highlight .cm {
-    color: #666666;
+.highlight .cm,
+.highlight .cs,
+.highlight .ch {
+    color: #888888;
     font-style: italic;
 }
 
+/* Preprocessor directives (#include, #define in C) */
+.highlight .cp,
+.highlight .cpf {
+    color: #7a4400;
+    font-weight: bold;
+}
+
+/* Keywords (if, for, return, def, class, import...) */
 .highlight .k,
 .highlight .kd,
 .highlight .kn,
 .highlight .kp,
-.highlight .kr,
-.highlight .kt {
-    color: #000000;
+.highlight .kr {
+    color: #00356b;
     font-weight: bold;
 }
 
+/* Type keywords (int, char, float, void, static...) */
+.highlight .kt {
+    color: #005580;
+    font-weight: bold;
+}
+
+/* Built-in pseudo names (self, True, False, None in Python) */
+.highlight .bp,
+.highlight .kc {
+    color: #6600aa;
+    font-weight: bold;
+}
+
+/* Strings */
 .highlight .s,
 .highlight .s1,
 .highlight .s2,
 .highlight .sb,
-.highlight .sc,
-.highlight .sd,
 .highlight .se,
 .highlight .sh,
 .highlight .si,
 .highlight .sx,
 .highlight .sr,
 .highlight .ss {
-    color: #444444;
+    color: #7a4400;
 }
 
+/* Char literals (single-char strings in C: 'a') */
+.highlight .sc {
+    color: #8b0000;
+}
+
+/* Docstrings */
+.highlight .sd {
+    color: #888888;
+    font-style: italic;
+}
+
+/* Numbers (integers, floats, hex) */
+.highlight .m,
+.highlight .mi,
+.highlight .mf,
+.highlight .mh,
+.highlight .mo,
+.highlight .mb,
+.highlight .il {
+    color: #8b0000;
+}
+
+/* Function names */
+.highlight .nf,
+.highlight .fm {
+    color: #004080;
+}
+
+/* Class names */
+.highlight .nc {
+    color: #005580;
+    font-weight: bold;
+}
+
+/* Built-in names (print, len, range...) */
+.highlight .nb {
+    color: #3a0087;
+}
+
+/* Namespace / module names */
+.highlight .nn {
+    color: #005580;
+}
+
+/* Decorators (@decorator in Python) */
+.highlight .nd {
+    color: #6600aa;
+}
+
+/* Operators (=, +, -, *, /, ...) */
+.highlight .o,
+.highlight .ow {
+    color: #555555;
+}
+
+/* Variable names, attributes, constants */
 .highlight .n,
 .highlight .na,
-.highlight .nb,
-.highlight .nc,
-.highlight .nd,
-.highlight .ne,
-.highlight .nf,
 .highlight .ni,
 .highlight .nl,
-.highlight .nn,
 .highlight .no,
 .highlight .nt,
 .highlight .nv,
-.highlight .ow,
-.highlight .w,
-.highlight .mf,
-.highlight .mh,
-.highlight .mi,
-.highlight .mo,
-.highlight .m {
-    color: #111111;
+.highlight .vc,
+.highlight .vg,
+.highlight .vi,
+.highlight .vm {
+    color: #222222;
+}
+
+/* Generic - whitespace */
+.highlight .w {
+    color: #222222;
+}
+
+/* Error token */
+.highlight .err {
+    color: #cc0000;
 }
