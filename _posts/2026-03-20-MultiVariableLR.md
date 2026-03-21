@@ -666,6 +666,6 @@ def gradient_descent(X, y, w_in, b_in, cost_function, gradient_function, alpha, 
     return w, b, J_history #return final w,b and J history for graphing
 ```
 
-Observe that the code above is just assembly the pieces we already crafted in a step-by-step mechanism that resembles our gradient descent algorithm.
+Observe that the code above is just assembling the pieces we already craft in a step-by-step mechanism that resembles our gradient descent algorithm.
 
 We can find the whole code in the following repository.
