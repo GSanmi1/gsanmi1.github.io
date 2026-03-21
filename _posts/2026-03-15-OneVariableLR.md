@@ -192,7 +192,7 @@ The notation $(x^{(i)},y^{(i)}) \in \mathcal{X} \times \mathcal{Y}$ referes that
 
 <br>
 
-## 2.2. Training the machine.
+## 2.2. Training the machine. Linear regression.
 
 Remember that the training algorthim's job is two form a function $f$ with the provided training set such the transformation of an input feature $x$ by $f$, the prediction; $f(x)=\hat{y}$, is approximated enough to the target $y$; expected output ; $\hat{y} \to y$.
 
@@ -200,7 +200,11 @@ As we say before, *linear regression* assumes that $f$ is represented as a strai
 
 $$\hat{y} = f_{w,b}(x) := wx + b : w,b \in \mathbb{R}$$
 
-Later we will see other forms of regression which involves other forms of non-linear forms in the graph, but as a foundation, the linear mathematical object is fine enough to manipulate.
+Is worth to note that this parameters tell to us how $\hat{y}$ is built from $x$:
+
+- $w$ represent how much $x$ contributes to $\hat{y}$, this will be clearer when linear regression model for multiple variables gets introduced; $x$ and $w$ are vectors related in $f$ by the dot product. This way each $w_i \in w$ tell us how much $x_i \in x$ feature contribute in the value of $\hat{y}$.
+
+- $b$ as well represent how much $y$ is independant from $x$ since is a constant value not related with the input. Observe that when $x = 0$, then $\hat{y} = b$ exactly showing that this is the value that separates $\hat{y}$ from any $wx$.
 
 <br>
 
@@ -256,7 +260,7 @@ Now, *Gradient Descent* taught us an way to consistently seach about $(w,b)$ pai
 
 We have the *Mean Squared Error*; $J(\theta)$, which measures the average distance-error between the predicted values $\hat{y}$ and the labeled values $y$, and we want to find that parameter $\theta^*$ that minimizes that error. 
 
-For a simple system, for example a continous one-variable function on a real segment, we calculate $\nabla J(\theta) = 0$:
+For a simple system, for example a continous one-variable function on a real segment, we would calculate $\nabla J(\theta) = 0$:
 
 $$\nabla J(\theta) :=
     \begin{pmatrix}
@@ -264,13 +268,13 @@ $$\nabla J(\theta) :=
     \frac{\partial J}{\partial \theta_2}(\theta)\\
     \vdots\\
     \frac{\partial J}{\partial \theta_n}(\theta)
-    \end{pmatrix}\quad \underbrace{\implies}_{n=1} \quad \nabla J(\theta) := \frac{\partial J}{\partial \theta}(\theta) = \frac{dJ(\theta)}{d\theta} = J'(\theta) = 0$$
+    \end{pmatrix}\quad \underbrace{\implies}_{n=1} \quad \nabla J(\theta) = \frac{\partial J}{\partial \theta}(\theta) = \frac{dJ(\theta)}{d\theta} = J'(\theta) = 0$$
 
 <br>
 
 ![delta0](/assets/images/ML/delta0.png)
 
-But the moment the parameter space grows, that closed-form solution either doesn't exist or becomes computationally prohibitive. An iterative method is needed.
+But in the moment the parameter space grows, that closed-form solution either doesn't exist or becomes computationally prohibitive. An iterative method is needed.
 
 <br>
 

@@ -969,9 +969,11 @@ collects all matrices that encode the same linear constraints on $F^n$, in the s
 
 <br>
 
-### 3.2.4. Row-reduced forms.
+# 4. Row-reduced forms.
 
-#### 3.2.4.1. Row-reduced.
+## 4.1. Row-reduced.
+
+### 4.1.1. Definition.
 
 At this point, we already know that being $A \in M_{m \times n}(F)$, then any elementary row-operation applied to $A$ do not change the solution set of the system $AX = Y$. 
 
@@ -1020,7 +1022,7 @@ Observe that is easy to see that any matrix $A \in M_{m \times n}(F)$ is row-equ
 
 <br>
 
-**Row-reduced exercises**
+### 4.1.2. Row-reduced exercises.
 
 1. **Find all solutions to the system of equations:**
 
@@ -1230,9 +1232,9 @@ finite sequence of elementary row operations of the other two types.**
 
         <br>
 
-#### 3.2.4.2. Row-reduced echelon.
+## 4.2. Row-reduced echelon.
 
-**Definition**
+### 4.2.1. Definition.
 
 Let's observe that, meanwhile then *row-reduced* form do maximazes the simplification of the information relative to the system of equations asociated with the equivalent class of those row-equivalent matrix to the mentioned reduced forms.
 
@@ -1260,7 +1262,7 @@ Let's observe that any row-reduced form is row-equivalent to a RREM through a fi
 
 <br>
 
-**Properties**
+### 4.2.2. Properties.
 
 -  **If $A$ is an $m \times n$ matrix and $m < n$, then the homogeneous system of linear equations $AX = 0$ has a non-trivial solution.** 
 
@@ -1275,7 +1277,9 @@ Let's observe that any row-reduced form is row-equivalent to a RREM through a fi
 
 <br>
 
-### 3.2.5. Augmented Matrix.
+## 4.3. Augmented Matrix.
+
+### 4.3.1. Definition.
 
 Until now, we've discussed homogeneous systems, equation systems of the form $AX=0$. Let us now ask what elementary row operations do toward solving a system of linear equations $AX = Y: A \in M_{m \times n}(F)$. We already discuss the method but we didn't give it a name, which is form the *augmented matrix*; adding to the matrix of coefficients $A$ the colum of constants $Y$: 
 
@@ -1299,7 +1303,7 @@ This essentially means that the same rule that we use to simplify the informatio
 
 <br>
 
-**RREM and Augmented matrix exercises.**
+### 4.3.2. RREM and Augmented matrix exercises.
 
 
 1. **Find all solutions to the following system of equations by row-reducing the coefficient matrix:**
@@ -1397,4 +1401,57 @@ This essentially means that the same rule that we use to simplify the informatio
 
     <br>
 
-6. 
+8. **Let be**
+
+    $$A =
+    \begin{bmatrix}
+    3 & -1 & 2 \\
+    2 & 1 & 1 \\
+    1 & -3 & 0
+    \end{bmatrix}$$
+
+    **For which triples $(y_1,y_2,y_3)$ does the system $AX = Y$ have a solution**
+
+    Let's take the augmented matrix $[A|Y]$ and get the row-reduced echelon matrix of the system reaching:
+
+    $$\begin{bmatrix}
+    1 & -3 & 0 \\
+    0 & 7 & 1 \\
+    0 & 0 & \frac{6}{7}
+    \end{bmatrix}$$
+
+    Thus, the system has solution and no constraing at all for the 3-tuple.
+
+    <br>
+
+9. **Let be**
+
+<br>
+
+# 5. Matrix Multiplication.
+
+## 5.1. Definition.
+
+Before, when introducing the matrix concept we assume that a matrix is a device to package linear information. Elementary row operations preserve equivalence between lienar systems allowing to simplify the matrix shape while the information within remains untouch.
+
+Lastly, we have to unravel what the $AX = Y$ notation means; what means for $Y$ to be the product of $AX$. Well, we can already tell that due to the shorthand notation nature, $Y$ is the lineal combination of the data given by $A$ and $X$ exactly as the lineal equation system was:
+
+$$\begin{cases} a_{11}x_{1} \cdots + a_{1n}x_{n} = y_1 \\ \ \ \ \ \ \ \ \ \ \ \ \ \ \  \vdots \\ a_{m1}x_1 \cdots + a_{mn}x_{n} = y_m\end{cases} \iff Y := \begin{pmatrix} y_1 \\ \vdots \\ y_m\end{pmatrix} = \begin{pmatrix} a_{11}x_{1} \cdots + a_{1n}x_{n} \\  \vdots \\ a_{m1}x_1 \cdots + a_{mn}x_{n}\end{pmatrix} = AX$$
+
+This give us a first approach about what the product is and what are his elemnts; lineal combinations of the elements of the operands of the operations.
+
+From this approach, we can extend the operation to any two matrix $A \in M_{m \times p}(F)$, $B \in M_{p \times n}(F)$. Let's break down $B$ as an ordered set of columns $\beta_i \in M_{p \times 1} (F): i \in [n]$, then the product stands as:
+
+$$AB = (A \beta_1, ..., A \beta_n) \in M_{m \times n} (F)$$
+
+Where $A \beta_i \in M_{m \times 1} (F) : i=1,...,n$. Let's observe that the number of rows of $A$ and the number of columns of $B$ must match.
+
+Each entry can have a singular definition as:
+
+$$(ab_{ij})_{i \in [m], j \in [n]} := \sum_{k = 1}^p a_{ik}b_{kj} $$
+
+<br>
+
+## 5.2 Properties.
+
+FALTAN EJERCICIOS POR HACER.
