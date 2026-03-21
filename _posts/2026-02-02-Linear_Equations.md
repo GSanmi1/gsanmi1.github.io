@@ -1412,7 +1412,7 @@ This essentially means that the same rule that we use to simplify the informatio
 
     **For which triples $(y_1,y_2,y_3)$ does the system $AX = Y$ have a solution**
 
-    Let's take the augmented matrix $[A|Y]$ and get the row-reduced echelon matrix of the system reaching:
+    Let's take the augmented matrix $[A\vert Y]$ and get the row-reduced echelon matrix of the system reaching:
 
     $$\begin{bmatrix}
     1 & -3 & 0 \\
