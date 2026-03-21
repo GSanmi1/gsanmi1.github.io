@@ -111,7 +111,48 @@ x_n
 b_1\\
 \vdots\\
 b_m
-\end{bmatrix}$$
+\end{bmatrix} \iff A X = Y$$
 
+<br>
 
+In this context, we say that $A$ is the coefficient matrix, $X$ is the unknown matrix and $Y$ is the constant matrix.
 
+Matrices play a central role in linear algebra. They can be used to compactly represent systems of linear equations, but they also represent linear functions (linear mappings) as we will see later. Before we discuss some of these interesting topics, let us first define what a matrix is and what kind of operations we can do with matrices.
+
+<br>
+
+## 3.1. Definition and Operations with Matrix.
+
+### 3.1.1. Definition of a Matrix.
+
+With $m,n \in \mathbb{N}$ a real-valued $(m, n)$ matrix $A$ is an $m·n$-tuple of elements $a_{ij} , i = 1, . . . , m, j = 1, . . . , n$, which is ordered according to a rectangular scheme consisting of $m$ rows and $n$ columns:
+
+$$\boldsymbol{A} = \begin{bmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots &        & \vdots \\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{bmatrix}, \quad a_{ij} \in F.$$
+
+By convention $(1, n)$-matrices are called rows and $(m, 1)$-matrices are called column columns. These special matrices are also called *row/column* vectors.
+
+We say that $M_{m \times n}(F)$ is the set of all $(m,n)$-matrix and we write $A \in M_{m \times n} (F)$ or $(a_{ij})_{i \in [m], j\in [n]} \in M_{m \times n} (F)$ 
+
+<br>
+
+Let's observe that, by stacking its columns, a matrix $A \in M_{m \times n}(F)$ can be represented as a long vector $a \in F^{mn}$:
+
+$$\boldsymbol{A} = \begin{bmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots &        & \vdots \\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{bmatrix} \in M_{m \times n} (F), \quad a = (a_{11},\cdots,a_{1n},\cdots, a_{mn}) \in F^{mn}$$
+
+<br>
+
+### 3.1.2. Addition and multiplication between matrix.
+
+Let's now define operation between matrix.
+
+<br>
