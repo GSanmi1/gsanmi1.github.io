@@ -668,4 +668,4 @@ def gradient_descent(X, y, w_in, b_in, cost_function, gradient_function, alpha, 
 
 Observe that the code above is just assembling the pieces we already craft in a step-by-step mechanism that resembles our gradient descent algorithm.
 
-We can find the whole code in the following repository.
+We can find the whole code in the following [repository](https://github.com/GSanmi1/MachineLearningScripts/blob/main/MLregression.py).
