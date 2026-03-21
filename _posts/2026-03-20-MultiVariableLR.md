@@ -489,7 +489,7 @@ np.set_printoptions(precision=2)  # reduced display precision on numpy arrays
 
 Now, we introduce our training set $\mathcal{X} \times \mathcal{Y}$, being:
 
-- $\mathcal{X}\subset Size \times NBedrooms \times NFloors \times Age: \mathcal{X} := \begin{cases} (2104, & 5, & 1, & 45) \\ (1416, & 3, & 2, & 40) \\ (852, & 2, & 1, & 35) \end{cases}$
+- $\mathcal{X}\subset Size \times NBedrooms \times NFloors \times Age: \mathcal{X} := \begin{cases} (2104, & 5, & 1, & 45) \\\\ (1416, & 3, & 2, & 40) \\\\ (852, & 2, & 1, & 35) \end{cases}$
 - $\mathcal{Y} \in Price^3: \mathcal{Y}:= (460, 232, 178)$
 
 <br>
@@ -505,7 +505,7 @@ Let's observe that we built the following structure from out data:
 
 <br>
 
-$$X\text{\textunderscore}train := \begin{pmatrix} 2104, & 5, & 1, & 45 \\ 1416, & 3, & 2, & 40 \\ 852, & 2, & 1, & 35 \end{pmatrix}, \quad Y\text{\textunderscore}train := (460, 232, 178)$$
+$$X := \begin{pmatrix} 2104, & 5, & 1, & 45 \\ 1416, & 3, & 2, & 40 \\ 852, & 2, & 1, & 35 \end{pmatrix}, \quad Y := (460, 232, 178)$$
 
 <br>
 
