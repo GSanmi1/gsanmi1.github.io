@@ -249,6 +249,8 @@ Also, let observe that:
 
 - $0x = 0$. Immediately, we have that $0x = (0x + 0x) = 0x \implies 0x = 0$ by the axiom above.
 
+    <br>
+
 - *Zero has no divisors*:
 
     Lets observe that $x \neq 0 \wedge y \neq 0 \implies xy \neq 0$. 
@@ -259,3 +261,90 @@ Also, let observe that:
 
     Let's also see that: $p \to q \equiv \neg p \vee q \equiv \neg (\neg q) \vee \neg p \equiv \neg q \to \neg p$, applying that to our rule, we can obtain a subtle better expression of the rule: $xy = 0 \implies x = 0 \vee y = 0$
   
+    <br>
+
+- $(-x)y = -(xy) = x(-y)$
+
+    Let's consider the case $(-x)y$, a similar argument can be considered with $x(-y)$. 
+
+    $$(-x)y + xy = (-x + x)y = 0 y = 0$$
+
+    Which means $(-x)y = -xy$ due to the uniquity of the inverse in $F$.
+
+    <br>
+
+- $(-x)(-y) = xy$
+
+    Let's observe that as we proved before:
+
+    $$(-x)(-y) + (-xy) = (-x)(-y) + (-x)y = (-x)[(-y) + y] = 0$$
+
+    Which means $(-x)(-y) = -(-xy) = xy$.
+
+    <br>
+
+### 2.3.3. Ordered fields.
+
+#### 2.3.3.1. Definition.
+
+An *ordered field* is a field $F$ which is also an ordered set, such
+that, being $x,y,z \in F$:
+
+- $x+y < x+z \iff y < z$
+
+- $ xy > 0 \iff x > 0 \wedge y > 0$. 
+
+We also say that $x  \in F$, then:
+
+- $x \text{ is positive } \iff x > 0$
+- $x \text{ is negative } \iff x < 0$
+
+<br>
+
+#### 2.3.3.2. Properties of ordered sets.
+
+All the familiar rules for working with inequalities apply in every ordered field: Multiplication by positive/negative quantities preserves/reverses inequalities, no square is negative, etc. 
+
+The following proposition lists some of these, considering:
+
+- $x > 0 \iff -x < 0$
+
+    Let's demonstrate it by absurdio reductio which is:
+
+    $$\neg [(x > 0)\leftrightarrow (x<0)] \implies \bot$$
+
+    Let's observe that:
+
+    $$p \leftrightarrow q \equiv (p \to q) \wedge (q \to p) \equiv (\neg p \vee q) \wedge (\neg q \vee p)$$
+
+    This way; $\neg(p \leftrightarrow q) \equiv \neg [(\neg p \vee q) \wedge (\neg q \vee p)] \equiv (p \wedge \neg q) \vee (q \wedge \neg p)$
+
+    Now, lets call $p := x > 0$ and $q := -x <0$, then:
+
+    - $p \wedge \neg q$ stands for $x>0 \wedge -x > 0$, but this statement is impossible, considering the first axiom above:
+
+        $$x > 0 \iff 0 = x + (-x) > 0 + (-x) = -x$$
+
+        So is $-x > 0 \wedge -x < 0 \implies -x = x = 0$ contradicting the premise that suppose $x$ is greater than $0$.
+
+    - A similar argument can be provided to demonstrate the unavaiability of $\neg p \wedge q$ which stands for the statement $x<0 \wedge -x < 0$:
+
+        $$-x < 0 \iff 0 = x - x < x + 0 = x$$
+
+        So we have $x > 0 \wedge x < 0 \implies x = 0$ again.
+
+    This way, $\neg [(x > 0)\leftrightarrow (x<0)] \implies \bot$ and the initial has been demonstrated.
+
+    <br>
+
+- $x > 0 \wedge y < z \iff xy < xz$
+
+    Let's observe that:
+
+    $$y < z \iff 0 = y + (-y) < z + (-y)$$
+    
+    This way, counting with $x >0$ and using the second axiom of the ordered fields, we have:
+
+    $$ 0 = x0 < x(z + (-y)) = xz + x(-y) = xz + (-xy) \iff xy < xz$$
+
+    
