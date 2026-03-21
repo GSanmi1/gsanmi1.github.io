@@ -2,7 +2,7 @@
 layout: post
 title: "Regression with multiple input variables."
 subtitle: "Multiples features. Vectorization."
-date: 2026-03-18 09:00:00 +0000
+date: 2026-03-21 09:00:00 +0000
 categories: ['Maths', 'ML']
 tags: ['Maths','Deeplearning.ai']
 author: German Sanmi
