@@ -657,7 +657,7 @@ def gradient_descent(X, y, w_in, b_in, cost_function, gradient_function, alpha, 
       
         # Save cost J at each iteration
         if i<100000:      # prevent resource exhaustion 
-            J_history.append( cost_function(X, y, w, b))
+            J_history.append(cost_function(X, y, w, b))
 
         # Print cost every at intervals 10 times or as many iterations if < 10
         if i% math.ceil(num_iters / 10) == 0:
@@ -666,6 +666,10 @@ def gradient_descent(X, y, w_in, b_in, cost_function, gradient_function, alpha, 
     return w, b, J_history #return final w,b and J history for graphing
 ```
 
-Observe that the code above is just assembling the pieces we already craft in a step-by-step mechanism that resembles our gradient descent algorithm.
+Observe that the code above is just assembling the pieces we already craft in a step-by-step mechanism that resembles our gradient descent algorithm. By parts:
+
+- First, we create some arrays to store 
+
+
 
 We can find the whole code in the following [repository](https://github.com/GSanmi1/MachineLearningScripts/blob/main/MLregression.py).
