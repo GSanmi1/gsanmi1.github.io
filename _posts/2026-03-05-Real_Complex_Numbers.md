@@ -292,7 +292,7 @@ that, being $x,y,z \in F$:
 
 - $x+y < x+z \iff y < z$
 
-- $ xy > 0 \iff x > 0 \wedge y > 0$. 
+- $ xy > 0 \implies x > 0 \wedge y > 0$. 
 
 We also say that $x  \in F$, then:
 
@@ -345,6 +345,38 @@ The following proposition lists some of these, considering:
     
     This way, counting with $x >0$ and using the second axiom of the ordered fields, we have:
 
-    $$ 0 = x0 < x(z + (-y)) = xz + x(-y) = xz + (-xy) \iff xy < xz$$
+    $$0 = x0 < x(z + (-y)) = xz + x(-y) = xz + (-xy) \iff xy < xz$$
 
+    <br>
+
+- $x < 0 \wedge y < z \implies xy > xz$
+
+    Let's observe that we have $y < z \iff y - z < 0 \iff - (y - z) > 0$, thus, taking the second axiom of ordered fields and that $(-x)(-y) = xy$ is:
+
+    $$\begin{cases} -(y - z) > 0 \\ -x > 0 \end{cases} \implies (-x)[-(y - z)]  = x(y -z )> 0$$
+
+    And ultimately: $xy > xz$
+
+    <br>
+
+- $x \neq 0 \implies x^2 > 0$
+
+    Observe that:
     
+    $$x \neq 0 \implies \begin{cases}x>0 \implies xx = x^2 > 0 \\ x < 0 \iff -x < 0 \implies (-x)(-x) = xx = x^2 >0 \end{cases}$$
+
+    As a particular case is $1^2 = 1 > 0$
+
+    <br>
+
+-  $0 < x < y \implies 0 < \displaystyle\frac{1}{x} < \frac{1}{y}$
+    
+    Observe that, since $x \neq y \neq 0 \implies \exists x^{-1},y^{-1} \in F$. Let's also observe that, before, above, we see that $1 > 0$, then $1=xx^{-1} \wedge x > 0 \implies x^{-1} > 0 \ \ \forall x \in F : x > 0$ and we can argument that:
+
+    $$0 < x < y \iff 0x^{-1} < xx^{-1} = 1 < yx^{-1} \iff y^{-1}0x^{-1}< y^{-1} <y^{-1}yx^{-1} = x^{-1}$$
+
+    Resulting $0 < x < y \iff 0 < y^{-1} < x^{-1}$
+
+    <br>
+
+# 3. The Real field.
