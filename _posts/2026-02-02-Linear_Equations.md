@@ -1426,7 +1426,56 @@ This essentially means that the same rule that we use to simplify the informatio
 
 9. **Let be**
 
-<br>
+    $$A =
+    \begin{bmatrix}
+    3 & -6 & 2 & -1\\
+    -2 & 4 & 1 & 3\\
+    0 & 0 & 1 & 1\\
+    1 & -2 & 1 & 0
+    \end{bmatrix} \in M_{4 \times 4} (\mathbb{Q})$$
+
+    **For which $(y_1, y_2, y_3, y_4)$ does the system of equations $AX = Y$ have a solution?**
+
+    Considering the system $AX=Y$ we row-reduce the augmented matrix $[A \vert Y] \to [R \vert Y']$ knowing that $[AX=Y] \equiv_r [RX=Y']$ reaching
+
+    $$\left[\begin{array}{cccc|c}
+    1 & -2 & 0 & -1 & \frac{-y_2 + y_4}{3} \\
+    0 & 0 & 1 & 1 & \frac{y_2 + 2y_4}{3} \\
+    0 & 0 & 0 & 0 & \frac{3y_3 - y_2 - 2y_4}{3} \\
+    0 & 0 & 0 & 0 & \frac{3y_1 + y_2 - 7y_4}{3}
+    \end{array}
+    \right]$$
+
+    Thus, the system have solution when $(y_1,y_2,y_3,y_4) \in \mathbb{Q}^4$ satisfies:
+
+    $$\begin{cases} \displaystyle\frac{3y_3 - y_2 - 2y_4}{3} = 0 \\  \\\displaystyle\frac{3y_1 + y_2 - 7y_4}{3} = 0 \end{cases}$$
+
+    Otherwise the system would be inconsistent.
+
+
+    Then, calling $y_2 := \alpha, y_4 := \beta$, then the system has solution for every 4_tuple of the form: 
+
+    $$(\frac{7\beta - \alpha}{3}, \alpha, \frac{2\beta + \alpha}{3}, \beta) \in \mathbb{Q}^4$$
+
+    <br>
+
+8. **Suppose $R$ and $R’$ are $2 \times 3$ row-reduced echelon matrices and that the systems $RX = 0$ and $R’X = 0$ have exactly the same solutions. Prove that $R = R’$.**
+    
+    Firs't let observe that both have her equivalent class of row-reduced matrix of the form:
+
+    $$[R]_r := \Set{B \in M_{2 \times 3}(F) \mid B \equiv_r R}$$
+    
+    $$[R']_r := \Set{B \in M_{2 \times 3}(F) \mid B \equiv_r R'}$$
+
+    Also, $[RX = 0] \equiv_r [R'X=0] \implies R \equiv_r R'$, meaning that $R \in [R']_r \wedge R' \in [R]_r$ which means that $[R]_r = [R']_r$. 
+    
+    Lastly, since both are $RREM$ and this is the unique representant of the equivalent class it must be: $R = R'$.
+
+    <br>
+
+    However, this implication "$[RX = 0] \equiv_r [R'X=0] \implies R \equiv_r R'$" is tricky, because we don't solid demonstrate it, so let's address the problem in other way.
+
+    <br>
 
 # 5. Matrix Multiplication.
 
