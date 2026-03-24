@@ -1467,13 +1467,17 @@ This essentially means that the same rule that we use to simplify the informatio
     
     $$[R']_r := \Set{B \in M_{2 \times 3}(F) \mid B \equiv_r R'}$$
 
-    Also, $[RX = 0] \equiv_r [R'X=0] \implies R \equiv_r R'$, meaning that $R \in [R']_r \wedge R' \in [R]_r$ which means that $[R]_r = [R']_r$. 
+    Also, $[RX = 0] \equiv_r [R'X=0] \implies R \equiv_r R'$,
     
-    Lastly, since both are $RREM$ and this is the unique representant of the equivalent class it must be: $R = R'$.
+    
+    (Observe that this is not a demonstration and we will not cover here this part since that's computational job; we omit the case-by-case verification that distinct 2×3 RREFs yield distinct solution sets, as this follows from direct inspection of the finitely many possible forms enumerated in Exercise 3) 
+    
+    Note that there are a finite set of RREM matrix of $2 \times 3$ dimensions a few checks can constantate that only equivalents non-inconsistent systems with the same matrix $R$ have equivalents solutions. Meaning that each $RREM$ codifies the information of a linear system in a unique minimal way, any change of the matrix leads to the edition of some valuable information that also change the system.
+    
+    But the result is stronguer than that, $ R \equiv_r R' \implies R \in [R']_r \wedge R' \in [R]_r$ which means that $[R]_r = [R']_r$. Lastly, since both are $RREM$ and this is the unique representant of the equivalent class it must be: $R = R'$.
 
     <br>
 
-    However, this implication "$[RX = 0] \equiv_r [R'X=0] \implies R \equiv_r R'$" is tricky, because we don't solid demonstrate it, so let's address the problem in other way.
 
     <br>
 
@@ -1503,4 +1507,3 @@ $$(ab_{ij})_{i \in [m], j \in [n]} := \sum_{k = 1}^p a_{ik}b_{kj} $$
 
 ## 5.2 Properties.
 
-FALTAN EJERCICIOS POR HACER.
