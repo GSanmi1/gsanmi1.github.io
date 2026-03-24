@@ -668,8 +668,84 @@ def gradient_descent(X, y, w_in, b_in, cost_function, gradient_function, alpha, 
 
 Observe that the code above is just assembling the pieces we already craft in a step-by-step mechanism that resembles our gradient descent algorithm. By parts:
 
-- First, we create some arrays to store 
+- First, we create some arrays to store the results and the modified data:
 
+    ```python
+    J_history = []
+    w = copy.deepcopy(w_in)  #avoid modifying global w within function
+    b = b_in
+    ```
+
+- Then, we stablish an number of iterations for our gradient descent algorithm which will determine how close we get to the local minimum and inside of the loop we perform the aproximation of the algorithm:
+
+    ```python
+    for i in range(num_iters):
+
+    # Calculate the gradient and update the parameters
+    dj_db,dj_dw = gradient_function(X, y, w, b)   
+
+    # Update Parameters using w, b, alpha and gradient
+    w = w - alpha * dj_dw               
+    b = b - alpha * dj_db               
+    
+    # Save cost J at each iteration
+    if i<100000:      # prevent resource exhaustion 
+        J_history.append(cost_function(X, y, w, b))
+
+    # Print cost every at intervals 10 times or as many iterations if < 10
+    if i% math.ceil(num_iters / 10) == 0:
+        print(f"Iteration {i:4d}: Cost {J_history[-1]:8.2f}   ")
+    ```
+
+    <br>
 
 
 We can find the whole code in the following [repository](https://github.com/GSanmi1/MachineLearningScripts/blob/main/MLregression.py).
+
+<br>
+
+# 4. Problems with gradient descent.
+
+## 4.1. Introducing the problem.
+
+Some times, having a cost function $J(\theta)$ and apply a correct learning rate $\alpha$ doesn't conclude into a smooth convergence on the local minimum. In practice, the gradient descent applies a single learning rate $\alpha$ to update all parameters simultaneously, as we know, the algorithm perform the assignations as:
+
+$$w_i := w_{i} - \alpha \frac{\partial J}{\partial w_i}$$
+
+Let's observe that later, this new parameters, which are being updated in the same "proportion" $\alpha$, contribute to the next prediction:, leading to the risk of creating disproportions between the features since each lives in his own range of values. 
+
+For example; in certains conditions, $x_1 \in[0,1] \wedge x_2 \in [0,50000] \implies \frac{\partial J}{\partial w_2} >> \frac{\partial J}{\partial w_1}$ not because $w_2$​ is further from its optimum, but simply because $x_2$  has a larger numerical range. So the same $\alpha$ is simultaneously too large for $w_2$​ (causing oscillation or divergence) and too small for $w_1$​ (causing painfully slow progress). 
+
+You're forced into a compromise: pick a tiny $\alpha$ that prevents divergence along the sensitive direction, at the cost of crawling along every other direction.
+
+The fundamental issue is a mismatch between the structure of the problem (features at wildly different scales) and the structure of the algorithm (a single scalar learning rate applied uniformly). The algorithm has no mechanism to treat each parameter according to its own geometry.
+
+<br>
+
+## 4.2. Solution to the problem; Feature Scaling.
+
+Feature scaling is a preprocessing step that normalizes the range of input features before running gradient descent. The core reason is geometric: it reshapes the loss surface to make optimization dramatically more efficient.
+
+Let's see some forms to actually do this.
+
+<br>
+
+### 4.3.1. Feature Scaling method.
+
+If we have a $n$ number of features in each range of values as:
+
+$$x_i \in [m_i,M_i] \subset \mathbb{R}^+: i \in [n]$$
+
+Then a solution would be to divide each feature between the maximum value of the range before operating with it:
+
+$$x_i':= \frac{x_i}{M_i}, m_i' := \frac{m_i}{M_i} \implies x_i' \in [m_i',1] \subset \mathbb{R}^+ : i \in [n]$$
+
+Suppose for example that $x_1 \in [300,2000],x_2 \in [0,5]$, then $x_1' \in [0,15,1], x_2 \in [0,1]$. Geometrically, we would pass from elpises to something more circunferential, allowing the path to the local minimum on the surface to be more accesible.
+
+![feature_scaling](/assets/images/ML/feature_scaling.png)
+
+Note that the local minimum is accesible because the mapping $x \to x'$ we are applying here is an affine transformation; $x:= x'M +m$
+
+<br>
+
+### 4.3.2. Mean normalization.
