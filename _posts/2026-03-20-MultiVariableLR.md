@@ -784,7 +784,7 @@ Thus; if the features are reasonably well-behaved (no extreme outliers, roughly 
 
 Let's now suppose we have a good gradient descent algorthim and we want to run and, as it runs, we want to be sure when the cost function $J$ converge to the local minimum.
 
-For that purpouse we build what we call the *loss curve* or training curve, which is simply the plot of your objective function $L(\theta^{(t)})$ evaluated at each iterate $\theta^{(t)}$ against the iteration index $t$.
+For that purpouse we build what we call the *loss curve* or training curve, which is simply the plot of your objective function $J(\theta^{(t)})$ (which in our case gets instantiated as the *cost function*) evaluated at each iterate $\theta^{(t)}$ against the iteration index $t$.
 
 ![loss_function](/assets/images/ML/loss_function.png)
 
@@ -794,8 +794,10 @@ It's the most direct tool to determine whether gradient descent is converging, h
 
 ## 5.2. Formal setup.
 
-Let $L : \mathbb{R}^n \to \mathbb{R}$ be your loss function and the gradient iteration:
+Let $J : \mathbb{R}^n \to \mathbb{R}$ be your loss function and the gradient iteration:
 
-$$\theta(t+1)=\theta(t)−\alpha \nabla L(θ(t))$$
+$$\theta^{(t+1)}=\theta^{(t)}−\alpha \nabla J(\theta^{(t)})$$
+
+
 
 <br>
