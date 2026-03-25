@@ -749,3 +749,53 @@ Note that the local minimum is accesible because the mapping $x \to x'$ we are a
 <br>
 
 ### 4.3.2. Mean normalization.
+
+There is also a variant of feature scaling called *mean normalization*; which is a feature scaling technique that transforms each feature so that it's centered around zero. Taking $x_i \in [m_i, M_i]$ then, mean normalization is the mapping given by:
+
+$$x_i':=\frac{x_i - u_i}{M_i - m_i}: u_i:= \frac{1}{n}\sum_{j=1}^nx_i^{(j)}$$
+
+Where $u_i$ is the sample mean, the mean of the feature $i$ of all the samples $x^{(j)}$ in the training set.
+
+The result is that each feature ends up roughly in $[-0,5,0.5]$ (assuming a reasonably uniform distribution), with mean approximately zero.
+
+<br>
+
+### 4.3.3. Z-Score (Standarization).
+
+The Z-score normalization (also called standarization) transforms each feature as:
+
+$$x_i' := \frac{x_i - u_i}{\sigma_i}$$
+
+Where $u_i$ still being the sample mean and $\sigma_i$ is the *standard deviation* which measures how spread out the values in a dataset are around their mean:
+
+$$\sigma_i = \sqrt{\frac{1}{m} \sum_{j=1}^{m} \left(x_i^{(j)} - \mu_i\right)^2}$$
+
+For each data point you compute how far it is from the mean $(x_i^{(j)} - \mu_i)$, square that distance (so negative and positive deviations don't cancel), average all those squared distances, and then take the square root to bring the result back to the original units of the feature.
+
+The core difference is in the denominator. Mean normalization divides by the range $(\max - \min)$, while Z-score divides by $\sigma$ which is more solid because maps based on how far is each feature from the mean instead of simply generalizing te range for every feature. Geometrically, both aim at the same thing: making the level sets of $J(\theta)$ more isotropic (closer to spherical) so that $\nabla J$ points more directly toward the optimum. But Z-score does this more reliably because $\sigma$ is a better measure of the "typical spread" of a feature than the range is.
+
+Thus; if the features are reasonably well-behaved (no extreme outliers, roughly symmetric), both methods give you similar results, the contours get reshaped about equally well, and gradient descent converges in roughly the same number of steps. The difference becomes significant when the data has heavy tails or outliers, where Z-score keeps the scaling stable while mean normalization can degrade.
+
+<br>
+
+# 5. Gradient Descent efficency. Loss curve.
+
+## 5.1. Introducing the concept.
+
+Let's now suppose we have a good gradient descent algorthim and we want to run and, as it runs, we want to be sure when the cost function $J$ converge to the local minimum.
+
+For that purpouse we build what we call the *loss curve* or training curve, which is simply the plot of your objective function $L(\theta^{(t)})$ evaluated at each iterate $\theta^{(t)}$ against the iteration index $t$.
+
+![loss_function](/assets/images/ML/loss_function.png)
+
+It's the most direct tool to determine whether gradient descent is converging, how fast it's converging, and whether your hyperparameters are well-chosen. As the picture shows, a healthy loss curve is monotonically decreasing and flattening toward an asymptote (our local minumum).
+
+<br>
+
+## 5.2. Formal setup.
+
+Let $L : \mathbb{R}^n \to \mathbb{R}$ be your loss function and the gradient iteration:
+
+$$\theta(t+1)=\theta(t)−\alpha \nabla L(θ(t))$$
+
+<br>
