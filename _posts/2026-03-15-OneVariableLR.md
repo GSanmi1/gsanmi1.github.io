@@ -51,11 +51,12 @@ We've alrady formuled the subject, giving a family of parametrized function $\ma
 
 $$\theta^* = \arg\min_{\theta \in \Theta} \frac{1}{n} \sum_{i=1}^{n} \ell(f_\theta(x_i),y_i)$$
 
-Which means, minimize the error between the aproximation $f_\theta(x)$ to $f(x)$. 
 
-In this context, the *machine learning algorithm* is the strategy followed to find $\theta^*$. Formally is conceptualized as a function which takes a training set of data of related inputs and outputs and return what we call an hipotesis, which a presumibly optime parametrized function:
+Which means, minimize the error $\ell$ between the aproximation $f_\theta(x)$ to $y=f(x)$. 
 
-$$ \begin{gather} A: (\mathcal{X} \times \mathcal{Y)^n} \to \mathcal{H} \\ \ \ \   \Set{(x_i,y_i)}_{i=1}^n \to h\end{gather}$$
+In this context, the *machine learning algorithm* is the strategy followed to find $\theta^*$. Formally is conceptualized as a function $A$ which takes a training set of data of related inputs and outputs $\mathcal{X} \times \mathcal{Y}$ and return what we call an hipotesis $\mathcal{h}$, which a presumibly optime parametrized function:
+
+$$ \begin{gather} A: (\mathcal{X} \times \mathcal{Y})^n \to \mathcal{H} \\ \ \ \   \Set{(x_i,y_i)}_{i=1}^n \to h\end{gather}$$
 
 <br>
 
@@ -77,7 +78,11 @@ This training model relays on the fact that the program count with a collection 
 
 In this sense, *supervised* learning refers that during training (algorthim execution), every input, $x$ comes with a label $y$; a correct answer that "supervises" the learning process. 
 
-In this sense, the task of supervised learning is, given the training the set: $\mathcal{D} = \{ (x^{(i)}, y^{(i)}) \}\_{i=1}^{n} \subset \mathcal{X} \times \mathcal{Y}$ find some hipotesis $h : \mathcal{X} \to \mathcal{Y}$ of some hipotesis class $\mathcal{H}$ that minimizes the *expected risk* given by: $R(h) = \mathbb{E}\_{(X,Y)}\bigl[\ell(h(X),Y)\bigr]$, where the function  $\ell : \mathcal{Y} \times \mathcal{Y} \to \mathbb{R}\_{\ge 0}$ is the *loss function*; measuring prediction error. 
+In this sense, the task of supervised learning is, given the training the set: 
+
+$$\mathcal{D} = \{ (x^{(i)}, y^{(i)}) \}\_{i=1}^{n} \subset \mathcal{X} \times \mathcal{Y}$$
+
+find some hipotesis $h : \mathcal{X} \to \mathcal{Y}$ of some hipotesis class $\mathcal{H}$ that minimizes the *expected risk* given by: $R(h) = \mathbb{E}\_{(X,Y)}\bigl[\ell(h(X),Y)\bigr]$, where the function  $\ell : \mathcal{Y} \times \mathcal{Y} \to \mathbb{R}\_{\ge 0}$ is the *loss function*; measuring prediction error. 
 
 Also, taking again that $f$ is a simplification of $P$, in general, what is measured is the *empirical risk* instead:
 
