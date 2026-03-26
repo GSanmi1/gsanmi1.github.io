@@ -778,7 +778,7 @@ Thus; if the features are reasonably well-behaved (no extreme outliers, roughly 
 
 <br>
 
-# 5. Gradient Descent efficency. Loss curve.
+# 5. Gradient Descent efficency. Loss curve & Learning rate.
 
 ## 5.1. Introducing the concept.
 
@@ -798,6 +798,32 @@ Let $J : \mathbb{R}^n \to \mathbb{R}$ be your loss function and the gradient ite
 
 $$\theta^{(t+1)}=\theta^{(t)}−\alpha \nabla J(\theta^{(t)})$$
 
+being $\alpha \in \mathbb{R}$ the learning rate. Then, we define the *loss curve* as de sequence:
 
+$$\Big(J(\theta^{(t)})\Big)_{t=0}^\infty$$
 
 <br>
+
+Assuming that $J$ is $\beta$-smooth, meaning $\nabla J$ is $\beta$-Lipschitz:
+
+$$\vert \vert \nabla J(x) - \nabla J(y)\vert \vert \le \beta \vert \vert x-y\vert \vert \quad \forall x,y$$
+
+Conceptually, a function is β-Lipschitz when it has a bounded rate of change, it cannot "jump" too fast. Observe that if the gradient represents the "change ratio" of the function, how the function changes between two points is no greater than the metric between those same points (despite parameter factors). The change ratio grows (or decrease) proportionally per unit of distance in the domain (despite parameter factors).
+
+Then, by the *descent lemma* it is:
+
+$$J(\theta^{(t+1)}) \le J(\theta^{(t)}) - \alpha \left(1 - \frac{\beta \alpha}{2}\right) \vert \vert \nabla J(\theta^{(t)})\vert \vert^2$$
+
+The descent lemma gives you a *guaranteed upper bound* on how much a β-smooth function can deviate from its linear approximation. It's the formal reason why gradient descent works, it tells you that if you take a step in the direction of $-\nabla J(x)$, you can *guarantee* the function decreases, provided your step isn't too large.
+
+**Thus, this basically garantees that the sequence we called loss curve smoothly decreases in any step until $\nabla J =0$**
+
+<br>
+
+## 5.3. Choosing the learning rate.
+
+As we set before, given a good gradient descent algorthim (a well-chosen learning rate $\alpha$) the results above tell us that the gradient descent algorithm should make $J$ function to decrease smoothly (descent lemma).
+
+Whenever we see that our loss curve does not behaves like that then mathematically we can ensure that the gradient descent algorithm is not well-formed.
+
+A recomended good practice is to choose a small $\alpha$ and then increase slowly. If this not fix the loss curve, maybe there exists a bug in the code.

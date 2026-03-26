@@ -136,7 +136,7 @@ $$xRy \iff M_{xy} \wedge x \neq y$$
 
 ## 2.2. Ordered Sets. Bounds. 
 
-**Definition, order in $\mathbb{Q}$**
+### 2.2.1. Definition, order in $\mathbb{Q}$.
 
 An ordered set is simply a set in which an order relation has been defined. Let's consider for example $\mathbb{Q}$ the set of rational numbers and the binary relation:
 
@@ -156,15 +156,15 @@ So $\leq$ is an order, let's see that also is a total order: $p-q \geq 0 \vee q 
 
 <br>
 
-**Bounded. Upper and Lower bounds of a set. Supremum and Infimum.**
+### 2.2.2. Upper and Lower bounds of a set. Supremum and Infimum.
 
 Consider now $S$ and ordered set and $E \subset S$, then we say that:
 
 $$E \text{ is upperbounded} \iff \exists \alpha \in S: x \leq \alpha \ \ \ \forall x \in E $$
 
-We define as lower upperbound to  
+We define as lower upperbound (or least-upper-bound) to:  
 
-$$\alpha ' \in S : x \leq \alpha ' \ \ \ \forall x \in E \wedge (\alpha ' \leq \alpha \ \ \forall \alpha \in S: x \leq \alpha \ \ \forall x \in E )$$
+$$\alpha ' \in S : x \leq \alpha ' \ \ \ \forall x \in E \wedge (\alpha ' \leq \alpha \ \ \forall \alpha \in S: x \leq \alpha \ \ \forall x \in E)$$
 
 And we denote it as $\alpha ' = sup E$ and call it the supremum of $E$.
 
@@ -191,6 +191,30 @@ $$\alpha ' \in S : x \geq \alpha ' \ \ \ \forall x \in E \wedge (\alpha ' \geq \
     <br>
 
 3. Let be, $E:=\Set{ \left(\frac{1}{n}\right)_{n \in \mathbb{N}}}$, then $supE = 1 \in E \wedge infE = 0\notin E$
+
+<br>
+
+### 2.2.3. Least-upper-bound property.
+
+In this section we are going to present the *Least-upper-bound property*; what mean for a set to satisfy it and a characterization of the least-upper-bound in a set satisfying the least-upper-bound property.
+
+<br>
+
+**Definition**
+
+First, let's define what this property is, an ordered set $S$ is said to have the least-upper-bound property if the following statement is true: being $E$ an upperbounded non-empty subset of $S$, then the supremum of $E$ exists in $S$.
+
+Formally: 
+
+$$ \forall E \subseteq S : (E \neq \varnothing \wedge \exists \alpha \in S : x \leq \alpha \ \ \forall x \in E) \ \ \exists \alpha_s = supE : \alpha_s \in S $$
+
+<br>
+
+**Theorem**
+
+Then, the theorem introduces a caracterization for any supremum of a subset of a least-upper-bound property set.
+
+Let's consider 
 
 <br>
 
@@ -301,7 +325,7 @@ We also say that $x  \in F$, then:
 
 <br>
 
-#### 2.3.3.2. Properties of ordered sets.
+#### 2.3.3.2. Properties of ordered fields.
 
 All the familiar rules for working with inequalities apply in every ordered field: Multiplication by positive/negative quantities preserves/reverses inequalities, no square is negative, etc. 
 
@@ -380,3 +404,20 @@ The following proposition lists some of these, considering:
     <br>
 
 # 3. The Real field.
+
+We now state the existence theorem which is the core of this chapter. 
+
+<br>
+
+## 3.1. Theorem: Existance of $\mathbb{R}$
+
+**There exists an ordered field $\mathbb{R}$ which has the least-upper-bound property which contains $\mathbb{Q}$ as a subfield.** 
+
+To proove this theorem, we will construct $\mathbb{R}$ from $\mathbb{Q}$.
+
+As a reminder, 
+
+
+<br>
+
+FALTA COMPLETAR Least-upper-bound property PAGINA 17
