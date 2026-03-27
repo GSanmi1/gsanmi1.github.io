@@ -214,7 +214,13 @@ $$ \forall E \subseteq S : (E \neq \varnothing \wedge \exists \alpha \in S : x \
 
 Then, the theorem introduces a caracterization for any supremum of a subset of a least-upper-bound property set.
 
-Let's consider 
+Let's consider an ordered set $S$ and a non-empty, lowerbounded subset $B \subseteq S$. Then, we call $L$ to the set of all the lowerbounds of $B$ in $S$:
+
+$$L_B := \set{\alpha \in S : \alpha \leq x \ \ \forall x \in B}$$
+
+Then, we have:
+
+$$ \exists \alpha_s \in S: \alpha_s = supL = infB$$
 
 <br>
 

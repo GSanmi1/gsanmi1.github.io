@@ -31,7 +31,9 @@ author: German Sanmi
     
 # 1. Machine Learning.
 
-In conventional programming, explicit rules are taught to programs in order to establish solid logic predicates about constraints or bifurcations over the execution flow of the program. Machine Learning is a computer science discipline that interact or modules program logic inverting the order, instead of giving directives, you give to a program input values and desired outputs related by an unknown relation from the program perspective. Then the program objective is to infere that unknown relation in order to aproximate the computation of the inputs as most as posible to the real-desired output.
+In conventional programming, explicit rules are taught to programs in order to establish solid logic predicates about constraints or bifurcations over the execution flow of the program. 
+
+Machine Learning is a computer science discipline that interact or modules program logic inverting the order, instead of giving directives, you give to a program input values and desired outputs related by an unknown relation from the program perspective. Then the program objective is to infere that unknown relation in order to aproximate the computation of the inputs as most as posible to the real-desired output.
 
 Mathematically, we would have an unknown function $f$ relation two values, $(x,y) : y =f(x)$. The program aims to find a parameter $\theta$ such the resulting function aproximates $x$ to $y$ as much as posible:
 
@@ -46,13 +48,6 @@ In other terms, *Machine Learning* is a field of study that gives computers the 
 <br>
 
 ## 1.2. Learning Models.
-
-We've alrady formuled the subject, giving a family of parametrized function $\mathcal{H} := \Set{f_\theta : \theta \in \Theta}$ find a $\theta^*$ such:
-
-$$\theta^* = \arg\min_{\theta \in \Theta} \frac{1}{n} \sum_{i=1}^{n} \ell(f_\theta(x_i),y_i)$$
-
-
-Which means, minimize the error $\ell$ between the aproximation $f_\theta(x)$ to $y=f(x)$. 
 
 In this context, the *machine learning algorithm* is the strategy followed to find $\theta^*$. Formally is conceptualized as a function $A$ which takes a training set of data of related inputs and outputs $\mathcal{X} \times \mathcal{Y}$ and return what we call an hipotesis $\mathcal{h}$, which a presumibly optime parametrized function:
 
@@ -78,17 +73,19 @@ This training model relays on the fact that the program count with a collection 
 
 In this sense, *supervised* learning refers that during training (algorthim execution), every input, $x$ comes with a label $y$; a correct answer that "supervises" the learning process. 
 
-In this sense, the task of supervised learning is, given the training the set: 
-
-$$\mathcal{D} = \{ (x^{(i)}, y^{(i)}) \}\_{i=1}^{n} \subset \mathcal{X} \times \mathcal{Y}$$
-
-find some hipotesis $h : \mathcal{X} \to \mathcal{Y}$ of some hipotesis class $\mathcal{H}$ that minimizes the *expected risk* given by: $R(h) = \mathbb{E}\_{(X,Y)}\bigl[\ell(h(X),Y)\bigr]$, where the function  $\ell : \mathcal{Y} \times \mathcal{Y} \to \mathbb{R}\_{\ge 0}$ is the *loss function*; measuring prediction error. 
-
-Also, taking again that $f$ is a simplification of $P$, in general, what is measured is the *empirical risk* instead:
+In this sense, the task of supervised learning is, given the training the set: $\{ (x^{(i)}, y^{(i)}) \}\_{i=1}^{n} \subset \mathcal{X} \times \mathcal{Y}$ find some hipotesis $h : \mathcal{X} \to \mathcal{Y}$ of some hipotesis class $\mathcal{H}$ that minimizes the *expected risk*. However, taking again that $f$ is a simplification of $P$, in general, what is measured is the *empirical risk* instead which we call:
 
 $$\hat{R}(h) = \frac{1}{n} \sum_{i=1}^{n} \ell\bigl(h(x^{(i)}), y^{(i)}\bigr)$$
 
 which basically measure the risk over the gathered sample instead of the entire population (which often is unnaccesible in real problems).
+
+Let's observe that this empirical risk is a template with three factors:
+
+- The hypothesis class $h$ that makes the prediction agains the labeled data.
+- The loss function $\ell$ which measures the error between each pair $(h(x)^{(i)},y^{(i)})$
+- Apply a convenience scaling $\frac{1}{n}$, for convenience we can scale the empirical risk to simplify the result.
+
+Later we will select each one of the three factors to instantiate the empirical risk into the *cost function* $J$.
 
 <br>
 

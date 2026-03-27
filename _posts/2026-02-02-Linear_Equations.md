@@ -24,7 +24,7 @@ But this sets are characterized as algebraic structres with their own structures
 
 - Then, again, we can expand $\mathbb{Z}$ to $\mathbb{Q}$ among with the notion of a *fraction* in order to ensure that every element has a multiplicative inverse, this is called a *field*. But then, there exists equations, like $x^2 - 2 = 0$ with no solutions in $\mathbb{Q}$.
 
-- Then, we expand $\mathbb{Q}$ to $\mathbb{R}$ in order to give solution for that equation and forming the notion of irrational numbers; $\sqrt 2, \pi, etc$. This is called a *complete field*. But again, $x^2 - 1 = 0$, for a different reason, this equation also has no roots.
+- Then, we expand $\mathbb{Q}$ to $\mathbb{R}$ in order to give solution for that equation and forming the notion of irrational numbers; $\sqrt 2, \pi, etc$. This is called a *complete field*. But again, $x^2 + 1 = 0$, for a different reason, this equation also has no roots.
 
 - Now, we expand for $\mathbb{R}$ to $\mathbb{C}$. These now give a completely valued (concept of analysis), algebraically closed (concept of algebra) field.
 
@@ -199,8 +199,8 @@ Then, a **system of linear equations** is a collection of constraints or predica
 
 Let be $F$ a field and $m,n \geq 1$, then a finite system of $m$ linear equations in $n$ unknowns over $F$ is specified by:
 
-- Coefficients: $a_{ij} \in F: 1 \leq j \leq m, 1 \leq j \leq n$
-- Unknowns:  $x_{ij} \in F: 1 \leq j \leq m, 1 \leq j \leq n$
+- Coefficients: $a_{ij} \in F: 1 \leq i \leq m, 1 \leq j \leq n$
+- Unknowns:  $x_{j} \in F: 1 \leq j \leq n$
 - Constants: $b_i \in F: 1 \leq i \leq m$
 
 Related as:
@@ -611,7 +611,7 @@ As we see above, we have to see if $\Set{F,+}$ and  $\Set{F \setminus \Set{0}, \
 
         <br>
 
-    - **Identity**: Check that $a·0 = 0·a = 0 \ \ \forall a \in F$
+    - **Identity**: Check that $a·1 = 1·a = 1 \ \ \forall a \in F$
     - **Inverse**: Observe that $a·a = a \ \ \forall a \in F$
 
         <br>
@@ -1505,5 +1505,21 @@ $$(ab_{ij})_{i \in [m], j \in [n]} := \sum_{k = 1}^p a_{ik}b_{kj} $$
 
 <br>
 
+It is important to observe that the product of two matrices need not be defined; the product is defined if and only if the number of columns in the first matrix coincides with the number of rows in the second matrix. Frequently we shall write products such as AB without explicitly mentioning the sizes of the factors and in such cases it will be understood that the product is defined. From (d), (e), (f), (g) we find that even when the products AB and BA.
+
+<br>
+
 ## 5.2 Properties.
+
+Let's see that the products of matrix satisfies the following properties:
+
+<br>
+
+### 5.3. Associativity.
+
+
+
+to carry along two sequences of matrices, one describing the reduction of
+A to the identity and the other recording the effect of the same sequence
+of operations starting from the identity. The reader may judge for himself which is a neater form of bookkeeping.
 
