@@ -611,7 +611,7 @@ As we see above, we have to see if $\Set{F,+}$ and  $\Set{F \setminus \Set{0}, \
 
         <br>
 
-    - **Identity**: Check that $a·1 = 1·a = 1 \ \ \forall a \in F$
+    - **Identity**: Check that $a·1 = 1·a = a \ \ \forall a \in F$
     - **Inverse**: Observe that $a·a = a \ \ \forall a \in F$
 
         <br>
