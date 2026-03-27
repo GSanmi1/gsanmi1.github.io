@@ -595,7 +595,7 @@ As we see above, we have to see if $\Set{F,+}$ and  $\Set{F \setminus \Set{0}, \
 
         <br>
 
-- Being $\Set{F, \ ·}$, then lets demonstrate that is a group.
+- Being $\Set{F \setminus \Set{0}, \ ·}$, then lets demonstrate that is a group.
 
     - **Closure**: By definition, any composition of the elements of $F$ by $·$ is an element of $F$.
 
