@@ -601,18 +601,12 @@ As we see above, we have to see if $\Set{F,+}$ and  $\Set{F \setminus \Set{0}, \
 
         <br>
 
-    - **Associativity**: Observe that the result in the composition is always $0$ except for the case in which the both elements are $1$, so:
-
-        $$a · (b·c) = \begin{cases} 1 \ \ a = b= c = 1 \\ 0 \end{cases}$$
-
-        $$(a·b)·c = \begin{cases} 1 \ \ a = b= c = 1 \\ 0 \end{cases}$$
-
-        Thus, always $a · (b·c) = (a·b)·c$.
+    - **Associativity**: $1·(1·1) = (1·1)·1 = 1$
 
         <br>
 
-    - **Identity**: Check that $a·1 = 1·a = a \ \ \forall a \in F$
-    - **Inverse**: Observe that $a·a = a \ \ \forall a \in F$
+    - **Identity & Inverse**: Check that $1$ is at the same time the identity and his own inverse: $a·1 = 1·a = a \ \ \forall a \in F \setminus \Set{0}$
+
 
         <br>
 
