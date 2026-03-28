@@ -225,7 +225,7 @@ $$L_B := \set{\alpha \in S : \alpha \leq x \ \ \forall x \in B}$$
 
 Since $L_B$ is clearly upperbounded by any item of $B$ and $S$ satisfies the least-upper-bound property, then we can talk about an $\alpha_s \in S : \alpha_s = supL_B$. Observe that:
  
-$$ \alpha_s = supL_B \implies \begin{rcases} \nexists b \in B: b < \alpha_s  \\ \nexists l \in L_B : l > \alpha_s \end{rcases} \implies \alpha_s = infB$$
+$$ \alpha_s = supL_B \implies \begin{cases} \nexists b \in B: b < \alpha_s  \\ \nexists l \in L_B : l > \alpha_s \end{cases} \implies \alpha_s = infB$$
 
 The first condition tell us that $\alpha_s$ is a lowerbound, the second tell us that there isn't any other lowerbound $l$ bigger than $\alpha_s$, thus, it must be the infimum.
 
