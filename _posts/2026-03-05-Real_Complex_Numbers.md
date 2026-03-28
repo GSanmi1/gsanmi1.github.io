@@ -208,7 +208,7 @@ In this section we are going to present the *Least-upper-bound property*; this p
 
 An ordered set $S$ is said to have the least-upper-bound property if the following statement is true: being $E$ an upperbounded non-empty subset of $S$, then the supremum of $E$ exists in $S$. Formally: 
 
-$$ \forall E \subseteq S : (E \neq \varnothing \wedge \exists \alpha \in S : x \leq \alpha \ \ \forall x \in E) \ \ \exists \alpha_s = supE : \alpha_s \in S $$
+$$ \forall E \subseteq S : (E \neq \varnothing \wedge \exists \alpha \in S : x \leq \alpha \ \ \forall x \in E) \implies \exists \alpha_s = supE : \alpha_s \in S $$
 
 
 <br>
