@@ -178,6 +178,10 @@ $$\alpha ' \in S : x \geq \alpha ' \ \ \ \forall x \in E \wedge (\alpha ' \geq \
 
 <br>
 
+Observe trivially that boths supremum and infimum are unique, the proof is trivial but is worth to mention this fact for future demonstrations.
+
+<br>
+
 **Example of bounds in subsets of $Q$**
 
 1. Let's consider again $A:= \Set{p \ \vert \ p^2 < 2 }, B:= \Set{p \ \vert \ p^2 > 2 } \subset \mathbb{Q}$. Note check that both are ordered subsets of the rational numbers.
@@ -196,31 +200,42 @@ $$\alpha ' \in S : x \geq \alpha ' \ \ \ \forall x \in E \wedge (\alpha ' \geq \
 
 ### 2.2.3. Least-upper-bound property.
 
-In this section we are going to present the *Least-upper-bound property*; what mean for a set to satisfy it and a characterization of the least-upper-bound in a set satisfying the least-upper-bound property.
+In this section we are going to present the *Least-upper-bound property*; this property garantee the existance of the supremum of any non-empty and upperbounded subset of an ordered set that satisfies this property.
 
 <br>
 
 **Definition**
 
-First, let's define what this property is, an ordered set $S$ is said to have the least-upper-bound property if the following statement is true: being $E$ an upperbounded non-empty subset of $S$, then the supremum of $E$ exists in $S$.
-
-Formally: 
+An ordered set $S$ is said to have the least-upper-bound property if the following statement is true: being $E$ an upperbounded non-empty subset of $S$, then the supremum of $E$ exists in $S$. Formally: 
 
 $$ \forall E \subseteq S : (E \neq \varnothing \wedge \exists \alpha \in S : x \leq \alpha \ \ \forall x \in E) \ \ \exists \alpha_s = supE : \alpha_s \in S $$
+
 
 <br>
 
 **Theorem**
 
-Then, the theorem introduces a caracterization for any supremum of a subset of a least-upper-bound property set.
+Now, the following theorem introduces that the least-upper-bound property is a sufficent condition to ensure the existance of an *infimum* for any non-empty lowerbounded subset of an ordered set that satisfies the so called property and also offers a characterization of the property.
 
-Let's consider an ordered set $S$ and a non-empty, lowerbounded subset $B \subseteq S$. Then, we call $L$ to the set of all the lowerbounds of $B$ in $S$:
+Let's consider an ordered set $S$ that satisfies the least-upper-bound property and a non-empty, lowerbounded, subset $B \subseteq S$. 
+
+Then, we call $L$ to the set of all the lowerbounds of $B$ in $S$:
 
 $$L_B := \set{\alpha \in S : \alpha \leq x \ \ \forall x \in B}$$
 
+Since $L_B$ is clearly upperbounded by any item of $B$ and $S$ satisfies the least-upper-bound property, then we can talk about an $\alpha_s \in S : \alpha_s = supL_B$. Observe that:
+ 
+$$ \alpha_s = supL_B \implies \begin{rcases} \nexists b \in B: b < \alpha_s  \\ \nexists l \in L_B : l > \alpha_s \end{rcases} \implies \alpha_s = infB$$
+
+The first condition tell us that $\alpha_s$ is a lowerbound, the second tell us that there isn't any other lowerbound $l$ bigger than $\alpha_s$, thus, it must be the infimum.
+
+
+
+
+
 Then, we have:
 
-$$ \exists \alpha_s \in S: \alpha_s = supL = infB$$
+$$ \exists \alpha_s \in S: \alpha_s = supL_B = infB$$
 
 <br>
 
