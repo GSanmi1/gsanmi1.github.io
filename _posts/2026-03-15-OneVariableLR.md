@@ -33,37 +33,49 @@ author: German Sanmi
 
 In conventional programming, explicit rules are taught to programs in order to establish solid logic predicates about constraints or bifurcations over the execution flow of the program. 
 
-Machine Learning is a computer science discipline that interact or modules program logic inverting the order, instead of giving directives, you give to a program input values and desired outputs related by an unknown relation from the program perspective. Then the program objective is to infere that unknown relation in order to aproximate the computation of the inputs as most as posible to the real-desired output.
-
-Mathematically, we would have an unknown function $f$ relation two values, $(x,y) : y =f(x)$. The program aims to find a parameter $\theta$ such the resulting function aproximates $x$ to $y$ as much as posible:
-
-$$\Set{f_\theta : \theta \in \Theta} : f_{\theta}(x) \simeq f(x) = y$$
-
-In some sense, we built an inteligent program which deduce the unknown relation between $x$ and $y$ through an approximation which fails in an acceptable negligible percentaje of the cases.
+Machine Learning is a family of algorithms that learn patterns from data instead of following explicitly programmed rules. In other terms, *Machine Learning* is a field of study that gives computers the ability to learn without being explictly programmed.
 
 <br>
 
-In other terms, *Machine Learning* is a field of study that gives computers the ability to learn without being explictly programmed
+## 1.2. Formal Framing.
+
+Let's understand what "learning from data" actually mathematically means; the objective is to find a function that captures the regularity of an observed phenomenon that produces data in order to make predictions on new, unseen inputs of the same nature.
+
+Formally, we hace the following pieces:
+
+- An *input space* the set of all possible inputs. For instance $\mathcal{X} = \mathbb{R}^n$, this each input $x$ is a vector of $n$ features.
+
+- An *output space* $\mathcal{Y}$, which is the set of all posible outputs. This depends on what is being modelized, in clasification problems the output set can be a finite subset of the natural numbers which are the clusters, $\mathcal{Y} = [n]$, for regression, which wants to predict a continuos value is; $\mathcal{Y} = \mathbb{R}$.
+
+- The *target function*, the ideal mapping $\mathcal{X} \to \mathcal{Y}$ that relates each input $x \in \mathcal{X}$ to the desired output $y \in \mathcal{Y}$ which is abstracted in the application $f : \mathcal{X} \to \mathcal{Y}$ and remains unknown.
+
+- The *training set*; a finite subset $\mathcal{D} \subset \mathcal{X} \times \mathcal{Y}$ defined as $\mathcal{D} := \Set{(x_i,y_i)}_{i=1}^m : y_i = f(x_i)$
+
+The goal of ML is to use $\mathcal{D}$ to find a mapping $g_{\mathcal{D}}:\mathcal{X} \to \mathcal{Y} : g_\mathcal{D} \approx f$. Observe that $g$, by definition, allow us to make prediction along all the $\mathcal{X} \times \mathcal{Y}$ space, this is, not only for the inputs from $\mathcal{D}_\mathcal{X}$ but for any $x \in \mathcal{X}$. 
 
 <br>
 
-## 1.2. Learning Models.
+We don't search across all possible functions $f: \mathcal{X} \to \mathcal{Y}$ that set is unimaginably large and the problem would be ill-defined. Instead, we choose a *hypothesis set*; $\mathcal{H}$, which is a restricted family of candidate functions. A *learning algorithm* select one of the candidates of $\mathcal{H}$ as $g$.
 
-In this context, the *machine learning algorithm* is the strategy followed to find $\theta^*$. Formally is conceptualized as a function $A$ which takes a training set of data of related inputs and outputs $\mathcal{X} \times \mathcal{Y}$ and return what we call an hipotesis $\mathcal{h}$, which a presumibly optime parametrized function:
-
-$$ \begin{gather} A: (\mathcal{X} \times \mathcal{Y})^n \to \mathcal{H} \\ \ \ \   \Set{(x_i,y_i)}_{i=1}^n \to h\end{gather}$$
+For example, *linear regression* learning model is a supervised learning model (we will see what his is later) in which we assume that $\mathcal{H}$ is the set of all the affine transformations $\mathbb{R}^n \to \mathbb{R}$.
 
 <br>
 
- We distinguish between the following learning frameworks:
+## 1.3. Learning Algorithm.
 
-- *Supervised Learning*
-- *Unsupervised Learning*
-- *Reinforcement Learning*
+As we set in the previous section, we need to develop a mechanism that allow us to select the best candidate from a family of applications $\mathcal{H}$ that mapps correctly - matching our needs - the input $\mathcal{X}$ with the outpus $\mathcal{Y}$ using only the training set $\mathcal{D} \subset \mathcal{X} \times \mathcal{Y}$ established before as a reference. As a overall, this selection is based on the question about what $h \in \mathcal{H}$ minimizes as much as posible the noise or incorrections in the mapping $\mathcal{X} \to \mathcal{Y}$ done by $h$.
+
+The *learning algorithm* is the procedure that actually performs this search. In practice, for the vast majority of modern ML, this reduces to a continuous optimization problem: minimize a real-valued function (the *loss function*; the one that measures the error over the predictions) over a space of parameters.
 
 <br>
 
-### 1.2.1. Supervised Learning.
+### 1.3.1. Mathematical Prerrequisites.
+
+
+
+<br>
+
+# 2. Supervised Learning.
 
 #### 1.2.1.1. Definition.
 
