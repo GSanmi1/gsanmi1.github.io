@@ -71,9 +71,63 @@ The *learning algorithm* is the procedure that actually performs this search. In
 
 ### 1.3.1. Mathematical Prerrequisites.
 
+#### 1.3.1.1. Functions of Several Variables.
 
+A function of $n$ real variables is a map:
+
+$$f : S \to \mathbb{R} : S \subset \mathbb{R}^{n}$$
+
+Where:
+
+- $S$ is the evaluation domain
+- $\mathbb{R}$ is the codomain
+
+Then, the input is a vector with $n$ coordinates $x := (x_1,\cdots,x_n) \in \mathbb{R}^n$ and the image of $x$ through $f, f(x) \in \mathbb{R}$ is a real scalar.
+
+Is worth to visualize that for $n = 2$, the plot of $f(x,y)$ on $x,y$ is a surface given by the parameters $(x,y,f(x,y)) \in \mathbb{R}^3$, $f(x,y)$ is the height in the plane formed by the coordinates $(x,y) \in \mathbb{R}^2$. Now, if $n >3$ the geometric visualization breaks, while the maths holds in the sense that $f(x)$ is the height to each point of $\mathbb{R}^n$.
+
+In ML, the mapping function $f:\mathcal{X} \to \mathcal{Y}$ depends on many parameters simultaneously (hundreds, millions, or billions), or say in other terms, often is $\mathcal{X} \subset \mathbb{R}^n$. Thus, we need a framework for working with functions whose input is a vector, not a scalar.
 
 <br>
+
+#### 1.3.1.2. Partial Derivatives.
+
+Let be now $ f: S \to \mathbb{R} : S \subseteq \mathbb{R}^n$ a multivariable function, lets choose a point $\mathbf{a}:=(a_1,\ldots,a_n) \in S$.
+
+Then, we define the **partial derivative of $f$ respect to $x_i$ at $\mathbf{a}$** as:
+
+$$\frac{\partial f}{\partial x_i}(\mathbf{a}) = \lim_{h \to 0} \frac{f(a_1,\ldots,a_{i-1}, a_i + h, a_{i+1},\ldots,a_n) - f(a_1,\ldots,a_n)}{h}$$
+
+Provided this limit exists.
+
+Is important to note the partial derivatives is just the extension of the single-variable derivative applied to a multivariable function on one single feature $x_i$ meaning that the scalar $h \in \mathbb{R}$ pertubartes only the $i$-th coordinate (literally an ordinary single-variable derivative applied to a function where all variables except one have been frozen to constants). 
+
+A formal treatment is to define $g_i: \mathbb{R} \to \mathbb{R}$ from $f$ by:
+
+$$g_i(t) = f(a_1,\ldots,a_{i-1},t,a_{i+1},\ldots,a_n)$$
+
+Then, the partial derivative acquire other representation:
+
+$$\frac{\partial f}{\partial x_i}(\mathbf{a}) = g'_i(a_i) = \lim_{h \to 0} \frac{g_i(a_i + h)-g_i(a_i)}{h}$$
+
+A simple exchange $g_i \leftrightarrow f$ returns to us the original definition, but this shape gives a more intuitively approach since we can understand the partial derivative from our understanding from the single-derivative concept with which we are already familiar.
+
+The formula above tell us that the partial derivative tell us how $f$ changes under a minimal (differential) change of the ith-feature mantaining the rest variables as constants.
+
+<br>
+
+**Geometric Interpretation**
+
+Let's take the case $n=2$, the graph of $f : \mathbb{R}^2 \to \mathbb{R}$ is a surface on $\mathbb{R}^3$; $(x,y,f(x,y)) \in \mathbb{R}^3$. 
+
+In this context, the function $g_x:\mathbb{R} \to \mathbb{R} \ \vert \ g_x(t) := f(t,y_0)$ describes the curve of $f$ in the plane $(x,f(x,y_0)) \in \mathbb{R}^2$ which is the section given by the plane $y=y_0$ on the surface $(x,y,f(x,y)) \in \mathbb{R}^3$
+
+This way, $\frac{\partial f}{\partial x}(a) = g_x'(a)$ is the slope of the tangent line to that curve at the point $(a_1,a_2,f(a_1,a_2))$. The geometric interpretation of the single-variable derivative carries over directly: you are just reading the slope on a specific *slice* of the surface:
+
+![partial1](/assets/images/ML/partial1.png)
+
+In general, the graph of $f:\mathbb{R}^n \to \mathbb{R}$ is a hypersurface in $\mathbb{R}^{n+1}$, freezing all coordinates except $x_i$ defines a line in $\mathbb{R}^n$, the image of that line under the graph map $x \mapsto (x, f(x))$  is a curve on the hypersurface, and $D_i​f(\mathbf{a})$ is the slope of the tangent line to that curve.
+
 
 # 2. Supervised Learning.
 

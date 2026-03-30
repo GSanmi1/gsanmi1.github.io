@@ -215,7 +215,7 @@ $$ \forall E \subseteq S : (E \neq \varnothing \wedge \exists \alpha \in S : x \
 
 **Theorem**
 
-Now, the following theorem introduces that the least-upper-bound property is a sufficent condition to ensure the existance of an *infimum* for any non-empty lowerbounded subset of an ordered set that satisfies the so called property and also offers a characterization of the property.
+Now, the following theorem introduces that the least-upper-bound property is a sufficent condition to ensure the existance of an *infimum* for any non-empty lowerbounded subset of an ordered set that satisfies the so called property and also offers a characterization of the object.
 
 Let's consider an ordered set $S$ that satisfies the least-upper-bound property and a non-empty, lowerbounded, subset $B \subseteq S$. 
 
