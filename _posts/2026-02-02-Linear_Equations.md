@@ -1485,13 +1485,15 @@ Lastly, we have to unravel what the $AX = Y$ notation means; what means for $Y$ 
 
 $$\begin{cases} a_{11}x_{1} \cdots + a_{1n}x_{n} = y_1 \\ \ \ \ \ \ \ \ \ \ \ \ \ \ \  \vdots \\ a_{m1}x_1 \cdots + a_{mn}x_{n} = y_m\end{cases} \iff Y := \begin{pmatrix} y_1 \\ \vdots \\ y_m\end{pmatrix} = \begin{pmatrix} a_{11}x_{1} \cdots + a_{1n}x_{n} \\  \vdots \\ a_{m1}x_1 \cdots + a_{mn}x_{n}\end{pmatrix} = AX$$
 
-This give us a first approach about what the product is and what are his elemnts; lineal combinations of the elements of the operands of the operations.
+This give us a first approach about what the product is and what are his elements; $AX$ denotes a row of lineal combinations on the elements of $X$ by the items of $A$. 
 
 From this approach, we can extend the operation to any two matrix $A \in M_{m \times p}(F)$, $B \in M_{p \times n}(F)$. Let's break down $B$ as an ordered set of columns $\beta_i \in M_{p \times 1} (F): i \in [n]$, then the product stands as:
 
 $$AB = (A \beta_1, ..., A \beta_n) \in M_{m \times n} (F)$$
 
-Where $A \beta_i \in M_{m \times 1} (F) : i=1,...,n$. Let's observe that the number of rows of $A$ and the number of columns of $B$ must match.
+Where $A \beta_i \in M_{m \times 1} (F) : i=1,...,n$. **This is that $AB$ denotes the lineal combinations on the elements of the columns $\beta_i \subset B$ by the elements of $A$.**
+
+Let's observe that the number of rows of $A$ and the number of columns of $B$ must match.
 
 Each entry can have a singular definition as:
 
@@ -1509,11 +1511,73 @@ Let's see that the products of matrix satisfies the following properties:
 
 <br>
 
-### 5.3. Associativity.
+### 5.2.1. Associativity.
+
+Observe that, for each entry is:
+
+$$[a(bc)]_{ij}
+= \sum_{r} a_{ir}(bc)_{rj}
+= \sum_{r} a_{ir} \sum_{s} b_{rs}c_{sj}
+= \sum_{r} \sum_{s} a_{ir} b_{rs} c_{sj}=$$
+
+$$= \sum_{s} \left( \sum_{r} a_{ir} b_{rs} \right) c_{sj}
+= \sum_{s} (ab)_{is} c_{sj}
+= [(ab)c]_{ij}$$
+
+Thus is: $A(BC) = (AB)C$
+
+Observe that, going back to the matrix product definition, the associativity property essentially tells us that linear combinations of linear combinations of $C$ ($A(BC)$) are, ultimately, lineal combinations of $C$ $(AB)C$.
+
+<br>
+
+### 5.2.2. Power of Matrix.
+
+When $A$ is an $n \times n$ (square) matrix, the product $AA$ is defined. We shall denote this matrix by $A^2$. 
+
+Observe that by the associativity (AA)A = A(AA) or $A^2A = AA^2$, so that the product $AAA$ is unambiguously defined. This product we denote by A3. 
+
+In general, the product $AA \ldots A$ ($k$ times) is
+unambiguously defined, and we shall denote this product by $A^k$. 
+
+<br>
+
+## 5.3. Elementary Matrix and Elementary Row Operations abstraction.
+
+Now that we've introduced the matrix product and its properties we gonna see that every set of elementary row operations over a matrix $A \in M_{m \times n} (F)$ can be abstracted in a matrix product $EA$ where the matrix $E \in M_{m \times m}(F)$ is a matrix obtained by aplicating elementary row operations to the identity, what we call an elementary matrix.
+
+The logic behind is simple, the identity matrix $I$ behaves as a identity , in the sense that if $A$ and $I$ and two matrix such their product is correctly defined, then $IA = A$. Then, applying to $I$ elementary operations forming $E$ and performing the product $EA$ applies the elementary row operation to $A$.
+
+<br>
+
+### 5.3.1. Identity Matrix.
+
+We define the identity matrix $I_n \in M_{n} (F)$ as:
+
+$$I_n :=  (\delta_{ij})_{i,j \in [n]} \ \vert \ \delta_{ij} :=\begin{cases} 1 & i = j \\ 0 & i \neq j \end{cases}$$
+
+As the codification, the identity matrix would be:
+
+$$I_n := \begin{pmatrix} 1 & 0 & \cdots & 0 \\ 0 & 1 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & 1 \end{pmatrix} \in F^{n \times n}$$
+
+Let's now check carefully its behaviour. Considering $I_n$ and $A \in F^{n \times m}$, then the product $IA$ as we defined above would be:
+
+$$IA = (I\alpha_1,\ldots,I\alpha_m) \ \vert \ I\alpha_t := \begin{pmatrix} \displaystyle\sum_{i=1}^n\delta_{1i}a_{it} \\  \vdots \\ \displaystyle\sum_{i=1}^n\delta_{ni}a_{it}\end{pmatrix} $$
+
+Let's observe that by the definition of $I_n$, each item of $I \alpha_t$ is: $\displaystyle\sum_{i=1}^n\delta_{ji}a_{it} = \delta_{jj}a_{jt} = a_{jt} : j \in [n]$, thus:
+
+$$I\alpha_t := \begin{pmatrix} \displaystyle\sum_{i=1}^n\delta_{1i}a_{it} \\  \vdots \\ \displaystyle\sum_{i=1}^n\delta_{ni}a_{it}\end{pmatrix} = \begin{pmatrix} \cancel{\delta_{11}}a_{1t} \\  \vdots \\ \cancel{\delta_{nn}}a_{nt}\end{pmatrix} = \alpha_t$$
+
+And in summary: $IA = (I\alpha_1,\cdots,I\alpha_m) = (\alpha_1,\cdots,\alpha_m) = A$
+
+<br>
+
+The proof that $AI_m = A$  for $A \in F^{n \times m}$ is analogous and omitted here.
+
+<br>
+
+### Elementary Matrix.
 
 
 
-to carry along two sequences of matrices, one describing the reduction of
-A to the identity and the other recording the effect of the same sequence
-of operations starting from the identity. The reader may judge for himself which is a neater form of bookkeeping.
 
+<br>
