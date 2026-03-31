@@ -94,11 +94,13 @@ In ML, the mapping function $f:\mathcal{X} \to \mathcal{Y}$ depends on many para
 
 Let be now $ f: S \to \mathbb{R} : S \subseteq \mathbb{R}^n$ a multivariable function, lets choose a point $\mathbf{a}:=(a_1,\ldots,a_n) \in S$.
 
-Then, we define the **partial derivative of $f$ respect to $x_i$ at $\mathbf{a}$** as:
+Then, we define the **partial derivative of $f$ respect to $x_i$ at $\mathbf{a}$** as (provided this limit exists):
 
-$$\frac{\partial f}{\partial x_i}(\mathbf{a}) = \lim_{h \to 0} \frac{f(a_1,\ldots,a_{i-1}, a_i + h, a_{i+1},\ldots,a_n) - f(a_1,\ldots,a_n)}{h}$$
+$$\frac{\partial f}{\partial x_i}(\mathbf{a}) = \lim_{t \to 0} \frac{f(\mathbf{a} + te_i) - f(\mathbf{a})}{t} =  $$
 
-Provided this limit exists.
+$$ = \lim_{t \to 0} \frac{f(a_1,\ldots,a_{i-1}, a_i + t, a_{i+1},\ldots,a_n) - f(a_1,\ldots,a_n)}{t} $$
+
+Where $e_i$ is the $i$-th standard basis vector.
 
 Is important to note the partial derivatives is just the extension of the single-variable derivative applied to a multivariable function on one single feature $x_i$ meaning that the scalar $h \in \mathbb{R}$ pertubartes only the $i$-th coordinate (literally an ordinary single-variable derivative applied to a function where all variables except one have been frozen to constants). 
 
@@ -112,7 +114,7 @@ $$\frac{\partial f}{\partial x_i}(\mathbf{a}) = g'_i(a_i) = \lim_{h \to 0} \frac
 
 A simple exchange $g_i \leftrightarrow f$ returns to us the original definition, but this shape gives a more intuitively approach since we can understand the partial derivative from our understanding from the single-derivative concept with which we are already familiar.
 
-The formula above tell us that the partial derivative tell us how $f$ changes under a minimal (differential) change of the ith-feature mantaining the rest variables as constants.
+The formula above tell us that the partial derivative tell us how $f$ changes under a minimal (differential) change of the $i$-th feature mantaining the rest variables as constants.
 
 <br>
 
@@ -134,9 +136,65 @@ In summary, partial derivatives measures how $f$ changes when we adjust one para
 
 <br>
 
-#### 1.3.1.3. Gradient.
+#### 1.3.1.3. Directional Derivatives.
+
+**Definition**
+
+Let's barely introduce what the directional derivative is. 
+
+Observe that the partial derivatives we've just presented above measure the change ratio along the coordinate that isn't frozen. In the example we proposed, the curve is the intersection of the surface with the plane $y = y_0$, thus, the partial derivative explore how $f$ changes along the $x$ coordinate axis.
+
+Thus, partial derivatives measure rates of change along coordinate axes, now directional derivatives introduce how to measure this change along virtually any direction. The directional derivative generalizes partial derivatives to arbitrary directions. 
+
+Let $E \subseteq \mathbb{R}^n$ be open, and let $f: E \to \mathbb{R}$ be differentiable at $\mathbf{a} \in E$. Then, we define the *directional derivative* of $f$ at $\mathbf{a}$ with respect to the $i$-th variable is:
+
+$$D_{\mathbf{u}} f(\mathbf{a}) = \lim_{t \to 0} \frac{f(\mathbf{a}+t\mathbf{u}) - f(\mathbf{a})}{t}$$
+
+Where $\mathbf{u}$ is an unit vector, a vector with direction but without magnitud (this is so to speak, the module is $\vert \vert u \vert \vert = 1$, thus it not disturb the magnitud of any other vector). Lets take a closer look. 
+
+If is $\mathbf{u} := (u_1,\ldots,u_n) \in \mathbb{R}^n : \vert \vert u \vert \vert = 1$, then $t\mathbf{u}$ is a scalar multiplication on $\mathbf{u}$, 
+
+$$t\mathbf{u}:=(tu_1,\ldots,tu_n) \implies \mathbf{a} + t\mathbf{u} := (a_1 +tu_1,\ldots, a_n+tu_n)$$
+
+Every coordinate gets perturbed simultaneously, each by the amount $tu_i$​. The vector $\mathbf{u}$ controls the *direction* of the perturbation, and the scalar $t$ controls how far you go in that direction.
+
+<br>
+
+**Geometric Interpretation**
+
+This means that the geometric interpretation remains the same, but now the plane contains the line passing through the point $\mathbf{a}$ with the direction of the unit vector $\mathbf{u}$. This plane is no longer paralel to any coordinate axis but it extends in the direction of $\mathbf{u}$.
+
+As a visual example, for $f:\mathbb{R}^2 \to \mathbb{R}$ the intersection of this plane and the surface give us a *curve* containing $(\mathbf{a},f(\mathbf{a}))$, then $D_uf(\mathbf{a})$ is the slop of the tangent line to the curve at $f(\mathbf{a})$
+
+![directional1](directional1.png)
+
+<br>
 
 
+#### 1.3.1.4. Gradient.
+
+**Definition**
+
+Consider now $f: S \subset \mathbb{R}^n \to \mathbb{R}$ and a point $\mathbf{a} \in \mathbb{R}^n: \exists \partial_if(\mathbf{a}) \ \forall i \in [n]$. We define as the *gradient* of $f$ at $\mathbf{a}$ to the vector:
+
+$$\nabla f(\mathbf{a}) := 
+\begin{pmatrix}
+\frac{\partial f}{\partial x_1}(\mathbf{a})\\
+\vdots\\
+\frac{\partial f}{\partial x_n}(\mathbf{a})
+\end{pmatrix} \in \mathbb{R}^n$$
+
+Observe that the gradient lives in the domain of $f$, $\mathbb{R}^n$, not in the codomain $\mathbb{R}$.
+
+<br>
+
+**Geometric Interpretation**
+
+
+
+Now, let the unit vector $\mathbf{u} \in \mathbb{R}^n : \vert \vert u \vert \vert  =1$, then we define the directional derivative as: 
+
+$$D_{\mathbf{u}} f(\mathbf{a}) = \lim_{t \to 0} \frac{f(\mathbf{a}+t\mathbf{u}) - f(\mathbf{a})}{t}$$
 
 <br>
 

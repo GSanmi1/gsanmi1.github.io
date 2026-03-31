@@ -427,7 +427,7 @@ The members of $\mathbb{R}$ will be certain subsets of $\mathbb{Q}$, called *cut
 
 <br>
 
-Check that this so called cuts are upperbounds segment with no lowerbound, in the sense that the second property of the cuts already tell us that $p \in S \implies \forall q(q < p \implies q \in S)$. This feature allows an order in $\mathbb{R}$ relative to the cuts members.
+Check that this so called cuts are upperbounds segments with no lowerbound, in the sense that the second property of the cuts already tell us that $p \in S \implies \forall q(q < p \implies q \in S)$. This feature allows an order in $\mathbb{R}$ relative to the cuts members.
 
 <br>
 
