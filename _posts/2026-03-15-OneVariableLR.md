@@ -166,7 +166,7 @@ This means that the geometric interpretation remains the same, but now the plane
 
 As a visual example, for $f:\mathbb{R}^2 \to \mathbb{R}$ the intersection of this plane and the surface give us a *curve* containing $(\mathbf{a},f(\mathbf{a}))$, then $D_uf(\mathbf{a})$ is the slop of the tangent line to the curve at $f(\mathbf{a})$
 
-![directional1](directional1.png)
+![directional1](/assets/images/ML/directional1.png)
 
 <br>
 
