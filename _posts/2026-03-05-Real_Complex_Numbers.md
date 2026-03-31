@@ -76,83 +76,56 @@ In order to elucidate its structure, as well as that of the complex numbers, we 
 
 <br>
 
-## 2.1. Binary Relations.
+## 2.1. Ordered Sets.
 
-**Binary Relations and Orders.**
+Let $S$ be a set. Then, we define as an *order* on $S$ to a relation, $<$, satisfying the following two properties:
 
-Given a set $X$, a binary relation on $X$ is a subset: $R \subseteq X \times X$ and we write as a shorthand, being $x,y \in X$, then:
+1. **Trichotomy**; Let be $x,y \in S$, then only one of the following statements are true:
 
-$$xRy \iff (x,y) \in R$$
+    $$x < y \quad , \quad y < x \quad , \quad x = y$$
 
-We call to $R$ as an order, and, defined along certains conditions, we abstract the idea that $x$ preceeds $y$ through $R$ and we represent it such as $(x,y) \in R$
+    <br>
 
-Then, any binary relation $R$ must satisfy the following three condition to be called a *order*:
+2. **Transitivity**; Let be $x,y,z \in S$, then:
 
-- **Reflexive**: $xRx \ \ \forall x \in X$
-- **Transitive**: $xRy \wedge yRz \implies xRz \ \ \forall x,y,z \in X$
-- **Antisimetric**: $xRy \wedge yRx \implies x = y \ \ \forall x,y \in X$
+    $$x < y \wedge y < z \implies x < z $$
 
 <br>
 
-**Partial and Total Order**
+Also, from the notation above we build the following notation:
 
-When we define a binary relation $R$ over a set $X$ then is pertinent to ask if:
+$$x \leq y \iff x < y \vee x = y$$
 
-$$xRy \vee yRx \ \ \ \forall x,y \in R$$
+Satisfying that: 
 
-If $x$ and $y$ are incomparable then we write:
-
-$$\neg(xRy) \wedge \neg (yRx) \iff x \ \vert \vert \ y$$
-
-We say that $R$ defined in $X$ is: 
-
-$$R \text{ is a partial order } \iff \exists x,y \in X : x \ \vert \vert \ y$$
-$$R \text{ is a total order } \iff xRy \vee yRx \ \ \ \forall x,y \in R$$
+$$\neg(x < y) \equiv y \leq x$$
 
 <br>
 
-**Strict and non-strict order**
-
-An order can be defined considering if some element can relate with him self or not ($xRx$) in the sense that if non-strict or strict order.
-
-Being $X$ a set and $R$ a binary relation, then:
-
-$$ R \text{ is non-strict order} \iff xRx \ \forall x \in R$$
-$$ R \text{ is strict order} \iff \exists x \in X : (x,x) \notin R$$
-
-Let's observe that, being $M_{xy}$ predicates over $x$ and $y$ that must be satisfied to be $xRy$, then in the non-strict order is always $M_{xx} \equiv \top$, then we can say: 
-
-$$xRy \iff M_{xy} \vee x = y : M_{xy} \otimes M_{yx}$$
-
-Let's observe that by how the predicates $M$ are defined, $R$ as a non-strict order verifies:
-
-$$xRy \wedge yRx \iff x = y$$
-
-Equivalently, if exist at least one $x \in X: (x,x) \notin R$, then $R$ definition must impose diferenciation between two elements for these to be relatable:
-
-$$xRy \iff M_{xy} \wedge x \neq y$$
-
-<br>
-
-## 2.2. Ordered Sets. Bounds. 
+## 2.2. Bounds. 
 
 ### 2.2.1. Definition, order in $\mathbb{Q}$.
 
-An ordered set is simply a set in which an order relation has been defined. Let's consider for example $\mathbb{Q}$ the set of rational numbers and the binary relation:
+An ordered set is simply a set in which an order relation has been defined. 
 
-$$\leq \  \subseteq \mathbb{Q} \times \mathbb{Q}: q \leq p \iff p - q \in \mathbb{Q}^+ \cup \Set{0}$$
+Let's consider for example $\mathbb{Q}$ the set of rational numbers and the binary relation:
 
-We consider:
+$$< \  := \Set{(p,q) \in \mathbb{Q}^2 \ \vert \ q < p \iff p - q \in \mathbb{Q}^+}$$
 
-- $p - p = 0 \iff p \leq p \ \ \forall p \in \mathbb{Q}$ (Reflexivity)
+Then, this binary relation on $\mathbb{Q}$ satisfies:
 
-- $q \leq p \wedge t \leq q \implies p - t = (p - q) + (q - t) \in \mathbb{Q}^+ \cup \Set{0} \implies t \leq p$ (Transitivity)
 
-- $p \leq q \wedge q \leq p \implies p - q \in \mathbb{Q}^+ \cup \Set{0} \wedge q - p = -(p-q) \in \mathbb{Q}^+ \cup \Set{0} \implies p - q = 0 \iff p = q$ (Antisimetric)
+- Be $p,q \in \mathbb{Q}$, then $p-q \in \mathbb{Q}^+ \vee -(p-q) = q - p \in \mathbb{Q}^+ \vee p-q = 0$, which essentially give us the trichotomy property:
+
+    $$p < q , \quad q < p , \quad q = p$$
+
+    <br>
+
+- $q < p \wedge t < q \implies p - t = (p - q) + (q - t) \in \mathbb{Q}^+ \implies t < p$ (Transitivity)
 
 <br>
 
-So $\leq$ is an order, let's see that also is a total order: $p-q \geq 0 \vee q - p \geq 0  \ \ \forall p,q \in \mathbb{Q} \implies p \leq q \vee q \leq p \ \ \forall p,q \in \mathbb{Q}$
+So $<$ is an order on $\mathbb{Q}$.
 
 <br>
 
@@ -434,11 +407,65 @@ We now state the existence theorem which is the core of this chapter.
 
 **There exists an ordered field $\mathbb{R}$ which has the least-upper-bound property which contains $\mathbb{Q}$ as a subfield.** 
 
-To proove this theorem, we will construct $\mathbb{R}$ from $\mathbb{Q}$.
-
-As a reminder, 
-
+To proove this theorem, we will construct $\mathbb{R}$ from $\mathbb{Q}$. We shall divide the construction in several steps.
 
 <br>
 
-FALTA COMPLETAR Least-upper-bound property PAGINA 17
+**Step 1. Cuts**
+
+The members of $\mathbb{R}$ will be certain subsets of $\mathbb{Q}$, called *cuts*. A cut is, by definition, any set $S \subset \mathbb{Q}$ with the following three properties: 
+
+- $S \neq \varnothing$
+- $p \in S \wedge q \in \mathbb{Q} \wedge q < p \implies q \in S$. 
+
+    Note that we are saying that being $S$ a cut and $q \notin S$ then $p < q \ \ \forall p \in S$, otherwise, by the line above it would be $q \in S$. In some manner $S$ is a segment inside $\mathbb{Q}$, without gaps. This result also implies the two followings:
+
+    - $p \in S \wedge q \notin S \implies p < q$
+    - $p \notin S \wedge p < q \implies q \notin S$
+
+- $p \in S \implies \exists r \in S : p < r$. There is no "larguest" member.
+
+<br>
+
+Check that this so called cuts are upperbounds segment with no lowerbound, in the sense that the second property of the cuts already tell us that $p \in S \implies \forall q(q < p \implies q \in S)$. This feature allows an order in $\mathbb{R}$ relative to the cuts members.
+
+<br>
+
+**Step 2. $\mathbb{R}$ is an ordered set**.
+
+Let $A,B \subset \mathbb{Q}$ be two cuts, then we define:
+
+$$A < B \iff A \subset B$$
+
+We say that $A$ is a *proper subset* of $B$, which means that any item of $A$ is also an item of $B$ but at least one item of $B$ do not belongs to $A$, formally:
+
+$$A \subset B \iff A \subseteq B \wedge A \neq B \iff \forall x (x\in A \implies x \in B) \wedge \exists b (b\in B \wedge b \notin A)$$
+
+The reason why we care about giving a special notation to this familiar concept is because it defines an order inside $\mathbb{R}$.
+
+Let's note that, be $A,B \subset \mathbb{Q}$, then, we can think on one of the following posibilities between $A$ and $B$
+
+- First, consider that $\exists b \in B : b \notin A$, then the first corolary of the second property asserts that $\forall a(a \in A \wedge b \notin A \implies a < b)$, applying again the second property of the cuts we get that $(b\in B \wedge a < b) \implies a \in B \implies A \subset B$.
+
+- A similar argument proves that $\exists a \in A : a \notin B \implies B \subset A$.
+
+- Now, obviously, if $\neg(\exists b \in B : b \notin A) \wedge \neg(\exists a \in A : a \notin B)$, counting with the fact that, following the first property of the cuts, $A,B \neq \varnothing$ then only can be $A = B$.
+
+
+In summary, we've just proved the *tricothomy* property for any pair of cuts in $\mathbb{Q}$.
+
+Also consider $A,B,C \in \mathbb{Q}: A< B \wedge B < C$ we can directly infere that through the transitivity property of the subsets:
+
+$$\begin{cases} A < B \iff A \subset B \\ B < C \iff B \subset C\end{cases} \implies A \subset C \implies A < C$$
+
+Thus, we've demonstrated that $<$ relative to cuts in $\mathbb{R}$ is an order since it satisfies tricothomy and transivity.
+
+<br>
+
+**Step 3. $\mathbb{R}$ satisfies the least-upper-bound property**.
+
+Remember that the least-upper-bound property ensures for any set $S$ that satisfy it that any non-empty $E \subset S$ subset upper/lower-bounded has supremum/infimum in $S$.
+
+
+
+<br>
