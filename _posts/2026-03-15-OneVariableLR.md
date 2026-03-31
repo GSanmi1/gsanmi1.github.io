@@ -128,6 +128,17 @@ This way, $\frac{\partial f}{\partial x}(a) = g_x'(a)$ is the slope of the tange
 
 In general, the graph of $f:\mathbb{R}^n \to \mathbb{R}$ is a hypersurface in $\mathbb{R}^{n+1}$, freezing all coordinates except $x_i$ defines a line in $\mathbb{R}^n$, the image of that line under the graph map $x \mapsto (x, f(x))$  is a curve on the hypersurface, and $D_i​f(\mathbf{a})$ is the slope of the tangent line to that curve.
 
+<br>
+
+In summary, partial derivatives measures how $f$ changes when we adjust one parameter while keeping all others fixed. This is a need to form the gradient which basically is a vector that tells us the movement tend of $f$ at a point in $\mathbb{R}^n$
+
+<br>
+
+#### 1.3.1.3. Gradient.
+
+
+
+<br>
 
 # 2. Supervised Learning.
 

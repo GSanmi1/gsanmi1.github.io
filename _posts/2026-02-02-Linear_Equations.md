@@ -1577,7 +1577,13 @@ The proof that $AI_m = A$  for $A \in F^{n \times m}$ is analogous and omitted h
 
 ### Elementary Matrix.
 
+Now, let's introduce what an elementary matrix is.
 
+An $E \in F^{m \times m}$ matrix is said to be an elementary matrix if it can be obtained from the $I_m$ identity matrix by means of a single elementary row operation.
+
+Formally, recovering 
+
+Then, let e be an elementary row operation and let $E \in F^{m \times m}$ elementary matrix E = e(1). Then, for every m X n matrix A, 
 
 
 <br>
