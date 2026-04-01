@@ -1575,15 +1575,98 @@ The proof that $AI_m = A$  for $A \in F^{n \times m}$ is analogous and omitted h
 
 <br>
 
-### Elementary Matrix.
+### 5.3.2. Elementary Matrix.
 
 Now, let's introduce what an elementary matrix is.
 
-An $E \in F^{m \times m}$ matrix is said to be an elementary matrix if it can be obtained from the $I_m$ identity matrix by means of a single elementary row operation.
+An $E \in F^{n \times n}$ matrix is said to be an elementary matrix if it can be obtained from the $I_n$ identity matrix by means of a single elementary row operation.
 
-Formally, recovering 
-
-Then, let e be an elementary row operation and let $E \in F^{m \times m}$ elementary matrix E = e(1). Then, for every m X n matrix A, 
-
+Formally, elementary row operations are $\mathcal{E}:M_{m \times n} \to M_{m \times n}$ functions of the following type:
 
 <br>
+
+- $\mathcal{E}_{\lambda r}^r(A):=(e_{ij})_{i \in [m], j \in [n]} : e_{ij} := \begin{cases}  \lambda a_{ij} \ \ i = r \\ \   a_{ij} \ \ \ i \neq r\end{cases} : \lambda \neq 0$
+
+- $\mathcal{E}_{r + \lambda s}^r(A):=(e_{ij})_{i \in [m], j \in [n]} : e_{ij} := \begin{cases}  a_{ij} + \lambda a_{sj} \ \ i = r \\ \  \ \ \ \ \   a_{ij} \ \ \ \ \  \ \ \ i \neq r\end{cases}$
+
+- $\mathcal{E}_{r  \leftrightarrow s}(A):=(e_{ij})_{i \in [m], j \in [n]} : e_{ij} := \begin{cases}  a_{sj}  \ \ \ \ \ \ i = r \\  a_{rj}  \ \ \ \  \ \ i = s \\ a_{ij} \ \ i \notin \Set{r,s}\end{cases}$
+
+<br>
+
+Thus, we define that a matrix $E \in M_n(F)$ is an elementary matrix if $\exists \theta: \mathcal{E}_\theta(I_n) = E$. Observe that for example, for $n = 2$ there can only be the following forms for elementary matrix:
+
+<br>
+
+$$\begin{bmatrix}0 & 1 \\ 1 & 0\end{bmatrix},\quad
+\begin{bmatrix}1 & c \\ 0 & 1\end{bmatrix},\quad
+\begin{bmatrix}1 & 0 \\ c & 1\end{bmatrix},\quad
+\begin{bmatrix}c & 0 \\ 0 & 1\end{bmatrix},\ c\ne 0,\quad
+\begin{bmatrix}1 & 0 \\ 0 & c\end{bmatrix},\ c\ne 0$$
+
+<br>
+
+Then, let $\mathcal{E}_\theta$ be an elementary row operation and let $E_\theta \in F^{m \times m}$ elementary matrix $E_\theta = \mathcal{E}_\theta(I)$. Then, for every $m \times n$ matrix $A$, is $\mathcal{E}_\theta(A) =E_\theta A$.
+
+As we did to see the behaviour of the identity matrix, lets take a closer look on how $E_\theta$ behaves. For simplicity, lets take $A \in M_{2 \times 2}(F)$
+
+$$A := \begin{pmatrix}a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix}, \quad E^1_{21} := \mathcal{E}^1_{21}(I_2) = \begin{pmatrix}2 & 0 \\ 0 & 1 \end{pmatrix}$$
+
+This, way, when perform the product we have:
+
+$$E^1_{21}A = \begin{pmatrix}2 & 0 \\ 0 & 1 \end{pmatrix} \begin{pmatrix}a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix} = \left[\begin{pmatrix}2 & 0 \\ 0 & 1 \end{pmatrix} \begin{pmatrix}a_{11} \\ a_{21} \end{pmatrix},  \begin{pmatrix}2 & 0 \\ 0 & 1 \end{pmatrix} \begin{pmatrix}a_{12} \\ a_{22} \end{pmatrix}\right]$$
+
+$$ = \left[ \begin{pmatrix} 2a_{11} + 0a_{21} \\ 0a_{11} +1a_{21}\end{pmatrix}, \begin{pmatrix} 2a_{12} + 0a_{22} \\ 0a_{12} +1a_{22}\end{pmatrix} \right] = \begin{pmatrix}2a_{11} & 2a_{12} \\ a_{21} & a_{22} \end{pmatrix} = \mathcal{E}^1_{21}(A)$$
+
+A similar proof can be provided for any other $\theta$ and can be extrapoled for an arbitrary dimension $m\times n$. The point is that we've just seen above how $I$ matrix, due to his structure, behaves in the product with other matrix $A$, the $ij$ entry of $IA$ is determined by the $i$-th row of $I$ and the $j$-th column of $I$ but since $I$ has all his row-entries $0$ except the $i$-th one, then all the $j$-th row-entries except the $i$-th one are cancelled (multiplied by 0):
+
+$$IA := (e_{ij})_{i \in [m],j \in [n]} : e_{ij} := \delta_{ii}a_{ij}$$
+
+This formulation is enough to understand how $\mathcal{E}_\theta(I)$ affects $E_\theta A$. Observe that:
+
+- $\theta \mapsto \lambda r \implies e_{rj} := \lambda \delta_{rr}a_{rj} = \lambda a_{rj}$ (observe that the row $i$ gets fixed to the $r$ one)
+
+- $\theta \mapsto r + \lambda s \implies e_{rj} := \delta_{rr}a_{rj} + \lambda \delta_{ss}a_{sj}$ (observe that now in the $r$-th row of $I$ tehre are to non-zero elements due to the elementary operation).
+
+- $\theta \mapsto r \leftrightarrow s \implies e_{rj} := \delta_{ss}a_{sj} \wedge e_{sj} := \delta_{rr}a_{rj}$
+
+<br>
+
+Let's also observe some immediate and interesting fact, and is that every $EA$ is row-equivalent with $A$ and between them. 
+
+Formally:
+
+$$A \in [R]_r \implies \forall \theta \ (E_\theta A \in [R]_r)$$
+
+We can extend this result as:
+
+$$ A \equiv_r B \iff \exists k : \left(\prod_{i=1}^k E_{\theta_k}\right)A = B $$
+
+Immediately, from 3.2.3, $A \equiv_r B \iff \exists k : \mathcal{E}_k \cdots \circ \mathcal{E}_1(A) = B$, then taking and rolling back each composition as $\mathcal{E}_i (A) = E_{\theta_i}A$, we have that $ E_{\theta_k} \cdots  E_{\theta_1}A = \left(\prod_{i=1}^k E_{\theta_k}\right)A =  B$
+
+<br>
+
+## 5.4. Matrix product exercises.
+
+1. **Find two different $2 \times 2$ matrices A such that $A^2 = 0$ but $A\neq 0$.**
+
+    Let $A :=  \begin{pmatrix}a & b \\ c & d \end{pmatrix}$, then, $A^2:= \begin{pmatrix}a^2 +bc & ab + bd \\ ac + dc & cb + d^2\end{pmatrix}$ and we can form the following constraings around the points of $\mathbb{R}$ that, must satisfy to be $0$:
+
+    $$A^2 = 0 \iff \begin{cases} a^2 + bc = 0 \\ ab + bd = 0 \\ ac +dc = 0 \\ cb + d^2 = 0\end{cases} \iff \begin{cases} a^2 = - bc \\ b(a+d) = 0 \\ c(a+d) = 0 \\ d^2 = - cb\end{cases}$$
+
+    Thus, we get assuming the decision that no point can be $0$:
+
+    $$\begin{cases} a^2 = - bc \\ a = -d \\ d^2 = - cb\end{cases}$$
+
+    Taking $(-1,-1,1,1), (1,1,-1,-1) \in \mathbb{R}^4$ we have the matrix:
+
+    $$A_1 :=  \begin{pmatrix}-1 & 1 \\ -1 & 1 \end{pmatrix}, \quad A_2 :=  \begin{pmatrix}1 & -1 \\ 1 & -1 \end{pmatrix}$$
+
+    <br>
+
+2. **Let $A \in M_{m \times n}(F)$ and $B \in M_{n \times k}(F)$ matrix. Show that the columns of $AB$ are linear combinations of the columns of $A$**
+
+    We've just see that $AB = (A\beta_1,\ldots,A\beta_k)$ following our definition of product. This definition shows immediately that $AB$ are essentially lineal combinations of the columns of $B$.
+
+    But let's now say that $A = (\alpha_1,\ldots,\alpha_n) : \alpha_i \in M_{m \times 1}(F)$, then we would say that 
+    
+    $$AB = (\alpha_1B,\ldots,\alpha_nB) = [()]$$
