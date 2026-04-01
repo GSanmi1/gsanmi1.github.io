@@ -481,7 +481,7 @@ $$x_1 = x_3 \wedge x_2 = - 3x_3 \wedge x_3 \in F \implies S_{M'}:=\Set{x \in F^3
 
 On the other hand, for $M$ it is:
 
-$$2P - Q = P':-3x_1 -x_2 = 0 \iff x_1 = -3x_2$$
+$$2P - Q = P':-3x_1 -x_2 = 0 \iff x_1 = -\frac{1}{3}x_2$$
 
 Applying this results to $Q,T$, then we get:
 
@@ -783,7 +783,7 @@ $$A= \begin{bmatrix}A_{11} & \cdots & A_{1n}\\\vdots & \ddots & \vdots\\A_{m1} &
 
 In the same way:
 
-$$ X : [1] \times [n] \to  F$$
+$$ X : [n] \times [1] \to  F$$
 
 $$X(j) = x_{j}$$
 
