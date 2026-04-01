@@ -1585,11 +1585,11 @@ Formally, elementary row operations are $\mathcal{E}:M_{m \times n} \to M_{m \ti
 
 <br>
 
-- $\mathcal{E}_{\lambda r}^r(A):=(e_{ij})_{i \in [m], j \in [n]} : e_{ij} := \begin{cases}  \lambda a_{ij} \ \ i = r \\ \   a_{ij} \ \ \ i \neq r\end{cases} : \lambda \neq 0$
+- $\mathcal{E}\_{\lambda r}^r(A):=(e\_{ij})\_{i \in [m], j \in [n]} : e\_{ij} := \begin{cases}  \lambda a\_{ij} \ \ i = r \\ \   a\_{ij} \ \ \ i \neq r\end{cases} : \lambda \neq 0$
 
-- $\mathcal{E}_{r + \lambda s}^r(A):=(e_{ij})_{i \in [m], j \in [n]} : e_{ij} := \begin{cases}  a_{ij} + \lambda a_{sj} \ \ i = r \\ \  \ \ \ \ \   a_{ij} \ \ \ \ \  \ \ \ i \neq r\end{cases}$
+- $\mathcal{E}\_{r + \lambda s}^r(A):=(e\_{ij})\_{i \in [m], j \in [n]} : e\_{ij} := \begin{cases}  a\_{ij} + \lambda a\_{sj} \ \ i = r \\ \  \ \ \ \ \   a\_{ij} \ \ \ \ \  \ \ \ i \neq r\end{cases}$
 
-- $\mathcal{E}_{r  \leftrightarrow s}(A):=(e_{ij})_{i \in [m], j \in [n]} : e_{ij} := \begin{cases}  a_{sj}  \ \ \ \ \ \ i = r \\  a_{rj}  \ \ \ \  \ \ i = s \\ a_{ij} \ \ i \notin \Set{r,s}\end{cases}$
+- $\mathcal{E}\_{r  \leftrightarrow s}(A):=(e\_{ij})\_{i \in [m], j \in [n]} : e\_{ij} := \begin{cases}  a\_{sj}  \ \ \ \ \ \ i = r \\  a\_{rj}  \ \ \ \  \ \ i = s \\ a\_{ij} \ \ i \notin \Set{r,s}\end{cases}$
 
 <br>
 
@@ -1605,9 +1605,9 @@ $$\begin{bmatrix}0 & 1 \\ 1 & 0\end{bmatrix},\quad
 
 <br>
 
-Then, let $\mathcal{E}_\theta$ be an elementary row operation and let $E_\theta \in F^{m \times m}$ elementary matrix $E_\theta = \mathcal{E}_\theta(I)$. Then, for every $m \times n$ matrix $A$, is $\mathcal{E}_\theta(A) =E_\theta A$.
+Then, let $\mathcal{E}\_\theta$ be an elementary row operation and let $E\_\theta \in F^{m \times m}$ elementary matrix $E\_\theta = \mathcal{E}\_\theta(I)$. Then, for every $m \times n$ matrix $A$, is $\mathcal{E}\_\theta(A) =E\_\theta A$.
 
-As we did to see the behaviour of the identity matrix, lets take a closer look on how $E_\theta$ behaves. For simplicity, lets take $A \in M_{2 \times 2}(F)$
+As we did to see the behaviour of the identity matrix, lets take a closer look on how $E\_\theta$ behaves. For simplicity, lets take $A \in M\_{2 \times 2}(F)$
 
 $$A := \begin{pmatrix}a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix}, \quad E^1_{21} := \mathcal{E}^1_{21}(I_2) = \begin{pmatrix}2 & 0 \\ 0 & 1 \end{pmatrix}$$
 
@@ -1621,7 +1621,7 @@ A similar proof can be provided for any other $\theta$ and can be extrapoled for
 
 $$IA := (e_{ij})_{i \in [m],j \in [n]} : e_{ij} := \delta_{ii}a_{ij}$$
 
-This formulation is enough to understand how $\mathcal{E}_\theta(I)$ affects $E_\theta A$. Observe that:
+This formulation is enough to understand how $\mathcal{E}\_\theta(I)$ affects $E\_\theta A$. Observe that:
 
 - $\theta \mapsto \lambda r \implies e_{rj} := \lambda \delta_{rr}a_{rj} = \lambda a_{rj}$ (observe that the row $i$ gets fixed to the $r$ one)
 
@@ -1665,8 +1665,6 @@ Immediately, from 3.2.3, $A \equiv_r B \iff \exists k : \mathcal{E}_k \cdots \ci
 
 2. **Let $A \in M_{m \times n}(F)$ and $B \in M_{n \times k}(F)$ matrix. Show that the columns of $AB$ are linear combinations of the columns of $A$**
 
-    We've just see that $AB = (A\beta_1,\ldots,A\beta_k)$ following our definition of product. This definition shows immediately that $AB$ are essentially lineal combinations of the columns of $B$.
+    Let's first of all perform the product $AB$ and explore each column and see if it can be put in terms of the colum of $A$.
 
-    But let's now say that $A = (\alpha_1,\ldots,\alpha_n) : \alpha_i \in M_{m \times 1}(F)$, then we would say that 
-    
-    $$AB = (\alpha_1B,\ldots,\alpha_nB) = [()]$$
+    $$AB := (A \beta_1,\ldots, A \beta_k) : A\beta_i := \begin{pmatrix} \displaystyle\sum_{r = 1}^n a_{1r}b_{ri} \\ \vdots \\ \displaystyle\sum_{r = 1}^n a_{mr}b_{ri}  \end{pmatrix}$$
