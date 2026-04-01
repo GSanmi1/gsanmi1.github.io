@@ -1641,7 +1641,7 @@ We can extend this result as:
 
 $$ A \equiv_r B \iff \exists k : \left(\prod_{i=1}^k E_{\theta_k}\right)A = B $$
 
-Immediately, from 3.2.3, $A \equiv_r B \iff \exists k : \mathcal{E}_k \cdots \circ \mathcal{E}_1(A) = B$, then taking and rolling back each composition as $\mathcal{E}_i (A) = E_{\theta_i}A$, we have that $ E_{\theta_k} \cdots  E_{\theta_1}A = \left(\prod_{i=1}^k E_{\theta_k}\right)A =  B$
+Immediately, from 3.2.3, $A \equiv\_r B \iff \exists k : \mathcal{E}\_k \cdots \circ \mathcal{E}\_1(A) = B$, then taking and rolling back each composition as $\mathcal{E}\_i (A) = E\_{\theta\_i}A$, we have that $ E\_{\theta\_k} \cdots  E\_{\theta\_1}A = \left(\prod\_{i=1}^k E\_{\theta\_k}\right)A =  B$
 
 <br>
 
