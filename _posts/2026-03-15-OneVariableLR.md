@@ -75,7 +75,7 @@ The *learning algorithm* is the procedure that actually performs this search. In
 
 A function of $n$ real variables is a map:
 
-$$f : S \to \mathbb{R} : S \subset \mathbb{R}^{n}$$
+$$f : S \to \mathbb{R} , \quad S \subset \mathbb{R}^{n}$$
 
 Where:
 
@@ -86,13 +86,13 @@ Then, the input is a vector with $n$ coordinates $x := (x_1,\cdots,x_n) \in \mat
 
 Is worth to visualize that for $n = 2$, the plot of $f(x,y)$ on $x,y$ is a surface given by the parameters $(x,y,f(x,y)) \in \mathbb{R}^3$, $f(x,y)$ is the height in the plane formed by the coordinates $(x,y) \in \mathbb{R}^2$. Now, if $n >3$ the geometric visualization breaks, while the maths holds in the sense that $f(x)$ is the height to each point of $\mathbb{R}^n$.
 
-In ML, the mapping function $f:\mathcal{X} \to \mathcal{Y}$ depends on many parameters simultaneously (hundreds, millions, or billions), or say in other terms, often is $\mathcal{X} \subset \mathbb{R}^n$. Thus, we need a framework for working with functions whose input is a vector, not a scalar.
+In ML, the models we work with depend on a vector of adjustable parameters $\boldsymbol{\theta} \in \mathbb{R}^p$ where $p$ depends on the model architecture and can range from a handful to billions. Training these models requires understanding how each parameter affects the output, which demands the machinery of functions of several variables.
 
 <br>
 
 #### 1.3.1.2. Partial Derivatives.
 
-Let be now $ f: S \to \mathbb{R} : S \subseteq \mathbb{R}^n$ a multivariable function, lets choose a point $\mathbf{a}:=(a_1,\ldots,a_n) \in S$.
+Let be now $ f: S \to \mathbb{R}, \quad S \subseteq \mathbb{R}^n$ a multivariable function, lets choose a point $\mathbf{a}:=(a_1,\ldots,a_n) \in S$.
 
 Then, we define the **partial derivative of $f$ respect to $x_i$ at $\mathbf{a}$** as (provided this limit exists):
 
@@ -102,7 +102,7 @@ $$ = \lim_{t \to 0} \frac{f(a_1,\ldots,a_{i-1}, a_i + t, a_{i+1},\ldots,a_n) - f
 
 Where $e_i$ is the $i$-th standard basis vector.
 
-Is important to note the partial derivatives is just the extension of the single-variable derivative applied to a multivariable function on one single feature $x_i$ meaning that the scalar $h \in \mathbb{R}$ pertubartes only the $i$-th coordinate (literally an ordinary single-variable derivative applied to a function where all variables except one have been frozen to constants). 
+Is important to note the partial derivatives is just the extension of the single-variable derivative applied to a multivariable function on one single feature $x_i$ meaning that the scalar $t \in \mathbb{R}$ pertubartes only the $i$-th coordinate (literally an ordinary single-variable derivative applied to a function where all variables except one have been frozen to constants). 
 
 A formal treatment is to define $g_i: \mathbb{R} \to \mathbb{R}$ from $f$ by:
 
@@ -164,7 +164,7 @@ Every coordinate gets perturbed simultaneously, each by the amount $tu_i$​. Th
 
 This means that the geometric interpretation remains the same, but now the plane contains the line passing through the point $\mathbf{a}$ with the direction of the unit vector $\mathbf{u}$. This plane is no longer paralel to any coordinate axis but it extends in the direction of $\mathbf{u}$.
 
-As a visual example, for $f:\mathbb{R}^2 \to \mathbb{R}$ the intersection of this plane and the surface give us a *curve* containing $(\mathbf{a},f(\mathbf{a}))$, then $D_uf(\mathbf{a})$ is the slop of the tangent line to the curve at $f(\mathbf{a})$
+As a visual example, for $f:\mathbb{R}^2 \to \mathbb{R}$ the intersection of this plane and the surface give us a *curve* containing $(\mathbf{a},f(\mathbf{a}))$, then $D_uf(\mathbf{a})$ is the slop of the tangent line to the curve at $\mathbf{a}$
 
 ![directional1](/assets/images/ML/directional1.png)
 
@@ -190,11 +190,19 @@ Observe that the gradient lives in the domain of $f$, $\mathbb{R}^n$, not in the
 
 **Geometric Interpretation**
 
-
-
-Now, let the unit vector $\mathbf{u} \in \mathbb{R}^n : \vert \vert u \vert \vert  =1$, then we define the directional derivative as: 
+Now, lets recover the directional derivative definition: 
 
 $$D_{\mathbf{u}} f(\mathbf{a}) = \lim_{t \to 0} \frac{f(\mathbf{a}+t\mathbf{u}) - f(\mathbf{a})}{t}$$
+
+Observe that, by the chain rule, we have the following result (here we assume that $f'(x) = \nabla f(x)$):
+
+$$D_\mathbf{u} f(\mathbf{a}) = \nabla f(\mathbf{a})\ · \mathbf{u}$$
+
+Let see for a moment that in $\mathbb{R}^2$  is $\nabla f(\mathbf{a})\ · \mathbf{u} = \Vert \nabla f(\mathbf{a}) \Vert \Vert \mathbf{u} \Vert \cos\theta$, which means that $D_\mathbf{u} f(\mathbf{a})$ is maximum when $\mathbf{u}$ and $\nabla f(\mathbf{a})$ has the same direction $\cos\theta = 1 \implies \theta = 0 \pmod {2\pi}$. For superior dimensions, this result can be proved by the Cauchy-Schwarz inequality. 
+
+Thus, in general, the gradient $\nabla f(\mathbf{a})$ always points to the direction in which the slope of the tangent line to the curve (in the surface, as we see in above definitions) $D_\mathbf{u}f(\mathbf{a})$ is maximum, this is what we call the *steepest ascent*.
+
+Then $-\nabla f(\mathbf{a})$ always points to the direction in which the slope is minimum, the *stepest descent*. This geometric property justifies the *gradient descent algorithm* we will see later.
 
 <br>
 
