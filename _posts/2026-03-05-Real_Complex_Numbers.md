@@ -413,50 +413,50 @@ To proove this theorem, we will construct $\mathbb{R}$ from $\mathbb{Q}$. We sha
 
 **Step 1. Cuts**
 
-The members of $\mathbb{R}$ will be certain subsets of $\mathbb{Q}$, called *cuts*. A cut is, by definition, any set $S \subset \mathbb{Q}$ with the following three properties: 
+The members of $\mathbb{R}$ will be certain subsets of $\mathbb{Q}$, called *cuts*. A cut is, by definition, any set $\alpha \subset \mathbb{Q}$ with the following three properties: 
 
-- $S \neq \varnothing$
-- $p \in S \wedge q \in \mathbb{Q} \wedge q < p \implies q \in S$. 
+- $\alpha \neq \varnothing$
+- $p \in \alpha \wedge q \in \mathbb{Q} \wedge q < p \implies q \in \alpha$. 
 
-    Note that we are saying that being $S$ a cut and $q \notin S$ then $p < q \ \ \forall p \in S$, otherwise, by the line above it would be $q \in S$. In some manner $S$ is a segment inside $\mathbb{Q}$, without gaps. This result also implies the two followings:
+    Note that we are saying that being $\alpha$ a cut and $q \notin \alpha$ then $p < q \ \ \forall p \in \alpha$, otherwise, by the line above it would be $q \in \alpha$. In some manner $\alpha$ is a segment inside $\mathbb{Q}$, without gaps. This result also implies the two followings:
 
-    - $p \in S \wedge q \notin S \implies p < q$
-    - $p \notin S \wedge p < q \implies q \notin S$
+    - $p \in \alpha \wedge q \notin \alpha \implies p < q$
+    - $p \notin \alpha \wedge p < q \implies q \notin \alpha$
 
-- $p \in S \implies \exists r \in S : p < r$. There is no "larguest" member.
+- $p \in \alpha \implies \exists r \in \alpha : p < r$. There is no "larguest" member.
 
 <br>
 
-Check that this so called cuts are upperbounds segments with no lowerbound, in the sense that the second property of the cuts already tell us that $p \in S \implies \forall q(q < p \implies q \in S)$. This feature allows an order in $\mathbb{R}$ relative to the cuts members.
+Check that this so called "cuts" are upperbounds segments with no lowerbound, in the sense that the second property of the cuts already tell us that $p \in \alpha \implies \forall q(q < p \implies q \in \alpha)$. This feature allows an order in $\mathbb{R}$ relative to the cuts members.
 
 <br>
 
 **Step 2. $\mathbb{R}$ is an ordered set**.
 
-Let $A,B \subset \mathbb{Q}$ be two cuts, then we define:
+Let $\alpha, \beta \subset \mathbb{Q}$ be two cuts, then we define:
 
-$$A < B \iff A \subset B$$
+$$\alpha < \beta \iff \alpha \subset \beta$$
 
-We say that $A$ is a *proper subset* of $B$, which means that any item of $A$ is also an item of $B$ but at least one item of $B$ do not belongs to $A$, formally:
+We say that $\alpha$ is a *proper subset* of $\beta$, which means that any item of $\alpha$ is also an item of $\beta$ but at least one item of $\beta$ do not belongs to $\alpha$, formally:
 
-$$A \subset B \iff A \subseteq B \wedge A \neq B \iff \forall x (x\in A \implies x \in B) \wedge \exists b (b\in B \wedge b \notin A)$$
+$$\alpha \subset \beta \iff \alpha \subseteq \beta \wedge \alpha \neq \beta \iff \forall x (x\in \alpha \implies x \in \beta) \wedge \exists b (b\in \beta \wedge b \notin \alpha)$$
 
 The reason why we care about giving a special notation to this familiar concept is because it defines an order inside $\mathbb{R}$.
 
-Let's note that, be $A,B \subset \mathbb{Q}$, then, we can think on one of the following posibilities between $A$ and $B$
+Let's note that, be $\alpha,\beta \subset \mathbb{Q}$, then, we can think on one of the following posibilities between $\alpha$ and $\beta$
 
-- First, consider that $\exists b \in B : b \notin A$, then the first corolary of the second property asserts that $\forall a(a \in A \wedge b \notin A \implies a < b)$, applying again the second property of the cuts we get that $(b\in B \wedge a < b) \implies a \in B \implies A \subset B$.
+- First, consider that $\exists b \in \beta : b \notin \alpha$, then the first corolary of the second property asserts that $\forall a(a \in \alpha \wedge b \notin \alpha \implies a < b)$, applying again the second property of the cuts we get that $(b\in \beta \wedge a < b) \implies a \in \beta \implies \alpha \subset \beta$.
 
-- A similar argument proves that $\exists a \in A : a \notin B \implies B \subset A$.
+- A similar argument proves that $\exists a \in \alpha : a \notin \beta \implies \beta \subset \alpha$.
 
-- Now, obviously, if $\neg(\exists b \in B : b \notin A) \wedge \neg(\exists a \in A : a \notin B)$, counting with the fact that, following the first property of the cuts, $A,B \neq \varnothing$ then only can be $A = B$.
+- Now, obviously, if $\neg(\exists b \in \beta : b \notin \alpha) \wedge \neg(\exists a \in \alpha : a \notin \beta)$, counting with the fact that, following the first property of the cuts, $\alpha,\beta \neq \varnothing$ then only can be $\alpha = \beta$.
 
 
 In summary, we've just proved the *tricothomy* property for any pair of cuts in $\mathbb{Q}$.
 
-Also consider $A,B,C \in \mathbb{Q}: A< B \wedge B < C$ we can directly infere that through the transitivity property of the subsets:
+\alphalso consider $\alpha,\beta,\gamma \in \mathbb{Q}: \alpha< \beta \wedge \beta < \gamma$ we can directly infere that through the transitivity property of the subsets:
 
-$$\begin{cases} A < B \iff A \subset B \\ B < C \iff B \subset C\end{cases} \implies A \subset C \implies A < C$$
+$$\begin{cases} \alpha < \beta \iff \alpha \subset \beta \\ \beta < \gamma \iff \beta \subset \gamma\end{cases} \implies \alpha \subset \gamma \implies \alpha < \gamma$$
 
 Thus, we've demonstrated that $<$ relative to cuts in $\mathbb{R}$ is an order since it satisfies tricothomy and transivity.
 
@@ -464,7 +464,58 @@ Thus, we've demonstrated that $<$ relative to cuts in $\mathbb{R}$ is an order s
 
 **Step 3. $\mathbb{R}$ satisfies the least-upper-bound property**.
 
-Remember that the least-upper-bound property ensures for any set $S$ that satisfy it that any non-empty $E \subset S$ subset upper/lower-bounded has supremum/infimum in $S$.
+Remember that the least-upper-bound property ensures for any ordered set $S$ that satisfy it any non-empty $E \subset S$ subset upper/lower-bounded has supremum/infimum in $S$.
+
+First, suppose there exists $A \subset \mathbb{R} : A \neq \varnothing$ upperbounded with $\beta \in \mathbb{R}$ an upperbound of $A$, let's see that we can find a supremum for it. Now we define as:
+
+$$\gamma := \bigcup_{\alpha \in A} \alpha \iff \gamma := \Set{p \in \mathbb{Q} \ \vert \ \exists \alpha \in A : p \in \alpha}$$
+
+We will see that $\gamma \in \mathbb{R}$, this is, is also a cut, since it satisfies the three properties mentioned above.
+
+1. Then, since $A \neq \varnothing \implies \exists \alpha_0 \in A : \alpha_0 \neq \varnothing \text{ (by definition) }$ thus $\alpha_0 \subset \gamma \implies \gamma \neq \varnothing$ 
+
+    Now observe that $\beta$ is an upperbound of $A$, meaning $\forall \alpha (\alpha \in A \implies \alpha < \beta \implies \alpha \subset \beta)$ thus is clear that $\gamma \subset \beta \subset \mathbb{Q} \implies \gamma \neq \mathbb{Q}$
+
+    <br>
+
+2. Let's consider now $p \in \gamma$ and $q \in \mathbb{Q} : q < p$, immediately we have that 
+
+    $$ p \in \gamma \implies \exists \alpha \in A : p \in \alpha$$
+
+    Since $\alpha \in \mathbb{R}$ then $q < p \implies q \in \alpha \implies q \in \gamma$
+
+    <br>
+
+3. Following the same logic, taking $p \in \gamma$ as before, $p \in \alpha \implies \exists r \in \alpha : p < r$, observe that $r \in \gamma$ for the same reason as $p$ is so $\exists r \in \gamma : p < r$
+
+    <br>
+
+Having verified that $\gamma$ is a cut, then since $A \subset \gamma \implies \alpha < \gamma \ \ \forall \alpha \in A$ so $\gamma$ is an upperbound of $A$. 
+
+Let's consider that $\exists \delta \in \mathbb{R} : \delta < \gamma \wedge (\alpha < \delta \ \ \forall \alpha \in A) \implies \exists s \in \mathbb{Q} : s \in \gamma \wedge s \notin \delta$, thus we have that $\exists \alpha : \delta < \alpha$ and $\delta$ would not be an upperbound. So $\gamma = sup A$.
+
+<br>
+
+## 3.2. Important Properties from the $\mathbb{R}$ field.
+
+### 3.2.1. Archimedean property of $\mathbb{R}$.
+
+The Archimedean property says that $\mathbb{R}$ has no "infinitely large" or "infinitely small" elements: no matter how small a positive number $x$ you pick and no matter how large a target $y$, you can always reach (and surpass) $y$ by adding $x$ to itself enough times. Formally:
+
+$$\forall (x,y) \in \mathbb{R}^2 : 0 < x \implies \exists n \in \mathbb{N} : y < nx$$
+
+Let's reason by the reduction to absurdity, let be $A:=\Set{nx \ \vert \ n \in \mathbb{N}}$ then if the statement above isn't true, $y$ would be an upperbound of $A$ and since $A \neq \varnothing$ and $\mathbb{R}$ has the $LUB$ property, then $A$ has a supremum on $\mathbb{R}$ let be $\alpha = supA$.
+
+Let's observe that $ 0 < x \iff - x < 0 \iff \alpha - x < \alpha$ and $\alpha - x$ is not an upperbound so there exists some natural $m \in \mathbb{N} : \alpha -x < mx$, but then $\alpha < m (x+1) \in A \implies \alpha \neq supA$
+
+<br>
+
+Let's observe that this rules out the existence of infinitesimals; positive numbers so tiny that no finite sum of copies ever reaches $1$. It is the formal guarantee that the integers "go to infinity".
+
+<br>
+
+
+### 3.2.2. $\mathbb{Q}$ is dense in $\mathbb{R}$
 
 
 
