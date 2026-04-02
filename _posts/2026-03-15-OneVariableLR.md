@@ -200,9 +200,9 @@ $$D_\mathbf{u} f(\mathbf{a}) = \nabla f(\mathbf{a})\ · \mathbf{u}$$
 
 Let see for a moment that in $\mathbb{R}^2$  is $\nabla f(\mathbf{a})\ · \mathbf{u} = \Vert \nabla f(\mathbf{a}) \Vert \Vert \mathbf{u} \Vert \cos\theta$, which means that $D_\mathbf{u} f(\mathbf{a})$ is maximum when $\mathbf{u}$ and $\nabla f(\mathbf{a})$ has the same direction $\cos\theta = 1 \implies \theta = 0 \pmod {2\pi}$. For superior dimensions, this result can be proved by the Cauchy-Schwarz inequality. 
 
-Thus, in general, the gradient $\nabla f(\mathbf{a})$ always points to the direction in which the slope of the tangent line to the curve (in the surface, as we see in above definitions) $D_\mathbf{u}f(\mathbf{a})$ is maximum, this is what we call the *steepest ascent*.
+Thus, in general, the gradient $\nabla f(\mathbf{a})$ always points towards the direction in which the slope of the tangent line to the curve (in the surface, as we see in above definitions) $D_\mathbf{u}f(\mathbf{a})$ is maximum, this is what we call the *steepest ascent* direction.
 
-Then $-\nabla f(\mathbf{a})$ always points to the direction in which the slope is minimum, the *stepest descent*. This geometric property justifies the *gradient descent algorithm* we will see later.
+Then $-\nabla f(\mathbf{a})$ always points towards the direction in which the slope is minimum, the *stepest descent* direction. This geometric property justifies the *gradient descent algorithm* we will see later.
 
 <br>
 
