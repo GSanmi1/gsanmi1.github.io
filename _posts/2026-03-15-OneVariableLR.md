@@ -261,7 +261,41 @@ But note that $L$ only measures error at a single point. A model doesn't predict
 
 **True Risk**
 
-The natural next question: how wrong is $h_{\boldsymbol{\theta}}$​ across all the input space.
+The natural next question: how wrong is $h_{\boldsymbol{\theta}}$​ across all the input space. 
+
+Ideally, we would measure the *expected loss over the entire data-generating process*. The data comes from some unknown probability distribution $P$ over $\mathcal{X} \times \mathcal{Y}$, this unknown probability pattern associates inputs to outputs in what we call the phenomenon data. Think for example in the height and the age of a person, is the formal way of saying "nature produces input-output pairs according to some pattern".
+
+<br>
+
+The population risk, also called *true risk*, of a hypothesis $h$ is:
+
+$$R(h) = \mathbb{E}_{(x,y) \sim P}\big[L(y, h(x))\big]$$
+
+This is a sum (or integral, in the continuous case) over all possible pairs $(x, y) \in \mathcal{X} \times \mathcal{Y}$, each weighted by its probability under $P$. It captures the average error of $h$ across the entire distribution, including inputs you'll never see in your training set.
+
+This the object we truly want to minimize. It captures how well $h$ performs on
+all data, including data we haven't seen. 
+
+However, the fundamental problem is we cannot compute $R(h)$ since is based on $P$ and the distribution $P$ is unknown (if we knew it, we would know $f$, and there would be no learning problem). $R(h)$ is a theoretical ideal, not a computable quantity.
+
+<br>
+
+**Empirical Risk**
+
+A reasonable approximation to the *true risk* (based on $P$) is the *empirical risk* based on a dataset we have access to: $\mathcal{D}$. The empirical risk of $h$ on $\mathcal{D}$ is:
+
+$$\hat{R}_{\mathcal{D}}(h) = \frac{1}{m}\sum_{i=1}^{m} L\big(y^{(i)}, h(x^{(i)})\big)$$
+
+Observe that, as a discrete, finite sample, the expected value $\mathbb{E}_{(x,y) \sim P}$ converge to a sum. Each training example gets weight as $\frac{1}{m}$, we treat them all equally because we don't know $P$ so we assume that they are all probably equal.
+
+
+This is the average loss computed on the $m$ training examples a quantity we can compute, because we know every $(x^{(i)}, y^{(i)}) \in \mathcal{X} \times \mathcal{Y}$ and we can evaluate $h(x^{(i)})$.
+
+The empirical risk is a *finite-sample estimate* of the true risk. Under reasonable conditions, the law of large numbers guarantees that as $m \to \infty \implies \hat{R}_{\mathcal{D}}(h) \to R(h)$. 
+
+<br>
+
+At this point, we would think that an acceptable strategy to chose $h_\theta$ is to choose an $h$  that minimizes $\hat{R}_{\mathcal{D}}$​, is what we call the Empirical Risk Minimization.
 
 <br>
 
