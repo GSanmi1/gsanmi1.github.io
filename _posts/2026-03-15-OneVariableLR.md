@@ -51,11 +51,11 @@ Formally, we hace the following pieces:
 
 - The *training set*; a finite subset $\mathcal{D} \subset \mathcal{X} \times \mathcal{Y}$ defined as $\mathcal{D} := \Set{(x_i,y_i)}_{i=1}^m : y_i = f(x_i)$
 
-The goal of ML is to use $\mathcal{D}$ to find a mapping $g_{\mathcal{D}}:\mathcal{X} \to \mathcal{Y} : g_\mathcal{D} \approx f$. Observe that $g$, by definition, allow us to make prediction along all the $\mathcal{X} \times \mathcal{Y}$ space, this is, not only for the inputs from $\mathcal{D}_\mathcal{X}$ but for any $x \in \mathcal{X}$. 
+The goal of ML is to use $\mathcal{D}$ to find a mapping $g_{\mathcal{D}}:\mathcal{X} \to \mathcal{Y} : g_\mathcal{D} \approx f$. Observe that $g_\mathcal{D}$, by definition, allow us to make prediction along all the $\mathcal{X} \times \mathcal{Y}$ space, this is, not only for the inputs from $\mathcal{D}_\mathcal{X}$ but for any $x \in \mathcal{X}$. 
 
 <br>
 
-We don't search across all possible functions $f: \mathcal{X} \to \mathcal{Y}$ that set is unimaginably large and the problem would be ill-defined. Instead, we choose a *hypothesis set*; $\mathcal{H}$, which is a restricted family of candidate functions. A *learning algorithm* select one of the candidates of $\mathcal{H}$ as $g$.
+We don't search across all possible functions $f: \mathcal{X} \to \mathcal{Y}$ that set is unimaginably large and the problem would be ill-defined. Instead, we choose a *hypothesis set*; $\mathcal{H}$, which is a restricted family of candidate functions. A *learning algorithm* select one of the candidates of $\mathcal{H}$ as $g_\mathcal{D}$.
 
 For example, *linear regression* learning model is a supervised learning model (we will see what his is later) in which we assume that $\mathcal{H}$ is the set of all the affine transformations $\mathbb{R}^n \to \mathbb{R}$.
 
@@ -210,9 +210,60 @@ Then $-\nabla f(\mathbf{a})$ always points towards the direction in which the sl
 
 #### 1.3.2.1. Hypothesis Sets.
 
+As we say before, we don't search for an hipotesys $h$ in abstract, we first form a family of candidates $\mathcal{H}$. This is a parameterized by a vector of real numbers $\theta \in  \mathbb{R}^p$:
+
+$$\mathcal{H} := \Set{h_\theta : \mathcal{X} \to \mathcal{Y} \ \vert \ \theta \in \Theta}$$
+
+Where, 
+
+- $\theta = (\theta_1, \ldots, \theta_p) \in \mathbb{R}^p$. 
+
+    Is the parameter vector. Each specific $\theta$ picks out one specific hypothesis $h_{\theta} \in \mathcal{H}$​.
+
+- $p \in \mathbb{R}$, is the number of parameters (in modern deep learning, $p$ can be in the billions).
+
+- $\Theta \subseteq \mathbb{R}^p$ is the parameter space over all $\mathbb{R}^p$
 
 <br>
 
+**Linear Model**
+
+As a brief example, let's take a look over the *linear model*, which, as we said before, is the assumption about $h$ is an affine transformation. Remember that an affine transformation is a linear transformation $y=mx$ plus a traslation $b$, taking the form of the line: $y_{m,b} := b + mx$,then in our parameterized function:
+
+$$h_\theta(\mathbf{x}) := \theta_0 + \boldsymbol{\theta^{\top}} · \  \mathbf{x} = \theta_0 + \sum_{i=1}^p \theta_i x_i$$
+
+Where $\theta_0$ is the bias and $\theta_i \ \forall i \in [p]$ is parameter of the $i$-th feature $x_i$. Observe that each $\theta$ give us a different linear function.
+
+<br>
+
+#### 1.3.2.2. Measuring the error. Cost function.
+
+It is reasonable to ask, for a certain $\theta$, how far the prediction is from the real, labeled, output. Formally; for a pair $(x,y) \in \mathcal{X} \times \mathcal{Y}$, how wrong is the prediction $h_\theta(x)$, let's first formalize the notion of 'wrong' in mathematical terms.
+
+<br>
+
+**Loss Function**
+
+Let's define:
+
+$$L : \mathcal{Y} \times \mathcal{Y} \to \mathbb{R}_{\geq 0}$$
+
+$L(y,h_\theta(x))$ takes the true value $y$ and the predicted value $h_\theta(x)$ and returns a non-negative real number: the
+penalty for that single prediction. The larger $L(y,h_\theta(x))$, the worse the prediction.
+
+The loss function is a design choice; different losses encode different priorities about what kinds of errors matter in base of the space in which the output set is defined. For example, applied to the linear regression model, the output space is $\mathbb{R}$ which is a metric space, thus, the *loss function* adopts the form of the *squared loss*; penalizes errors proportionally to the square of the deviation; large errors are punished disproportionately.
+
+$$L(y,h_\theta(x)) := (y - h_\theta(x))^2$$
+
+But note that $L$ only measures error at a single point. A model doesn't predict one point; it predicts across the entire input space. We need to aggregate.
+
+<br>
+
+**True Risk**
+
+The natural next question: how wrong is $h_{\boldsymbol{\theta}}$​ across all the input space.
+
+<br>
 
 # 2. Supervised Learning.
 
@@ -461,4 +512,5 @@ Observe that applying this two our linear regression model:
 $$J(w,b) := \frac{1}{2m} \sum_{i=1}^{m} \bigl(f_{w,b}(x^{(i)}) - y^{(i)}\bigr)^2 \implies \nabla J(w,b) := \begin{pmatrix} \frac{\partial J(w,b)}{\partial w} \\ \frac{\partial J(w,b)}{\partial b}  \end{pmatrix}$$
 
 Where:
+
 $$\begin{cases}\frac{\partial J(w,b)}{\partial w} =\frac{1}{m} \sum_{i=1}^{m} \bigl(f_{w,b}(x^{(i)}) - y^{(i)}\bigr)x \\ \frac{\partial J(w,b)}{\partial b} = \frac{1}{m} \sum_{i=1}^{m} \bigl(f_{w,b}(x^{(i)}) - y^{(i)}\bigr)  \end{cases}$$
