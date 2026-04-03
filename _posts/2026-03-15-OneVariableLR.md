@@ -206,6 +206,14 @@ Then $-\nabla f(\mathbf{a})$ always points towards the direction in which the sl
 
 <br>
 
+### 1.3.2. Formal Development.
+
+#### 1.3.2.1. Hypothesis Sets.
+
+
+<br>
+
+
 # 2. Supervised Learning.
 
 #### 1.2.1.1. Definition.

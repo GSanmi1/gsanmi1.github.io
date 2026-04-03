@@ -1665,6 +1665,72 @@ Immediately, from 3.2.3, $A \equiv\_r B \iff \exists k : \mathcal{E}\_k \cdots \
 
 2. **Let $A \in M_{m \times n}(F)$ and $B \in M_{n \times k}(F)$ matrix. Show that the columns of $AB$ are linear combinations of the columns of $A$**
 
-    Let's first of all perform the product $AB$ and explore each column and see if it can be put in terms of the colum of $A$.
+    Let's first check this result in a $2 \times 2$ and then extrapole it a general result.
 
-    $$AB := (A \beta_1,\ldots, A \beta_k) : A\beta_i := \begin{pmatrix} \displaystyle\sum_{r = 1}^n a_{1r}b_{ri} \\ \vdots \\ \displaystyle\sum_{r = 1}^n a_{mr}b_{ri}  \end{pmatrix}$$
+    Be $A:= \begin{pmatrix}a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix},B:= \begin{pmatrix}b_{11} & b_{12} \\ b_{21} & b_{22} \end{pmatrix} \in M_2(F)$, then check that:
+
+    $$AB := (A\beta_1, A \beta_2) = \begin{pmatrix}a_{11}b_{11} + a_{12}b_{21} & a_{11}b_{12} + a_{12}b_{22} \\ a_{21}b_{11} + a_{22}b_{21} & a_{21}b_{12} + a_{22}b_{22} \end{pmatrix}$$
+
+    Thus, $AB = (\gamma_1, \gamma_2)$ with:
+
+    $$\begin{cases} \gamma_1 = \begin{pmatrix} a_{11} \\ a_{21} \end{pmatrix} b_{11} + \begin{pmatrix} a_{21} \\ a_{22} \end{pmatrix}b_{21} = \alpha_1 b_{11} + \alpha_2 b_{21} \\ \gamma_2 = \begin{pmatrix} a_{11} \\ a_{21} \end{pmatrix} b_{12} + \begin{pmatrix} a_{21} \\ a_{22} \end{pmatrix}b_{22} = \alpha_1 b_{12} + \alpha_2 b_{22} \end{cases}$$
+
+
+    Thus, the generic case for $A \in M_{m \times n}(F), B \in M_{n \times k}(F)$ is that:
+
+    $$AB := (\gamma_1,\ldots,\gamma_k): \gamma_i := \sum_{r=1}^n \alpha_r b_{ri}$$
+
+    <br>
+
+# 6. Invertible Matrices.
+
+Suppose $P$ is an $m \times m$ matrix which is a product of elementary matrices. For each $m \times n$ matrix $A$, the matrix $B = PA$ is row-equivalent to $A$; hence $A$ is row-equivalent to $B$ and there is a product $Q$ of elementary matrices such that $A = QB$. In particular this is true when $A$ is the $m \times m$ identity matrix. In other words, there is an $m \times m$ matrix $Q$, which is itself a product of elementary matrice such that $QP = I$. 
+
+As we shall soon see, the existence of a $Q$ with $QP = I$ is equivalent to the
+fact that $P$ is a product of elementary matrices. 
+
+<br>
+
+## 6.1. Definition. Left, Right and two-sided inverse.
+
+Let $A \in M_n(F)$ (square) matrix over the field $F$. 
+
+- An $B \in M_n(F) : BA = I$ is called a *left inverse* of $A$.
+
+- An $B \in M_n(F) : AB = I$ is called a *right inverse* of $A$. 
+
+- If $AB = BA = I$, then $B$ is called a two-sided inverse of $A$ and $A$ is said to be *invertible*. 
+
+Note the following interesting result. Suppose in the context before that $B$ is a left inverse and $C$ is the right inverse for a matrix $A$, then:
+
+$$B = BI = B(AC) = (BA)C = IC = C$$
+
+So when te left and the right inverse exists, both matrix are the same and in general the matrix is two-side inversible. We then call it $A^{-1}$:
+
+$$A^{-1} \in M_n{F} : A^{-1}A = AA^{-1} = I$$
+
+<br>
+
+## 6.2. Important Properties of the inverse.
+
+Let be $A,B \in M_n(F)$, then:
+
+- $\exists A^{-1} \implies (A^{-1})^{-1} = A$. 
+
+    Observe that calling $A^{-1} = C$, then $AC =CA = I$, thus $C^{-1} = (A^{-1})^{-1} = A$
+
+    <br>
+
+- $\exists A^{-1},B^{-1} \implies (AB)^{-1} =B^{-1}A^{-1}$
+
+    Check that $ABB^{-1}A^{-1} = AIA^{-1} = AA^{-1} = I$ and also $B^{1}A^{-1}AB = I$
+
+    As a corollary, in general, any product of invertible matrices is invertible, being the inverse:
+
+    $$(\prod_{i=1}^n A_i)^{-1} = \prod_{i=1}^n A_{n-i+1}^{-1}$$
+
+<br>
+
+## 6.3. Elementary Matrices and Inverse.
+
+<br>
