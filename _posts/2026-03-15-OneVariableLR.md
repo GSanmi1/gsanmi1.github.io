@@ -295,7 +295,37 @@ The empirical risk is a *finite-sample estimate* of the true risk. Under reasona
 
 <br>
 
-At this point, we would think that an acceptable strategy to chose $h_\theta$ is to choose an $h$  that minimizes $\hat{R}_{\mathcal{D}}$​, is what we call the Empirical Risk Minimization.
+At this point, we would think that an acceptable strategy to chose $h_\theta$ is to choose an $h$  that minimizes $\hat{R}_{\mathcal{D}}$​, is what we call the *Empirical Risk Minimization*:
+
+$$h^* = \arg\min_{h \in \mathcal{H}} \hat{R}_{\mathcal{D}}(h)$$
+
+Let's observe that $\min_{a\in A}​f(a)$ is the minimum value $f$ returns in a subset of his evaluation domain, then $\arg\min_{a\in A}​f(a)$ is the input (the argument) that produces that minimum value.
+
+This is conceptually clean, but still abstract because we're minimizing over a set of functions $\mathcal{H}$. To make this into an actual algorithm we can run on a computer, we need one more step.
+
+<br>
+
+**The Cost Function**
+
+Since every $h \in \mathcal{H}$ is indexed by a parameter vector $\theta \in \mathbb{R}^p$, the empirical risk becomes a function of $\theta$:
+
+$$J: \mathbb{R}^p \to \mathbb{R}, \quad J(\theta) := \hat{R}_{\mathcal{D}}(h_{\theta}) = \frac{1}{m}\sum_{i=1}^{m} L\big(y_i,\; h_{\theta}(x_i)\big)$$
+
+This function measures the global error in the training set between the prediction and the labeled data, is the cost function (also called objective function). Observe carefully that having a provided training set $\mathcal{D}$, and an appropiated loss function $L$, the last free variable is $\theta$.
+
+The learning problem has become to find:
+
+$$\boldsymbol{\theta}^* = \arg\min_{\boldsymbol{\theta} \in \Theta} J(\boldsymbol{\theta})$$
+
+Find the point in $\mathbb{R}^p$ where $J$ attains its minimum. This is a standard optimization problem where all the math presented before applies.
+
+Each step is forced by the limitations of the previous one: $L$ only measures one point, so we average to get $R$; $R$ is not computable, so we approximate with $\hat{R}_{\mathcal{D}}$​;$\hat{R}_{\mathcal{D}}$​ is still abstract over $\mathcal{H}$, so we parameterize to get $J(\theta)$, which is a concrete function in $\mathbb{R}^p$ that we can differentiate and minimize with gradient descent.
+
+<br>
+
+### 1.3.3. Gradient Descent Algorithm.
+
+
 
 <br>
 

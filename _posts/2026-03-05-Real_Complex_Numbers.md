@@ -403,7 +403,7 @@ We now state the existence theorem which is the core of this chapter.
 
 <br>
 
-## 3.1. Theorem: Existance of $\mathbb{R}$
+## 3.1. Theorem: Existance of $\mathbb{R}$. Dedekind cuts.
 
 **There exists an ordered field $\mathbb{R}$ which has the least-upper-bound property which contains $\mathbb{Q}$ as a subfield.** 
 
@@ -413,10 +413,10 @@ To proove this theorem, we will construct $\mathbb{R}$ from $\mathbb{Q}$. We sha
 
 **Step 1. Cuts**
 
-The members of $\mathbb{R}$ will be certain subsets of $\mathbb{Q}$, called *cuts*. A cut is, by definition, any set $\alpha \subset \mathbb{Q}$ with the following three properties: 
+The members of $\mathbb{R}$ will be certain subsets of $\mathbb{Q}$, called *cuts*. A cut is, by definition, any proper set $\alpha \subset \mathbb{Q}$ with the following three properties: 
 
-- $\alpha \neq \varnothing$
-- $p \in \alpha \wedge q \in \mathbb{Q} \wedge q < p \implies q \in \alpha$. 
+- $\alpha \neq \varnothing \wedge \alpha \neq \mathbb{Q}$
+- $p \in \alpha \wedge (q \in \mathbb{Q} : q < p) \implies q \in \alpha$. 
 
     Note that we are saying that being $\alpha$ a cut and $q \notin \alpha$ then $p < q \ \ \forall p \in \alpha$, otherwise, by the line above it would be $q \in \alpha$. In some manner $\alpha$ is a segment inside $\mathbb{Q}$, without gaps. This result also implies the two followings:
 
@@ -454,7 +454,7 @@ Let's note that, be $\alpha,\beta \subset \mathbb{Q}$, then, we can think on one
 
 In summary, we've just proved the *tricothomy* property for any pair of cuts in $\mathbb{Q}$.
 
-\alphalso consider $\alpha,\beta,\gamma \in \mathbb{Q}: \alpha< \beta \wedge \beta < \gamma$ we can directly infere that through the transitivity property of the subsets:
+Also consider $\alpha,\beta,\gamma \in \mathbb{Q}: \alpha< \beta \wedge \beta < \gamma$ we can directly infere that through the transitivity property of the subsets:
 
 $$\begin{cases} \alpha < \beta \iff \alpha \subset \beta \\ \beta < \gamma \iff \beta \subset \gamma\end{cases} \implies \alpha \subset \gamma \implies \alpha < \gamma$$
 
@@ -466,15 +466,19 @@ Thus, we've demonstrated that $<$ relative to cuts in $\mathbb{R}$ is an order s
 
 Remember that the least-upper-bound property ensures for any ordered set $S$ that satisfy it any non-empty $E \subset S$ subset upper/lower-bounded has supremum/infimum in $S$.
 
-First, suppose there exists $A \subset \mathbb{R} : A \neq \varnothing$ upperbounded with $\beta \in \mathbb{R}$ an upperbound of $A$, let's see that we can find a supremum for it. Now we define as:
+First, suppose there exists $A \subset \mathbb{R} : A \neq \varnothing$ upperbounded with $\beta \in \mathbb{R}$ an upperbound of $A$, let's see that we can find a supremum for it. 
+
+Now we define as:
 
 $$\gamma := \bigcup_{\alpha \in A} \alpha \iff \gamma := \Set{p \in \mathbb{Q} \ \vert \ \exists \alpha \in A : p \in \alpha}$$
 
-We will see that $\gamma \in \mathbb{R}$, this is, is also a cut, since it satisfies the three properties mentioned above.
+We will see that $\gamma \in \mathbb{R}$, this is, is also a cut, since it satisfies the three properties mentioned above. Then we will demonstrate that $\gamma$ is an upperbound of $A$ and lastly that is the least-upper-bound and thus, the supremum of $A$.
 
-1. Then, since $A \neq \varnothing \implies \exists \alpha_0 \in A : \alpha_0 \neq \varnothing \text{ (by definition) }$ thus $\alpha_0 \subset \gamma \implies \gamma \neq \varnothing$ 
+First, let's see that $\gamma \in \mathbb{R}$:
 
-    Now observe that $\beta$ is an upperbound of $A$, meaning $\forall \alpha (\alpha \in A \implies \alpha < \beta \implies \alpha \subset \beta)$ thus is clear that $\gamma \subset \beta \subset \mathbb{Q} \implies \gamma \neq \mathbb{Q}$
+1. Then, since $A \neq \varnothing \implies \exists \alpha_0 \in A : \alpha_0 \neq \varnothing$ thus $\exists a \in \alpha_0 \subset \gamma \implies \gamma \neq \varnothing$ 
+
+    Now observe that $\beta \in \mathbb{R}$ is an upperbound of $A$. Since $\beta$ is a cut, it satisfies that it englobes his own left or his behind, meaning $\forall \alpha (\alpha \in A \implies \alpha < \beta \implies \alpha \subset \beta)$ we say that is closed to his left thus is clear that $\gamma \subset \beta \subset \mathbb{Q}$ and is $\gamma \neq \mathbb{Q}$
 
     <br>
 
@@ -490,11 +494,41 @@ We will see that $\gamma \in \mathbb{R}$, this is, is also a cut, since it satis
 
     <br>
 
-Having verified that $\gamma$ is a cut, then since $A \subset \gamma \implies \alpha < \gamma \ \ \forall \alpha \in A$ so $\gamma$ is an upperbound of $A$. 
+Having verified that $\gamma$ is a cut, then since $\forall \alpha(\alpha \in A \implies \alpha \subset \gamma) \implies \alpha < \gamma \ \ \forall \alpha \in A$ so $\gamma$ is an upperbound of $A$. 
 
-Let's consider that $\exists \delta \in \mathbb{R} : \delta < \gamma \wedge (\alpha < \delta \ \ \forall \alpha \in A) \implies \exists s \in \mathbb{Q} : s \in \gamma \wedge s \notin \delta$, thus we have that $\exists \alpha : \delta < \alpha$ and $\delta$ would not be an upperbound. So $\gamma = sup A$.
+For $\gamma = supA$ it has also to be the least upperbound: $\forall \delta(\alpha < \delta \ \forall \alpha \in A \implies \gamma < \delta)$, then let's proceed by reduction absurdio and consider:
+
+$$\neg \forall \delta(\alpha < \delta \ \forall \alpha \in A \implies \gamma < \delta) \equiv \exists \delta : \neg(\alpha < \delta \ \forall \alpha \in A \implies \gamma < \delta)$$
+
+Let's remember that, in classical logic it is: $p \to q \equiv \neg p \vee q \iff \neg(p \to q) \equiv \neg (\neg p \vee q) \equiv p \wedge \neg q$, thus calling:
+
+$$\begin{cases}p := \alpha < \delta \ \forall \alpha \in A \\ q:= \gamma < \delta\end{cases}, \quad p \wedge \neg q \iff \alpha < \delta \ \forall \alpha \in A \wedge \delta < \gamma$$
+
+Let's consider $\delta$ as above: $\exists \delta \in \mathbb{R} : \delta < \gamma \wedge (\alpha < \delta \ \ \forall \alpha \in A)$. Observe that $\delta < \gamma \implies \delta \neq \gamma$ which means that $\exists \alpha \in \gamma : \alpha \nsubseteq \delta \implies \delta < \alpha$ (due to the trychotomy of the order), thus and $\delta$ would not be an upperbound contradicting the initial assumption. 
+
+So, by reduction absurdio, $\gamma$ has to be the least upper bound; $\gamma = sup A$.
 
 <br>
+
+**Step 4. Addition in $\mathbb{R}$.**
+
+If $\alpha, \beta \in \mathbb{R}$ we define: $\alpha + \beta := \Set{a+b \ \vert \ a \in \alpha \wedge b \in \beta}$. We also define $0^* \in \mathbb{R}$ as $0^* := \Set{ q \in \mathbb{Q} \ \vert \ q < 0}$, observe that is clear that this last set is a cut.
+
+Now, we verify that the addition's axioms for a field hold in $\mathbb{R}$, with $0^*$ playing the role of $0$.
+
+- $\alpha + \beta \in \mathbb{R} \ \ \forall \alpha, \beta \in \mathbb{R}$
+
+    Let's demonstrate that $\alpha + \beta$ satisfies the three properties of a cut. 
+
+    1. $\alpha, \beta \neq \varnothing \implies \alpha + \beta \neq \varnothing$. 
+    
+        Also suppose that $p,q \in \mathbb{Q}$ are the upperbounds of $\alpha, \beta \in \mathbb{R}$ respectively, then is clear that $p + q \notin \alpha + \beta \implies \alpha + \beta \neq \mathbb{Q}$. 
+        
+        Observe that there is something worth to say of upperbounds when speaking about cuts. By definition, $p$ is an upperbound of $X$ iff $x \leq p \ \ \forall x \in X$, but if $X$ were a cut, by the third property if $\exists x_0 : p = x_0 \in X \implies \exists r \in X : p < r$ and $p$ would not an upperbound, thus, when talking about cuts, all upperbounds are always strict upperbounds, the definition of upperbounds always collapses to $x < p \ \ \forall x \in X$ and the cut do not contains it.
+
+    <br>
+
+    2. $p \in \alpha + \beta \wedge (q \in \mathbb{Q} : q < p) \implies q \in \alpha + \beta $ 
 
 ## 3.2. Important Properties from the $\mathbb{R}$ field.
 
@@ -502,7 +536,7 @@ Let's consider that $\exists \delta \in \mathbb{R} : \delta < \gamma \wedge (\al
 
 The Archimedean property says that $\mathbb{R}$ has no "infinitely large" or "infinitely small" elements: no matter how small a positive number $x$ you pick and no matter how large a target $y$, you can always reach (and surpass) $y$ by adding $x$ to itself enough times. Formally:
 
-$$\forall (x,y) \in \mathbb{R}^2 : 0 < x \implies \exists n \in \mathbb{N} : y < nx$$
+$$\forall x,y \in \mathbb{R} :  0 < x \  \exists n \in \mathbb{N} : y < nx$$
 
 Let's reason by the reduction to absurdity, let be $A:=\Set{nx \ \vert \ n \in \mathbb{N}}$ then if the statement above isn't true, $y$ would be an upperbound of $A$ and since $A \neq \varnothing$ and $\mathbb{R}$ has the $LUB$ property, then $A$ has a supremum on $\mathbb{R}$ let be $\alpha = supA$.
 
@@ -517,6 +551,10 @@ Let's observe that this rules out the existence of infinitesimals; positive numb
 
 ### 3.2.2. $\mathbb{Q}$ is dense in $\mathbb{R}$
 
+The density of $\mathbb{Q}$ in $\mathbb{R}$ stablish that:
 
+$$\forall x, y \in \mathbb{R} : x < y \implies \exists q \in \mathbb{Q} : x < q < y$$
+
+ 
 
 <br>
