@@ -319,7 +319,7 @@ $$\boldsymbol{\theta}^* = \arg\min_{\boldsymbol{\theta} \in \Theta} J(\boldsymbo
 
 Find the point in $\mathbb{R}^p$ where $J$ attains its minimum. This is a standard optimization problem where all the math presented before applies.
 
-Each step is forced by the limitations of the previous one: $L$ only measures one point, so we average to get $R$; $R$ is not computable, so we approximate with $\hat{R}_{\mathcal{D}}$​;$\hat{R}_{\mathcal{D}}$​ is still abstract over $\mathcal{H}$, so we parameterize to get $J(\theta)$, which is a concrete function in $\mathbb{R}^p$ that we can differentiate and minimize with gradient descent.
+Each step is forced by the limitations of the previous one: $L$ only measures one point, so we average to get $R$; $R$ is not computable, so we approximate with $\hat{R}\_{\mathcal{D}}$​;$\hat{R}\_{\mathcal{D}}$​ is still abstract over $\mathcal{H}$, so we parameterize to get $J(\theta)$, which is a concrete function in $\mathbb{R}^p$ that we can differentiate and minimize with gradient descent.
 
 <br>
 
