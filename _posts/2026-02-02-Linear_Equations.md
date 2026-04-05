@@ -1733,4 +1733,64 @@ Let be $A,B \in M_n(F)$, then:
 
 ## 6.3. Elementary Matrices and Inverse.
 
+### 6.3.1. Inverse of elementary matrix.
+
+Let's start seeing that any elementary matrix $E$ is invertible. Observe that $\mathcal{E}_\theta(I)=E$, we know that we can think about revert this operation by calling the elementary row-operation $\mathcal{E}_{\theta^{-1}}$ (check the section 3.2.2.2), observe that naturally $\mathcal{E}_{\theta^{-1}} \circ \mathcal{E}_{\theta}(I) =\mathcal{E}_{\theta} \circ \mathcal{E}_{\theta^{-1}}(I) = I$ meaning that if we call $\mathcal{E}_{\theta^{-1}}(I) = E'$ verifies: $E'E = EE' =I$ and we can safely say $E' =E^{-1}$
+
 <br>
+
+### 6.3.2. Characterization of invertible matrix.
+
+We are now going to present a result that is characterization of any invertible matrix as a product of elementary matrix. The following statements are equivalent for $A \in M_n(F)$:
+
+1. $\exists A^{-1}$
+2. $ A \equiv\_r I\_n (\text{or } A \in [I\_n])$
+3. $\exists k \in \mathbb{N} : A = \prod\_{i=1}^k E\_i$
+
+Observe that $1 \to 2$: 
+
+$$A \in [R]_r \iff \exists k \in \mathbb{N} : A = \left(\prod_{i=1}^k E_i\right) R \iff \left(\prod_{i=1}^k E_{k-i+1}^{-1}\right)A = R$$
+
+By the last result of the section above we know that a product of invertible matrix is an invertible matrix, since $A$ is invertible $R$ must be but observe that this is only posible if $R$ has no zero-rows otherwise no product could produce $I$, thus $R = I$ and $A \in [I\_n]$
+
+Then, immediately $2 \to 3$, 
+
+$$A \in [I_n]_r \iff \exists k \in \mathbb{N} : A = \left(\prod_{i=1}^k E_i\right) I_n = \prod_{i=1}^k E_i$$
+
+And $3 \to 1$
+
+$$\left(\prod_{i=1}^k E_{k-i+1}^{-1}\right) \left(\prod_{i=1}^k E_i\right) = \left(\prod_{i=1}^k E_i\right) \left(\prod_{i=1}^k E_{k-i+1}^{-1}\right) = I_n$$
+
+And we say $\left(\prod\_{i=1}^k E\_{k-i+1}^{-1}\right) = A^{-1}$ and $A$ is invertible.
+
+Observe that also the last result give us a mechanism to obtain $A^{-1}$. Also observe that we can extend our caracterization of row-equivalent matrix. If any product of elementary matrix can be abstracted in an invertible matrix $P$, then for $A,B \in M\_{m \times n} (F)$:
+
+$$A \equiv_r  B \iff \exists P \in [I_n] : AP =B$$
+
+<br>
+
+### 6.3.3. Invertible Matrix and Linear Equation Systems.
+
+In this section we will nail down all the inverse matrix purpouse which is simplify the linear equation system expresion towards a unique solution. As an introduction, check that if $A$ is an invertible matrix, then: $AX = Y \iff X = A^{-1}Y$ offering a unique description of the solution of the system.
+
+<br>
+
+The following statements are equivalent for a $A \in M_n(F)$:
+
+1. $\exists A^{-1}$
+2. The homogeneous system $AX = 0$ only has the trivial solution $X = 0$
+3. The system of equations $AX = Y$ has a solution $X$ for each $n \times 1$ matrix $Y$
+
+Observe that $1 \to 2$ 
+
+$$AX = 0 \wedge \exists A^{-1} \implies A^{-1} AX = I_nX = X =  A^{-1}0 = 0$$
+
+And $1 \to 3$
+
+$$AX = Y \wedge \exists A^{-1} \implies A^{-1}A X = I_n X = X = A^{-1}Y$$
+
+Observe that $3 \to 2$ making $Y=0$ and also $2 \to 1$ using 4.2.2., 2. we get the whole equivalence.
+
+<br>
+
+# 7. Summary.
