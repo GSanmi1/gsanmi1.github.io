@@ -1883,7 +1883,7 @@ And we have grouped matrices of the same type into equivalence classes $[A]_r$ w
 
 Finally, we created a computational way of expressing the previous concepts through the matrix product, whose definition is forced by the notation $AX = Y$ (each entry reproduces exactly the linear combination of the $i$-th row over the unknowns of $X \in M_{n \times 1}(F)$).
 
-This operation turns these sequences of operations into algebraic objects: each $\mathcal{E}_\theta$ materializes as multiplication by an elementary matrix $E_\theta = \mathcal{E}_\theta(I)$, so that $\mathcal{E}_\theta(A) = E_\theta A$.
+This operation turns these sequences of operations into algebraic objects: each $\mathcal{E}\_\theta$ materializes as multiplication by an elementary matrix $E\_\theta = \mathcal{E}\_\theta(I)$, so that $\mathcal{E}\_\theta(A) = E\_\theta A$.
 
 This allows us to condense a finite sequence of elementary operations on a matrix into a single product and consequently redefine the equivalence relation:
 
@@ -1915,7 +1915,7 @@ This chain connects four apparently distinct ideas, one algebraic (factorization
 
 **Elementary row operations and row-equivalence**
 
-- **Elementary row operations are bijections (§3.2.2.2):** Each $\mathcal{E}_\theta : M_{m \times n}(F) \to M_{m \times n}(F)$ is invertible, and the inverse is an elementary row operation of the same type.
+- **Elementary row operations are bijections (§3.2.2.2):** Each $\mathcal{E}\_\theta : M\_{m \times n}(F) \to M\_{m \times n}(F)$ is invertible, and the inverse is an elementary row operation of the same type.
 
 - **Row-equivalence is an equivalence relation (§3.2.3):** $\equiv_r$ on $M_{m \times n}(F)$ is reflexive, symmetric, and transitive.
 
@@ -1937,15 +1937,15 @@ This chain connects four apparently distinct ideas, one algebraic (factorization
 
 **Matrix product**
 
-- **Definition forced by $AX = Y$ (§5.1):** $(AB)_{ij} = \sum_{k=1}^p a_{ik}b_{kj}$, and $AB = (A\beta_1, \ldots, A\beta_n)$ where $\beta_j$ are the columns of $B$.
+- **Definition forced by $AX = Y$ (§5.1):** $(AB)\_{ij} = \sum\_{k=1}^p a\_{ik}b\_{kj}$, and $AB = (A\beta\_1, \ldots, A\beta\_n)$ where $\beta\_j$ are the columns of $B$.
 
 - **Associativity (§5.2.1):** $A(BC) = (AB)C$.
 
-- **Columns of $AB$ are linear combinations of columns of $A$ (§5.4, ex. 2):** $\gamma_j = \sum_{r=1}^n \alpha_r b_{rj}$.
+- **Columns of $AB$ are linear combinations of columns of $A$ (§5.4, ex. 2):** $\gamma\_j = \sum\_{r=1}^n \alpha\_r b\_{rj}$.
 
-- **Elementary matrices implement row operations (§5.3.2):** $\mathcal{E}_\theta(A) = E_\theta A$ where $E_\theta = \mathcal{E}_\theta(I)$.
+- **Elementary matrices implement row operations (§5.3.2):** $\mathcal{E}\_\theta(A) = E\_\theta A$ where $E\_\theta = \mathcal{E}\_\theta(I)$.
 
-- **Row-equivalence via matrix product (§5.3.2):** $A \equiv_r B \iff \exists k : \left(\prod_{i=1}^k E_{\theta_i}\right) A = B$.
+- **Row-equivalence via matrix product (§5.3.2):** $A \equiv\_r B \iff \exists k : \left(\prod\_{i=1}^k E\_{\theta\_i}\right) A = B$.
 
 <br>
 
@@ -1955,14 +1955,14 @@ This chain connects four apparently distinct ideas, one algebraic (factorization
 
 - **Inverse of a product (§6.2):** $(AB)^{-1} = B^{-1}A^{-1}$.
 
-- **Every elementary matrix is invertible (§6.3.1):** $E_\theta^{-1} = E_{\theta^{-1}}$.
+- **Every elementary matrix is invertible (§6.3.1):** $E\_\theta^{-1} = E\_{\theta^{-1}}$.
 
-- **Characterization of invertibility (§6.3.2):** For $A \in M_n(F)$, the following are equivalent: (i) $A$ is invertible. (ii) $A \equiv_r I_n$. (iii) $A = \prod_{i=1}^k E_i$ for some elementary matrices $E_i$.
+- **Characterization of invertibility (§6.3.2):** For $A \in M\_n(F)$, the following are equivalent: (i) $A$ is invertible. (ii) $A \equiv\_r I\_n$. (iii) $A = \prod\_{i=1}^k E\_i$ for some elementary matrices $E\_i$.
 
-- **Invertibility and linear systems (§6.3.3):** For $A \in M_n(F)$, the following are equivalent: (i) $A$ is invertible. (ii) $S_{[AX=0]} = \{0\}$. (iii) For every $Y \in M_{n \times 1}(F)$, the system $AX = Y$ has a solution. Moreover, when $A$ is invertible, the solution is unique: $X = A^{-1}Y$.
+- **Invertibility and linear systems (§6.3.3):** For $A \in M\_n(F)$, the following are equivalent: (i) $A$ is invertible. (ii) $S\_{[AX=0]} = \{0\}$. (iii) For every $Y \in M\_{n \times 1}(F)$, the system $AX = Y$ has a solution. Moreover, when $A$ is invertible, the solution is unique: $X = A^{-1}Y$.
 
-- **Row-equivalence via invertible matrix (§6.3.2, corollary):** $A \equiv_r B \iff \exists P$ invertible with $B = PA$.
+- **Row-equivalence via invertible matrix (§6.3.2, corollary):** $A \equiv\_r B \iff \exists P$ invertible with $B = PA$.
 
-- **Corollary: square matrix with one-sided inverse is invertible (§6.3.3):** If $A \in M_n(F)$ has a l
+- **Corollary: square matrix with one-sided inverse is invertible (§6.3.3):** If $A \in M\_n(F)$ has a l
 
 <br>
