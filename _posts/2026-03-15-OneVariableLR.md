@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "One variable linear regression model"
+title: "Machine Learning. Regression Model"
 subtitle: "Introduction to ML. Linear Regression. Gradient Descent."
 date: 2026-03-16 09:00:00 +0000
 categories: ['Maths', 'ML']
