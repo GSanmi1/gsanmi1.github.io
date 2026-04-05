@@ -8,6 +8,64 @@ tags: ['Hoffman&Kunze', 'Algebra']
 author: German Sanmi
 ---
 
+# 0. Index.
+
+1. Fields.
+    - 1.1. Number sets.
+    - 1.2. Groups.
+        - 1.2.1. Intuitive Approach and definition.
+        - 1.2.2. Immediate properties.
+    - 1.3. Fields.
+        - 1.3.1. Intuitive approach and definition.
+        - 1.3.2. Properties of a field.
+        - 1.3.3. Identities relations lemma.
+2. System of Linear Equations.
+    - 2.1. Brief introduction. Linear meaning.
+    - 2.2. Formal definition.
+    - 2.3. Equivalent Systems. Operations between predicates.
+        - 2.3.1. System equations as predicates. Equivalence.
+        - 2.3.2. Equivalence preservation.
+    - 2.4. Exercises.
+3. Matrices and Elementary Row Operations.
+    - 3.1. Equivalent representation.
+    - 3.2. Matrix.
+        - 3.2.1. Definition and conceptual meaning.
+        - 3.2.2. Elementary operations.
+            - 3.2.2.1. Direct operations.
+            - 3.2.2.2. Inverse Operations.
+        - 3.2.3. Row-equivalence of Matrices and equivalence of system equations.
+4. Row-reduced forms.
+    - 4.1. Row-reduced.
+        - 4.1.1. Definition.
+        - 4.1.2. Row-reduced exercises.
+    - 4.2. Row-reduced echelon.
+        - 4.2.1. Definition.
+        - 4.2.2. Properties.
+    - 4.3. Augmented Matrix.
+        - 4.3.1. Definition.
+        - 4.3.2. RREM and Augmented matrix exercises.
+5. Matrix Multiplication.
+    - 5.1. Definition.
+    - 5.2 Properties.
+        - 5.2.1. Associativity.
+        - 5.2.2. Power of Matrix.
+    - 5.3. Elementary Matrix and Elementary Row Operations abstraction.
+        - 5.3.1. Identity Matrix.
+        - 5.3.2. Elementary Matrix.
+    - 5.4. Matrix product exercises.
+6. Invertible Matrices.
+    - 6.1. Definition. Left, Right and two-sided inverse.
+    - 6.2. Important Properties of the inverse.
+    - 6.3. Elementary Matrices and Inverse.
+        - 6.3.1. Inverse of elementary matrix.
+        - 6.3.2. Characterization of invertible matrix.
+        - 6.3.3. Invertible Matrix and Linear Equation Systems.
+7. Summary.
+- 7.1 Summary of the chapter.
+- 7.2. Key results.
+
+<br>
+
 # 1. Fields.
 
 ## 1.1. Number sets.
@@ -1735,7 +1793,7 @@ Let be $A,B \in M_n(F)$, then:
 
 ### 6.3.1. Inverse of elementary matrix.
 
-Let's start seeing that any elementary matrix $E$ is invertible. Observe that $\mathcal{E}_\theta(I)=E$, we know that we can think about revert this operation by calling the elementary row-operation $\mathcal{E}_{\theta^{-1}}$ (check the section 3.2.2.2), observe that naturally $\mathcal{E}_{\theta^{-1}} \circ \mathcal{E}_{\theta}(I) =\mathcal{E}_{\theta} \circ \mathcal{E}_{\theta^{-1}}(I) = I$ meaning that if we call $\mathcal{E}_{\theta^{-1}}(I) = E'$ verifies: $E'E = EE' =I$ and we can safely say $E' =E^{-1}$
+Let's start seeing that any elementary matrix $E$ is invertible. Observe that $\mathcal{E}\_\theta(I)=E$, we know that we can think about revert this operation by calling the elementary row-operation $\mathcal{E}\_{\theta^{-1}}$ (check the section 3.2.2.2), observe that naturally $\mathcal{E}\_{\theta^{-1}} \circ \mathcal{E}\_{\theta}(I) =\mathcal{E}\_{\theta} \circ \mathcal{E}\_{\theta^{-1}}(I) = I$ meaning that if we call $\mathcal{E}\_{\theta^{-1}}(I) = E'$ verifies: $E'E = EE' =I$ and we can safely say $E' =E^{-1}$
 
 <br>
 
@@ -1794,3 +1852,117 @@ Observe that $3 \to 2$ making $Y=0$ and also $2 \to 1$ using 4.2.2., 2. we get t
 <br>
 
 # 7. Summary.
+
+## 7.1 Summary of the chapter.
+
+In this chapter we have seen that a system of linear equations
+
+$$M := \bigwedge_i P_i$$
+
+over a field $F$ is, in essence, a collection of linear constraints over points of $F^n$. This system synthesizes information about $F^n$ materialized in the solution set of the system:
+
+$$S := \{x \in F^n \mid M \equiv \top\}$$
+
+So that two systems $M, M'$ are equivalent when they contain the same information about $F^n$, that is; they describe the same $S$.
+
+We have seen that certain operations between the predicates of the system such as scaling $S_{\lambda P} = S_P$, linearly combining while keeping the original $S_{\gamma P + \lambda Q} \cap S_Q = S_P \cap S_Q$, and permuting, preserve this equivalence; they keep the information of the system intact.
+
+We use matrices to encode and abbreviate the information contained by systems of linear equations. Specifically, in the system $M \equiv [AX = 0]$ the coefficient matrix $A$ packages most of this information, eliminating the redundancy of writing the unknowns $X$.
+
+We have seen that we can simplify these packages without altering the information they contain through elementary row operations, which are the direct transfer of the operations between predicates:
+
+$$\mathcal{E}_\theta : M_{m \times n}(F) \to M_{m \times n}(F)$$
+
+These operations are bijections with inverses of the same type, that is, reversible.
+
+We have formalized the relationship between all those matrices that encode the same linear constraints over $F^n$ through the equivalence relation $\equiv_r$ induced by finite composition of these row operations:
+
+$$A \equiv_r B \iff \exists k \in  \mathbb{N} : \mathcal{E_\theta}_1 \cdots \circ \mathcal{E_\theta}_k(A) = B $$
+
+And we have grouped matrices of the same type into equivalence classes $[A]_r$ whose canonical representative is the RREF, which is the simplest form in which the information of the system can be expressed, where the solution can be read directly and is shared by any other matrix in the same class.
+
+Finally, we created a computational way of expressing the previous concepts through the matrix product, whose definition is forced by the notation $AX = Y$ (each entry reproduces exactly the linear combination of the $i$-th row over the unknowns of $X \in M_{n \times 1}(F)$).
+
+This operation turns these sequences of operations into algebraic objects: each $\mathcal{E}_\theta$ materializes as multiplication by an elementary matrix $E_\theta = \mathcal{E}_\theta(I)$, so that $\mathcal{E}_\theta(A) = E_\theta A$.
+
+This allows us to condense a finite sequence of elementary operations on a matrix into a single product and consequently redefine the equivalence relation:
+
+$$A \equiv_r B \iff \exists P \in M_n(F) : B = PA \wedge \left(\exists k \in \mathbb{N} : P = \prod_{i=1}^k E_{\theta_i}\right)$$
+
+And lastly, we have introduced the concept of the inverse of a matrix $A^{-1}$ with the purpose of characterizing the solution of the system $M$ when that solution is unique:
+
+$$AX = Y \iff X = A^{-1}Y$$
+
+The chapter culminates with the chain of equivalences that characterizes the invertibility of $A \in M_n(F)$ so that $A$ is invertible if and only if $A$ is a product of elementary matrices.
+
+This chain connects four apparently distinct ideas, one algebraic (factorization), one computational (row reduction), and two about systems of equations (homogeneous and general), into a single notion, and is the central result of the chapter that will be expanded throughout the book.
+
+<br>
+
+## 7.2. Key results.
+
+**Equivalence of systems**
+
+- **Equivalence means same solution set (§2.3.1):** $M \equiv M' \iff S = S'$.
+
+- **Scaling preserves solutions (§2.3.2):** $\lambda \in F \setminus \{0\} \implies S_{\lambda P} = S_P$.
+
+- **Replacement rule (§2.3.2):** $S_{\gamma P + \lambda Q} \cap S_Q = S_P \cap S_Q$. The combined equation alone is strictly weaker: $S_P \cap S_Q \subseteq S_{\gamma P + \lambda Q}$, but keeping $Q$ in the system recovers $P$.
+
+- **Linear combination characterization of equivalence (§2.3.2):** If $M \equiv M'$ and $S \neq \varnothing$, then every predicate $P_i \in M$ can be expressed as a linear combination of the predicates in $M'$ and vice versa.
+
+<br>
+
+**Elementary row operations and row-equivalence**
+
+- **Elementary row operations are bijections (§3.2.2.2):** Each $\mathcal{E}_\theta : M_{m \times n}(F) \to M_{m \times n}(F)$ is invertible, and the inverse is an elementary row operation of the same type.
+
+- **Row-equivalence is an equivalence relation (§3.2.3):** $\equiv_r$ on $M_{m \times n}(F)$ is reflexive, symmetric, and transitive.
+
+- **Row-equivalence $\iff$ system equivalence (§3.2.3):** $[A \mid Y] \equiv_r [A' \mid Y'] \iff [AX = Y] \equiv [A'X = Y']$.
+
+<br>
+
+**Row-reduced forms**
+
+- **Existence of RREF (§4.1.1 + §4.2.1):** Every $A \in M_{m \times n}(F)$ is row-equivalent to a row-reduced echelon matrix $R$, and $R$ is the unique canonical representative of $[A]_r$.
+
+- **More unknowns than equations (§4.2.2):** If $A \in M_{m \times n}(F)$ with $m < n$, then $AX = 0$ has a non-trivial solution.
+
+- **Square matrix criterion (§4.2.2):** $A \in M_n(F) \implies (A \equiv_r I_n \iff S_{[AX=0]} = \{0\})$.
+
+- **$2 \times 2$ determinant criterion (§4.1.2, ex. 8):** For $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$: $ad - bc \neq 0 \implies S_{[AX=0]} = \{(0,0)\}$.
+
+<br>
+
+**Matrix product**
+
+- **Definition forced by $AX = Y$ (§5.1):** $(AB)_{ij} = \sum_{k=1}^p a_{ik}b_{kj}$, and $AB = (A\beta_1, \ldots, A\beta_n)$ where $\beta_j$ are the columns of $B$.
+
+- **Associativity (§5.2.1):** $A(BC) = (AB)C$.
+
+- **Columns of $AB$ are linear combinations of columns of $A$ (§5.4, ex. 2):** $\gamma_j = \sum_{r=1}^n \alpha_r b_{rj}$.
+
+- **Elementary matrices implement row operations (§5.3.2):** $\mathcal{E}_\theta(A) = E_\theta A$ where $E_\theta = \mathcal{E}_\theta(I)$.
+
+- **Row-equivalence via matrix product (§5.3.2):** $A \equiv_r B \iff \exists k : \left(\prod_{i=1}^k E_{\theta_i}\right) A = B$.
+
+<br>
+
+**Invertible matrices**
+
+- **Left = right inverse (§6.1):** If $BA = I$ and $AC = I$, then $B = C$. So when both exist, the inverse is unique: $A^{-1}$.
+
+- **Inverse of a product (§6.2):** $(AB)^{-1} = B^{-1}A^{-1}$.
+
+- **Every elementary matrix is invertible (§6.3.1):** $E_\theta^{-1} = E_{\theta^{-1}}$.
+
+- **Characterization of invertibility (§6.3.2):** For $A \in M_n(F)$, the following are equivalent: (i) $A$ is invertible. (ii) $A \equiv_r I_n$. (iii) $A = \prod_{i=1}^k E_i$ for some elementary matrices $E_i$.
+
+- **Invertibility and linear systems (§6.3.3):** For $A \in M_n(F)$, the following are equivalent: (i) $A$ is invertible. (ii) $S_{[AX=0]} = \{0\}$. (iii) For every $Y \in M_{n \times 1}(F)$, the system $AX = Y$ has a solution. Moreover, when $A$ is invertible, the solution is unique: $X = A^{-1}Y$.
+
+- **Row-equivalence via invertible matrix (§6.3.2, corollary):** $A \equiv_r B \iff \exists P$ invertible with $B = PA$.
+
+- **Corollary: square matrix with one-sided inverse is invertible (§6.3.3):** If $A \in M_n(F)$ has a l
+
+<br>
