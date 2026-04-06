@@ -325,9 +325,23 @@ Each step is forced by the limitations of the previous one: $L$ only measures on
 
 ### 1.3.3. Gradient Descent Algorithm.
 
-
+We arrived at a concrete problem, we modelized a function $J$ that measures the error of the prediction function $h_\theta$ over the training set $\mathcal{D} \subset \mathcal{X} \times \mathcal{Y}$ that dependes on the parameter $\theta$. The objective is to find that $\theta$ that minimizes the error, this is, that minimizes the $J$ output.
 
 <br>
+
+#### 1.3.3.1. Optimization. Classical Approach.
+
+An *optimization problem* is, in its most general form, the task of finding the input to a function that produces the smallest (or largest) output value. For our purpouses, we want to find the value for $\theta \in \mathbb{R}^p$ that minimizes $J$ output. Again:
+
+$$\theta^* = \arg\min_{\theta \in \Theta}J(\theta)$$
+
+<br>
+
+That's it, we have a real-valued function of several variables and we want the point where it attains its minimum. This is an extremely old and central problem in mathematics. The ML learning problem becomes an optimization problem the moment we parameterize $\mathcal{H}$ in terms if $\theta$ and define $J(\theta)$; finding the best hypothesis reduces to finding the lowest point of a surface in $\mathbb{R}^p$.
+
+<br>
+
+
 
 # 2. Supervised Learning.
 

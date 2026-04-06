@@ -502,7 +502,7 @@ $$\neg \forall \delta(\alpha < \delta \ \forall \alpha \in A \implies \gamma < \
 
 Let's remember that, in classical logic it is: $p \to q \equiv \neg p \vee q \iff \neg(p \to q) \equiv \neg (\neg p \vee q) \equiv p \wedge \neg q$, thus calling:
 
-$$\begin{cases}p := \alpha < \delta \ \forall \alpha \in A \\ q:= \gamma < \delta\end{cases}, \quad p \wedge \neg q \iff \alpha < \delta \ \forall \alpha \in A \wedge \delta < \gamma$$
+$$\begin{cases}p := \alpha < \delta \ \forall \alpha \in A \\ q:= \gamma < \delta\end{cases}, \quad p \wedge \neg q \iff \alpha < \delta \ \ \forall \alpha \in A \wedge \delta < \gamma$$
 
 Let's consider $\delta$ as above: $\exists \delta \in \mathbb{R} : \delta < \gamma \wedge (\alpha < \delta \ \ \forall \alpha \in A)$. Observe that $\delta < \gamma \implies \delta \neq \gamma$ which means that $\exists \alpha \in \gamma : \alpha \nsubseteq \delta \implies \delta < \alpha$ (due to the trychotomy of the order), thus and $\delta$ would not be an upperbound contradicting the initial assumption. 
 
@@ -514,9 +514,9 @@ So, by reduction absurdio, $\gamma$ has to be the least upper bound; $\gamma = s
 
 If $\alpha, \beta \in \mathbb{R}$ we define: $\alpha + \beta := \Set{a+b \ \vert \ a \in \alpha \wedge b \in \beta}$. We also define $0^* \in \mathbb{R}$ as $0^* := \Set{ q \in \mathbb{Q} \ \vert \ q < 0}$, observe that is clear that this last set is a cut.
 
-Now, we verify that the addition's axioms for a field hold in $\mathbb{R}$, with $0^*$ playing the role of $0$.
+Now, we verify that the addition's axioms for a field hold in $\mathbb{R}$, with $0^*$ playing the role of $0$. In orther terms, $(\mathbb{R},+)$ is an abelian group:
 
-- $\alpha + \beta \in \mathbb{R} \ \ \forall \alpha, \beta \in \mathbb{R}$
+- **Closure**: $\alpha + \beta \in \mathbb{R} \ \ \forall \alpha, \beta \in \mathbb{R}$. We have to demonstrate that $\alpha + \beta$ is a cut.
 
     Let's demonstrate that $\alpha + \beta$ satisfies the three properties of a cut. 
 
@@ -530,6 +530,18 @@ Now, we verify that the addition's axioms for a field hold in $\mathbb{R}$, with
 
     2. $p \in \alpha + \beta \wedge (q \in \mathbb{Q} : q < p) \implies q \in \alpha + \beta $ 
 
+        Let's take that $p = a + b$, since $q < p = a + b \implies q - a < b \in \beta$ and thus we get that $q = (q - a) + a \in \alpha + \beta$.
+
+        <br>
+
+    3. $p \in \alpha + \beta \implies \exists q \in \alpha + \beta : p < q$
+
+        This result is almost immediate since if $p = a + b$ then, exists $a' \in \alpha, b' \in \beta$ verifying both $a < a' \wedge b < b'$, thus calling $q = a' + b'$ clearly is $q \in \alpha + \beta : p < q$
+
+        <br>
+
+- **Conmutativity**: $\alpha + \beta = \beta + \alpha \ \ \forall \alpha, \beta \in \mathbb{R}$
+- **Asociativity**: $\alpha + (\beta + \gamma) = (\alpha + \beta) + \gamma \ \ \forall \alpha, \beta, \gamma \in \mathbb{R}$ 
 ## 3.2. Important Properties from the $\mathbb{R}$ field.
 
 ### 3.2.1. Archimedean property of $\mathbb{R}$.
@@ -551,10 +563,22 @@ Let's observe that this rules out the existence of infinitesimals; positive numb
 
 ### 3.2.2. $\mathbb{Q}$ is dense in $\mathbb{R}$
 
-The density of $\mathbb{Q}$ in $\mathbb{R}$ stablish that:
+The density of $\mathbb{Q}$ in $\mathbb{R}$ stablish that between two elements of $\mathbb{R}$ a rational always can be found, formally:
 
 $$\forall x, y \in \mathbb{R} : x < y \implies \exists q \in \mathbb{Q} : x < q < y$$
 
- 
+To demonstrate it, lets think about $x, y \in \mathbb{R} :x <y$, thus is $ 0 < y - x$ so for $1 \in \mathbb{R}$, the archimedean property furnishes the result: $1 < n(y-x)$.
+
+Also, considering $z_1,z_2 \in \mathbb{R}^+ \implies \exists t_1,t_2 \in \mathbb{N}: nx < t_1z_1 \wedge -nx < t_2z_2$. Then, calling $m_i = t_iz_i$ is:
+
+$$-m_2 < nx < m_1$$
+
+We can nail $[-m_2,m_1] \cap \mathbb{Z}$ until find an $m \in \mathbb{N} : m-1 \leq nx < m$, in summary:
+
+$$\begin{cases} 1 < n(y-x)  \iff 1 + nx < y \\ m - 1 \leq nx < m \iff m \leq 1 +nx < m +1  \end{cases} \implies nx < m \leq 1 + nx < ny$$
+
+And thus:
+
+$$x < \frac{m}{n} < y$$
 
 <br>
