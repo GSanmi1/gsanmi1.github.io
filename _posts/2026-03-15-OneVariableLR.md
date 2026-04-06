@@ -335,12 +335,13 @@ An *optimization problem* is, in its most general form, the task of finding the 
 
 $$\theta^* = \arg\min_{\theta \in \Theta}J(\theta)$$
 
-<br>
-
 That's it, we have a real-valued function of several variables and we want the point where it attains its minimum. This is an extremely old and central problem in mathematics. The ML learning problem becomes an optimization problem the moment we parameterize $\mathcal{H}$ in terms if $\theta$ and define $J(\theta)$; finding the best hypothesis reduces to finding the lowest point of a surface in $\mathbb{R}^p$.
 
 <br>
 
+Classically, for example, in a one-variable function context, we would leverage the geometric interpretation of the derivate of a continuous function in a point (with which we are already familiar from the prerrequisite section) as the slope of the tangent line to the function and attempt to calculate the point in which that slope is horizontal, this is, zero: $x_0 \in \mathbb{R} : f'(x_0) = 0$
+
+![delta0](/assets/images/ML/delta0.png)
 
 
 # 2. Supervised Learning.
@@ -554,7 +555,6 @@ $$\nabla J(\theta) :=
 
 <br>
 
-![delta0](/assets/images/ML/delta0.png)
 
 But in the moment the parameter space grows, that closed-form solution either doesn't exist or becomes computationally prohibitive. An iterative method is needed.
 
