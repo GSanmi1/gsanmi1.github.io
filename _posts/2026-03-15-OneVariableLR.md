@@ -339,10 +339,33 @@ That's it, we have a real-valued function of several variables and we want the p
 
 <br>
 
-Classically, for example, in a one-variable function context, we would leverage the geometric interpretation of the derivate of a continuous function in a point (with which we are already familiar from the prerrequisite section) as the slope of the tangent line to the function and attempt to calculate the point in which that slope is horizontal, this is, zero: $x_0 \in \mathbb{R} : f'(x_0) = 0$
+Classically, for example, in a one-variable function context, we would leverage the geometric interpretation of the derivate of a continuous function in a point (with which we are already familiar from the prerrequisite section) as the slope of the tangent line to the function and attempt to calculate the point in which that slope is horizontal, this is, zero: $\theta_0 \in \mathbb{R} : J'(\theta_0) = 0$
 
 ![delta0](/assets/images/ML/delta0.png)
 
+This is a first approach and necesary condition (although not sufficent since other points like local maxima satisfy it). In multiple variables, as far as we know, the most similar tool we have is the gradient which we already see that points towards the *steepest ascent* direction. This property is furnished from each partial derivative which have a similar geometric interpretation as the derivative in the example above. In a local minima, the slope of the tangent line to the curve formed by the surface of the function and each plane $x_i=x_0$ is $0$, thus, $\nabla J(\theta_0) = 0$ and points to no direction.
+
+<br>
+
+**Succed Example**
+
+Let's take the linear regression model persented before being the hipotesis $h_\theta(\mathbf{x}) = \theta_0 + \boldsymbol{\theta}^\top \mathbf{x}$, and let's suppose that our loss function is the squared loss $L(y,h_\theta(\mathbf{x})) = (y - h_\theta(\mathbf{x}))^2$. Then, the cost function would be:
+
+$$J(\theta):=\frac{1}{m} \sum_{i=1}^m L(y,h_\theta(\mathbf{x})) = \frac{1}{m} \sum_{i=1}^m (y^{(i)} - \theta_0 - \boldsymbol{\theta}^\top \mathbf{x}^{(i)})^2$$
+
+And the gradient is:
+
+$$\nabla J(\theta) := \left( \frac{\partial J}{\partial \theta_t}(\theta)_{t1} \right)_{t \in [p]} \in \mathbb{R}^p : \frac{\partial J}{\partial \theta_i}(\theta) := -\frac{1}{2m}\sum_{i=1}^m (y^{(i)} - \theta_0 - \boldsymbol{\theta}^\top \mathbf{x}^{(i)})x_i$$
+
+Observe that $\nabla J = \mathbf{0}$ becomes a system of $p$ linear equations in $p$ unknowns. The solution tell us if that point exists and exactly the point when exists. 
+
+<br>
+
+**No-succed example**
+
+
+
+<br>
 
 # 2. Supervised Learning.
 

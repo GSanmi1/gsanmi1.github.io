@@ -1851,6 +1851,10 @@ Observe that $3 \to 2$ making $Y=0$ and also $2 \to 1$ using 4.2.2., 2. we get t
 
 <br>
 
+Observe that we just ennounce a powerful statement about the solutions of linear equation systems. In $AX = Y$, if $A \in [I_n]$, then the solution exists and is unique $X = A^{-1}Y$
+
+<br>
+
 # 7. Summary.
 
 ## 7.1 Summary of the chapter.
@@ -1889,9 +1893,9 @@ This allows us to condense a finite sequence of elementary operations on a matri
 
 $$A \equiv_r B \iff \exists P \in M_n(F) : B = PA \wedge \left(\exists k \in \mathbb{N} : P = \prod_{i=1}^k E_{\theta_i}\right)$$
 
-And lastly, we have introduced the concept of the inverse of a matrix $A^{-1}$ with the purpose of characterizing the solution of the system $M$ when that solution is unique:
+And lastly, we have introduced the concept of the inverse of a matrix $A^{-1}$ with the purpose of characterizing the unique solution of the system $M$ when $A$ is invertible:
 
-$$AX = Y \iff X = A^{-1}Y$$
+$$AX = Y \wedge A \in [I_n] \implies X = A^{-1}Y$$
 
 The chapter culminates with the chain of equivalences that characterizes the invertibility of $A \in M_n(F)$ so that $A$ is invertible if and only if $A$ is a product of elementary matrices.
 
