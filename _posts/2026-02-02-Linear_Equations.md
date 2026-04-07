@@ -1795,7 +1795,7 @@ Let be $A,B \in M_n(F)$, then:
 
 ### 6.3.1. Inverse of elementary matrix.
 
-Let's start seeing that any elementary matrix $E$ is invertible. Observe that $\mathcal{E}\_\theta(I)=E\_\theta$, we know that we can think about revert this operation by calling the elementary row-operation $\mathcal{E}\_{\theta^{-1}}$ (check the section 3.2.2.2), observe that naturally $\mathcal{E}\_{\theta^{-1}} \circ \mathcal{E}\_{\theta}(I) =\mathcal{E}\_{\theta} \circ \mathcal{E}\_{\theta^{-1}}(I) = I$ meaning that if we call $\mathcal{E}\_{\theta^{-1}}(I) = E\_{\theta^{-1}}$ verifies: $E\_{\theta^{-1}}E\_\theta = E\_\theta E\_{\theta^{-1}} =I$ and we can safely say $E\_{\theta^{-1}} =(E\_\theta)^{-1}$
+Let's start seeing that any elementary matrix $E$ is invertible. Observe that $\mathcal{E}\_\theta(I)=E\_\theta$, we know that we can think about revert this operation by calling the elementary row-operation $\mathcal{E}\_{\theta^{-1}}$ (check the section 3.2.2.2), observe that naturally $\mathcal{E}\_{\theta^{-1}} \circ \mathcal{E}\_{\theta}(I) =\mathcal{E}\_{\theta} \circ \mathcal{E}\_{\theta^{-1}}(I) = I$ meaning that if we call $\mathcal{E}\_{\theta^{-1}}(I) = E\_{\theta^{-1}}$ it verifies: $E\_{\theta^{-1}}E\_\theta = E\_\theta E\_{\theta^{-1}} =I$ and we can safely say $E\_{\theta^{-1}} =E\_\theta^{-1}$
 
 <br>
 
