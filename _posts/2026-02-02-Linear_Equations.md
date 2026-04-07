@@ -1857,7 +1857,9 @@ In other words, we apply to $A$ in $[A \ \vert \ I\_n]$ elementary row-operation
 
 ### 6.3.3. Invertible Matrix and Linear Equation Systems.
 
-In this section we will nail down all the inverse matrix purpouse which is simplify the linear equation system expresion towards a unique solution. As an introduction, check that if $A$ is an invertible matrix, then: $AX = Y \iff X = A^{-1}Y$ offering a unique description of the solution of the system.
+In this section we will nail down all the inverse matrix purpouse which is simplify the linear equation system expresion towards a unique solution. 
+
+The following theorem states how the inverse help to solve and discuss linear equation systems.
 
 <br>
 
@@ -1867,21 +1869,29 @@ The following statements are equivalent for a $A \in M_n(F)$:
 2. The homogeneous system $AX = 0$ only has the trivial solution $X = 0$
 3. The system of equations $AX = Y$ has a solution $X$ for each $n \times 1$ matrix $Y$
 
-Observe that $1 \to 2$ 
-
-$$AX = 0 \wedge \exists A^{-1} \implies A^{-1} AX = I_nX = X =  A^{-1}0 = 0$$
-
-And $1 \to 3$
+Observe that $1 \to 3$:
 
 $$AX = Y \wedge \exists A^{-1} \implies A^{-1}A X = I_n X = X = A^{-1}Y$$
 
-Observe that $3 \to 2$ making $Y=0$ and also $2 \to 1$ using 4.2.2., 2. we get the whole equivalence.
+Also that $3 \to 2$ making $Y=0$ and also $2 \to 1$ using $4.2.2$ getting the whole equivalence.
 
 <br>
 
-Observe that we just ennounce a powerful statement about the solutions of linear equation systems. In $AX = Y$, if $A \in [I_n]$, then the solution exists and is unique $X = A^{-1}Y$
+Observe that first, lets say we have $M := [AX = Y]$ a linear system of $n$ equations in $n$ unknowns, this system doesn't englobe all the posible linear systems equations (the discussion of any system need more tools) but it give us a first approach to the system type that give us a chance for the information of the system to be complete.
 
-<br>
+We can get some properties from $M$ by studying $A$ and applying the concepts we've study in this chapter.
+
+- First, if $A \in [I_n]$, then, knowing that $M$ and $M' := [I\_n X = Y']$ share the same solution (being $Y'$ the matrix obtained in the process $[A \ \vert \ Y] \to [I_n \ \vert \ Y']$) since both are equivalent and by $4.2.2$ we can assert that $S\_{M'}  \neq \varnothing \wedge \vert S\_{M'} \vert = 1$. 
+
+    So, at first, studying the RREM of $A$ we can know if the solution exists as a unique point of $F^n$.
+
+    <br>
+
+- Also, $A \in [I_n] \iff \exists A^{-1}$ and the inverse give us a characterization of the unique element of the set $S_{M'}:=\Set{X \in F^n \ \vert \ X = A^{-1}Y}$.
+
+    The inverse, which exists as we've seen above, give us the solution whose existance has been assert in the previous point.
+
+    <br>
 
 # 7. Summary.
 
