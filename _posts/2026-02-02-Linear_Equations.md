@@ -1742,9 +1742,11 @@ Immediately, from 3.2.3, $A \equiv\_r B \iff \exists k : \mathcal{E}\_k \cdots \
 
 # 6. Invertible Matrices.
 
-Suppose $P$ is an $m \times m$ matrix which is a product of elementary matrices. For each $m \times n$ matrix $A$, the matrix $B = PA$ is row-equivalent to $A$; hence $A$ is row-equivalent to $B$ and there is a product $Q$ of elementary matrices such that $A = QB$. In particular this is true when $A$ is the $m \times m$ identity matrix. In other words, there is an $m \times m$ matrix $Q$, which is itself a product of elementary matrice such that $QP = I$. 
+Suppose $P \in M_m(F)$ matrix which is a product of elementary matrices. For each $A \in M_{m \times n}(F)$ is true that $PA = B \equiv_r A \implies \exists Q \in M_m(F) : QB = A$. 
 
-As we shall soon see, the existence of a $Q$ with $QP = I$ is equivalent to the
+In particular this is true when $A =  I_m$. In other words, $\exists Q \in M_m(F) : QP = I_m$, which is itself a product of elementary matrix. 
+
+More specifically the existence of a $Q : QP = I_m$ is equivalent to the
 fact that $P$ is a product of elementary matrices. 
 
 <br>
@@ -1753,9 +1755,9 @@ fact that $P$ is a product of elementary matrices.
 
 Let $A \in M_n(F)$ (square) matrix over the field $F$. 
 
-- An $B \in M_n(F) : BA = I$ is called a *left inverse* of $A$.
+- An $B \in M_n(F) : BA = I_n$ is called a *left inverse* of $A$.
 
-- An $B \in M_n(F) : AB = I$ is called a *right inverse* of $A$. 
+- An $B \in M_n(F) : AB = I_n$ is called a *right inverse* of $A$. 
 
 - If $AB = BA = I$, then $B$ is called a two-sided inverse of $A$ and $A$ is said to be *invertible*. 
 
@@ -1793,7 +1795,7 @@ Let be $A,B \in M_n(F)$, then:
 
 ### 6.3.1. Inverse of elementary matrix.
 
-Let's start seeing that any elementary matrix $E$ is invertible. Observe that $\mathcal{E}\_\theta(I)=E$, we know that we can think about revert this operation by calling the elementary row-operation $\mathcal{E}\_{\theta^{-1}}$ (check the section 3.2.2.2), observe that naturally $\mathcal{E}\_{\theta^{-1}} \circ \mathcal{E}\_{\theta}(I) =\mathcal{E}\_{\theta} \circ \mathcal{E}\_{\theta^{-1}}(I) = I$ meaning that if we call $\mathcal{E}\_{\theta^{-1}}(I) = E'$ verifies: $E'E = EE' =I$ and we can safely say $E' =E^{-1}$
+Let's start seeing that any elementary matrix $E$ is invertible. Observe that $\mathcal{E}\_\theta(I)=E\_\theta$, we know that we can think about revert this operation by calling the elementary row-operation $\mathcal{E}\_{\theta^{-1}}$ (check the section 3.2.2.2), observe that naturally $\mathcal{E}\_{\theta^{-1}} \circ \mathcal{E}\_{\theta}(I) =\mathcal{E}\_{\theta} \circ \mathcal{E}\_{\theta^{-1}}(I) = I$ meaning that if we call $\mathcal{E}\_{\theta^{-1}}(I) = E\_{\theta^{-1}}$ verifies: $E\_{\theta^{-1}}E\_\theta = E\_\theta E\_{\theta^{-1}} =I$ and we can safely say $E\_{\theta^{-1}} =(E\_\theta)^{-1}$
 
 <br>
 
