@@ -1799,13 +1799,16 @@ Let's start seeing that any elementary matrix $E$ is invertible. Observe that $\
 
 <br>
 
-### 6.3.2. Characterization of invertible matrix.
+### 6.3.2. Characterization of an invertible matrix. Gauss Method.
 
 We are now going to present a result that is characterization of any invertible matrix as a product of elementary matrix. The following statements are equivalent for $A \in M_n(F)$:
 
 1. $\exists A^{-1}$
 2. $ A \equiv\_r I\_n (\text{or } A \in [I\_n])$
 3. $\exists k \in \mathbb{N} : A = \prod\_{i=1}^k E\_i$
+
+Meaning that a matrix $A$ is invertible only iff row-equivalent to the identity and by the characterization of the elementary matrix made before this also means that a matrix is invertible only iff is a product of elementary matrix.
+
 
 Observe that $1 \to 2$: 
 
@@ -1823,9 +1826,32 @@ $$\left(\prod_{i=1}^k E_{k-i+1}^{-1}\right) \left(\prod_{i=1}^k E_i\right) = \le
 
 And we say $\left(\prod\_{i=1}^k E\_{k-i+1}^{-1}\right) = A^{-1}$ and $A$ is invertible.
 
-Observe that also the last result give us a mechanism to obtain $A^{-1}$. Also observe that we can extend our caracterization of row-equivalent matrix. If any product of elementary matrix can be abstracted in an invertible matrix $P$, then for $A,B \in M\_{m \times n} (F)$:
+With this characterization, we can extend our characterization of row-equivalent matrix. If any product of elementary matrix can be abstracted in an invertible matrix $P$, then for $A,B \in M\_{m \times n} (F)$:
 
 $$A \equiv_r  B \iff \exists P \in [I_n] : AP =B$$
+
+<br>
+
+**Gauss Method to obtain the inverse**
+
+Observe that also the last result give us a mechanism to obtain $A^{-1}$. If for $A \in M_{n}(F)$ is:
+
+$$\exists A^{-1} \iff A \in [I_n] \iff \exists k \in \mathbb{N} : \prod_{i=1}^k E_i = A$$
+
+Then, the idea is if $A$ is invertible, you can transform it into $I_n$ by a sequence of elementary row operations:
+
+$$\mathcal{E'}_k \cdots \circ \mathcal{E'}_1 (A) = \left(\prod_{i=1}^k E'_i \right) A = I_n $$
+
+Observe that by definition, the product of elementary matrix that multiplicated by $A$ gives $I_n$ is infact $A^{-1}$, so to speak:
+
+$$\prod_{i=1}^k E'_i = \mathcal{E'}_k \cdots \circ \mathcal{E'}_1 (I_n) = A^{-1}$$
+
+This way the method is to form the $n \times 2n$ augmented matrix $[A \ \vert \ I\_n]$ and apply to it the sequence $\mathcal{E'}\_k \cdots \circ \mathcal{E'}\_i$ in order to obtain $[I\_n \ \vert \ A^{-1}]$, formally:
+
+$$\mathcal{E'}_k \cdots \circ \mathcal{E'}_i([A \ \vert \ I_n]) = [I_n \ \vert \ A^{-1}] $$
+
+In other words, we apply to $A$ in $[A \ \vert \ I\_n]$ elementary row-operations until we obtain the RREM (which is $I_n$ since $A \in [I\_n]$) and that will give us as result $A^{-1}$ in $[I_n \ \vert \ A^{-1}]$.
+
 
 <br>
 
