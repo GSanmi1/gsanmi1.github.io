@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "1. Linear Equations & Matrix."
+title: "1. Linear Equations & Matrix"
 subtitle: "Fields, Linear Equations and Matrix on a field."
 date: 2026-02-06 09:00:00 +0000
 categories: ['Linear Algebra']

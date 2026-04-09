@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "2. VectorSpaces."
+title: "2. VectorSpaces"
 subtitle: "Spaces. Subspaces. Bases and Dimensions. Coordinates. Summary of Row-equivalence. CCS."
 date: 2026-04-08 09:00:00 +0000
 categories: ['Linear Algebra']
