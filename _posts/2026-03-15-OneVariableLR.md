@@ -347,7 +347,7 @@ This is a first approach and necesary condition (although not sufficent since ot
 
 <br>
 
-**Succed Example**
+**Succed Example. Linear equations.**
 
 Let's take the linear regression model persented before being the hipotesis $h_\theta(\mathbf{x}) = \theta_0 + \boldsymbol{\theta}^\top \mathbf{x}$, and let's suppose that our loss function is the squared loss $L(y,h_\theta(\mathbf{x})) = (y - h_\theta(\mathbf{x}))^2$. Then, the cost function would be:
 
@@ -357,15 +357,42 @@ And the gradient is:
 
 $$\nabla J(\theta) := \left( \frac{\partial J}{\partial \theta_t}(\theta)_{t1} \right)_{t \in [p]} \in \mathbb{R}^p : \frac{\partial J}{\partial \theta_i}(\theta) := -\frac{1}{2m}\sum_{i=1}^m (y^{(i)} - \theta_0 - \boldsymbol{\theta}^\top \mathbf{x}^{(i)})x_i$$
 
-Observe that $\nabla J = \mathbf{0}$ becomes a system of $p$ linear equations in $p$ unknowns. The solution tell us if that point exists and exactly the point when exists. 
+Observe that $\nabla J = \mathbf{0}$ becomes a system of $p$ linear equations in $p$ unknowns. The solution tell us exactly the point because linear algebra tell us a well-known algebraic method to solve linear system of equations.
 
 <br>
 
-**No-succed example**
+**No-succed example. Non-linear equations.**
 
+Let's consider now a a simple neural network. The relation are multiples and $h_\theta$ is not linear in $\theta$, as a example:
 
+$$h_{\boldsymbol{\theta}}(\mathbf{x}) = \sigma\!\Big(\sum_{k} w_k^{(2)}\; \sigma\!\Big(\sum_{j} w_{kj}^{(1)} x_j + b_k^{(1)}\Big) + b^{(2)}\Big)$$
+
+where $\sigma$ is a nonlinear function. 
+
+When you compute $\nabla J$ and set it to $0$, you get a system of $p$ equations in $p$ unknowns where the equations involve more than additions and scalar on unknowns (products of parameters, exponentials of parameters, compositions of nonlinear functions of parameters, etc). 
+
+This is a nonlinear system of equations, and there is no general algebraic method for solving systems of nonlinear equations. Also, even if a solution is found $J$ typically has multiple critical points, many local minima, local maxima, and saddle points  (modern models handle millions or billions of parameters). The equation $\nabla J = 0$ sintetizes the constrains imposed over all the critical points, solving it gives you all those points and distinguishing among them is itself a hard problem.
 
 <br>
+
+Thus, as a summary, the problems of the direct approach are **Algebraic Intractability**, **Multiple critical points** and **Scale**.
+
+<br>
+
+#### 1.3.3.2. Optimization. Iterative Approach.
+
+Since we can't find $\theta^*$ in one shot, we settle for an *iterative* strategy: start at some $\theta^{(0)}$, and apply a rule that produces a finite $k$ steps sequence $\theta^{(0)}, \theta^{(1)}, \theta^{(2)}, \dots, \theta^{(k)}:J(\theta^{(t+1)})>J(\theta^{(t)}) $, this is that $J$ decreases at each step. 
+
+We may never reach $\theta^* \in \Theta : \nabla J(\theta^*)=0$ exactly, but we can get arbitrarily close which in practice, is perfectly adequate. The core insight is we trade an unsolvable global equation for a sequence of cheap local computations.
+
+<br>
+
+#### 1.3.3.3. Explaining the algorithm.
+
+Let's develop the brief explanation we give above about Gradient Descend Algorithm. We said that we need a finite sequence $\theta^{(0)}, \theta^{(1)}, \ldots$ such that the image of $\theta$ through $J$ gets smaller in each step. Thus, given a position $\theta^{(t)}$ we need a procedure to calculate some $\theta^{(t+1)}:J(\theta^{(t+1)}) < J(\theta^{(t)})$ here is when we retrieve the *Gradient* concept presented on section $1.3.1.4$
+
+<br>
+
 
 # 2. Supervised Learning.
 
