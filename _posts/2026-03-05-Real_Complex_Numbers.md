@@ -16,19 +16,22 @@ A satisfactory discussion of the main concepts of analysis (such as convergence,
 continuity, differentiation, and integration) must be based on an accurately
 defined number concept. 
 
-We will pressume familiarity with $\mathbb{Q}$ and use this knowledge to build $\mathbb{R}$ and then $\mathbb{C}$
+We will pressume familiarity with $\mathbb{Q}$ and use this knowledge to build $\mathbb{R}$ and then $\mathbb{C}$, $(\mathbb{Q},+, \ ·)$ is a field and the axioms for the field algebraic structure applies in its totality.
 
 <br>
 
 ## 1.1. Rational numbers inadequatness.
 
+Let's start talking about some lackness on the rational numbers.
 The rational number system is inadequate for many purposes, both as a
-field and as an ordered set. For instance, there is no $p \in \mathbb{Q} : p^2 = 2$.
+field and as an ordered set since the rational number line is full of gaps. 
+
+For instance, there is no $p \in \mathbb{Q} : p^2 = 2$.
 
 Let's consider that $\exists p \in Q: p^2 = 2 \implies \exists m,n \in \mathbb{Z} : p = \frac{m}{n}$. 
 
 
-Let's also observe that if $m, n \in \mathbb{2Z}$, then we could divide between $2$ the numerator and denominator and the fraction will still reflects $p$ and $m,n \in \mathbb{2Z}$ so we could divide again, and eventually this iteration process of divide between 2 must terminate and one of the two must be odd. 
+Let's also observe that if $m, n \in \mathbb{2Z}$, then we could divide between $2$ the numerator and denominator and the fraction will still reflects $p$ and $m,n \in \mathbb{2Z}$ so we could divide again, and eventually this iteration process of divide between $2$ must terminate because eventually one of the two must be odd. 
 
 So we can ensure without loss generality that $\exists m,n \in \mathbb{Z} : p = \frac{m}{n}$ and at least one of both is not even. Then, the equation imposes that $m$ is even:
 
@@ -38,10 +41,7 @@ Let's observe that $m \in \mathbb{2Z} \implies m \vert 2 \implies m^2 \vert 4 \i
 
 <br>
 
-
-This leads to the introduction of so-called "irrational numbers" which are often written as infinite decimal expansions and are considered to be "approximated" by the corresponding finite decimals. 
- 
-When we talk about aproximations we talk about "1, 1.4, 1.41, 1.414, 1.4142,..." and so on tends to $\sqrt 2$, but before that we have to define what "tends" or "approximates" means. 
+This leads to the introduction of so-called "irrational numbers" which are often written as infinite decimal expansions and are considered to be "approximated" by the corresponding finite decimals. When we talk about aproximations we talk about $1, 1.4, 1.41, 1.414, 1.4142,...$ and so on tends to $\sqrt 2$, but before that we have to define what "tends" or "approximates" means. 
 
 <br>
 
@@ -72,25 +72,37 @@ The *real number system* fills these gaps. This is the principal reason for the 
 
 # 2. Ordered Set and Fields.
 
-In order to elucidate its structure, as well as that of the complex numbers, we start with a brief discussion of the general concepts of ordered set and field.
+In order to elucidate its structure we have to introduce an importante property related to order. So let's start introducing a minimal basis about order in a set.
 
 <br>
 
 ## 2.1. Ordered Sets.
 
-Let $S$ be a set. Then, we define as an *order* on $S$ to a relation, $<$, satisfying the following two properties:
+Let $S$ be a set. Then, we define as an *order* on $S$ to a binary relation such:
 
-1. **Trichotomy**; Let be $x,y \in S$, then only one of the following statements are true:
+$$< \ \subset S^2 : (x,y) \in \ < \iff x < y$$
 
-    $$x < y \quad , \quad y < x \quad , \quad x = y$$
+For now on we will use the $x<y$ notation. $<$ as a binary relation needs to satisfy the following properties:
+
+1. **Trichotomy**:
+
+    The trichotomy property states that 
+    
+    $$\forall x \forall y( x \neq y \implies x < y  \vee y < x)$$
+    
+    Meaning that for any $x,y \in S$, then only one of the following statements is true:
+
+    $$x < y \quad \quad y < x \quad  \quad x = y$$
 
     <br>
 
-2. **Transitivity**; Let be $x,y,z \in S$, then:
+2. **Transitivity**:
 
-    $$x < y \wedge y < z \implies x < z $$
+    Transitivity states that:
 
-<br>
+    $$\forall x \forall y \forall z (x < y \wedge y < z \implies x < z)$$
+
+    <br>
 
 Also, from the notation above we build the following notation:
 
@@ -102,11 +114,9 @@ $$\neg(x < y) \equiv y \leq x$$
 
 <br>
 
-## 2.2. Bounds. 
+## 2.2. Order in $\mathbb{Q}$.
 
-### 2.2.1. Definition, order in $\mathbb{Q}$.
 
-An ordered set is simply a set in which an order relation has been defined. 
 
 Let's consider for example $\mathbb{Q}$ the set of rational numbers and the binary relation:
 
@@ -115,31 +125,35 @@ $$< \  := \Set{(p,q) \in \mathbb{Q}^2 \ \vert \ q < p \iff p - q \in \mathbb{Q}^
 Then, this binary relation on $\mathbb{Q}$ satisfies:
 
 
-- Be $p,q \in \mathbb{Q}$, then $p-q \in \mathbb{Q}^+ \vee -(p-q) = q - p \in \mathbb{Q}^+ \vee p-q = 0$, which essentially give us the trichotomy property:
-
-    $$p < q , \quad q < p , \quad q = p$$
+- Be $p,q \in \mathbb{Q}$, then $p-q \in \mathbb{Q}^+ \vee -(p-q) = q - p \in \mathbb{Q}^+ \vee p-q = 0$, which essentially give us the trichotomy property.
 
     <br>
 
-- $q < p \wedge t < q \implies p - t = (p - q) + (q - t) \in \mathbb{Q}^+ \implies t < p$ (Transitivity)
+- Also observe that $q < p \wedge t < q \implies p - t = (p - q) + (q - t) \in \mathbb{Q}^+ \implies t < p$ which means that also satisfies transitivity.
 
 <br>
 
 So $<$ is an order on $\mathbb{Q}$.
 
+## 2.3. Bounds. 
+
+Until now, we just defined that an ordered set is simply a set in which an order relation has been defined and also define an order in $\mathbb{Q}$. 
+
+Let's introduce the concept of *bounds*, and naturally extract the *minimal bound* for a set.
+
 <br>
 
-### 2.2.2. Upper and Lower bounds of a set. Supremum and Infimum.
+### 2.3.1. Upper and Lower bounds of a set. Supremum and Infimum.
 
 Consider now $S$ and ordered set and $E \subset S$, then we say that:
 
 $$E \text{ is upperbounded} \iff \exists \alpha \in S: x \leq \alpha \ \ \ \forall x \in E $$
 
-We define as lower upperbound (or least-upper-bound) to:  
+We define as lower upperbound (or least-upper-bound) as:  
 
 $$\alpha ' \in S : x \leq \alpha ' \ \ \ \forall x \in E \wedge (\alpha ' \leq \alpha \ \ \forall \alpha \in S: x \leq \alpha \ \ \forall x \in E)$$
 
-And we denote it as $\alpha ' = sup E$ and call it the supremum of $E$.
+And we denote it as $\alpha ' = sup E$ and call it the *supremum* of $E$. 
 
 This same idea applies to lowerbounds:
 
@@ -150,16 +164,21 @@ And we define the *ínfimum* of $E$ (and we denote it to $\alpha ' = inf E$) to:
 $$\alpha ' \in S : x \geq \alpha ' \ \ \ \forall x \in E \wedge (\alpha ' \geq \alpha \ \ \forall \alpha \in S: x \geq \alpha \ \ \forall x \in E )$$
 
 <br>
-
-Observe trivially that boths supremum and infimum are unique, the proof is trivial but is worth to mention this fact for future demonstrations.
+This are the minimal upper/lower bounds of a set and his existance is not garanteed as we will see in the example below. Observe trivially that boths supremum and infimum are unique, the proof is trivial but is worth to mention this fact for future demonstrations. 
 
 <br>
 
-**Example of bounds in subsets of $Q$**
+### 2.3.2. Example of bounds in subsets of $Q$.
 
-1. Let's consider again $A:= \Set{p \ \vert \ p^2 < 2 }, B:= \Set{p \ \vert \ p^2 > 2 } \subset \mathbb{Q}$. Note check that both are ordered subsets of the rational numbers.
+Let's now observe two examples in which we want to ilustrate two facts about minimal bounds.
 
-    The set $A$ is bounded above. In fact, the upper bounds of $A$ are exactly the members of $B$. Since $B$ contains no smallest member, $A$ has no least upper bound in $\mathbb{Q}$. Similarly, $B$ is lowerbounded and the lower bounds of $B$ are the elements of $A$. 
+**The first one ilustrates that in $\mathbb{Q}$ minimal bounds are not garanteed to exists for any bounded set $S \subset \mathbb{Q}$, and this is the main reason why $\mathbb{Q}$ is full of gaps.**
+
+The second example pretend to ilustrate that, although the definition of bound do not prohibit a minimal bound of $E$ to be contained in $E$, this is not true in general, a minimal bound often is not a member of the bounded subset:
+
+1. Let's consider again $A:= \Set{p \ \vert \ p^2 < 2 }, B:= \Set{p \ \vert \ p^2 > 2 } \subset \mathbb{Q}$. 
+
+    The set $A$ is bounded above. In fact, the upper bounds of $A$ are exactly the members of $B$. Since $B$ contains no smallest member, $A$ has no least upper bound in $\mathbb{Q}$. Similarly, $B$ is lowerbounded and the lower bounds of $B$ are the elements of $A$. But since $\nexists p \in \mathbb{Q} : p^2 = 2$ neither of the two has minimal bound.
 
     <br>
 
@@ -167,13 +186,13 @@ Observe trivially that boths supremum and infimum are unique, the proof is trivi
 
     <br>
 
-3. Let be, $E:=\Set{ \left(\frac{1}{n}\right)_{n \in \mathbb{N}}}$, then $supE = 1 \in E \wedge infE = 0\notin E$
+    Also, let be, $E:=\Set{ \left(\frac{1}{n}\right)_{n \in \mathbb{N}}}$, then $supE = 1 \in E \wedge infE = 0\notin E$
 
 <br>
 
-### 2.2.3. Least-upper-bound property.
+### 2.3.3. Least-upper-bound property.
 
-In this section we are going to present the *Least-upper-bound property*; this property garantee the existance of the supremum of any non-empty and upperbounded subset of an ordered set that satisfies this property.
+Now, we have presented order, bounds and lastly minimal bounds when exists. Then in this section we are going to present the *Least-upper-bound property*; this property garantee the existance of the minimal bound for any bounded and non-empty subset of an ordered set in which this property is true.
 
 <br>
 
@@ -212,9 +231,9 @@ $$ \exists \alpha_s \in S: \alpha_s = supL_B = infB$$
 
 <br>
 
-## 2.3. Fields.
+## 2.4. Fields.
 
-### 2.3.1. Definition and Axioms.
+### 2.4.1. Definition and Axioms.
 
 A field is a set $F$ with two operations, called addition, $+$ and multiplication, $·$ which satisfy the following so-called *field axioms*:
 
@@ -239,7 +258,7 @@ Also, The field axioms clearly hold in $\mathbb{Q}$, the set of all rational num
 
 <br>
 
-### 2.3.2. Immediate properties.
+### 2.4.2. Immediate properties.
 
 Although it is not our purpose to study fields (or any other algebraic structures) in detail, it is worthwhile to prove that some familiar properties of Q are consequences of the field axioms; once we do this, we will not need to do it again for the real numbers and for the complex numbers. 
 
@@ -301,9 +320,9 @@ Also, let observe that:
 
     <br>
 
-### 2.3.3. Ordered fields.
+### 2.4.3. Ordered fields.
 
-#### 2.3.3.1. Definition.
+#### 2.4.3.1. Definition.
 
 An *ordered field* is a field $F$ which is also an ordered set, such
 that, being $x,y,z \in F$:
@@ -319,7 +338,7 @@ We also say that $x  \in F$, then:
 
 <br>
 
-#### 2.3.3.2. Properties of ordered fields.
+#### 2.4.3.2. Properties of ordered fields.
 
 All the familiar rules for working with inequalities apply in every ordered field: Multiplication by positive/negative quantities preserves/reverses inequalities, no square is negative, etc. 
 
