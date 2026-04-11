@@ -404,8 +404,6 @@ $$\theta^{(t+1)}:= \theta^{(t)} - \alpha \nabla J(\theta^{(t)}): \alpha \in \mat
 
 Where $\alpha > 0$ is called the learning rate and determines how wide is the step between $\theta^{(t)}$ and $\theta^{(t+1)}$.
 
-Because all the things we've explained above $J(\theta^{(t+1)}) > J(\theta^)
-
 <br>
 
 # 2. Supervised Learning.
