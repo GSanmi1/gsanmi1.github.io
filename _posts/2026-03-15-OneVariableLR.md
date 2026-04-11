@@ -84,7 +84,7 @@ Where:
 
 Then, the input is a vector with $n$ coordinates $x := (x_1,\cdots,x_n) \in \mathbb{R}^n$ and the image of $x$ through $f, f(x) \in \mathbb{R}$ is a real scalar.
 
-Is worth to visualize that for $n = 2$, the plot of $f(x,y)$ on $x,y$ is a surface given by the parameters $(x,y,f(x,y)) \in \mathbb{R}^3$, $f(x,y)$ is the height in the plane formed by the coordinates $(x,y) \in \mathbb{R}^2$. Now, if $n >3$ the geometric visualization breaks, while the maths holds in the sense that $f(x)$ is the height to each point of $\mathbb{R}^n$.
+Is worth visualizing that for $n = 2$, the plot of $f(x,y)$ on $x,y$ is a surface given by the parameters $(x,y,f(x,y)) \in \mathbb{R}^3$, $f(x,y)$ is the height in the plane formed by the coordinates $(x,y) \in \mathbb{R}^2$. Now, if $n >3$ the geometric visualization breaks, while the math holds in the sense that $f(x)$ is the height at each point of $\mathbb{R}^n$.
 
 In ML, the models we work with depend on a vector of adjustable parameters $\boldsymbol{\theta} \in \mathbb{R}^p$ where $p$ depends on the model architecture and can range from a handful to billions. Training these models requires understanding how each parameter affects the output, which demands the machinery of functions of several variables.
 
@@ -146,7 +146,7 @@ Observe that the partial derivatives we've just presented above measure the chan
 
 Thus, partial derivatives measure rates of change along coordinate axes, now directional derivatives introduce how to measure this change along virtually any direction. The directional derivative generalizes partial derivatives to arbitrary directions. 
 
-Let $E \subseteq \mathbb{R}^n$ be open, and let $f: E \to \mathbb{R}$ be differentiable at $\mathbf{a} \in E$. Then, we define the *directional derivative* of $f$ at $\mathbf{a}$ with respect to the $i$-th variable is:
+Let $E \subseteq \mathbb{R}^n$ be open, and let $f: E \to \mathbb{R}$ be differentiable at $\mathbf{a} \in E$. Then, we define the *directional derivative* of $f$ at $\mathbf{a}$ in the direction of $\mathbf{u}$:
 
 $$D_{\mathbf{u}} f(\mathbf{a}) = \lim_{t \to 0} \frac{f(\mathbf{a}+t\mathbf{u}) - f(\mathbf{a})}{t}$$
 
@@ -184,7 +184,7 @@ $$\nabla f(\mathbf{a}) :=
 \frac{\partial f}{\partial x_n}(\mathbf{a})
 \end{pmatrix} \in \mathbb{R}^n$$
 
-Observe that the gradient lives in the domain of $f$, $\mathbb{R}^n$, not in the codomain $\mathbb{R}$.
+Observe that the gradient lives in the domain of $f$, $\mathbb{R}^n$, not in the hypersurface $\mathbb{R}^{n+1}$.
 
 <br>
 
@@ -194,13 +194,13 @@ Now, lets recover the directional derivative definition:
 
 $$D_{\mathbf{u}} f(\mathbf{a}) = \lim_{t \to 0} \frac{f(\mathbf{a}+t\mathbf{u}) - f(\mathbf{a})}{t}$$
 
-Observe that, by the chain rule, we have the following result (here we assume that $f'(x) = \nabla f(x)$):
+Observe that, by the chain rule (assuming $f$ is differenciable at $\mathbf{a}$), we have the following result:
 
 $$D_\mathbf{u} f(\mathbf{a}) = \nabla f(\mathbf{a})\ · \mathbf{u}$$
 
-Let see for a moment that in $\mathbb{R}^2$  is $\nabla f(\mathbf{a})\ · \mathbf{u} = \Vert \nabla f(\mathbf{a}) \Vert \Vert \mathbf{u} \Vert \cos\theta$, which means that $D_\mathbf{u} f(\mathbf{a})$ is maximum when $\mathbf{u}$ and $\nabla f(\mathbf{a})$ has the same direction $\cos\theta = 1 \implies \theta = 0 \pmod {2\pi}$. For superior dimensions, this result can be proved by the Cauchy-Schwarz inequality. 
+Observe that $\nabla f(\mathbf{a})\ · \mathbf{u} = \Vert \nabla f(\mathbf{a}) \Vert \Vert \mathbf{u} \Vert \cos\theta$, which means that $D_\mathbf{u} f(\mathbf{a})$ is maximum when $\mathbf{u}$ and $\nabla f(\mathbf{a})$ has the same direction $\cos\theta = 1 \implies \theta = 0 \pmod {2\pi}$.
 
-Thus, in general, the gradient $\nabla f(\mathbf{a})$ always points towards the direction in which the slope of the tangent line to the curve (in the surface, as we see in above definitions) $D_\mathbf{u}f(\mathbf{a})$ is maximum, this is what we call the *steepest ascent* direction.
+Thus, in general, the gradient $\nabla f(\mathbf{a})$ always points towards the direction in which the slope of the tangent line to the curve on the surface ($D_\mathbf{u}f(\mathbf{a})$) is maximum, this is what we call the *steepest ascent* direction.
 
 Then $-\nabla f(\mathbf{a})$ always points towards the direction in which the slope is minimum, the *stepest descent* direction. This geometric property justifies the *gradient descent algorithm* we will see later.
 
@@ -389,10 +389,24 @@ We may never reach $\theta^* \in \Theta : \nabla J(\theta^*)=0$ exactly, but we 
 
 #### 1.3.3.3. Explaining the algorithm.
 
-Let's develop the brief explanation we give above about Gradient Descend Algorithm. We said that we need a finite sequence $\theta^{(0)}, \theta^{(1)}, \ldots$ such that the image of $\theta$ through $J$ gets smaller in each step. Thus, given a position $\theta^{(t)}$ we need a procedure to calculate some $\theta^{(t+1)}:J(\theta^{(t+1)}) < J(\theta^{(t)})$ here is when we retrieve the *Gradient* concept presented on section $1.3.1.4$
+Until now we have presented the problem and develop a motivation about the need of an iterative method.
+
+Let's develop the brief explanation presented before about Gradient Descend Algorithm. We said that we need a finite sequence $\theta^{(0)}, \theta^{(1)}, \ldots$ such that the image of $\theta$ through $J$ gets smaller in each step. Thus, given a position $\theta^{(t)}$ we need a procedure to calculate some $\theta^{(t+1)}:J(\theta^{(t+1)}) < J(\theta^{(t)})$ here is when we retrieve the *Gradient* concept presented on section $1.3.1.4$
 
 <br>
 
+We already explain that, being $f :S \subset \mathbb{R}^n \to \mathbb{R}$, the gradient $\nabla f(\mathbf{a}) \in \mathbb{R}^n$ is a vector that points towards the *stepeest ascent*, meaning that it provides information about the behaviour of $f$ in an infinitesimal enviroment of $\mathbf{a}$ aiming towards the direction that maximices $f$'s growth (it doesn't aims to the global maxima neither the local maxima).
+
+
+We remember that if $\nabla f$ points to the stepeest ascent, then $-\nabla f$ points to the stepeest descent. Thus, recovering our cost function $J$, for a generic $\theta^{(t)}$ the next $\theta^{(t+1)}$ can be calculated according to the gradient:
+
+$$\theta^{(t+1)}:= \theta^{(t)} - \alpha \nabla J(\theta^{(t)}): \alpha \in \mathbb{R}$$
+
+Where $\alpha > 0$ is called the learning rate and determines how wide is the step between $\theta^{(t)}$ and $\theta^{(t+1)}$.
+
+Because all the things we've explained above $J(\theta^{(t+1)}) > J(\theta^)
+
+<br>
 
 # 2. Supervised Learning.
 
