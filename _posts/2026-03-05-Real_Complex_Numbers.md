@@ -88,7 +88,7 @@ For now on we will use the $x<y$ notation. $<$ as a binary relation needs to sat
 
     The trichotomy property states that 
     
-    $$\forall x \forall y( x \neq y \implies x < y  \vee y < x)$$
+    $$\forall x \forall y( x \neq y \implies x < y  \otimes y < x)$$
     
     Meaning that for any $x,y \in S$, then only one of the following statements is true:
 
@@ -543,7 +543,7 @@ Now, we verify that the addition's axioms for a field hold in $\mathbb{R}$, with
 
     1. $\alpha, \beta \neq \varnothing \implies \alpha + \beta \neq \varnothing$. 
     
-        Also suppose that $p,q \in \mathbb{Q}$ are the upperbounds of $\alpha, \beta \in \mathbb{R}$ respectively, then is clear that $p + q \notin \alpha + \beta \implies \alpha + \beta \neq \mathbb{Q}$. 
+        Also suppose that $p,q \in \mathbb{Q}$ are the upperbounds of $\alpha, \beta \in \mathbb{R}$ respectively (we can assume its existance since both of them are cuts and thus proper subsets of $\mathbb{Q}$ so there are indeed elementos of $\mathbb{Q}$ out of each subsets), then is clear that $p + q \notin \alpha + \beta \implies \alpha + \beta \neq \mathbb{Q}$. 
         
         Observe that there is something worth to say of upperbounds when speaking about cuts. By definition, $p$ is an upperbound of $X$ iff $x \leq p \ \ \forall x \in X$, but if $X$ were a cut, by the third property if $\exists x_0 : p = x_0 \in X \implies \exists r \in X : p < r$ and $p$ would not an upperbound, thus, when talking about cuts, all upperbounds are always strict upperbounds, the definition of upperbounds always collapses to $x < p \ \ \forall x \in X$ and the cut do not contains it.
 
@@ -551,7 +551,7 @@ Now, we verify that the addition's axioms for a field hold in $\mathbb{R}$, with
 
     2. $p \in \alpha + \beta \wedge (q \in \mathbb{Q} : q < p) \implies q \in \alpha + \beta $ 
 
-        Let's take that $p = a + b$, since $q < p = a + b \implies q - a < b \in \beta$ and thus we get that $q = (q - a) + a \in \alpha + \beta$.
+        Write $p = a + b$, since $q < p = a + b \implies q - a < b \in \beta$ and thus we get that $q = (q - a) + a \in \alpha + \beta$.
 
         <br>
 
@@ -561,23 +561,50 @@ Now, we verify that the addition's axioms for a field hold in $\mathbb{R}$, with
 
         <br>
 
-- **Conmutativity**: $\alpha + \beta = \beta + \alpha \ \ \forall \alpha, \beta \in \mathbb{R}$
-- **Asociativity**: $\alpha + (\beta + \gamma) = (\alpha + \beta) + \gamma \ \ \forall \alpha, \beta, \gamma \in \mathbb{R}$ 
+- **Conmutativity**: $\alpha + \beta = \beta + \alpha \ \ \forall \alpha, \beta \in \mathbb{R}$, it gets derivated from commutativity in $\mathbb{Q}$.
+- **Asociativity**: $\alpha + (\beta + \gamma) = (\alpha + \beta) + \gamma \ \ \forall \alpha, \beta, \gamma \in \mathbb{R}$, it gets derivated from associativity in $\mathbb{Q}$.
+
+- **Identity**: 
+
+    Let's rememeber that we called $0^*:= \Set{q \in \mathbb{Q} \mid q < 0}$, then let's take
+
+    $$t \in \alpha + 0^* \implies \exists a \in \alpha \wedge \exists q < 0 : t = a + q$$
+
+    Then, if we consider some other $b \in \alpha : a < b$ (which its existance is garanteed by the third property of the cuts) then, following the axioms for ordered fields, since $q < 0$, is $t = a + q < a + 0 < b$ and then is $t < b \in \alpha \implies t \in \alpha$ for the second property of the cuts.
+
+    Thus, $\alpha + 0^* \leq \alpha$.
+
+    Let's also consider $a \in \alpha$ and, again by the third property of the cuts, take $b \in \alpha : a < b$, observe that $a-b < 0 \implies a-b \in 0^*$, and is $ a = b + (a - b) \in \alpha + 0^*$.
+
+    Thus, $\alpha \leq \alpha + 0^*$, meaning that $\alpha = \alpha + 0^*$
+
+    <br>
+
+- **Inverse**:
+
 ## 3.2. Important Properties from the $\mathbb{R}$ field.
 
 ### 3.2.1. Archimedean property of $\mathbb{R}$.
 
-The Archimedean property says that $\mathbb{R}$ has no "infinitely large" or "infinitely small" elements: no matter how small a positive number $x$ you pick and no matter how large a target $y$, you can always reach (and surpass) $y$ by adding $x$ to itself enough times. Formally:
+The Archimedean property says that $\mathbb{N}$ is unbounded on $\mathbb{R}$, meaning that $\mathbb{R}$ has no "infinitely large" or "infinitely small" elements; no matter how small a positive number $x$ you pick and no matter how large a target $y$, you can always reach (and surpass) $y$ by adding $x$ to itself enough times. Formally:
 
-$$\forall x,y \in \mathbb{R} :  0 < x \  \exists n \in \mathbb{N} : y < nx$$
+$$\forall x\forall y (0 < x \implies  \exists n \in \mathbb{N} : y < nx)$$
 
-Let's reason by the reduction to absurdity, let be $A:=\Set{nx \ \vert \ n \in \mathbb{N}}$ then if the statement above isn't true, $y$ would be an upperbound of $A$ and since $A \neq \varnothing$ and $\mathbb{R}$ has the $LUB$ property, then $A$ has a supremum on $\mathbb{R}$ let be $\alpha = supA$.
+To prove it, let's reason by the reduction to absurdity, let be $A:=\Set{nx \ \vert \ n \in \mathbb{N}}$ then if the statement above isn't true, $y$ would be an upperbound of $A$ and since $A \neq \varnothing$ and $\mathbb{R}$ has the $LUB$ property, then $A$ has a supremum on $\mathbb{R}$ let be $\alpha = supA$.
 
-Let's observe that $ 0 < x \iff - x < 0 \iff \alpha - x < \alpha$ and $\alpha - x$ is not an upperbound so there exists some natural $m \in \mathbb{N} : \alpha -x < mx$, but then $\alpha < m (x+1) \in A \implies \alpha \neq supA$
+Let's observe that $ 0 < x \iff - x < 0 \iff \alpha - x < \alpha$ and $\alpha - x$ is not an upperbound so there exists some natural $m \in \mathbb{N} : \alpha -x < mx$, but then $\alpha < (m+1)x \in A \implies \alpha \neq supA$
 
 <br>
 
-Let's observe that this rules out the existence of infinitesimals; positive numbers so tiny that no finite sum of copies ever reaches $1$. It is the formal guarantee that the integers "go to infinity".
+Let's observe that, by reduction to absurdity, if $\mathbb{N}$ was bounded in $\mathbb{R}$, then let be $b \in \mathbb{R} : n \leq b \ \ \forall n \in \mathbb{N}$, then this violates the the arquimedean property, check that:
+
+$$\neg [\forall x\forall y (0 < x \implies  \exists n \in \mathbb{N} : y < nx)] \equiv \exists x \exists y \neg(0 < x \implies  \exists n \in \mathbb{N} : y < nx)$$
+
+Making use from $p \to q \equiv \neg p \vee q$, statement above is:
+
+$$\exists x \exists y (0 < x \wedge  nx \leq y \ \ \forall n \in \mathbb{N} )$$
+
+Thus, taking $x = 1, y = b$, then $n·1 = n \leq b \ \ \forall n \in \mathbb{N}$ and it violates the archimedean property so $\mathbb{N}$ isn't bounded in $\mathbb{R}$. 
 
 <br>
 
