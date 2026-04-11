@@ -381,7 +381,7 @@ Thus, as a summary, the problems of the direct approach are **Algebraic Intracta
 
 #### 1.3.3.2. Optimization. Iterative Approach.
 
-Since we can't find $\theta^*$ in one shot, we settle for an *iterative* strategy: start at some $\theta^{(0)}$, and apply a rule that produces a finite $k$ steps sequence $\theta^{(0)}, \theta^{(1)}, \theta^{(2)}, \dots, \theta^{(k)}:J(\theta^{(t+1)})>J(\theta^{(t)}) $, this is that $J$ decreases at each step. 
+Since we can't find $\theta^\ast$ in one shot, we settle for an *iterative* strategy: start at some $\theta^{(0)}$, and apply a rule that produces a finite $k$ steps sequence $\theta^{(0)}, \theta^{(1)}, \theta^{(2)}, \dots, \theta^{(k)}:J(\theta^{(t+1)})>J(\theta^{(t)}) $, this is that $J$ decreases at each step. 
 
 We may never reach $\theta^* \in \Theta : \nabla J(\theta^*)=0$ exactly, but we can get arbitrarily close which in practice, is perfectly adequate. The core insight is we trade an unsolvable global equation for a sequence of cheap local computations.
 
