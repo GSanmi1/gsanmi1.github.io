@@ -16,7 +16,7 @@ A satisfactory discussion of the main concepts of analysis (such as convergence,
 continuity, differentiation, and integration) must be based on an accurately
 defined number concept. 
 
-We will pressume familiarity with $\mathbb{Q}$ and use this knowledge to build $\mathbb{R}$ and then $\mathbb{C}$, $(\mathbb{Q},+, \ ·)$ is a field and the axioms for the field algebraic structure applies in its totality.
+We will pressume familiarity with $\mathbb{Q}$ (meaning that we assume the sentence "$(\mathbb{Q},+, \ ·)$ is a field and the axioms for the field's algebraic structure applies in its totality." is completely understanded and acknowledge by the reader) and use this knowledge to build $\mathbb{R}$ and then $\mathbb{C}$.
 
 <br>
 
@@ -139,7 +139,7 @@ So $<$ is an order on $\mathbb{Q}$.
 
 Until now, we just defined that an ordered set is simply a set in which an order relation has been defined and also define an order in $\mathbb{Q}$. 
 
-Let's introduce the concept of *bounds*, and naturally extract the *minimal bound* for a set.
+Let's introduce the concept of *bounds*, and naturally extract the concept of the *minimal bound* for a set.
 
 <br>
 
@@ -164,7 +164,7 @@ And we define the *ínfimum* of $E$ (and we denote it to $\alpha ' = inf E$) to:
 $$\alpha ' \in S : x \geq \alpha ' \ \ \ \forall x \in E \wedge (\alpha ' \geq \alpha \ \ \forall \alpha \in S: x \geq \alpha \ \ \forall x \in E )$$
 
 <br>
-This are the minimal upper/lower bounds of a set and his existance is not garanteed as we will see in the example below. Observe trivially that boths supremum and infimum are unique, the proof is trivial but is worth to mention this fact for future demonstrations. 
+This are the minimal upper/lower bounds of a set and his existance is not garanteed as we will see in the example below. Observe trivially that boths supremum and infimum are unique, the proof is trivial derived from the trichotomy property but is worth to mention this fact for future demonstrations. 
 
 <br>
 
@@ -174,7 +174,7 @@ Let's now observe two examples in which we want to ilustrate two facts about min
 
 **The first one ilustrates that in $\mathbb{Q}$ minimal bounds are not garanteed to exists for any bounded set $S \subset \mathbb{Q}$, and this is the main reason why $\mathbb{Q}$ is full of gaps.**
 
-The second example pretend to ilustrate that, although the definition of bound do not prohibit a minimal bound of $E$ to be contained in $E$, this is not true in general, a minimal bound often is not a member of the bounded subset:
+The second example pretend to ilustrate that, although the definition of bound do not prohibit a minimal bound of $E$ to be contained in $E$, this is not true in general, a minimal bound often is not a member of the bounded subset.
 
 1. Let's consider again $A:= \Set{p \ \vert \ p^2 < 2 }, B:= \Set{p \ \vert \ p^2 > 2 } \subset \mathbb{Q}$. 
 
@@ -192,7 +192,9 @@ The second example pretend to ilustrate that, although the definition of bound d
 
 ### 2.3.3. Least-upper-bound property.
 
-Now, we have presented order, bounds and lastly minimal bounds when exists. Then in this section we are going to present the *Least-upper-bound property*; this property garantee the existance of the minimal bound for any bounded and non-empty subset of an ordered set in which this property is true.
+Now, we have presented order, bounds, minimal bounds and we also provided an example to ilustrate that minimal bounds sometimes do not exists. 
+
+Then in this section we are going to present the ***Least-upper-bound property*; this property garantee the existance of the minimal bound for any bounded and non-empty subset of an ordered set in which this property is true.**
 
 <br>
 
@@ -254,13 +256,13 @@ instead of:
 
 $$x + (-y),\ x \cdot \left(\frac{1}{y}\right),\ (x + y) + z,\ (xy)z,\ xx,\ xxx,\ x + x,\ x + x + x$$
 
-Also, The field axioms clearly hold in $\mathbb{Q}$, the set of all rational numbers, if addition and multiplication have their customary meaning.
+Also, the field axioms clearly hold in $\mathbb{Q}$, the set of all rational numbers, if addition and multiplication have their customary meaning.
 
 <br>
 
 ### 2.4.2. Immediate properties.
 
-Although it is not our purpose to study fields (or any other algebraic structures) in detail, it is worthwhile to prove that some familiar properties of Q are consequences of the field axioms; once we do this, we will not need to do it again for the real numbers and for the complex numbers. 
+Although it is not our purpose to study fields (or any other algebraic structures) in detail, it is worthwhile to prove that some familiar properties of $\mathbb{Q}$ are consequences of the field axioms; once we do this, we will not need to do it again for the real numbers and for the complex numbers. 
 
 - *Cancelation*: 
 
