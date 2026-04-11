@@ -533,7 +533,7 @@ So, by reduction absurdio, $\gamma$ has to be the least upper bound; $\gamma = s
 
 **Step 4. Addition in $\mathbb{R}$.**
 
-If $\alpha, \beta \in \mathbb{R}$ we define: $\alpha + \beta := \Set{a+b \ \vert \ a \in \alpha \wedge b \in \beta}$. We also define $0^* \in \mathbb{R}$ as $0^* := \Set{ q \in \mathbb{Q} \ \vert \ q < 0}$, observe that is clear that this last set is a cut.
+If $\alpha, \beta \in \mathbb{R}$ we define: $\alpha + \beta := \Set{a+b \ \vert \ a \in \alpha \wedge b \in \beta}$. We also define $0^\ast \in \mathbb{R}$ as $0^* := \Set{ q \in \mathbb{Q} \ \vert \ q < 0}$, observe that is clear that this last set is a cut.
 
 Now, we verify that the addition's axioms for a field hold in $\mathbb{R}$, with $0^*$ playing the role of $0$. In orther terms, $(\mathbb{R},+)$ is an abelian group:
 
@@ -566,17 +566,17 @@ Now, we verify that the addition's axioms for a field hold in $\mathbb{R}$, with
 
 - **Identity**: 
 
-    Let's rememeber that we called $0^*:= \Set{q \in \mathbb{Q} \mid q < 0}$, then let's take
+    Let's rememeber that we called $0^\ast:= \Set{q \in \mathbb{Q} \mid q < 0}$, then let's take
 
-    $$t \in \alpha + 0^* \implies \exists a \in \alpha \wedge \exists q < 0 : t = a + q$$
+    $$t \in \alpha + 0^\ast \implies \exists a \in \alpha \wedge \exists q < 0 : t = a + q$$
 
     Then, if we consider some other $b \in \alpha : a < b$ (which its existance is garanteed by the third property of the cuts) then, following the axioms for ordered fields, since $q < 0$, is $t = a + q < a + 0 < b$ and then is $t < b \in \alpha \implies t \in \alpha$ for the second property of the cuts.
 
-    Thus, $\alpha + 0^* \leq \alpha$.
+    Thus, $\alpha + 0^\ast \leq \alpha$.
 
-    Let's also consider $a \in \alpha$ and, again by the third property of the cuts, take $b \in \alpha : a < b$, observe that $a-b < 0 \implies a-b \in 0^*$, and is $ a = b + (a - b) \in \alpha + 0^*$.
+    Let's also consider $a \in \alpha$ and, again by the third property of the cuts, take $b \in \alpha : a < b$, observe that $a-b < 0 \implies a-b \in 0^\ast$, and is $ a = b + (a - b) \in \alpha + 0^\ast$.
 
-    Thus, $\alpha \leq \alpha + 0^*$, meaning that $\alpha = \alpha + 0^*$
+    Thus, $\alpha \leq \alpha + 0^\ast$, meaning that $\alpha = \alpha + 0^\ast$
 
     <br>
 
