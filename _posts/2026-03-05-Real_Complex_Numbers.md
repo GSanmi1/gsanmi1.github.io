@@ -582,6 +582,8 @@ Now, we verify that the addition's axioms for a field hold in $\mathbb{R}$, with
 
 - **Inverse**:
 
+
+
 ## 3.2. Important Properties from the $\mathbb{R}$ field.
 
 ### 3.2.1. Archimedean property of $\mathbb{R}$.
