@@ -33,11 +33,13 @@ We can barely review it to understand the natural progression and the commonst a
 
 ### 1.2.1. One operation algebraic structures.
 
-Let be $G := (S, \Omega) : \Omega := \Set{\star}$, then we define:
+Let be $G := (S, \Omega) : \Omega := \Set{\star}$, where $\star : S \times S \to S$ then we define:
 
 - $G$ (or $S$ by default) is said to be a *Magma* if $\star$ only verifies the closure property:
 
     - $a \star b \in S \ \ \forall a,b \in S$ (Closure)
+
+    Observe that this structure is the minimal one, and his only property is forced by $\star$ definition.
 
     <br>
 
@@ -99,7 +101,30 @@ This allows to reorganize making the simplification of expressions even more con
 
 ### 1.3.1. Two operations algebraic structures.
 
+Until now, we've defined an algebraic structure that contemplates only one operation, lets now introduce algebraic structures with two operations.
 
+First, the rings, a ringe is a triple $(S,+,\ ·)$ such:
+
+- $(S,+)$ is a group and introduce the four properties seen above.
+- $(S, \ ·)$ is a monoid, it left the existance of the inverse for any element of $S$
+
+The ring introduces the second operation in a soft way, hanging on the existance of the inverse allows to fit in many structures well studied such:
+
+- **Integers ring**; $(\mathbb{Z},+, \ ·)$, where for example $\forall a ( a \in \mathbb{Z} \wedge a \neq 1 \implies a^{-1} \notin \mathbb{Z})$.
+
+- **Polynomial ring**; with coefficients in a field $F$; $F[x]$ is a ring 
+  but not a field. For instance, $x$ has no multiplicative inverse: 
+  for any $q \in F[x] \setminus \{0\}$, 
+  $\deg(x \cdot q) = 1 + \deg(q) \geq 1 \neq 0 = \deg(1)$, 
+  so the equation $x \cdot q = 1$ has no solution in $F[x]$
+
+- **Matrix ring**; we've already seen that $(M\_n(F)\setminus 0, \ ·)$ has no inverse for every element of $M\_n(F)$, remember that we already seen that not every matrix is invertible only those row-equivalent to the identity $I\_n$
+
+The mathematical world is full of structures with two operations where division fails.
+
+<br>
+
+Then the concept of the field is an extension of the ring where each element has an inverse for the product operation except the zero element.
 
 <br>
 
