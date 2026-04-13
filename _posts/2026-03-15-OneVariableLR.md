@@ -498,7 +498,7 @@ Observe that we can simplify the expression:
 
     $$o\!\left(\left \Vert  -\alpha\,\nabla J(\boldsymbol{\theta}^{(t)})\right \Vert  \right) = o\!\left(\alpha\,\left \Vert  \nabla J(\boldsymbol{\theta}^{(t)})\right \Vert  \right)$$
 
-    since $ \Vert  -\alpha\,\mathbf{v} \Vert   = \vert \alpha \vert, \Vert  \mathbf{v} \Vert   = \alpha\, \Vert  \mathbf{v} \Vert  $ (as $\alpha > 0$).
+    since $ \Vert  -\alpha \mathbf{v} \Vert   = \vert \alpha \vert \Vert  \mathbf{v} \Vert   = \alpha \Vert  \mathbf{v} \Vert$ (as $\alpha > 0$).
 
     <br>
 
