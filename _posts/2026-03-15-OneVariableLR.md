@@ -198,7 +198,7 @@ Observe that, by the chain rule (assuming $f$ is differenciable at $\mathbf{a}$)
 
 $$D_\mathbf{u} f(\mathbf{a}) = \nabla f(\mathbf{a})\ · \mathbf{u}$$
 
-Observe that $\nabla f(\mathbf{a})\ · \mathbf{u} = \Vert \nabla f(\mathbf{a}) \Vert \Vert \mathbf{u} \Vert \cos\theta$, which means that $D_\mathbf{u} f(\mathbf{a})$ is maximum when $\mathbf{u}$ and $\nabla f(\mathbf{a})$ has the same direction $\cos\theta = 1 \implies \theta = 0 \pmod {2\pi}$.
+Observe that $\nabla f(\mathbf{a})\ · \mathbf{u} =  \Vert   \nabla f(\mathbf{a})  \Vert    \Vert   \mathbf{u}  \Vert   \cos\theta$, which means that $D_\mathbf{u} f(\mathbf{a})$ is maximum when $\mathbf{u}$ and $\nabla f(\mathbf{a})$ has the same direction $\cos\theta = 1 \implies \theta = 0 \pmod {2\pi}$.
 
 Thus, in general, the gradient $\nabla f(\mathbf{a})$ always points towards the direction in which the slope of the tangent line to the curve on the surface ($D_\mathbf{u}f(\mathbf{a})$) is maximum, this is what we call the *steepest ascent* direction.
 
@@ -243,7 +243,7 @@ as $x \to a$ and at some point where, $x$ becomes close enough to $a$, the error
 
 For $f: \mathbb{R}^d \to \mathbb{R}$ twice differentiable, the second-order Taylor expansion around a point $\mathbf{a}$ a evaluated at $\mathbf{a} + \mathbf{h}$ is:
 
-$$f(\mathbf{a} + \mathbf{h}) = f(\mathbf{a}) + \nabla f(\mathbf{a})^\top \mathbf{h} + \frac{1}{2}\mathbf{h}^\top \nabla^2 f(\mathbf{a})\,\mathbf{h} + o(\|\mathbf{h}\|^2)$$
+$$f(\mathbf{a} + \mathbf{h}) = f(\mathbf{a}) + \nabla f(\mathbf{a})^\top \mathbf{h} + \frac{1}{2}\mathbf{h}^\top \nabla^2 f(\mathbf{a})\,\mathbf{h} + o( \Vert  \mathbf{h} \Vert  ^2)$$
 where $\nabla f(\mathbf{a})$ is our well known gradient (vector of partial derivatives) and $\nabla^2 f(\mathbf{a})$ is the Hessian (matrix of second partial derivatives)
 
 <br>
@@ -481,30 +481,30 @@ For our purpouses, we will assume that $J$ is differentiable, this assumption ho
 
 Let's take if $\theta^{(t+1)}:= \theta^{(t)} - \alpha \nabla J(\theta^{(t)}): \alpha \in \mathbb{R}_{>0} \implies \mathbf{h} = - \alpha \nabla J(\theta^{(t)})$, then the first-order expansion:
 
-$$J(\boldsymbol{\theta}^{(t+1)}) = J(\boldsymbol{\theta}^{(t)}) + \nabla J(\boldsymbol{\theta}^{(t)}) \cdot \big(-\alpha\,\nabla J(\boldsymbol{\theta}^{(t)})\big) + o\!\left(\left\|-\alpha\,\nabla J(\boldsymbol{\theta}^{(t)})\right\|\right)$$
+$$J(\boldsymbol{\theta}^{(t+1)}) = J(\boldsymbol{\theta}^{(t)}) + \nabla J(\boldsymbol{\theta}^{(t)}) \cdot \big(-\alpha\,\nabla J(\boldsymbol{\theta}^{(t)})\big) + o\!\left(\left \Vert  -\alpha\,\nabla J(\boldsymbol{\theta}^{(t)})\right \Vert  \right)$$
 
 Observe that we can simplify the expression:
 
 - The linear term: 
 
-    $$\nabla J(\boldsymbol{\theta}^{(t)}) \cdot \big(-\alpha\,\nabla J(\boldsymbol{\theta}^{(t)})\big) = -\alpha\,\nabla J(\boldsymbol{\theta}^{(t)}) \cdot \nabla J(\boldsymbol{\theta}^{(t)}) = -\alpha\,\left\|\nabla J(\boldsymbol{\theta}^{(t)})\right\|^2$$
+    $$\nabla J(\boldsymbol{\theta}^{(t)}) \cdot \big(-\alpha\,\nabla J(\boldsymbol{\theta}^{(t)})\big) = -\alpha\,\nabla J(\boldsymbol{\theta}^{(t)}) \cdot \nabla J(\boldsymbol{\theta}^{(t)}) = -\alpha\,\left \Vert  \nabla J(\boldsymbol{\theta}^{(t)})\right \Vert  ^2$$
 
-    We used the property that $\mathbf{v} \cdot \mathbf{v} = \|\mathbf{v}\|^2 \ \ \ \forall \mathbf{v} \in \mathbb{R}^p$
+    We used the property that $\mathbf{v} \cdot \mathbf{v} =  \Vert  \mathbf{v} \Vert  ^2 \ \ \ \forall \mathbf{v} \in \mathbb{R}^p$
 
     <br>
 
 - The error term:
 
-    $$o\!\left(\left\|-\alpha\,\nabla J(\boldsymbol{\theta}^{(t)})\right\|\right) = o\!\left(\alpha\,\left\|\nabla J(\boldsymbol{\theta}^{(t)})\right\|\right)$$
+    $$o\!\left(\left \Vert  -\alpha\,\nabla J(\boldsymbol{\theta}^{(t)})\right \Vert  \right) = o\!\left(\alpha\,\left \Vert  \nabla J(\boldsymbol{\theta}^{(t)})\right \Vert  \right)$$
 
-    since $\|-\alpha\,\mathbf{v}\| = |\alpha|\,\|\mathbf{v}\| = \alpha\,\|\mathbf{v}\|$ (as $\alpha > 0$).
+    since $ \Vert  -\alpha\,\mathbf{v} \Vert   = |\alpha|\, \Vert  \mathbf{v} \Vert   = \alpha\, \Vert  \mathbf{v} \Vert  $ (as $\alpha > 0$).
 
     <br>
 
 Then, assembling:
-$$J(\boldsymbol{\theta}^{(t)}) = J(\boldsymbol{\theta}^{(t+1)}) + \alpha\,\left\|\nabla J(\boldsymbol{\theta}^{(t)})\right\|^2 - o\!\left(\alpha\,\left\|\nabla J(\boldsymbol{\theta}^{(t)})\right\|\right)$$
+$$J(\boldsymbol{\theta}^{(t)}) = J(\boldsymbol{\theta}^{(t+1)}) + \alpha\,\left \Vert  \nabla J(\boldsymbol{\theta}^{(t)})\right \Vert  ^2 - o\!\left(\alpha\,\left \Vert  \nabla J(\boldsymbol{\theta}^{(t)})\right \Vert  \right)$$
 
-Observe that $\alpha\,\|\nabla J(\boldsymbol{\theta}^{(t)})\|^2 - o(\alpha\,\|\nabla J(\boldsymbol{\theta}^{(t)})\|) > 0$ since $o(\alpha\|\nabla J\|)$ goes quicker to zero as $\alpha \to 0$ while the first term has the fixed positive coefficient $\|\nabla J\|^2$; thus for small enough $\alpha > 0$ allows to assert:
+Observe that $\alpha\, \Vert  \nabla J(\boldsymbol{\theta}^{(t)}) \Vert  ^2 - o(\alpha\, \Vert  \nabla J(\boldsymbol{\theta}^{(t)}) \Vert  ) > 0$ since $o(\alpha \Vert  \nabla J \Vert  )$ goes quicker to zero as $\alpha \to 0$ while the first term has the fixed positive coefficient $ \Vert  \nabla J \Vert  ^2$; thus for small enough $\alpha > 0$ allows to assert:
 
 $$J(\boldsymbol{\theta}^{(t)}) > J(\boldsymbol{\theta}^{(t+1)})$$
 
