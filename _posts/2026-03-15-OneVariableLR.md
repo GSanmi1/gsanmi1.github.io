@@ -244,6 +244,7 @@ as $x \to a$ and at some point where, $x$ becomes close enough to $a$, the error
 For $f: \mathbb{R}^d \to \mathbb{R}$ twice differentiable, the second-order Taylor expansion around a point $\mathbf{a}$ a evaluated at $\mathbf{a} + \mathbf{h}$ is:
 
 $$f(\mathbf{a} + \mathbf{h}) = f(\mathbf{a}) + \nabla f(\mathbf{a})^\top \mathbf{h} + \frac{1}{2}\mathbf{h}^\top \nabla^2 f(\mathbf{a})\,\mathbf{h} + o( \Vert  \mathbf{h} \Vert  ^2)$$
+
 where $\nabla f(\mathbf{a})$ is our well known gradient (vector of partial derivatives) and $\nabla^2 f(\mathbf{a})$ is the Hessian (matrix of second partial derivatives)
 
 <br>
@@ -497,7 +498,7 @@ Observe that we can simplify the expression:
 
     $$o\!\left(\left \Vert  -\alpha\,\nabla J(\boldsymbol{\theta}^{(t)})\right \Vert  \right) = o\!\left(\alpha\,\left \Vert  \nabla J(\boldsymbol{\theta}^{(t)})\right \Vert  \right)$$
 
-    since $ \Vert  -\alpha\,\mathbf{v} \Vert   = |\alpha|\, \Vert  \mathbf{v} \Vert   = \alpha\, \Vert  \mathbf{v} \Vert  $ (as $\alpha > 0$).
+    since $ \Vert  -\alpha\,\mathbf{v} \Vert   = \vert \alpha \vert, \Vert  \mathbf{v} \Vert   = \alpha\, \Vert  \mathbf{v} \Vert  $ (as $\alpha > 0$).
 
     <br>
 
