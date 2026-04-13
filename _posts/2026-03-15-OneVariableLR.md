@@ -404,6 +404,14 @@ $$\theta^{(t+1)}:= \theta^{(t)} - \alpha \nabla J(\theta^{(t)}): \alpha \in \mat
 
 Where $\alpha > 0$ is called the learning rate and determines how wide is the step between $\theta^{(t)}$ and $\theta^{(t+1)}$.
 
+If $\theta \in \mathbb{R}^p$, then, a componente-wise reformulation would be:
+
+this reads:
+
+$$\theta_j^{(t+1)} = \theta_j^{(t)} - \alpha \, \frac{\partial J}{\partial \theta_j}(\boldsymbol{\theta}^{(t)}), \quad \forall \, j \in [p]$$
+
+Each parameter $\theta_j$ is adjusted independently by the partial derivative of $J$ with respect to that parameter, scaled by $\alpha$.
+
 <br>
 
 # 2. Supervised Learning.
