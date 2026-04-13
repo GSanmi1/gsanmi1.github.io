@@ -206,6 +206,55 @@ Then $-\nabla f(\mathbf{a})$ always points towards the direction in which the sl
 
 <br>
 
+#### 1.3.1.5. Taylor Expansions.
+
+Taylor formulas solve a fundamental problem; **locally approximating a complicated function by a polynomial**, which is the most tractable object in analysis.
+
+The result asserts that, if a function is smooth enough (differentiable several times) at a point $\mathbf{a}$, then its behavior *near* $\mathbf{a}$ is captured, with controlled error, by a polynomial whose coefficiens are the successive derivatives at $\mathbf{a}$. 
+
+<br>
+
+**Taylor Theorem (with Lagrange Reminder)**
+
+Let $f: [a, b] \to \mathbb{R}$ with $f^{(n)}$ continuous on $[a,b]$ and $f^{(n+1)}$ existing on $(a,b)$. Then: 
+
+$$\forall x \in (a,b] \ \ \exists c \in (a,x): f(x) = \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!}(x-a)^k + \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}$$
+
+Observe that, despite being an exact equality (the function is its Taylor polynomial plus an error term with an explicit form), the $c$ term in the Lagrange remainder remains unknown. 
+
+Nevertheless, the result is powerful since we are predicting information about $f$ in an interval with using only local information at a single point.
+
+<br>
+
+**Expansion: Peano's Reminder**
+
+There is another form of the remainder that is weaker but often more useful for optimization arguments. Under the same hypothesis:
+
+
+$$f(x) = \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!}(x-a)^k + o(|x-a|^n)$$
+
+
+where $o(|x-a|^n)$ means that $\displaystyle\frac{R_n(x)}{|x-a|^n} \to 0$
+as $x \to a$ and at some point where, $x$ becomes close enough to $a$, the error factor becomes negligible.
+
+<br>
+
+**Definition: Taylor's multivariate extension and Geometric Intuition**
+
+For $f: \mathbb{R}^d \to \mathbb{R}$ twice differentiable, the second-order Taylor expansion around a point $\mathbf{a}$ a evaluated at $\mathbf{a} + \mathbf{h}$ is:
+
+$$f(\mathbf{a} + \mathbf{h}) = f(\mathbf{a}) + \nabla f(\mathbf{a})^\top \mathbf{h} + \frac{1}{2}\mathbf{h}^\top \nabla^2 f(\mathbf{a})\,\mathbf{h} + o(\|\mathbf{h}\|^2)$$
+where $\nabla f(\mathbf{a})$ is our well known gradient (vector of partial derivatives) and $\nabla^2 f(\mathbf{a})$ is the Hessian (matrix of second partial derivatives)
+
+<br>
+
+At $\mathbf{a}$, the graph of $f$ (a surface in $\mathbb{R}^{p+1}$) has a
+tangent hyperplane. The Taylor expansion says: the function value at a nearby point equals the tangent hyperplane's value at that point, plus an error that becomes negligible as you zoom in.
+
+![taylor1](/assets/images/ML/taylor1.png)
+
+<br>
+
 ### 1.3.2. Formal Development.
 
 #### 1.3.2.1. Hypothesis Sets.
@@ -418,7 +467,52 @@ Each parameter $\theta_j$ is adjusted independently by the partial derivative of
 
 The algorithm, as we just saw, is pretty simple in theory. We only need to adjust the learning rate parameter and, iteratively we can get as close as we want to a local minima.
 
-Let's explore now why this descent is mathematically garanteed.
+Let's explore now why this descent is mathematically garanteed. As a brief explanation, *Gradient Descent* works since Taylor expansions let you "see beyond" each current point when the next point is close enough. Taylor allows reconstructing $J$'s behavior in a neighborhood around $\theta^{(t)}$ making able to see clearly that the next point $J(\theta^{(t+1)})$ is smaller than the current one $J(\theta^{(t)})$.
+
+<br>
+
+Consider again the cost function we built above such $J : \mathbb{R}^p \to \mathbb{R}$
+
+$$J(\theta):=\frac{1}{m} \sum_{i=1}^m L(y,h_\theta(\mathbf{x}))$$
+
+For our purpouses, we will assume that $J$ is differentiable, this assumption holds for the models we've seen so far, although there are activation functions used in practice that are not differentiable everywhere.
+
+<br>
+
+Let's take if $\theta^{(t+1)}:= \theta^{(t)} - \alpha \nabla J(\theta^{(t)}): \alpha \in \mathbb{R}_{>0} \implies \mathbf{h} = - \alpha \nabla J(\theta^{(t)})$, then the first-order expansion:
+
+$$J(\boldsymbol{\theta}^{(t+1)}) = J(\boldsymbol{\theta}^{(t)}) + \nabla J(\boldsymbol{\theta}^{(t)}) \cdot \big(-\alpha\,\nabla J(\boldsymbol{\theta}^{(t)})\big) + o\!\left(\left\|-\alpha\,\nabla J(\boldsymbol{\theta}^{(t)})\right\|\right)$$
+
+Observe that we can simplify the expression:
+
+- The linear term: 
+
+    $$\nabla J(\boldsymbol{\theta}^{(t)}) \cdot \big(-\alpha\,\nabla J(\boldsymbol{\theta}^{(t)})\big) = -\alpha\,\nabla J(\boldsymbol{\theta}^{(t)}) \cdot \nabla J(\boldsymbol{\theta}^{(t)}) = -\alpha\,\left\|\nabla J(\boldsymbol{\theta}^{(t)})\right\|^2$$
+
+    We used the property that $\mathbf{v} \cdot \mathbf{v} = \|\mathbf{v}\|^2 \ \ \ \forall \mathbf{v} \in \mathbb{R}^p$
+
+    <br>
+
+- The error term:
+
+    $$o\!\left(\left\|-\alpha\,\nabla J(\boldsymbol{\theta}^{(t)})\right\|\right) = o\!\left(\alpha\,\left\|\nabla J(\boldsymbol{\theta}^{(t)})\right\|\right)$$
+
+    since $\|-\alpha\,\mathbf{v}\| = |\alpha|\,\|\mathbf{v}\| = \alpha\,\|\mathbf{v}\|$ (as $\alpha > 0$).
+
+    <br>
+
+Then, assembling:
+$$J(\boldsymbol{\theta}^{(t)}) = J(\boldsymbol{\theta}^{(t+1)}) + \alpha\,\left\|\nabla J(\boldsymbol{\theta}^{(t)})\right\|^2 - o\!\left(\alpha\,\left\|\nabla J(\boldsymbol{\theta}^{(t)})\right\|\right)$$
+
+Observe that $\alpha\,\|\nabla J(\boldsymbol{\theta}^{(t)})\|^2 - o(\alpha\,\|\nabla J(\boldsymbol{\theta}^{(t)})\|) > 0$ since $o(\alpha\|\nabla J\|)$ goes quicker to zero as $\alpha \to 0$ while the first term has the fixed positive coefficient $\|\nabla J\|^2$; thus for small enough $\alpha > 0$ allows to assert:
+
+$$J(\boldsymbol{\theta}^{(t)}) > J(\boldsymbol{\theta}^{(t+1)})$$
+
+<br>
+
+#### 1.3.3.5 Learning Rate.
+
+
 
 <br>
 
