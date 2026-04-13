@@ -582,6 +582,24 @@ Now, we verify that the addition's axioms for a field hold in $\mathbb{R}$, with
 
 - **Inverse**:
 
+    Fix some $\alpha \in \mathbb{R}$. Then, consider the set:
+
+    $$\beta := \Set{p \in \mathbb{Q} \mid \exists r>0 : -p -r \notin \alpha}$$
+
+    Observe that we are not considering those $p$ whose opposite $-p$ are strictly out from $\alpha$ (this would be $a < -p \ \ \forall a \in \alpha$) but only those $p$ whose opposite has a constant positive gap between themselves and any other element of $\alpha$ abstracted in $r > 0$.
+
+    Note that $\beta$ as defined is smaller than $A := \Set{p \in \mathbb{Q} \mid -p \notin \alpha}$ since, $A$ admits a frontier element $p$ for which the elements of $a \in \alpha$ can get as close as wanted. However, with $-p -r \notin \alpha$ the difference between $-p -r$ and $\alpha$, again, can be as small as wanted, but the distance between $-p$ and $\alpha$ can't be smaller than $r$. That gap will always exists between $-p$ and any other element in $\alpha$ so $\beta$'s elements are deeper in $\mathbb{Q} \setminus \alpha$.
+    
+    Let's see that $\beta \in \mathbb{R} \wedge \alpha + \beta = 0^*$  
+
+    - First, $\beta \in \mathbb{R}$.
+
+        - Since $\alpha \in \mathbb{R} \implies (\alpha \neq \varnothing \wedge \alpha \neq \mathbb{Q}) \implies \exists q \in \mathbb{Q} \setminus \alpha$, then, write $ q =(q+1) - 1 \notin \alpha$ and $p := -(q+1) \in \beta \implies \beta \neq \varnothing$.
+
+            Also, $\forall q(q \in \alpha \implies \nexists r  > 0 : q - r \notin \alpha) \implies -q \notin \beta \implies \beta \neq \mathbb{Q}$ applying the second property of the cuts. $(q -r < q \wedge q \in \alpha \implies q -r \in \alpha) \ \ \forall r>0$
+
+            <br>
+        - 
 
 
 ## 3.2. Important Properties from the $\mathbb{R}$ field.

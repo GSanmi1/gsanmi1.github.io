@@ -25,15 +25,17 @@ An **algebraic structure** is a a set $(S, \Omega)$ where:
 
 This is the minimal basic item of study in algebra; a finite number of operations over a set defined by axioms. Our task is to comprehend how this operations behave through the axioms applying classic logic. 
 
-In the previous section we already provided an introduction to algebraic structures through the number sets and then introduced a solid idea of the group and then the field.
+In the previous section we already provided an introduction to algebraic structures through the number sets and then introduced a solid idea of the group and then the field. Our objective was to present a formalization about linear equations over a field.
 
-We can barely review it to understand the natural progression and the commonst algebraic structures.
+We can review and develop the ideas presented in the [Linear Equation section](https://gsanmi1.github.io/posts/2026/02/06/Linear_Equations/) to understand the natural progression and the algebraic structures towards de vector space.
 
 <br>
 
 ### 1.2.1. One operation algebraic structures.
 
-Let be $G := (S, \Omega) : \Omega := \Set{\star}$, where $\star : S \times S \to S$ then we define:
+Let be $G := (S, \Omega) : \Omega := \Set{\star}$, where $\star : S \times S \to S$ is an internal operation (a function). 
+
+Then we define:
 
 - $G$ (or $S$ by default) is said to be a *Magma* if $\star$ only verifies the closure property:
 
@@ -99,33 +101,82 @@ This allows to reorganize making the simplification of expressions even more con
 
 <br>
 
-### 1.3.1. Two operations algebraic structures.
+### 1.2.2. Two operations algebraic structures.
 
 Until now, we've defined an algebraic structure that contemplates only one operation, lets now introduce algebraic structures with two operations.
 
-First, the rings, a ringe is a triple $(S,+,\ ·)$ such:
+<br>
 
-- $(S,+)$ is a group and introduce the four properties seen above.
-- $(S, \ ·)$ is a monoid, it left the existance of the inverse for any element of $S$
+**Rings**
+
+First, the rings, a ringe is a triple $(K,+,\ ·)$ such:
+
+- $(K,+)$ is a group and introduce the four properties seen above.
+- $(K, \ ·)$ is a monoid, it drops the existence of the inverse for any element of $R$.
+- $+$ and $·$ relates themselves by the distributive law:
+
+    $$a(b+c) = ab + ac \wedge (b+c)a = ba + ca$$
+
+    We say both operations are compatible.
+
+    <br>
 
 The ring introduces the second operation in a soft way, hanging on the existance of the inverse allows to fit in many structures well studied such:
 
-- **Integers ring**; $(\mathbb{Z},+, \ ·)$, where for example $\forall a ( a \in \mathbb{Z} \wedge a \neq 1 \implies a^{-1} \notin \mathbb{Z})$.
+- **Integers ring**; $(\mathbb{Z},+, \ ·)$, where for example $\forall a ( a \in \mathbb{Z} \wedge a \neq \pm 1 \implies a^{-1} \notin \mathbb{Z})$.
+
+    <br>
 
 - **Polynomial ring**; with coefficients in a field $F$; $F[x]$ is a ring 
-  but not a field. For instance, $x$ has no multiplicative inverse: 
-  for any $q \in F[x] \setminus \{0\}$, 
-  $\deg(x \cdot q) = 1 + \deg(q) \geq 1 \neq 0 = \deg(1)$, 
-  so the equation $x \cdot q = 1$ has no solution in $F[x]$
+  but not a field. For instance, $x$ has no multiplicative inverse:
+
+  $\forall q \in F[x] \setminus \{0\} \ \deg(x \cdot q) = 1 + \deg(q) \geq 1 \neq 0 = \deg(1)$
+
+  So the equation $x \cdot q = 1$ has no solution in $F[x]$
+
+    <br>
 
 - **Matrix ring**; we've already seen that $(M\_n(F)\setminus 0, \ ·)$ has no inverse for every element of $M\_n(F)$, remember that we already seen that not every matrix is invertible only those row-equivalent to the identity $I\_n$
+
+    <br>
 
 The mathematical world is full of structures with two operations where division fails.
 
 <br>
 
-Then the concept of the field is an extension of the ring where each element has an inverse for the product operation except the zero element.
 
+**Field**
+
+Then the concept of the field can be thought as an extension of the ring where each element has an inverse for the product operation except the zero element.
+
+However, we want to present another perspective of a field. 
+
+Above we built step by step from the smallest algebraic structure *Magma* to the *Group* and his four axioms and we conclude the importance of such structure was that it allows to present and solve equations:
+
+$$a \star x = b \iff x = a^{-1} \star b$$
+
+Then, the field $K$ aims to extend the same idea for two operations departing from the group structure. This means that a field is a triple $(K,+, \ ·)$ such:
+
+- $(K, +)$ is an abelian group.
+- $(K \setminus \Set{0}, \ ·)$ is an abelian group.
+- $+$ and $·$ are compatible.
+- $1 \neq 0$
+
+This basically means that the field intends to be the structure in which equations can be defined and solved in two operations simultaneously, the motivation was to build an algebraic framework for common aritmetic operations in $\mathbb{R}, \mathbb{Q},...$ and another commons fields.
+    
 <br>
 
 # 2. Vector spaces.
+
+Before we've seen a set of axioms that rules how a set of operations $\Omega$ behaves in a non-empty set $K$. We extend this concept to two sets $(K,V)$ where $K$ is a field and $V$ is a group and both related between them an action.
+
+<br>
+
+## 2.1. Actions.
+
+
+## 2.2. Vector Space definition.
+
+
+
+<br>
