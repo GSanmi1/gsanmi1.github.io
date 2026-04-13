@@ -406,11 +406,19 @@ Where $\alpha > 0$ is called the learning rate and determines how wide is the st
 
 If $\theta \in \mathbb{R}^p$, then, a componente-wise reformulation would be:
 
-this reads:
-
 $$\theta_j^{(t+1)} = \theta_j^{(t)} - \alpha \, \frac{\partial J}{\partial \theta_j}(\boldsymbol{\theta}^{(t)}), \quad \forall \, j \in [p]$$
 
 Each parameter $\theta_j$ is adjusted independently by the partial derivative of $J$ with respect to that parameter, scaled by $\alpha$.
+
+![gdescent1](/assets/images/ML/gdescent1.png)
+
+<br>
+
+#### 1.3.3.4. Descent Mechanism.
+
+The algorithm, as we just saw, is pretty simple in theory. We only need to adjust the learning rate parameter and, iteratively we can get as close as we want to a local minima.
+
+Let's explore now why this descent is mathematically garanteed.
 
 <br>
 
