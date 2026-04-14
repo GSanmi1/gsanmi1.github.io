@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Machine Learning. Regression Model"
-subtitle: "Introduction to ML. Linear Regression. Gradient Descent."
+title: "Introduction to Machine Learning."
+subtitle: "Introduction to ML. Gradient Descent."
 date: 2026-03-16 09:00:00 +0000
 categories: ['Maths', 'ML']
 tags: ['Maths','DeepLearning.ai']
@@ -10,22 +10,29 @@ author: German Sanmi
 
 # 0. Index.
 
-1. Machine Learning.
-    - 1.2. Learning Models.
-        - 1.2.1. Supervised Learning.
-            - 1.2.1.1. Definition.
-            - 1.2.1.2.  Linear Regression: The simpliest Supervised Learning Model instantiation.
-        - 1.2.2. Unsupervised Learning. Clustering.
-2. Regression Model.
-    - 2.1. Linear Regression Overview.
-    - 2.2. Training the machine.
-    - 2.3. Cost Function.
-        - 2.3.1. Squared Error.
-        - 2.3.2. Interpretation. Optimization Problem.
+1. Machine Learning
+2. Formal Framing
+3. Learning Algorithm
+    - 3.1. Mathematical Prerequisites
+        - 3.1.1. Functions of Several Variables
+        - 3.1.2. Partial Derivatives
+        - 3.1.3. Directional Derivatives
+        - 3.1.4. Gradient
+        - 3.1.5. Taylor Expansions
 
-3. Gradient Descent.
-    - 3.1. Introducing the problem.
-    - 3.2. Gradient Descent Algorithm.
+
+    - 3.2. Formal Development
+        - 3.2.1. Hypothesis Sets
+        - 3.2.2. Measuring the Error: Cost Function
+
+
+    - 3.3. Gradient Descent Algorithm
+        - 3.3.1. Optimization. Classical Approach
+        - 3.3.2. Optimization. Iterative Approach
+        - 3.3.3. Explaining the Algorithm
+        - 3.3.4. Descent Mechanism
+
+
 
     <br>
     
@@ -37,7 +44,7 @@ Machine Learning is a family of algorithms that learn patterns from data instead
 
 <br>
 
-## 1.2. Formal Framing.
+## 2. Formal Framing.
 
 Let's understand what "learning from data" actually mathematically means; the objective is to find a function that captures the regularity of an observed phenomenon that produces data in order to make predictions on new, unseen inputs of the same nature.
 
@@ -61,7 +68,7 @@ For example, *linear regression* learning model is a supervised learning model (
 
 <br>
 
-## 1.3. Learning Algorithm.
+## 3. Learning Algorithm.
 
 As we set in the previous section, we need to develop a mechanism that allow us to select the best candidate from a family of applications $\mathcal{H}$ that mapps correctly - matching our needs - the input $\mathcal{X}$ with the outpus $\mathcal{Y}$ using only the training set $\mathcal{D} \subset \mathcal{X} \times \mathcal{Y}$ established before as a reference. As a overall, this selection is based on the question about what $h \in \mathcal{H}$ minimizes as much as posible the noise or incorrections in the mapping $\mathcal{X} \to \mathcal{Y}$ done by $h$.
 
@@ -69,9 +76,9 @@ The *learning algorithm* is the procedure that actually performs this search. In
 
 <br>
 
-### 1.3.1. Mathematical Prerrequisites.
+## 3.1. Mathematical Prerrequisites.
 
-#### 1.3.1.1. Functions of Several Variables.
+### 3.1.1. Functions of Several Variables.
 
 A function of $n$ real variables is a map:
 
@@ -90,7 +97,7 @@ In ML, the models we work with depend on a vector of adjustable parameters $\bol
 
 <br>
 
-#### 1.3.1.2. Partial Derivatives.
+### 3.1.2. Partial Derivatives.
 
 Let be now $ f: S \to \mathbb{R}, \quad S \subseteq \mathbb{R}^n$ a multivariable function, lets choose a point $\mathbf{a}:=(a_1,\ldots,a_n) \in S$.
 
@@ -136,7 +143,7 @@ In summary, partial derivatives measures how $f$ changes when we adjust one para
 
 <br>
 
-#### 1.3.1.3. Directional Derivatives.
+### 3.1.3. Directional Derivatives.
 
 **Definition**
 
@@ -150,7 +157,7 @@ Let $E \subseteq \mathbb{R}^n$ be open, and let $f: E \to \mathbb{R}$ be differe
 
 $$D_{\mathbf{u}} f(\mathbf{a}) = \lim_{t \to 0} \frac{f(\mathbf{a}+t\mathbf{u}) - f(\mathbf{a})}{t}$$
 
-Where $\mathbf{u}$ is an unit vector, a vector with direction but without magnitud (this is so to speak, the module is $\vert \vert u \vert \vert = 1$, thus it not disturb the magnitud of any other vector). Lets take a closer look. 
+Where $\mathbf{u}$ is an unit vector, a vector with direction but without disturbing magnitude (this is so to speak, the module is $\vert \vert u \vert \vert = 1$, thus it not disturb the magnitud of any other vector). Lets take a closer look. 
 
 If is $\mathbf{u} := (u_1,\ldots,u_n) \in \mathbb{R}^n : \vert \vert u \vert \vert = 1$, then $t\mathbf{u}$ is a scalar multiplication on $\mathbf{u}$, 
 
@@ -171,7 +178,7 @@ As a visual example, for $f:\mathbb{R}^2 \to \mathbb{R}$ the intersection of thi
 <br>
 
 
-#### 1.3.1.4. Gradient.
+### 3.1.4. Gradient.
 
 **Definition**
 
@@ -206,7 +213,7 @@ Then $-\nabla f(\mathbf{a})$ always points towards the direction in which the sl
 
 <br>
 
-#### 1.3.1.5. Taylor Expansions.
+### 3.1.5. Taylor Expansions.
 
 Taylor formulas solve a fundamental problem; **locally approximating a complicated function by a polynomial**, which is the most tractable object in analysis.
 
@@ -214,7 +221,7 @@ The result asserts that, if a function is smooth enough (differentiable several 
 
 <br>
 
-**Taylor Theorem (with Lagrange Reminder)**
+**Taylor Theorem (with Lagrange Remainder)**
 
 Let $f: [a, b] \to \mathbb{R}$ with $f^{(n)}$ continuous on $[a,b]$ and $f^{(n+1)}$ existing on $(a,b)$. Then: 
 
@@ -226,7 +233,7 @@ Nevertheless, the result is powerful since we are predicting information about $
 
 <br>
 
-**Expansion: Peano's Reminder**
+**Expansion: Peano's Remainder**
 
 There is another form of the remainder that is weaker but often more useful for optimization arguments. Under the same hypothesis:
 
@@ -241,12 +248,11 @@ as $x \to a$ and at some point where, $x$ becomes close enough to $a$, the error
 
 **Definition: Taylor's multivariate extension and Geometric Intuition**
 
-For $f: \mathbb{R}^d \to \mathbb{R}$ twice differentiable, the second-order Taylor expansion around a point $\mathbf{a}$ a evaluated at $\mathbf{a} + \mathbf{h}$ is:
+For $f: \mathbb{R}^d \to \mathbb{R}$ differentiable on $\mathbf{a}$, the first-order Taylor expansion around a point $\mathbf{a}$ a evaluated at $\mathbf{a} + \mathbf{h}$ is:
 
-$$f(\mathbf{a} + \mathbf{h}) = f(\mathbf{a}) + \nabla f(\mathbf{a})^\top \mathbf{h} + \frac{1}{2}\mathbf{h}^\top \nabla^2 f(\mathbf{a})\,\mathbf{h} + o( \Vert  \mathbf{h} \Vert  ^2)$$
+$$f(\mathbf{a} + \mathbf{h}) = f(\mathbf{a}) + \nabla f(\mathbf{a})^\top \mathbf{h} + o( \Vert  \mathbf{h} \Vert)$$
 
-where $\nabla f(\mathbf{a})$ is our well known gradient (vector of partial derivatives) and $\nabla^2 f(\mathbf{a})$ is the Hessian (matrix of second partial derivatives)
-
+Where $ o( \Vert  \mathbf{h} \Vert)\to 0$ as $ \alpha \to 0$.
 <br>
 
 At $\mathbf{a}$, the graph of $f$ (a surface in $\mathbb{R}^{p+1}$) has a
@@ -256,9 +262,9 @@ tangent hyperplane. The Taylor expansion says: the function value at a nearby po
 
 <br>
 
-### 1.3.2. Formal Development.
+## 3.2. Formal Development.
 
-#### 1.3.2.1. Hypothesis Sets.
+### 3.2.1. Hypothesis Sets.
 
 As we say before, we don't search for an hipotesys $h$ in abstract, we first form a family of candidates $\mathcal{H}$. This is a parameterized by a vector of real numbers $\theta \in  \mathbb{R}^p$:
 
@@ -270,7 +276,7 @@ Where,
 
     Is the parameter vector. Each specific $\theta$ picks out one specific hypothesis $h_{\theta} \in \mathcal{H}$​.
 
-- $p \in \mathbb{R}$, is the number of parameters (in modern deep learning, $p$ can be in the billions).
+- $p \in \mathbb{N}$, is the number of parameters (in modern deep learning, $p$ can be in the billions).
 
 - $\Theta \subseteq \mathbb{R}^p$ is the parameter space over all $\mathbb{R}^p$
 
@@ -280,13 +286,13 @@ Where,
 
 As a brief example, let's take a look over the *linear model*, which, as we said before, is the assumption about $h$ is an affine transformation. Remember that an affine transformation is a linear transformation $y=mx$ plus a traslation $b$, taking the form of the line: $y_{m,b} := b + mx$,then in our parameterized function:
 
-$$h_\theta(\mathbf{x}) := \theta_0 + \boldsymbol{\theta^{\top}} · \  \mathbf{x} = \theta_0 + \sum_{i=1}^p \theta_i x_i$$
+$$h_\theta(\mathbf{x}) := \theta_0 + \boldsymbol{\theta^{\top}} · \  \mathbf{x} = \theta_0 + \sum_{i=1}^{p-1} \theta_i x_i$$
 
-Where $\theta_0$ is the bias and $\theta_i \ \forall i \in [p]$ is parameter of the $i$-th feature $x_i$. Observe that each $\theta$ give us a different linear function.
+Where $\theta_0$ is the bias and $\theta_i \ \forall i \in [p-1]$ is parameter of the $i$-th feature $x_i$. Observe that each $\theta$ give us a different linear function.
 
 <br>
 
-#### 1.3.2.2. Measuring the error. Cost function.
+### 3.2.2. Measuring the error: Cost function.
 
 It is reasonable to ask, for a certain $\theta$, how far the prediction is from the real, labeled, output. Formally; for a pair $(x,y) \in \mathcal{X} \times \mathcal{Y}$, how wrong is the prediction $h_\theta(x)$, let's first formalize the notion of 'wrong' in mathematical terms.
 
@@ -373,13 +379,13 @@ Each step is forced by the limitations of the previous one: $L$ only measures on
 
 <br>
 
-### 1.3.3. Gradient Descent Algorithm.
+## 3.3. Gradient Descent Algorithm.
 
 We arrived at a concrete problem, we modelized a function $J$ that measures the error of the prediction function $h_\theta$ over the training set $\mathcal{D} \subset \mathcal{X} \times \mathcal{Y}$ that dependes on the parameter $\theta$. The objective is to find that $\theta$ that minimizes the error, this is, that minimizes the $J$ output.
 
 <br>
 
-#### 1.3.3.1. Optimization. Classical Approach.
+### 3.3.1. Optimization. Classical Approach.
 
 An *optimization problem* is, in its most general form, the task of finding the input to a function that produces the smallest (or largest) output value. For our purpouses, we want to find the value for $\theta \in \mathbb{R}^p$ that minimizes $J$ output. Again:
 
@@ -405,7 +411,7 @@ $$J(\theta):=\frac{1}{m} \sum_{i=1}^m L(y,h_\theta(\mathbf{x})) = \frac{1}{m} \s
 
 And the gradient is:
 
-$$\nabla J(\theta) := \left( \frac{\partial J}{\partial \theta_t}(\theta)_{t1} \right)_{t \in [p]} \in \mathbb{R}^p : \frac{\partial J}{\partial \theta_i}(\theta) := -\frac{1}{2m}\sum_{i=1}^m (y^{(i)} - \theta_0 - \boldsymbol{\theta}^\top \mathbf{x}^{(i)})x_i$$
+$$\nabla J(\theta) := \left( \frac{\partial J}{\partial \theta_t}(\theta)_{t1} \right)_{t \in [p]} \in \mathbb{R}^p :\quad  \frac{\partial J}{\partial \theta_t}(\theta) := -\frac{2}{m}\sum_{i=1}^m (y^{(i)} - \theta_0 - \boldsymbol{\theta}^\top \mathbf{x}^{(i)})x_t^{(i)}$$
 
 Observe that $\nabla J = \mathbf{0}$ becomes a system of $p$ linear equations in $p$ unknowns. The solution tell us exactly the point because linear algebra tell us a well-known algebraic method to solve linear system of equations.
 
@@ -429,15 +435,15 @@ Thus, as a summary, the problems of the direct approach are **Algebraic Intracta
 
 <br>
 
-#### 1.3.3.2. Optimization. Iterative Approach.
+### 3.3.2. Optimization. Iterative Approach.
 
-Since we can't find $\theta^\ast$ in one shot, we settle for an *iterative* strategy: start at some $\theta^{(0)}$, and apply a rule that produces a finite $k$ steps sequence $\theta^{(0)}, \theta^{(1)}, \theta^{(2)}, \dots, \theta^{(k)}:J(\theta^{(t+1)})>J(\theta^{(t)}) $, this is that $J$ decreases at each step. 
+Since we can't find $\theta^\ast$ in one shot, we settle for an *iterative* strategy: start at some $\theta^{(0)}$, and apply a rule that produces a finite $k$ steps sequence $\theta^{(0)}, \theta^{(1)}, \theta^{(2)}, \dots, \theta^{(k)}:J(\theta^{(t+1)})<J(\theta^{(t)}) $, this is that $J$ decreases at each step. 
 
 We may never reach $\theta^* \in \Theta : \nabla J(\theta^*)=0$ exactly, but we can get arbitrarily close which in practice, is perfectly adequate. The core insight is we trade an unsolvable global equation for a sequence of cheap local computations.
 
 <br>
 
-#### 1.3.3.3. Explaining the algorithm.
+### 3.3.3. Explaining the algorithm.
 
 Until now we have presented the problem and develop a motivation about the need of an iterative method.
 
@@ -450,7 +456,7 @@ We already explain that, being $f :S \subset \mathbb{R}^n \to \mathbb{R}$, the g
 
 We remember that if $\nabla f$ points to the stepeest ascent, then $-\nabla f$ points to the stepeest descent. Thus, recovering our cost function $J$, for a generic $\theta^{(t)}$ the next $\theta^{(t+1)}$ can be calculated according to the gradient:
 
-$$\theta^{(t+1)}:= \theta^{(t)} - \alpha \nabla J(\theta^{(t)}): \alpha \in \mathbb{R}$$
+$$\theta^{(t+1)}:= \theta^{(t)} - \alpha \nabla J(\theta^{(t)}): \alpha \in \mathbb{R}_{>0}$$
 
 Where $\alpha > 0$ is called the learning rate and determines how wide is the step between $\theta^{(t)}$ and $\theta^{(t+1)}$.
 
@@ -464,7 +470,7 @@ Each parameter $\theta_j$ is adjusted independently by the partial derivative of
 
 <br>
 
-#### 1.3.3.4. Descent Mechanism.
+### 3.3.4. Descent Mechanism.
 
 The algorithm, as we just saw, is pretty simple in theory. We only need to adjust the learning rate parameter and, iteratively we can get as close as we want to a local minima.
 
@@ -505,263 +511,15 @@ Observe that we can simplify the expression:
 Then, assembling:
 $$J(\boldsymbol{\theta}^{(t)}) = J(\boldsymbol{\theta}^{(t+1)}) + \alpha\,\left \Vert  \nabla J(\boldsymbol{\theta}^{(t)})\right \Vert  ^2 - o\!\left(\alpha\,\left \Vert  \nabla J(\boldsymbol{\theta}^{(t)})\right \Vert  \right)$$
 
-Observe that $\alpha\, \Vert  \nabla J(\boldsymbol{\theta}^{(t)}) \Vert  ^2 - o(\alpha\, \Vert  \nabla J(\boldsymbol{\theta}^{(t)}) \Vert  ) > 0$ since $o(\alpha \Vert  \nabla J \Vert  )$ goes quicker to zero as $\alpha \to 0$ while the first term has the fixed positive coefficient $ \Vert  \nabla J \Vert  ^2$; thus for small enough $\alpha > 0$ allows to assert:
+Observe that $\alpha\, \Vert  \nabla J(\boldsymbol{\theta}^{(t)}) \Vert  ^2 - o(\alpha\, \Vert  \nabla J(\boldsymbol{\theta}^{(t)}) \Vert  ) > 0$ since $o(\alpha \Vert  \nabla J \Vert  )$ goes quicker to zero as $\alpha \to 0$ while the first term has the fixed positive coefficient $ \Vert  \nabla J \Vert  ^2$; thus for small enough learning rate $\alpha > 0$ allows to assert:
 
 $$J(\boldsymbol{\theta}^{(t)}) > J(\boldsymbol{\theta}^{(t+1)})$$
 
 <br>
 
-#### 1.3.3.5 Learning Rate.
+Observe that, in a pragmatical way, the role of the learning rate is crucial, all the theory justification spin around the $\alpha$'s size. Too large: The steps overshoot the minimum, too small: Convergence is extremely slow. The algorithm takes tiny steps and may require an impractical number of iterations.
 
-
-
-<br>
-
-# 2. Supervised Learning.
-
-#### 1.2.1.1. Definition.
-
-Supervised Learning is one the three best well-known learning models, which trains a program to infere a relation between two data sets (input and outputs). 
-
-This training model relays on the fact that the program count with a collection of pairs of inputs and outputs related by an unknown rule: $(x,y) \in \mathcal{X} \times \mathcal{Y} : y = f(x)$, and $f$ remains unknown (this function is typically an unknown joint distribution $P(X,Y)$, stochastic relation, the function is a concrete case where all noise vanish). 
-
-In this sense, *supervised* learning refers that during training (algorthim execution), every input, $x$ comes with a label $y$; a correct answer that "supervises" the learning process. 
-
-In this sense, the task of supervised learning is, given the training the set: $\{ (x^{(i)}, y^{(i)}) \}\_{i=1}^{n} \subset \mathcal{X} \times \mathcal{Y}$ find some hipotesis $h : \mathcal{X} \to \mathcal{Y}$ of some hipotesis class $\mathcal{H}$ that minimizes the *expected risk*. However, taking again that $f$ is a simplification of $P$, in general, what is measured is the *empirical risk* instead which we call:
-
-$$\hat{R}(h) = \frac{1}{n} \sum_{i=1}^{n} \ell\bigl(h(x^{(i)}), y^{(i)}\bigr)$$
-
-which basically measure the risk over the gathered sample instead of the entire population (which often is unnaccesible in real problems).
-
-Let's observe that this empirical risk is a template with three factors:
-
-- The hypothesis class $h$ that makes the prediction agains the labeled data.
-- The loss function $\ell$ which measures the error between each pair $(h(x)^{(i)},y^{(i)})$
-- Apply a convenience scaling $\frac{1}{n}$, for convenience we can scale the empirical risk to simplify the result.
-
-Later we will select each one of the three factors to instantiate the empirical risk into the *cost function* $J$.
+There is no closed-form formula for the optimal learning rate in general; it is tuned empirically or adapted by more sophisticated algorithms.
 
 <br>
 
-#### 1.2.1.2.  Linear Regression: The simpliest Supervised Learning Model instantiation.
-
-*Linear Regression* is the simpliest instantiation of the Supervised Learning Model. 
-
-Let's take a moment two introduce the *affine* concept. *Linear* and *Affine* are forms to apply transformations over the data on a set of points which satisfies specific conditions. 
-
-- *Linearity* applies a scalar transformation over the data, in linear algebra we did learn that a linear transformation $f$ satisfies:
-
-    $$f(\alpha u + \beta v) = \alpha f(u) + \beta f(v) \implies 0 \to 0$$
-
-    <br>
-
-- *Affinity* can be described as a linear transformation incorporating a *traslation*, being $f: V \to W$ a linear transformation between two vector spaces, then we can consider an *affine transformation* $t: V \to W$ as:
-
-    $$t = f + b : b \in W$$
-
-    Where $b$ takes the rol of the translation.
-
-    <br>
-
-Now, suposse it is: $\mathcal{X} = \mathbb{R}^d \wedge \mathcal{Y} = \mathbb{R}$ the problem, fixed this sets, is predict a real-valued output from a vector of features. The core assumption of linear regression is that the relationship between input and output is *affine*, meaning that the hypothesis class is:
-
-$$\mathcal{H} := \Set{h_\theta : x \to \theta^{\top}x + b \ \vert \ \theta \in \mathbb{R}^d \wedge b \in \mathbb{R}}$$
-
-The reasong for which we force the hipotesis to be an affine transformation is because for many types of relation between a set of parameters and the data, a linear application simply doesn't fit, for example a professional with $0$ years of experience doesn't receive a salary of $0$, the relation between the experience in a professional industry and the salary exists and is documented but is not linear.
-
-Thus, suppose we have $n$ observations, each observation is a pair $(x^{(i)},y^{(i)}) \in \mathcal{X} \times \mathcal{Y}$ where the output is roughly determined by the input, with some noise on top: $y^{(i)} = f(x^{(i)}) + \varepsilon^{(i)}$ (this is the affine relation we talk above), then the linear regression is the decision to search only among affine maps as candidates for $f$:
-
-![regression_lineal](/assets/images/ML/regression_lineal.png)
-
-<br>
-
-#### 1.2.1.3. Clasification Models.
-
-Before, we've introduced Regression models with Linear Regression but we will cover that topic more extensively later.
-
-No we gonna cover the Classification Model, we've already internalized the regression setup: you have a hypothesis $h : \mathcal{X} \times \mathcal{Y}$ that predicts a continuous response, $h$ is continous at any point which only makes sense if $\mathcal{Y}$ is isomorph to some subset of $\mathbb{R}^n : n \in\mathbb{N}$. Classification arises when this hipotesis is no longuer continous, in the sense that $\mathcal{Y}$ is a discrete set. 
-
-In regression we talked about an error aproximation through the loss function $\ell$ which tries to predict how far the prediction is from the desired output in a geometric "metric" sense, you care of the magnitude of the error, how far you are. In classification, being $\mathcal{Y}:= \Set{1,...,k}$ there is no meaningful notion of "distance"; when you predict a wrong class in $Y$, there is no near notion to the correct answer in the sense that class $1$ isn't more closer or much better than class $7$ when the desired output is class $3$, there are only right or wrong answers.
-
-This collapses $\ell$ to the *0-1 loss*, which counts missclasifications:
-
-$$\ell(h(x),y) = \mathbf{1}[h(x) \ne y]$$
-
-In regression you minimize empirical risk with a continuous loss (squared error, absolute error), and the hypothesis class consists of functions $h: \mathcal{X} \to \mathbb{R}$. In classification you minimize empirical risk with a discrete loss (0-1 loss), and the hypothesis class consists of functions $h: \mathcal{X} \to \Set{1,..., k}$
-
-![classification](/assets/images/ML/clasification.png)
-
-Then, basically, clasification models force the machine to recognise previously labeled class (minimizing the error function results) by using the hipotesis $h$ over the input $x$ data and identifying it in some value of the discrete codomain $y$.
-
-<br>
-
-### 1.2.2. Unsupervised Learning. Clustering.
-
-The idea in a high scale is that, in contrast of supervised learning, the labeling of the output $y$ dissapear, there are no wrong answer when apply the hipotesis on the data. The task for the algorith is to find structures in the data; clusters.
-
-In Classification there is a training set $\Set{(x_i​,y_i​)}_{i=1}^n$​ where the labels $y_i$ where given by an oracle, in the sense that is desired output. Then, the task is to find a map that approximates $x \to y$ as much as posible. Observe that the categories exists before the algorithm starts the distinction.
-
-Clustering inverts this relationship. The training set consist only in $\Set{x_i​}_{i=1}^n$ (without labels). The task is to discover that there are groups at all, and to assign each point to one. The categories are not predefined; they emerge from the geometric or distributional structure of the data itself. The fundamental assumption behind clustering is that the data is not uniformly spread across $\mathcal{X}$. but concentrates around certain regions. Clustering algorithms formalize different notions of what "concentrate" means:
-
-- *Centroid-based*; structure means proximity to a representative point.
-
-- *Density-based*; structure means regions of high density separated by regions of low density.
-
-- *Distributional*; structure means the data was plausibly generated by a mixture and inference on the latent component assignments.
-
-Each of these is a different inductive bias about what a "cluster" is.
-
-The comparison is more subtle than "one has labels, the other doesn't."
-
-The problem is ill-defined in a way classification is not. 
-
-- In classification, given a loss function and a hypothesis class, the optimal classifier is a well-defined object (the Bayes classifier, the ERM solution, etc.). 
-
-- In clustering, there is no unique "correct" partition, the answer depends on your notion of similarity, the number of clusters $k$ (often a hyperparameter you must choose), and the scale at which you look. Two entirely different clusterings of the same data can both be "valid."
-
-<br>
-
-# 2. Regression Model.
-
-## 2.1. Linear Regression Overview.
-
-Now, we gonna dive in the Linear Regression Model, this is the learning algorithm most widely used and many of the concepts used to explain it applies other training algorithms.
-
-Let's clear that, Linear Regression is an instantiation of what we call Supervised Learning, which is a training model that consist on first train the machine with previously labeled data $(x,y)$, where $x$ is called as the *input feature* data and $y$ is the *output target* variable (the expected output). Also is important to know that we count with a finite number of traning pairs $n$. 
-
-When you finish the training, you let the machine to predict output for new unlabeled data.
-
-<br>
-
-Each training pair is reflected in a *Cartesian coordinate system* forming a cloud of points. As we said before, linear regression consist in the assumption that the relation between each pair is an affin transformation, or simply a line:
-
-![regression_lineal](/assets/images/ML/regression_lineal.png)
-
-The notation $(x^{(i)},y^{(i)}) \in \mathcal{X} \times \mathcal{Y}$ referes that we are treating te i-th pair in the sample. Also, each pair is reflect in a table oppositing $x$ and $y$ in a $n$-row table:
-
-
-| pair | x | y | 
-| - | - | - |
-| $1$ | $x^{(1)}$ | $y^{(1)}$ |
-| ... | ... | ... |
-| $n$ | $x^{(n)}$ | $y^{(n)}$ | 
-
-<br>
-
-## 2.2. Training the machine. Linear regression.
-
-Remember that the training algorthim's job is two form a function $f$ with the provided training set such the transformation of an input feature $x$ by $f$, the prediction; $f(x)=\hat{y}$, is approximated enough to the target $y$; expected output ; $\hat{y} \to y$.
-
-As we say before, *linear regression* assumes that $f$ is represented as a straight line in the graph of the form:
-
-$$\hat{y} = f_{w,b}(x) := wx + b : w,b \in \mathbb{R}$$
-
-Is worth to note that this parameters tell to us how $\hat{y}$ is built from $x$:
-
-- $w$ represent how much $x$ contributes to $\hat{y}$, this will be clearer when linear regression model for multiple variables gets introduced; $x$ and $w$ are vectors related in $f$ by the dot product. This way each $w_i \in w$ tell us how much $x_i \in x$ feature contribute in the value of $\hat{y}$.
-
-- $b$ as well represent how much $y$ is independant from $x$ since is a constant value not related with the input. Observe that when $x = 0$, then $\hat{y} = b$ exactly showing that this is the value that separates $\hat{y}$ from any $wx$.
-
-<br>
-
-## 2.3. Cost Function.
-
-### 2.3.1. Squared Error.
-
-Until now, we stablished that inear regression is about a finite training set that is represented in a coordinate system. We want a line such $y = wx + b$ that represents well enough the relation between the points.
-
-Let's now dive what *well enough* means. Well enough means that minimizes the error in the prediction, let's now see what we call error and how to measure it.
-
-The most natural thing to measure is the *residual*: how far off is the prediction from the true:
-
-$$e^{(i)}= \hat{y}^{(i)} - y ^{(i)}$$
-
-So in intuitive terms, the thing we want to measure is $\displaystyle \sum_{i=1}^{n}e^{(i)}$, but positive and negative terms can cancel out and erase part of the information.
-
-The two natural candidates to solve the problem, $\vert e^{(i)} \vert$ and square $(e^{(i)})^2$, the reason why we decide to square is because is differentiable at any point (we will understand this later);$\displaystyle \sum_{i=1}^{n}(e^{(i)})^2$
-
-Now we take the average (so the cost doesn't scale arbitrarily with dataset size):
-
-$$\displaystyle \frac{1}{n} \sum_{i=1}^{n}(e^{(i)})^2$$
-
-This is the *Mean Squared Error*. It gives you a single number that summarizes how badly the line misses the data on average and is essentially what we are measuring.
-
-In practice you'll almost always see a factor of $\frac{1}{2}$ thrown in front:
-
-$$J(w,b) := \frac{1}{2m} \sum_{i=1}^{m} \bigl(f_{w,b}(x^{(i)}) - y^{(i)}\bigr)^2$$
-
-This doesn't change which $(w,b)$ minimizes $J$ (it's just a positive constant scaling). It's there purely for convenience: when you take the derivative, the exponent $2$ comes down and cancels with the $\frac{1}{2}$​, giving you cleaner gradient expressions.
-
-<br>
-
-### 2.3.2. Interpretation. Optimization Problem.
-
-Let's observe that $J(w,b)=0$ means that every single squared residual is zero, which forces each prediction to coincide with the labeled value; $f_{w,b}(x^{(i)}) = y^{(i)} \ \ \forall (x^{(i)},y^{(i)}) \in P(x,y)$ 
-
-As $J$ increases, the line deviates more. This way, $J$ defines an ordering on parameter pairs $(w,b)$ lower $J$ means a better-fitting line. Finding the best line is now a clean optimization problem; minimize $J$ over $(w,b) \in \mathbb{R}^2$.
-
-One thing worth noting: $J$ being zero is typically impossible (or undesirable) with real data, since the data has noise. But the key property holds $J$ is non-negative, equals zero only at perfect fit, and increases monotonically with the aggregate deviation of predictions from targets.
-
-<br>
-
-# 3. Gradient Descent.
-
-We just saw that, in linear regression model we assume that exists an affine transformation $f_{w,b}(x) := wx + b$ that makes a solid prediction over the labeled points $(x,y) \in \mathcal{X} \times \mathcal{Y}$. We also say that a way to measure how "solid" is this line is to build our Cost Function reprented as: $J(w,b) = \frac{1}{2m} \sum_{i=1}^{m} \bigl(f_{w,b}(x^{(i)}) - y^{(i)}\bigr)^2$ and we stablish it as an optimization problem over the $(w,b) \in \mathbb{R}^2$ that minimizes $J$ value as much as posible.
-
-Now, *Gradient Descent* taught us an way to consistently seach about $(w,b)$ pairs.
-
-<br>
-
-## 3.1. Introducing the problem.
-
-We have the *Mean Squared Error*; $J(\theta)$, which measures the average distance-error between the predicted values $\hat{y}$ and the labeled values $y$, and we want to find that parameter $\theta^*$ that minimizes that error. 
-
-For a simple system, for example a continous one-variable function on a real segment, we would calculate $\nabla J(\theta) = 0$:
-
-$$\nabla J(\theta) :=
-    \begin{pmatrix}
-    \frac{\partial J}{\partial \theta_1}(\theta)\\
-    \frac{\partial J}{\partial \theta_2}(\theta)\\
-    \vdots\\
-    \frac{\partial J}{\partial \theta_n}(\theta)
-    \end{pmatrix}\quad \underbrace{\implies}_{n=1} \quad \nabla J(\theta) = \frac{\partial J}{\partial \theta}(\theta) = \frac{dJ(\theta)}{d\theta} = J'(\theta) = 0$$
-
-<br>
-
-
-But in the moment the parameter space grows, that closed-form solution either doesn't exist or becomes computationally prohibitive. An iterative method is needed.
-
-<br>
-
-## 3.2. Gradient Descent Algorithm.
-
-Gradient Descent exploits one fundamental fact from calculus: the gradient $\nabla J(\theta)$ points in the direction of steepest ascent of $J$ at $\theta$, meaning that "decrease" $J$ implies move $\theta$ towards the opposite direction of $\nabla J$:
-
-
-$$\theta^{(t+1)} := \theta^{(t)} - \alpha \,\nabla J(\theta^{(t)}): \alpha \in \mathbb{R}^+$$
-
-Where $\alpha$ is the *learning rate* and controls the step size.
-
-This way, computing $\nabla_\theta J$ gives you *a concrete vector that tells you how each parameter contributes to the error*. In the sense that each component $\frac{\partial J}{\partial \theta_j}$​ tells you how $J$ (the error) changes, let's have in mind the image above, $\theta$ always advance from left towards right, this means that:
-
-- If $\frac{\partial J}{\partial \theta_j} > 0$, then the function is ascending and is moving away from the minimum, $\theta$ has overshot the minimum to the right so subtract a positive value $\alpha · \frac{\partial J}{\partial \theta}$ to $\theta$ nudges $\theta$ to the left, hence $J$ towards the minimum.
-
-- If $\frac{\partial J}{\partial \theta_j} < 0$, then the function is descending and is approaching to the minimum, $\theta$ has the minimum in front, to the right, so subtract a negative value $\alpha · \frac{\partial J}{\partial \theta}$ is like add a positive one, nudging $\theta$ forward and hence $J$ towards the minimum.
-
-So, the sign always corrects the direction in both cases.
-
-It is worth to note that convexity matters. For linear regression, $J$ is convex, there's a single global minimum and gradient descent will find it (given a reasonable $\alpha$). For neural networks, $J$ is non-convex with many local minima and saddle points.
-
-<br>
-
-It is also worth noting that, as $J$ gets closer to the minimum, the derivative term gets smaller in absolute terms, meaning that the term substracted to $\theta$ is smaller, so $J$ advance more slowly to the minimum as it gets closer through Gradient Descent.
-
-<br>
-
-Observe that applying this two our linear regression model:
-
-$$J(w,b) := \frac{1}{2m} \sum_{i=1}^{m} \bigl(f_{w,b}(x^{(i)}) - y^{(i)}\bigr)^2 \implies \nabla J(w,b) := \begin{pmatrix} \frac{\partial J(w,b)}{\partial w} \\ \frac{\partial J(w,b)}{\partial b}  \end{pmatrix}$$
-
-Where:
-
-$$\begin{cases}\frac{\partial J(w,b)}{\partial w} =\frac{1}{m} \sum_{i=1}^{m} \bigl(f_{w,b}(x^{(i)}) - y^{(i)}\bigr)x \\ \frac{\partial J(w,b)}{\partial b} = \frac{1}{m} \sum_{i=1}^{m} \bigl(f_{w,b}(x^{(i)}) - y^{(i)}\bigr)  \end{cases}$$
