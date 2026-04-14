@@ -168,14 +168,80 @@ This basically means that the field intends to be the structure in which equatio
 
 # 2. Vector spaces.
 
-Before we've seen a set of axioms that rules how a set of operations $\Omega$ behaves in a non-empty set $K$. We extend this concept to two sets $(K,V)$ where $K$ is a field and $V$ is a group and both related between them an action.
+Before we've seen a set of axioms that rules how a set of operations $\Omega$ behaves in a non-empty set $K$. We extend this concept to two sets $(K,V)$ where $K$ is a field and $V$ is a group and both related between them by a field-action.
+
+Let's dive into this.
 
 <br>
 
-## 2.1. Actions.
+## 2.1. Actions. Algebraic Actions.
+
+### 2.1.1. Definition.
+
+First, let's define what an action is. Let be $A$ and $S$ two sets, then we define an action as a function:
+
+$$\varphi: A \times S \to S \\\\ \ \ \ \ \ \ (a,s) \to s$$
+
+It grabs two elements, one from $A$ and another from $S$ and it maps it to a third element from $S$.
+
+As defined, this function doesn't have interest at all, it become interesting when $\varphi$ respect the structure of $A$, this way is said that an action transforms $S$ using $A$ structure.
+
+<br>
+
+### 2.1.2. Group's Action.
+
+**Group's action**
+
+Let be again $(G,S,\varphi)$ such $\varphi$ is an action from $G$ to $S$, let's suppose now that $(G, \star)$ is a group for some internal operation $\star$. In this context, we impose two rules (A1,A2) over $\varphi : A \times S \to S$ 
+
+- **Closure**: $\varphi(a,s) \in S \ \ \forall a \in G, s \in S$, forced by $\varphi$ definition.
+
+    <br>
+
+- **(A1) Identity**: Be $e \in G$ the identity on $G$ then we require: $\varphi(e,s) = s \ \ \forall s \in S$
+
+    Meaning that the $G$'s identity doesn't move anything through $\varphi$.
+
+    <br>
+
+- **(A2) Associativity**: $\varphi(a,\varphi(b,s)) = \varphi(a \star b,s) \ \ \forall a,b \in G, s \in S$
+
+    Observe that this resembles to the orden invariant we talked in groups, as long as the direction of the composition remains still ($a \to b \to s$) it doesn't matter the order in which order you perform this compositions.
+
+    Composing $b$ with $s$ through $\varphi$ and then this with $a$ is the same that "multiply" $a \star b$ in $G$ and then compose it with $s$ through $\varphi$. Check that if we write $a \star b = ab \wedge \varphi(a,s) = a\ ·s$ then, the rule above states that:
+
+    $$a \ ·(b \ ·s) = (ab)\ ·s \ \ \forall a,b \in G, s \in S $$
+
+    And it appears more familiar.
+
+    <br>
 
 
-## 2.2. Vector Space definition.
+- **Inverse**: Observe this is not labeled as an axiom because it can be deduced from the two above but is included from pedagogic reasons.
+
+    The idea of the inverse on a group intends to formalice the idea of revert a composition or go back. Thus, we are looking to demonstrate that:
+
+    $$\forall a \in G \ \exists x \in G  \ \forall s \in S: \varphi(x,\varphi(a,s)) = \varphi(a,\varphi(x,s)) = s$$
+
+    Let's take $x = a^{-1}$ and observe that applying A2 and then A1 we get:
+
+    $$a^{-1} \ ·(a \ · s) = (a^{-1}a) \ · s = e \ · s = s \\\\ a \ · (a^{-1} \ · s) = (aa^{-1}) \ · s = s$$
+
+    <br>
+
+Thus, this four properties makes that the triple $(G,S,\varphi)$ behaves like a group in the sense that we can define and solve equations over the elements of $S$ which remember, initially wasn't a group:
+
+$$ \varphi(a,x) = s \iff x = \varphi(a^{-1},s)$$
+
+Meaning that we can treat the elements of $S$ as elements over which we can define constraints, relations, etc. 
+
+Although, is worth to remember that $S$ is not a group an neither is the triple $(G,S, \varphi)$, what $S$ has aqcuired through $\varphi$ is a family of reversible parametrized transformations by the group $G$.
+
+
+
+<br>
+
+## 2.2. Field's action. Vector Space definition.
 
 
 
