@@ -32,6 +32,7 @@ author: German Sanmi
         - 3.3.3. Explaining the Algorithm
         - 3.3.4. Descent Mechanism
 
+- 4. Summary
 
 
     <br>
@@ -54,7 +55,7 @@ Formally, we hace the following pieces:
 
 - An *output space* $\mathcal{Y}$, which is the set of all posible outputs. This depends on what is being modelized, in clasification problems the output set can be a finite subset of the natural numbers which are the clusters, $\mathcal{Y} = [n]$, for regression, which wants to predict a continuos value is; $\mathcal{Y} = \mathbb{R}$.
 
-- The *target function*, the ideal mapping $\mathcal{X} \to \mathcal{Y}$ that relates each input $x \in \mathcal{X}$ to the desired output $y \in \mathcal{Y}$ which is abstracted in the application $f : \mathcal{X} \to \mathcal{Y}$ and remains unknown.
+- The *target function*, the ideal mapping $\mathcal{X} \to \mathcal{Y}$ that relates each input $x \in \mathcal{X}$ to the desired output $y \in \mathcal{Y}$ which is abstracted in the application $f : \mathcal{X} \to \mathcal{Y}$ and remains unknown. This deterministic presentation is purely pedagogic and more complex in reality, the precise form would be to say that the data pairs arise from an unknown joint probability distribution $P$ over $\mathcal{X} \times \mathcal{Y}$.
 
 - The *training set*; a finite subset $\mathcal{D} \subset \mathcal{X} \times \mathcal{Y}$ defined as $\mathcal{D} := \Set{(x_i,y_i)}_{i=1}^m : y_i = f(x_i)$
 
@@ -523,3 +524,6 @@ There is no closed-form formula for the optimal learning rate in general; it is 
 
 <br>
 
+# 4. Summary.
+
+Thus, essentially, Machine Learning are applied maths over

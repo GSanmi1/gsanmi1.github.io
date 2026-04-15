@@ -543,9 +543,11 @@ Now, we verify that the addition's axioms for a field hold in $\mathbb{R}$, with
 
     1. $\alpha, \beta \neq \varnothing \implies \alpha + \beta \neq \varnothing$. 
     
-        Also suppose that $p,q \in \mathbb{Q}$ are the upperbounds of $\alpha, \beta \in \mathbb{R}$ respectively (we can assume its existance since both of them are cuts and thus proper subsets of $\mathbb{Q}$ so there are indeed elementos of $\mathbb{Q}$ out of each subsets), then is clear that $p + q \notin \alpha + \beta \implies \alpha + \beta \neq \mathbb{Q}$. 
+        Also suppose that $p,q \in \mathbb{Q}$ are the upperbounds of $\alpha, \beta \in \mathbb{R}$ respectively (we can assume its existance since both of them are cuts and thus proper subsets of $\mathbb{Q}$ so there are indeed elements of $\mathbb{Q}$ out of each subsets), then is clear that $p + q \notin \alpha + \beta \implies \alpha + \beta \neq \mathbb{Q}$. 
         
         Observe that there is something worth to say of upperbounds when speaking about cuts. By definition, $p$ is an upperbound of $X$ iff $x \leq p \ \ \forall x \in X$, but if $X$ were a cut, by the third property if $\exists x_0 : p = x_0 \in X \implies \exists r \in X : p < r$ and $p$ would not an upperbound, thus, when talking about cuts, all upperbounds are always strict upperbounds, the definition of upperbounds always collapses to $x < p \ \ \forall x \in X$ and the cut do not contains it.
+
+        Also observe
 
     <br>
 
