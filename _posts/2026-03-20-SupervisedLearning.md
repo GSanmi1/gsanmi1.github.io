@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Regression with multiple input variables."
-subtitle: "Multiples features. Vectorization."
+title: "Learning Models: Supervised Learning."
+subtitle: "Intro to Learning Models. Supervised Learning. Univariate Linear Regression."
 date: 2026-03-21 09:00:00 +0000
 categories: ['Maths', 'ML']
 tags: ['Maths','Deeplearning.ai']
@@ -28,6 +28,30 @@ author: German Sanmi
 
 - 3.1. Defining the problem.
 - 3.2. Writting our code.
+
+<br>
+
+# 1. Learning Models.
+
+In the first section we talked about a problem, set a procedure or algorithm to approximate a function which stablish a relation of a mapping between two variable sets $\mathcal{X}$ and $\mathcal{Y}$.
+
+With this idea in mind we stablish a general template about this procedure based on an iterative process to find the local minima of the function that measures the error of the hypotesis over the training set. Minimizing the error results in a "fair" reliable aproximation of the wandered function.
+
+This template's componentes are:
+
+1. An *input space* $\mathcal{X}$ and output space $\mathcal{Y}$. This is what the model consumes as data.
+
+2. A *hypothesis set* $\mathcal{H} = \{h_\theta \mid \theta \in \Theta \subseteq \mathbb{R}^p\}$. The family of functions which determines the model's expressiveness; what patterns it can and cannot represent.
+
+3. A *loss function* $L : \mathcal{Y} \times \mathcal{Y} \to \mathbb{R}_{\geq 0}$. How do we measure error. 
+
+4. A *cost function* $J(\theta)$. How the loss functions gets aggregated across the training data. This determines what is optimized and decide the behavior of the model.
+
+5. An *optimization algorithm*.
+
+    <br>
+
+Every distinct decision over this parameters results in what we call a *learning model*. The learning models are in fact instantiations of the template we described in the post before. Most of the changes affects to the components $1$,$2$ and $3$, the cost function and the gradient descent remains still over the model we will see in this blog.
 
 <br>
 
