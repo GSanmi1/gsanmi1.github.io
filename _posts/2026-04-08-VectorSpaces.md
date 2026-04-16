@@ -219,30 +219,93 @@ Let be again $(G,S,\varphi)$ such $\varphi$ is an action from $G$ to $S$, let's 
 
 - **Inverse**: Observe this is not labeled as an axiom because it can be deduced from the two above but is included from pedagogic reasons.
 
-    The idea of the inverse on a group intends to formalice the idea of revert a composition or go back. Thus, we are looking to demonstrate that:
+    The idea of the inverse on a group intends to formalice the idea of revert a composition or go back. Thus, we are looking to demonstrate that, calling $\varphi_a(s) = \varphi(a,s)$
 
-    $$\forall a \in G \ \exists x \in G  \ \forall s \in S: \varphi(x,\varphi(a,s)) = \varphi(a,\varphi(x,s)) = s$$
+    $$\forall \varphi_a \ \exists \varphi^{-1}_{a}  \ \forall s \in S: \varphi_a(\varphi^{-1}_{a}(s)) = \varphi^{-1}_{a}(\varphi_a(s)) = s$$
 
-    Let's take $x = a^{-1}$ and observe that applying A2 and then A1 we get:
+    Let's take $x = a^{-1}$ and observe that applying $A2$ and then $A1$ we get:
 
-    $$a^{-1} \ ·(a \ · s) = (a^{-1}a) \ · s = e \ · s = s \\\\ a \ · (a^{-1} \ · s) = (aa^{-1}) \ · s = s$$
+    $$a^{-1} \ ·(a \ · s) = (a^{-1}a) \ · s = e \ · s = s$$
+
+    $$a \ · (a^{-1} \ · s) = (aa^{-1}) \ · s = s$$
+
+    Meaning that $\varphi^{-1}_{a}= \varphi_{a^{-1}} \ \ \forall a \in G$.
 
     <br>
 
 Thus, this four properties makes that the triple $(G,S,\varphi)$ behaves like a group in the sense that we can define and solve equations over the elements of $S$ which remember, initially wasn't a group:
 
-$$ \varphi(a,x) = s \iff x = \varphi(a^{-1},s)$$
+$$ \varphi_a(x) = s \iff x = \varphi_{a^{-1}}(s)$$
 
 Meaning that we can treat the elements of $S$ as elements over which we can define constraints, relations, etc. 
 
-Although, is worth to remember that $S$ is not a group an neither is the triple $(G,S, \varphi)$, what $S$ has aqcuired through $\varphi$ is a family of reversible parametrized transformations by the group $G$.
+Although, is worth to remember that $S$ is not a group an neither is the triple $(G,S, \varphi)$, what $S$ has aqcuired through $\varphi$ is a family of reversible parametrized transformations by the group $G$. Is a form to use $G$ in order to study $S$.
 
 
 
 <br>
 
-## 2.2. Field's action. Vector Space definition.
+## 2.2. Field's action. Vector Space.
 
+### 2.2.1. Definition.
 
+Now consider again a triple $(K,V,\ ·)$, where $K$ is a field and $V$ is an abelian group and $·: K \times V \to V$ is a field's action. 
+
+As we said before this action respects the algebraic structure of $K$, which remember; is a combined abelian group over two different compatible operations, by forcing the following axioms:
+
+- **M1**: $1_K \ · v = v$. The identity over the product doesn't transform anything.
+- **M2**: $\alpha \ · (\beta \ · v) = (\alpha \beta) \ · v \ \ \forall \alpha, \beta \in K, v \in V $. asociativity resembleance, order-independence while direction stays still.
+- **D1**: $\alpha \ · (u + v) = \alpha \ · u + \alpha \ · v \ \ \forall \alpha \in K, u, v \in V $. Compatibility between $·$ and $+$ in $V$.
+- **D2**: $(\alpha + \beta) \ · v =\alpha \ · v + \beta \ · v \ \ \forall \alpha, \beta \in K, v \in V$. Compatibility between $·$ and $+$ in $K$.
+
+This four axioms plus the four axioms of the group $V$ gives us the eight axioms of the vector space $(K,V, \ ·)$. 
 
 <br>
+
+### 2.2.2. Conceptually Approach.
+
+This time, a field's action over a group doesn't intend to give an algebraic structure to $V$, instead it provides, through $K$ a uniform deformation mechanism. The aritmetic system of $K$ as a field is used to perform richer algebraic manipulations on $V$ as a group.
+
+$·: K \times V \to V$ gives to $V$ a parametric scaling mecanism through $(K,+, \ ·)$ which, ultimately, allows a coherent way to perform linear combinations on the elements of $V$. 
+
+Let's dive into "scaling", "linear" and "linear combination" terms in order to understand what this introduction means.
+
+<br>
+
+**Scaling.**
+
+Scaling is about relating $V$'s elements using $K$'s elements as mediators. The term "scalar" comes from scale; changing the size without changing the essential nature of the object.
+
+Then, being $u,v \in V$ and $\alpha \in K : \alpha \neq 0$, when we say that $u = \alpha \ · v$, we are really saying $u$ is obtained from $v$, keeping his structural information since, thanks to $K$ to be a field and $·$ to respect $K$ properties we can revert this operation and go back from $u$ to $v$. Let's see that by $M2$ and $M1$ we can garantee the existance of some $\beta \in K$ such $\beta \ · u = v$. Take $\beta = \alpha ^{-1}$ and:
+
+$$\alpha^{-1} \ · u = \alpha^{-1} \ · (\alpha \ · v) \underbrace{=}_{M2} (\alpha^{-1} \alpha) \ · v = (1_K) \ · v \underbrace{=}_{M1}  v  $$
+
+In this context we say that $u$ and $v$ are *proportionals*. Specifically, there exists an entire family of elements for which $u$ is proportional to: $\Set{\alpha v : \alpha \in K \wedge \alpha \neq 0} \subseteq V$.
+
+<br>
+
+**Lineal & Lineal Combinations.**
+
+Lineal referes to independant contribution of severals parts which no interfers between them.
+
+In this case, a linear combination is the minimal operation that takes place in the triple $(K,V, \ ·)$; independant contribution of proportional components of $V$. 
+
+Is the most general way to combine while respecting the principle of independent contributions:
+
+$$\alpha v + \beta u: \alpha , \beta \in K \ \ u, v \in V$$
+
+Observe that $D1$ and $D2$ garantees that $K$ and $V$ respects this object on $(K,V,\ ·)$.
+
+<br>
+
+**Vector Space**
+
+Thus, $(K,V, \ ·)$ is the algebraic environment where a set of objects can be combined by independent contributions weighted by a field. A field's action is the mechanism that imports the arithmetic of $K$ as a system of intensities applicable to the elements of $V$. 
+
+A vector space is nothing but, conceptually, a functional linear combination system and his elements are called vectors.
+
+<br>
+
+**Vectors** 
+
+Thus, vectors are elements of an algebraic structure called vector space whose elements relate through linear combinations verifying the eight axioms presented before.

@@ -33,25 +33,48 @@ author: German Sanmi
 
 # 1. Learning Models.
 
-In the first section we talked about a problem, set a procedure or algorithm to approximate a function which stablish a relation of a mapping between two variable sets $\mathcal{X}$ and $\mathcal{Y}$.
+## 1.1. Introduction. Problem setup.
 
-With this idea in mind we stablish a general template about this procedure based on an iterative process to find the local minima of the function that measures the error of the hypotesis over the training set. Minimizing the error results in a "fair" reliable aproximation of the wandered function.
+In the first section we talked about a model to find an approximation of an unknown relation between two variable sets $\mathcal{X}$ and $\mathcal{Y}$.
+
+This model consist in a template about this procedure based on an iterative process to find the local minima of the function that measures the error of the hypotesis over the training set. Minimizing the error results in a "fair" reliable aproximation of the wandered relation.
 
 This template's componentes are:
 
-1. An *input space* $\mathcal{X}$ and output space $\mathcal{Y}$. This is what the model consumes as data.
+1. An *input space* $\mathcal{X}$ and output space $\mathcal{Y}$. This where the relation lives and where the predictions want to be made.
 
-2. A *hypothesis set* $\mathcal{H} = \{h_\theta \mid \theta \in \Theta \subseteq \mathbb{R}^p\}$. The family of functions which determines the model's expressiveness; what patterns it can and cannot represent.
+2. The training set $\mathcal{D}$, this what the model consumes to optmize the approximation. 
 
-3. A *loss function* $L : \mathcal{Y} \times \mathcal{Y} \to \mathbb{R}_{\geq 0}$. How do we measure error. 
+3. A *hypothesis set* $\mathcal{H} = \{h_\theta \mid \theta \in \Theta \subseteq \mathbb{R}^p\}$. The family of functions which determines the model's expressiveness; what patterns it can and cannot represent.
 
-4. A *cost function* $J(\theta)$. How the loss functions gets aggregated across the training data. This determines what is optimized and decide the behavior of the model.
+4. A *loss function* $L : \mathcal{Y} \times \mathcal{Y} \to \mathbb{R}_{\geq 0}$. How do we measure error. 
 
-5. An *optimization algorithm*.
+5. A *cost function* $J(\theta)$. How the loss functions gets aggregated across the training data. This determines what is optimized and what get's parametrized $\theta$ and decide the behavior of the model.
+
+6. An *optimization algorithm*.
 
     <br>
 
-Every distinct decision over this parameters results in what we call a *learning model*. The learning models are in fact instantiations of the template we described in the post before. Most of the changes affects to the components $1$,$2$ and $3$, the cost function and the gradient descent remains still over the model we will see in this blog.
+Every distinct decision over this parameters results in what we call a *learning model*. The learning models are in fact instantiations of the template we described in the post before. Most of the changes affects to the components $1$,$3$ and $4$, the cost function and the gradient descent remains still over the model we will see in this blog.
+
+<br>
+
+## 1.2. Learning Model. Learning Paradigms.
+
+Essentially, what we presented above is the *problem setup*, the parts of the problem we want to solve.
+
+A problem setup is a tuple:
+
+$$\mathcal{P} = (\mathcal{X}, \mathcal{Y}, \mathcal{D}, \mathcal{H}, L, J)$$
+
+With a fixed data, this is, given $(\mathcal{X}, \mathcal{Y}, \mathcal{D})$, then we decide the *learning model*, this is, how the model predicts and how we calibrate how good predicts (the hypotesis set and the loss function).
+
+Thus, a learning model is a pair:
+
+$$M:=(\mathcal{H}, L)$$
+
+This way, *linear regression model* means; learning model of afin transformation hypotesis and squared loss function: $M_{lr}:=(H_{at},L_s)$ 
+
 
 <br>
 
