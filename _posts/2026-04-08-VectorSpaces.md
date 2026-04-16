@@ -180,11 +180,12 @@ Let's dive into this.
 
 First, let's define what an action is. Let be $A$ and $S$ two sets, then we define an action as a function:
 
-$$\varphi: A \times S \to S \\\\ \ \ \ \ \ \ (a,s) \to s$$
+$$\varphi: A \times S \to S$$
+$$\ \ \ \ \ \ \ (a,s) \to s$$
 
 It grabs two elements, one from $A$ and another from $S$ and it maps it to a third element from $S$.
 
-As defined, this function doesn't have interest at all, it become interesting when $\varphi$ respect the structure of $A$, this way is said that an action transforms $S$ using $A$ structure.
+As defined, this function doesn't have interest at all, it become interesting when $\varphi$ respect the structure of $A$, this way is said that an action transforms $S$ using $A$ algebraic structure.
 
 <br>
 
@@ -192,7 +193,9 @@ As defined, this function doesn't have interest at all, it become interesting wh
 
 **Group's action**
 
-Let be again $(G,S,\varphi)$ such $\varphi$ is an action from $G$ to $S$, let's suppose now that $(G, \star)$ is a group for some internal operation $\star$. In this context, we impose two rules (A1,A2) over $\varphi : A \times S \to S$ 
+Let be again $(G,S,\varphi)$ such $\varphi : G \times S \to S$, let's suppose now that $G$, is a group for some internal operation $\star : G \times G \to G$. 
+
+In this context, we impose two rules $A1$, $A2$ over $\varphi : A \times S \to S$. In total, the triple $(G,S,\varphi)$ 
 
 - **Closure**: $\varphi(a,s) \in S \ \ \forall a \in G, s \in S$, forced by $\varphi$ definition.
 
@@ -284,9 +287,9 @@ In this context we say that $u$ and $v$ are *proportionals*. Specifically, there
 
 <br>
 
-**Lineal & Lineal Combinations.**
+**Linear & Linear Combinations.**
 
-Lineal referes to independant contribution of severals parts which no interfers between them.
+Linear referes to independant contribution of severals parts which no interfers between them.
 
 In this case, a linear combination is the minimal operation that takes place in the triple $(K,V, \ ·)$; independant contribution of proportional components of $V$. 
 
