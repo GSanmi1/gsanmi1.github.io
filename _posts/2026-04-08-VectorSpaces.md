@@ -309,3 +309,10 @@ A vector space is nothing but, conceptually, a functional linear combination sys
 **Vectors** 
 
 Thus, vectors are elements of an algebraic structure called vector space whose elements relate through linear combinations verifying the eight axioms presented before.
+
+Being the vector space an algebraic structure means that vectors (and vector space) are nothing, as we say on the start of this very notes, algebra cares about how to operate and properties that emerges from a some defined operatable structure.
+
+In other words; vectors are the elements of an abelian group $V$ on which a field $K$ acts through a "deformation" mechanism. This action, the combination o composition of this deformated elements of $V$, is what we call linear combinations: weighted sums where each element of $V$ contributes with an intensity set by $K$.
+
+The corolary from this assert is that what really cares is that there are objects (matrix, polynomials, arrows, etc) that with the right operations, verifies the vector space axioms, thus, they are vectors and all the machinery defined around them works also for this objects.
+
