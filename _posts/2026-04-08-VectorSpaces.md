@@ -226,13 +226,13 @@ In this context, we impose two rules $A1$, $A2$ over $\varphi : A \times S \to S
 
     $$\forall \varphi_a \ \exists \varphi^{-1}_{a}  \ \forall s \in S: \varphi_a(\varphi^{-1}_{a}(s)) = \varphi^{-1}_{a}(\varphi_a(s)) = s$$
 
-    Let's take $x = a^{-1}$ and observe that applying $A2$ and then $A1$ we get:
+    Let's take $x = a^{-1}$ and observe that applying $A2$, $A1$ and the existance of the inverse in $G$ we get:
 
     $$a^{-1} \ ·(a \ · s) = (a^{-1}a) \ · s = e \ · s = s$$
 
     $$a \ · (a^{-1} \ · s) = (aa^{-1}) \ · s = s$$
 
-    Meaning that $\varphi^{-1}_{a}= \varphi_{a^{-1}} \ \ \forall a \in G$.
+    Meaning that $\varphi^{-1}\_{a}= \varphi_{a^{-1}} \ \ \forall a \in G$.
 
     <br>
 
@@ -319,3 +319,192 @@ In other words; vectors are the elements of an abelian group $V$ on which a fiel
 
 The corolary from this assert is that what really cares is that there are objects (matrix, polynomials, arrows, etc) that with the right operations, verifies the vector space axioms, thus, they are vectors and all the machinery defined around them works also for this objects.
 
+<br>
+
+## 2.3. Examples.
+
+Let's see a few mathematical objects that algebraicly behaves as vector spaces.
+
+### 2.3.1. The n-tuple space.
+
+Consider $F$ a field, then the algebraic structure $(F^n,+)$ with the addition behaving as:
+
+$$+: F^n \times F^n \to F^n \mid x + y := \begin{pmatrix}x_1 + y_1\\ \vdots \\ x_n+y_n\end{pmatrix} \in F^n$$
+
+Observe that properties of the abelian group $(F,+)$ expands to $(F^n,+)$ so this is also an abelian group.
+
+Thus, defining the function defined as:
+
+$$· : F \times F^n \to F^n$$
+$$ (\alpha, \begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix} ) \to  \begin{pmatrix}\alpha x_1 \\ \vdots \\ \alpha x_n\end{pmatrix}$$
+
+Veryies the field's action axiom:
+
+- **M1**: $1 \ · \begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix} = \begin{pmatrix}1x_1 \\ \vdots \\ 1x_n\end{pmatrix} = \begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix} \ \ \forall x \in F^n$
+
+    <br>
+
+- **M2**: $\alpha \ ·( \beta \ · \begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix}) = \alpha \ · \begin{pmatrix}\beta x_1 \\ \vdots \\\beta x_n\end{pmatrix} = \begin{pmatrix}\alpha \beta x_1 \\ \vdots \\\alpha \beta x_n\end{pmatrix} = (\alpha \beta) \ · \begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix} \ \ \forall \alpha, \beta \in F, x \in F^n$
+
+    <br>
+
+- **D1**:
+
+    $$\alpha \ · (\begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix} + \begin{pmatrix}y_1 \\ \vdots \\ y_n\end{pmatrix}) = \alpha \ · \begin{pmatrix}x_1 +y_1 \\ \vdots \\ x_n + y_n\end{pmatrix} = \begin{pmatrix}\alpha (x_1 + y_1) \\ \vdots \\ \alpha (x_n + y_n)\end{pmatrix} = \begin{pmatrix}\alpha x_1 + \alpha y_1\\ \vdots \\ \alpha x_n + \alpha y_n\end{pmatrix}$$
+
+    $$= \begin{pmatrix}\alpha x_1 \\ \vdots \\ \alpha x_n\end{pmatrix} + \begin{pmatrix}\alpha y_1 \\ \vdots \\ \alpha y_n\end{pmatrix} = \alpha \ · \begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix} + \alpha \ · \begin{pmatrix}y_1 \\ \vdots \\ y_n\end{pmatrix} \ \ \forall x,y \in F^n, \alpha \in F$$
+
+    <br>
+
+- **D2**: 
+
+    $$(\alpha + \beta)\ · \begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix} = \begin{pmatrix}(\alpha + \beta)x_1 \\ \vdots \\ (\alpha + \beta)x_n\end{pmatrix} = \begin{pmatrix}\alpha x_1 + \beta x_1 \\ \vdots \\ \alpha x_n + \beta x_n\end{pmatrix} = \begin{pmatrix}\alpha x_1 \\ \vdots \\ \alpha x_n\end{pmatrix} + \begin{pmatrix}\beta x_1 \\ \vdots \\ \beta x_n\end{pmatrix} $$
+
+    $$= \alpha \ · \begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix} + \beta \ · \begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix}$$
+
+
+    <br>
+
+Thus, the triple $\big(F,(F^n,+), \ · \big)$ satisfies:
+
+- $F$ being a field.
+- $(F^n,+)$ an abelian group.
+- $(\ ·)$ is a field's action (an action satisfying $M1,M2,D1,D2$ axioms).
+
+And is a vector space. 
+
+<br>
+
+### 2.3.2. The space of m x n matrices.
+
+Let's consider the set $M_{m \times n}(F) = F^{m \times n}$ with
+
+$$+: F^{m \times n} \times F^{m \times n} \to F^{m \times n}$$
+
+$$(a_{ij}) + (b_{ij}) := \big((a_{ij} + b_{ij})_{ij} \big)\in F^{m \times n}$$
+
+Observe that again addition in $F^{m \times n}$ is extended from $(F,+)$ which is an abelian group so $(F^{m \times n},+)$ is also an abelian group, the argument is the same, addition in $F^{m \times n}$ are $mn$ additions on $F$.
+
+<br>
+
+Also, consider the action: 
+
+$$· : F \times F^{m \times n} \to F^{m \times n}$$
+$$ (\alpha, (a_{ij}) ) \mapsto  (\alpha a_{ij})$$
+
+Observe that:
+
+- **M1**: $1 \ · (a_{ij}) = (1 a_{ij}) = (a_{ij}) \ \ \forall (a_{ij}) \in F^{m \times n}$
+
+    <br>
+
+- **M2**: $\alpha \ · (\beta \ · (a_{ij})) = \alpha \ · (\beta (a_{ij})) = (\alpha \beta (a_{ij})) = (\alpha \beta) \ · (a_{ij}) \ \ \forall \alpha, \beta \in F, (a_{ij}) \in F^{m \times n}$
+
+    <br>
+
+- **D1**: $$\alpha \ · ((a_{ij}) + (b_{ij})) = \alpha \ · \big((a_{ij} + b_{ij})_{ij} \big) = \big(\alpha (a_{ij} + b_{ij})_{ij} \big) = \big(((\alpha a_{ij}) + (\alpha b_{ij}))_{ij} \big)$$
+
+    $$ = (\alpha a_{ij}) + (\alpha b_{ij}) = \alpha \ · (a_{ij}) + \alpha \ · (b_{ij}) \ \ \forall \alpha \in F, (a_{ij}),(b_{ij}) \in F^{m \times n}$$
+
+    <br>
+
+- **D2**: 
+
+    $$(\alpha + \beta) \ · (a_{ij}) = (((\alpha + \beta)a_{ij})_{ij}) = ((\alpha a_{ij} + \beta a_{ij})_{ij}) = (\alpha a_{ij}) + (\beta a_{ij}) \ \ \forall \alpha, \beta \in F, (a_{ij})\in F^{m \times n}$$
+
+    <br>
+
+This way, $F$ is a field, $(F^{m \times n},+)$ is an abelian group and $( \ ·)$ is a field's action of $F$ over $(F^{m \times n},+)$. 
+
+Thus, $\big(F,(F^{m\times n},+), \ · \big)$ is a vector space.
+
+<br>
+
+### 2.3.3. The space of functions from a set to a field. 
+
+Consider now some field $K$ and some set $S \neq \varnothing$, then, remember that being $f : S \to K$ a function, this gets identified with his graph $f \subseteq S \times K : (\forall s \in S \ \exists ! \alpha \in K \mid (s,\alpha) \in f)$. 
+
+Then, lets take the :
+
+$$K^S := \Set{f \in \mathcal{P}(S \times K) \mid \forall s \in S \ \exists ! \alpha \in K : (s,\alpha) \in f}$$
+
+In this context, we convine the notation  $f(s) = \alpha \iff (s,\alpha) \in f$, then let's call:
+
+$$ f = \Set{(s,f(s)) \mid s \in S}$$
+
+
+
+This is the set of all the functions from $S$ to $K$ and define an addition over $K^S$ elements as:
+
+$$+ : K^S  \times K^S \to K^S \mid (f,g) \mapsto f+g:= \Set{(s,f(s) + g(s)) \mid s \in S}$$
+
+Observe that, due to the closure in $(K,+)$ we have that $f(s) + g(s) \in K$, so $f+g \in K^S$. Or simply, abreviate it as the formulation: $(f+g)(s) = f(s) + g(s)$.
+
+The addition definition agains get's defined directly against the addition in $K$, so $(K^S,+)$ is an abelian group. Being the neutral element  and the inverse defined as:
+
+$$0 := \Set{(s, 0_K) \mid s \in S}$$
+$$-f := \Set{(s, -f(s)) \mid s \in S}$$
+
+<br>
+
+Also, define the action:
+
+$$· : K \times K^S \to K^S \mid  (\alpha, f) \mapsto \alpha \ · f := \Set{(s,\alpha f(s)) \mid s \in S}$$
+
+And check that satisfies the field's action axiom:
+
+- **M1**: $1 \ · f = \Set{(s,1 f(s)) \mid s \in S} = \Set{(s,f(s)) \mid s \in S} = f$ 
+
+    <br>
+
+- **M2**: 
+
+    $$\alpha \ ·(\beta \ ·f ) =\alpha \ · \Set{(s,\beta f(s)) \mid s \in S} = \Set{(s,\alpha \beta f(s)) \mid s \in S} $$
+    
+    $$= (\alpha \beta) \ · \Set{(s, f(s)) \mid s \in S} = (\alpha \beta) \ ·f$$
+
+    <br>
+
+- **D1**: 
+
+    $$\alpha \ · (f + g) = \alpha · \Set{(s, f(s) + g(s)) \mid s \in S} = \Set{(s,\alpha f(s) + \alpha g(s)) \mid s \in S}$$
+
+    $$= \Set{(s,\alpha f(s)) \mid s \in S} + \Set{(s,\alpha g(s)) \mid s \in S} = (\alpha \ · f) + (\alpha \ · g)$$
+
+    <br>
+
+- **D2**: 
+
+    $$(\alpha + \beta) \ · f =(\alpha + \beta) \ · \Set{(s, f(s)) \mid s \in S} = \Set{(s,(\alpha+\beta) f(s)) \mid s \in S}$$
+
+    $$=\Set{(s,\alpha f(s)+\beta f(s)) \mid s \in S}= \Set{(s,\alpha f(s)) \mid s \in S} + \Set{(s,\beta f(s)) \mid s \in S}$$
+
+    $$= (\alpha \ ·  f)+  (\beta \ · f)$$
+
+    <br>
+
+Thus, $( \ ·)$ is a field's action and $(K,(K^S,+),\ · )$ is a vector space.
+
+<br>
+
+### 2.3.4. The space of polynomial functions over a field F.
+
+#### 2.3.4.1. Introduction to polynomials.
+
+A polynomial is, elementally, the most simple algebraic expression that can be formed by combining an indeterminated with it self along with scalars of a field $K$ using addition and multiplication operations.
+
+$$\sum_{i=0}^n \alpha_i x^i = \alpha_0 + \alpha_1 x \cdots + \alpha_n x^n$$
+
+The concept of polynomial function emegers when you try to evaluate the expression on entities from a evaluation domain.
+
+Note that we deliberately used *indeterminated* instead of unknown, since this last one resembles to the scalars of a field, but in a polinomial the indeterminated can be more than scalars, it can be tuples, matrix, of even other polynomials.
+
+In summary, a polynomial is a generic presentation of a finite secuence of operations over a single object with himself along with two predefined operations.
+
+<br>
+
+Then let's consider a field $K$ and a set $S \neq \varnothing$ and the set:
+
+$$\operatorname{Pol}(S, K) := \left\{\, f \in K^S \ \middle|\ \exists n \in \mathbb{N}_0,\ \exists (\alpha_0, \ldots, \alpha_n) \in K^{n+1} : \forall s \in S,\ f(s) = \sum_{i=0}^{n} \alpha_i\, s^i \,\right\}$$
+
+Let's consider the same operations $+$ and $·$ than in the example before 
