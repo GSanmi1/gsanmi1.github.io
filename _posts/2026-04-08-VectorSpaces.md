@@ -373,6 +373,8 @@ Thus, the triple $\big(F,(F^n,+), \ · \big)$ satisfies:
 
 And is a vector space. 
 
+Observe taht, as a special case, $(\mathbb{R},(\mathbb{C}^n,+), \ ·)$ is a vector space.
+
 <br>
 
 ### 2.3.2. The space of m x n matrices.
@@ -487,7 +489,7 @@ Thus, $( \ ·)$ is a field's action and $(K,(K^S,+),\ · )$ is a vector space.
 
 <br>
 
-### 2.3.4. The space of polynomial functions over a field F.
+### 2.3.4. The space of polynomial functions over a field K.
 
 #### 2.3.4.1. Introduction to polynomials.
 
@@ -497,14 +499,32 @@ $$\sum_{i=0}^n \alpha_i x^i = \alpha_0 + \alpha_1 x \cdots + \alpha_n x^n$$
 
 The concept of polynomial function emegers when you try to evaluate the expression on entities from a evaluation domain.
 
-Note that we deliberately used *indeterminated* instead of unknown, since this last one resembles to the scalars of a field, but in a polinomial the indeterminated can be more than scalars, it can be tuples, matrix, of even other polynomials.
+Note that we deliberately used *indeterminated* instead of unknown, since this last one resembles to the scalars of a field, but in a polinomial function, usually, the domain can be more than scalars, it can be tuples, matrix, of even other polynomials.
 
 In summary, a polynomial is a generic presentation of a finite secuence of operations over a single object with himself along with two predefined operations.
 
+#### Vector space of the polynomial functions over a field K
+
+Then let's consider a field $K$ and the set:
+
+$$\operatorname{Pol}(K, K) := \left\{\, f \in K^K \ \middle|\ \exists n \in \mathbb{N}_0,\ \exists (\alpha_0, \ldots, \alpha_n) \in K^{n+1} : \forall s \in K,\ f(s) = \sum_{i=0}^{n} \alpha_i\, s^i \,\right\}$$
+
+Let's consider the same operations $+$ and $·$ than in the example before. Let's observe that:
+
+- $\boldsymbol{0} \in Pol(K,K)$, since the function $f (s) = 0 = \sum_{i=0}^n 0 s^i\ \ \forall s \in S$ have a polynomial form.
+
+- $f(s) + g(s) = (f+g)(s) =  \sum_{i=0}^n (\alpha_i + \beta_i)s^i \in Pol(K,K) \ \ \forall f,g \in Pol(K,K)$, so the addition is closed on $Pol(K,K)$.
+
+- $ \forall f (-f \in Pol(K,K))$, just consider: $f(s) = \sum_{i=0}^{n} \alpha_i\, s^i$ other $g(s) = -(f(s)) = - (\sum_{i=0}^{n} \alpha_i\, s^i)$, then, is obvious that $(f + g)(s) = (g + f)(s) = \boldsymbol0$
+
+    <br>
+
+Thus, we've just demonstrated that $(Pol(K,K),+)\leq (K^K,+)$, the abelian condition comes from conmutativity on $(K,+)$, so $(Pol(K,K),+)$ is an abelian group. 
+
+Observe that $\alpha \ · f \in Pol(K,K) \ \ \forall f \in Pol(K,K)$, meaning that it does have sense to define the action $· : Pol(K,K) \to Pol(K,K)$ as a subfunction of $· \in \mathcal{P}(K^K \times K^K)$ defined above. Thus the properties of the field's action $·$ described above already applies to $Pol(K,K)$ since is a subset of $K^K$.
+
+Thus, the triple $(K,Pol(K,K),\ ·)$ is a vector space.
+
 <br>
 
-Then let's consider a field $K$ and a set $S \neq \varnothing$ and the set:
-
-$$\operatorname{Pol}(S, K) := \left\{\, f \in K^S \ \middle|\ \exists n \in \mathbb{N}_0,\ \exists (\alpha_0, \ldots, \alpha_n) \in K^{n+1} : \forall s \in S,\ f(s) = \sum_{i=0}^{n} \alpha_i\, s^i \,\right\}$$
-
-Let's consider the same operations $+$ and $·$ than in the example before 
+## 2.4. Immediate Properties from vector spaces.
