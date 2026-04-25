@@ -9,6 +9,12 @@
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
     {% seo %}
     {% feed_meta %}
+    <script>
+        (function() {
+            var theme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
 
     <!-- MathJax Configuration (MUST be BEFORE loading the script) -->
     <script>
@@ -119,6 +125,7 @@
                     </ul>
                 </div>
                 <a href="{{ '/past-blogs.html' | relative_url }}">Archive</a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">Dark</button>
             </nav>
         </div>
     </header>
@@ -139,5 +146,19 @@
             </p>
         </div>
     </footer>
+    <script>
+        var btn = document.getElementById('theme-toggle');
+        var html = document.documentElement;
+        function updateButton() {
+            btn.textContent = html.getAttribute('data-theme') === 'dark' ? 'Light' : 'Dark';
+        }
+        updateButton();
+        btn.addEventListener('click', function() {
+            var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            updateButton();
+        });
+    </script>
 </body>
 </html>

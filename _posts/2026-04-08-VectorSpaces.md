@@ -531,8 +531,6 @@ Thus, the triple $(K,Pol(K,K),\ ·)$ is a vector space.
 
 Let's check some important properties from the vector spaces that are immediately derivated from the axioms. From now on, let's consider $(K,V, \ ·)$ as a vector space.
 
-### 2.4.1. Zero element of products.
-
 - Let be: $\boldsymbol{0} \in V, \alpha \in K$ then:
 
     $$\alpha \ · \boldsymbol{0} = \alpha \ · ( \boldsymbol{0} + \boldsymbol{0} ) = \alpha \ · \boldsymbol{0} + \alpha \ · \boldsymbol{0} \iff \alpha \ · \boldsymbol{0} = \boldsymbol{0} \ \ \forall \alpha \in K$$
@@ -541,9 +539,36 @@ Let's check some important properties from the vector spaces that are immediatel
 
 - Also, be $0 \in K, v \in V$, then:
 
-    $$0 \ · v = (0 + 0) \ · v = 0 \ · v + 0 \ · v  \iff 0 \ · v  = 0 \ \ \forall v \in V$$
+    $$0 \ · v = (0 + 0) \ · v = 0 \ · v + 0 \ · v  \iff 0 \ · v  = \boldsymbol{0} \ \ \forall v \in V$$
 
     <br>
 
-- Consider now
+- Consider now $\alpha \in K : \alpha \neq 0$ and $v \in V$ such $\alpha \ · v = \boldsymbol{0}$, then observe $\alpha \neq 0 \implies \exists \alpha ^{-1} \in K$, thus
 
+    $$\alpha \ · v = \boldsymbol{0} \iff \alpha^{-1}(\alpha \ · v) = (\alpha ^{-1} \alpha) \ · v = 1 \ · v = v = \alpha ^{-1} \ · \boldsymbol{0} = \boldsymbol{0}$$
+
+    So, $(\alpha \ · v = \boldsymbol{0} \wedge \alpha \neq 0) \implies v = \boldsymbol{0}$ 
+
+    Observe that essentially: $\alpha \ · v = \boldsymbol{0} \implies \alpha = 0 \vee v = \boldsymbol{0} \ \ \forall \alpha \in K, \forall v \in V$
+
+    <br>
+
+- Observe that: $0 = 0 \alpha = (1 - 1) \alpha = \alpha + (-1) \alpha \implies -\alpha = (-1)\alpha$
+
+    <br>
+
+- Lastly observe that, despite we've defined lineal combinations over two elements, the asociative and distrivutive property on the vector space makes that we can think about a lineal combination of $n$ vectors.
+
+    Be $v, u_i \in V   \ \ \forall i \in \mathbb{N}$ and $ \alpha_i \in K : \alpha_i \ \ \forall i \in \mathbb{N}$, satisfying:
+
+    $$ v  = \sum_{i = 1}^n \alpha_i u_i$$
+
+    Then, we say that $v$ is a linear combination of the $u_1,u_2, \ldots,v_n$ vectors.
+
+    <br>
+
+## 2.5. Vector Spaces and Geometry.
+
+
+
+<br>
