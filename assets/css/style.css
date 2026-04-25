@@ -18,15 +18,15 @@
    ========================================================================== */
 :root {
     /* Colors inspired by printed academic papers */
-    --page-bg: #fcfaf5;           /* Very soft off-white */
+    --page-bg: #ffffff;           /* Pure white */
     --text-color: #00356b;         /* Dark blue for main text */
     --text-secondary: #444444;     /* Gray for metadata */
     --link-color: #00356b;         /* Classic academic blue */
     --link-hover: #286dc0;         /* Lighter blue on hover */
     --border-color: #111111;       /* Black borders like LaTeX rules */
     --border-light: #cccccc;       /* Light gray for subtle dividers */
-    --code-bg: #f0ebe0;           /* Subtle contrast for code blocks */
-    --highlight-bg: #fffde7;       /* Subtle yellow highlight */
+    --code-bg: #f5f5f5;           /* Light gray for code blocks */
+    --highlight-bg: #f5f5f5;       /* Light gray highlight */
 
     /* Typography */
     --font-serif: 'Computer Modern Serif', 'Latin Modern Roman', 'Libertinus Serif', 'STIX Two Text', 'Times New Roman', Georgia, serif;

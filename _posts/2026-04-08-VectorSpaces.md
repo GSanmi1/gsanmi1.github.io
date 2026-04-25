@@ -528,3 +528,22 @@ Thus, the triple $(K,Pol(K,K),\ ·)$ is a vector space.
 <br>
 
 ## 2.4. Immediate Properties from vector spaces.
+
+Let's check some important properties from the vector spaces that are immediately derivated from the axioms. From now on, let's consider $(K,V, \ ·)$ as a vector space.
+
+### 2.4.1. Zero element of products.
+
+- Let be: $\boldsymbol{0} \in V, \alpha \in K$ then:
+
+    $$\alpha \ · \boldsymbol{0} = \alpha \ · ( \boldsymbol{0} + \boldsymbol{0} ) = \alpha \ · \boldsymbol{0} + \alpha \ · \boldsymbol{0} \iff \alpha \ · \boldsymbol{0} = \boldsymbol{0} \ \ \forall \alpha \in K$$
+
+    <br>
+
+- Also, be $0 \in K, v \in V$, then:
+
+    $$0 \ · v = (0 + 0) \ · v = 0 \ · v + 0 \ · v  \iff 0 \ · v  = 0 \ \ \forall v \in V$$
+
+    <br>
+
+- Consider now
+
