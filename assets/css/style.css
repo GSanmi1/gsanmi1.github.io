@@ -39,6 +39,19 @@
     --paragraph-spacing: 1em;
 }
 
+/* Dark theme */
+[data-theme="dark"] {
+    --page-bg: #2d2d2d;
+    --text-color: #e8e8e8;
+    --text-secondary: #aaaaaa;
+    --link-color: #7eb8f7;
+    --link-hover: #a8d0ff;
+    --border-color: #888888;
+    --border-light: #444444;
+    --code-bg: #3a3a3a;
+    --highlight-bg: #3a3a3a;
+}
+
 /* ==========================================================================
    Base Styles
    ========================================================================== */
@@ -195,6 +208,23 @@ em, i {
     color: var(--link-color);
     border-bottom: 1px solid var(--link-color);
     text-decoration: none;
+}
+
+.theme-toggle {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 0.2rem 0.6rem;
+    margin-left: 1.5rem;
+    line-height: 1.4;
+}
+
+.theme-toggle:hover {
+    color: var(--link-hover);
+    border-color: var(--link-hover);
 }
 
 /* Dropdown container */
