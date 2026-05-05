@@ -244,8 +244,6 @@ Meaning that we can treat the elements of $S$ as elements over which we can defi
 
 Although, is worth to remember that $S$ is not a group an neither is the triple $(G,S, \varphi)$, what $S$ has aqcuired through $\varphi$ is a family of reversible parametrized transformations by the group $G$. Is a form to use $G$ in order to study $S$.
 
-
-
 <br>
 
 ## 2.2. Field's action. Vector Space.
@@ -569,6 +567,35 @@ Let's check some important properties from the vector spaces that are immediatel
 
 ## 2.5. Vector Spaces and Geometry.
 
+Before concluding this introductory section on vector spaces, we shall consider the relation of vector spaces to geometry to an extent which will at least indicate the origin of the name *vector space*. 
 
+Although we haven't present this result yet, we are going to get ahead briefly for pedagogical reasons. For almost any vector space $V$ exists some $n \in \mathbb{N}$ for which $\mathbb{R}^n$ and $V$ are isomorphic; $V \simeq \mathbb{R}^n$, meaning that both spaces share the same properties, they are the same vectorial space in the sense that both are structurally indistinguishable.
+
+Thus, we can understand the geometric structure of a majority bast of vector spaces by aluding to the geometric construction of $\mathbb{R}^n$ in what we call an *affine space*.
+
+![vector1](/assets/images/Maths/Algebra/vector1.png)
+
+<br>
+
+### 2.5.1. Analitic Geometry: The affine space $\mathbb{R}^n$.
+
+Let's explain briefly what is an affine space and how it diverges from the vector space and why this idea is geometrically interesting.
+
+<br>
+
+Let be $V$ a $K$-vector space and $\mathcal{A} \neq \varnothing$, whose items we will call *points*. Then, we define as an *affine space* over $V$ to a pair $(\mathcal{A},+)$ where $+ : \mathcal{A} \times V \to \mathcal{A}$ is a *simple transitive group action*. Satisfying:
+
+- **A1 (Identity)**: $\exists 0 \in V : a + 0 = a \ \ \forall a \in A$
+- **A2 (Associativity)**: $(a + u) + v = a + (u + v) \ \ \forall a \in A, \forall u,v \in V$ 
+- **T (Transitivity)**: $$
+<br>
+
+
+
+### 2.5.2. Vectors as geometric objects: Arrows.
+
+This amounts to a careful formulation of the idea of the ‘arrow’ from $P$ to $Q$.
+
+As vectors are used, it is intended that they should be determined by their length and direction. Thus one must identify two directed line segments if they have the same length and the same direction. 
 
 <br>
