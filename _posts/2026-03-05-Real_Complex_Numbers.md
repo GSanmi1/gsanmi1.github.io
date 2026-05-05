@@ -20,32 +20,38 @@ We will pressume familiarity with $\mathbb{Q}$ (meaning that we assume the sente
 
 <br>
 
-## 1.1. Rational numbers inadequatness.
+## 1.1. Rational numbers inadequatness. Irrational numbers.
 
-Let's start talking about some lackness on the rational numbers.
-The rational number system is inadequate for many purposes, both as a
-field and as an ordered set since the rational number line is full of gaps. 
+Let's start talking about some lackness on the rational numbers. The rational number system is inadequate for many purposes, both as a field and as an ordered set since the rational number line is full of gaps. 
 
-For instance, there is no $p \in \mathbb{Q} : p^2 = 2$.
-
-Let's consider that $\exists p \in Q: p^2 = 2 \implies \exists m,n \in \mathbb{Z} : p = \frac{m}{n}$. 
+For instance, there is no $p \in \mathbb{Q} : p^2 = 2$. Let's consider that $\exists p \in Q: p^2 = 2$, then this would implie that $\exists m,n \in \mathbb{Z} : p = \frac{m}{n}$
 
 
-Let's also observe that if $m, n \in \mathbb{2Z}$, then we could divide between $2$ the numerator and denominator and the fraction will still reflects $p$ and $m,n \in \mathbb{2Z}$ so we could divide again, and eventually this iteration process of divide between $2$ must terminate because eventually one of the two must be odd. 
+Let's also observe that if $m, n \in \mathbb{2Z}$, then we could divide between $2$ the numerator and denominator and the fraction will still value $p$ and $m,n \in \mathbb{2Z}$ so we could divide again, and eventually this iteration process of divide between $2$ must terminate because eventually one of the two must be odd. 
 
 So we can ensure without loss generality that $\exists m,n \in \mathbb{Z} : p = \frac{m}{n}$ and at least one of both is not even. Then, the equation imposes that $m$ is even:
 
 $$p^2 = \left(\frac{m}{n}\right)^2 = \frac{m^2}{n^2} = 2 \iff m^2 = 2n^2 \in 2\mathbb{Z}$$
 
-Let's observe that $m \in \mathbb{2Z} \implies m \vert 2 \implies m^2 \vert 4 \iff 2n^2 \vert 4 \implies n^2 \in \mathbb{2Z}$ and also $n$ is even contradicting the presumption.
+Let's observe that $2 \vert n^2 \implies 2 \vert n$, if $2 \vert n^2 \wedge 2\not\vert  \ n$ then $n = 2q + 1  \implies n^2 = 2(2q^2 +2q) + 1$ and $2 \not\vert n^2$ contradicting the initial premise. 
+
+So, we have:
+
+$$m \in \mathbb{2Z} \implies 2 \vert m \implies 4 \vert m^2 \iff 4 \vert 2n^2 \implies n^2 \in \mathbb{2Z}$$
+
+and also $n$ is even contradicting the presumption. So there aren't $m,n \in \mathbb{Z} : p = \frac{m}{n}$
 
 <br>
 
-This leads to the introduction of so-called "irrational numbers" which are often written as infinite decimal expansions and are considered to be "approximated" by the corresponding finite decimals. When we talk about aproximations we talk about $1, 1.4, 1.41, 1.414, 1.4142,...$ and so on tends to $\sqrt 2$, but before that we have to define what "tends" or "approximates" means. 
+This leads to the introduction of so-called *irrational numbers* which are often written as infinite decimal expansions and are considered to be "approximated" by the corresponding finite decimals, meaning that, for example; $1, 1.4, 1.41, 1.414, 1.4142,\ldots$ tends to $\sqrt 2$. But before that we have to define what "tends" or "approximates" means. 
 
 <br>
 
-Let's also observe that we can consider the following sets: $A:= \Set{p \ \vert \ p^2 < 2 }, B:= \Set{p \ \vert \ p^2 > 2 } \subset \mathbb{Q}$ and demonstrates that $A$ no contains smallest number and $B$ no contains greater but none of them contains the point it self (since is not rational):
+To ilustrate better the idea of the irrational number we can consider the following sets: 
+
+$$A:= \Set{p \in \mathbb{Q}^+ \mid p^2 < 2 }, \quad B:= \Set{p \in \mathbb{Q}^+ \mid  p^2 > 2 }$$
+
+Let's demonstrate that $A$ no contains largest number and $B$ no contains smaller but none of them contains the point it self (since is not rational):
 
 $$q = p - \frac{p^2 -2}{p+2}: p \in \mathbb{Q}$$
 
@@ -61,12 +67,17 @@ $$q = p - \frac{p^2 -2}{p+2}: p \in \mathbb{Q}$$
 
     $$\forall p \in B \ \exists q \in B:  q < p$$
 
+Then, we can understand the *irrational numbers* as a "never-reached-frontier" of certains segments of rational numbers like $A$ or $B$. 
 
-The purpose of the above discussion has been to show that the rational number system has certain gaps, in despite of the fact that between any two rationals there is another:
+Observe that we only need one of the two sets because both of them "tends" to the same value. By default, we would prefer $A$ as a standard to present the irrational number to which $A$ and $B$ tends to. 
+
+<br>
+
+Thus, the rational number system or the rational line is full of gaps, despite of the fact that between any two rationals there is another:
 
 $$ r,s \in \mathbb{Q} : r < s \implies r < \frac{r + s}{2} < s \wedge \frac{r + s}{2} \in \mathbb{Q}$$
 
-The *real number system* fills these gaps. This is the principal reason for the fundamental role which it plays in analysis.
+The *real number system*; $\mathbb{R}$, get those gaps filled, this is the principal reason for the fundamental role which it plays in analysis.
 
 <br>
 
@@ -453,7 +464,7 @@ Check that this so called "cuts" are upperbounds segments with no lowerbound, in
 <br>
 
 **Step 2. $\mathbb{R}$ is an ordered set**.
-
+ 
 Let $\alpha, \beta \subset \mathbb{Q}$ be two cuts, then we define:
 
 $$\alpha < \beta \iff \alpha \subset \beta$$
@@ -601,6 +612,7 @@ Now, we verify that the addition's axioms for a field hold in $\mathbb{R}$, with
             Also, $\forall q(q \in \alpha \implies \nexists r  > 0 : q - r \notin \alpha) \implies -q \notin \beta \implies \beta \neq \mathbb{Q}$ applying the second property of the cuts. $(q -r < q \wedge q \in \alpha \implies q -r \in \alpha) \ \ \forall r>0$
 
             <br>
+
         - 
 
 
@@ -650,5 +662,17 @@ $$\begin{cases} 1 < n(y-x)  \iff 1 + nx < y \\ m - 1 \leq nx < m \iff m \leq 1 +
 And thus:
 
 $$x < \frac{m}{n} < y$$
+
+<br>
+
+### 3.2.3. *nth* roots of positive reals.
+
+As we said before, in $\mathbb{Q}$ there isn't any $q \in \mathbb{Q} : q^2 = 2$, we are now going to see that this problem is handled in $\mathbb{R}$.
+
+Specifically, we are going to see that for any positive real and any positive integer exists a unique positive real such $y^n = x$, formally:
+
+$$\forall (x,n) \in \mathbb{R}_{>0} \times  \mathbb{Z}_{>0} \ \exists ! y \in \mathbb{R}_{>0} : y^n = x$$
+
+We say that $y$ is the $n$-th root of $x$ and we denote it as $y = \sqrt[n]{x} = x^{\frac{1}{n}}$.
 
 <br>
