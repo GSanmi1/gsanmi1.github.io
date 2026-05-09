@@ -567,34 +567,98 @@ Let's check some important properties from the vector spaces that are immediatel
 
 ## 2.5. Vector Spaces and Geometry.
 
-Before concluding this introductory section on vector spaces, we shall consider the relation of vector spaces to geometry to an extent which will at least indicate the origin of the name *vector space*. 
+Before concluding this introductory section on vector spaces, we shall consider the relation of vector spaces with geometry or the geometric intuition of vector spaces.
 
-Although we haven't present this result yet, we are going to get ahead briefly for pedagogical reasons. For almost any vector space $V$ exists some $n \in \mathbb{N}$ for which $\mathbb{R}^n$ and $V$ are isomorphic; $V \simeq \mathbb{R}^n$, meaning that both spaces share the same properties, they are the same vectorial space in the sense that both are structurally indistinguishable.
+Although we haven't present this result yet, it is true that for any $K$-vector space $V$ with a finite dimension exists some $n \in \mathbb{N}$ for which $K^n$ and $V$ are isomorphic; $V \simeq K^n$, meaning that both are the same vector space and share the same specific properties, this will be completly acknowledge by the reader at the end of this post.
 
-Thus, we can understand the geometric structure of a majority bast of vector spaces by aluding to the geometric construction of $\mathbb{R}^n$ in what we call an *affine space*.
+Thus, we can understand the geometric structure of any $K$-vector space by aluding to the geometric construction of $K^n$. 
 
 ![vector1](/assets/images/Maths/Algebra/vector1.png)
 
 <br>
 
-### 2.5.1. Analitic Geometry: The affine space $\mathbb{R}^n$.
+### 2.5.1. Analitic Geometry: The affine space.
 
-Let's explain briefly what is an affine space and how it diverges from the vector space and why this idea is geometrically interesting.
+#### 2.5.1.1. Definition.
+
+Let's say that $K = \mathbb{R}$, then $\mathbb{R}^n$ is what we call an *affine space*. In this section we gonna explain briefly what an affine space is and how it diverges from the vector space and why this idea is geometrically interesting.
 
 <br>
 
-Let be $V$ a $K$-vector space and $\mathcal{A} \neq \varnothing$, whose items we will call *points*. Then, we define as an *affine space* over $V$ to a pair $(\mathcal{A},+)$ where $+ : \mathcal{A} \times V \to \mathcal{A}$ is a *simple transitive group action*. Satisfying:
+Let be $V$ a $K$-vector space and $\mathcal{A} \neq \varnothing$, whose items we will call *points*. Then, we define as an *affine space* over $V$ to a pair $(\mathcal{A},+)$ where $+ : \mathcal{A} \times V \to \mathcal{A}$ is a *simple transitive group action*. 
 
-- **A1 (Identity)**: $\exists 0 \in V : a + 0 = a \ \ \forall a \in A$
-- **A2 (Associativity)**: $(a + u) + v = a + (u + v) \ \ \forall a \in A, \forall u,v \in V$ 
-- **T (Transitivity)**: $$
+This means that $+$ satisfies group's action axioms:
+
+- **$A1$ (Identity)**: $P + 0_V = P \ \ \forall P \in \mathcal{A}$
+- **$A2$ (Associativity)**: $(P + u) + v = P + (u + v) \ \ \forall P \in \mathcal{A}, \forall u,v \in V$ 
+
+Observe that at this point, as we discusse above with the action groups, $+$ offers a family of reversible parametrized transformations by the vector space $V$ that allow us to study the points of $\mathcal{A}$ through the vectors of $V$.
+
+But also this action group is *free* and *transitive* (the combination give us the simple transitive property):
+
+- **Transitivity**: $\forall P, Q \in \mathcal{A} \ \exists v \in V : P + v = Q$
+
+    Every point on $\mathcal{A}$ is reachable by any other point through an $V$'s item. Thus, there are no distinguished, isolated or privileged points on $\mathcal{A}$.
+
+    <br>
+
+- **Free**: $\forall P \forall v (P + v = P \implies v = 0)$
+
+    This essentially means that no points gets translated over itself, each non-zero vector moves one point $P$ over other point $Q$ such $P \neq Q$
+
+    <br>
+
+Observe that, **Transitivity** and **Free** property can be collapsed on:
+
+$$\forall P, Q \in \mathcal{A} \ \exists! \ v \in V : P + v = Q$$
+
+Let's observe that, if we consider $u,v \in V : P + u = P + v$, then $(P + u) + -v = (P + v) + -v$, by $A2$ is $(P + u) + -v = P + (u - v) = (P + v) + -v = P + (v - v) = P + 0_V$ and then, by $A1$, $P + (u - v) =P$, then by the **Free** property $P + (u - v) =P \implies u - v = 0_V$, thus $u = v$, so both properties implies the one above.
+
 <br>
 
+Also observe that if we consider as true the statement above, obviously the **transitivity** property applies but also the uniquity of $v$ implies the **Free** property since by $A1$ the $0_V$ already satisfies $P + 0_V  = P$, thus is $\forall v \in V \ (P + v = P \implies v = 0_V)$. So both statements coimplies themselves and can be substituted.
 
+<br>
+
+Thus, essentially, an affine space is the object resulting of applying vectors to study points of a non-empty set through a simple transitive group's action. 
+
+<br>
+
+#### 2.5.1.2. Isomorphism by origin.
+
+Let's now check some interesting property of affines spaces. The transitive property asserts that, from the $V$ perspective all points in $\mathcal{A}$ are equals, as we said, there are no privileged or distinguished points.
+
+Now, lets take some $O \in \mathcal{A}$, then, we define the application: 
+
+$$\Phi_O : \mathcal{A} \longrightarrow V \qquad P \longmapsto \overrightarrow{OP} : O + \overrightarrow{OP} = P$$
+
+Obviously is a biyection since, fixing $O$ only one vector corresponds to one point $P$.
+
+Let's also consider the following operations over the points of $A$:
+
+$$\begin{cases}P +_O Q := \Phi_O^{-1}\big(\Phi_O(P) + \Phi_O(Q)\big) \\ \lambda \cdot_O P := \Phi_O^{-1}\big(\lambda \ \Phi_O(P)\big)\end{cases}$$
+
+Basically, we operate with the vectors assigned by $\Phi_O$ and then return the resulting point.
+
+Let's see that $(\mathcal{A},+_O, ·_O)$ is a vectorspace:
+
+- $(\mathcal{A},+_O)$ is an abelian group:
+
+    - **Closure**: For any $P, Q \in \mathcal{A}$, $\Phi_O(P), \Phi_O(Q)$ ae defined as vectors of $V$ and since $V$ is a vector space, the lineal combination $\Phi_O(P) + \Phi_O(Q)$ is garanted to be in $V$ and thus, since $\Phi_O$ is biyective, there exists a point $P' \in \mathcal{A} : \Phi_O(P') = \Phi_O(P) + \Phi_O(Q)$, so is $P' = \Phi_O^{-1}(\Phi_O(P) + \Phi_O(Q)) = P +_O Q \in \mathcal{A}$
+
+    - **Associativity**: 
+
+
+
+And by the biyection $\Phi_O$ is isomorph to $V$. This means that when whenever we select an origin $O$ in which define $\Phi$ we automatically instantiate (through $+_O,·_O$) a copy of $V$. An affine space aqcuires vector space structure when you fix a point.
+
+<br>
 
 ### 2.5.2. Vectors as geometric objects: Arrows.
 
-This amounts to a careful formulation of the idea of the ‘arrow’ from $P$ to $Q$.
+With the affine space defined, lets define what an arrow is. Let's consider the affine space $(\mathcal{A},+)$ and also, fixed an origin $O \in A$, define $\Phi_O, +_O,·_O$ as above and subsequently the vector space: $(\mathcal{A},+_O,·_O)$.
+
+In this context, lets get two points $P,Q \in \mathcal{A}$.
 
 As vectors are used, it is intended that they should be determined by their length and direction. Thus one must identify two directed line segments if they have the same length and the same direction. 
 

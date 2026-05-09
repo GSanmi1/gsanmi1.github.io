@@ -83,11 +83,49 @@ The *real number system*; $\mathbb{R}$, get those gaps filled, this is the princ
 
 # 2. Ordered Set and Fields.
 
-In order to elucidate its structure we have to introduce an importante property related to order. So let's start introducing a minimal basis about order in a set.
+In order to introduce $\mathbb{R}$ and why is a preferable option to $\mathbb{Q}$ we have to talk about some important property involved with *order* and thus, first we have to introduce the notion of *ordered sets*. 
+
+So let's start introducing a minimal basis about order in a set.
 
 <br>
 
-## 2.1. Ordered Sets.
+First, the mathematical order is an abstraction about primary cognitive operation; compare two objects and decide which of the two go first as we ordinarily do with weight, cronological events or hierarchies. Basically the order is a *binary relation between elements of a domain that codifies "precedence" between the two of them*.
+
+<br>
+
+## 2.2. Binary relations.
+
+### 2.3.1. Definition.
+
+In mathematics, a relation is basically any collection of ordered pairs from a set. 
+
+Formally, given a set $S$, we say that a *binary relation* over $S$ is any $R \subset S^2 = S \times S$. As defined this notion is trivial and lack of any interest and only becomes relevant when the relation forces some conditions.
+
+Being $(x,y) \in R$, we read it as "$x$ is related with $y$ through $R$" and we may write $xRy$ to simplify the notation.
+
+<br>
+
+### 2.3.2. Properties.
+
+Given a binary relation over $R$ over a non-empty set $S$, then $R$ can satisfy the following properties:
+
+- **Reflexivity**: $\forall x \in S,\; xRx \iff \forall x \in S, (x,x) \in R $
+- **Irreflexivity**: $\forall x \in S,\; \neg (xRx) \iff \forall x \in S, (x,x) \notin R$
+
+- **Simetric**: $\forall x, y \in S,\; x \mathbin{R} y \Rightarrow y \mathbin{R} x$, observe that this impose reciprocity.
+
+- **Antisimétrica**: $\forall x, y \in S,\; (x \mathbin{R} y) \land (y \mathbin{R} x) \Rightarrow x = y$
+
+- **Transitiva**: $\forall x, y, z \in S,\; (x \mathbin{R} y) \land (y \mathbin{R} z) \Rightarrow x \mathbin{R} z$ 
+
+- **Conexa**: $\forall x, y \in S,\; (x \mathbin{R} y) \lor (y \mathbin{R} x)$
+
+- **Tricotómica** $\forall x, y \in S$ exactamente una de las siguientes afirmaciones es cierta:
+
+    $$x \mathbin{R} y, \quad y \mathbin{R} x, \quad x = y$$
+
+
+## 2.2. Ordered Sets.
 
 Let $S$ be a set. Then, we define as an *order* on $S$ to a binary relation such:
 
