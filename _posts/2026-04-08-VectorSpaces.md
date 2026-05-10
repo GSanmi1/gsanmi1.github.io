@@ -573,8 +573,6 @@ Although we haven't present this result yet, it is true that for any $K$-vector 
 
 Thus, we can understand the geometric structure of any $K$-vector space by aluding to the geometric construction of $K^n$. 
 
-![vector1](/assets/images/Maths/Algebra/vector1.png)
-
 <br>
 
 ### 2.5.1. Analitic Geometry: The affine space.
@@ -634,11 +632,11 @@ $$\Phi_O : \mathcal{A} \longrightarrow V \qquad P \longmapsto \overrightarrow{OP
 
 Obviously is a biyection since, fixing $O$ only one vector corresponds to one point $P$.
 
-Let's also consider the following operations over the points of $A$:
+Let's also consider the following operations over the points of $A$ being $P,Q \in \mathcal{A}$ and $\lambda$ an scalar:
 
 $$\begin{cases}P +_O Q := \Phi_O^{-1}\big(\Phi_O(P) + \Phi_O(Q)\big) \\ \lambda \cdot_O P := \Phi_O^{-1}\big(\lambda \ \Phi_O(P)\big)\end{cases}$$
 
-Basically, we operate with the vectors assigned by $\Phi_O$ and then return the resulting point.
+Basically, we operate with the vectors assigned by $\Phi_O$ and then return the resulting point of $A$ (note that since $\Phi_O$ is biyective, we can consider the inverse $\Phi_O^{-1}$).
 
 Let's see that $(\mathcal{A},+_O, ·_O)$ is a vectorspace:
 
@@ -646,20 +644,88 @@ Let's see that $(\mathcal{A},+_O, ·_O)$ is a vectorspace:
 
     - **Closure**: For any $P, Q \in \mathcal{A}$, $\Phi_O(P), \Phi_O(Q)$ ae defined as vectors of $V$ and since $V$ is a vector space, the lineal combination $\Phi_O(P) + \Phi_O(Q)$ is garanted to be in $V$ and thus, since $\Phi_O$ is biyective, there exists a point $P' \in \mathcal{A} : \Phi_O(P') = \Phi_O(P) + \Phi_O(Q)$, so is $P' = \Phi_O^{-1}(\Phi_O(P) + \Phi_O(Q)) = P +_O Q \in \mathcal{A}$
 
+        <br>
+
     - **Associativity**: 
 
+        Let's observe that:
+        
+        $$P +_OQ =\Phi_O^{-1}(\Phi_O(P)) +_O \Phi_O^{-1}(\Phi_O(Q)) = \Phi_O^{-1}\big(\Phi_O(P) + \Phi_O(Q)\big)$$
 
+        Then, applying the same scheme, we have: 
 
-And by the biyection $\Phi_O$ is isomorph to $V$. This means that when whenever we select an origin $O$ in which define $\Phi$ we automatically instantiate (through $+_O,·_O$) a copy of $V$. An affine space aqcuires vector space structure when you fix a point.
+        $$(P +_OQ) +_OT = \Phi_O^{-1}\big(\Phi_O(P) + \Phi_O(Q)\big) +_O \Phi_O^{-1}(\Phi_O(T))$$
+
+        $$= \Phi_O^{-1}\big([\Phi_O(P) + \Phi_O(Q)] + \Phi_O(T)\big)$$
+
+        Thus, by the associativity in $(V,+)$ is:
+
+        $$(P +_OQ) +T = P +(Q +_OT)$$
+
+        <br> 
+
+    - **Identity**: Let's check that $O$ satisfies $\Phi_O(O) = 0 \in V$ (by $A1$ and the simple transitivity property):
+    
+        $$P +_O O = O +_O P = P \ \ \forall P \in \mathcal{A}$$
+        
+        <br>
+
+    - **Inverse**: Check that since $(V,+)$ is an abelian group for each $v \in V$ exists one and only one $u \in V$ such $v + u = u + v = 0$ and we say $u = -v$.
+    
+        Thus since $\Phi_O$ is biyective, for each $P \in \mathcal{A} : \Phi_O(P)=v $ exists a unique $Q$ such $\Phi_O(Q) = -v$. And is:
+
+        $$P +_O Q =\Phi_O^{-1}(v + (-v)) = \Phi_O^{-1}(0) = O$$
+
+        The same $Q +_O P$.
+
+        <br>
+
+    - **Conmutativity**: Immediate from the conmutativity in $(V,+)$.
+
+        <br>
+
+- $·_O:K \times A \to A$ is a field's action. 
+
+    - **M1**: $1 ·_O P = \Phi_O^{-1}(1 · \Phi_O(P)) =  \Phi_O^{-1}(\Phi_O(P)) =P$
+    - **M2**: $\alpha ·_O (\beta ·_O P) = \alpha ·_O\Phi_O^{-1}(\beta · \Phi_O(P)) = \Phi_O^{-1}(\alpha\beta · \Phi_O(P)) = (\alpha \beta) ·_O P$
+    - **D1**: $\alpha ·_O  (P +_O Q) = \alpha ·_O \Phi_O^{-1}(\Phi_O(P) + \Phi_O(Q)) = \Phi_O^{-1}(\alpha · \Phi_O(P) + \alpha · \Phi_O(Q)) =$
+
+        And by the same property announce in the associativity point, is:
+
+        $= \Phi_O^{-1}(\alpha · \Phi_O(P)) + \Phi_O^{-1}(\alpha · \Phi_O(Q))  = \alpha ·_O P +_O \alpha ·_O Q$
+
+    - **D2**: $(\alpha + \beta) ·_O P = \Phi_O^{-1}((\alpha + \beta) · \Phi_O(P)) = \Phi_O^{-1}(\alpha·\Phi_O(P) + \beta·\Phi_O(P)) = \alpha ·_O P +_O \beta ·_O Q$
+
+    <br>
+
+And by the biyection $\Phi_O$ is isomorph to $V$. This means that when whenever we select an origin $O$ in which define $\Phi$ we automatically instantiate (through $+_O,·_O$) a copy of $V$. **An affine space aqcuires a vector space structure when you fix a point.**
 
 <br>
 
 ### 2.5.2. Vectors as geometric objects: Arrows.
 
-With the affine space defined, lets define what an arrow is. Let's consider the affine space $(\mathcal{A},+)$ and also, fixed an origin $O \in A$, define $\Phi_O, +_O,·_O$ as above and subsequently the vector space: $(\mathcal{A},+_O,·_O)$.
+Thus, let's conserve this conception about an affine space. Again an affine space is what result from use vectors to study a non empty set in a simple and transitive way. At this point we have introduced the idea of a vector as an algebraic item, but we know can introduce his natural geometric counterpart.
 
-In this context, lets get two points $P,Q \in \mathcal{A}$.
+<br>
 
-As vectors are used, it is intended that they should be determined by their length and direction. Thus one must identify two directed line segments if they have the same length and the same direction. 
+#### 2.5.2.1. Free vectors.
+
+Let's consider the affine space $(\mathcal{A},+)$ over the $K$-vector space $V$ and also, fixed an origin $O \in A$, define $\Phi_O, +_O,·_O$ as above, and subsequently we get the $K$-vector space: $(K,(\mathcal{A},+_O),·_O)$ isomorph to $V$.
+
+In this context, lets get two points $P,Q \in \mathcal{A}$, we subtly introduced before the idea of the *arrow*. When we said in $(A,+)$ there is some $v \in V: P + v = Q$ we were introducing the idea about $v$ being a "displacement" from $P$ to $Q$:
+
+![vector1](/assets/images/Maths/Algebra/vector1.png)
+
+Let's identify $v$ with $P$ and $Q$ through the following application:
+
+$$\delta : \mathcal{A} \times \mathcal{A} \longrightarrow V, \quad (P,Q) \longmapsto v = \overrightarrow{PQ}$$
+
+Observe that $v$ is unique for each pair and that there are a few properties that $\delta$ satisfies that are released from the axioms of the affine space:
+
+-  $\overrightarrow{PP} = 0_V$​, from $A1$ and simple transivity.
+- 
+
+
+
 
 <br>
