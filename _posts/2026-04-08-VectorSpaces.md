@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "2. VectorSpaces"
-subtitle: "Spaces. Subspaces. Bases and Dimensions. Coordinates. Summary of Row-equivalence. CCS."
+title: "2. Introduction to VectorSpaces"
+subtitle: "Algebra. Algebraic Structures. Actions. Vector Spaces. Affine Spaces. Vector as geometric objects: Arrows."
 date: 2026-04-08 09:00:00 +0000
 categories: ['Linear Algebra']
 tags: ['Hoffman&Kunze', 'Algebra']
@@ -565,7 +565,7 @@ Let's check some important properties from the vector spaces that are immediatel
 
     <br>
 
-## 2.5. Vector Spaces and Geometry.
+# 3. Vector Spaces and Geometry.
 
 Before concluding this introductory section on vector spaces, we shall consider the relation of vector spaces with geometry or the geometric intuition of vector spaces.
 
@@ -575,9 +575,9 @@ Thus, we can understand the geometric structure of any $K$-vector space by aludi
 
 <br>
 
-### 2.5.1. Analitic Geometry: The affine space.
+## 3.1. Analitic Geometry: The affine space.
 
-#### 2.5.1.1. Definition.
+### 3.1.1. Definition.
 
 Let's say that $K = \mathbb{R}$, then $\mathbb{R}^n$ is what we call an *affine space*. In this section we gonna explain briefly what an affine space is and how it diverges from the vector space and why this idea is geometrically interesting.
 
@@ -622,7 +622,7 @@ Thus, essentially, an affine space is the object resulting of applying vectors t
 
 <br>
 
-#### 2.5.1.2. Isomorphism by origin.
+### 3.1.2. Isomorphism by origin.
 
 Let's now check some interesting property of affines spaces. The transitive property asserts that, from the $V$ perspective all points in $\mathcal{A}$ are equals, as we said, there are no privileged or distinguished points.
 
@@ -702,13 +702,12 @@ And by the biyection $\Phi_O$ is isomorph to $V$. This means that when whenever 
 
 <br>
 
-### 2.5.2. Vectors as geometric objects: Arrows.
-
+## 3.2. Vectors as geometric objects: Arrows.
 Thus, let's conserve this conception about an affine space. Again an affine space is what result from use vectors to study a non empty set in a simple and transitive way. At this point we have introduced the idea of a vector as an algebraic item, but we know can introduce his natural geometric counterpart.
 
 <br>
 
-#### 2.5.2.1. Free vectors.
+### 3.2.1. Bound arrows. Vectors as arrows.
 
 Let's consider the affine space $(\mathcal{A},+)$ over the $K$-vector space $V$ and also, fixed an origin $O \in A$, define $\Phi_O, +_O,·_O$ as above, and subsequently we get the $K$-vector space: $(K,(\mathcal{A},+_O),·_O)$ isomorph to $V$.
 
@@ -722,10 +721,118 @@ $$\delta : \mathcal{A} \times \mathcal{A} \longrightarrow V, \quad (P,Q) \longma
 
 Observe that $v$ is unique for each pair and that there are a few properties that $\delta$ satisfies that are released from the axioms of the affine space:
 
--  $\overrightarrow{PP} = 0_V$​, from $A1$ and simple transivity.
-- 
+- $\overrightarrow{PP} = 0_V$​, from $A1$ and simple transivity.
 
+    <br>
 
+- **Chasles Relation**: $\overrightarrow{PQ} + \overrightarrow{QR} = \overrightarrow{PR}$
 
+    Let's quicly observe that: $P + \overrightarrow{PQ} = Q \wedge Q + \overrightarrow{QR} = R$
+
+    Thus, using $A2$ we get: $R = Q + \overrightarrow{QR} = (P + \overrightarrow{PQ}) + \overrightarrow{QR} = P + (\overrightarrow{PQ} + \overrightarrow{QR})$, thus:
+
+    $$P + (\overrightarrow{PQ} + \overrightarrow{QR}) = R \iff \overrightarrow{PQ} + \overrightarrow{QR} = \overrightarrow{PR}$$
+
+    <br>
+
+- $\overrightarrow{QP} = -\overrightarrow{PQ}$​. This result is immediate from above: $0_V = \overrightarrow{PP} = \overrightarrow{PQ} + \overrightarrow{QP} \iff \overrightarrow{QP} = -\overrightarrow{PQ}$
+
+    <br>
+
+In this context, we say that the pair $(P,Q)$ or simply $\overrightarrow{PQ}$ is a "bound arrow", which his base in $P$ and his end in $Q$. We formalize this idea applying $\delta$ construction.
+
+A *bound arrow* is a pair $(P,v) \in \mathcal{A} \times V$ often related as $(P,\overrightarrow{PQ})$ and interchangeble with $(P,Q)$ since two elements define the third.
 
 <br>
+
+Let's pull back briefly to the vector space $(K,(\mathcal{A},+_O),·_O)$. 
+
+Let's observe that having fixed $O$, then we can collapse $\delta: A \times A \to V$ to $\delta_O: \mathcal{A} \to V$, verifying:
+
+$$\delta_O( \ ·) = \delta(O, \ · )$$
+
+Since the simple transivity of $+$ imposes a unique displacement from one point to another, fixing one of those points allow us to identify every each point on $A$ with a unique "position relative to $O$" vector in $V$. 
+
+This means that we can treat each point on $A$ as an arrow from $O$, the identity of the abelian group $(A,+_O)$. **In other words, the collection of arrows from an origin has a structure of vector space**. This allow us to think in vectors as arrows in a, line, plane, space and so on.
+
+<br>
+
+### 3.2.2. Equipolence class: Free vectors.
+
+Let's observe that bound vectora, conceptualized as a displacement, has magnitude, direction and an orientation in the direction. Thus, despite the point of application, two bound vectors are equal if both matches this three features.
+
+This leads to the construction of the notion of the *free vector* as a equivalent class of those bound vectors that share this three features.
+
+<br>
+
+#### 3.2.2.1. Appex: Equivalence Class.
+
+An *equivalence class* is the set of all elements in a set that we consider "equal" under a certain criterion of equality. The idea is that when we declare certain objects to be interchangeable for our purposes (even if they are not literally the same object), we group together all those that share that quality. That group is the class.
+
+Their importance is structural: equivalence classes are the mechanism that allows us to quotient a set, that is, to create a new set whose points are precisely those packages.
+
+<br>
+
+Formally, be $X$ a non-empty set, a *equivalence relation* is binary relation $\sim \ \subseteq X\times X$ satisfying:
+
+- *Reflexivity*: $\forall x \in X \quad x \sim x$
+- *Simetry*: $\forall x,y \in X \quad x \sim y \implies y \sim x$
+- *Transitivity*: $\forall x,y,z \quad x \sim y \wedge y \sim z \implies x \sim z$
+
+In this conditions, this equivalence relation defines our criterion to build the equivalence classes $[x]$, formally:
+
+$$[x] :=\ \Set{ y \in X : y \sim x }$$
+
+We say that $x$ is the representant of the class. Observe that the following immediate properties are satisfied by the equivalence class:
+
+- $x \in [x] \ \ \forall x \in X$
+- $x \sim y \iff [x] = [y]$
+- $\forall x,y \in X \ (x \sim y \otimes x \not \sim y \implies [x] = [y] \otimes [x] \cap [y] = \varnothing)$
+
+    This means that two elements of $X$ are equivalent or not are equivalent at all, following the second property, this means that his equivalence classes are disjoints or are the same.
+
+- $\displaystyle\bigcup_{x \in X} [x] = X$
+
+    <br>
+
+Lastly, we define the cocient set as:
+
+$$X/\sim := \Set{[x] : x \in X}$$
+
+This are the set whose elements are the group of elements that are qualitative different according with the $\sim$ criterion.
+
+<br>
+
+#### 3.2.2.2. Vector equipolence.
+
+Now, let's say that $X = A \times A$, then we define in $A \times A$ the relation:
+
+$$(P,Q) \sim (P',Q') \iff \overrightarrow{PQ} = \overrightarrow{P'Q'}$$
+
+Observe that reflexivity, simetry and transivity are immediate from $=$ in $V$. Thus, two bound vectors are equal as long as they displacement is the same in magnituted, direction and orientation despite the application point.
+
+<br>
+
+This criterion allow us to define the cocient set:
+
+$$\mathfrak{F}(\mathcal{A}) := (\mathcal{A} \times \mathcal{A})/\sim$$
+
+Whose equivalent class are $[(P,Q)]$. Let's now observe carefully that this structure has a vector space structure.
+
+First, let's fix an origin in $\mathcal{A}$, $O$ and consider the vector space $(K,(\mathcal{A},+_O),·_O)$ and observe that for each equivalence class $[(P,Q)]$, there is some $T \in \mathcal{A} : (O,T) \in [(P,Q)] \iff [(O,T)] = [(P,Q)]$, meaning that we can define:
+
+$$\iota_O : \mathcal{A} \longrightarrow \mathfrak{F}(\mathcal{A}), \qquad P \longmapsto [\,(O,P)\,]$$
+
+This function is biyective since $O$ is fixed and we can transport $(+_O, \cdot_O)$ to the cocient set $\mathfrak{F}(\mathcal{A})$ as:
+
+FALTA
+
+So $(K, (\mathfrak{F}(\mathcal{A}),+_O),·_O)$ is a vectorspace and this ultimately means that, in an affine space, whenever we treat a vector $v$ we catch the canonical representant of his equivalence class, often relative to an origin, and work with it as if it where the same vector.
+
+Observe also that if we have $P,Q \in \mathcal{A}$, we can identify each point with his vector from the origin, $\overrightarrow{OP}, \overrightarrow{OQ}$. Then, by Chasles:
+
+$$\overrightarrow{PQ} = \overrightarrow{PO} +\overrightarrow{OQ} = - \overrightarrow{OP} + \overrightarrow{OQ} \iff \overrightarrow{OP} + \overrightarrow{PQ} = \overrightarrow{OQ}$$
+
+Meaning that substract $P$ to $Q$ give us the displacement from $P$ to $Q$ formalized in $\overrightarrow{PQ}$ and the thing is that we would not work directly with $\overrightarrow{PQ}$ but with the canonical representant of his equivalence class, $\overrightarrow{OT} : \overrightarrow{OP} \sim \overrightarrow{PQ}$
+
+![vector1](/assets/images/Maths/Algebra/vector1.png)
