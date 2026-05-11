@@ -81,7 +81,7 @@ The *real number system*; $\mathbb{R}$, get those gaps filled, this is the princ
 
 <br>
 
-# 2. Ordered Set and Fields.
+# 2. Ordered Sets.
 
 In order to introduce $\mathbb{R}$ and why is a preferable option to $\mathbb{Q}$ we have to talk about some important property involved with *order* and thus, first we have to introduce the notion of *ordered sets*. 
 
@@ -93,9 +93,9 @@ First, the mathematical order is an abstraction about primary cognitive operatio
 
 <br>
 
-## 2.2. Binary relations.
+## 2.1. Binary relations.
 
-### 2.3.1. Definition.
+### 2.1.1. Definition.
 
 In mathematics, a relation is basically any collection of ordered pairs from a set. 
 
@@ -105,7 +105,7 @@ Being $(x,y) \in R$, we read it as "$x$ is related with $y$ through $R$" and we 
 
 <br>
 
-### 2.3.2. Properties.
+### 2.1.2. Properties.
 
 Given a binary relation over $R$ over a non-empty set $S$, then $R$ can satisfy the following properties:
 
@@ -114,77 +114,76 @@ Given a binary relation over $R$ over a non-empty set $S$, then $R$ can satisfy 
 
 - **Simetric**: $\forall x, y \in S,\; x \mathbin{R} y \Rightarrow y \mathbin{R} x$, observe that this impose reciprocity.
 
-- **Antisimétrica**: $\forall x, y \in S,\; (x \mathbin{R} y) \land (y \mathbin{R} x) \Rightarrow x = y$
+- **Antisimetric**: $\forall x, y \in S,\; (x \mathbin{R} y) \land (y \mathbin{R} x) \Rightarrow x = y$
 
 - **Transitiva**: $\forall x, y, z \in S,\; (x \mathbin{R} y) \land (y \mathbin{R} z) \Rightarrow x \mathbin{R} z$ 
 
-- **Conexa**: $\forall x, y \in S,\; (x \mathbin{R} y) \lor (y \mathbin{R} x)$
+- **Conex**: $\forall x, y \in S,\; (x \mathbin{R} y) \lor (y \mathbin{R} x)$
 
-- **Tricotómica** $\forall x, y \in S$ exactamente una de las siguientes afirmaciones es cierta:
+- **Tricotomic** $\forall x, y \in S$ only one of the following statements are true:
 
     $$x \mathbin{R} y, \quad y \mathbin{R} x, \quad x = y$$
 
-
-## 2.2. Ordered Sets.
-
-Let $S$ be a set. Then, we define as an *order* on $S$ to a binary relation such:
-
-$$< \ \subset S^2 : (x,y) \in \ < \iff x < y$$
-
-For now on we will use the $x<y$ notation. $<$ as a binary relation needs to satisfy the following properties:
-
-1. **Trichotomy**:
-
-    The trichotomy property states that 
-    
-    $$\forall x \forall y( x \neq y \implies x < y  \otimes y < x)$$
-    
-    Meaning that for any $x,y \in S$, then only one of the following statements is true:
-
-    $$x < y \quad \quad y < x \quad  \quad x = y$$
-
     <br>
 
-2. **Transitivity**:
+### 2.1.3. Order Types.
 
-    Transitivity states that:
+**Partial and Total orders**
 
-    $$\forall x \forall y \forall z (x < y \wedge y < z \implies x < z)$$
+Be $S$ a set, then a relation $\leq \ \subset S^2$ is a *partial order* if is **reflexive**, **antisimetric** and **transitive**.
 
-    <br>
+As an extension of the partial order we have *total order* if also is **conex**, this means, the comparison criterion can be applied to every element of $S^2$. Observe that, geometrically, this means that all the elements can be sorted in a line as it happens with number sets $\mathbb{N}, \mathbb{Z}, \mathbb{Q}, \mathbb{R}$ can all be represented in a line.
 
-Also, from the notation above we build the following notation:
+<br>
 
-$$x \leq y \iff x < y \vee x = y$$
+**Strict Orders**
 
-Satisfying that: 
+Taking a partial order $\leq \subset S^2$, then we define a *strict order* as:
 
-$$\neg(x < y) \equiv y \leq x$$
+$$< \ \subset S^2 : (x < y \iff x \leq y \wedge x \neq y)$$
+
+Observe that, as defined this relation verifies:
+
+- **Irreflexivity**: $\neg(x < x) \quad \forall x \in S$
+- **Transivity**: Inheritated from $\leq \ \subset S^2$
+
+If also $\leq \ \subset S^2$ is total, then $<$ is also **tricotomic** and we would call it *strict total order*, this is imposed from the irreflexive property that makes the three statements disjoint between them.
 
 <br>
 
 ## 2.2. Order in $\mathbb{Q}$.
 
-
-
 Let's consider for example $\mathbb{Q}$ the set of rational numbers and the binary relation:
 
-$$< \  := \Set{(p,q) \in \mathbb{Q}^2 \ \vert \ q < p \iff p - q \in \mathbb{Q}^+}$$
+$$< \  := \Set{(p,q) \in \mathbb{Q}^2 \ \vert \ q - p \in \mathbb{Q}^+}$$
 
-Then, this binary relation on $\mathbb{Q}$ satisfies:
+Then, $< \ \subset \mathbb{Q}^2$ is a *strict total order*:
 
-
-- Be $p,q \in \mathbb{Q}$, then $p-q \in \mathbb{Q}^+ \vee -(p-q) = q - p \in \mathbb{Q}^+ \vee p-q = 0$, which essentially give us the trichotomy property.
+- Since $0 \notin \mathbb{Q}^+ \implies \big[(p,p) \notin \ < \  \ \forall p \in \mathbb{Q}\big]$ so is irreflexive.
 
     <br>
 
-- Also observe that $q < p \wedge t < q \implies p - t = (p - q) + (q - t) \in \mathbb{Q}^+ \implies t < p$ which means that also satisfies transitivity.
+
+- Be $p,q \in \mathbb{Q}$, then $q -p \in \mathbb{Q}^+$ or $-(q - p) = p - q \in \mathbb{Q}^+ $  or $p-q = 0$, which essentially give us the trichotomy property.
+
+    <br>
+
+- Also observe that $p < q \wedge q < t \implies t - p = (t - q) + (q - p) \in \mathbb{Q}^+ \implies p < t$ which means that also satisfies transitivity.
 
 <br>
 
-So $<$ is an order on $\mathbb{Q}$.
+We also can define the following binary relation $\leq \ \subset \mathbb{Q}^2$, as:
 
-## 2.3. Bounds. 
+$$\leq \ \subset \mathbb{Q}^2 : (x \leq y \iff x < y \oplus x = y)$$
+
+
+Then, $\leq \ \subset \mathbb{Q}^2$ is a *non-strict total order*.
+
+Observe that this relation is obviously *reflexive* and *transitive* (inherited from $< \ \subset \mathbb{Q}^2$) and also *antisimetric*, since $x \leq y \wedge y \leq x \implies x = y$, since $x < y$ and $y < x$ are mutually exclusive.
+
+<br>
+
+# 3. Bounds. 
 
 Until now, we just defined that an ordered set is simply a set in which an order relation has been defined and also define an order in $\mathbb{Q}$. 
 
@@ -192,7 +191,7 @@ Let's introduce the concept of *bounds*, and naturally extract the concept of th
 
 <br>
 
-### 2.3.1. Upper and Lower bounds of a set. Supremum and Infimum.
+## 3.1. Upper and Lower bounds of a set. Supremum and Infimum.
 
 Consider now $S$ and ordered set and $E \subset S$, then we say that:
 
@@ -217,7 +216,7 @@ This are the minimal upper/lower bounds of a set and his existance is not garant
 
 <br>
 
-### 2.3.2. Example of bounds in subsets of $Q$.
+## 3.2. Example of bounds in subsets of $Q$.
 
 Let's now observe two examples in which we want to ilustrate two facts about minimal bounds.
 
@@ -239,7 +238,7 @@ The second example pretend to ilustrate that, although the definition of bound d
 
 <br>
 
-### 2.3.3. Least-upper-bound property.
+## 3.3. Least-upper-bound property.
 
 Now, we have presented order, bounds, minimal bounds and we also provided an example to ilustrate that minimal bounds sometimes do not exists. 
 
@@ -282,9 +281,9 @@ $$ \exists \alpha_s \in S: \alpha_s = supL_B = infB$$
 
 <br>
 
-## 2.4. Fields.
+# 4. Fields.
 
-### 2.4.1. Definition and Axioms.
+## 4.1. Definition and Axioms.
 
 A field is a set $F$ with two operations, called addition, $+$ and multiplication, $·$ which satisfy the following so-called *field axioms*:
 
@@ -309,7 +308,7 @@ Also, the field axioms clearly hold in $\mathbb{Q}$, the set of all rational num
 
 <br>
 
-### 2.4.2. Immediate properties.
+## 4.2. Immediate properties.
 
 Although it is not our purpose to study fields (or any other algebraic structures) in detail, it is worthwhile to prove that some familiar properties of $\mathbb{Q}$ are consequences of the field axioms; once we do this, we will not need to do it again for the real numbers and for the complex numbers. 
 
@@ -371,9 +370,9 @@ Also, let observe that:
 
     <br>
 
-### 2.4.3. Ordered fields.
+## 4.3. Ordered fields.
 
-#### 2.4.3.1. Definition.
+### 4.3.1. Definition.
 
 An *ordered field* is a field $F$ which is also an ordered set, such
 that, being $x,y,z \in F$:
@@ -389,7 +388,7 @@ We also say that $x  \in F$, then:
 
 <br>
 
-#### 2.4.3.2. Properties of ordered fields.
+### 4.3.2. Properties of ordered fields.
 
 All the familiar rules for working with inequalities apply in every ordered field: Multiplication by positive/negative quantities preserves/reverses inequalities, no square is negative, etc. 
 
@@ -467,13 +466,13 @@ The following proposition lists some of these, considering:
 
     <br>
 
-# 3. The Real field.
+# 5. The Real field.
 
 We now state the existence theorem which is the core of this chapter. 
 
 <br>
 
-## 3.1. Theorem: Existance of $\mathbb{R}$. Dedekind cuts.
+## 5.1. Theorem: Existance of $\mathbb{R}$. Dedekind cuts.
 
 **There exists an ordered field $\mathbb{R}$ which has the least-upper-bound property which contains $\mathbb{Q}$ as a subfield.** 
 
@@ -654,9 +653,9 @@ Now, we verify that the addition's axioms for a field hold in $\mathbb{R}$, with
         - 
 
 
-## 3.2. Important Properties from the $\mathbb{R}$ field.
+## 5.2. Important Properties from the $\mathbb{R}$ field.
 
-### 3.2.1. Archimedean property of $\mathbb{R}$.
+### 5.2.1. Archimedean property of $\mathbb{R}$.
 
 The Archimedean property says that $\mathbb{N}$ is unbounded on $\mathbb{R}$, meaning that $\mathbb{R}$ has no "infinitely large" or "infinitely small" elements; no matter how small a positive number $x$ you pick and no matter how large a target $y$, you can always reach (and surpass) $y$ by adding $x$ to itself enough times. Formally:
 
@@ -681,7 +680,7 @@ Thus, taking $x = 1, y = b$, then $n·1 = n \leq b \ \ \forall n \in \mathbb{N}$
 <br>
 
 
-### 3.2.2. $\mathbb{Q}$ is dense in $\mathbb{R}$
+### 5.2.2. $\mathbb{Q}$ is dense in $\mathbb{R}$
 
 The density of $\mathbb{Q}$ in $\mathbb{R}$ stablish that between two elements of $\mathbb{R}$ a rational always can be found, formally:
 
