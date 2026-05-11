@@ -787,7 +787,7 @@ We say that $x$ is the representant of the class. Observe that the following imm
 
 - $x \in [x] \ \ \forall x \in X$
 - $x \sim y \iff [x] = [y]$
-- $\forall x,y \in X \ (x \sim y \otimes x \not \sim y \implies [x] = [y] \otimes [x] \cap [y] = \varnothing)$
+- $\forall x,y \in X \ (x \sim y \oplus x \not \sim y \implies [x] = [y] \oplus [x] \cap [y] = \varnothing)$
 
     This means that two elements of $X$ are equivalent or not are equivalent at all, following the second property, this means that his equivalence classes are disjoints or are the same.
 
@@ -833,6 +833,6 @@ Observe also that if we have $P,Q \in \mathcal{A}$, we can identify each point w
 
 $$\overrightarrow{PQ} = \overrightarrow{PO} +\overrightarrow{OQ} = - \overrightarrow{OP} + \overrightarrow{OQ} \iff \overrightarrow{OP} + \overrightarrow{PQ} = \overrightarrow{OQ}$$
 
-Meaning that substract $P$ to $Q$ give us the displacement from $P$ to $Q$ formalized in $\overrightarrow{PQ}$ and the thing is that we would not work directly with $\overrightarrow{PQ}$ but with the canonical representant of his equivalence class, $\overrightarrow{OT} : \overrightarrow{OP} \sim \overrightarrow{PQ}$
+Meaning that substract $P$ to $Q$ give us the displacement from $P$ to $Q$ formalized in $\overrightarrow{PQ}$ and the thing is that we would not work directly with $\overrightarrow{PQ}$ but with the canonical representant of his equivalence class, $\overrightarrow{OT} : \overrightarrow{OT} \sim \overrightarrow{PQ}$
 
 ![vector1](/assets/images/Maths/Algebra/vector1.png)
