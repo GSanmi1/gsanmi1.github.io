@@ -8,6 +8,37 @@ tags: ['Hoffman&Kunze', 'Algebra']
 author: German Sanmi
 ---
 
+- 1. Conceptual Approach. Algebra, Algebraics Structures and Vector Spaces.
+    - 1.1. Algebra as a discipline.
+    - 1.2. Algebraic Structures.
+        - 1.2.1. One operation algebraic structures.
+        - 1.2.2. Two operations algebraic structures.
+- 2. Vector spaces.
+    - 2.1. Actions. Algebraic Actions.
+        - 2.1.1. Definition.
+        - 2.1.2. Group's Action.
+    - 2.2. Field's action. Vector Space.
+        - 2.2.1. Definition.
+        - 2.2.2. Conceptually Approach.
+    - 2.3. Examples.
+        - 2.3.1. The n-tuple space.
+        - 2.3.2. The space of m x n matrices.
+        - 2.3.3. The space of functions from a set to a field. 
+        - 2.3.4. The space of polynomial functions over a field K.
+            - 2.3.4.1. Introduction to polynomials.
+            - 2.3.4.2. Vector space of the polynomial functions over a field K
+    - 2.4. Immediate Properties from vector spaces.
+- 3. Vector Spaces and Geometry.
+    - 3.1. Analitic Geometry: The affine space.
+        - 3.1.1. Definition.
+        - 3.1.2. Isomorphism by origin.
+    - 3.2. Vectors as geometric objects: Arrows.
+        - 3.2.1. Bound arrows. Vectors as arrows.
+        - 3.2.2. Equipolence class: Free vectors.
+            - 3.2.2.1. Appex: Equivalence Class.
+            - 3.2.2.2. Vector equipolence.
+- 4. Summary.
+
 # 1. Conceptual Approach. Algebra, Algebraics Structures and Vector Spaces.
 
 ## 1.1. Algebra as a discipline.
@@ -823,16 +854,26 @@ First, let's fix an origin in $\mathcal{A}$, $O$ and consider the vector space $
 
 $$\iota_O : \mathcal{A} \longrightarrow \mathfrak{F}(\mathcal{A}), \qquad P \longmapsto [\,(O,P)\,]$$
 
-This function is biyective since $O$ is fixed and we can transport $(+_O, \cdot_O)$ to the cocient set $\mathfrak{F}(\mathcal{A})$ as:
+This function is biyective since $O$ is fixed and we can transport $(+_O, \cdot_O)$ to the cocient set $\mathfrak{F}(\mathcal{A})$ by operating with the canonical representant of each class. 
 
-FALTA
+So $(K, (\mathfrak{F}(\mathcal{A}),+_O),·_O)$ is a vectorspace and this ultimately means that, in an affine space, whenever we treat a vector $v$ we catch the canonical representant of his equivalence class relative to an origin $O$, and work with it as if both where the same vector.
 
-So $(K, (\mathfrak{F}(\mathcal{A}),+_O),·_O)$ is a vectorspace and this ultimately means that, in an affine space, whenever we treat a vector $v$ we catch the canonical representant of his equivalence class, often relative to an origin, and work with it as if it where the same vector.
-
-Observe also that if we have $P,Q \in \mathcal{A}$, we can identify each point with his vector from the origin, $\overrightarrow{OP}, \overrightarrow{OQ}$. Then, by Chasles:
+As an example, observe that this matchs some known operation with points and vectors. Consider $P,Q \in \mathcal{A}$, we can identify each point with his vector from the origin, $\overrightarrow{OP}, \overrightarrow{OQ}$. Then, by Chasles:
 
 $$\overrightarrow{PQ} = \overrightarrow{PO} +\overrightarrow{OQ} = - \overrightarrow{OP} + \overrightarrow{OQ} \iff \overrightarrow{OP} + \overrightarrow{PQ} = \overrightarrow{OQ}$$
 
-Meaning that substract $P$ to $Q$ give us the displacement from $P$ to $Q$ formalized in $\overrightarrow{PQ}$ and the thing is that we would not work directly with $\overrightarrow{PQ}$ but with the canonical representant of his equivalence class, $\overrightarrow{OT} : \overrightarrow{OT} \sim \overrightarrow{PQ}$
+Meaning that substract $P$ to $Q$ (from any arbitrary point) give us the displacement from $P$ to $Q$ formalized in $\overrightarrow{PQ}$ and the thing is that we would not work directly with $\overrightarrow{PQ}$ but with the canonical representant of his equivalence class, $\overrightarrow{OT} : \overrightarrow{OT} \sim \overrightarrow{PQ}$
 
 ![vector1](/assets/images/Maths/Algebra/vector1.png)
+
+<br>
+
+# 4. Summary.
+
+As a brief summary of the post, we have define Algebra as a mathematic discipline that occupies the study of the properties of operations. In this context, we develop an algebraic definition of the vector space as an algebraic structure in which a deformation mechanism acts on an abelian group standarizating the "linear combinations" as the natural operation of this space, understanded those as independants and weighted by a field contributions of elements from the abelian group. 
+
+Later, we explore the geometric intuition behind the vector spaces. For that, first we define the affine space as the object resulting of use a vector space in a simple and transitive way to study a non-empty set. We also see that the affine space is a "point-uniform" structure and whenever you fix one point as a source of vectors, the affine space aqcuires a vector space.
+
+Then, we build the concept of "bound vector" as a displacement between two points in the affine space and identify such bound vector with the mathematical object we call "arrow". This wat, with an origin fixed, we define a biyective application that identifies any point with a certain vector from the origin. Thus, the collection of all possible arrows that stems from a point in an affine space has structure of vector space and that is the precise visual representation we were searching.
+
+Ultimately we formalize the bound vector as a "free vector" being this the equivalence class of all the bound vectors that share magnitude, direction and orientation. The set of all free vectors has also a vector space structure which allow us to identify any bound vector on the affine space with his canonical class representant and operate with it as if both were the same vector.
