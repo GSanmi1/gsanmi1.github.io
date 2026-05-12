@@ -216,11 +216,11 @@ This are the minimal upper/lower bounds of a set and his existance is not garant
 
 <br>
 
-## 3.2. Example of bounds in subsets of $Q$.
+## 3.2. Example of bounds in subsets of $\mathbb{Q}$.
 
 Let's now observe two examples in which we want to ilustrate two facts about minimal bounds.
 
-**The first one ilustrates that in $\mathbb{Q}$ minimal bounds are not garanteed to exists for any bounded set $S \subset \mathbb{Q}$, and this is the main reason why $\mathbb{Q}$ is full of gaps.**
+**The first one ilustrates that, in $\mathbb{Q}$, minimal bounds are not garanteed to exists for any bounded set $S \subset \mathbb{Q}$, and this is the main reason why $\mathbb{Q}$ is full of gaps.**
 
 The second example pretend to ilustrate that, although the definition of bound do not prohibit a minimal bound of $E$ to be contained in $E$, this is not true in general, a minimal bound often is not a member of the bounded subset.
 
@@ -242,13 +242,15 @@ The second example pretend to ilustrate that, although the definition of bound d
 
 Now, we have presented order, bounds, minimal bounds and we also provided an example to ilustrate that minimal bounds sometimes do not exists. 
 
-Then in this section we are going to present the ***Least-upper-bound property*; this property garantee the existance of the minimal bound for any bounded and non-empty subset of an ordered set in which this property is true.**
+Then in this section we are going to present the ***Least-upper-bound property*; this property garantee the existance of the minimal bound for any bounded and non-empty subset.**
 
 <br>
 
 **Definition**
 
-An ordered set $S$ is said to have the least-upper-bound property if the following statement is true: being $E$ an upperbounded non-empty subset of $S$, then the supremum of $E$ exists in $S$. Formally: 
+An ordered set $S$ is said to have the least-upper-bound (LUB) property if for any  upperbounded non-empty subset $E \subset S$ the supremum of $E$ exists in $S$. 
+
+Formally: 
 
 $$ \forall E \subseteq S : (E \neq \varnothing \wedge \exists \alpha \in S : x \leq \alpha \ \ \forall x \in E) \implies \exists \alpha_s = supE : \alpha_s \in S $$
 
@@ -257,7 +259,7 @@ $$ \forall E \subseteq S : (E \neq \varnothing \wedge \exists \alpha \in S : x \
 
 **Theorem**
 
-Now, the following theorem introduces that the least-upper-bound property is a sufficent condition to ensure the existance of an *infimum* for any non-empty lowerbounded subset of an ordered set that satisfies the so called property and also offers a characterization of the object.
+Now, the following theorem introduces that the LUB property is a sufficent condition to ensure the existance of an *infimum* for any non-empty lowerbounded subset and also offers a characterization of the object.
 
 Let's consider an ordered set $S$ that satisfies the least-upper-bound property and a non-empty, lowerbounded, subset $B \subseteq S$. 
 
@@ -374,19 +376,22 @@ Also, let observe that:
 
 ### 4.3.1. Definition.
 
-An *ordered field* is a field $F$ which is also an ordered set, such
-that, being $x,y,z \in F$:
+An *ordered field* is a field $F$ which is also an ordered set. This implies to define a relation between the order and the operations of the field. 
 
-- $x+y < x+z \iff y < z$
+Thus, we define that, being $x,y,z \in F$ then $<$ behaves as:
 
-- $ xy > 0 \implies x > 0 \wedge y > 0$. 
+- **Invariance under traslation**: $y < z \implies x+y < x+z$. The traslations are isomorphs with the order. Observe that the reciproce is immediate by cancelation.
+
+- **Multiplicative closure of the positive cuadrant**: $0 < x \wedge 0 < y \implies 0 < xy$
+
+    <br>
 
 We also say that $x  \in F$, then:
 
 - $x \text{ is positive } \iff x > 0$
 - $x \text{ is negative } \iff x < 0$
 
-<br>
+    <br>
 
 ### 4.3.2. Properties of ordered fields.
 
@@ -480,7 +485,7 @@ To proove this theorem, we will construct $\mathbb{R}$ from $\mathbb{Q}$. We sha
 
 <br>
 
-**Step 1. Cuts**
+### 5.1.1. Cuts.
 
 The members of $\mathbb{R}$ will be certain subsets of $\mathbb{Q}$, called *cuts*. A cut is, by definition, any proper set $\alpha \subset \mathbb{Q}$ with the following three properties: 
 
@@ -496,13 +501,13 @@ The members of $\mathbb{R}$ will be certain subsets of $\mathbb{Q}$, called *cut
 
 <br>
 
-Check that this so called "cuts" are upperbounds segments with no lowerbound, in the sense that the second property of the cuts already tell us that $p \in \alpha \implies \forall q(q < p \implies q \in \alpha)$. This feature allows an order in $\mathbb{R}$ relative to the cuts members.
+Check that this so called "cuts" are upperbound segments with no lowerbound, in the sense that the second property of the cuts already tell us that $p \in \alpha \implies \forall q(q < p \implies q \in \alpha)$. This feature allows an order in $\mathbb{R}$ relative to the cuts members.
 
 <br>
 
-**Step 2. $\mathbb{R}$ is an ordered set**.
+### 5.1.2. $\mathbb{R}$ is an ordered set.
  
-Let $\alpha, \beta \subset \mathbb{Q}$ be two cuts, then we define:
+Let $\alpha, \beta \subset \mathbb{Q}$ be two cuts, then we define the binary relation $< \ \subset \mathbb{R}^2$:
 
 $$\alpha < \beta \iff \alpha \subset \beta$$
 
@@ -510,30 +515,40 @@ We say that $\alpha$ is a *proper subset* of $\beta$, which means that any item 
 
 $$\alpha \subset \beta \iff \alpha \subseteq \beta \wedge \alpha \neq \beta \iff \forall x (x\in \alpha \implies x \in \beta) \wedge \exists b (b\in \beta \wedge b \notin \alpha)$$
 
-The reason why we care about giving a special notation to this familiar concept is because it defines an order inside $\mathbb{R}$.
+Then, $< \ \subset \mathbb{R}^2$ is a *strict total order*:
 
-Let's note that, be $\alpha,\beta \subset \mathbb{Q}$, then, we can think on one of the following posibilities between $\alpha$ and $\beta$
+- **Irreflexivity**: 
 
-- First, consider that $\exists b \in \beta : b \notin \alpha$, then the first corolary of the second property asserts that $\forall a(a \in \alpha \wedge b \notin \alpha \implies a < b)$, applying again the second property of the cuts we get that $(b\in \beta \wedge a < b) \implies a \in \beta \implies \alpha \subset \beta$.
+    Since $\alpha = \alpha \ \forall \alpha \in \mathbb{R} \implies \neg ( \alpha < \alpha) \ \forall \alpha \in \mathbb{R}$
 
-- A similar argument proves that $\exists a \in \alpha : a \notin \beta \implies \beta \subset \alpha$.
+    <br>
 
-- Now, obviously, if $\neg(\exists b \in \beta : b \notin \alpha) \wedge \neg(\exists a \in \alpha : a \notin \beta)$, counting with the fact that, following the first property of the cuts, $\alpha,\beta \neq \varnothing$ then only can be $\alpha = \beta$.
+- **Trycothomy**: 
 
+    Let's note that, be $\alpha,\beta \subset \mathbb{Q}$, then, we can think on one of the following posibilities between $\alpha$ and $\beta$
 
-In summary, we've just proved the *tricothomy* property for any pair of cuts in $\mathbb{Q}$.
+    - First, consider that $\exists b \in \beta : b \notin \alpha$, then the first corolary of the second property asserts that $\forall a(a \in \alpha \wedge b \notin \alpha \implies a < b)$, applying again the second property of the cuts we get that $(b\in \beta \wedge a < b) \implies a \in \beta \implies \alpha \subset \beta$.
 
-Also consider $\alpha,\beta,\gamma \in \mathbb{Q}: \alpha< \beta \wedge \beta < \gamma$ we can directly infere that through the transitivity property of the subsets:
+    - A similar argument proves that $\exists a \in \alpha : a \notin \beta \implies \beta \subset \alpha$.
 
-$$\begin{cases} \alpha < \beta \iff \alpha \subset \beta \\ \beta < \gamma \iff \beta \subset \gamma\end{cases} \implies \alpha \subset \gamma \implies \alpha < \gamma$$
+    - Now, obviously, if $\neg(\exists b \in \beta : b \notin \alpha) \wedge \neg(\exists a \in \alpha : a \notin \beta)$, counting with the fact that, following the first property of the cuts, $\alpha,\beta \neq \varnothing$ then only can be $\alpha = \beta$.
 
-Thus, we've demonstrated that $<$ relative to cuts in $\mathbb{R}$ is an order since it satisfies tricothomy and transivity.
+    In summary, we've just proved the *tricothomy* property for any pair of cuts in $\mathbb{Q}$.
+
+    <br>
+
+- **Transitivity**:
+
+    Also consider $\alpha,\beta,\gamma \in \mathbb{Q}: \alpha< \beta \wedge \beta < \gamma$ we can directly infere that through the transitivity property of the subsets:
+
+    $$\begin{cases} \alpha < \beta \iff \alpha \subset \beta \\ \beta < \gamma \iff \beta \subset \gamma\end{cases} \implies \alpha \subset \gamma \implies \alpha < \gamma$$
+
 
 <br>
 
-**Step 3. $\mathbb{R}$ satisfies the least-upper-bound property**.
+### 5.1.3. $\mathbb{R}$ satisfies the least-upper-bound property.
 
-Remember that the least-upper-bound property ensures for any ordered set $S$ that satisfy it any non-empty $E \subset S$ subset upper/lower-bounded has supremum/infimum in $S$.
+Remember that the LUB property ensures for any ordered set $S$ that satisfy it any non-empty $E \subset S$ subset upper/lower-bounded has supremum/infimum in $S$.
 
 First, suppose there exists $A \subset \mathbb{R} : A \neq \varnothing$ upperbounded with $\beta \in \mathbb{R}$ an upperbound of $A$, let's see that we can find a supremum for it. 
 
@@ -579,7 +594,7 @@ So, by reduction absurdio, $\gamma$ has to be the least upper bound; $\gamma = s
 
 <br>
 
-**Step 4. Addition in $\mathbb{R}$.**
+### 5.1.4. Addition in $\mathbb{R}$.
 
 If $\alpha, \beta \in \mathbb{R}$ we define: $\alpha + \beta := \Set{a+b \ \vert \ a \in \alpha \wedge b \in \beta}$. We also define $0^\ast \in \mathbb{R}$ as $0^* := \Set{ q \in \mathbb{Q} \ \vert \ q < 0}$, observe that is clear that this last set is a cut.
 
@@ -640,7 +655,7 @@ Now, we verify that the addition's axioms for a field hold in $\mathbb{R}$, with
 
     Note that $\beta$ as defined is smaller than $A := \Set{p \in \mathbb{Q} \mid -p \notin \alpha}$ since, $A$ admits a frontier element $p$ for which the elements of $a \in \alpha$ can get as close as wanted. However, with $-p -r \notin \alpha$ the difference between $-p -r$ and $\alpha$, again, can be as small as wanted, but the distance between $-p$ and $\alpha$ can't be smaller than $r$. That gap will always exists between $-p$ and any other element in $\alpha$ so $\beta$'s elements are deeper in $\mathbb{Q} \setminus \alpha$.
     
-    Let's see that $\beta \in \mathbb{R} \wedge \alpha + \beta = 0^*$  
+    Let's see that $\beta \in \mathbb{R}$ and $\alpha + \beta = 0^*$  
 
     - First, $\beta \in \mathbb{R}$.
 
