@@ -8,11 +8,12 @@ tags: ['Hoffman&Kunze', 'Algebra']
 author: German Sanmi
 ---
 
-1. Conceptual Approach. Algebra, Algebraics Structures and Vector Spaces.
+1. Conceptual Approach: Algebra and Algebraics Structures.
     - 1.1. Algebra as a discipline.
     - 1.2. Algebraic Structures.
         - 1.2.1. One operation algebraic structures.
         - 1.2.2. Two operations algebraic structures.
+
 2. Vector spaces.
     - 2.1. Actions. Algebraic Actions.
         - 2.1.1. Definition.
@@ -28,6 +29,7 @@ author: German Sanmi
             - 2.3.4.1. Introduction to polynomials.
             - 2.3.4.2. Vector space of the polynomial functions over a field K
     - 2.4. Immediate Properties from vector spaces.
+
 3. Vector Spaces and Geometry.
     - 3.1. Analitic Geometry: The affine space.
         - 3.1.1. Definition.
@@ -37,9 +39,10 @@ author: German Sanmi
         - 3.2.2. Equipolence class: Free vectors.
             - 3.2.2.1. Appex: Equivalence Class.
             - 3.2.2.2. Vector equipolence.
+
 4. Summary.
 
-# 1. Conceptual Approach. Algebra, Algebraics Structures and Vector Spaces.
+# 1. Conceptual Approach. Algebra, Algebraics Structures.
 
 ## 1.1. Algebra as a discipline.
 
