@@ -389,7 +389,7 @@ We can understand the $+$ and $·$ operations as the following:
 
     This is obviuosly a free (without privilege or fixed points) and transitive (each point is moved to other point) biyection and we will call it **traslation of distance $x$**. We can understand it as a movement that sends a point $y$ to the point $x+y$.
 
-    Observe that the operation $+: F \times F  \to F$ and the collection $\Set{\tau_x}_{x \in F}$ are equivalents representation of the same composition in $F$, or, in other terms there are equivalent representation of the same composition $(x,y) \mapsto_+ z$ using both systems.
+    Observe that the operation $+: F \times F  \to F$ and the collection $\Set{\tau\_x}\_{x \in F}$ are equivalents representation of the same composition in $F$, or, in other terms there are equivalent representation of the same composition $(x,y) \mapsto\_+ z$ using both systems.
     
     <br>
 
@@ -399,7 +399,7 @@ We can understand the $+$ and $·$ operations as the following:
 
     This is an homothety of center $0$ and ratio $x \neq 0$. An *homothety* can be understanded as a dilatation of the space in which is defined, it expands/constraint from the center any point $x$ times. Applied to our line intuition it moves away a value $x$ times is own value, the magnitude of $x$ measures how far it sends the point and it signe the direction of the movement.
 
-    Again, there is a clear equivalence between the family $\Set{\mu_x}_{x \in F}$ and the multiplication defined in $F$
+    Again, there is a clear equivalence between the family $\Set{\mu\_x}\_{x \in F}$ and the multiplication defined in $F$
 
     <br>
 
