@@ -26,7 +26,6 @@ Let's start talking about some lackness on the rational numbers. The rational nu
 
 For instance, there is no $p \in \mathbb{Q} : p^2 = 2$. Let's consider that $\exists p \in Q: p^2 = 2$, then this would implie that $\exists m,n \in \mathbb{Z} : p = \frac{m}{n}$
 
-
 Let's also observe that if $m, n \in \mathbb{2Z}$, then we could divide between $2$ the numerator and denominator and the fraction will still value $p$ and $m,n \in \mathbb{2Z}$ so we could divide again, and eventually this iteration process of divide between $2$ must terminate because eventually one of the two must be odd. 
 
 So we can ensure without loss generality that $\exists m,n \in \mathbb{Z} : p = \frac{m}{n}$ and at least one of both is not even. Then, the equation imposes that $m$ is even:
@@ -346,7 +345,7 @@ Also, let observe that:
     
     Observe that $\neg(\neg p) \equiv p$ in classic logic, so to demonstrate $p$ lets see that is $\neg(\neg p)$ or in other words let's see that $\neg p$ is not true.
 
-    In our case $p$ is an implication $p:= l \to t \equiv \neg l \vee t \iff \neg p := l \wedge \neg t$, (remember that conjuntion and disjuntionrelates each other as:  $\neg (p \wedge q) \equiv \neg p \vee \neg q$) thus, we are considering that $\underbrace{(x \neq 0 \wedge y \neq 0)}\_l \wedge \underbrace{xy = 0}\_{\neg t}$ but this is imposible since: $x \neq 0 \wedge xy = 0 \implies y = 0$ (following the axioms described above) entering in contradiction with the premisse, thus: $x \neq 0 \wedge y \neq 0 \implies xy \neq 0$. 
+    In our case $p$ is an implication $p:= l \to t \equiv \neg l \vee t \iff \neg p := l \wedge \neg t$, (remember that conjuntion and disjuntionrelates each other as:  $\neg (p \wedge q) \equiv \neg p \vee \neg q$) thus, we are considering that $\underbrace{(x \neq 0 \wedge y \neq 0)}\_l \wedge \underbrace{xy = 0}\_{\neg t}$ but this is imposible since: $x \neq 0 \wedge xy = 0 \implies y = 0$ (following 222222 the axioms described above) entering in contradiction with the premisse, thus: $x \neq 0 \wedge y \neq 0 \implies xy \neq 0$. 
 
     Let's also see that: $p \to q \equiv \neg p \vee q \equiv \neg (\neg q) \vee \neg p \equiv \neg q \to \neg p$, applying that to our rule, we can obtain a subtle better expression of the rule: $xy = 0 \implies x = 0 \vee y = 0$
   
@@ -378,17 +377,57 @@ Also, let observe that:
 
 An *ordered field* is a field $F$ which is also an ordered set. This implies to define a relation between the order and the operations of the field. 
 
-Thus, we define that, being $x,y,z \in F$ then $<$ behaves as:
+Before relate the operations of $F$ with the order, let's expands the definition of the operations in order to give it some geometric intuition. As a brief reminder, $F$ as a field is a triple $(F,+, \ ·)$ where $(F,+),(F,\ ·)$ are abelian groups and $+, \ ·$ are compatible (which means they both satisfy the distributive property). 
 
-- **Invariance under traslation**: $y < z \implies x+y < x+z$. The traslations are isomorphs with the order. Observe that the reciproce is immediate by cancelation.
+Observe that, since $< \ \subset F$ as defined above is a total strict order, we can dispose the elements of $F$ in a line following the precedence that sets $<$. This give us some geometric intuition about the relation between the operations in the field and the order.
 
-- **Multiplicative closure of the positive cuadrant**: $0 < x \wedge 0 < y \implies 0 < xy$
+We can understand the $+$ and $·$ operations as the following:
+
+- For each $x \in F$, lets define:
+
+    $$\tau_x : F \to F, \qquad \tau_x(y) = x + y$$
+
+    This is obviuosly a free (without privilege or fixed points) and transitive (each point is moved to other point) biyection and we will call it **traslation of distance $x$**. We can understand it as a movement that sends a point $y$ to the point $x+y$.
+
+    Observe that the operation $+: F \times F  \to F$ and the collection $\Set{\tau_x}_{x \in F}$ are equivalents representation of the same composition in $F$, or, in other terms there are equivalent representation of the same composition $(x,y) \mapsto_+ z$ using both systems.
+    
+    <br>
+
+- Now, let's consider:
+
+    $$\mu_x : F \to F, \qquad \mu_x(y) = xy$$
+
+    This is an homothety of center $0$ and ratio $x \neq 0$. An *homothety* can be understanded as a dilatation of the space in which is defined, it expands/constraint from the center any point $x$ times. Applied to our line intuition it moves away a value $x$ times is own value, the magnitude of $x$ measures how far it sends the point and it signe the direction of the movement.
+
+    Again, there is a clear equivalence between the family $\Set{\mu_x}_{x \in F}$ and the multiplication defined in $F$
+
+    <br>
+
+Thus, having defined this two geometric extrapolations of the operations defined in $F$, lets perform two axiomatic asserts of how operations behaves with $<$.
+
+- **Invariance under traslation**: 
+
+    $$ y < z \implies \tau_x(y) < \tau_x(z) \quad \forall x \in F$$
+
+    Observe that by cancelation we obtain the reciproc, so is bidirectional invariance.
+    
+    <br>
+
+- **Invariance under homothety of positive ratio**: 
+
+    $$0 < y \implies 0 < \mu_x(y) \quad \forall x \in F : 0 < x$$
+
+    Observe that this axiom is minimalist since, in combination with the axiom above:
+
+    $$0 < z - y \implies  0 < \mu_x(z - y) = \mu_x(z) - \mu_x(y) \iff \mu_x(y) < \mu_x(z) \quad \forall x \in F : 0 < x$$
+
+    Obtaining the same representation than we had with traslations.
 
     <br>
 
 We also say that $x  \in F$, then:
 
-- $x \text{ is positive } \iff x > 0$
+- $x \text{ is positive } \iff 0 < x$
 - $x \text{ is negative } \iff x < 0$
 
     <br>
@@ -397,9 +436,11 @@ We also say that $x  \in F$, then:
 
 All the familiar rules for working with inequalities apply in every ordered field: Multiplication by positive/negative quantities preserves/reverses inequalities, no square is negative, etc. 
 
-The following proposition lists some of these, considering:
+The following proposition lists some of these. When treat the following demonstration, remember that $<$ is a total order, which allow us to dispose all the elements of the fields in a single line. 
 
-- $x > 0 \iff -x < 0$
+Thus, lets think in a line with the elements of the field $F$ represented on it:
+
+1. **Reflexion over the origin**: $x > 0 \iff -x < 0$
 
     Let's demonstrate it by absurdio reductio which is:
 
@@ -429,7 +470,7 @@ The following proposition lists some of these, considering:
 
     <br>
 
-- $x > 0 \wedge y < z \iff xy < xz$
+2. **Invariance under positive scale**: $x > 0 \wedge y < z \iff xy < xz$
 
     Let's observe that:
 
@@ -441,7 +482,7 @@ The following proposition lists some of these, considering:
 
     <br>
 
-- $x < 0 \wedge y < z \implies xy > xz$
+3. **Reversion under negative scale**: $x < 0 \wedge y < z \implies xy > xz$
 
     Let's observe that we have $y < z \iff y - z < 0 \iff - (y - z) > 0$, thus, taking the second axiom of ordered fields and that $(-x)(-y) = xy$ is:
 
@@ -451,7 +492,7 @@ The following proposition lists some of these, considering:
 
     <br>
 
-- $x \neq 0 \implies x^2 > 0$
+4. $x \neq 0 \implies x^2 > 0$
 
     Observe that:
     
@@ -461,7 +502,7 @@ The following proposition lists some of these, considering:
 
     <br>
 
--  $0 < x < y \implies 0 < \displaystyle\frac{1}{x} < \frac{1}{y}$
+5. $0 < x < y \implies 0 < \displaystyle\frac{1}{x} < \frac{1}{y}$
     
     Observe that, since $x \neq y \neq 0 \implies \exists x^{-1},y^{-1} \in F$. Let's also observe that, before, above, we see that $1 > 0$, then $1=xx^{-1} \wedge x > 0 \implies x^{-1} > 0 \ \ \forall x \in F : x > 0$ and we can argument that:
 
@@ -717,7 +758,7 @@ $$x < \frac{m}{n} < y$$
 
 <br>
 
-### 3.2.3. *nth* roots of positive reals.
+### 5.2.3. *nth* roots of positive reals.
 
 As we said before, in $\mathbb{Q}$ there isn't any $q \in \mathbb{Q} : q^2 = 2$, we are now going to see that this problem is handled in $\mathbb{R}$.
 
@@ -728,3 +769,26 @@ $$\forall (x,n) \in \mathbb{R}_{>0} \times  \mathbb{Z}_{>0} \ \exists ! y \in \m
 We say that $y$ is the $n$-th root of $x$ and we denote it as $y = \sqrt[n]{x} = x^{\frac{1}{n}}$.
 
 <br>
+
+That there is at most one such $y$ is clear, since $0 < y_1 < y_2 \implies y_1^n < y_2^n$, remember that strict total order $< \ \subset \mathbb{R}^2$ requires irreflexivity.
+
+<br>
+
+Now, let's demonstrate the existance if such number. Consider now the following set:
+
+$$E := \Set{t \in \mathbb{R} \mid t^n < x }$$
+
+This set is not-empty and has an upperbound:
+
+- First, is not empty, consider $t = \frac{x}{1+x} \implies 0 < t < 1$. Now, let's reason by induction over $n$:
+
+    - If $n = 2$, then, by $4.3.2-(2)$ is $0 < t < 1 \implies 0 < t^2 < t$.
+    - Now, considered true by some $n$, again: $0 < t^n < 1 \implies 0 < t^{n+1} < t$
+
+    Thus $t^n < t \ \ \forall n \in \mathbb{N}$ of course, is also $t < x$ as defined so $t \in E$.
+
+    <br>
+
+- Second, is upperbounded, consider $t \in \mathbb{R} : 1 + x < t$, dv qq1 
+
+    
