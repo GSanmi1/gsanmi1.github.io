@@ -430,7 +430,9 @@ We also say that $x  \in F$, then:
 - $x \text{ is positive } \iff 0 < x$
 - $x \text{ is negative } \iff x < 0$
 
-    <br>
+We could thinkg about the positive and negative terms as the direction of the traslation we need to apply to $0$ to reach some value. A right traslation is a positive sign, while a negative sign means left direction. Oberserve that there is no direction for the traslation that sends $0$ to $0$, so $0$ itself have no sign.
+
+<br>
 
 ### 4.3.2. Properties of ordered fields.
 
@@ -442,7 +444,13 @@ Thus, lets think in a line with the elements of the field $F$ represented on it:
 
 1. **Reflexion over the origin**: $x > 0 \iff -x < 0$
 
-    Let's demonstrate it by absurdio reductio which is:
+    This bassically means that the opposite of any value of the addiion always has the opposite sign of the original value, or, in geometric terms, opposites by the addition always fails in opposite sides of the line of $F$.
+
+    Let's observe that since $0<x \implies \tau_{-x}(0) = -x < 0 = \tau_{-x}(x)$, or saying it in simple words, we need to move $0$ to the left to reach the opposite of a positive value.
+
+    <br>
+
+    Let's also try to demonstrate it by absurdio reductio which is:
 
     $$\neg [(x > 0)\leftrightarrow (x<0)] \implies \bot$$
 
@@ -472,7 +480,7 @@ Thus, lets think in a line with the elements of the field $F$ represented on it:
 
 2. **Invariance under positive scale**: $x > 0 \wedge y < z \iff xy < xz$
 
-    Let's observe that:
+    We already demonstrate this before using the homothety, let's repeate it by multiplication:
 
     $$y < z \iff 0 = y + (-y) < z + (-y)$$
     
@@ -484,17 +492,27 @@ Thus, lets think in a line with the elements of the field $F$ represented on it:
 
 3. **Reversion under negative scale**: $x < 0 \wedge y < z \implies xy > xz$
 
-    Let's observe that we have $y < z \iff y - z < 0 \iff - (y - z) > 0$, thus, taking the second axiom of ordered fields and that $(-x)(-y) = xy$ is:
+    Before dive in this demonstration, let's see something important about homotheties, we have that, since is $\mu_x(y) = xy$, then $\mu_{-x}(y) = \mu_x(-y) = - \mu_x(y)$. Meaning that, applying an homothety of negative ratio is equivallent to displace the negative value with a positive ratio which is the same as applying the homothety of positive ratio in the opposite direction (from the opposite value).
 
-    $$\begin{cases} -(y - z) > 0 \\ -x > 0 \end{cases} \implies (-x)[-(y - z)]  = x(y -z )> 0$$
+    Thus, we have that:
 
-    And ultimately: $xy > xz$
+    $$y<z \wedge x < 0 \iff y<z \wedge 0 < -x \implies \mu_{-x}(y) < \mu_{-x}(z)$$
+
+    Now, observe that the homothety applies the same but in the other side of the line, meaning that the precedence between $y$ and $z$ reverses: $y < z \implies -z < -y$, so:
+
+    $$\mu_{-x}(y) < u_{-x}(z) \iff -\mu_{x}(y) < -\mu_{x}(z)\iff \mu_{x}(z) < \mu_{x}(y)$$
+
+    In summary: $y<z \wedge x < 0 \implies \mu_{x}(z) < \mu_{x}(y)$
 
     <br>
 
-4. $x \neq 0 \implies x^2 > 0$
+4. **Positiveness of the squares**: $x \neq 0 \implies x^2 > 0$
 
-    Observe that:
+    Is natural to think that, if $x$ is positive, an homothety of ratio $x$ will mainting it on the positive side and if $x$ is negative, then $\mu_x$ would be a negative ratio homothety and it would act over $x$ moving it over the point $\mu_{-x}(-x)$ which lives in the opposite side of the origin, so, in any case:
+    
+    $$0<x^2 = \mu_x(x)$$
+
+    Formally:
     
     $$x \neq 0 \implies \begin{cases}x>0 \implies xx = x^2 > 0 \\ x < 0 \iff -x < 0 \implies (-x)(-x) = xx = x^2 >0 \end{cases}$$
 
@@ -502,9 +520,19 @@ Thus, lets think in a line with the elements of the field $F$ represented on it:
 
     <br>
 
-5. $0 < x < y \implies 0 < \displaystyle\frac{1}{x} < \frac{1}{y}$
+5. **Reverse of the inverse**: $0 < x < y \implies 0 < \displaystyle\frac{1}{y} < \frac{1}{x}$
     
-    Observe that, since $x \neq y \neq 0 \implies \exists x^{-1},y^{-1} \in F$. Let's also observe that, before, above, we see that $1 > 0$, then $1=xx^{-1} \wedge x > 0 \implies x^{-1} > 0 \ \ \forall x \in F : x > 0$ and we can argument that:
+    Before dive in this demonstration, let's explore what $\mu_{x^{-1}}$ is for any $ x \neq 0$ from $F$.
+
+    The obvious thing is to think that, $\mu_{x^{-1}}$ as defined, is that homothety that sends $x$ to the multiplicative identity $1$, but this is a weak an useless conception. Let's observe that in fact, for $\mu_{x^{-1}}$, $x$ defines the homothety behaviour.
+
+    Think that, whenever you divide a number, (multiplicate it by an inverse of some integer) you are asking how much times this number fit in the divisor. Thusm, the homothety $\mu_{x^{-1}}$ redefines the line of $F$ as if $x$ was the number relative to which the rest are defined (which by default is $1$) meaning that $\mu_{x^{-1}}(y)$ tells you how many times $y$ is contained in $x$.
+
+    Having this clear, let's observe that is obvious that $x < y \implies \mu_{y^{-1}}(1) < \mu_{x^{-1}}(1)$ which is exactly the statement above.
+
+    <br>
+
+    In algebraic terms, we could reason that, since $x \neq y \neq 0 \implies \exists x^{-1},y^{-1} \in F$. Let's also observe that, before, above, we see that $1 > 0$, then $1=xx^{-1} \wedge x > 0 \implies x^{-1} > 0 \ \ \forall x \in F : x > 0$ and we can argument that:
 
     $$0 < x < y \iff 0x^{-1} < xx^{-1} = 1 < yx^{-1} \iff y^{-1}0x^{-1}< y^{-1} <y^{-1}yx^{-1} = x^{-1}$$
 
