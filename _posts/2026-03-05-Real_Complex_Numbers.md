@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "The Real and Complex Number Systems"
-subtitle: "Real and Complex fields presentation and properties."
+subtitle: "Real and Complex fields presentation and properties. Analisis definition."
 date: 2026-03-05 09:00:00 +0000
 categories: ['Maths', 'analisis_rudin']
 tags: ['Maths']
@@ -542,7 +542,11 @@ Thus, lets think in a line with the elements of the field $F$ represented on it:
 
 # 5. The Real field.
 
-We now state the existence theorem which is the core of this chapter. 
+We now state the existence theorem which is the core of this chapter. Until now, we have seen what a field is through his axioms, what is an order and how it is combined with the field to generate the order set which is a structure in which the operations has stablished two invariances relative to the order that finaly allows to derivate 5 rules.
+
+In this context, we talked about bounds and the important $LUB$ property. We've seen that $\mathbb{Q}$ is an ordered field that not satisfies $LUB$, observe that this makes the ordered $\mathbb{Q}$ line full of gaps, points to which we can approximate as much as we want but we can't touch, in other terms, this makes the line *discontinue*.
+
+Thus, let's present $\mathbb{R}$ as an ordered field that satisfies the $LUB$ property.
 
 <br>
 
@@ -623,9 +627,9 @@ First, suppose there exists $A \subset \mathbb{R} : A \neq \varnothing$ upperbou
 
 Now we define as:
 
-$$\gamma := \bigcup_{\alpha \in A} \alpha \iff \gamma := \Set{p \in \mathbb{Q} \ \vert \ \exists \alpha \in A : p \in \alpha}$$
+$$\gamma := \bigcup_{\alpha \in A} \alpha = \Set{p \in \mathbb{Q} \ \vert \ \exists \alpha \in A : p \in \alpha}$$
 
-We will see that $\gamma \in \mathbb{R}$, this is, is also a cut, since it satisfies the three properties mentioned above. Then we will demonstrate that $\gamma$ is an upperbound of $A$ and lastly that is the least-upper-bound and thus, the supremum of $A$.
+We will see that $\gamma \in \mathbb{R}$, this is that, as a subset, is also a cut, since it satisfies the three properties mentioned above. Then we will demonstrate that $\gamma$ is an upperbound of $A$ and lastly that is the least upperbound and thus, the supremum of $A$.
 
 First, let's see that $\gamma \in \mathbb{R}$:
 
@@ -647,19 +651,31 @@ First, let's see that $\gamma \in \mathbb{R}$:
 
     <br>
 
-Having verified that $\gamma$ is a cut, then since $\forall \alpha(\alpha \in A \implies \alpha \subset \gamma) \implies \alpha < \gamma \ \ \forall \alpha \in A$ so $\gamma$ is an upperbound of $A$. 
+Having verified that $\gamma$ is a cut, then since $\forall \alpha(\alpha \in A \implies \alpha \subset \gamma \implies \alpha < \gamma)$ so $\gamma$ is an upperbound of $A$. 
 
-For $\gamma = supA$ it has also to be the least upperbound: $\forall \delta(\alpha < \delta \ \forall \alpha \in A \implies \gamma < \delta)$, then let's proceed by reduction absurdio and consider:
+For $\gamma = supA$ it has also to be the least upperbound, formally, $\gamma$ preceeds any upperbound of $A$:
 
-$$\neg \forall \delta(\alpha < \delta \ \forall \alpha \in A \implies \gamma < \delta) \equiv \exists \delta : \neg(\alpha < \delta \ \forall \alpha \in A \implies \gamma < \delta)$$
+$$\forall \delta \in \mathbb{R} \quad ([\alpha < \delta \quad \forall \alpha \in A] \implies \gamma < \delta)$$
 
-Let's remember that, in classical logic it is: $p \to q \equiv \neg p \vee q \iff \neg(p \to q) \equiv \neg (\neg p \vee q) \equiv p \wedge \neg q$, thus calling:
+Then let's proceed by reduction absurdio and consider the negation:
 
-$$\begin{cases}p := \alpha < \delta \ \forall \alpha \in A \\ q:= \gamma < \delta\end{cases}, \quad p \wedge \neg q \iff \alpha < \delta \ \ \forall \alpha \in A \wedge \delta < \gamma$$
+$$\neg \forall \delta([\alpha < \delta \quad \forall \alpha \in A] \implies \gamma < \delta) \equiv \exists \delta : \neg([\alpha < \delta \quad \forall \alpha \in A] \implies \gamma < \delta)$$
 
-Let's consider $\delta$ as above: $\exists \delta \in \mathbb{R} : \delta < \gamma \wedge (\alpha < \delta \ \ \forall \alpha \in A)$. Observe that $\delta < \gamma \implies \delta \neq \gamma$ which means that $\exists \alpha \in \gamma : \alpha \nsubseteq \delta \implies \delta < \alpha$ (due to the trychotomy of the order), thus and $\delta$ would not be an upperbound contradicting the initial assumption. 
+Let's remember that, in classical logic, it is: 
+
+$$p \to q \equiv \neg p \vee q \iff \neg(p \to q) \equiv \neg (\neg p \vee q) \equiv p \wedge \neg q$$
+
+Thus exchanging $p = (\alpha < \delta \quad \forall \alpha \in A)$ and $q= \gamma < \delta$ we have that the negation is
+
+$$\exists \delta \in \mathbb{R} : [(\alpha < \delta \quad \forall \alpha \in A) \wedge (\delta < \gamma)]$$
+
+Which means basically that exists an upperbound that preceeds $\gamma$. Thus, let's consider $\delta$ as above: $\exists \delta \in \mathbb{R} : \delta < \gamma \wedge (\alpha < \delta \ \ \forall \alpha \in A)$. Observe that $\delta < \gamma \implies \delta \neq \gamma$ which means that $\exists \alpha \in \gamma : \alpha \nsubseteq \delta \implies \delta < \alpha$ (due to the trychotomy of the order), thus and $\delta$ would not be an upperbound contradicting the initial assumption. 
 
 So, by reduction absurdio, $\gamma$ has to be the least upper bound; $\gamma = sup A$.
+
+<br>
+
+Thus, we've seen that $\mathbb{R}$ is an ordered set that satisfies $LUB$ property, let's see also that with proper definitions, it can also have field structure, becoming then a complete ordered field.
 
 <br>
 
@@ -679,9 +695,7 @@ Now, we verify that the addition's axioms for a field hold in $\mathbb{R}$, with
         
         Observe that there is something worth to say of upperbounds when speaking about cuts. By definition, $p$ is an upperbound of $X$ iff $x \leq p \ \ \forall x \in X$, but if $X$ were a cut, by the third property if $\exists x_0 : p = x_0 \in X \implies \exists r \in X : p < r$ and $p$ would not an upperbound, thus, when talking about cuts, all upperbounds are always strict upperbounds, the definition of upperbounds always collapses to $x < p \ \ \forall x \in X$ and the cut do not contains it.
 
-        Also observe
-
-    <br>
+        <br>
 
     2. $p \in \alpha + \beta \wedge (q \in \mathbb{Q} : q < p) \implies q \in \alpha + \beta $ 
 
@@ -695,8 +709,21 @@ Now, we verify that the addition's axioms for a field hold in $\mathbb{R}$, with
 
         <br>
 
-- **Conmutativity**: $\alpha + \beta = \beta + \alpha \ \ \forall \alpha, \beta \in \mathbb{R}$, it gets derivated from commutativity in $\mathbb{Q}$.
-- **Asociativity**: $\alpha + (\beta + \gamma) = (\alpha + \beta) + \gamma \ \ \forall \alpha, \beta, \gamma \in \mathbb{R}$, it gets derivated from associativity in $\mathbb{Q}$.
+- **Conmutativity**: $\alpha + \beta = \beta + \alpha \ \ \forall \alpha, \beta \in \mathbb{R}$, it gets immediately derivated from commutativity in $\mathbb{Q}$.
+
+    <br>
+
+- **Asociativity**: $\alpha + (\beta + \gamma) = (\alpha + \beta) + \gamma \ \ \forall \alpha, \beta, \gamma \in \mathbb{R}$.
+
+    Let's look it closely, we have that the objects in $\mathbb{R}$ can be understanded as:
+
+    $$\alpha + (\beta + \gamma) := \Set{a + p \mid a \in \alpha \wedge p \in \beta + \gamma}$$
+
+    $$(\alpha + \beta) + \gamma := \Set{q + c \mid q \in \alpha + \beta \wedge c \in \gamma}$$
+
+    Observe that also $p \in \beta + \gamma \implies \exists (b , c) \in \beta \times \gamma : p = b + c$ and we can rewrite the expression $a + p = a + (b + c)$, but in $\mathbb{Q}$ is $a + (b + c) = (a + b) + c$ which means that the object $a+p$ lives in the counter part. A similar argument give us the reciproc inclusion ultimately standing that: $\alpha + (\beta + \gamma) = (\alpha + \beta) + \gamma$.
+
+    <br>
 
 - **Identity**: 
 
@@ -711,6 +738,10 @@ Now, we verify that the addition's axioms for a field hold in $\mathbb{R}$, with
     Let's also consider $a \in \alpha$ and, again by the third property of the cuts, take $b \in \alpha : a < b$, observe that $a-b < 0 \implies a-b \in 0^\ast$, and is $ a = b + (a - b) \in \alpha + 0^\ast$.
 
     Thus, $\alpha \leq \alpha + 0^\ast$, meaning that $\alpha = \alpha + 0^\ast$
+
+    Lastly, by the conmutativity property presented before:
+
+    $$0^\ast + \alpha = \alpha + 0^\ast = \alpha \quad \forall \alpha \in \mathbb{R}$$
 
     <br>
 
