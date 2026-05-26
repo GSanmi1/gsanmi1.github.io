@@ -751,21 +751,37 @@ Now, we verify that the addition's axioms for a field hold in $\mathbb{R}$, with
 
     $$\beta := \Set{p \in \mathbb{Q} \mid \exists r>0 : -p -r \notin \alpha}$$
 
-    Observe that we are not considering those $p$ whose opposite $-p$ are strictly out from $\alpha$ (this would be $a < -p \ \ \forall a \in \alpha$) but only those $p$ whose opposite has a constant positive gap between themselves and any other element of $\alpha$ abstracted in $r > 0$.
+    Observe that we are not considering those $p$ whose opposite $-p$ are strictly out from $\alpha$ (this would be $a < -p \ \ \forall a \in \alpha$) but only those $p$ whose opposite has a constant positive gap between themselves and any other element of $\alpha$ abstracted in $r > 0$. Specifically, we are considering the segment simetric (respect the origin) in the rational line to the one that is strictly out by a positive gap from $\alpha$.
 
     Note that $\beta$ as defined is smaller than $A := \Set{p \in \mathbb{Q} \mid -p \notin \alpha}$ since, $A$ admits a frontier element $p$ for which the elements of $a \in \alpha$ can get as close as wanted. However, with $-p -r \notin \alpha$ the difference between $-p -r$ and $\alpha$, again, can be as small as wanted, but the distance between $-p$ and $\alpha$ can't be smaller than $r$. That gap will always exists between $-p$ and any other element in $\alpha$ so $\beta$'s elements are deeper in $\mathbb{Q} \setminus \alpha$.
     
     Let's see that $\beta \in \mathbb{R}$ and $\alpha + \beta = 0^*$  
 
-    - First, $\beta \in \mathbb{R}$.
+    - First, $\beta \in \mathbb{R}$, this means that $\beta \neq \varnothing$ and $\beta \neq \mathbb{Q}$. In order to solve this, let's recover our conception of $\beta$ as the simetric segment to that one that is strictly out from $\alpha$ by a positive gap.
 
-        - Since $\alpha \in \mathbb{R} \implies (\alpha \neq \varnothing \wedge \alpha \neq \mathbb{Q}) \implies \exists q \in \mathbb{Q} \setminus \alpha$, then, write $ q =(q+1) - 1 \notin \alpha$ and $p := -(q+1) \in \beta \implies \beta \neq \varnothing$.
+        <br>
 
-            Also, $\forall q(q \in \alpha \implies \nexists r  > 0 : q - r \notin \alpha) \implies -q \notin \beta \implies \beta \neq \mathbb{Q}$ applying the second property of the cuts. $(q -r < q \wedge q \in \alpha \implies q -r \in \alpha) \ \ \forall r>0$
+        Thus, first, let's simply consider an element out from $\alpha$. 
+        
+        Since $\alpha \in \mathbb{R} \implies \alpha \subset \mathbb{Q} \implies \exists q \in \mathbb{Q} \setminus \alpha$, then, consider now $p \in \mathbb{Q} : q < p$ an observe that $q$ is what you get when translate back $p$ the distance $r = p-q>0$, formally we write:
+        
+        $$q = p -(p - q) = -(-p) -r \in \alpha \implies -p \in \beta$$
 
-            <br>
+        
 
-        - 
+        This way, we get that $\beta \neq \varnothing$.
+
+        <br>
+
+        Now, consider some $q \in \alpha$, no matters how much translate $q$ back, it always will be in the segment $\alpha$ so is not in $-\alpha$, remember that $\beta$ is composed from the negative of those numbers that can be push back a bit and still out of $\alpha$, so this intuition works. 
+        
+        Formally $q - r < q \quad \forall r>0$, thus $q \in \alpha \implies q-r \in \alpha \quad \forall r>0$ by the second property of the cuts and this is logically the same that: $\nexists r >0 : -(-q) -r \in \alpha \implies -q \notin \beta$
+
+        So $\beta \neq \mathbb{Q}$ neither.
+
+        <br>
+
+    
 
 
 ## 5.2. Important Properties from the $\mathbb{R}$ field.
