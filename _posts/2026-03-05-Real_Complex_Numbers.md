@@ -562,15 +562,26 @@ To proove this theorem, we will construct $\mathbb{R}$ from $\mathbb{Q}$. We sha
 
 The members of $\mathbb{R}$ will be certain subsets of $\mathbb{Q}$, called *cuts*. A cut is, by definition, any proper set $\alpha \subset \mathbb{Q}$ with the following three properties: 
 
-- $\alpha \neq \varnothing \wedge \alpha \neq \mathbb{Q}$
-- $p \in \alpha \wedge (q \in \mathbb{Q} : q < p) \implies q \in \alpha$. 
+- **A cut is a non-empty strict subset of $\mathbb{Q}$**:
+
+     $\alpha \neq \varnothing \wedge \alpha \neq \mathbb{Q}$
+
+    <br>
+
+- **A cut extends backwards indefinitely**:
+
+    $p \in \alpha \wedge (q \in \mathbb{Q} : q < p) \implies q \in \alpha$. 
 
     Note that we are saying that being $\alpha$ a cut and $q \notin \alpha$ then $p < q \ \ \forall p \in \alpha$, otherwise, by the line above it would be $q \in \alpha$. In some manner $\alpha$ is a segment inside $\mathbb{Q}$, without gaps. This result also implies the two followings:
 
     - $p \in \alpha \wedge q \notin \alpha \implies p < q$
     - $p \notin \alpha \wedge p < q \implies q \notin \alpha$
 
-- $p \in \alpha \implies \exists r \in \alpha : p < r$. There is no "larguest" member.
+    <br>
+
+- **A cut doesn't contains his own supreme**:
+
+    $p \in \alpha \implies \exists r \in \alpha : p < r$. 
 
 <br>
 
@@ -781,7 +792,29 @@ Now, we verify that the addition's axioms for a field hold in $\mathbb{R}$, with
 
         <br>
 
-    
+    - Now, the second property, let's observe that, if we consider some $p \in \beta$ and $q \in \mathbb{Q} : q < p$, then, assuming $r : -p -r \notin \alpha$:
+
+        $$q < p \iff -p < -q \iff -p -r < -q -r \implies -q -r \notin \alpha$$
+
+        Since $\alpha$ is a cut, the premise and the second property in $\alpha$ give us the last implication, (note that, otherwise, $-p -r \in \alpha$ too and $p \notin \beta$). Thus $q \in \beta$.
+
+        <br>
+
+    - Lastly, the third property, consider some $p \in \beta$, then, again taking $r : -p -r \notin \alpha$
+
+        $$-p -r = -(p + \frac{1}{2}r) - \frac{1}{2} r \notin \alpha \implies p + \frac{1}{2}r \in \beta$$
+
+        For some $r>0$.
+
+        <br>
+
+    Now, let's see that:
+
+    - $\alpha + \beta \subset 0^*$: First, observe that $b \in \beta \implies \exists r > 0 : -b -r \notin \alpha$ and for the second property of the cuts: $a < -b -r \quad \forall a \in \alpha \iff a + b < -r <0 \quad \forall a \in \alpha$
+
+        <br>
+
+    - $0^* \subset \alpha + \beta$: 
 
 
 ## 5.2. Important Properties from the $\mathbb{R}$ field.
