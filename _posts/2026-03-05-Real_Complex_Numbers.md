@@ -810,11 +810,35 @@ Now, we verify that the addition's axioms for a field hold in $\mathbb{R}$, with
 
     Now, let's see that:
 
-    - $\alpha + \beta \subset 0^*$: First, observe that $b \in \beta \implies \exists r > 0 : -b -r \notin \alpha$ and for the second property of the cuts: $a < -b -r \quad \forall a \in \alpha \iff a + b < -r <0 \quad \forall a \in \alpha$
+    - $\alpha + \beta \subset 0^*$: 
+    
+        First, observe that $b \in \beta \implies \exists r > 0 : -b -r \notin \alpha$ and for the second property of the cuts: $a < -b -r \quad \forall a \in \alpha \iff a + b < -r <0 \quad \forall a \in \alpha$
 
         <br>
 
     - $0^* \subset \alpha + \beta$: 
+
+        Consider some $p \in 0^*$ and $q = - \frac{p}{2} > 0$.
+
+        Observe, that exists some integer that makes $q$ to cross $\alpha$ as a frontier, formally: 
+        
+        $$z \in \mathbb{Z} : zq \in \alpha \wedge (z+1)q \notin \alpha$$
+        
+        Check that, for this $z$, we have that, being $t = - (z+2)q$, then:
+        
+        $$-t - q = (z+1)q \implies t \in \beta$$
+
+        Observe that, then $p = zq + t$.
+
+        <br>
+
+    Thus, $\beta = - \alpha$
+
+With this we already prooved that $(\mathbb{R},+)$ is an abelian group
+
+<br>
+
+### 5.1.5. Multiplication in $\mathbb{R}$.
 
 
 ## 5.2. Important Properties from the $\mathbb{R}$ field.
@@ -838,6 +862,7 @@ $$\neg [\forall x\forall y (0 < x \implies  \exists n \in \mathbb{N} : y < nx)] 
 Making use from $p \to q \equiv \neg p \vee q$, statement above is:
 
 $$\exists x \exists y (0 < x \wedge  nx \leq y \ \ \forall n \in \mathbb{N} )$$
+
 
 Thus, taking $x = 1, y = b$, then $n·1 = n \leq b \ \ \forall n \in \mathbb{N}$ and it violates the archimedean property so $\mathbb{N}$ isn't bounded in $\mathbb{R}$. 
 
