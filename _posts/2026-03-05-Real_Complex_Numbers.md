@@ -807,7 +807,6 @@ Now, we verify that the addition's axioms for a field hold in $\mathbb{R}$, with
         For some $r>0$.
 
         <br>
-
     Now, let's see that:
 
     - $\alpha + \beta \subset 0^*$: 
@@ -834,11 +833,20 @@ Now, we verify that the addition's axioms for a field hold in $\mathbb{R}$, with
 
     Thus, $\beta = - \alpha$
 
-With this we already prooved that $(\mathbb{R},+)$ is an abelian group
+    <br>
+
+With this we already prooved that $(\mathbb{R},+)$ is an abelian group. Observe now that this addition can be considered a traslation, $\alpha + \beta$ is the set that consider the rational addition between any item of $\alpha$ and $\beta$. Since $\mathbb{Q}$ is an ordered field it self, $+ : \mathbb{Q} \times \mathbb{Q} \to \mathbb{Q}$ is a traslation, thus the combination $a + b$ is a traslation that displaces $a$ a $b$ distance on the rational line. 
+
+Observe now that, in $\mathbb{R}$ we have the $LUB$ property which allow us to consider, for any non-empty and upperbounded subset $A \subset \mathbb{R}$ a minimal upperbound. Also, since any cut $\alpha \in \mathbb{R}$ can be treated as a subset it self (of $\mathbb{R}$, specifically, that subset that contains all the cuts that preceds him) we can consider a supreme in $\mathbb{R}$ for any element of $\alpha \in \mathbb{R}$, we can denote it as $sup(\alpha)$. 
+
+Observe then that the own $\alpha + \beta$ has is own supreme, $sup(\alpha + \beta)$ which is furtherest than any $a+b: (a,b) \in \alpha \times \beta$ in the rational line, and thus, that $sup(\alpha)$ or $sup(\beta)$, essentially $sup(\alpha + \beta) = sup(\alpha) + sup(\beta)$. This is how geometrically, the addition in $\mathbb{R}$ adquires form of traslation through the traslation conception defined in the ordered field $\mathbb{Q}$.
+
+In summary, if $\alpha \in \mathbb{R}$ then any $a \in \alpha$ is not further than $sup(\alpha)$ and $\tau_b(a) = a + b$ is not further than $sup(\alpha + \beta)$. Esentally this allow us to extrapole that, be $\alpha < \beta \implies \alpha + \gamma < \beta + \gamma \quad \forall \gamma \in \mathbb{R}$, so the total strict order $< \ \subset \mathbb{R}^2$ has an invariant through the traslations in $\mathbb{R}$.
 
 <br>
 
 ### 5.1.5. Multiplication in $\mathbb{R}$.
+
 
 
 ## 5.2. Important Properties from the $\mathbb{R}$ field.
