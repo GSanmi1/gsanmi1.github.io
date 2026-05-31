@@ -223,7 +223,7 @@ Let's now observe two examples in which we want to ilustrate two facts about min
 
 The second example pretend to ilustrate that, although the definition of bound do not prohibit a minimal bound of $E$ to be contained in $E$, this is not true in general, a minimal bound often is not a member of the bounded subset.
 
-1. Let's consider again $A:= \Set{p \ \vert \ p^2 < 2 }, B:= \Set{p \ \vert \ p^2 > 2 } \subset \mathbb{Q}$. 
+1. Let's consider again $A:= \Set{p \ \vert \ p^2 < 2 }, B:= \Set{p \ \vert \ p^2 > 2 } \subset \mathbb{Q}^+$. 
 
     The set $A$ is bounded above. In fact, the upper bounds of $A$ are exactly the members of $B$. Since $B$ contains no smallest member, $A$ has no least upper bound in $\mathbb{Q}$. Similarly, $B$ is lowerbounded and the lower bounds of $B$ are the elements of $A$. But since $\nexists p \in \mathbb{Q} : p^2 = 2$ neither of the two has minimal bound.
 
@@ -849,33 +849,34 @@ In summary, if $\alpha \in \mathbb{R}$ then any $a \in \alpha$ is not further th
 
 
 
+<br>
+
 ## 5.2. Important Properties from the $\mathbb{R}$ field.
 
 ### 5.2.1. Archimedean property of $\mathbb{R}$.
 
-The Archimedean property says that $\mathbb{N}$ is unbounded on $\mathbb{R}$, meaning that $\mathbb{R}$ has no "infinitely large" or "infinitely small" elements; no matter how small a positive number $x$ you pick and no matter how large a target $y$, you can always reach (and surpass) $y$ by adding $x$ to itself enough times. Formally:
+We've nound this property before in the construction of $\mathbb{R}$ without properly defined it. This property says that every cuantity in $\mathbb{R}$ is reachable by considering a positive value a finite number of times. It is a powerful statement since it basically says that every point on the real line is reachable by any positive value repeated a finite number of times. 
+
+This can be explained in other terms, the archimedean property says that $\mathbb{N}$ is unbounded on $\mathbb{R}$, there is always a natural number that can reach and surpass any real cuantitiy. 
+
+Meaning that $\mathbb{R}$ has no "infinitely large" or "infinitely small" elements; no matter how small a positive number $x$ you pick and no matter how large a target $y$, you can always reach (and surpass) $y$ by adding $x$ to itself enough times. Formally:
 
 $$\forall x\forall y (0 < x \implies  \exists n \in \mathbb{N} : y < nx)$$
 
-To prove it, let's reason by the reduction to absurdity, let be $A:=\Set{nx \ \vert \ n \in \mathbb{N}}$ then if the statement above isn't true, $y$ would be an upperbound of $A$ and since $A \neq \varnothing$ and $\mathbb{R}$ has the $LUB$ property, then $A$ has a supremum on $\mathbb{R}$ let be $\alpha = supA$.
+By absurdio reduction: 
 
-Let's observe that $ 0 < x \iff - x < 0 \iff \alpha - x < \alpha$ and $\alpha - x$ is not an upperbound so there exists some natural $m \in \mathbb{N} : \alpha -x < mx$, but then $\alpha < (m+1)x \in A \implies \alpha \neq supA$
+Let's observe that:
 
-<br>
-
-Let's observe that, by reduction to absurdity, if $\mathbb{N}$ was bounded in $\mathbb{R}$, then let be $b \in \mathbb{R} : n \leq b \ \ \forall n \in \mathbb{N}$, then this violates the the arquimedean property, check that:
-
-$$\neg [\forall x\forall y (0 < x \implies  \exists n \in \mathbb{N} : y < nx)] \equiv \exists x \exists y \neg(0 < x \implies  \exists n \in \mathbb{N} : y < nx)$$
-
-Making use from $p \to q \equiv \neg p \vee q$, statement above is:
-
-$$\exists x \exists y (0 < x \wedge  nx \leq y \ \ \forall n \in \mathbb{N} )$$
+$$\neg \forall x\forall y (0 < x \implies  \exists n \in \mathbb{N} : y < nx) \equiv \exists x\exists y (0 < x \wedge  y > nx \quad \forall n \in \mathbb{N})$$
 
 
-Thus, taking $x = 1, y = b$, then $n·1 = n \leq b \ \ \forall n \in \mathbb{N}$ and it violates the archimedean property so $\mathbb{N}$ isn't bounded in $\mathbb{R}$. 
+Thus, lets fix $x > 0$ and consider the set $A:=\Set{nx \ \vert \ n \in \mathbb{N}}$ upperbounded by $y$ as the statement says. By the $LUB$ property in $\mathbb{R}$ we can consider $\alpha = sup(A) \in \mathbb{R}$. 
+
+This way, we have that:
+
+$$\alpha - x < \alpha \implies  \exists m \in \mathbb{N} : \alpha - x < mx \iff \alpha < (m+1)x \in A \implies \alpha \neq sup(A)$$
 
 <br>
-
 
 ### 5.2.2. $\mathbb{Q}$ is dense in $\mathbb{R}$
 
@@ -883,7 +884,13 @@ The density of $\mathbb{Q}$ in $\mathbb{R}$ stablish that between two elements o
 
 $$\forall x, y \in \mathbb{R} : x < y \implies \exists q \in \mathbb{Q} : x < q < y$$
 
-To demonstrate it, lets think about $x, y \in \mathbb{R} :x <y$, thus is $ 0 < y - x$ so for $1 \in \mathbb{R}$, the archimedean property furnishes the result: $1 < n(y-x)$.
+Let's observe that, considering $x \in \mathbb{R}\setminus \mathbb{Q}$, then taking some $q \in y \setminus x$ we have that is $x < q < y$, but observe that this argument doesn't apply to every real, the exception is made when is a rational real:
+
+$$x \in \mathbb{Q} \subset \mathbb{R} \implies x \in y \setminus x$$
+
+The existance of another $q \neq x : x < q < y$ need to be prooved.
+
+To demonstrate it, lets think about $x, y \in \mathbb{R} :x < y$, thus is $ 0 < y - x$ so for $1 \in \mathbb{R}$, the archimedean property furnishes the result: $1 < n(y-x)$.
 
 Also, considering $z_1,z_2 \in \mathbb{R}^+ \implies \exists t_1,t_2 \in \mathbb{N}: nx < t_1z_1 \wedge -nx < t_2z_2$. Then, calling $m_i = t_iz_i$ is:
 
@@ -896,6 +903,8 @@ $$\begin{cases} 1 < n(y-x)  \iff 1 + nx < y \\ m - 1 \leq nx < m \iff m \leq 1 +
 And thus:
 
 $$x < \frac{m}{n} < y$$
+
+Observe that this calls for we can approximate any real through rational values. Think that for any $x \in \mathbb{R}$ we can think in $x < x +1 \implies \exists y \in \mathbb{Q} : x < y < x + 1$, but since $\mathbb{Q} \subset \mathbb{R} \implies y \in \mathbb{R}$ and the result tell us that exists another $q \in \mathbb{Q} : x < q < y$ and so on.
 
 <br>
 
@@ -911,7 +920,7 @@ We say that $y$ is the $n$-th root of $x$ and we denote it as $y = \sqrt[n]{x} =
 
 <br>
 
-That there is at most one such $y$ is clear, since $0 < y_1 < y_2 \implies y_1^n < y_2^n$, remember that strict total order $< \ \subset \mathbb{R}^2$ requires irreflexivity.
+That there is at most one such $y \in \mathbb{R}$ is clear, since $\forall y\forall x(0 < y < x \implies y^n < x ^n)$, remember that strict total order $< \ \subset \mathbb{R}^2$ requires irreflexivity, meaning that $y^n < x^n \implies y^n \neq x^n$, obviously.
 
 <br>
 
@@ -930,6 +939,6 @@ This set is not-empty and has an upperbound:
 
     <br>
 
-- Second, is upperbounded, consider $t \in \mathbb{R} : 1 + x < t$, dv qq1 
+- Second, is upperbounded, consider $t \in \mathbb{R} : 1 + x < t$, 
 
     
