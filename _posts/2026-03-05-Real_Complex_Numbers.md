@@ -847,7 +847,40 @@ In summary, if $\alpha \in \mathbb{R}$ then any $a \in \alpha$ is not further th
 
 ### 5.1.5. Multiplication in $\mathbb{R}$.
 
+Let's take the following operation:
 
+$$· : \mathbb{R}^+ \times \mathbb{R}^+ \to \mathbb{R}^+$$
+$$(\alpha, \beta) \mapsto \alpha \beta $$
+
+Being: $\alpha \beta := \Set{ p \in \mathbb{Q} \mid \exists (a,b) \in \alpha^+ \times \beta^+ : p \leq ab}$, let's see first that, as defined, $(\mathbb{R}^+, ·)$ is also an abelian group.
+
+From all below, consider $\alpha, \beta \in \mathbb{R}^+$
+
+- **First, $\alpha \beta \in \mathbb{R}$**:
+
+    1. $\alpha \beta \neq \varnothing \wedge \alpha \beta \subset \mathbb{Q}$
+
+        - $\alpha \beta \neq \varnothing$, consider that $\alpha, \beta \in \mathbb{R} \implies \alpha, \beta \neq \varnothing$, let's be $a \in \alpha, b \in \beta$, then $ab -1 \in \alpha \beta$ so this last is not empty.
+
+            <br>
+
+        - $\alpha \beta \neq \mathbb{Q}$, consider now some positive $p \notin \alpha$ and $q \notin \beta$, and observe that 
+        
+            $$t = (p + 1)(q+1) > ab \quad \forall (a,b) \in \alpha^+ \times \beta^+ \implies t \notin \alpha \beta$$
+
+            <br>
+
+        <br>    
+
+    2. $p \in \alpha \beta \wedge q \in \mathbb{Q} : q < p \implies q \in \alpha \beta$
+
+        Immediately: $p \in \alpha \beta \implies \exists (a,b) \in \alpha^+ \times \beta^+ : p \leq ab \implies q < p \leq ab \implies q \in \alpha \beta$.
+
+        <br>
+
+    3. $ p \in \alpha \beta \implies \exists r \in \alpha \beta : p<r$
+
+        Again, observe that $a \in \alpha \implies \exists r_a \in \alpha : a < r_a$, and the same applies for $b \in \beta$ thus, considering some $p \leq ab < r_ar_b$, observe that this means that $ab \in \alpha \beta$ and also, applying the same argument $r_ar_b \in \alpha \beta$ thus the third property is true, because we can always find an element bigger than other one in $\alpha \beta$
 
 <br>
 
