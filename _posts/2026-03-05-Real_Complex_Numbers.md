@@ -884,6 +884,12 @@ From all below, consider $\alpha, \beta \in \mathbb{R}^+$
 
 <br>
 
+- **Asociativity**; Inmediate from associativity in $\mathbb{Q}$
+- **Conmutativity**; Inmediate from conmutativity in $\mathbb{Q}$
+- **Identitity**; Observe that: $1^*:= \Set{p \mid p < 1} \subset \mathbb{Q}$, then $\forall p(p·1 = p) \implies \forall \alpha (\alpha · 1^* = \alpha)$ so  $1^*$ is our identity.
+- **Inverse**; Take $\alpha^{-1} := \Set{p \mid p < \frac{1}{}}$
+
+
 ## 5.2. Important Properties from the $\mathbb{R}$ field.
 
 ### 5.2.1. Archimedean property of $\mathbb{R}$.
