@@ -936,15 +936,15 @@ From all below, consider $\alpha, \beta \in \mathbb{R}^+$
 
 Now that we prooved that $(\mathbb{R}^+,\ ·)$ is an abelian group, let's extend to $\mathbb{R}$ this same operation.
 
-Observe that $\alpha 0^* = 0^*$ and the argument is basically the same we provided with $1^*$:
+Observe that $\alpha 0^ = 0^\ast$ and the argument is basically the same we provided with $1^\ast$:
 
 - $\alpha \ · 0^\ast \subset 0^\ast$:
 
-    Consider some $t \in 0^*$ and some $p \in \alpha^+ \implies p>0$, then $pt < 0 \in 0^*$
+    Consider some $t \in 0^\ast$ and some $p \in \alpha^+ \implies p>0$, then $pt < 0 \in 0^\ast$
 
     <br>
 
-- $0^\ast \subset \alpha \ · 0^*$
+- $0^\ast \subset \alpha \ · 0^\ast$
 
     Observe that $\forall p \in 0^\ast \implies p \in \alpha^+$
 
