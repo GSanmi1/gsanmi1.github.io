@@ -886,8 +886,84 @@ From all below, consider $\alpha, \beta \in \mathbb{R}^+$
 
 - **Asociativity**; Inmediate from associativity in $\mathbb{Q}$
 - **Conmutativity**; Inmediate from conmutativity in $\mathbb{Q}$
-- **Identitity**; Observe that: $1^*:= \Set{p \mid p < 1} \subset \mathbb{Q}$, then $\forall p(p·1 = p) \implies \forall \alpha (\alpha · 1^* = \alpha)$ so  $1^*$ is our identity.
-- **Inverse**; Take $\alpha^{-1} := \Set{p \mid p < \frac{1}{}}$
+- **Identitity**; Observe that: $1^\ast:= \Set{t \in \mathbb{Q} \mid t < 1} \subset \mathbb{Q}$, then, consider $\alpha^+ \in \mathbb{R}^+$:
+
+    - $p·t \leq p \quad \forall (p,t) \in \alpha^+ \times 1^\ast \implies p \ · t \in \alpha \implies \alpha · 1^\ast \subset \alpha$, 
+    - By the second properties of the cuts:
+    
+        $$\forall p \in \alpha \ \exists r \in \alpha : p<r \implies p = r \ · \frac{p}{r} \in \alpha \ · 1^\ast \implies \alpha \subset \alpha \ · 1^*$$
+    
+    Thus, $\alpha \ · 1^* = \alpha$ and $1^\ast$ is our identity.
+
+    <br>
+
+- **Inverse**; Take $\alpha^{-1} := \Set{p \mid p < \frac{1}{y} : (y \notin \alpha \wedge y > 0)}$, observe that, essentially we are saying that the inverse of any cut is any rational inverses behind the non-cut part. Observe that intuitively this is like say that the inverse cut is to consider the inverse of the frontier but this frontier does not exists in $\mathbb{Q}$, thus, we don't have access to it so we talk about what isn't inside the cut.
+
+    Let's see that as defined, $\alpha^{-1}$ is a cut and it satisfyies the role of the inverse in $(\mathbb{R}^+,\ ·)$.
+
+    1. Obviously $\alpha^{-1} \neq \varnothing$ since $\alpha \neq \mathbb{Q}$ and also $\alpha^{-1} \neq \mathbb{Q}$.
+
+    2. Take $p \in \alpha^{-1}$ and $q<p<\frac{1}{y} \implies q \in \alpha^{-1}$.
+    3. Take $p \in \alpha^{-1} \implies \exists y \notin \alpha : p < \frac{1}{y}$, then take some $q > y \implies p < \frac{1}{q}< \frac{1}{y} :q,y \notin \alpha$, meaning that $r = 1/q \in \alpha^{-1}$ verifying $p<r$
+
+    Thus, $\alpha^{-1}$ is a cut, let's now see that $\alpha \alpha^{-1} = 1^\ast$:
+
+    - $\alpha \alpha^{-1} \subset 1^\ast$: 
+    
+        Let's observe that: $\alpha \alpha^{-1}= \Set{p \mid \exists (a,t) \in \alpha^+ \times {\alpha^{-1}}^+ : p \leq at}$, but let observe: 
+        
+        $$t \in \alpha^{-1} \implies \exists (y \notin \alpha \wedge y>0) : t < \frac{1}{y} \implies at < \frac{a}{y} < 1$$
+        
+        Since $a<y$ for being $y \notin \alpha$.
+
+        <br>
+
+    - $1^* \subset \alpha \alpha^{-1}$: 
+    
+        Let's take note that, demonstrate this inclusion implies to demonstrate that, given any number $p < 1$ we can closer than $p$ to $1$ by finding and multiplicating the elements of a proper pair $(a,t) \in \alpha^+ \times {\alpha^{-1}}^+$.
+
+        First let's take some $p < 1 \implies \exists q > 0 \in \mathbb{Q} : p + q = 1$, so $q$ is the "distance" between $p$ and $1$, let's now take some $\alpha >1$ (we can assume this without loosing generality since otherwise it would be $\alpha^{-1}>1$) and consider some $a \notin \alpha : a - q \in \alpha$, observe $a \notin \alpha \implies \frac{1}{a} \in \alpha^{-1}$, thus:
+
+        $$1 > (a-q)\frac{1}{a} = 1 - \frac{q}{a} > 1 - q = p$$
+
+        Observe that $\alpha > 1 \implies a >1 \implies q > \frac{q}{a}$.
+
+        <br>
+
+    At the end, we have that $1^* = \alpha \alpha^{-1}$.
+
+    <br>
+
+Now that we prooved that $(\mathbb{R}^+,\ ·)$ is an abelian group, let's extend to $\mathbb{R}$ this same operation.
+
+Observe that $\alpha 0^* = 0^*$ and the argument is basically the same we provided with $1^*$:
+
+- $\alpha \ · 0^\ast \subset 0^\ast$:
+
+    Consider some $t \in 0^*$ and some $p \in \alpha^+ \implies p>0$, then $pt < 0 \in 0^*$
+
+    <br>
+
+- $0^\ast \subset \alpha \ · 0^*$
+
+    Observe that $\forall p \in 0^\ast \implies p \in \alpha^+$
+
+    <br>
+
+Ultimately, we define:
+
+$$\alpha \beta = \begin{cases} (- \alpha)(- \beta) \quad \alpha < 0^\ast, \beta < 0^\ast \\ -[(-\alpha)\beta] \quad \alpha < 0^\ast, \beta > 0^\ast \\-[\alpha (-\beta)] \quad \alpha > 0^\ast, \beta < 0^\ast\end{cases}$$
+
+We just translate negative multiplications to the negative segment of a positive multiplication. Clearly $(\mathbb{R}, \ ·)$ is an abelian group.
+
+<br>
+    
+Lastly, $(\mathbb{R},  +)$ and $(\mathbb{R}, \ ·)$ are compatible, this is a result that can be obtained by cases and it comes directly from the distributive law in $\mathbb{Q}$:
+
+$$\alpha(\beta + \gamma) = \alpha \beta + \alpha \gamma$$
+
+<br>
+
 
 
 ## 5.2. Important Properties from the $\mathbb{R}$ field.
@@ -965,7 +1041,7 @@ That there is at most one such $y \in \mathbb{R}$ is clear, since $\forall y\for
 
 Now, let's demonstrate the existance if such number. Consider now the following set:
 
-$$E := \Set{t \in \mathbb{R} \mid t^n < x }$$
+$$E := \Set{t \in \mathbb{R} \mid t^n < x}$$
 
 This set is not-empty and has an upperbound:
 
@@ -978,6 +1054,21 @@ This set is not-empty and has an upperbound:
 
     <br>
 
-- Second, is upperbounded, consider $t \in \mathbb{R} : 1 + x < t$, 
+- Second, is upperbounded, consider $t \in \mathbb{R} : 1 + x < t \implies x < t \leq t^n$ and $1+x$ is an upperbound of $E$. Thus, we can consider the $y=sup(E)$ verifying necesarily $y^n = x$. (Although the proof of this last afirmation is not provided, is too complicated and the result, as presented, is intuitively enough to be accepted).
 
-    
+    <br>
+
+Let's observe that $(ab)^{\frac{1}{n}} = a^{\frac{1}{n}}b^{\frac{1}{n}}$, take $\alpha = a^{\frac{1}{n}} \iff \alpha ^n = (a^{\frac{1}{n}})^n = a$. Thus,  
+
+$$(ab)^{\frac{1}{n}} = ((\alpha \beta)^n)^{\frac{1}{n}} = \alpha \beta = a^{\frac{1}{n}}b^{\frac{1}{n}}$$
+
+The step $\alpha^n \beta^n = (\alpha \beta)^n$ is taken by the conmutative property in the abelian group $(\mathbb{R}, \ ·)$.
+
+<br>
+
+# 6. The extended Real Number System.
+
+
+
+<br>
+
