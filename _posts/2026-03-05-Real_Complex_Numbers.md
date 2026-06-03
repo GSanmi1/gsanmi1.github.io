@@ -542,9 +542,11 @@ Thus, lets think in a line with the elements of the field $F$ represented on it:
 
 # 5. The Real field.
 
-We now state the existence theorem which is the core of this chapter. Until now, we have seen what a field is through his axioms, what is an order and how it is combined with the field to generate the order set which is a structure in which the operations has stablished two invariances relative to the order that finaly allows to derivate 5 rules.
+We will no present the core theorem of this chapter.
 
-In this context, we talked about bounds and the important $LUB$ property. We've seen that $\mathbb{Q}$ is an ordered field that not satisfies $LUB$, observe that this makes the ordered $\mathbb{Q}$ line full of gaps, points to which we can approximate as much as we want but we can't touch, in other terms, this makes the line *discontinue*.
+Until now, we presented fields, order, the combination of both in the ordered field and give a geometric interpretation of the operations of the field when an order defined.
+
+Then, we introduced bounds and the $LUB$ property and we see that, despite $\mathbb{Q}$ is an ordered field, it not satisfies the $LUB$ property, giving to the rational line a discontinue appearance; points to which we can approximate as much as we want but we can't touch.
 
 Thus, let's present $\mathbb{R}$ as an ordered field that satisfies the $LUB$ property.
 
@@ -583,7 +585,7 @@ The members of $\mathbb{R}$ will be certain subsets of $\mathbb{Q}$, called *cut
 
     $p \in \alpha \implies \exists r \in \alpha : p < r$. 
 
-<br>
+    <br>
 
 Check that this so called "cuts" are upperbound segments with no lowerbound, in the sense that the second property of the cuts already tell us that $p \in \alpha \implies \forall q(q < p \implies q \in \alpha)$. This feature allows an order in $\mathbb{R}$ relative to the cuts members.
 
@@ -630,7 +632,7 @@ Then, $< \ \subset \mathbb{R}^2$ is a *strict total order*:
 
 <br>
 
-### 5.1.3. $\mathbb{R}$ satisfies the least-upper-bound property.
+### 5.1.3. $\mathbb{R}$ satisfies the $LUB$ property.
 
 Remember that the LUB property ensures for any ordered set $S$ that satisfy it any non-empty $E \subset S$ subset upper/lower-bounded has supremum/infimum in $S$.
 
@@ -964,7 +966,40 @@ $$\alpha(\beta + \gamma) = \alpha \beta + \alpha \gamma$$
 
 <br>
 
+### 5.1.6. $\mathbb{Q}$ in $\mathbb{R}$.
 
+Let's see that $\mathbb{Q} \subset \mathbb{R}$. Is worth to make a previous comentary about this statement. Formally is an abuse of language, in strict terms, $\mathbb{Q}$ is not part of $\mathbb{R}$ because their elements are simply not the same.
+
+Mathematically, we don't care about what things are made, mathematicians often don't know about what are they talking about, but they are pretty sure about what are saying which is not the same. In other words, what we care about is how elements relate between them. Thus, two structures whose elements behaves exactly the same way are externally indistinguishable and, for any structural purpouse, exchangeable.
+
+The object that allows us to identify two equivalent structures is the *isomorphism*, in this case *field's isomorphism*. This is a biyection that allows to translate a structure to another, identifying pairs of elements from both set and implicating rules that preserve the behavior through the image of the isomorphism.
+
+Let's consider $\varphi:\mathbb{Q}\xrightarrow{\ \sim\ }\mathbb{Q}^\ast$ such: $q \mapsto q^\ast = \Set{p \mid  p < q}$, is clear that $q^\ast \in \mathbb{R}$ is the cut formed by the behind of $q$.
+
+First, let see that $\varphi$, as defined is a *field homomorphism*:
+
+1. $\varphi(p+q) = \varphi(p) + \varphi(q)$
+
+2. $\varphi(pq) = \varphi(p) \varphi(q)$
+
+    <br>
+
+Observe that this much is true and is already prooved above, that the segment of the addition is the addition of the segments and the product of the segment is the segment of the product.
+
+Observe also that each cut in $q^\ast \in \mathbb{Q}^\ast$ has a preimage through $\varphi$ and reverse, so $\varphi$ is biyective and is and field isomorphism, implying that $p\neq q \implies \varphi(p) \neq \varphi(q)$.
+
+Lastly, consider some $p, q \in \mathbb{Q} : p < q$, we already know that $\varphi(p) \neq \varphi(q)$ but also observe that is pretty clear: $\forall t \big(t \in \varphi(p) \implies t <p < q \implies t \in \varphi(q)\big) \implies \varphi(p) < \varphi(q)$, a similar argument prooves $\varphi(p) < \varphi(q) \implies p<q$, thus $p<q \iff \varphi(p) < \varphi(q)$.
+
+So $\varphi$ is an *isomorphism of ordered fields* meaning that $\mathbb{Q} \simeq \mathbb{Q}^\ast \subset \mathbb{R}$ and we can exchange $q$ and $q^\ast$ in the real number context.
+
+<br>
+
+With this, we conclude the presentation of $\mathbb{R}$ as a strict ordered field that also satisfies $LUB$ property, we say then that $\mathbb{R}$ is *ordered* and *complete*.
+
+In fact, despite this result will not be prooved: any two ordered fields with
+the least-upper-bound property are isomorphic, meaning that **$\mathbb{R}$ is THE ordered and complete field**.
+
+<br>
 
 ## 5.2. Important Properties from the $\mathbb{R}$ field.
 
@@ -1063,6 +1098,12 @@ Let's observe that $(ab)^{\frac{1}{n}} = a^{\frac{1}{n}}b^{\frac{1}{n}}$, take $
 $$(ab)^{\frac{1}{n}} = ((\alpha \beta)^n)^{\frac{1}{n}} = \alpha \beta = a^{\frac{1}{n}}b^{\frac{1}{n}}$$
 
 The step $\alpha^n \beta^n = (\alpha \beta)^n$ is taken by the conmutative property in the abelian group $(\mathbb{R}, \ ·)$.
+
+<br>
+
+## 5.3. Brief summary about $\mathbb{R}$.
+
+
 
 <br>
 
