@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "The Real and Complex Number Systems"
-subtitle: "Real and Complex fields presentation and properties. Analisis definition."
+title: "The Real and Complesx Number Systems"
+subtitle: "Rational, Real and Complex fields presentation. Analisis definition."
 date: 2026-03-05 09:00:00 +0000
 categories: ['Maths', 'analisis_rudin']
 tags: ['Maths']
@@ -1113,14 +1113,13 @@ We already explained this in other terms by announcing the $LUB$ property, but w
 
 $$U=\{q\in\mathbb{Q}: q^2<2\ \text{ó}\ q<0\},\qquad V=\{q\in\mathbb{Q}: q>0,\ q^2>2\}$$
 
-Observe that $U \cup V = \mathbb{Q}$ and neither of the two contains $p : p^2 = 2$, as if apparently this gap is never filled in $\mathbb{Q}$, like if there are no rational bridge between $U$ and $V$ that, however, builds $\mathbb{Q}$. This is a rational question involving rationals without a rational response, meaning that $\mathbb{Q}$ can't represent unconmensurable entities despite being "surrounded" by them, and is worth to enphasize the term "surrounded" because a lot of rationals get squeezed on the neighborhood of $p$ without never reach it. This unconmensurable entities manifest them selves as non-reachable frontiers to which we can approximate as much as we want.
+Observe that $U \cup V = \mathbb{Q}$ and neither of the two contains $p : p^2 = 2$, as if apparently this gap is never filled in $\mathbb{Q}$, like if there isn't no bridge between $U$ and $V$ that, however, builds $\mathbb{Q}$. This is a rational question involving rationals without a rational response, meaning that $\mathbb{Q}$ can't represent unconmensurable entities despite being "surrounded" by them, and is worth to enphasize the term "surrounded" because a lot of rationals get squeezed on the neighborhood of $p$ without never reach it. This unconmensurable entities manifest them selves as non-reachable frontiers to which we can approximate as much as we want.
 
-$\mathbb{R}$ solves this by stop considering his elements as numbers or cuantities, but as *positions* in a line which, by definition, is continuous and so is also any position (any "point") in the line $(\mathbb{R},<)$, in some informal sense, this real line is "complete". 
+$\mathbb{R}$ solves this by stop considering his elements as numbers or cuantities, but as *positions* in a line which, by definition, is continuous and any position (any "point") in the line is defined. In some informal sense, this real line is now "complete". 
 
+This is achieved by changing $\mathbb{Q}$ arquitecture, tecnically, $\mathbb{R}$ and $\mathbb{Q}$ share the same substratum, rational numbers, but elements of $\mathbb{R}$ are subsets that satisfies certains properties; segments that "cut" the so called line at any point. The $LUB$ property offers a garantee that any bounded agrupation of this segments has a supremum, meaning that any subset that gets near to this frontiers non defined in $\mathbb{Q}$ has supremum in $\mathbb{R}$ in which the frontier, the non-measurable value, can be instantiated, filling this gaps in $\mathbb{Q}$.
 
-This is achieved by changing $\mathbb{Q}$ arquitecture, tecnically, $\mathbb{R}$ and $\mathbb{Q}$ share the same substratum, rational numbers, but elements of $\mathbb{R}$ are subsets that satisfies certains properties; segments that "cut" the so called line at any point. The $LUB$ property offers a garantee that any bounded agrupation of this segments has a supremum, meaning that any subset that gets near to this frontiers non defined in $\mathbb{Q}$ has supremum in $\mathbb{R}$ in which the frontier, the non-measurable value, can be instantiated.
-
-The natural interpretation of a *cut* is an object that is aims to a position in $\mathbb{R}$ cutting in two the line, this way, this so addresed position is characterized by what is left behind (which automatically characterizes what has in front). So the elements of $\mathbb{R}$ are positions in the line concreted by what surrounds it. This is why, in $4.3.1$ we care about present operations of an ordered field with a geometric nuance, because in $\mathbb{R}$ we do operate with positions in a geometric sense, the unique kind of "cuantities" we could consider in $\mathbb{R}$ are those which can be identified with rational elements as we see $5.1.6$.
+The natural interpretation of a *cut* is an object that aims to a position in $\mathbb{R}$ cutting in two the line, this way, this so addresed position is characterized by what has backwards (which automatically characterizes what has in front). So the elements of $\mathbb{R}$ are positions in the line concreted by what surrounds it. This is why, in $4.3.1$ we care about present operations of an ordered field with a geometric nuance, because in $\mathbb{R}$ we do operate with positions in a geometric sense, the unique kind of "cuantities" we could consider in $\mathbb{R}$ are those which can be identified with rational elements as we see $5.1.6$.
 
 <br>
 
@@ -1136,7 +1135,24 @@ Lastly, let's see what the three properties presented in $5.2$ tell us about $\m
 
 # 6. The extended Real Number System.
 
+## 6.1. Definition.
 
+The extended real number sistem consist in form the set $\overline{\mathbb{R}} := \Set{\mathbb{R},+\infty,-\infty}$ defining:
+
+$$-\infty < x < +\infty \quad \forall x \in \mathbb{R}$$
+
+This way, observe that we have defined $-\infty, +\infty$ as lower/upper bounds of any subset of $\mathbb{R}$, **thus any subset in $\mathbb{R}$ is now bounded in $\overline{\mathbb{R}}$ and has a least upper bound**: for example, $E$ is a nonempty set of real numbers which is not bounded above in $\mathbb{R}$, then $\sup E = +\infty$ in the extended real number system. 
+
+<br>
+
+## 6.2. Operations in $\overline{\mathbb{R}}$.
+
+**The extended real number system does not form a field**, but it is customary
+to make the following conventions (in the following cases $\infty = +/- \infty$): 
+
+$$\begin{cases} x +/- + \infty = + \infty \\ x +/- - \infty = - \infty \\ \displaystyle\frac{x}{+\infty} = \displaystyle\frac{x}{-\infty} = 0 \\ x \ · + \infty = +\infty \wedge x \ · -\infty = - \infty \quad x > 0 \\ x \ · + \infty = -\infty \wedge x \ · -\infty = + \infty \quad x < 0 \end{cases}$$
+
+In this context, we say that real numbers are *finite*, while $+\infty,-\infty$ are both, *infinite*.
 
 <br>
 
