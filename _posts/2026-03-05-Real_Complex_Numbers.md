@@ -1179,6 +1179,7 @@ $$(x_1,y_1) = (x_2,y_2) \iff x_1 = x_2 \wedge y_1 = y_2$$
 We define two operations in the complex numbers, addition and multiplication as follows. Be $z_1,z_2 \in \mathbb{C}$, then:
 
 $$z_1 + z_2 =(x_1,y_1) + (x_2,y_2) = (x_1+x_2,y_1+y_2)$$
+
 $$z_1z_2=(x_1,y_1)(x_2,y_2) = (x_1x_2 -y_1y_2, x_1y_2 + x_2y_1)$$
 
 <br>
@@ -1259,6 +1260,7 @@ Both axis forms:
 
 ![complex1](/assets/images/Maths/Analisis/complex1.png)
 
+
 <br>
 
-
+### 7.5.2. Rotation
