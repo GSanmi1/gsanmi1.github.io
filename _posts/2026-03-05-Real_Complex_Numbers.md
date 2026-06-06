@@ -1252,7 +1252,7 @@ Thus, let's try to represent this set in a coordinate system. A few minor consid
 
 - Since we already see that $\text{Re} := \Set{(x,0) \mid x \in \mathbb{R}} \simeq \mathbb{R}$, thus the abscis axis must be the real line.
 
-- Then, $\text{Im}:= \Set{(0,y) \mid y \in \mathbb{R}}$ is what we call the imaginary axis, and is not a strict copy of $\mathbb{R}$ as $\mathbb{R}^\ast$ is, let's observe that is not closed under the product: 
+- Then, $\text{Im}:= \Set{(0,y) \mid y \in \mathbb{R}}$ is what we call the imaginary axis, and is not a strict copy of $\mathbb{R}$ as $\text{Re}$ is, let's observe that is not closed under the product: 
 
     $$(0,y_1)(0,y_2) = [(y_1,0)(y_2,0)][(0,1)(0,1)] = (y_1y_2,0)(-1,0) = (-y_1y_2,0) \notin Im$$
 
@@ -1263,4 +1263,78 @@ Both axis forms:
 
 <br>
 
-### 7.5.2. Rotation
+### 7.5.2. Absolute Value. Polar Form.
+
+Let's take some $z$ as in the image above and observe that this is a two dimensions vector, thus we can identifie each $z := (x,y)$ with the vector $\overrightarrow{z}=(x,y)$ vector spaces properties  the trigonometric relations of the object.
+
+- First, we call as **absolute value** of $z$ to the vector norm:
+
+    $$| z | := \| \overrightarrow{z} \| = \sqrt{x^2 + y^2}$$
+
+    <br>
+
+
+- Also, we can consider the angle of the vector with the abcsis axis, $\theta$:
+
+    $$\theta := \arctan(y/x)$$
+
+
+Observe that $z$ gets completly characterized with this two elements in what we call the **polar form** of the complex numbers:
+
+$$z = |z|_\theta = |z|(\cos\theta + i\sin\theta)$$
+
+![complexpolar](/assets/images/Maths/Analisis/complexpolar.png)
+
+<br>
+
+### 7.5.3. Geometric Intuition of the operations in $\mathbb{C}$.
+
+In other parts of this same post we assert that the real numbers where positions on a line, and that this oblige to interpret the operations of the field with a geometric nuance.
+
+Thus, we stated that in $\mathbb{R}$ the addition was a traslation and the product was an homothety. Let's now see how the operation we just defined act in the $Re \times Im$ plane.
+
+<br>
+
+#### 7.5.4. Addition as a torsor.
+
+In this case, the abelian group $(\mathbb{C},+)$ behaves in $Re \times Im$ making it a *torsor*. (Is desiderable to take a look over the following post to understand the following explanation: [vector spaces](https://gsanmi1.github.io/posts/2026/04/08/VectorSpaces/)).
+
+Recapitulating, we know that an affine space is the algebraic structure resulting in use *vectors* to study a non-empty set in a simply transitive way. Then, a *torsor* is something prior, more primitive; a torsor is a regular group's action of (in this case an abelian) group over a non-empty set, basically an affine space that has forgotten the field's action over the vectors so this can't be scaled and, consecuently, you can't scale distances.
+
+We define the pair $(Re \times Im, +)$ being: 
+
+$$+ : [Re \times Im] \times (\mathbb{C},+) \to [Re \times Im]$$
+
+$$\quad \quad  \quad (x,y) + z \mapsto (x + z_1, y +z_2)$$
+
+<br>
+
+Let's see this is a regular action group:
+
+- $A1$, taking $0 \in \mathbb{C}$, then: $(x,y) + 0 = (x,y) \quad \forall (x,y) \in Re \times Im$. So there is an identity element.
+
+    <br>
+
+- $A2$, the associativity is immediate from the fact that $(\mathbb{R},+)$ is an abelian group:
+
+    $$((x,y) + z)+t = (x+z_1,y+z_2) + t = ([x + z_1] +t_1,[y+z_2]+t_2) = $$
+
+    $$(x + [z_1 +t_1],y+[z_2+t_2]) = (x,y) + (z + t)$$
+
+    <br>
+
+- **Free** and **Transitivity**
+
+    Let's take two points $x,y$ on $Re \times Im$, asking whether $\exists! z \in \mathbb{C} : x + z = y$ is equivalent to ask if the following equation in $\mathbb{R}$, given by the coordinates, has a unique solution:
+
+    $$x_i + z_i = y_i \quad i = 1,2$$
+
+    Since $(\mathbb{R},+)$ is an abelian group, we can assert that $z_i = y_i - x_i \in \mathbb{R} \quad i=1,2$ is a solution for each equation and is unique.
+
+    In other words, we have that $\forall P,Q \in Re \times Im \ \exists ! z \in \mathbb{C} : P + z = Q$, so the action group $+$ is also regular and the structure $(Re \times Im, +)$ is a torsor.
+
+    <br>
+
+Intuitively, we can think that any complex $t \in \mathbb{C}$ is a two dimensional vector $\overrightarrow{t}$, then it can be identified with an arrow over a plane by selecting an origin, in this case; $0 \in \mathbb{C}$. Thus, leveraging the equivalent class of free vector, doing $z + t$ is, geometrically, is as if we take $\overrightarrow{t}$ and translate his basis from $0$ to $z$ and then, the point referenced by $z + \overrightarrow{t}$ in an affine space and $z+t$ is the same.
+
+![complex2](/assets/images/Maths/Analisis/complex2.png)
