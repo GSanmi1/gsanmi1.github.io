@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "The Real and Complesx Number Systems"
+title: "The Real and Complex Number Systems"
 subtitle: "Rational, Real and Complex fields presentation. Analisis definition."
 date: 2026-03-05 09:00:00 +0000
 categories: ['Maths', 'analisis_rudin']
@@ -956,7 +956,9 @@ Ultimately, we define:
 
 $$\alpha \beta = \begin{cases} (- \alpha)(- \beta) \quad \alpha < 0^\ast, \beta < 0^\ast \\ -[(-\alpha)\beta] \quad \alpha < 0^\ast, \beta > 0^\ast \\-[\alpha (-\beta)] \quad \alpha > 0^\ast, \beta < 0^\ast\end{cases}$$
 
-We just translate negative multiplications to the negative segment of a positive multiplication. Clearly $(\mathbb{R}, \ ·)$ is an abelian group.
+We just translate negative multiplications to the negative segment of a positive multiplication. 
+
+Clearly $(\mathbb{R} \setminus \Set{0}, \ ·)$ is an abelian group.
 
 <br>
     
@@ -1111,15 +1113,15 @@ Then, the $0$ represent the abscense of cuantity and the negative numbers the de
 
 We already explained this in other terms by announcing the $LUB$ property, but we can now bring another perspective conceptually more ilustrative of the inadequatness of $\mathbb{Q}$. Since $\mathbb{Q}$ consider cuantities it makes his items totally disconected, meaning that we can made an split of $\mathbb{Q}$ by defining: 
 
-$$U=\{q\in\mathbb{Q}: q^2<2\ \text{ó}\ q<0\},\qquad V=\{q\in\mathbb{Q}: q>0,\ q^2>2\}$$
+$$U=\{q\in\mathbb{Q}: q^2<2\ \vee \ q<0\},\qquad V=\{q\in\mathbb{Q}: q>0 \vee \ q^2>2\}$$
 
 Observe that $U \cup V = \mathbb{Q}$ and neither of the two contains $p : p^2 = 2$, as if apparently this gap is never filled in $\mathbb{Q}$, like if there isn't no bridge between $U$ and $V$ that, however, builds $\mathbb{Q}$. This is a rational question involving rationals without a rational response, meaning that $\mathbb{Q}$ can't represent unconmensurable entities despite being "surrounded" by them, and is worth to enphasize the term "surrounded" because a lot of rationals get squeezed on the neighborhood of $p$ without never reach it. This unconmensurable entities manifest them selves as non-reachable frontiers to which we can approximate as much as we want.
 
 $\mathbb{R}$ solves this by stop considering his elements as numbers or cuantities, but as *positions* in a line which, by definition, is continuous and any position (any "point") in the line is defined. In some informal sense, this real line is now "complete". 
 
-This is achieved by changing $\mathbb{Q}$ arquitecture, tecnically, $\mathbb{R}$ and $\mathbb{Q}$ share the same substratum, rational numbers, but elements of $\mathbb{R}$ are subsets that satisfies certains properties; segments that "cut" the so called line at any point. The $LUB$ property offers a garantee that any bounded agrupation of this segments has a supremum, meaning that any subset that gets near to this frontiers non defined in $\mathbb{Q}$ has supremum in $\mathbb{R}$ in which the frontier, the non-measurable value, can be instantiated, filling this gaps in $\mathbb{Q}$.
+This is achieved by changing $\mathbb{Q}$ arquitecture, tecnically, $\mathbb{R}$ and $\mathbb{Q}$ share the same substratum, rational numbers, but elements of $\mathbb{R}$ are subsets that satisfies certains properties; segments that "cut" the so called line at any point. The $LUB$ property offers a garantee that any bounded agrupation of this segments has a supremum, meaning that any subset that gets near to this frontiers non defined in $\mathbb{Q}$ has supremum in $\mathbb{R}$ in which the frontier, the non-measurable value, can be instantiated, filling this gaps from $\mathbb{Q}$.
 
-The natural interpretation of a *cut* is an object that aims to a position in $\mathbb{R}$ cutting in two the line, this way, this so addresed position is characterized by what has backwards (which automatically characterizes what has in front). So the elements of $\mathbb{R}$ are positions in the line concreted by what surrounds it. This is why, in $4.3.1$ we care about present operations of an ordered field with a geometric nuance, because in $\mathbb{R}$ we do operate with positions in a geometric sense, the unique kind of "cuantities" we could consider in $\mathbb{R}$ are those which can be identified with rational elements as we see $5.1.6$.
+The natural interpretation of a *cut* is an object that aims to a position in $\mathbb{R}$ cutting in two the line, this way, this so addresed position is characterized by what has back (which automatically characterizes what has in front). So the elements of $\mathbb{R}$ are positions in the line concretized by what surrounds it. This is why, in $4.3.1$ we care about present operations of an ordered field with a geometric nuance, because in $\mathbb{R}$ we do operate with positions in a geometric sense, the unique kind of "cuantities" we could consider in $\mathbb{R}$ are those which can be identified with rational elements as we see $5.1.6$.
 
 <br>
 
@@ -1157,4 +1159,106 @@ In this context, we say that real numbers are *finite*, while $+\infty,-\infty$ 
 <br>
 
 # 7. Complex Number System.
+
+Let's see briefly the Complex Number System and his importants properties.
+
+<br>
+
+## 7.1. Definition and operations.
+
+A complex number is an ordered pair of real numbers. By definition is:
+
+$$(x,y) := \Set{\Set{x}, \Set{x,y} : x,y \in \mathbb{R}} \in \mathbb{C}$$
+
+Observe that this means that:
+
+$$(x_1,y_1) = (x_2,y_2) \iff x_1 = x_2 \wedge y_1 = y_2$$
+
+<br>
+
+We define two operations in the complex numbers, addition and multiplication as follows. Be $z_1,z_2 \in \mathbb{C}$, then:
+
+$$z_1 + z_2 =(x_1,y_1) + (x_2,y_2) = (x_1+x_2,y_1+y_2)$$
+$$z_1z_2=(x_1,y_1)(x_2,y_2) = (x_1x_2 -y_1y_2, x_1y_2 + x_2y_1)$$
+
+<br>
+
+## 7.2. $\mathbb{C}$ as a field.
+
+These definitions of addition and multiplication turn the set of
+all complex numbers into a field in an algebraic sense, with $0^\ast = (0, 0)$ and $1^\ast = (1, 0)$.
+
+Meaning that $(\mathbb{C},+)$, $(\mathbb{C}\setminus \Set{(0,0)}, \ ·)$ are compatible abelians group.
+
+Is worth to mention that the form of the inverse of a $z \in \mathbb{C}$:
+
+$$z = (x,y) \neq 0 \implies z^{-1} = \left(\frac{x}{x^2+y^2}, \frac{-y}{x^2+y^2}\right)$$
+
+Is easy to proove that $zz^{-1} = 1 \iff z \neq 0$ by operating.
+
+<br>
+
+## 7.3. $\mathbb{R}$ in $\mathbb{C}$.
+
+Observe that if we take $z\_1,z\_2 \in \mathbb{C} : z\_1 = (a,0), z\_2 = (b,0)$, then $z\_1,z\_2$ behaves exactly as real numbers:
+
+$$z_1 + z_2 = (x_1+x_2,0) \quad z_1z_2 = (x_1x_2,0)$$
+
+Thus, we can identify each $\alpha \in \mathbb{R}$ with the complex $(\alpha,0) \in \mathbb{C}$. 
+
+Observe we can consider $\varphi : \mathbb{R} \to \text{Re}$ such $\varphi(\alpha) = (\alpha,0)$. Note that $\varphi$ is a *field homomorphism*:
+
+- $\varphi(\alpha + \beta) = (\alpha + \beta,0) = (\alpha,0) + (\beta,0) = \varphi(\alpha) + \varphi(\beta)$
+- $\varphi(\alpha \beta) = (\alpha \beta,0) = (\alpha,0) (\beta,0) = \varphi(\alpha) \varphi(\beta)$
+
+    <br>
+
+Also, it mantains the order, we define in $\text{Re} \subset \mathbb{C}$ the order: $(x,0) < (y,0) \iff x < y$.
+
+Also, is clear that $\varphi$ is biyective, thus is an isomophism of ordered fields, and we can translate $\mathbb{R}$ and $\text{Re}$ or, in other words: $\mathbb{R} \simeq \text{Re} \subset \mathbb{C}$ and $\mathbb{C}$ contains $\mathbb{R}$.
+
+<br>
+
+## 7.4. Real formulation of $\mathbb{C}$. Imaginary and Real part.
+
+We define $i := (0,1) \in \mathbb{C}$, observe immediately that:
+
+$$i^2 = (-1,0) = \varphi(-1)$$
+
+Or, making an abuse of notation: $i^2 = -1 \in \mathbb{R}$
+
+<br>
+
+Let's also observe that there is a real reformulation for any complex number using $i$ as a toehold. 
+
+Be $z = (x,y) \in \mathbb{C}$, then:
+
+$$z = (x,y) = (x,0) + (0,y) =  (x,0) + (y,0)(0,1) = \varphi(x) + \varphi(y)i \quad \forall z \in \mathbb{C}$$
+
+Or simply: $z = (x,y) = x + yi$
+
+<br>
+
+## 7.5. Geometric representation of $\mathbb{C}$: Conjugate, Absolute Value.
+
+### 7.5.1. Axis.
+
+Let's observe some fenomenon, we had defined $\mathbb{C}$ basically as an extension of $\mathbb{R}$ to two dimensions, precisely:
+
+$$\mathbb{C} := \Set{(a,b) \mid a,b \in \mathbb{R}}$$
+
+Thus, let's try to represent this set in a coordinate system. A few minor considerations:
+
+- Since we already see that $\text{Re} := \Set{(x,0) \mid x \in \mathbb{R}} \simeq \mathbb{R}$, thus the abscis axis must be the real line.
+
+- Then, $\text{Im}:= \Set{(0,y) \mid y \in \mathbb{R}}$ is what we call the imaginary axis, and is not a strict copy of $\mathbb{R}$ as $\mathbb{R}^\ast$ is, let's observe that is not closed under the product: 
+
+    $$(0,y_1)(0,y_2) = [(y_1,0)(y_2,0)][(0,1)(0,1)] = (y_1y_2,0)(-1,0) = (-y_1y_2,0) \notin Im$$
+
+Both axis forms:
+
+![complex1](/assets/images/Maths/Analisis/complex1.png)
+
+<br>
+
 
