@@ -1240,7 +1240,7 @@ Or simply: $z = (x,y) = x + yi$
 
 <br>
 
-## 7.5. Geometric representation of $\mathbb{C}$: Conjugate, Absolute Value.
+## 7.5. Geometric representation of $\mathbb{C}$.
 
 ### 7.5.1. Axis.
 
@@ -1365,7 +1365,7 @@ $$\begin{cases} M_w(1) = (w_x,w_y)(1,0) = (w_x,w_y) \\ M_w(i) = (w_x,w_y)(0,1) =
 
 <br>
 
-Thus, $M_w(z) = T_{\mathcal{B}}·z = \begin{pmatrix}w_x &-w_y \\ w_y & w_x \end{pmatrix}\begin{pmatrix}z_x \\ z_y\end{pmatrix} $, but let's be careful for a moment and take a closer look. We do know, from the polar form, that for any complex number $z_x = |z|\cos\theta$ and $z_y = |z|\sin\theta$, meaning:
+Thus, $M\_w(z) = T\_{\mathcal{B}}·z = \begin{pmatrix}w\_x &-w\_y \\ w\_y & w\_x \end{pmatrix}\begin{pmatrix}z\_x \\ z\_y\end{pmatrix} $, but let's be careful for a moment and take a closer look. We do know, from the polar form, that for any complex number $z\_x = |z|\cos\theta$ and $z\_y = |z|\sin\theta$, meaning:
 
 $$M_w(z) = \begin{pmatrix}w_x &-w_y \\ w_y & w_x \end{pmatrix}\begin{pmatrix}z_x \\ z_y\end{pmatrix} = |w||z| \begin{pmatrix}\cos\theta_w &-\sin\theta_w \\ \sin\theta_w & \cos\theta_w \end{pmatrix}\begin{pmatrix}\cos\theta_z \\ \sin\theta_z\end{pmatrix}$$
 
@@ -1377,10 +1377,8 @@ Meaning that, essentially:
 
 $$wz =M_w(z) = |w||z|[\cos(\theta_w + \theta_z) + i · \sin(\theta_w + \theta_z)] = (|w||z|)_{\theta_w + \theta_z}$$
 
-Obvserve that, to the original $z = |z|(\cos\theta_z + i · \sin\theta_z)$, the product $w·z$ has scaled it $|w|$ and incorporated to $\theta_z$ the angle $\theta_w$. 
+Obvserve that, to the original $z = |z|(\cos\theta\_z + i · \sin\theta\_z)$, the product $w·z$ has scaled it $|w|$ and incorporated to $\theta\_z$ the angle $\theta\_w$. 
 
-Thus the product of complex numbers is basically an homotethy centered at $0$ and ratio $|w| \in \mathbb{R}$ composed with a rotation of $\theta_w$ over $0$.
-
-![]()
+Thus the product of complex numbers is basically an homotethy centered at $0$ and ratio $|w| \in \mathbb{R}$ composed with a rotation of $\theta\_w$ over $0$.
 
 ![complexrotation](/assets/images/Maths/Analisis/complexrotation.png)
