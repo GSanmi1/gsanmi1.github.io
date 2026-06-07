@@ -1391,8 +1391,28 @@ The conjugate is one of the most fundamentals symmetries in $\mathbb{C}$.  Given
 
 ![complexconjugate](/assets/images/Maths/Analisis/complexconjugate.png)
 
+According to the definition we have two equivalent representation. Given: $z \in \mathbb{C}$, then:
+
+$$\overline{z} := \begin{cases} z_x - i z_y \\ |z|_{-\theta_z} \end{cases}$$
+
 <br>
 
-### 7.5.5. Important properties of Complex Numbers.
+The crutial importance of the conjugate is that it captures the invariance for complex solutions to real polynomials equations, this is, if a complex number $z$ is a solution for some real polynomial, then $\overline{z}$ is also a solution.
 
 <br>
+
+## 7.6. Important properties of Complex Numbers.
+
+We have introduced some important notions about complex numbers, let's mix it up in order to presentate important results about complex numbers:
+
+<br>
+
+### 7.6.1. Conjugate properties.
+
+<br>
+
+### 7.6.2. Absolute Value properties.
+
+<br>
+
+### 7.6.3. Schwarz inequality.
