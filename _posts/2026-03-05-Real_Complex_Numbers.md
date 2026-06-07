@@ -345,7 +345,7 @@ Also, let observe that:
     
     Observe that $\neg(\neg p) \equiv p$ in classic logic, so to demonstrate $p$ lets see that is $\neg(\neg p)$ or in other words let's see that $\neg p$ is not true.
 
-    In our case $p$ is an implication $p:= l \to t \equiv \neg l \vee t \iff \neg p := l \wedge \neg t$, (remember that conjuntion and disjuntionrelates each other as:  $\neg (p \wedge q) \equiv \neg p \vee \neg q$) thus, we are considering that $\underbrace{(x \neq 0 \wedge y \neq 0)}\_l \wedge \underbrace{xy = 0}\_{\neg t}$ but this is imposible since: $x \neq 0 \wedge xy = 0 \implies y = 0$ (following 222222 the axioms described above) entering in contradiction with the premisse, thus: $x \neq 0 \wedge y \neq 0 \implies xy \neq 0$. 
+    In our case $p$ is an implication $p:= l \to t \equiv \neg l \vee t \iff \neg p := l \wedge \neg t$, (remember that conjuntion and disjuntionrelates each other as:  $\neg (p \wedge q) \equiv \neg p \vee \neg q$) thus, we are considering that $\underbrace{(x \neq 0 \wedge y \neq 0)}\_l \wedge \underbrace{xy = 0}\_{\neg t}$ but this is imposible since: $x \neq 0 \wedge xy = 0 \implies y = 0$ (following the axioms described above) entering in contradiction with the premisse, thus: $x \neq 0 \wedge y \neq 0 \implies xy \neq 0$. 
 
     Let's also see that: $p \to q \equiv \neg p \vee q \equiv \neg (\neg q) \vee \neg p \equiv \neg q \to \neg p$, applying that to our rule, we can obtain a subtle better expression of the rule: $xy = 0 \implies x = 0 \vee y = 0$
   
@@ -1371,7 +1371,7 @@ $$M_w(z) = \begin{pmatrix}w_x &-w_y \\ w_y & w_x \end{pmatrix}\begin{pmatrix}z_x
 
 Observe that, using trigonometric identities:
 
-$$\begin{pmatrix}\cos\theta_w &-\sin\theta_w \\ \sin\theta_w & \cos\theta_w \end{pmatrix}\begin{pmatrix}\cos\theta_z \\ \sin\theta_z\end{pmatrix} = \begin{pmatrix}\cos\theta_w \cos\theta_z - \sin\theta_w \sin\theta_z \\ \sin\theta_w \cos\theta_z + \cos\theta_w \sin\theta_z \end{pmatrix} = \begin{pmatrix} cos(\theta_w + \theta_z) \\ sin(\theta_w + \theta_z) \end{pmatrix}$$
+$$\begin{pmatrix}\cos\theta_w &-\sin\theta_w \\ \sin\theta_w & \cos\theta_w \end{pmatrix}\begin{pmatrix}\cos\theta_z \\ \sin\theta_z\end{pmatrix} = \begin{pmatrix}\cos\theta_w \cos\theta_z - \sin\theta_w \sin\theta_z \\ \sin\theta_w \cos\theta_z + \cos\theta_w \sin\theta_z \end{pmatrix} = \begin{pmatrix} \cos(\theta_w + \theta_z) \\ \sin(\theta_w + \theta_z) \end{pmatrix}$$
 
 Meaning that, essentially:
 
@@ -1382,3 +1382,17 @@ Obvserve that, to the original $z = \|z\|(\cos\theta\_z + i · \sin\theta\_z)$, 
 Thus the product of complex numbers is basically an homotethy centered at $0$ and ratio $\|w\| \in \mathbb{R}$ composed with a rotation of $\theta\_w$ over $0$.
 
 ![complexrotation](/assets/images/Maths/Analisis/complexrotation.png)
+
+<br>
+
+### 7.5.4. Conjugate.
+
+The conjugate is one of the most fundamentals symmetries in $\mathbb{C}$.  Given $z \in \mathbb{C}$, we define the *conjugate* of $z$, $\overline{z}$ as the complex number obtained by reflecting it across the real axis, $Re$:
+
+![complexconjugate](/assets/images/Maths/Analisis/complexconjugate.png)
+
+<br>
+
+### 7.5.5. Important properties of Complex Numbers.
+
+<br>
