@@ -1295,7 +1295,7 @@ Thus, we stated that in $\mathbb{R}$ the addition was a traslation and the produ
 
 <br>
 
-#### 7.5.4. Addition as a torsor.
+#### 7.5.3.1. Addition as a torsor.
 
 In this case, the abelian group $(\mathbb{C},+)$ behaves in $Re \times Im$ making it a *torsor*. (Is desiderable to take a look over the following post to understand the following explanation: [vector spaces](https://gsanmi1.github.io/posts/2026/04/08/VectorSpaces/)).
 
@@ -1338,3 +1338,49 @@ Let's see this is a regular action group:
 Intuitively, we can think that any complex $t \in \mathbb{C}$ is a two dimensional vector $\overrightarrow{t}$, then it can be identified with an arrow over a plane by selecting an origin, in this case; $0 \in \mathbb{C}$. Thus, leveraging the equivalent class of free vector, doing $z + t$ is, geometrically, is as if we take $\overrightarrow{t}$ and translate his basis from $0$ to $z$ and then, the point referenced by $z + \overrightarrow{t}$ in an affine space and $z+t$ is the same.
 
 ![complex2](/assets/images/Maths/Analisis/complex2.png)
+
+<br>
+
+#### 7.5.3.2. Multiplication as a rotation.
+
+Let's recapitulate and see that, we've defined $\mathbb{C}$ as a $\mathbb{R}$-vector space, a two-dimensional vector space, taking $\mathcal{B}:=\Set{e_1 = (1,0), e_2 = (0,1)}$ as the basis, basically we are refering that: $\mathbb{C} = \text{span}(\mathcal{B})$ and any complex $z$ a lineal combination of this two vectors:
+
+$$\forall z \in \mathbb{C} \ \exists \alpha, \beta \in \mathbb{R} : z = \alpha e_1 + \beta e_2$$
+
+This is nothing new and we already worked with this concepts before.
+
+<br>
+
+Let's know fix some $w \in \mathbb{C}$ and consider $M_w(z) = wz$, observe that this aplication is lineal, thanks to the conmutative and distrivutive properties of $\mathbb{C}$:
+
+$$M_w(\alpha z_1 + \beta z_2)=w(\alpha z_1 + \beta z_2) =\alpha(wz_1)+\beta(wz_2) = \alpha M_w(z_1) + \beta M_w(z_2)$$
+
+So, as we know considering $\mathcal{B}$, exists some matrix $2 \times 2$ that characterizes $M_w$. Take that if $z = (z_x,z_y)_{\mathcal{B}} = z_x + iz_y \in \mathbb{C}$, then:
+
+$$ M_w(z) = M_w(z_x + iz_y) = z_xM_w(e_1) + z_yM_w(e_2) = (M_w(1) \ M_w(i)) \begin{pmatrix}z_x \\ z_y\end{pmatrix}$$
+
+So, the colums of our matrix $T$ are whenever the product with $w$ displaces $1$ and $i$, but we can get even further, taking $w = (w_x,w_y)_{\mathcal{B}}$, then:
+
+$$\begin{cases} M_w(1) = (w_x,w_y)(1,0) = (w_x,w_y) \\ M_w(i) = (w_x,w_y)(0,1) = (-w_y,w_x)\end{cases} \implies T_{\mathcal{B}} = (M_w(1) \ M_w(i)) =  \begin{pmatrix}w_x &-w_y \\ w_y & w_x \end{pmatrix}$$
+
+<br>
+
+Thus, $M_w(z) = T_{\mathcal{B}}·z = \begin{pmatrix}w_x &-w_y \\ w_y & w_x \end{pmatrix}\begin{pmatrix}z_x \\ z_y\end{pmatrix} $, but let's be careful for a moment and take a closer look. We do know, from the polar form, that for any complex number $z_x = |z|\cos\theta$ and $z_y = |z|\sin\theta$, meaning:
+
+$$M_w(z) = \begin{pmatrix}w_x &-w_y \\ w_y & w_x \end{pmatrix}\begin{pmatrix}z_x \\ z_y\end{pmatrix} = |w||z| \begin{pmatrix}\cos\theta_w &-\sin\theta_w \\ \sin\theta_w & \cos\theta_w \end{pmatrix}\begin{pmatrix}\cos\theta_z \\ \sin\theta_z\end{pmatrix}$$
+
+Observe that, using trigonometric identities:
+
+$$\begin{pmatrix}\cos\theta_w &-\sin\theta_w \\ \sin\theta_w & \cos\theta_w \end{pmatrix}\begin{pmatrix}\cos\theta_z \\ \sin\theta_z\end{pmatrix} = \begin{pmatrix}\cos\theta_w \cos\theta_z - \sin\theta_w \sin\theta_z \\ \sin\theta_w \cos\theta_z + \cos\theta_w \sin\theta_z \end{pmatrix} = \begin{pmatrix} cos(\theta_w + \theta_z) \\ sin(\theta_w + \theta_z) \end{pmatrix}$$
+
+Meaning that, essentially:
+
+$$wz =M_w(z) = |w||z|[\cos(\theta_w + \theta_z) + i · \sin(\theta_w + \theta_z)] = (|w||z|)_{\theta_w + \theta_z}$$
+
+Obvserve that, to the original $z = |z|(\cos\theta_z + i · \sin\theta_z)$, the product $w·z$ has scaled it $|w|$ and incorporated to $\theta_z$ the angle $\theta_w$. 
+
+Thus the product of complex numbers is basically an homotethy centered at $0$ and ratio $|w| \in \mathbb{R}$ composed with a rotation of $\theta_w$ over $0$.
+
+![]()
+
+![complexrotation](/assets/images/Maths/Analisis/complexrotation.png)
