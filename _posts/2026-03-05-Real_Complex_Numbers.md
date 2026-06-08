@@ -1413,9 +1413,9 @@ Let's start saying that, although an algebraic proove will be provided, most of 
 
 Thus, the conjugate of the addition is the addition of the conjugates and the conjugate of the product is the product of the conjugate:
 
-- $\overline{z}+\overline{w}=(z_x - iz_y) + (w_x -iw_y) = (z_x + w_x) - i(z_y+w_y) = \overline{z+w}$
+- $\overline{z}+\overline{w}=(z\_x - iz\_y) + (w\_x -iw\_y) = (z\_x + w\_x) - i(z\_y+w\_y) = \overline{z+w}$
 
-- $\overline{z} · \overline{w} = |z|_{-\theta_z}|w|_{-\theta_w} = |zw|_{(-\theta_z + - \theta_w)}  = |zw|_{-(\theta_z + \theta_w)} = \overline{z·w}$
+- $\overline{z} · \overline{w} = \|z\|\_{-\theta\_z}\|w\|\_{-\theta\_w} = \|zw\|\_{(-\theta\_z + - \theta\_w)}  = \|zw\|\_{-(\theta\_z + \theta\_w)} = \overline{z·w}$
 
     <br>
 
@@ -1424,6 +1424,18 @@ Thus, the conjugate of the addition is the addition of the conjugates and the co
 ![conjugateproduct](/assets/images/Maths/Analisis/conjugateproduct.png)
 
 <br>
+
+Also, observe that add a complex to his conjugate is basically colapse the value in the real line, so:
+
+- $z + \overline{z} = (z\_x + z\_x) + i(z\_y - z\_y) = 2Re(z)$
+
+And, by the same argument, the substraction eliminates the real part:
+
+- $z - \overline{z} = z + - \overline{z} = (z\_x - z\_x) + i(z\_y + z\_y) = 2Im(z)$
+
+    <br>
+    
+![conjugate2](/assets/images/Maths/Analisis/conjugate2.png)
 
 ### 7.6.2. Absolute Value properties.
 
