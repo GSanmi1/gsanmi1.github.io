@@ -1434,8 +1434,22 @@ And, by the same argument, the substraction eliminates the real part:
 - $z - \overline{z} = z + - \overline{z} = (z\_x - z\_x) + i(z\_y + z\_y) = 2Im(z)$
 
     <br>
-    
+
 ![conjugate2](/assets/images/Maths/Analisis/conjugate2.png)
+
+<br>
+
+Also, let's consider $z\overline{z}$, intuitively, we have that we are making over a $\overline{z}$ a rotation that negates his own angle, thus it gets in the positive part of the real axis:
+
+- $z \neq 0 \implies z\overline{z} \in \mathbb{R}^+$
+
+    Since, $z\overline{z} = \|z\overline{z}\|\_{\theta -\theta} = \|z\overline{z}\|\_0$
+
+    <br>
+
+    ![conjugate3](/assets/images/Maths/Analisis/conjugate3.png)
+
+    <br>
 
 ### 7.6.2. Absolute Value properties.
 
