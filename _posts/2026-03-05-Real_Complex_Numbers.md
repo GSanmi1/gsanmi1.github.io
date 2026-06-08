@@ -1475,9 +1475,14 @@ The three properties are immediate as we just see until now.
 
 Lastly, let's consider two points $z,w \in \mathbb{C}$ and consider $z+w$. Then, draft $\triangle(0,z,z+w)$ and observe that, by the cosene theorem is:
 
-$$|z+w|^2 = |z|^2 + |w|^2 - 2|z||w|\cos(\pi - (\theta_w - \theta_z))$$
+$$|z+w|^2 = |z|^2 + |w|^2 - 2|z||w|\cos(\pi - (\theta_w - \theta_z)) =|z|^2 + |w|^2 + 2|z||w|\cos(\theta_w - \theta_z)$$
 
-Which means: $\|z+w\|^2 \leq \|z\|^2 + \|w\|^2 \implies \|z+w\| \leq \|z\| + \|w\|$, observe that this implication can be asserted since we are always treating with the square of positive cuantites; $\|z\| \geq 0 \quad \forall z \in \mathbb{C}$
+Since, again $\|\cos\theta\| \leq 1$, then:
+
+
+$$\|z+w\|^2 \leq \|z\|^2 + \|w\|^2 + 2|z||w| = (\|z\| + \|w\|)^2 \implies \|z+w\|  \leq \|z\| + \|w\|$$
+
+observe that this implication can be asserted since we are always treating with the square of positive cuantities; $\|z\| \geq 0 \quad \forall z \in \mathbb{C}$
 
 <br>
 
