@@ -1409,6 +1409,20 @@ We have introduced some important notions about complex numbers, let's mix it up
 
 ### 7.6.1. Conjugate properties.
 
+Let's start saying that, although an algebraic proove will be provided, most of the properties of the conjugate takes place by understanding that the real axis acts as a mirror reflecting what happens in each side of the axis onto the other side.
+
+Thus, the conjugate of the addition is the addition of the conjugates and the conjugate of the product is the product of the conjugate:
+
+- $\overline{z}+\overline{w}=(z_x - iz_y) + (w_x -iw_y) = (z_x + w_x) - i(z_y+w_y) = \overline{z+w}$
+
+- $\overline{z} · \overline{w} = |z|_{-\theta_z}|w|_{-\theta_w} = |zw|_{(-\theta_z + - \theta_w)}  = |zw|_{-(\theta_z + \theta_w)} = \overline{z·w}$
+
+    <br>
+
+![conjugateaddition](/assets/images/Maths/Analisis/conjugateaddition.png)
+
+![conjugateproduct](/assets/images/Maths/Analisis/conjugateproduct.png)
+
 <br>
 
 ### 7.6.2. Absolute Value properties.
