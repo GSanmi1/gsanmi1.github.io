@@ -1459,6 +1459,26 @@ Also, let's consider $z\overline{z}$, intuitively, we have that we are making ov
 
 ### 7.6.2. Absolute Value properties.
 
+Note that, we have the following properties of the absolute value:
+
+- $\|z\| \geq 0 \wedge (\|z\| = 0 \iff z = 0)$
+
+- $\|z\| = \|\overline{z}\|$
+
+- $\|zw\| = \|z\| \|w\|$
+
+The three properties are immediate as we just see until now.
+
+- Observe $-1 \leq \cos\theta \leq 1 \iff -\|z\| \leq \|z\| \cos\theta \leq \|z\| \implies \| Re(z) \| \leq \|z\|$
+
+    <br>
+
+Lastly, let's consider two points $z,w \in \mathbb{C}$ and consider $z+w$. Then, draft $\triangle(0,z,z+w)$ and observe that, by the cosene theorem is:
+
+$$|z+w|^2 = |z|^2 + |w|^2 - 2|z||w|\cos(\pi - (\theta_w - \theta_z))$$
+
+Which means: $\|z+w\|^2 \leq \|z\|^2 + \|w\|^2 \implies \|z+w\| \leq \|z\| + \|w\|$, observe that this implication can be asserted since we are always treating with the square of positive cuantites; $\|z\| \geq 0 \quad \forall z \in \mathbb{C}$
+
 <br>
 
 ### 7.6.3. Schwarz inequality.
