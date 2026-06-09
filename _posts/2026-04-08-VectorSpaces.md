@@ -880,3 +880,70 @@ Later, we explore the geometric intuition behind the vector spaces. For that, fi
 Then, we build the concept of "bound vector" as a displacement between two points in the affine space and identify such bound vector with the mathematical object we call "arrow". This wat, with an origin fixed, we define a biyective application that identifies any point with a certain vector from the origin. Thus, the collection of all possible arrows that stems from a point in an affine space has structure of vector space and that is the precise visual representation we were searching.
 
 Ultimately we formalize the bound vector as a "free vector" being this the equivalence class of all the bound vectors that share magnitude, direction and orientation. The set of all free vectors has also a vector space structure which allow us to identify any bound vector on the affine space with his canonical class representant and operate with it as if both were the same vector.
+
+<br>
+
+# 5. Exercises.
+
+1. **If $F$ is a field, verify that $F^n$ (as defined in Example 1) is a vector space over the field $F$.**
+
+    Done in  $2.3.1.$
+
+    <br>
+
+2. **If $V$ is a vector space over the field $F$, verify that:**
+
+
+    $$(a_1 +a_2) + (a_3 + a_4) = [a_2 + (a_3 + a_1)] + a_4$$
+
+    **for all vectors $a_i \in V : i =1,2,3,4$**
+
+    Observe that since $(V,+)$ is an abelian group the exercise is immediate, it is just generalizing the asociativity and conmutativity for more than two elements.
+
+    <br>
+
+3. **If $C$ is the field of complex numbers, which vectors in $C^3$ are linear combinations of $(1, 0, -1), (0, 1, 1), (1, 1, 1)$?**
+
+    Those resulted in being the composition of any proportional vector of the given ones, formally verifying: 
+    
+    $$v \in \mathbb{C}^3 \mid \exists \alpha, \beta ,\gamma \in \mathbb{C} : v = \alpha(1, 0, -1) +\beta(0, 1, 1)+ \gamma (1, 1, 1)$$
+    
+    Doing the algebraic simplification, we get the family of vectors:
+
+    $$\Set{(\alpha + \gamma,\beta + \gamma, \gamma + \beta - \alpha) : \alpha, \beta ,\gamma \in \mathbb{C}} \subset \mathbb{C}^3$$
+
+    Let's note an interesting observation, if we think about the forms of the vectors in order to extract a restriction, this is, when, for a vector $(x,y,z)$ does not exists $\alpha, \beta, \gamma \in \mathbb{C}:$
+
+    $$\begin{cases} x = \alpha + \gamma \\ y = \beta + \gamma \\ z = \gamma + \beta - \alpha \end{cases} \iff \begin{cases} \alpha = x - \gamma \\ \beta = y - \gamma \\ \gamma =  z - \beta + \alpha \end{cases}$$
+
+    Ultimately; $\alpha = y-z, \beta = -x+2y-z, \gamma = x−y+z$, meaning the solution always exists and is unique, so in fact our span set is $\mathbb{C}^3$.
+
+    <br>
+
+4. **Let $V$ be the set of all pairs $(x, y) \in \mathbb{R}^2$ of real numbers. Define:**
+
+    $$(x, y) + (x_1,y_1) = (x + x_1, y +y_1)$$
+
+    $$c(x,y) = (cx,y)$$
+
+    **Is $(R, V, ·)$ a vector space?**
+
+    The addition $+$ is the clasic addition operation in $\mathbb{R}^2$ so is clear that $(V,+) = (\mathbb{R}^2,+)$ is an abelian group. Now, let's take a closer look on the field's action. 
+
+    Observe that there is something weird; $0 · (x,y) = (0,0) \iff y = 0$ which should not be. 
+    
+    In a proper vector space the ordinary proof of the statement asserts that:
+
+    $$0v = (0+0)v = 0v + 0v \iff 0v = 0 \quad \forall v \in V$$
+
+    And the second equality comes from the axiom $D2$, that states:
+
+    $$(\alpha + \beta)v = \alpha v + \beta v \quad \forall \alpha, \beta \in K, v \in V$$
+
+    But this is not satisfied by the operation: 
+
+    $$(\alpha + \beta)(x,y) = ((\alpha + \beta)x,y)$$
+
+    $$\alpha (x,y) + \beta (x,y) = ((\alpha + \beta)x,2y)$$
+
+    Which is only true when $2y = y \iff y = 0$, so the structure provided does not verify the axioms of the action's field and is not a vector space.
