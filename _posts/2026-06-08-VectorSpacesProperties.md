@@ -39,4 +39,17 @@ Then, with this information as a starting point, let's develop the fundamental p
 
 <br>
 
-# 2. 
+# 2. Subspaces.
+
+In this section we shall introduce some of the basic concepts in the
+study of vector spaces. 
+
+**Let $V$ be a vector space over the field $F$. A subspace of $V$ is a subset $W$ of $V$ which is itself a vector space over $F$ with the operations of vector addition and scalar multiplication on $V$.**
+
+<br>
+
+Let's observe that, from the axioms of vector spaces, if $W$ is a vector space such $W \subset V$, then:
+
+- $v,u \in W \implies (\alpha v + \beta u \in V \ \forall \alpha, \beta \in \mathbb{R})$
+
+- $0_V \in W$ (by unicity)

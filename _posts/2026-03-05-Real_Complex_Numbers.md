@@ -1541,7 +1541,7 @@ Thus, this is an scheme of an operation, in order to introduce a geometric nuanc
 
 - **Induced Norm**. Be $x \in V$, then we define that the magnitud (the norm) of $x$ is:
 
-    $$\|\|x\|\| = \sqrt{\langle x,x \rangle}$$
+    $$\|x\| = \sqrt{\langle x,x \rangle}$$
     
     Here, the inner product aqcuires a signficant geometric dimension, the property that measures from an element with himself is the square of his magnitud.
 
