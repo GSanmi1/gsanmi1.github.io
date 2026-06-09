@@ -1473,9 +1473,11 @@ The three properties are immediate as we just see until now.
 
     <br>
 
-Lastly, let's consider two points $z,w \in \mathbb{C}$ and consider $z+w$. Then, draft $\triangle(0,z,z+w)$ and observe that, by the cosene theorem is:
+Lastly, let's consider two points $z,w \in \mathbb{C}$ and consider $z+w$. Then, draft $\triangle(0,z,z+w)$ and observe that, the relation between $\|z+w\|$ and $\|z\|+\|w\|$ is given by the cosene theorem is:
 
 $$|z+w|^2 = |z|^2 + |w|^2 - 2|z||w|\cos(\pi - (\theta_w - \theta_z)) =|z|^2 + |w|^2 + 2|z||w|\cos(\theta_w - \theta_z)$$
+
+Meaning that $\|z+w\|$ is $\|z\|+\|w\|$ plsu and angle correction, let's argue then:
 
 Since, again $\|\cos\theta\| \leq 1$, then:
 
@@ -1486,4 +1488,74 @@ observe that this implication can be asserted since we are always treating with 
 
 <br>
 
-### 7.6.3. Schwarz inequality.
+### 7.6.3. Cauchy-Schwarz inequality.
+
+#### 7.6.3.1. Appex: Inner product. Norm. Orthogonality.
+
+Before define Cauchy-Schwarz inequality, let's talk a bit about *inner products*, which is, essentially, the structure that transforms linear algebra in geometry.
+
+<br>
+
+We do know, from [this post](https://gsanmi1.github.io/posts/2026/04/08/VectorSpaces/)  that vectors from vector spaces are weighted elements from an abelian group through a field's action. They can compund between them to generate other vectors and they can be dilatated as much as is convenient using field's scalars, but they can't talk much about them selves. 
+
+Observe that, through the notion of affine space we acquired a geometric notion about vectors as arrows; the family of all posible vectors emerging from a single origin has vector space structure. Then, intuitively as vectors, this arrows can reference any other arrow in the family and, furthermore, they can also serve as models from other arrows emerging from other points (free vector class) but they can't talk about properties relative to his own relative disposition or what properties remains invariant after a transformation (despite being the subject of this questions) without appeal to geometric statements living on the affine space.
+
+<br>
+
+This is where the inner product enters, is the minimum mathematical object that injects this geometric kit onto vector spaces.
+
+<br>
+
+**Definition**
+
+There is a real/complex distinction:
+
+- Be $V$ a $\mathbb{R}$-vector space, an inner product is an application: $\langle\cdot,\cdot\rangle:V\times V\to\mathbb{R}$, satisfying:
+
+    - $I1$ **Linearity on first argument**: $\langle x+y,z\rangle = \langle x,z\rangle + \langle y,z\rangle$ and $\langle \alpha x,z\rangle = \alpha\langle x,z\rangle$ such $\alpha \in \mathbb{R}$.
+    - $I2$ **Simetry**: $\langle x,y\rangle = \langle y,x\rangle$, observe that this means that the linearity also applies to the second argument, is **bilinear**.
+    - $I3$ **Positiveness** $\langle x,x\rangle\geq 0$ and $\langle x,x\rangle = 0 \iff x = 0$ 
+
+    <br>
+
+- Be $V$ a $\mathbb{C}$-vector space, then $\langle\cdot,\cdot\rangle:V\times V\to\mathbb{C}$ and it satisfies:
+
+    - $C1$ **Linearity on first argument**: $\langle x+y,z\rangle = \langle x,z\rangle + \langle y,z\rangle$ and $\langle \alpha x,z\rangle = \alpha\langle x,z\rangle$ such $\alpha \in \mathbb{C}$.
+
+    - $C2$ **Conjugate Simmetry**: $\langle x,y\rangle = \overline{\langle y,x\rangle}$, from $C1$ the conjugate is linear on the second argument.
+
+
+    - $C3$ **Positiveness** $\langle x,x\rangle\geq 0$ and $\langle x,x\rangle = 0 \iff x = 0$. 
+    
+        Observe that by $C2$, $\langle x,x\rangle = \overline{\langle x,x\rangle} \implies \langle x,x\rangle \in \mathbb{R}$. This explains why $C2$ needs the conjugate, because without it positiveness runs down
+
+        <br>
+
+Let's observe that the inner product as defined is the scheme of an operation performed over pairs of vectors which abstracts a relation between both materialized in an scalar. This measured relation is opaque, we don't know what is because the inner product only specifies how it behaves:
+
+- It respect the linearity between vectors.
+- Is simmetric, the relation is inherent to both vectors, it doesn't care about the order.
+- The property of a non-null vector with himself is a positive scalar and is $0$ only when the vector is $0$.
+
+Thus, this is an scheme of an operation, in order to introduce a geometric nuance we need to resalt two properties against the inner product:
+
+- **Induced Norm**. Be $x \in V$, then we define that the magnitud (the norm) of $x$ is:
+
+    $$\|\|x\|\| = \sqrt{\langle x,x \rangle}$$
+    
+    Here, the inner product aqcuires a signficant geometric dimension, the property that measures from an element with himself is the square of his magnitud.
+
+    <br>
+
+- **Non-proportionality**. Be $x,y \in V$, then observe that the inner product asserts that, being $x,y \in V$ non null vectors:
+
+    $$\langle x,y \rangle = 0 \implies \nexists \alpha \neq 0 \in \mathbb{F} : x = \alpha y$$
+
+    If we suppose it is, then: $\langle x,y \rangle = \alpha\langle y,y \rangle= 0 \implies \langle y,y \rangle = 0 \implies y = 0$, violating the premise.
+
+    This is saying that two vectors for which his inner product is $0$ are no proportionals, meaning they aren't a dilatation of each other, thus, in some way, $\langle x,y \rangle=0$ introduces a minimum notion of distinct directions between vectors.
+
+    <br>
+
+In this way, the norm, non-proportionality and inner product together introduce a geometric kit that, from the outset, allows vectors to talk how big they are or whether two of them doesn't point in the same direction.
+
