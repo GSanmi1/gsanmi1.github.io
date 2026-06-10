@@ -1498,7 +1498,7 @@ Before define Cauchy-Schwarz inequality, let's talk a bit about *inner products*
 
 We do know, from [this post](https://gsanmi1.github.io/posts/2026/04/08/VectorSpaces/)  that vectors from vector spaces are weighted elements from an abelian group through a field's action. They can compund between them to generate other vectors and they can be dilatated as much as is convenient using field's scalars, but they can't talk much about them selves. 
 
-Observe that, through the notion of affine space we acquired a geometric notion about vectors as arrows; the family of all posible vectors emerging from a single origin has vector space structure. Then, intuitively as vectors, this arrows can reference any other arrow in the family and, furthermore, they can also serve as models from other arrows emerging from other points (free vector class) but they can't talk about properties relative to his own relative disposition or what properties remains invariant after a transformation (despite being the subject of this questions) without appeal to geometric statements living on the affine space.
+Observe that, through the notion of affine space we acquired a geometric notion about vectors as arrows; the family of all posible vectors emerging from a single origin has vector space structure. Then, intuitively as vectors, this arrows can reference any other arrow in the family and, furthermore, they can also serve as models from other arrows emerging from other points (free vector class) but they can't talk about properties relative to his own relative disposition or what properties remains invariant after a transformation (despite being the subject of this questions) without appeal to geometric statements living on the euclidean space. The only thing that two vectors can say about themselves is if they are proportional or not, a binary geometrical statement.
 
 <br>
 
@@ -1537,25 +1537,101 @@ Let's observe that the inner product as defined is the scheme of an operation pe
 - Is simmetric, the relation is inherent to both vectors, it doesn't care about the order.
 - The property of a non-null vector with himself is a positive scalar and is $0$ only when the vector is $0$.
 
-Thus, this is an scheme of an operation, in order to introduce a geometric nuance we need to resalt two properties against the inner product:
+Thus, this is an scheme of an operation, in order to introduce a geometric nuance we need a minimum content stament about what this propert is measuring.
 
-- **Induced Norm**. Be $x \in V$, then we define that the magnitud (the norm) of $x$ is:
+<br>
 
-    $$\|x\| = \sqrt{\langle x,x \rangle}$$
-    
-    Here, the inner product aqcuires a signficant geometric dimension, the property that measures from an element with himself is the square of his magnitud.
+**Induced Norm**.
 
-    <br>
+The fact that the inner product of a vector with himself measures the square of his magnitud; the square of how strongly express the information it carries:
 
-- **Non-proportionality**. Be $x,y \in V$, then observe that the inner product asserts that, being $x,y \in V$ non null vectors:
+$$\|x\| = \sqrt{\langle x,x \rangle}$$
 
-    $$\langle x,y \rangle = 0 \implies \nexists \alpha \neq 0 \in \mathbb{F} : x = \alpha y$$
+Let's stop a bit here to understand it properly. We do know that $\langle ·,· \rangle$ measures something between vectors but we don't know what already, but what we do know is that, suppose $x,y \in V : x = \alpha y$ and they are not null, then is fair to say that $x$ and $y$ transports the same information but $x$ amplificated it $\alpha$ times. Thus:
 
-    If we suppose it is, then: $\langle x,y \rangle = \alpha\langle y,y \rangle= 0 \implies \langle y,y \rangle = 0 \implies y = 0$, violating the premise.
+$$\langle x,x \rangle = \alpha^2 \langle y,y \rangle \iff \sqrt{\frac{\langle x,x \rangle}{\langle y,y \rangle}} = \alpha$$
 
-    This is saying that two vectors for which his inner product is $0$ are no proportionals, meaning they aren't a dilatation of each other, thus, in some way, $\langle x,y \rangle=0$ introduces a minimum notion of distinct directions between vectors.
+The root of the coefficient is the ratio of its amplitude. 
 
-    <br>
+Check carefully that if we take $y$ as a reference and stablish $\langle y,y \rangle = 1$, then it would be fair to say that the root of $\langle x,x \rangle$ is exactly measuring how much big $x$ is and in fact, without loosing generality, we can assert that $\langle x,x \rangle$ express the square of how much big $x$ is based on some unknown vector reference of norm $1$ proportional to $x$. This is what motivates the definition and also says something more important, introduce a geometry in a vector space is basically to define a notion of how "big" a vector is.
 
-In this way, the norm, non-proportionality and inner product together introduce a geometric kit that, from the outset, allows vectors to talk how big they are or whether two of them doesn't point in the same direction.
+<br>
 
+**Proper inner product expression**
+
+Let's also say that we can have now a precise expression of what $\langle x,y \rangle$ is based on the norm of each one of them:
+
+$$\|x+y\|^2 = \langle x+y,x+y \rangle = \langle x,x \rangle + \langle y,y \rangle + 2 \langle x,y \rangle = \|x\|^2 + \|y\|^2 + 2\langle x,y \rangle$$
+
+Concluding:
+
+$$\langle x,y \rangle = \frac{1}{2}\big[\|x+y\|^2 - (\|x\|^2 + \|y\|^2)\big]$$
+
+This is, the inner product measures in some way the defect of the magnitude of the composition relative to the individual magnitude of each vector.
+
+<br>
+
+**Orthogonality**
+
+
+Here, the inner product aqcuires a signficant geometric dimension. Let's return to arrows in an affine (euclidean) space, and consider $x,y$ to be two arrows: 
+
+$$\langle x,y \rangle = 0 \iff \|x+y\|^2 = \|x\|^2 + \|y\|^2 \iff x \perp y$$
+
+By the pytagorean theorem, in terms of direction, this means that $x$ and $y$ expands himselfs in totally indepent directions and neither of the two can be used to reconstruct part of the other.
+
+<br>
+
+Let's talk a bit about bases and how can we examine this geometric term with an algebraic nuance. If you assume a finite-dimensional vector space, then you can consider the minimal generating set of that space, that is, the *basis*. Note that this set, by definition, can generate any other vector in the vector space, so it contains all the "types of vectors" in the space, or all the information that the vector space is capable of expressing. Furthermore, if you remove any of these vectors, then you can no longer generate the entire vector space; it is the minimal complete structure that contains this whole information; each vector contains at least some piece of information that the others do not.
+
+<br>
+
+Let's now return to our arrows and consider $\mathbb{R}^2$ observe that $\mathcal{B} :=\Set{(1,0), (0,1)}$ is a basis, it can generate any other vector in $\mathbb{R}^2$ but also check, taking for example the dot product (this information is relevant, fixing an inner product defines what vectors are orthogonal, in other inner products can be $\langle (1,0), (0,1)\rangle \neq 0$), then is clear $(1,0) \perp (0,1) \wedge \langle (1,0), (0,1)\rangle = 0$ ,(this is not common to all bases consider $(1,1)$ and any of the two vectors for example). Is clear that both vectors at once:
+
+- Expands through completly different directions in the plane.
+
+- Contains disjoint information about the vector space. 
+
+This serve to us to realize that there is a clear paralellism between direction and information of a vector; the information of a vector is the algebraic direction to which aims measured by the inner product, is important to have clear that direction always depends on inner product is a consequence of the geometry that injects, observe that the norm defines the product and the product fixes orthogonality, without it, two vectors only can acces to his proportionality, as we stated before. Two proportional vectors carries the same information with different intensities and two orthogonal vectors doesn't share information at all.
+
+Then, this is what inner product measures; the algebraic direction that two vectors shares weighted by his magnitud. Let's observe some interesting fact that reinforce our lecture; consider for some inner product, an orthogonal basis (a basis which all his vectors are orthogonal, like $\mathcal{B}$) and take two vectors from it, then, by linearity, the inner product can be understanded as the summatory of the scaled inner products of ortogonal vectors from which the inner products of the same vector will not cancel, this is, again, that the inner product is shared direction scaled by his magnitudes. 
+
+<br>
+
+Let's make also another observation, when we consider $\mathbb{R}^2$ we are leveraging the fact that any $n$-th dimensional $\mathbb{R}$-vector space is isomorph to the $\mathbb{R}^n$ vector space (for pedagogical purpouses we are ilustrating the case $n=2$) meaning that the comparison between "direction" in $\mathbb{R}^n$ and "information" or "vector type" in $V$ is, not only fair, but the exactly same thing: information is algebraic direction. Observe that we can extrapole our pitagorean observation to any $n$ since between two vectors we can always rescue the plane that both of them creates, isomorph to $\mathbb{R}^2$, and applicate the result.
+
+<br>
+
+#### 7.6.3.2. Cauchy-Schwarz.
+
+With a basic notion about what inner product is, let's check what Cauchy-Schwarz asserts.
+
+<br>
+
+##### 7.6.3.2.1. Conceptual Introduction.
+
+There are two presentations of the same statement, both are mathematically equivalent but admits distinct immediate lectures:
+
+<br>
+
+**Inequality formulation**
+
+Let be $x,y \in V$, and $\alpha$ an scalar of the field, then:
+
+$$|\langle x,y \rangle| \leq \|x\| \|y\| \wedge \big(| \langle x,y \rangle| = \|x\| \|y\| \iff \exists \alpha: x = \alpha y \big)$$
+
+Meaning, the measured property by the inner product of two vectors, is not bigger than the norm of the vectors and if they coincide is if and only if both vectors are proportionals.
+
+Observe that, combining this lecture with the observation of the fact that $\langle x,y \rangle = 0$ means distinct direction, we can assert that $\langle · , · \rangle$ measures some composition between the direction and the magnitude of the vectors. 
+
+Cauchy-Schwarz asserts that this property is maximum for two vectors when are aligned and grows proportionally with their magnitude, and we know that minimal absolute values for non null vectors implies that, at least, this vectors are non-proportional, not aligned.
+
+<br>
+
+**Coefficient Formulation**
+
+Another equivalent formulation of this theorem is:
+
+$$\frac{|\langle x,y\rangle|}{\|x\|\,\|y\|} \in [0,1]$$
+
+Which means that if we remove magnitudes from the inner product what remains is a coefficient related with how much aligned the vectors are, thus, we can concrete that the inner product measure a composition between the combination of the magnitudes of the vector and 
