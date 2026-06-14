@@ -885,65 +885,78 @@ Ultimately we formalize the bound vector as a "free vector" being this the equiv
 
 # 5. Exercises.
 
-1. **If $F$ is a field, verify that $F^n$ (as defined in Example 1) is a vector space over the field $F$.**
+## 5.1. If $F$ is a field, verify that $F^n$ (as defined in Example 1) is a vector space over the field $F$.
 
-    Done in  $2.3.1.$
+Done in  $2.3.1.$
 
-    <br>
+<br>
 
-2. **If $V$ is a vector space over the field $F$, verify that:**
+## 5.2. If $V$ is a vector space over the field $F$, verify for all vectors $a_i \in V : i =1,2,3,4$ that:
+
+$$(a_1 +a_2) + (a_3 + a_4) = [a_2 + (a_3 + a_1)] + a_4$$
+
+Observe that since $(V,+)$ is an abelian group the exercise is immediate, it is just generalizing the asociativity and conmutativity for more than two elements.
+
+<br>
+
+## 5.3. If $C$ is the field of complex numbers, which vectors in $C^3$ are linear combinations of $(1, 0, -1), (0, 1, 1), (1, 1, 1)$?
+
+Those resulted in being the composition of any proportional vector of the given ones, formally verifying: 
+
+$$v \in \mathbb{C}^3 \mid \exists \alpha, \beta ,\gamma \in \mathbb{C} : v = \alpha(1, 0, -1) +\beta(0, 1, 1)+ \gamma (1, 1, 1)$$
+
+Doing the algebraic simplification, we get the family of vectors:
+
+$$\Set{(\alpha + \gamma,\beta + \gamma, \gamma + \beta - \alpha) : \alpha, \beta ,\gamma \in \mathbb{C}} \subset \mathbb{C}^3$$
+
+Let's note an interesting observation, if we think about the forms of the vectors in order to extract a restriction, this is, when, for a vector $(x,y,z)$ does not exists $\alpha, \beta, \gamma \in \mathbb{C}:$
+
+$$\begin{cases} x = \alpha + \gamma \\ y = \beta + \gamma \\ z = \gamma + \beta - \alpha \end{cases} \iff \begin{cases} \alpha = x - \gamma \\ \beta = y - \gamma \\ \gamma =  z - \beta + \alpha \end{cases}$$
+
+Ultimately; $\alpha = y-z, \beta = -x+2y-z, \gamma = x−y+z$, meaning the solution always exists and is unique, so in fact our span set is $\mathbb{C}^3$.
+
+<br>
+
+## 5.4. Let $V$ be the set of all pairs $(x, y) \in \mathbb{R}^2$ of real numbers. Is $(R, V, ·)$ a vector space?. Defined:
+
+$$(x, y) + (x_1,y_1) = (x + x_1, y +y_1)$$
+
+$$c(x,y) = (cx,y)$$
 
 
-    $$(a_1 +a_2) + (a_3 + a_4) = [a_2 + (a_3 + a_1)] + a_4$$
 
-    **for all vectors $a_i \in V : i =1,2,3,4$**
+The addition $+$ is the clasic addition operation in $\mathbb{R}^2$ so is clear that $(V,+) = (\mathbb{R}^2,+)$ is an abelian group. Now, let's take a closer look on the field's action. 
 
-    Observe that since $(V,+)$ is an abelian group the exercise is immediate, it is just generalizing the asociativity and conmutativity for more than two elements.
+Observe that there is something weird; $0 · (x,y) = (0,0) \iff y = 0$ which should not be. 
 
-    <br>
+In a proper vector space the ordinary proof of the statement asserts that:
 
-3. **If $C$ is the field of complex numbers, which vectors in $C^3$ are linear combinations of $(1, 0, -1), (0, 1, 1), (1, 1, 1)$?**
+$$0v = (0+0)v = 0v + 0v \iff 0v = 0 \quad \forall v \in V$$
 
-    Those resulted in being the composition of any proportional vector of the given ones, formally verifying: 
-    
-    $$v \in \mathbb{C}^3 \mid \exists \alpha, \beta ,\gamma \in \mathbb{C} : v = \alpha(1, 0, -1) +\beta(0, 1, 1)+ \gamma (1, 1, 1)$$
-    
-    Doing the algebraic simplification, we get the family of vectors:
+And the second equality comes from the axiom $D2$, that states:
 
-    $$\Set{(\alpha + \gamma,\beta + \gamma, \gamma + \beta - \alpha) : \alpha, \beta ,\gamma \in \mathbb{C}} \subset \mathbb{C}^3$$
+$$(\alpha + \beta)v = \alpha v + \beta v \quad \forall \alpha, \beta \in K, v \in V$$
 
-    Let's note an interesting observation, if we think about the forms of the vectors in order to extract a restriction, this is, when, for a vector $(x,y,z)$ does not exists $\alpha, \beta, \gamma \in \mathbb{C}:$
+But this is not satisfied by the operation: 
 
-    $$\begin{cases} x = \alpha + \gamma \\ y = \beta + \gamma \\ z = \gamma + \beta - \alpha \end{cases} \iff \begin{cases} \alpha = x - \gamma \\ \beta = y - \gamma \\ \gamma =  z - \beta + \alpha \end{cases}$$
+$$(\alpha + \beta)(x,y) = ((\alpha + \beta)x,y)$$
 
-    Ultimately; $\alpha = y-z, \beta = -x+2y-z, \gamma = x−y+z$, meaning the solution always exists and is unique, so in fact our span set is $\mathbb{C}^3$.
+$$\alpha (x,y) + \beta (x,y) = ((\alpha + \beta)x,2y)$$
 
-    <br>
+Which is only true when $2y = y \iff y = 0$, so the structure provided does not verify the axioms of the action's field and is not a vector space.
 
-4. **Let $V$ be the set of all pairs $(x, y) \in \mathbb{R}^2$ of real numbers. Define:**
+<br>
+ 
+## 5.5. On $\mathbb{R}^n$, which of the axioms for a vector space are satisfied by $(\mathbb{R}^n, \oplus, · )$ defined:
 
-    $$(x, y) + (x_1,y_1) = (x + x_1, y +y_1)$$
+$$\alpha \oplus \beta = \alpha - \beta$$
 
-    $$c(x,y) = (cx,y)$$
+$$c · \alpha = - c \alpha$$
 
-    **Is $(R, V, ·)$ a vector space?**
+We must check that $(\mathbb{R}^n,\oplus)$ y $(\mathbb{R}^n \setminus \Set{0},·)$ are compatible abelians groups. Observe that for both operations we can consider the negative of the operand:
 
-    The addition $+$ is the clasic addition operation in $\mathbb{R}^2$ so is clear that $(V,+) = (\mathbb{R}^2,+)$ is an abelian group. Now, let's take a closer look on the field's action. 
+$$\alpha \oplus (-\beta) = \alpha - (-\beta) = \alpha + \beta$$
 
-    Observe that there is something weird; $0 · (x,y) = (0,0) \iff y = 0$ which should not be. 
-    
-    In a proper vector space the ordinary proof of the statement asserts that:
+$$c · (-\alpha) = -c(-\alpha) = c \alpha$$
 
-    $$0v = (0+0)v = 0v + 0v \iff 0v = 0 \quad \forall v \in V$$
-
-    And the second equality comes from the axiom $D2$, that states:
-
-    $$(\alpha + \beta)v = \alpha v + \beta v \quad \forall \alpha, \beta \in K, v \in V$$
-
-    But this is not satisfied by the operation: 
-
-    $$(\alpha + \beta)(x,y) = ((\alpha + \beta)x,y)$$
-
-    $$\alpha (x,y) + \beta (x,y) = ((\alpha + \beta)x,2y)$$
-
-    Which is only true when $2y = y \iff y = 0$, so the structure provided does not verify the axioms of the action's field and is not a vector space.
+Then, $(\mathbb{R}^n, \oplus, · )$ can be understanded as isomorph to the ordinary $(\mathbb{R}^n, +, · )$ by defining:
