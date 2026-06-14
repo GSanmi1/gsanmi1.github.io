@@ -953,10 +953,61 @@ $$\alpha \oplus \beta = \alpha - \beta$$
 
 $$c · \alpha = - c \alpha$$
 
-We must check that $(\mathbb{R}^n,\oplus)$ y $(\mathbb{R}^n \setminus \Set{0},·)$ are compatible abelians groups. Observe that for both operations we can consider the negative of the operand:
+Observe that $\alpha \oplus \beta = \alpha - \beta \neq \beta - \alpha = \beta \oplus \alpha$, so $(\mathbb{R}, \oplus)$ is not an abelian group. Also, the application is not a field action, since the identity does transforms the vector; $1\alpha = - \alpha$. Thus, the structure as presented is not a vector space.
 
-$$\alpha \oplus (-\beta) = \alpha - (-\beta) = \alpha + \beta$$
+<br>
 
-$$c · (-\alpha) = -c(-\alpha) = c \alpha$$
+## 5.6. Let $V$ be the set of all complex-valued functions $f$ on the real line such that $\forall t \in \mathbb{R} \quad f(-t) = \overline{f(t)}$, then show that $(V, +,·)$ is a $\mathbb{R}$-vector space with:
 
-Then, $(\mathbb{R}^n, \oplus, · )$ can be understanded as isomorph to the ordinary $(\mathbb{R}^n, +, · )$ by defining:
+$$(f+g)(t) = f(t) + g(t)$$
+
+$$(cf)(t)=cf(t)$$
+
+<br>
+
+Observe that $V := \Set{f \in \mathbb{C}^{\mathbb{R}}\mid f(-t) = \overline{f(t)}}$, thus, let's first check $(V,+)$ is an abelian group:
+
+- Associativity and Conmutativity are immediate from Associativity and Conmutativity in addition in $(\mathbb{C},+)$.
+
+    Let's check closure:  observe that 
+    
+    $$f,g \in V \implies (f+g)(-t) = f(-t) + g(-t) = \overline{f(t)}+\overline{g(t)} = \overline{f(t)+g(t)}= \overline{(f+g)(t)}$$
+
+    Let's think about the identity element. We have to demonstrate the existance of some element in $i \in V$ such 
+
+    $$(i+f)=(f+i)=f \quad \forall f \in V$$
+
+    Let's consider $i \in \mathbb{C}^{\mathbb{R}}: i(t) = 0 \quad \forall t \in \mathbb{R}$, note in first place that $0 = \overline{0} \implies i \in V$, and it satisfies:
+
+    $$(i+f)(t)=i(t) + f(t)=f(t)+i(t) = f(t) \quad \forall f \in V$$
+
+    Lastly, consider some $f \in V$, we have to think in some $-f \in V: (f+-f)=(-f + f)=i$, or, what is the same: $(f+-f)(t) = (-f +f)(t) = 0$.
+
+    Let's consider $-f \in \mathbb{C}^{\mathbb{R}}: -f(t) = -(f(t))$, observe that: 
+
+    $$-f(-t) = -(f(-t))=-(\overline{f(t)}) = \overline{-f(t)} \implies -f \in V$$
+
+    Then, $(V,+)$ is an abelian group.
+
+    <br>
+
+Let's check now that $·:\mathbb{R} \times V \to V$ is a field's action:
+
+- **Identity**; Taking $1 \in \mathbb{R}$, is immediate.
+- **Asociativity**: Immediate from associativity in $(\mathbb{R}\setminus\Set{0}, ·)$.
+- **Compatibility in $V$**; Immediate from compatibility in $\mathbb{C}$
+- **Compatibility in $\mathbb{R}$**; Immediate from compatibility in $\mathbb{C}$
+
+Thus, $(\mathbb{R},(V,+),·)$ is a vector space.
+
+As an example of a function in $V$ not real-valued is $f(t) = it$.
+
+<br>
+
+## 5.7. Take de following operations in $\mathbb{R}^2$. Is $(\mathbb{R},(\mathbb{R}^2,+),·)$ a vectorspace?
+
+$$(a,b) + (c,d) = (a+c,0)$$
+
+$$c(a,b) = (ca,0)$$
+
+Observe that there are no identity in $(\mathbb{R}^2,+)$ so is not an abeliano group
