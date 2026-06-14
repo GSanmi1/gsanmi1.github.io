@@ -41,6 +41,8 @@ Then, with this information as a starting point, let's develop the fundamental p
 
 # 2. Subspaces.
 
+## 2.1. Definition and caracterization.
+
 In this section we shall introduce some of the basic concepts in the
 study of vector spaces. 
 
@@ -50,6 +52,20 @@ study of vector spaces.
 
 Let's observe that, from the axioms of vector spaces, if $W$ is a vector space such $W \subset V$, then:
 
-- $v,u \in W \implies (\alpha v + \beta u \in V \ \forall \alpha, \beta \in \mathbb{R})$
+- Closure relative to linear combinations:
 
-- $0_V \in W$ (by unicity)
+    $$v,u \in W \implies (\alpha v + \beta u \in V \ \forall \alpha, \beta \in  F)$$
+
+- Contains zero vector: $0_V \in W$, or $0_W = 0_V$. Remember that $V$ being a vector space means that $(V,+)$ is an abelian group, so $(W,+)$ is an abelian subgroup of $V$ and it inherites $0_v$ from $V$ by the uniquity of this element. (Observe that this also expands associativity, and inverses).
+
+    <br>
+
+Let's take a characterization for any subset $W \subset V$ to be a vector space. If $V$ is a $K$-vector space, then:
+
+$$W \text{ is a vector space } \iff (\alpha u + v \in W \quad \forall u,v \in W, \alpha \in K)$$
+
+Let's reconstruct the structure:
+
+- $(W,+)$ is an abelian subgroup of $(V,+)$.
+
+- $· \|_W: K \times W \to W$ is a field action. 
