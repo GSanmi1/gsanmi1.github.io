@@ -8,30 +8,28 @@ tags: ['Maths']
 author: German Sanmi
 ---
 
-# 0. Index.
-
-- 1. Introduction.
+1. Introduction.
     - 1.1. Rational numbers inadequatness. Irrational numbers.
 
-- 2. Ordered Sets.
+2. Ordered Sets.
     - 2.1. Binary relations.
         - 2.1.1. Definition.
         - 2.1.2. Properties.
         - 2.1.3. Order Types.
     - 2.2. Order in $\mathbb{Q}$.
 
-- 3. Bounds. 
+3. Bounds. 
     - 3.1. Upper and Lower bounds of a set. Supremum and Infimum.
     - 3.2. Example of bounds in subsets of $\mathbb{Q}$.
     - 3.3. Least-upper-bound property.
 
-- 4. Fields.
+4. Fields.
     - 4.1. Definition and Axioms.
     - 4.2. Immediate properties.
     - 4.3. Ordered fields.
         - 4.3.1. Definition.
         - 4.3.2. Properties of ordered fields.
-- 5. The Real field.
+5. The Real field.
     - 5.1. Theorem: Existance of $\mathbb{R}$. Dedekind cuts.
         - 5.1.1. Cuts.
         - 5.1.2. $\mathbb{R}$ is an ordered set.
@@ -45,11 +43,11 @@ author: German Sanmi
         - 5.2.3. *nth* roots of positive reals.
     - 5.3. Brief summary about $\mathbb{R}$.
 
-- 6. The extended Real Number System.
+6. The extended Real Number System.
     - 6.1. Definition.
     - 6.2. Operations in $\overline{\mathbb{R}}$.
 
-- 7. Summary.
+7. Summary.
 
     <br>
 
