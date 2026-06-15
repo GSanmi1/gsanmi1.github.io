@@ -10,18 +10,24 @@ author: German Sanmi
 
 # 0. Index
 
-- 1. Definition and operations.
-- 2. $\mathbb{C}$ as a field.
-- 3. $\mathbb{R}$ in $\mathbb{C}$.
-- 4. Real formulation of $\mathbb{C}$. Imaginary and Real part.
-- 5. Geometric representation of $\mathbb{C}$.
+1. Definition and operations.
+
+2. $\mathbb{C}$ as a field.
+
+3. $\mathbb{R}$ in $\mathbb{C}$.
+
+4. Real formulation of $\mathbb{C}$. Imaginary and Real part.
+
+5. Geometric representation of $\mathbb{C}$.
     - 5.1. Axis.
     - 5.2. Absolute Value. Polar Form.
     - 5.3. Geometric Intuition of the operations in $\mathbb{C}$.
         - 5.3.1. Addition as a torsor.
         - 5.3.2. Multiplication as a rotation.
+
     - 5.4. Conjugate.
-- 6. Important properties of Complex Numbers.
+
+6. Important properties of Complex Numbers.
     - 6.1. Conjugate properties.
     - 6.2. Absolute Value properties.
     - 6.3. Cauchy-Schwarz inequality.
@@ -30,6 +36,7 @@ author: German Sanmi
         - 6.3.3. Induced Norm.
         - 6.3.4. Proper inner product expression.
         - 6.3.5. Cauchy-Schwarz and angle between two vectors.
+
     - 6.4. Rudin's 1.35 theorem.
 
 <br>
