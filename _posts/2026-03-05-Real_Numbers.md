@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "The Real Number Systems"
+title: "1. The Real Number Systems"
 subtitle: "Rational and Real fields presentation. Order. Analisis definition."
 date: 2026-03-05 09:00:00 +0000
 categories: ['Maths', 'analisis_rudin']

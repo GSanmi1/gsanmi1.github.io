@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Euclidean Spaces"
+title: "3. Euclidean Spaces"
 subtitle: "Introduction to Euclidean Spaces."
 date: 2026-06-16 09:00:00 +0000
 categories: ['Maths', 'analisis_rudin']
