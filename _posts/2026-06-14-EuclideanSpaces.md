@@ -120,7 +120,16 @@ Let's see that $(\mathbb{R}^k,d)$ as defined is a metric space:
 
     <br>
 
-- **Triangular inequality**:
+- **Triangular inequality**: This result come immediately from the inner product. Take $x,y \in \mathbb{R}^k$, then:
 
-    
+    $$\|x+y\|^2 = \|x\|^2 + \|y\|^2 + 2 \langle x,y \rangle$$
 
+    Let's see that, by Cauchy-Schwarz: $\|\langle x,y \rangle\| \leq \|\|x\|\| \|\|y\|\|$, thus
+
+    $$\|x+y\|^2 = \|x\|^2 + \|y\|^2 + 2 \langle x,y \rangle \leq \|x\|^2 + \|y\|^2 + 2\|x\| \|y\| = (\|x\| + \|y\|)^2$$
+
+    Since $\|\|x+y\|\|^2 \geq 0$ and $\|\|x\|\|^2 + \|\|y\|\|^2 \geq 0$ is:
+
+    $$\|x+y\|^2 \leq (\|x\| + \|y\|)^2 \implies \|x+y\| \leq \|x\| + \|y\|$$
+
+    Giving place to the triangular inequality (which is always true in an inner product space).
