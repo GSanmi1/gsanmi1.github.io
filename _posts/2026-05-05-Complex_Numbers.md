@@ -504,3 +504,27 @@ $$\langle x ,y \rangle = \sum_{i=1}^nx_iy_i$$
 Then, our previous expression take the form:
 
 $$|\langle x,y \rangle| \leq \|x\| \|y\| \iff  \left|\sum_{i=1}^nx_iy_i\right| \leq \left|\sum_{i=1}^nx_i \right| \left| \sum_{i=1}^ny_i\right|$$
+
+Let's see now a demonstration. The demonstration is a little tricky so to speak. The motivation is an ortogonal proyection from which denominators has been substrained. Essentially, Cauchy-Schwarz inequality asserts the pitagorean theorem.
+
+Consider $a,b \in \mathbb{C}^n$ and: 
+
+$$C = \langle a,b \rangle, \quad B = \langle b,b \rangle = \|b\|^2, \quad A = \|a\|^2$$
+
+Now, let's make us a question, what is the exact part of $b$ in $a$? Or, in other words, what is that $t$ such $\langle a -tb,b \rangle = 0$, check that:
+
+$$\langle a -tb,b \rangle = \langle a,b \rangle - t\langle b,b \rangle = 0 \iff t = \frac{\langle a,b \rangle}{\langle b,b \rangle} = \frac{C}{B}$$
+
+This quotient measures the common direction of $a,b$ in terms of the direction of $b$, or in other words, how much $b$'s magnitude occupies in the shared direction of $a$ with $b$.
+
+Check then, calling $r = a - \frac{C}{B}b$:
+
+$$\langle r,\frac{C}{B}b \rangle = 0 \iff \|r +\frac{C}{B}b\| ^2 = \|a\|^2 = \|r\|^2 + \|\frac{C}{B}b\|^2 = \|r\|^2 + \left|\frac{C}{B} \right|^2\|b\|^2$$
+
+Which means:
+
+$$\|r\|^2 = A - \frac{C^2}{B} \geq 0 \iff A B \geq C^2$$
+
+Now, just changing each part:
+
+$$AB = \|a\|^2\|b\|^2 \geq C^2 = \langle a,b \rangle^2 \implies \|a\| \|b\| \geq |\langle a,b \rangle|$$
