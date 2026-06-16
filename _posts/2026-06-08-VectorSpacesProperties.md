@@ -68,4 +68,8 @@ Let's reconstruct the structure:
 
 - $(W,+)$ is an abelian subgroup of $(V,+)$.
 
+    Take, $u,v \in W$, then: $(-1)u + v = v - u \in W$, so is a subgroup of $V$. Let's see that also is abelian since $V$ is, take $u,v \in W$ then, $u+v = v + u$ because they are elements of $V$
+
+
+
 - $· \|_W: K \times W \to W$ is a field action. 
