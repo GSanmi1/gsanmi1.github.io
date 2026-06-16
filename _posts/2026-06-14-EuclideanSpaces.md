@@ -2,7 +2,7 @@
 layout: post
 title: "Euclidean Spaces"
 subtitle: "Introduction to Euclidean Spaces."
-date: 2026-03-05 09:00:00 +0000
+date: 2026-06-16 09:00:00 +0000
 categories: ['Maths', 'analisis_rudin']
 tags: ['Maths']
 author: German Sanmi
