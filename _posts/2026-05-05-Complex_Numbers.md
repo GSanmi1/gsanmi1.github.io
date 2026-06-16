@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "The Complex Number Systems"
+title: "2. The Complex Number Systems"
 subtitle: "Complex fields presentation."
 date: 2026-06-01 09:00:00 +0000
 categories: ['Maths', 'analisis_rudin']
