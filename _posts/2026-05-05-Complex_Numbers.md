@@ -2,7 +2,7 @@
 layout: post
 title: "The Complex Number Systems"
 subtitle: "Complex fields presentation."
-date: 2026-03-05 09:00:00 +0000
+date: 2026-06-01 09:00:00 +0000
 categories: ['Maths', 'analisis_rudin']
 tags: ['Maths']
 author: German Sanmi
