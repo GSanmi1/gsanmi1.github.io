@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "3. Euclidean Spaces"
-subtitle: "Introduction to Euclidean Spaces."
+subtitle: "Introduction to Euclidean Spaces. Metric Spaces"
 date: 2026-06-16 09:00:00 +0000
 categories: ['Maths', 'analisis_rudin']
 tags: ['Maths']
@@ -10,7 +10,16 @@ author: German Sanmi
 
 # 0. Index
 
-# 1. Presentation and Definition. 
+1. Presentation and Definition. $\mathbb{R}^k$
+2. Metric Spaces.
+    - 2.1. Metric definition. Metric spaces.
+    - 2.2. Euclidean metric.
+    - $\mathbb{R}^k$ is a metric space with the euclidean metric.
+
+3. Main properties of the norm in $\mathbb{R}^k$.
+4. Summary.
+
+# 1. Presentation and Definition. $\mathbb{R}^k$
 
 A *Euclidean space* is an affine space over the reals such the associated vector space is a euclidean vector space; a finite-dimensional inner product space over the real numbers. 
 
