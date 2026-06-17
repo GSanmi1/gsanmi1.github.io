@@ -79,52 +79,38 @@
             <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
             <nav class="site-nav">
                 <div class="nav-dropdown">
-                    <a href="{{ '/machine-learning.html' | relative_url }}" class="nav-link">Machine Learning</a>
+                    <a href="#" class="nav-link">Analysis</a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ '/dl-foundationals.html' | relative_url }}">Foundationals</a></li>
-                        <li><a href="{{ '/dl-nlp.html' | relative_url }}">Natural Language Processing</a></li>
-                        <li><a href="{{ '/dl-red-teaming.html' | relative_url }}">Red Teaming LLMs</a></li>
-                        <li><a href="{{ '/MML.html' | relative_url }}">Mathematics</a></li>
+                        <li><a href="{{ '/real-analysis.html' | relative_url }}">Real Analysis</a></li>
                     </ul>
                 </div>
                 <div class="nav-dropdown">
-                    <a href="{{ '/zkp.html' | relative_url }}" class="nav-link">Zero-Knowledge-Proof</a>
+                    <a href="#" class="nav-link">Geometry</a>
                     <ul class="dropdown-menu">
-                        <li class="has-submenu">
-                            <a href="#">Languages</a>
-                            <ul class="submenu">
-                                <li><a href="{{ '/zkp.html' | relative_url }}">Noir</a></li>
-                                <li><a href="{{ '/zkp.html' | relative_url }}">Circom</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="{{ '/zkp-theory.html' | relative_url }}">Fundamentals</a></li>
+                        <li><a href="{{ '/euclidean-geometry.html' | relative_url }}">Euclidean Geometry</a></li>
                     </ul>
                 </div>
                 <div class="nav-dropdown">
-                    <a href="{{ '/maths.html' | relative_url }}" class="nav-link">Mathematics</a>
+                    <a href="#" class="nav-link">Algebra</a>
                     <ul class="dropdown-menu">
-                        <li class="has-submenu">
-                            <a href="#">Algebra</a>
-                            <ul class="submenu">
-                                <li><a href="{{ '/linear-algebra.html' | relative_url }}">Linear Algebra</a></li>
-                            </ul>
-                        </li>
-                        <li class="has-submenu">
-                            <a href="#">Discrete Math</a>
-                            <ul class="submenu">
-                                <li><a href="{{ '/graph-theory.html' | relative_url }}">Graph Theory</a></li>
-                            </ul>
-                        </li>
-                        <li class="has-submenu">
-                            <a href="#">Analisis</a>
-                            <ul class="submenu">
-                                <li><a href="{{ '/analisis_rudin.html' | relative_url }}">Principle of Analisis</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="{{ '/probability.html' | relative_url }}">Probability</a></li>
+                        <li><a href="{{ '/linear-algebra.html' | relative_url }}">Linear Algebra</a></li>
                     </ul>
                 </div>
-                <a href="{{ '/past-blogs.html' | relative_url }}">Archive</a>
+                <a href="{{ '/probability.html' | relative_url }}" class="nav-link">Probability</a>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link">Computation</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ '/zkp.html' | relative_url }}">ZKP</a></li>
+                        <li><a href="{{ '/machine-learning.html' | relative_url }}">Machine Learning</a></li>
+                    </ul>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link">Discrete</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ '/graph-theory.html' | relative_url }}">Graph Theory</a></li>
+                        <li><a href="{{ '/number-theory.html' | relative_url }}">Number Theory</a></li>
+                    </ul>
+                </div>
                 <button id="theme-toggle" class="theme-toggle" role="switch" aria-checked="false" aria-label="Toggle dark theme"><span class="toggle-knob"></span></button>
             </nav>
         </div>

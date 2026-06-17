@@ -1,0 +1,31 @@
+---
+layout: default
+title: Real Analysis
+permalink: /real-analysis.html
+---
+
+<section class="category-page">
+    <h1>Real Analysis</h1>
+    <p class="description">
+        Notes following Rudin's Principles of Mathematical Analysis.
+    </p>
+
+    <ul class="post-list">
+        {% assign posts = site.posts | where_exp: "post", "post.categories contains 'analisis_rudin'" | sort: 'date' %}
+        {% for post in posts %}
+        <li class="post-list-item">
+            <h3 class="post-list-title">
+                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            </h3>
+            <p class="post-meta">
+                {% if post.author %}{{ post.author }} &mdash; {% endif %}{{ post.date | date: "%B %d, %Y" }}
+            </p>
+            {% if post.subtitle %}
+            <p class="post-excerpt">{{ post.subtitle }}</p>
+            {% elsif post.excerpt %}
+            <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 40 }}</p>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</section>
