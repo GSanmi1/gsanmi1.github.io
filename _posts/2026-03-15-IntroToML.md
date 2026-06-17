@@ -6,6 +6,8 @@ date: 2026-03-16 09:00:00 +0000
 categories: ['Maths', 'ML']
 tags: ['Maths','DeepLearning.ai']
 author: German Sanmi
+subject: modeling-computation
+lang: en
 ---
 
 # 0. Index.

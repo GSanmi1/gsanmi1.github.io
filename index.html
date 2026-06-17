@@ -2,39 +2,32 @@
 layout: default
 title: Home
 ---
+<div class="container container--wide">
+    <section class="home-hero">
+        <h1>{{ site.title }}</h1>
+        <p class="lede">
+            <span class="i18n-en">A personal notebook of mathematics — organised by subject, set like a book.</span>
+            <span class="i18n-es">Un cuaderno personal de matemáticas — organizado por materia, compuesto como un libro.</span>
+        </p>
+    </section>
 
-<section class="category-page">
-    <h1>Recent Publications</h1>
-    <p class="description">
-        A collection of notes, papers, and expositions on mathematics, cryptography, and theoretical computer science.
-    </p>
-
-    <ul class="post-list">
-        {% for post in site.posts limit:10 %}
-        <li class="post-list-item">
-            <h3 class="post-list-title">
-                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-            </h3>
-            <p class="post-meta">
-                {% if post.author %}{{ post.author }} &mdash; {% endif %}{{ post.date | date: "%B %d, %Y" }}
-                {% if post.categories %}
-                    {% for category in post.categories %}
-                        <span class="category">{{ category }}</span>
-                    {% endfor %}
-                {% endif %}
-            </p>
-            {% if post.subtitle %}
-            <p class="post-excerpt">{{ post.subtitle }}</p>
-            {% elsif post.excerpt %}
-            <p class="post-excerpt">
-                {{ post.excerpt | strip_html | truncatewords: 40 }}
-            </p>
-            {% endif %}
-        </li>
+    <div class="vertical-grid">
+        {% for v in site.data.verticals %}
+        {% assign vcount = 0 %}
+        {% for s in v.subjects %}
+            {% assign n = site.posts | where: "subject", s.slug | size %}
+            {% assign vcount = vcount | plus: n %}
         {% endfor %}
-    </ul>
-
-    <p style="margin-top: 2rem; text-align: center;">
-        <a href="{{ '/posts.html' | relative_url }}">View all publications &rarr;</a>
-    </p>
-</section>
+        <a class="vcard" href="{{ v.page | relative_url }}">
+            <h2>
+                <span><span class="i18n-en">{{ v.en }}</span><span class="i18n-es">{{ v.es }}</span></span>
+                {% if vcount > 0 %}<span class="vcard-count">{{ vcount }}</span>{% endif %}
+            </h2>
+            <p class="vcard-blurb"><span class="i18n-en">{{ v.blurb_en }}</span><span class="i18n-es">{{ v.blurb_es }}</span></p>
+            <p class="vcard-subjects">
+                {% for s in v.subjects %}<span class="i18n-en">{{ s.en }}</span><span class="i18n-es">{{ s.es }}</span>{% unless forloop.last %} · {% endunless %}{% endfor %}
+            </p>
+        </a>
+        {% endfor %}
+    </div>
+</div>

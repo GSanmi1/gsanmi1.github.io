@@ -6,6 +6,8 @@ date: 2026-02-06 09:00:00 +0000
 categories: ['Fundamentals']
 tags: ['ZKP', 'Maths']
 author: German Sanmi
+subject: logic-set-theory
+lang: en
 ---
 
 # 1. Introduction.

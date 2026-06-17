@@ -6,6 +6,8 @@ date: 2026-03-14 09:00:00 +0000
 categories: ['Maths', 'MML']
 tags: ['Maths','MMLbook']
 author: German Sanmi
+subject: modeling-computation
+lang: en
 ---
 
 # 1. Introduction.

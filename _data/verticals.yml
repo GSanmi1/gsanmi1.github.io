@@ -1,0 +1,110 @@
+# ==========================================================================
+# Mathematical verticals (subject areas) and their sub-areas.
+# Navigation, the landing page, and the per-vertical pages all read from
+# this file, so this is the single source of truth for the taxonomy.
+#
+# Each subject `slug` matches the `subject:` field in a post's front matter.
+# To file a post under a subject, set `subject: <slug>` in its front matter.
+# ==========================================================================
+
+- slug: foundations
+  page: /foundations.html
+  en: Foundations
+  es: Fundamentos
+  blurb_en: Logic, set theory, and the discrete structures everything else is built on.
+  blurb_es: Lógica, teoría de conjuntos y las estructuras discretas sobre las que se construye todo lo demás.
+  subjects:
+    - slug: logic-set-theory
+      en: Logic & Set Theory
+      es: Lógica y Teoría de Conjuntos
+    - slug: discrete-mathematics
+      en: Discrete Mathematics
+      es: Matemática Discreta
+
+- slug: algebra
+  page: /algebra.html
+  en: Algebra
+  es: Álgebra
+  blurb_en: Vector spaces, linear maps, and abstract algebraic structures.
+  blurb_es: Espacios vectoriales, aplicaciones lineales y estructuras algebraicas abstractas.
+  subjects:
+    - slug: linear-algebra
+      en: Linear Algebra
+      es: Álgebra Lineal
+    - slug: abstract-algebra
+      en: Abstract Algebra
+      es: Álgebra Abstracta
+
+- slug: analysis
+  page: /analysis.html
+  en: Analysis
+  es: Análisis
+  blurb_en: Limits, continuity, and the rigorous study of the continuum.
+  blurb_es: Límites, continuidad y el estudio riguroso del continuo.
+  subjects:
+    - slug: real-analysis
+      en: Real Analysis
+      es: Análisis Real
+    - slug: complex-analysis
+      en: Complex Analysis
+      es: Análisis Complejo
+    - slug: differential-equations
+      en: Differential Equations
+      es: Ecuaciones Diferenciales
+    - slug: functional-analysis
+      en: Functional Analysis
+      es: Análisis Funcional
+    - slug: measure-integration
+      en: Measure & Integration
+      es: Medida e Integración
+
+- slug: geometry-topology
+  page: /geometry-topology.html
+  en: Geometry & Topology
+  es: Geometría y Topología
+  blurb_en: Shape, space, smoothness, and the properties preserved under deformation.
+  blurb_es: Forma, espacio, suavidad y las propiedades que se preservan bajo deformación.
+  subjects:
+    - slug: geometry
+      en: Geometry
+      es: Geometría
+    - slug: differential-geometry
+      en: Differential Geometry
+      es: Geometría Diferencial
+    - slug: topology
+      en: Topology
+      es: Topología
+
+- slug: probability-statistics
+  page: /probability-statistics.html
+  en: Probability & Statistics
+  es: Probabilidad y Estadística
+  blurb_en: Randomness, inference, and processes that evolve in time.
+  blurb_es: Aleatoriedad, inferencia y procesos que evolucionan en el tiempo.
+  subjects:
+    - slug: probability
+      en: Probability
+      es: Probabilidad
+    - slug: statistical-inference
+      en: Statistical Inference
+      es: Inferencia Estadística
+    - slug: stochastic-processes
+      en: Stochastic Processes
+      es: Procesos Estocásticos
+
+- slug: applied-mathematics
+  page: /applied-mathematics.html
+  en: Applied Mathematics
+  es: Matemática Aplicada
+  blurb_en: Numerics, optimization, and mathematics put to computational work.
+  blurb_es: Métodos numéricos, optimización y matemáticas aplicadas al cómputo.
+  subjects:
+    - slug: numerical-analysis
+      en: Numerical Analysis
+      es: Análisis Numérico
+    - slug: optimization
+      en: Optimization
+      es: Optimización
+    - slug: modeling-computation
+      en: Modeling & Computation
+      es: Modelado y Computación

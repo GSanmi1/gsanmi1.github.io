@@ -1,0 +1,34 @@
+{%- comment -%}
+  Renders one vertical's page: a header plus a block per subject listing its
+  posts. Reads `page.vertical` (the vertical slug) and the taxonomy in
+  _data/verticals.yml. Each subject heading gets an id anchor (= subject slug)
+  so the sidebar can deep-link to it.
+{%- endcomment -%}
+{%- assign v = site.data.verticals | where: "slug", page.vertical | first -%}
+<div class="container container--wide">
+    <header class="page-head">
+        <p class="eyebrow"><span class="i18n-en">Vertical</span><span class="i18n-es">Vertical</span></p>
+        <h1><span class="i18n-en">{{ v.en }}</span><span class="i18n-es">{{ v.es }}</span></h1>
+        <p class="lede"><span class="i18n-en">{{ v.blurb_en }}</span><span class="i18n-es">{{ v.blurb_es }}</span></p>
+    </header>
+
+    {% for s in v.subjects %}
+    {% assign posts = site.posts | where: "subject", s.slug | sort: "date" %}
+    <section class="subject-block" id="{{ s.slug }}">
+        <h2><span class="i18n-en">{{ s.en }}</span><span class="i18n-es">{{ s.es }}</span></h2>
+        {% if posts.size > 0 %}
+        <ul class="entry-list">
+            {% for post in posts %}
+            <li class="entry">
+                <p class="entry-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></p>
+                {% if post.subtitle %}<p class="entry-sub">{{ post.subtitle }}</p>{% endif %}
+                <p class="entry-meta">{{ post.date | date: "%B %-d, %Y" }}{% if post.lang %} &middot; {{ post.lang | upcase }}{% endif %}</p>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="subject-empty"><span class="i18n-en">No notes here yet.</span><span class="i18n-es">Aún no hay notas aquí.</span></p>
+        {% endif %}
+    </section>
+    {% endfor %}
+</div>
