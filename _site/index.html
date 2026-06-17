@@ -107,6 +107,14 @@
         </button>
         <a class="brand" href="/">GSanmi's blog</a>
         <span class="topbar-spacer"></span>
+        <div class="search" id="search" data-index="/search.json">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="search" id="search-input" autocomplete="off" spellcheck="false"
+                   aria-label="Search posts"
+                   data-ph-en="Search posts…" data-ph-es="Buscar posts…" placeholder="Search posts…">
+            <div class="search-results" id="search-results" role="listbox" hidden></div>
+        </div>
+        <span class="topbar-spacer"></span>
         <div class="topbar-actions">
             <div class="lang-toggle" role="group" aria-label="Language">
                 <button type="button" data-lang-set="en" aria-pressed="true">EN</button>
@@ -501,6 +509,8 @@
                 buttons.forEach(function(b) {
                     b.setAttribute('aria-pressed', b.getAttribute('data-lang-set') === lang ? 'true' : 'false');
                 });
+                var si = document.getElementById('search-input');
+                if (si) si.placeholder = si.getAttribute('data-ph-' + lang) || si.placeholder;
             }
             apply(localStorage.getItem('lang') || 'en');
             buttons.forEach(function(b) {
@@ -520,6 +530,75 @@
             });
             backdrop.addEventListener('click', close);
             document.querySelectorAll('#sidebar a').forEach(function(a) { a.addEventListener('click', close); });
+        })();
+
+        // Full-text search (client-side over /search.json)
+        (function() {
+            var box = document.getElementById('search');
+            var input = document.getElementById('search-input');
+            var panel = document.getElementById('search-results');
+            if (!box || !input || !panel) return;
+            var html = document.documentElement;
+            var data = null, loading = false, lastQ = '';
+
+            function norm(s) {
+                return (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+            }
+            function load() {
+                if (data || loading) return;
+                loading = true;
+                fetch(box.getAttribute('data-index'))
+                    .then(function(r) { return r.json(); })
+                    .then(function(json) {
+                        data = json.map(function(p) {
+                            p._t = norm(p.title + ' ' + p.subtitle + ' ' + p.content);
+                            return p;
+                        });
+                        if (input.value.trim()) run(input.value);
+                    })
+                    .catch(function() { loading = false; });
+            }
+            function esc(s) {
+                return s.replace(/[&<>"]/g, function(c) {
+                    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+                });
+            }
+            function snippet(content, q) {
+                var nc = norm(content), i = nc.indexOf(q);
+                if (i < 0) return esc(content.slice(0, 90)) + '…';
+                var start = Math.max(0, i - 35), end = Math.min(content.length, i + q.length + 55);
+                var pre = (start > 0 ? '…' : '') + esc(content.slice(start, i));
+                var hit = '<mark>' + esc(content.slice(i, i + q.length)) + '</mark>';
+                var post = esc(content.slice(i + q.length, end)) + (end < content.length ? '…' : '');
+                return pre + hit + post;
+            }
+            function run(raw) {
+                var q = norm(raw.trim());
+                lastQ = q;
+                if (!q) { panel.hidden = true; panel.innerHTML = ''; return; }
+                if (!data) { load(); panel.hidden = false; panel.innerHTML = '<div class="search-empty"><span class="i18n-en">Loading…</span><span class="i18n-es">Cargando…</span></div>'; return; }
+                var hits = data.filter(function(p) { return p._t.indexOf(q) !== -1; }).slice(0, 12);
+                if (!hits.length) {
+                    panel.innerHTML = '<div class="search-empty"><span class="i18n-en">No matches.</span><span class="i18n-es">Sin resultados.</span></div>';
+                } else {
+                    panel.innerHTML = hits.map(function(p) {
+                        var subj = '<span class="i18n-en">' + esc(p.subject_en || '') + '</span><span class="i18n-es">' + esc(p.subject_es || '') + '</span>';
+                        return '<a class="search-result" href="' + p.url + '">' +
+                            '<span class="sr-title">' + esc(p.title) +
+                            (p.lang ? ' <span class="sr-lang">' + esc(p.lang.toUpperCase()) + '</span>' : '') + '</span>' +
+                            '<span class="sr-subject">' + subj + '</span>' +
+                            '<span class="sr-snippet">' + snippet(p.content, q) + '</span></a>';
+                    }).join('');
+                }
+                panel.hidden = false;
+            }
+            var t;
+            input.addEventListener('input', function() { clearTimeout(t); t = setTimeout(function() { run(input.value); }, 120); });
+            input.addEventListener('focus', load);
+            input.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') { input.value = ''; panel.hidden = true; input.blur(); }
+            });
+            document.addEventListener('click', function(e) { if (!box.contains(e.target)) panel.hidden = true; });
         })();
     </script>
 </body>

@@ -1,0 +1,19 @@
+---
+permalink: /search.json
+---
+[
+{%- for post in site.posts -%}
+{%- assign subj_en = "" -%}{%- assign subj_es = "" -%}
+{%- for v in site.data.verticals -%}{%- for s in v.subjects -%}{%- if s.slug == post.subject -%}{%- assign subj_en = s.en -%}{%- assign subj_es = s.es -%}{%- endif -%}{%- endfor -%}{%- endfor -%}
+{
+"title": {{ post.title | jsonify }},
+"subtitle": {{ post.subtitle | default: "" | jsonify }},
+"url": {{ post.url | relative_url | jsonify }},
+"lang": {{ post.lang | default: "" | jsonify }},
+"subject_en": {{ subj_en | jsonify }},
+"subject_es": {{ subj_es | jsonify }},
+"date": {{ post.date | date: "%Y-%m-%d" | jsonify }},
+"content": {{ post.content | strip_html | normalize_whitespace | jsonify }}
+}{%- unless forloop.last -%},{%- endunless -%}
+{%- endfor -%}
+]
