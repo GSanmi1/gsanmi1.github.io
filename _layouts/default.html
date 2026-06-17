@@ -1,20 +1,30 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ page.title }} | {{ site.title }}</title>
     <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+
+    <!-- Restore theme + language before paint to avoid a flash -->
+    <script>
+        (function() {
+            var t = localStorage.getItem('theme') || 'light';
+            var l = localStorage.getItem('lang') || 'en';
+            document.documentElement.setAttribute('data-theme', t);
+            document.documentElement.setAttribute('data-lang', l);
+        })();
+    </script>
+
+    <!-- Fonts: Newsreader (serif body) + Inter (UI) + JetBrains Mono (code) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
     {% seo %}
     {% feed_meta %}
-    <script>
-        (function() {
-            var theme = localStorage.getItem('theme') || 'light';
-            document.documentElement.setAttribute('data-theme', theme);
-        })();
-    </script>
 
     <!-- MathJax Configuration (MUST be BEFORE loading the script) -->
     <script>
@@ -74,78 +84,114 @@
     </script>
 </head>
 <body>
-    <header class="site-header">
-        <div class="wrapper">
-            <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
-            <nav class="site-nav">
-                <div class="nav-dropdown">
-                    <a href="#" class="nav-link">Analysis</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{ '/real-analysis.html' | relative_url }}">Real Analysis</a></li>
-                    </ul>
-                </div>
-                <div class="nav-dropdown">
-                    <a href="#" class="nav-link">Geometry</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{ '/euclidean-geometry.html' | relative_url }}">Euclidean Geometry</a></li>
-                    </ul>
-                </div>
-                <div class="nav-dropdown">
-                    <a href="#" class="nav-link">Algebra</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{ '/linear-algebra.html' | relative_url }}">Linear Algebra</a></li>
-                    </ul>
-                </div>
-                <a href="{{ '/probability.html' | relative_url }}" class="nav-link">Probability</a>
-                <div class="nav-dropdown">
-                    <a href="#" class="nav-link">Computation</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{ '/zkp.html' | relative_url }}">ZKP</a></li>
-                        <li><a href="{{ '/machine-learning.html' | relative_url }}">Machine Learning</a></li>
-                    </ul>
-                </div>
-                <div class="nav-dropdown">
-                    <a href="#" class="nav-link">Discrete</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{ '/graph-theory.html' | relative_url }}">Graph Theory</a></li>
-                        <li><a href="{{ '/number-theory.html' | relative_url }}">Number Theory</a></li>
-                    </ul>
-                </div>
-                <button id="theme-toggle" class="theme-toggle" role="switch" aria-checked="false" aria-label="Toggle dark theme"><span class="toggle-knob"></span></button>
-            </nav>
+    <header class="topbar">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+        <span class="topbar-spacer"></span>
+        <div class="topbar-actions">
+            <div class="lang-toggle" role="group" aria-label="Language">
+                <button type="button" data-lang-set="en" aria-pressed="true">EN</button>
+                <button type="button" data-lang-set="es" aria-pressed="false">ES</button>
+            </div>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark theme">
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+            </button>
         </div>
     </header>
 
-    <main class="page-content">
-        <div class="wrapper">
+    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+    <div class="layout">
+        <aside class="sidebar" id="sidebar">
+            <a class="nav-home" href="{{ '/' | relative_url }}">
+                <span class="i18n-en">All subjects</span><span class="i18n-es">Todas las materias</span>
+            </a>
+            {% for v in site.data.verticals %}
+            {% assign v_active = false %}
+            {% if page.url == v.page %}{% assign v_active = true %}{% endif %}
+            <div class="nav-vertical" data-active="{{ v_active }}">
+                <a class="nav-vertical-title" href="{{ v.page | relative_url }}">
+                    <span class="i18n-en">{{ v.en }}</span><span class="i18n-es">{{ v.es }}</span>
+                </a>
+                <ul class="nav-subjects">
+                    {% for s in v.subjects %}
+                    {% assign n = site.posts | where: "subject", s.slug | size %}
+                    {% assign s_current = false %}
+                    {% if page.subject == s.slug %}{% assign s_current = true %}{% endif %}
+                    <li>
+                        {% if n > 0 %}
+                        <a href="{{ v.page | relative_url }}#{{ s.slug }}"{% if s_current %} aria-current="true"{% endif %}>
+                            <span><span class="i18n-en">{{ s.en }}</span><span class="i18n-es">{{ s.es }}</span></span>
+                            <span class="count">{{ n }}</span>
+                        </a>
+                        {% else %}
+                        <span class="empty"><span class="i18n-en">{{ s.en }}</span><span class="i18n-es">{{ s.es }}</span></span>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+            <div class="sidebar-footer">
+                {% if site.github_username %}<a href="https://github.com/{{ site.github_username }}">GitHub</a>{% endif %}
+            </div>
+        </aside>
+
+        <main class="content">
             {{ content }}
-        </div>
-    </main>
+        </main>
+    </div>
 
     <footer class="site-footer">
-        <div class="wrapper">
-            <p>&copy; {{ site.time | date: '%Y' }} {{ site.author }}</p>
-            <p>
-                {% if site.github_username %}
-                <a href="https://github.com/{{ site.github_username }}">GitHub</a>
-                {% endif %}
-            </p>
-        </div>
+        <span>&copy; {{ site.time | date: '%Y' }} {{ site.author }}</span>
+        <span><span class="i18n-en">A personal mathematics notebook.</span><span class="i18n-es">Un cuaderno personal de matemáticas.</span></span>
     </footer>
+
     <script>
-        var btn = document.getElementById('theme-toggle');
-        var html = document.documentElement;
-        function updateSwitch() {
-            var dark = html.getAttribute('data-theme') === 'dark';
-            btn.setAttribute('aria-checked', dark ? 'true' : 'false');
-        }
-        updateSwitch();
-        btn.addEventListener('click', function() {
-            var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-            html.setAttribute('data-theme', next);
-            localStorage.setItem('theme', next);
-            updateSwitch();
-        });
+        // Theme toggle
+        (function() {
+            var btn = document.getElementById('theme-toggle');
+            var html = document.documentElement;
+            btn.addEventListener('click', function() {
+                var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                html.setAttribute('data-theme', next);
+                localStorage.setItem('theme', next);
+            });
+        })();
+
+        // Language toggle
+        (function() {
+            var html = document.documentElement;
+            var buttons = document.querySelectorAll('[data-lang-set]');
+            function apply(lang) {
+                html.setAttribute('data-lang', lang);
+                localStorage.setItem('lang', lang);
+                buttons.forEach(function(b) {
+                    b.setAttribute('aria-pressed', b.getAttribute('data-lang-set') === lang ? 'true' : 'false');
+                });
+            }
+            apply(localStorage.getItem('lang') || 'en');
+            buttons.forEach(function(b) {
+                b.addEventListener('click', function() { apply(b.getAttribute('data-lang-set')); });
+            });
+        })();
+
+        // Mobile sidebar
+        (function() {
+            var body = document.body;
+            var toggle = document.getElementById('menu-toggle');
+            var backdrop = document.getElementById('sidebar-backdrop');
+            function close() { body.classList.remove('nav-open'); toggle.setAttribute('aria-expanded', 'false'); }
+            toggle.addEventListener('click', function() {
+                var open = body.classList.toggle('nav-open');
+                toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+            backdrop.addEventListener('click', close);
+            document.querySelectorAll('#sidebar a').forEach(function(a) { a.addEventListener('click', close); });
+        })();
     </script>
 </body>
 </html>

@@ -6,6 +6,8 @@ date: 2026-03-05 09:00:00 +0000
 categories: ['Maths', 'analisis_rudin']
 tags: ['Maths']
 author: German Sanmi
+subject: real-analysis
+lang: en
 ---
 
 1. Introduction.

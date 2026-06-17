@@ -6,6 +6,8 @@ date: 2026-02-02 09:00:00 +0000
 categories: ['Fundamentals']
 tags: ['Maths', 'Fundamentals']
 author: German Sanmi
+subject: logic-set-theory
+lang: en
 ---
 
 ## 0. Index.

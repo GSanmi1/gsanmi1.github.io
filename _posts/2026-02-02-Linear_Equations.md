@@ -6,6 +6,8 @@ date: 2026-02-06 09:00:00 +0000
 categories: ['Linear Algebra']
 tags: ['Hoffman&Kunze', 'Algebra']
 author: German Sanmi
+subject: linear-algebra
+lang: en
 ---
 
 # 0. Index.
