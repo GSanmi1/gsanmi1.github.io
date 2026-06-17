@@ -1,0 +1,19 @@
+# El sitio se construye en Linux/WSL: forzar LF en todo el texto del repo.
+# Esto evita que los shebangs de los binstubs (vendor/bundle/.../bin/*) y los
+# scripts queden con CRLF y rompan la ejecucion.
+* text=auto eol=lf
+
+# Binarios: nunca normalizar finales de linea.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.so   binary
+*.bundle binary
+*.ttf  binary
+*.otf  binary
+*.eot  binary
+*.woff binary
+*.woff2 binary
+*.pdf  binary
