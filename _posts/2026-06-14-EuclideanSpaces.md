@@ -14,7 +14,7 @@ author: German Sanmi
 2. Metric Spaces.
     - 2.1. Metric definition. Metric spaces.
     - 2.2. Euclidean metric.
-    - $\mathbb{R}^k$ is a metric space with the euclidean metric.
+    - 2.3. $\mathbb{R}^k$ is a metric space with the euclidean metric.
 
 3. Main properties of the norm in $\mathbb{R}^k$.
 4. Summary.

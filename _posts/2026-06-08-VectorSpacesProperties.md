@@ -46,7 +46,7 @@ Then, with this information as a starting point, let's develop the fundamental p
 In this section we shall introduce some of the basic concepts in the
 study of vector spaces. 
 
-**Let $V$ be a vector space over the field $F$. A subspace of $V$ is a subset $W$ of $V$ which is itself a vector space over $F$ with the operations of vector addition and scalar multiplication on $V$.**
+**Let $V$ be a vector space over the field $F$. A subspace of $V$ is a subset non-empty $W$ of $V$ which is itself a vector space over $F$ with the operations of vector addition and scalar multiplication on $V$.**
 
 <br>
 
@@ -60,7 +60,7 @@ Let's observe that, from the axioms of vector spaces, if $W$ is a vector space s
 
     <br>
 
-Let's take a characterization for any subset $W \subset V$ to be a vector space. If $V$ is a $K$-vector space, then:
+Let's take a characterization for any subset non-empty $W \subset V$ to be a vector space. If $V$ is a $K$-vector space, then:
 
 $$W \text{ is a vector space } \iff (\alpha u + v \in W \quad \forall u,v \in W, \alpha \in K)$$
 
@@ -68,8 +68,37 @@ Let's reconstruct the structure:
 
 - $(W,+)$ is an abelian subgroup of $(V,+)$.
 
-    Take, $u,v \in W$, then: $(-1)u + v = v - u \in W$, so is a subgroup of $V$. Let's see that also is abelian since $V$ is, take $u,v \in W$ then, $u+v = v + u$ because they are elements of $V$
+    Since $W \neq \varnothing$ (by the premise), we can consider $u,v \in W$, then: $(-1)u + v = v - u \in W$, so is a subgroup of $V$. Let's see that also $W$ inherites conmutativity from $V$ so is an abelian subgroup.
+
+    <br>
+
+- $· \|_W: K \times W \to W$ is a field action:
+
+    - Observe that $-1 u + u = 0 \in W$, thus $1 u + 0 = u \in W$ so the unit in $F$ doesn't change the vector and it falls inside $W$.
+
+    - Take some $v \in W \implies \alpha v + 0 = \alpha v \in W \implies \beta (\alpha v) + 0 = \beta (\alpha v) \in W$. For the same reason $(\alpha \beta)v \in W$. Then observe that in $V$, by associativity, is $\beta (\alpha v) = (\beta \alpha)v$ so both elements are equal in $V$ and the same in $W$ (by unicity of the inverse), thus $\beta (\alpha v) = (\beta \alpha)v$
+
+    - Take $(\alpha + \beta)v + 0 = (\alpha + \beta)v \in W \subset V$, then in $V$ is $(\alpha + \beta)v = \alpha v + \beta v$ so, for the same argument as above, is $(\alpha + \beta)v = \alpha v + \beta v$ in $W$.
+
+    - Take $\alpha v + 0 \in W \implies \exists w = \alpha v \in W$, take now other $u \in W$, then  $\alpha u + w \in W$, again in $V$ is $\alpha u + w = \alpha u + \alpha v = \alpha(u + v)$ and again is $ \alpha(u + v) = \alpha u + \alpha v$ in $W$.
+
+    <br>
+
+## 2.2. Example of subspaces.
+
+Let's consider some well-known example of subspaces. Consider some $V$ a $K$-vector space, then:
+
+- $V$ is a subspace of $V$.
+- $\Set{0} \subset V$ is the zero subspace of $V$; $\alpha 0 + 0 = 0 \in \Set{0} \quad \forall \alpha \in K$ so $\Set{0}$ is a subspace of $V$.
+
+- $A:= \Set{x \in K^n \mid x_1 = 0}$ is a subspace of $K^n$, check that always $\alpha x + y \in A$, trivially.
+
+    But let's observe that $B := \Set{x \in K^n \mid x_1 = 1 + x_2}$ do not satisfies the rule, take some $\alpha$ and observe that:
+
+    $$\alpha x + y = (\alpha (1 + x_2) + 1 + y_2), \alpha x_2 + y_2,..., \alpha x_n + y_n)$$
+
+    Then, $\alpha + 1 + \alpha x_2 + y_2 = 1 + \alpha x_2 + y_2 \iff \alpha=0$. 
+    
+    So we have that $\forall \alpha \neq 0 \quad (x,y \in B \implies \alpha x + y \notin B)$
 
 
-
-- $· \|_W: K \times W \to W$ is a field action. 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "1. The Real Number Systems"
-subtitle: "Rational and Real fields presentation. Order. Analisis definition."
+subtitle: "Rational and Real fields presentation. Order. LUB. Dedekind cuts. Extended real field. Analisis definition."
 date: 2026-03-05 09:00:00 +0000
 categories: ['Maths', 'analisis_rudin']
 tags: ['Maths']
@@ -1217,3 +1217,49 @@ For the limit to have sense as an object two main ingredients are needed:
 
 Thus, the limit is gradual approach to an existing object.
 
+<br>
+
+# 8. Exercises.
+
+## 8.1. If $r \neq 0$ is rational and $x$ is irrational, prove that $r + x$ and $rx$ are irrational.
+
+Observe quicly that $r \in \mathbb{Q} \setminus \Set{0} \implies \exists p,q \in \mathbb{Z} : r = p/q$, thus, let's suppose that, being $x$ irrational (this is, not satisfying the implication above), 
+
+- $r+x \in \mathbb{Q} \implies \exists m,n \in \mathbb{Z} : r + x = \frac{m}{n} \implies x = \frac{mq - pn}{qn} \in \mathbb{Q}$ contradicting the premise that $x  \notin \mathbb{Q}$.
+
+A similar argument for $rx$ give us $x = m/(nr) = (mq)/(np)$ contradicting the premise again
+
+<br>
+
+## 8.2. Prove that there is no rational number whose square is 12. 
+
+Check that $12  = 6· 2$ and from the properties of the powers of positive numbers $5.2.3$ is:
+
+$$\sqrt{12} = \sqrt{3·2^2} =2\sqrt{3} = 2\sqrt{3} \in \mathbb{Q} \implies \sqrt{3} \in \mathbb{Q}$$
+
+But observe that we can take a similar argument of $\sqrt{2} \notin \mathbb{Q}$. Observe that:
+
+$$\sqrt{3} \in \mathbb{Q} \implies \exists m,n \in \mathbb{Z}: (\frac{m^2}{n^2}=3 \wedge [3 \cancel{|} n \vee 3 | \cancel{|} m])$$
+
+But: $m^2 = 3n^2 \implies 3 \| m^2 \implies 3 \| m \implies 3^2 \| m^2 = 3n^2 \implies 3 \| n $, in contradiction with the premise.
+
+Let's make a brief parentesis, observe that the fraction $\frac{m}{n}$ always express the same number, even if it is reducible, meaning that there is the same integer in the denominator and the numerator. This means that if $3 \| m  \wedge 3 \| n$ we can extract and cancel the $3$ in the denominator and the numerator and the fraction will still being $3$. That's why we can suppose that we can iterate until we find some $m^2$ and $n^2$ such $3$ do not divide both at the same time which justifies the premise condition that is violated.
+
+Also, observe that $3$ is prime, this justifies that $3 \| m^2 \implies 3 \| m$, observe that for any other composed number this isn't valid $12 \| 36  =6^2$ but $ 12 \cancel{\|} 6$.
+
+Thus, $\sqrt{3} \notin \mathbb{Q}$. And by exercise one, the product of a rational by an irrational can't be rational, so $\sqrt{12} \notin \mathbb{Q}$.
+
+<br>
+
+Let's also observe some interesting fact.
+
+Consider some $\sqrt{p} \in \mathbb{N}$, suppose that $\sqrt{p} \in \mathbb{Q}$, then exists some irreductible fraction $\frac{m}{n}=\sqrt{p}$ 
+
+Violating the premise so $\sqrt{p} \notin \mathbb{Q} \setminus \mathbb{N}$, or in other words, $\sqrt{p}\in \mathbb{Q} \implies \sqrt{p} \in \mathbb{N} \iff \exists q \in \mathbb{N} : p = q^2$, ($p$ is a perfect square).
+
+<br>
+
+
+## 8.3. Prove proposition 1.15. 
+
+This is already demonstrated in $4.2$ and below.
