@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "The Real Number System"
-subtitle: "Rational and Real fields presentation. Order. LUB. Dedekind cuts. Extended real field. Analisis definition."
+subtitle: "Rational and Real fields presentation. Order. LUB. Dedekind cuts. Extended real field. Analysis definition."
 date: 2026-03-05 09:00:00 +0000
 categories: ['Maths', 'analisis_rudin']
 tags: ['Maths']
@@ -11,7 +11,7 @@ lang: en
 ---
 
 1. Introduction.
-    - 1.1. Rational numbers inadequatness. Irrational numbers.
+    - 1.1. Rational numbers inadequacy. Irrational numbers.
 
 2. Ordered Sets.
     - 2.1. Binary relations.
@@ -32,7 +32,7 @@ lang: en
         - 4.3.1. Definition.
         - 4.3.2. Properties of ordered fields.
 5. The Real field.
-    - 5.1. Theorem: Existance of $\mathbb{R}$. Dedekind cuts.
+    - 5.1. Theorem: Existence of $\mathbb{R}$. Dedekind cuts.
         - 5.1.1. Cuts.
         - 5.1.2. $\mathbb{R}$ is an ordered set.
         - 5.1.3. $\mathbb{R}$ satisfies the $LUB$ property.
@@ -59,19 +59,19 @@ A satisfactory discussion of the main concepts of analysis (such as convergence,
 continuity, differentiation, and integration) must be based on an accurately
 defined number concept. 
 
-We will pressume familiarity with $\mathbb{Q}$ (meaning that we assume the sentence "$(\mathbb{Q},+, \ ·)$ is a field and the axioms for the field's algebraic structure applies in its totality." is completely understanded and acknowledge by the reader) and use this knowledge to build $\mathbb{R}$ and then $\mathbb{C}$.
+We will presume familiarity with $\mathbb{Q}$ (meaning that we assume the sentence "$(\mathbb{Q},+, \ ·)$ is a field and the axioms for the field's algebraic structure apply in their totality." is completely understood and acknowledged by the reader) and use this knowledge to build $\mathbb{R}$ and then $\mathbb{C}$.
 
 <br>
 
-## 1.1. Rational numbers inadequatness. Irrational numbers.
+## 1.1. Rational numbers inadequacy. Irrational numbers.
 
-Let's start talking about some lackness on the rational numbers. The rational number system is inadequate for many purposes, both as a field and as an ordered set since the rational number line is full of gaps. 
+Let's start by talking about some shortcomings of the rational numbers. The rational number system is inadequate for many purposes, both as a field and as an ordered set, since the rational number line is full of gaps. 
 
-For instance, there is no $p \in \mathbb{Q} : p^2 = 2$. Let's consider that $\exists p \in Q: p^2 = 2$, then this would implie that $\exists m,n \in \mathbb{Z} : p = \frac{m}{n}$
+For instance, there is no $p \in \mathbb{Q} : p^2 = 2$. Let's consider that $\exists p \in Q: p^2 = 2$, then this would imply that $\exists m,n \in \mathbb{Z} : p = \frac{m}{n}$
 
-Let's also observe that if $m, n \in \mathbb{2Z}$, then we could divide between $2$ the numerator and denominator and the fraction will still value $p$ and $m,n \in \mathbb{2Z}$ so we could divide again, and eventually this iteration process of divide between $2$ must terminate because eventually one of the two must be odd. 
+Let's also observe that if $m, n \in \mathbb{2Z}$, then we could divide the numerator and denominator by $2$ and the fraction would still be worth $p$ and $m,n \in \mathbb{2Z}$ so we could divide again, and eventually this iterative process of dividing by $2$ must terminate because eventually one of the two must be odd. 
 
-So we can ensure without loss generality that $\exists m,n \in \mathbb{Z} : p = \frac{m}{n}$ and at least one of both is not even. Then, the equation imposes that $m$ is even:
+So we can ensure without loss of generality that $\exists m,n \in \mathbb{Z} : p = \frac{m}{n}$ and at least one of both is not even. Then, the equation imposes that $m$ is even:
 
 $$p^2 = \left(\frac{m}{n}\right)^2 = \frac{m^2}{n^2} = 2 \iff m^2 = 2n^2 \in 2\mathbb{Z}$$
 
@@ -81,7 +81,7 @@ So, we have:
 
 $$m \in \mathbb{2Z} \implies 2 \vert m \implies 4 \vert m^2 \iff 4 \vert 2n^2 \implies n^2 \in \mathbb{2Z}$$
 
-and also $n$ is even contradicting the presumption. So there aren't $m,n \in \mathbb{Z} : p = \frac{m}{n}$
+and also $n$ is even contradicting the presumption. So there are no $m,n \in \mathbb{Z} : p = \frac{m}{n}$
 
 <br>
 
@@ -89,11 +89,11 @@ This leads to the introduction of so-called *irrational numbers* which are often
 
 <br>
 
-To ilustrate better the idea of the irrational number we can consider the following sets: 
+To illustrate the idea of the irrational number better, we can consider the following sets: 
 
 $$A:= \Set{p \in \mathbb{Q}^+ \mid p^2 < 2 }, \quad B:= \Set{p \in \mathbb{Q}^+ \mid  p^2 > 2 }$$
 
-Let's demonstrate that $A$ no contains largest number and $B$ no contains smaller but none of them contains the point it self (since is not rational):
+Let's demonstrate that $A$ contains no largest number and $B$ contains no smallest, but neither of them contains the point itself (since it is not rational):
 
 $$q = p - \frac{p^2 -2}{p+2}: p \in \mathbb{Q}$$
 
@@ -101,7 +101,7 @@ $$q = p - \frac{p^2 -2}{p+2}: p \in \mathbb{Q}$$
 
     $$ q^2 - 2 = \left( p - \frac{p^2 -2}{p+2} \right)^2 - 2 = \left(\frac{2p + 2}{p+2} \right)^2 - 2 = \frac{2(p^2 - 2)}{(p+2)^2}$$
 
-    Hence, $p^2 - 2 < 0 \implies q^2 - 2 < 0 \implies q \in A$. Thus we can ennonce that:
+    Hence, $p^2 - 2 < 0 \implies q^2 - 2 < 0 \implies q \in A$. Thus we can state that:
 
     $$\forall p \in A \ \exists q \in A:  q > p$$
 
@@ -111,27 +111,27 @@ $$q = p - \frac{p^2 -2}{p+2}: p \in \mathbb{Q}$$
 
 Then, we can understand the *irrational numbers* as a "never-reached-frontier" of certains segments of rational numbers like $A$ or $B$. 
 
-Observe that we only need one of the two sets because both of them "tends" to the same value. By default, we would prefer $A$ as a standard to present the irrational number to which $A$ and $B$ tends to. 
+Observe that we only need one of the two sets because both of them "tend" to the same value. By default, we would prefer $A$ as a standard to present the irrational number to which $A$ and $B$ tend. 
 
 <br>
 
-Thus, the rational number system or the rational line is full of gaps, despite of the fact that between any two rationals there is another:
+Thus, the rational number system or the rational line is full of gaps, despite the fact that between any two rationals there is another:
 
 $$ r,s \in \mathbb{Q} : r < s \implies r < \frac{r + s}{2} < s \wedge \frac{r + s}{2} \in \mathbb{Q}$$
 
-The *real number system*; $\mathbb{R}$, get those gaps filled, this is the principal reason for the fundamental role which it plays in analysis.
+The *real number system*; $\mathbb{R}$, gets those gaps filled, this is the principal reason for the fundamental role which it plays in analysis.
 
 <br>
 
 # 2. Ordered Sets.
 
-In order to introduce $\mathbb{R}$ and why is a preferable option to $\mathbb{Q}$ we have to talk about some important property involved with *order* and thus, first we have to introduce the notion of *ordered sets*. 
+In order to introduce $\mathbb{R}$ and why it is a preferable option to $\mathbb{Q}$ we have to talk about some important properties involved with *order* and thus, first we have to introduce the notion of *ordered sets*. 
 
 So let's start introducing a minimal basis about order in a set.
 
 <br>
 
-First, the mathematical order is an abstraction about primary cognitive operation; compare two objects and decide which of the two go first as we ordinarily do with weight, cronological events or hierarchies. Basically the order is a *binary relation between elements of a domain that codifies "precedence" between the two of them*.
+First, the mathematical order is an abstraction of a primary cognitive operation: comparing two objects and deciding which of the two goes first, as we ordinarily do with weight, chronological events or hierarchies. Basically the order is a *binary relation between elements of a domain that codifies "precedence" between the two of them*.
 
 <br>
 
@@ -141,9 +141,9 @@ First, the mathematical order is an abstraction about primary cognitive operatio
 
 In mathematics, a relation is basically any collection of ordered pairs from a set. 
 
-Formally, given a set $S$, we say that a *binary relation* over $S$ is any $R \subset S^2 = S \times S$. As defined this notion is trivial and lack of any interest and only becomes relevant when the relation forces some conditions.
+Formally, given a set $S$, we say that a *binary relation* over $S$ is any $R \subset S^2 = S \times S$. As defined this notion is trivial and lacks any interest and only becomes relevant when the relation forces some conditions.
 
-Being $(x,y) \in R$, we read it as "$x$ is related with $y$ through $R$" and we may write $xRy$ to simplify the notation.
+Being $(x,y) \in R$, we read it as "$x$ is related to $y$ through $R$" and we may write $xRy$ to simplify the notation.
 
 <br>
 
@@ -154,15 +154,15 @@ Given a binary relation over $R$ over a non-empty set $S$, then $R$ can satisfy 
 - **Reflexivity**: $\forall x \in S,\; xRx \iff \forall x \in S, (x,x) \in R $
 - **Irreflexivity**: $\forall x \in S,\; \neg (xRx) \iff \forall x \in S, (x,x) \notin R$
 
-- **Simetric**: $\forall x, y \in S,\; x \mathbin{R} y \Rightarrow y \mathbin{R} x$, observe that this impose reciprocity.
+- **Symmetric**: $\forall x, y \in S,\; x \mathbin{R} y \Rightarrow y \mathbin{R} x$, observe that this imposes reciprocity.
 
-- **Antisimetric**: $\forall x, y \in S,\; (x \mathbin{R} y) \land (y \mathbin{R} x) \Rightarrow x = y$
+- **Antisymmetric**: $\forall x, y \in S,\; (x \mathbin{R} y) \land (y \mathbin{R} x) \Rightarrow x = y$
 
-- **Transitiva**: $\forall x, y, z \in S,\; (x \mathbin{R} y) \land (y \mathbin{R} z) \Rightarrow x \mathbin{R} z$ 
+- **Transitive**: $\forall x, y, z \in S,\; (x \mathbin{R} y) \land (y \mathbin{R} z) \Rightarrow x \mathbin{R} z$ 
 
-- **Conex**: $\forall x, y \in S,\; (x \mathbin{R} y) \lor (y \mathbin{R} x)$
+- **Connected**: $\forall x, y \in S,\; (x \mathbin{R} y) \lor (y \mathbin{R} x)$
 
-- **Tricotomic** $\forall x, y \in S$ only one of the following statements are true:
+- **Trichotomic** $\forall x, y \in S$ only one of the following statements is true:
 
     $$x \mathbin{R} y, \quad y \mathbin{R} x, \quad x = y$$
 
@@ -172,9 +172,9 @@ Given a binary relation over $R$ over a non-empty set $S$, then $R$ can satisfy 
 
 **Partial and Total orders**
 
-Be $S$ a set, then a relation $\leq \ \subset S^2$ is a *partial order* if is **reflexive**, **antisimetric** and **transitive**.
+Be $S$ a set, then a relation $\leq \ \subset S^2$ is a *partial order* if it is **reflexive**, **antisymmetric** and **transitive**.
 
-As an extension of the partial order we have *total order* if also is **conex**, this means, the comparison criterion can be applied to every element of $S^2$. Observe that, geometrically, this means that all the elements can be sorted in a line as it happens with number sets $\mathbb{N}, \mathbb{Z}, \mathbb{Q}, \mathbb{R}$ can all be represented in a line.
+As an extension of the partial order we have *total order* if it is also **connected**, this means, the comparison criterion can be applied to every element of $S^2$. Observe that, geometrically, this means that all the elements can be sorted in a line as it happens with number sets $\mathbb{N}, \mathbb{Z}, \mathbb{Q}, \mathbb{R}$ can all be represented in a line.
 
 <br>
 
@@ -187,9 +187,9 @@ $$< \ \subset S^2 : (x < y \iff x \leq y \wedge x \neq y)$$
 Observe that, as defined this relation verifies:
 
 - **Irreflexivity**: $\neg(x < x) \quad \forall x \in S$
-- **Transivity**: Inheritated from $\leq \ \subset S^2$
+- **Transitivity**: Inherited from $\leq \ \subset S^2$
 
-If also $\leq \ \subset S^2$ is total, then $<$ is also **tricotomic** and we would call it *strict total order*, this is imposed from the irreflexive property that makes the three statements disjoint between them.
+If also $\leq \ \subset S^2$ is total, then $<$ is also **trichotomic** and we would call it *strict total order*, this is imposed by the irreflexive property that makes the three statements disjoint between them.
 
 <br>
 
@@ -221,7 +221,7 @@ $$\leq \ \subset \mathbb{Q}^2 : (x \leq y \iff x < y \oplus x = y)$$
 
 Then, $\leq \ \subset \mathbb{Q}^2$ is a *non-strict total order*.
 
-Observe that this relation is obviously *reflexive* and *transitive* (inherited from $< \ \subset \mathbb{Q}^2$) and also *antisimetric*, since $x \leq y \wedge y \leq x \implies x = y$, since $x < y$ and $y < x$ are mutually exclusive.
+Observe that this relation is obviously *reflexive* and *transitive* (inherited from $< \ \subset \mathbb{Q}^2$) and also *antisymmetric*, since $x \leq y \wedge y \leq x \implies x = y$, since $x < y$ and $y < x$ are mutually exclusive.
 
 <br>
 
@@ -235,11 +235,11 @@ Let's introduce the concept of *bounds*, and naturally extract the concept of th
 
 ## 3.1. Upper and Lower bounds of a set. Supremum and Infimum.
 
-Consider now $S$ and ordered set and $E \subset S$, then we say that:
+Consider now $S$ an ordered set and $E \subset S$, then we say that:
 
 $$E \text{ is upperbounded} \iff \exists \alpha \in S: x \leq \alpha \ \ \ \forall x \in E $$
 
-We define as lower upperbound (or least-upper-bound) as:  
+We define the least upper bound (or least-upper-bound) as:  
 
 $$\alpha ' \in S : x \leq \alpha ' \ \ \ \forall x \in E \wedge (\alpha ' \leq \alpha \ \ \forall \alpha \in S: x \leq \alpha \ \ \forall x \in E)$$
 
@@ -249,22 +249,22 @@ This same idea applies to lowerbounds:
 
 $$E \text{ is lowerbounded} \iff \exists \alpha \in S: x \geq \alpha \ \ \ \forall x \in E $$
 
-And we define the *ínfimum* of $E$ (and we denote it to $\alpha ' = inf E$) to:
+And we define the *infimum* of $E$ (and we denote it $\alpha ' = inf E$) as:
 
 $$\alpha ' \in S : x \geq \alpha ' \ \ \ \forall x \in E \wedge (\alpha ' \geq \alpha \ \ \forall \alpha \in S: x \geq \alpha \ \ \forall x \in E )$$
 
 <br>
-This are the minimal upper/lower bounds of a set and his existance is not garanteed as we will see in the example below. Observe trivially that boths supremum and infimum are unique, the proof is trivial derived from the trichotomy property but is worth to mention this fact for future demonstrations. 
+These are the minimal upper/lower bounds of a set and their existence is not guaranteed as we will see in the example below. Observe trivially that both supremum and infimum are unique; the proof is trivially derived from the trichotomy property but it is worth mentioning this fact for future demonstrations. 
 
 <br>
 
 ## 3.2. Example of bounds in subsets of $\mathbb{Q}$.
 
-Let's now observe two examples in which we want to ilustrate two facts about minimal bounds.
+Let's now observe two examples in which we want to illustrate two facts about minimal bounds.
 
-**The first one ilustrates that, in $\mathbb{Q}$, minimal bounds are not garanteed to exists for any bounded set $S \subset \mathbb{Q}$, and this is the main reason why $\mathbb{Q}$ is full of gaps.**
+**The first one illustrates that, in $\mathbb{Q}$, minimal bounds are not guaranteed to exist for any bounded set $S \subset \mathbb{Q}$, and this is the main reason why $\mathbb{Q}$ is full of gaps.**
 
-The second example pretend to ilustrate that, although the definition of bound do not prohibit a minimal bound of $E$ to be contained in $E$, this is not true in general, a minimal bound often is not a member of the bounded subset.
+The second example aims to illustrate that, although the definition of bound does not prohibit a minimal bound of $E$ from being contained in $E$, this is not true in general; a minimal bound often is not a member of the bounded subset.
 
 1. Let's consider again $A:= \Set{p \ \vert \ p^2 < 2 }, B:= \Set{p \ \vert \ p^2 > 2 } \subset \mathbb{Q}^+$. 
 
@@ -282,9 +282,9 @@ The second example pretend to ilustrate that, although the definition of bound d
 
 ## 3.3. Least-upper-bound property.
 
-Now, we have presented order, bounds, minimal bounds and we also provided an example to ilustrate that minimal bounds sometimes do not exists. 
+Now, we have presented order, bounds, minimal bounds and we also provided an example to illustrate that minimal bounds sometimes do not exist. 
 
-Then in this section we are going to present the ***Least-upper-bound property*; this property garantee the existance of the minimal bound for any bounded and non-empty subset.**
+Then in this section we are going to present the ***Least-upper-bound property*; this property guarantees the existence of the minimal bound for any bounded and non-empty subset.**
 
 <br>
 
@@ -301,7 +301,7 @@ $$ \forall E \subseteq S : (E \neq \varnothing \wedge \exists \alpha \in S : x \
 
 **Theorem**
 
-Now, the following theorem introduces that the LUB property is a sufficent condition to ensure the existance of an *infimum* for any non-empty lowerbounded subset and also offers a characterization of the object.
+Now, the following theorem introduces that the LUB property is a sufficient condition to ensure the existence of an *infimum* for any non-empty lowerbounded subset and also offers a characterization of the object.
 
 Let's consider an ordered set $S$ that satisfies the least-upper-bound property and a non-empty, lowerbounded, subset $B \subseteq S$. 
 
@@ -313,7 +313,7 @@ Since $L_B$ is clearly upperbounded by any item of $B$ and $S$ satisfies the lea
  
 $$ \alpha_s = supL_B \implies \begin{cases} \nexists b \in B: b < \alpha_s  \\ \nexists l \in L_B : l > \alpha_s \end{cases} \implies \alpha_s = infB$$
 
-The first condition tell us that $\alpha_s$ is a lowerbound, the second tell us that there isn't any other lowerbound $l$ bigger than $\alpha_s$, thus, it must be the infimum.
+The first condition tells us that $\alpha_s$ is a lowerbound, the second tells us that there isn't any other lowerbound $l$ bigger than $\alpha_s$, thus, it must be the infimum.
 
 
 
@@ -332,15 +332,15 @@ $$ \exists \alpha_s \in S: \alpha_s = supL_B = infB$$
 A field is a set $F$ with two operations, called addition, $+$ and multiplication, $·$ which satisfy the following so-called *field axioms*:
 
 - *Closure*: $x + y \wedge x ·y \in F \ \ \forall x,y \in F$
-- *Conmutativity*: $x+y = y+x \wedge x·y = y·x \ \ \forall x,y \in F$
+- *Commutativity*: $x+y = y+x \wedge x·y = y·x \ \ \forall x,y \in F$
 - *Associativity*: $(x+y)+z = x + (y+z) \wedge (x·y)·z = x·(y·z) \ \ \forall x,y,z \in F$
 - *Zero and Unity entities*: $\exists 0,1 \in F :0 \neq 1 \wedge (0 + x = x \wedge 1·x = x \ \ \forall x \in F)$
 - *Inverses*: $\forall x \big(\exists (-x) \in F : x + (-x) = 0 \big) \wedge \big(\exists x^{-1} \in F : x·x^{-1}=1\big)$
-- *Distributibe law*: $x(y+c) = xy + xz \ \ \forall x,y,z \in F$
+- *Distributive law*: $x(y+z) = xy + xz \ \ \forall x,y,z \in F$
 
 <br>
 
-Is worth to mentiont that, is usually to write:
+It is worth mentioning that it is usual to write:
 
 $$x - y, \frac{x}{y}, x + y + z, xyz, x^2, x^3, 2x, 3x,$$
 
@@ -362,13 +362,13 @@ Although it is not our purpose to study fields (or any other algebraic structure
 
     <br>
 
-- *Uniqness of unity and zero*: 
+- *Uniqueness of unity and zero*: 
 
     $$(x + y = x \implies y = 0) \wedge (xy=x \wedge x \neq 0\implies y=1)$$
 
     <br>
 
-- *Uniqness of inverse*:
+- *Uniqueness of inverse*:
 
     $$(x + y = 0 \implies y = -x ) \wedge (xy=1 \wedge x \neq 0\implies y=x^{-1})$$
 
@@ -386,9 +386,9 @@ Also, let observe that:
 
     Lets observe that $x \neq 0 \wedge y \neq 0 \implies xy \neq 0$. 
     
-    Observe that $\neg(\neg p) \equiv p$ in classic logic, so to demonstrate $p$ lets see that is $\neg(\neg p)$ or in other words let's see that $\neg p$ is not true.
+    Observe that $\neg(\neg p) \equiv p$ in classic logic, so to demonstrate $p$ let's see that $\neg(\neg p)$ holds or, in other words, let's see that $\neg p$ is not true.
 
-    In our case $p$ is an implication $p:= l \to t \equiv \neg l \vee t \iff \neg p := l \wedge \neg t$, (remember that conjuntion and disjuntionrelates each other as:  $\neg (p \wedge q) \equiv \neg p \vee \neg q$) thus, we are considering that $\underbrace{(x \neq 0 \wedge y \neq 0)}\_l \wedge \underbrace{xy = 0}\_{\neg t}$ but this is imposible since: $x \neq 0 \wedge xy = 0 \implies y = 0$ (following the axioms described above) entering in contradiction with the premisse, thus: $x \neq 0 \wedge y \neq 0 \implies xy \neq 0$. 
+    In our case $p$ is an implication $p:= l \to t \equiv \neg l \vee t \iff \neg p := l \wedge \neg t$, (remember that conjunction and disjunction relate to each other as:  $\neg (p \wedge q) \equiv \neg p \vee \neg q$) thus, we are considering that $\underbrace{(x \neq 0 \wedge y \neq 0)}\_l \wedge \underbrace{xy = 0}\_{\neg t}$ but this is impossible since: $x \neq 0 \wedge xy = 0 \implies y = 0$ (following the axioms described above) entering in contradiction with the premise, thus: $x \neq 0 \wedge y \neq 0 \implies xy \neq 0$. 
 
     Let's also see that: $p \to q \equiv \neg p \vee q \equiv \neg (\neg q) \vee \neg p \equiv \neg q \to \neg p$, applying that to our rule, we can obtain a subtle better expression of the rule: $xy = 0 \implies x = 0 \vee y = 0$
   
@@ -400,7 +400,7 @@ Also, let observe that:
 
     $$(-x)y + xy = (-x + x)y = 0 y = 0$$
 
-    Which means $(-x)y = -xy$ due to the uniquity of the inverse in $F$.
+    Which means $(-x)y = -xy$ due to the uniqueness of the inverse in $F$.
 
     <br>
 
@@ -418,9 +418,9 @@ Also, let observe that:
 
 ### 4.3.1. Definition.
 
-An *ordered field* is a field $F$ which is also an ordered set. This implies to define a relation between the order and the operations of the field. 
+An *ordered field* is a field $F$ which is also an ordered set. This implies defining a relation between the order and the operations of the field. 
 
-Before relate the operations of $F$ with the order, let's expands the definition of the operations in order to give it some geometric intuition. As a brief reminder, $F$ as a field is a triple $(F,+, \ ·)$ where $(F,+),(F,\ ·)$ are abelian groups and $+, \ ·$ are compatible (which means they both satisfy the distributive property). 
+Before relating the operations of $F$ to the order, let's expand the definition of the operations in order to give it some geometric intuition. As a brief reminder, $F$ as a field is a triple $(F,+, \ ·)$ where $(F,+),(F,\ ·)$ are abelian groups and $+, \ ·$ are compatible (which means they both satisfy the distributive property). 
 
 Observe that, since $< \ \subset F$ as defined above is a total strict order, we can dispose the elements of $F$ in a line following the precedence that sets $<$. This give us some geometric intuition about the relation between the operations in the field and the order.
 
@@ -430,9 +430,9 @@ We can understand the $+$ and $·$ operations as the following:
 
     $$\tau_x : F \to F, \qquad \tau_x(y) = x + y$$
 
-    This is obviuosly a free (without privilege or fixed points) and transitive (each point is moved to other point) biyection and we will call it **traslation of distance $x$**. We can understand it as a movement that sends a point $y$ to the point $x+y$.
+    This is obviously a free (without privilege or fixed points) and transitive (each point is moved to another point) bijection and we will call it **translation of distance $x$**. We can understand it as a movement that sends a point $y$ to the point $x+y$.
 
-    Observe that the operation $+: F \times F  \to F$ and the collection $\Set{\tau\_x}\_{x \in F}$ are equivalents representation of the same composition in $F$, or, in other terms there are equivalent representation of the same composition $(x,y) \mapsto\_+ z$ using both systems.
+    Observe that the operation $+: F \times F  \to F$ and the collection $\Set{\tau\_x}\_{x \in F}$ are equivalent representations of the same composition in $F$, or, in other terms they are equivalent representations of the same composition $(x,y) \mapsto\_+ z$ using both systems.
     
     <br>
 
@@ -440,19 +440,19 @@ We can understand the $+$ and $·$ operations as the following:
 
     $$\mu_x : F \to F, \qquad \mu_x(y) = xy$$
 
-    This is an homothety of center $0$ and ratio $x \neq 0$. An *homothety* can be understanded as a dilatation of the space in which is defined, it expands/constraint from the center any point $x$ times. Applied to our line intuition it moves away a value $x$ times is own value, the magnitude of $x$ measures how far it sends the point and it signe the direction of the movement.
+    This is a homothety of center $0$ and ratio $x \neq 0$. A *homothety* can be understood as a dilation of the space in which it is defined; it expands/contracts from the center any point by a factor of $x$. Applied to our line intuition it moves a value away by $x$ times its own value; the magnitude of $x$ measures how far it sends the point and its sign the direction of the movement.
 
     Again, there is a clear equivalence between the family $\Set{\mu\_x}\_{x \in F}$ and the multiplication defined in $F$
 
     <br>
 
-Thus, having defined this two geometric extrapolations of the operations defined in $F$, lets perform two axiomatic asserts of how operations behaves with $<$.
+Thus, having defined these two geometric extrapolations of the operations defined in $F$, let's perform two axiomatic assertions of how the operations behave with $<$.
 
-- **Invariance under traslation**: 
+- **Invariance under translation**: 
 
     $$ y < z \implies \tau_x(y) < \tau_x(z) \quad \forall x \in F$$
 
-    Observe that by cancelation we obtain the reciproc, so is bidirectional invariance.
+    Observe that by cancellation we obtain the converse, so it is bidirectional invariance.
     
     <br>
 
@@ -464,7 +464,7 @@ Thus, having defined this two geometric extrapolations of the operations defined
 
     $$0 < z - y \implies  0 < \mu_x(z - y) = \mu_x(z) - \mu_x(y) \iff \mu_x(y) < \mu_x(z) \quad \forall x \in F : 0 < x$$
 
-    Obtaining the same representation than we had with traslations.
+    Obtaining the same representation as we had with translations.
 
     <br>
 
@@ -473,7 +473,7 @@ We also say that $x  \in F$, then:
 - $x \text{ is positive } \iff 0 < x$
 - $x \text{ is negative } \iff x < 0$
 
-We could thinkg about the positive and negative terms as the direction of the traslation we need to apply to $0$ to reach some value. A right traslation is a positive sign, while a negative sign means left direction. Oberserve that there is no direction for the traslation that sends $0$ to $0$, so $0$ itself have no sign.
+We could think about the positive and negative terms as the direction of the translation we need to apply to $0$ to reach some value. A right translation is a positive sign, while a negative sign means left direction. Observe that there is no direction for the translation that sends $0$ to $0$, so $0$ itself has no sign.
 
 <br>
 
@@ -481,19 +481,19 @@ We could thinkg about the positive and negative terms as the direction of the tr
 
 All the familiar rules for working with inequalities apply in every ordered field: Multiplication by positive/negative quantities preserves/reverses inequalities, no square is negative, etc. 
 
-The following proposition lists some of these. When treat the following demonstration, remember that $<$ is a total order, which allow us to dispose all the elements of the fields in a single line. 
+The following proposition lists some of these. When treating the following demonstration, remember that $<$ is a total order, which allows us to dispose all the elements of the field in a single line. 
 
-Thus, lets think in a line with the elements of the field $F$ represented on it:
+Thus, let's think of a line with the elements of the field $F$ represented on it:
 
-1. **Reflexion over the origin**: $x > 0 \iff -x < 0$
+1. **Reflection over the origin**: $x > 0 \iff -x < 0$
 
-    This bassically means that the opposite of any value of the addiion always has the opposite sign of the original value, or, in geometric terms, opposites by the addition always fails in opposite sides of the line of $F$.
+    This basically means that the opposite (under addition) of any value always has the opposite sign of the original value, or, in geometric terms, additive opposites always fall on opposite sides of the line of $F$.
 
     Let's observe that since $0<x \implies \tau_{-x}(0) = -x < 0 = \tau_{-x}(x)$, or saying it in simple words, we need to move $0$ to the left to reach the opposite of a positive value.
 
     <br>
 
-    Let's also try to demonstrate it by absurdio reductio which is:
+    Let's also try to demonstrate it by reductio ad absurdum, which is:
 
     $$\neg [(x > 0)\leftrightarrow (x<0)] \implies \bot$$
 
@@ -509,9 +509,9 @@ Thus, lets think in a line with the elements of the field $F$ represented on it:
 
         $$x > 0 \iff 0 = x + (-x) > 0 + (-x) = -x$$
 
-        So is $-x > 0 \wedge -x < 0 \implies -x = x = 0$ contradicting the premise that suppose $x$ is greater than $0$.
+        So $-x > 0 \wedge -x < 0 \implies -x = x = 0$ contradicting the premise that supposes $x$ is greater than $0$.
 
-    - A similar argument can be provided to demonstrate the unavaiability of $\neg p \wedge q$ which stands for the statement $x<0 \wedge -x < 0$:
+    - A similar argument can be provided to demonstrate the unavailability of $\neg p \wedge q$ which stands for the statement $x<0 \wedge -x < 0$:
 
         $$-x < 0 \iff 0 = x - x < x + 0 = x$$
 
@@ -523,7 +523,7 @@ Thus, lets think in a line with the elements of the field $F$ represented on it:
 
 2. **Invariance under positive scale**: $x > 0 \wedge y < z \iff xy < xz$
 
-    We already demonstrate this before using the homothety, let's repeate it by multiplication:
+    We already demonstrated this before using the homothety; let's repeat it by multiplication:
 
     $$y < z \iff 0 = y + (-y) < z + (-y)$$
     
@@ -535,7 +535,7 @@ Thus, lets think in a line with the elements of the field $F$ represented on it:
 
 3. **Reversion under negative scale**: $x < 0 \wedge y < z \implies xy > xz$
 
-    Before dive in this demonstration, let's see something important about homotheties, we have that, since is $\mu_x(y) = xy$, then $\mu_{-x}(y) = \mu_x(-y) = - \mu_x(y)$. Meaning that, applying an homothety of negative ratio is equivallent to displace the negative value with a positive ratio which is the same as applying the homothety of positive ratio in the opposite direction (from the opposite value).
+    Before diving into this demonstration, let's see something important about homotheties: we have that, since $\mu_x(y) = xy$, then $\mu_{-x}(y) = \mu_x(-y) = - \mu_x(y)$. Meaning that applying a homothety of negative ratio is equivalent to displacing the negative value with a positive ratio, which is the same as applying the homothety of positive ratio in the opposite direction (from the opposite value).
 
     Thus, we have that:
 
@@ -551,7 +551,7 @@ Thus, lets think in a line with the elements of the field $F$ represented on it:
 
 4. **Positiveness of the squares**: $x \neq 0 \implies x^2 > 0$
 
-    Is natural to think that, if $x$ is positive, an homothety of ratio $x$ will mainting it on the positive side and if $x$ is negative, then $\mu_x$ would be a negative ratio homothety and it would act over $x$ moving it over the point $\mu_{-x}(-x)$ which lives in the opposite side of the origin, so, in any case:
+    It is natural to think that, if $x$ is positive, a homothety of ratio $x$ will maintain it on the positive side and if $x$ is negative, then $\mu_x$ would be a negative ratio homothety and it would act over $x$ moving it to the point $\mu_{-x}(-x)$ which lives on the opposite side of the origin, so, in any case:
     
     $$0<x^2 = \mu_x(x)$$
 
@@ -565,17 +565,17 @@ Thus, lets think in a line with the elements of the field $F$ represented on it:
 
 5. **Reverse of the inverse**: $0 < x < y \implies 0 < \displaystyle\frac{1}{y} < \frac{1}{x}$
     
-    Before dive in this demonstration, let's explore what $\mu_{x^{-1}}$ is for any $ x \neq 0$ from $F$.
+    Before diving into this demonstration, let's explore what $\mu_{x^{-1}}$ is for any $ x \neq 0$ from $F$.
 
-    The obvious thing is to think that, $\mu_{x^{-1}}$ as defined, is that homothety that sends $x$ to the multiplicative identity $1$, but this is a weak an useless conception. Let's observe that in fact, for $\mu_{x^{-1}}$, $x$ defines the homothety behaviour.
+    The obvious thing is to think that $\mu_{x^{-1}}$, as defined, is that homothety that sends $x$ to the multiplicative identity $1$, but this is a weak and useless conception. Let's observe that in fact, for $\mu_{x^{-1}}$, $x$ defines the homothety behaviour.
 
-    Think that, whenever you divide a number, (multiplicate it by an inverse of some integer) you are asking how much times this number fit in the divisor. Thusm, the homothety $\mu_{x^{-1}}$ redefines the line of $F$ as if $x$ was the number relative to which the rest are defined (which by default is $1$) meaning that $\mu_{x^{-1}}(y)$ tells you how many times $y$ is contained in $x$.
+    Think that, whenever you divide a number (multiply it by an inverse of some integer) you are asking how many times this number fits in the divisor. Thus, the homothety $\mu_{x^{-1}}$ redefines the line of $F$ as if $x$ were the number relative to which the rest are defined (which by default is $1$) meaning that $\mu_{x^{-1}}(y)$ tells you how many times $x$ is contained in $y$.
 
-    Having this clear, let's observe that is obvious that $x < y \implies \mu_{y^{-1}}(1) < \mu_{x^{-1}}(1)$ which is exactly the statement above.
+    Having this clear, let's observe that it is obvious that $x < y \implies \mu_{y^{-1}}(1) < \mu_{x^{-1}}(1)$ which is exactly the statement above.
 
     <br>
 
-    In algebraic terms, we could reason that, since $x \neq y \neq 0 \implies \exists x^{-1},y^{-1} \in F$. Let's also observe that, before, above, we see that $1 > 0$, then $1=xx^{-1} \wedge x > 0 \implies x^{-1} > 0 \ \ \forall x \in F : x > 0$ and we can argument that:
+    In algebraic terms, we could reason that, since $x \neq y \neq 0 \implies \exists x^{-1},y^{-1} \in F$. Let's also observe that, above, we saw that $1 > 0$, then $1=xx^{-1} \wedge x > 0 \implies x^{-1} > 0 \ \ \forall x \in F : x > 0$ and we can argument that:
 
     $$0 < x < y \iff 0x^{-1} < xx^{-1} = 1 < yx^{-1} \iff y^{-1}0x^{-1}< y^{-1} <y^{-1}yx^{-1} = x^{-1}$$
 
@@ -585,11 +585,11 @@ Thus, lets think in a line with the elements of the field $F$ represented on it:
 
 # 5. The Real field.
 
-We will no present the core theorem of this chapter.
+We will now present the core theorem of this chapter.
 
-Until now, we presented fields, order, the combination of both in the ordered field and give a geometric interpretation of the operations of the field when an order defined.
+Until now, we presented fields, order, the combination of both in the ordered field and gave a geometric interpretation of the operations of the field when an order is defined.
 
-Then, we introduced bounds and the $LUB$ property and we see that, despite $\mathbb{Q}$ is an ordered field, it not satisfies the $LUB$ property, giving to the rational line a discontinue appearance; points to which we can approximate as much as we want but we can't touch.
+Then, we introduced bounds and the $LUB$ property and we saw that, although $\mathbb{Q}$ is an ordered field, it does not satisfy the $LUB$ property, giving the rational line a discontinuous appearance; points to which we can approximate as much as we want but we can't touch.
 
 Thus, let's present $\mathbb{R}$ as an ordered field that satisfies the $LUB$ property.
 
@@ -599,7 +599,7 @@ Thus, let's present $\mathbb{R}$ as an ordered field that satisfies the $LUB$ pr
 
 **There exists an ordered field $\mathbb{R}$ which has the least-upper-bound property which contains $\mathbb{Q}$ as a subfield.** 
 
-To proove this theorem, we will construct $\mathbb{R}$ from $\mathbb{Q}$. We shall divide the construction in several steps.
+To prove this theorem, we will construct $\mathbb{R}$ from $\mathbb{Q}$. We shall divide the construction into several steps.
 
 <br>
 
@@ -624,13 +624,13 @@ The members of $\mathbb{R}$ will be certain subsets of $\mathbb{Q}$, called *cut
 
     <br>
 
-- **A cut doesn't contains his own supreme**:
+- **A cut doesn't contain its own supremum**:
 
     $p \in \alpha \implies \exists r \in \alpha : p < r$. 
 
     <br>
 
-Check that this so called "cuts" are upperbound segments with no lowerbound, in the sense that the second property of the cuts already tell us that $p \in \alpha \implies \forall q(q < p \implies q \in \alpha)$. This feature allows an order in $\mathbb{R}$ relative to the cuts members.
+Check that these so-called "cuts" are upper-bounded segments with no lower bound, in the sense that the second property of the cuts already tells us that $p \in \alpha \implies \forall q(q < p \implies q \in \alpha)$. This feature allows an order in $\mathbb{R}$ relative to the cuts' members.
 
 <br>
 
@@ -640,7 +640,7 @@ Let $\alpha, \beta \subset \mathbb{Q}$ be two cuts, then we define the binary re
 
 $$\alpha < \beta \iff \alpha \subset \beta$$
 
-We say that $\alpha$ is a *proper subset* of $\beta$, which means that any item of $\alpha$ is also an item of $\beta$ but at least one item of $\beta$ do not belongs to $\alpha$, formally:
+We say that $\alpha$ is a *proper subset* of $\beta$, which means that any item of $\alpha$ is also an item of $\beta$ but at least one item of $\beta$ does not belong to $\alpha$, formally:
 
 $$\alpha \subset \beta \iff \alpha \subseteq \beta \wedge \alpha \neq \beta \iff \forall x (x\in \alpha \implies x \in \beta) \wedge \exists b (b\in \beta \wedge b \notin \alpha)$$
 
@@ -652,23 +652,23 @@ Then, $< \ \subset \mathbb{R}^2$ is a *strict total order*:
 
     <br>
 
-- **Trycothomy**: 
+- **Trichotomy**: 
 
-    Let's note that, be $\alpha,\beta \subset \mathbb{Q}$, then, we can think on one of the following posibilities between $\alpha$ and $\beta$
+    Let's note that, be $\alpha,\beta \subset \mathbb{Q}$, then, we can think of one of the following possibilities between $\alpha$ and $\beta$
 
-    - First, consider that $\exists b \in \beta : b \notin \alpha$, then the first corolary of the second property asserts that $\forall a(a \in \alpha \wedge b \notin \alpha \implies a < b)$, applying again the second property of the cuts we get that $(b\in \beta \wedge a < b) \implies a \in \beta \implies \alpha \subset \beta$.
+    - First, consider that $\exists b \in \beta : b \notin \alpha$, then the first corollary of the second property asserts that $\forall a(a \in \alpha \wedge b \notin \alpha \implies a < b)$, applying again the second property of the cuts we get that $(b\in \beta \wedge a < b) \implies a \in \beta \implies \alpha \subset \beta$.
 
     - A similar argument proves that $\exists a \in \alpha : a \notin \beta \implies \beta \subset \alpha$.
 
     - Now, obviously, if $\neg(\exists b \in \beta : b \notin \alpha) \wedge \neg(\exists a \in \alpha : a \notin \beta)$, counting with the fact that, following the first property of the cuts, $\alpha,\beta \neq \varnothing$ then only can be $\alpha = \beta$.
 
-    In summary, we've just proved the *tricothomy* property for any pair of cuts in $\mathbb{Q}$.
+    In summary, we've just proved the *trichotomy* property for any pair of cuts in $\mathbb{Q}$.
 
     <br>
 
 - **Transitivity**:
 
-    Also consider $\alpha,\beta,\gamma \in \mathbb{Q}: \alpha< \beta \wedge \beta < \gamma$ we can directly infere that through the transitivity property of the subsets:
+    Also consider $\alpha,\beta,\gamma \in \mathbb{Q}: \alpha< \beta \wedge \beta < \gamma$ we can directly infer that through the transitivity property of the subsets:
 
     $$\begin{cases} \alpha < \beta \iff \alpha \subset \beta \\ \beta < \gamma \iff \beta \subset \gamma\end{cases} \implies \alpha \subset \gamma \implies \alpha < \gamma$$
 
@@ -677,7 +677,7 @@ Then, $< \ \subset \mathbb{R}^2$ is a *strict total order*:
 
 ### 5.1.3. $\mathbb{R}$ satisfies the $LUB$ property.
 
-Remember that the LUB property ensures for any ordered set $S$ that satisfy it any non-empty $E \subset S$ subset upper/lower-bounded has supremum/infimum in $S$.
+Remember that the LUB property ensures, for any ordered set $S$ that satisfies it, that any non-empty upper/lower-bounded subset $E \subset S$ has supremum/infimum in $S$.
 
 First, suppose there exists $A \subset \mathbb{R} : A \neq \varnothing$ upperbounded with $\beta \in \mathbb{R}$ an upperbound of $A$, let's see that we can find a supremum for it. 
 
@@ -685,13 +685,13 @@ Now we define as:
 
 $$\gamma := \bigcup_{\alpha \in A} \alpha = \Set{p \in \mathbb{Q} \ \vert \ \exists \alpha \in A : p \in \alpha}$$
 
-We will see that $\gamma \in \mathbb{R}$, this is that, as a subset, is also a cut, since it satisfies the three properties mentioned above. Then we will demonstrate that $\gamma$ is an upperbound of $A$ and lastly that is the least upperbound and thus, the supremum of $A$.
+We will see that $\gamma \in \mathbb{R}$, this is, that as a subset it is also a cut, since it satisfies the three properties mentioned above. Then we will demonstrate that $\gamma$ is an upperbound of $A$ and lastly that is the least upperbound and thus, the supremum of $A$.
 
 First, let's see that $\gamma \in \mathbb{R}$:
 
 1. Then, since $A \neq \varnothing \implies \exists \alpha_0 \in A : \alpha_0 \neq \varnothing$ thus $\exists a \in \alpha_0 \subset \gamma \implies \gamma \neq \varnothing$ 
 
-    Now observe that $\beta \in \mathbb{R}$ is an upperbound of $A$. Since $\beta$ is a cut, it satisfies that it englobes his own left or his behind, meaning $\forall \alpha (\alpha \in A \implies \alpha < \beta \implies \alpha \subset \beta)$ we say that is closed to his left thus is clear that $\gamma \subset \beta \subset \mathbb{Q}$ and is $\gamma \neq \mathbb{Q}$
+    Now observe that $\beta \in \mathbb{R}$ is an upperbound of $A$. Since $\beta$ is a cut, it satisfies that it encompasses everything to its left, meaning $\forall \alpha (\alpha \in A \implies \alpha < \beta \implies \alpha \subset \beta)$; we say that it is closed to its left, thus it is clear that $\gamma \subset \beta \subset \mathbb{Q}$ and $\gamma \neq \mathbb{Q}$
 
     <br>
 
@@ -703,17 +703,17 @@ First, let's see that $\gamma \in \mathbb{R}$:
 
     <br>
 
-3. Following the same logic, taking $p \in \gamma$ as before, $p \in \alpha \implies \exists r \in \alpha : p < r$, observe that $r \in \gamma$ for the same reason as $p$ is so $\exists r \in \gamma : p < r$
+3. Following the same logic, taking $p \in \gamma$ as before, $p \in \alpha \implies \exists r \in \alpha : p < r$, observe that $r \in \gamma$ for the same reason as $p$, so $\exists r \in \gamma : p < r$
 
     <br>
 
 Having verified that $\gamma$ is a cut, then since $\forall \alpha(\alpha \in A \implies \alpha \subset \gamma \implies \alpha < \gamma)$ so $\gamma$ is an upperbound of $A$. 
 
-For $\gamma = supA$ it has also to be the least upperbound, formally, $\gamma$ preceeds any upperbound of $A$:
+For $\gamma = supA$ it also has to be the least upperbound; formally, $\gamma$ precedes any upperbound of $A$:
 
 $$\forall \delta \in \mathbb{R} \quad ([\alpha < \delta \quad \forall \alpha \in A] \implies \gamma < \delta)$$
 
-Then let's proceed by reduction absurdio and consider the negation:
+Then let's proceed by reductio ad absurdum and consider the negation:
 
 $$\neg \forall \delta([\alpha < \delta \quad \forall \alpha \in A] \implies \gamma < \delta) \equiv \exists \delta : \neg([\alpha < \delta \quad \forall \alpha \in A] \implies \gamma < \delta)$$
 

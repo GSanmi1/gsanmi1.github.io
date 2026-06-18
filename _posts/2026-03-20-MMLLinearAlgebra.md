@@ -45,10 +45,10 @@ When $b = 0$ (the homogeneous case), $S$ is always nonempty (it contains $0 \in 
 
 <br>
 
-## 2.2. Geometric Interpretation of System Linear Equations.
+## 2.2. Geometric Interpretation of Systems of Linear Equations.
 
 
-As an ilustrative example of how this systems works as constraints over points, lets talk about the geometric interpretation of a system of linear equations in two variables.
+As an illustrative example of how these systems work as constraints over points, let's talk about the geometric interpretation of a system of linear equations in two variables.
 
 In a system of linear equations with two variables $x1, x2$, each linear equation defines a line on the $x1x2$-plane.
 
@@ -123,7 +123,7 @@ Matrices play a central role in linear algebra. They can be used to compactly re
 
 <br>
 
-## 3.1. Definition and Operations with Matrix.
+## 3.1. Definition and Operations with Matrices.
 
 ### 3.1.1. Definition of a Matrix.
 
@@ -136,9 +136,9 @@ a_{21} & a_{22} & \cdots & a_{2n} \\
 a_{m1} & a_{m2} & \cdots & a_{mn}
 \end{bmatrix}, \quad a_{ij} \in F.$$
 
-By convention $(1, n)$-matrices are called rows and $(m, 1)$-matrices are called column columns. These special matrices are also called *row/column* vectors.
+By convention $(1, n)$-matrices are called rows and $(m, 1)$-matrices are called columns. These special matrices are also called *row/column* vectors.
 
-We say that $M_{m \times n}(F)$ is the set of all $(m,n)$-matrix and we write $A \in M_{m \times n} (F)$ or $(a_{ij})_{i \in [m], j\in [n]} \in M_{m \times n} (F)$ 
+We say that $M_{m \times n}(F)$ is the set of all $(m,n)$-matrices and we write $A \in M_{m \times n} (F)$ or $(a_{ij})_{i \in [m], j\in [n]} \in M_{m \times n} (F)$ 
 
 <br>
 
@@ -153,8 +153,8 @@ a_{m1} & a_{m2} & \cdots & a_{mn}
 
 <br>
 
-### 3.1.2. Addition and multiplication between matrix.
+### 3.1.2. Addition and multiplication between matrices.
 
-Let's now define operation between matrix.
+Let's now define operations between matrices.
 
 <br>

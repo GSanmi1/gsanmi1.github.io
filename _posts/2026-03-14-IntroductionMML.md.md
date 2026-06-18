@@ -18,24 +18,24 @@ Machine learning is about designing algorithms that automatically extract valuab
 
 There are three concepts that are at the core of machine learning: data, a model, and learning.
 
-- Since machine learning is inherently data driven, *data* is at the core data of machine learning. 
+- Since machine learning is inherently data driven, *data* is at the core of machine learning. 
 
-    The goal of machine learning is to design generalpurpose methodologies to extract *valuable patterns* from data, ideally without much domain-specific expertise. For example, given a large corpus of documents (e.g., books in many libraries), machine learning methods can be used to automatically find relevant topics that are shared across documents.
+    The goal of machine learning is to design general-purpose methodologies to extract *valuable patterns* from data, ideally without much domain-specific expertise. For example, given a large corpus of documents (e.g., books in many libraries), machine learning methods can be used to automatically find relevant topics that are shared across documents.
 
     <br>
 
--  To achieve this goal, we design *models* that are typically related to the process that generates data, similar to model the dataset we are given. 
+-  To achieve this goal, we design *models* that are typically related to the process that generates data, in order to model the dataset we are given. 
 
     For example, in a regression setting, the model would describe a function that maps inputs to real-valued outputs. To paraphrase Mitchell (1997): A model is said to learn from data if its performance on a given task improves after the data is taken into account. The goal is to find good models that generalize well to yet unseen data, which we may care about in the future. 
 
     <br>
 
-- *Learning* can be understood as a learning way to automatically find patterns and structure in data by optimizing the parameters of the model.
+- *Learning* can be understood as a way to automatically find patterns and structure in data by optimizing the parameters of the model.
 
     <br>
 
 
-While machine learning has seen many success stories, and software is readily available to design and train rich and flexible machine learning systems, we believe that the mathematical foundations of machine  learning are important in order to understand fundamental principles upon which more complicated machine learning systems are built. Understanding these principles can facilitate creating new machine learning solutions, understanding and debugging existing approaches, and learning about the inherent assumptions and limitations of the methodologies we are working with.
+While machine learning has seen many success stories, and software is readily available to design and train rich and flexible machine learning systems, we believe that the mathematical foundations of machine learning are important in order to understand fundamental principles upon which more complicated machine learning systems are built. Understanding these principles can facilitate creating new machine learning solutions, understanding and debugging existing approaches, and learning about the inherent assumptions and limitations of the methodologies we are working with.
 
 <br>
 
