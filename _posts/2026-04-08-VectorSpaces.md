@@ -54,16 +54,16 @@ Let's start by introducing what **Algebra** is. Algebra is the mathematical disc
 
 ## 1.2. Algebraic Structures.
 
-An **algebraic structure** is a a set $(S, \Omega)$ where:
+An **algebraic structure** is a set $(S, \Omega)$ where:
 
 - $S \neq \varnothing$
-- $\Omega$ is a collection of operations over $S$ (and maybe other sets as we will see) along with a sequence of rules called *axioms* that this operations satisfies.
+- $\Omega$ is a collection of operations over $S$ (and maybe other sets as we will see) along with a sequence of rules called *axioms* that these operations satisfy.
 
-This is the minimal basic item of study in algebra; a finite number of operations over a set defined by axioms. Our task is to comprehend how this operations behave through the axioms applying classic logic. 
+This is the minimal basic item of study in algebra; a finite number of operations over a set defined by axioms. Our task is to comprehend how these operations behave through the axioms, applying classical logic. 
 
 In the previous section we already provided an introduction to algebraic structures through the number sets and then introduced a solid idea of the group and then the field. Our objective was to present a formalization about linear equations over a field.
 
-We can review and develop the ideas presented in the [Linear Equation section](https://gsanmi1.github.io/posts/2026/02/06/Linear_Equations/) to understand the natural progression and the algebraic structures towards de vector space.
+We can review and develop the ideas presented in the [Linear Equation section](https://gsanmi1.github.io/posts/2026/02/06/Linear_Equations/) to understand the natural progression and the algebraic structures towards the vector space.
 
 <br>
 
@@ -81,14 +81,14 @@ Then we define:
 
     <br>
 
-- $G$ is a *semigroup* if also verifies associativity:
+- $G$ is a *semigroup* if it also verifies associativity:
 
     - $a \star b \in S \ \ \forall a,b \in S$ (Closure)
     - $(a \star b) \star c = a \star (b \star c) \ \ \forall a,b \in S$ (Associativity)
 
     <br>
 
-- A *monoid* is a semigroup that also have the identity element $e \in S$ relative to $\star$ verifying:
+- A *monoid* is a semigroup that also has the identity element $e \in S$ relative to $\star$ verifying:
 
     - $a \star b \in S \ \ \forall a,b \in S$ (Closure)
     - $(a \star b) \star c = a \star (b \star c) \ \ \forall a,b \in S$ (Associativity)
@@ -96,7 +96,7 @@ Then we define:
 
     <br>
 
-- Now we enter in the confort zone, a *Group* is a monoid which verifies the existance of an inverse for each item in $S$:
+- Now we enter the comfort zone; a *Group* is a monoid which verifies the existence of an inverse for each item in $S$:
 
     - $a \star b \in S \ \ \forall a,b \in S$ (Closure)
     - $(a \star b) \star c = a \star (b \star c) \ \ \forall a,b,c \in S$ (Associativity)
@@ -105,49 +105,49 @@ Then we define:
 
     <br>
 
-Let's observe that each axiom let us to do something new in the structure, each new rule is a new capability based on the defining of invariants along the structure; 
+Let's observe that each axiom lets us do something new in the structure; each new rule is a new capability based on the defining of invariants along the structure; 
 
-- The closure garantees internal compositions, the belonging of any composition to $S$ remains contant. 
+- The closure guarantees internal compositions; the belonging of any composition to $S$ remains constant. 
 
-- The associativity garantees order-independence as long as the direction in the composition remains the same, meaning that $(a\star b) \star c$ and $a\star (b \star c)$ is the same object in the sense that we can talk about $a\star b \star c$ to refer to any of them, no matter what do you compose first.
+- The associativity guarantees order-independence as long as the direction in the composition remains the same, meaning that $(a\star b) \star c$ and $a\star (b \star c)$ are the same object in the sense that we can talk about $a\star b \star c$ to refer to any of them, no matter what you compose first.
 
-- The existance of the identity garantee the existance a way to operate that do nothing concreted in an element of $S$ called the identity. The composition of $e$ by any item of $S$ in any direction remains constant and is the very same item.
+- The existence of the identity guarantees the existence of a way to operate that does nothing, concreted in an element of $S$ called the identity. The composition of $e$ with any item of $S$ in any direction remains constant and is the very same item.
 
-- The existance of the inverse make use of the identity to garantee a way to operate that lets you reverse the operation. The composition of any item with his inverse in any direction remains constant and is the identity.
+- The existence of the inverse makes use of the identity to guarantee a way to operate that lets you reverse the operation. The composition of any item with its inverse in any direction remains constant and is the identity.
 
 <br>
 
-Observe that this are the main invariants in operations because this are the smallest subset of rules that allow you to define constraints about some elements (equations) and confortly operate to isolate them in order to fully understand to what is equivalent that constraint and how is a valid item.
+Observe that these are the main invariants in operations because these are the smallest subset of rules that allow you to define constraints about some elements (equations) and comfortably operate to isolate them in order to fully understand what that constraint is equivalent to and what a valid item is.
 
-Suppose there is an interest to find the relation about two elements $a,b \in S$, this is, $b$ is the composition of $a$ with some other element $x \in S$ which we gonna call the *unknown*: $a \star x = b$. Now, let's observe:
+Suppose there is an interest in finding the relation between two elements $a,b \in S$, this is, $b$ is the composition of $a$ with some other element $x \in S$ which we are going to call the *unknown*: $a \star x = b$. Now, let's observe:
 
 $$ a^{-1} \star (a \star x) = a^{-1} \star b$$
 
-Step by step, the closure axiom asserts that $a^{-1} \star (a \star x) = a^{-1} \star b \in S$ and the propousal has sense, the associativity stablish that $a^{-1} \star (a \star x)  = a^{-1} \star a \star x= (a^{-1} \star a) \star x$, or that we can choose the order of the composition as we please. Then, the identity and the inverse cooperates together to simplify the expression, the inverse make $a$ to dissapear, it substitute it for the identity and the identity composed with any other item is any other item, thus:
+Step by step, the closure axiom asserts that $a^{-1} \star (a \star x) = a^{-1} \star b \in S$ and the proposal makes sense; the associativity establishes that $a^{-1} \star (a \star x)  = a^{-1} \star a \star x= (a^{-1} \star a) \star x$, or that we can choose the order of the composition as we please. Then, the identity and the inverse cooperate together to simplify the expression; the inverse makes $a$ disappear, it substitutes it for the identity and the identity composed with any other item is that other item, thus:
 
 $$a^{-1} \star (a \star x) = (a^{-1} \star a) \star x = e \star x = x = a^{-1} \star b$$
 
-This four invariantes are summarized in the idea of *group*.
+These four invariants are summarized in the idea of *group*.
 
-This idea of group can be extended by introducing the *conmutativity* which defines the composition under direction as an invariant:
+This idea of group can be extended by introducing the *commutativity* which defines the composition under direction as an invariant:
 
 $$a \star b = b \star a \ \ \forall a,b \in S$$
 
-This allows to reorganize making the simplification of expressions even more confortable.
+This allows reorganizing, making the simplification of expressions even more comfortable.
 
 <br>
 
 ### 1.2.2. Two operations algebraic structures.
 
-Until now, we've defined an algebraic structure that contemplates only one operation, lets now introduce algebraic structures with two operations.
+Until now, we've defined an algebraic structure that contemplates only one operation; let's now introduce algebraic structures with two operations.
 
 <br>
 
 **Rings**
 
-First, the rings, a ringe is a triple $(K,+,\ ·)$ such:
+First, the rings; a ring is a triple $(K,+,\ ·)$ such:
 
-- $(K,+)$ is a group and introduce the four properties seen above.
+- $(K,+)$ is a group and introduces the four properties seen above.
 - $(K, \ ·)$ is a monoid, it drops the existence of the inverse for any element of $R$.
 - $+$ and $·$ relates themselves by the distributive law:
 
@@ -157,7 +157,7 @@ First, the rings, a ringe is a triple $(K,+,\ ·)$ such:
 
     <br>
 
-The ring introduces the second operation in a soft way, hanging on the existance of the inverse allows to fit in many structures well studied such:
+The ring introduces the second operation in a soft way; hanging on the existence of the inverse allows it to fit in many well-studied structures such:
 
 - **Integers ring**; $(\mathbb{Z},+, \ ·)$, where for example $\forall a ( a \in \mathbb{Z} \wedge a \neq \pm 1 \implies a^{-1} \notin \mathbb{Z})$.
 
@@ -172,7 +172,7 @@ The ring introduces the second operation in a soft way, hanging on the existance
 
     <br>
 
-- **Matrix ring**; we've already seen that $(M\_n(F)\setminus 0, \ ·)$ has no inverse for every element of $M\_n(F)$, remember that we already seen that not every matrix is invertible only those row-equivalent to the identity $I\_n$
+- **Matrix ring**; we've already seen that $(M\_n(F)\setminus 0, \ ·)$ has no inverse for every element of $M\_n(F)$; remember that we already saw that not every matrix is invertible, only those row-equivalent to the identity $I\_n$
 
     <br>
 
@@ -198,13 +198,13 @@ Then, the field $K$ aims to extend the same idea for two operations departing fr
 - $+$ and $·$ are compatible.
 - $1 \neq 0$
 
-This basically means that the field intends to be the structure in which equations can be defined and solved in two operations simultaneously, the motivation was to build an algebraic framework for common aritmetic operations in $\mathbb{R}, \mathbb{Q},...$ and another commons fields.
+This basically means that the field intends to be the structure in which equations can be defined and solved in two operations simultaneously; the motivation was to build an algebraic framework for common arithmetic operations in $\mathbb{R}, \mathbb{Q},...$ and other common fields.
     
 <br>
 
 # 2. Vector spaces.
 
-Before we've seen a set of axioms that rules how a set of operations $\Omega$ behaves in a non-empty set $K$. We extend this concept to two sets $(K,V)$ where $K$ is a field and $V$ is a group and both related between them by a field-action.
+Before, we've seen a set of axioms that rule how a set of operations $\Omega$ behaves in a non-empty set $K$. We extend this concept to two sets $(K,V)$ where $K$ is a field and $V$ is a group and both are related by a field-action.
 
 Let's dive into this.
 
@@ -214,14 +214,14 @@ Let's dive into this.
 
 ### 2.1.1. Definition.
 
-First, let's define what an action is. Let be $A$ and $S$ two sets, then we define an action as a function:
+First, let's define what an action is. Let $A$ and $S$ be two sets, then we define an action as a function:
 
 $$\varphi: A \times S \to S$$
 $$\ \ \ \ \ \ \ (a,s) \to s$$
 
 It grabs two elements, one from $A$ and another from $S$ and it maps it to a third element from $S$.
 
-As defined, this function doesn't have interest at all, it become interesting when $\varphi$ respect the structure of $A$, this way is said that an action transforms $S$ using $A$ algebraic structure.
+As defined, this function doesn't have any interest at all; it becomes interesting when $\varphi$ respects the structure of $A$; this way it is said that an action transforms $S$ using $A$'s algebraic structure.
 
 <br>
 
@@ -229,9 +229,9 @@ As defined, this function doesn't have interest at all, it become interesting wh
 
 **Group's action**
 
-Let be again $(G,S,\varphi)$ such $\varphi : G \times S \to S$, let's suppose now that $G$, is a group for some internal operation $\star : G \times G \to G$. 
+Consider again $(G,S,\varphi)$ such that $\varphi : G \times S \to S$, let's suppose now that $G$ is a group for some internal operation $\star : G \times G \to G$. 
 
-In this context, we impose two rules $A1$, $A2$ over $\varphi : A \times S \to S$. In total, the triple $(G,S,\varphi)$ 
+In this context, we impose two rules $A1$, $A2$ over $\varphi : A \times S \to S$. In total, the triple $(G,S,\varphi)$ satisfies: 
 
 - **Closure**: $\varphi(a,s) \in S \ \ \forall a \in G, s \in S$, forced by $\varphi$ definition.
 
@@ -245,7 +245,7 @@ In this context, we impose two rules $A1$, $A2$ over $\varphi : A \times S \to S
 
 - **(A2) Associativity**: $\varphi(a,\varphi(b,s)) = \varphi(a \star b,s) \ \ \forall a,b \in G, s \in S$
 
-    Observe that this resembles to the orden invariant we talked in groups, as long as the direction of the composition remains still ($a \to b \to s$) it doesn't matter the order in which order you perform this compositions.
+    Observe that this resembles the order invariant we talked about in groups; as long as the direction of the composition remains still ($a \to b \to s$) it doesn't matter the order in which you perform these compositions.
 
     Composing $b$ with $s$ through $\varphi$ and then this with $a$ is the same that "multiply" $a \star b$ in $G$ and then compose it with $s$ through $\varphi$. Check that if we write $a \star b = ab \wedge \varphi(a,s) = a\ ·s$ then, the rule above states that:
 
@@ -301,9 +301,9 @@ This four axioms plus the four axioms of the group $V$ gives us the eight axioms
 
 ### 2.2.2. Conceptually Approach.
 
-This time, a field's action over a group doesn't intend to give an algebraic structure to $V$, instead it provides, through $K$ a uniform deformation mechanism. The aritmetic system of $K$ as a field is used to perform richer algebraic manipulations on $V$ as a group.
+This time, a field's action over a group doesn't intend to give an algebraic structure to $V$; instead it provides, through $K$, a uniform deformation mechanism. The arithmetic system of $K$ as a field is used to perform richer algebraic manipulations on $V$ as a group.
 
-$·: K \times V \to V$ gives to $V$ a parametric scaling mecanism through $(K,+, \ ·)$ which, ultimately, allows a coherent way to perform linear combinations on the elements of $V$. 
+$·: K \times V \to V$ gives to $V$ a parametric scaling mechanism through $(K,+, \ ·)$ which, ultimately, allows a coherent way to perform linear combinations on the elements of $V$. 
 
 Let's dive into "scaling", "linear" and "linear combination" terms in order to understand what this introduction means.
 
@@ -313,25 +313,25 @@ Let's dive into "scaling", "linear" and "linear combination" terms in order to u
 
 Scaling is about relating $V$'s elements using $K$'s elements as mediators. The term "scalar" comes from scale; changing the size without changing the essential nature of the object.
 
-Then, being $u,v \in V$ and $\alpha \in K : \alpha \neq 0$, when we say that $u = \alpha \ · v$, we are really saying $u$ is obtained from $v$, keeping his structural information since, thanks to $K$ to be a field and $·$ to respect $K$ properties we can revert this operation and go back from $u$ to $v$. Let's see that by $M2$ and $M1$ we can garantee the existance of some $\beta \in K$ such $\beta \ · u = v$. Take $\beta = \alpha ^{-1}$ and:
+Then, being $u,v \in V$ and $\alpha \in K : \alpha \neq 0$, when we say that $u = \alpha \ · v$, we are really saying $u$ is obtained from $v$, keeping its structural information since, thanks to $K$ being a field and $·$ respecting $K$'s properties, we can revert this operation and go back from $u$ to $v$. Let's see that by $M2$ and $M1$ we can garantee the existance of some $\beta \in K$ such $\beta \ · u = v$. Take $\beta = \alpha ^{-1}$ and:
 
 $$\alpha^{-1} \ · u = \alpha^{-1} \ · (\alpha \ · v) \underbrace{=}_{M2} (\alpha^{-1} \alpha) \ · v = (1_K) \ · v \underbrace{=}_{M1}  v  $$
 
-In this context we say that $u$ and $v$ are *proportionals*. Specifically, there exists an entire family of elements for which $u$ is proportional to: $\Set{\alpha v : \alpha \in K \wedge \alpha \neq 0} \subseteq V$.
+In this context we say that $u$ and $v$ are *proportional*. Specifically, there exists an entire family of elements to which $u$ is proportional: $\Set{\alpha v : \alpha \in K \wedge \alpha \neq 0} \subseteq V$.
 
 <br>
 
 **Linear & Linear Combinations.**
 
-Linear referes to independant contribution of severals parts which no interfers between them.
+Linear refers to independent contributions of several parts which do not interfere between them.
 
-In this case, a linear combination is the minimal operation that takes place in the triple $(K,V, \ ·)$; independant contribution of proportional components of $V$. 
+In this case, a linear combination is the minimal operation that takes place in the triple $(K,V, \ ·)$; independent contribution of proportional components of $V$. 
 
 Is the most general way to combine while respecting the principle of independent contributions:
 
 $$\alpha v + \beta u: \alpha , \beta \in K \ \ u, v \in V$$
 
-Observe that $D1$ and $D2$ garantees that $K$ and $V$ respects this object on $(K,V,\ ·)$.
+Observe that $D1$ and $D2$ guarantee that $K$ and $V$ respect this object on $(K,V,\ ·)$.
 
 <br>
 
@@ -347,17 +347,17 @@ A vector space is nothing but, conceptually, a functional linear combination sys
 
 Thus, vectors are elements of an algebraic structure called vector space whose elements relate through linear combinations verifying the eight axioms presented before.
 
-Being the vector space an algebraic structure means that vectors (and vector space) are nothing, as we say on the start of this very notes, algebra cares about how to operate and properties that emerges from a some defined operatable structure.
+Being the vector space an algebraic structure means that vectors (and vector spaces) are nothing; as we said at the start of these very notes, algebra cares about how to operate and the properties that emerge from some defined operable structure.
 
-In other words; vectors are the elements of an abelian group $V$ on which a field $K$ acts through a "deformation" mechanism. This action, the combination o composition of this deformated elements of $V$, is what we call linear combinations: weighted sums where each element of $V$ contributes with an intensity set by $K$.
+In other words; vectors are the elements of an abelian group $V$ on which a field $K$ acts through a "deformation" mechanism. This action, the combination or composition of these deformed elements of $V$, is what we call linear combinations: weighted sums where each element of $V$ contributes with an intensity set by $K$.
 
-The corolary from this assert is that what really cares is that there are objects (matrix, polynomials, arrows, etc) that with the right operations, verifies the vector space axioms, thus, they are vectors and all the machinery defined around them works also for this objects.
+The corollary from this assertion is that what really matters is that there are objects (matrices, polynomials, arrows, etc.) that, with the right operations, verify the vector space axioms; thus, they are vectors and all the machinery defined around them works also for these objects.
 
 <br>
 
 ## 2.3. Examples.
 
-Let's see a few mathematical objects that algebraicly behaves as vector spaces.
+Let's see a few mathematical objects that algebraically behave as vector spaces.
 
 ### 2.3.1. The n-tuple space.
 
@@ -365,14 +365,14 @@ Consider $F$ a field, then the algebraic structure $(F^n,+)$ with the addition b
 
 $$+: F^n \times F^n \to F^n \mid x + y := \begin{pmatrix}x_1 + y_1\\ \vdots \\ x_n+y_n\end{pmatrix} \in F^n$$
 
-Observe that properties of the abelian group $(F,+)$ expands to $(F^n,+)$ so this is also an abelian group.
+Observe that the properties of the abelian group $(F,+)$ expand to $(F^n,+)$ so this is also an abelian group.
 
 Thus, defining the function defined as:
 
 $$· : F \times F^n \to F^n$$
 $$ (\alpha, \begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix} ) \to  \begin{pmatrix}\alpha x_1 \\ \vdots \\ \alpha x_n\end{pmatrix}$$
 
-Veryies the field's action axiom:
+Verifies the field's action axioms:
 
 - **M1**: $1 \ · \begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix} = \begin{pmatrix}1x_1 \\ \vdots \\ 1x_n\end{pmatrix} = \begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix} \ \ \forall x \in F^n$
 
@@ -407,7 +407,7 @@ Thus, the triple $\big(F,(F^n,+), \ · \big)$ satisfies:
 
 And is a vector space. 
 
-Observe taht, as a special case, $(\mathbb{R},(\mathbb{C}^n,+), \ ·)$ is a vector space.
+Observe that, as a special case, $(\mathbb{R},(\mathbb{C}^n,+), \ ·)$ is a vector space.
 
 <br>
 
@@ -458,13 +458,13 @@ Thus, $\big(F,(F^{m\times n},+), \ · \big)$ is a vector space.
 
 ### 2.3.3. The space of functions from a set to a field. 
 
-Consider now some field $K$ and some set $S \neq \varnothing$, then, remember that being $f : S \to K$ a function, this gets identified with his graph $f \subseteq S \times K : (\forall s \in S \ \exists ! \alpha \in K \mid (s,\alpha) \in f)$, meaning that a function is a relation which every element of the domain has a unique image through $f$.
+Consider now some field $K$ and some set $S \neq \varnothing$, then, remember that being $f : S \to K$ a function, this gets identified with its graph $f \subseteq S \times K : (\forall s \in S \ \exists ! \alpha \in K \mid (s,\alpha) \in f)$, meaning that a function is a relation in which every element of the domain has a unique image through $f$.
 
 Then, the set of all the relations from $S$ to $K$ that are applications is:
 
 $$K^S := \Set{f \in \mathcal{P}(S \times K) \mid \forall s \in S \ \exists ! \alpha \in K : (s,\alpha) \in f}$$
 
-In this context, we convine the notation  $f(s) = \alpha \iff (s,\alpha) \in f$, then let's call:
+In this context, we agree on the notation  $f(s) = \alpha \iff (s,\alpha) \in f$, then let's call:
 
 $$ f = \Set{(s,f(s)) \mid s \in S}$$
 
@@ -476,7 +476,7 @@ $$+ : K^S  \times K^S \to K^S \mid (f,g) \mapsto f+g:= \Set{(s,f(s) + g(s)) \mid
 
 Observe that, due to the closure in $(K,+)$ we have that $f(s) + g(s) \in K$, so $f+g \in K^S$. Or simply, abreviate it as the formulation: $(f+g)(s) = f(s) + g(s)$.
 
-The addition definition agains get's defined directly against the addition in $K$, so $(K^S,+)$ is an abelian group. Being the neutral element  and the inverse defined as:
+The addition definition again gets defined directly in terms of the addition in $K$, so $(K^S,+)$ is an abelian group. Being the neutral element  and the inverse defined as:
 
 $$i := \Set{(s, 0_K) \mid s \in S}$$
 
@@ -528,15 +528,15 @@ Thus, $( \ ·)$ is a field's action and $(K,(K^S,+),\ · )$ is a vector space.
 
 #### 2.3.4.1. Introduction to polynomials.
 
-A polynomial is, elementally, the most simple algebraic expression that can be formed by combining an indeterminated with it self along with scalars of a field $K$ using addition and multiplication operations.
+A polynomial is, elementally, the simplest algebraic expression that can be formed by combining an indeterminate with itself along with scalars of a field $K$ using addition and multiplication operations.
 
 $$\sum_{i=0}^n \alpha_i x^i = \alpha_0 + \alpha_1 x \cdots + \alpha_n x^n$$
 
-The concept of polynomial function emegers when you try to evaluate the expression on entities from a evaluation domain.
+The concept of polynomial function emerges when you try to evaluate the expression on entities from an evaluation domain.
 
-Note that we deliberately used *indeterminated* instead of unknown, since this last one resembles to the scalars of a field, but in a polinomial function, usually, the domain can be more than scalars, it can be tuples, matrix, of even other polynomials.
+Note that we deliberately used *indeterminate* instead of unknown, since this last one resembles the scalars of a field, but in a polynomial function, usually, the domain can be more than scalars, it can be tuples, matrices, or even other polynomials.
 
-In summary, a polynomial is a generic presentation of a finite secuence of operations over a single object with himself along with two predefined operations.
+In summary, a polynomial is a generic presentation of a finite sequence of operations over a single object with itself along with two predefined operations.
 
 #### Vector space of the polynomial functions over a field K
 
@@ -554,7 +554,7 @@ Let's consider the same operations $+$ and $·$ than in the example before. Let'
 
     <br>
 
-Thus, we've just demonstrated that $(Pol(K,K),+)\leq (K^K,+)$, the abelian condition comes from conmutativity on $(K,+)$, so $(Pol(K,K),+)$ is an abelian group. 
+Thus, we've just demonstrated that $(Pol(K,K),+)\leq (K^K,+)$; the abelian condition comes from commutativity on $(K,+)$, so $(Pol(K,K),+)$ is an abelian group. 
 
 Observe that $\alpha \ · f \in Pol(K,K) \ \ \forall f \in Pol(K,K)$, meaning that it does have sense to define the action $· : Pol(K,K) \to Pol(K,K)$ as a subfunction of $· \in \mathcal{P}(K^K \times K^K)$ defined above. Thus the properties of the field's action $·$ described above already applies to $Pol(K,K)$ since is a subset of $K^K$.
 
@@ -564,7 +564,7 @@ Thus, the triple $(K,Pol(K,K),\ ·)$ is a vector space.
 
 ## 2.4. Immediate Properties from vector spaces.
 
-Let's check some important properties from the vector spaces that are immediately derivated from the axioms. From now on, let's consider $(K,V, \ ·)$ as a vector space.
+Let's check some important properties from the vector spaces that are immediately derived from the axioms. From now on, let's consider $(K,V, \ ·)$ as a vector space.
 
 - Let be: $\boldsymbol{0} \in V, \alpha \in K$ then:
 
@@ -592,7 +592,7 @@ Let's check some important properties from the vector spaces that are immediatel
 
     <br>
 
-- Lastly observe that, despite we've defined lineal combinations over two elements, the asociative and distrivutive property on the vector space makes that we can think about a lineal combination of $n$ vectors.
+- Lastly observe that, although we've defined linear combinations over two elements, the associative and distributive properties of the vector space allow us to think about a linear combination of $n$ vectors.
 
     Be $v, u_i \in V   \ \ \forall i \in \mathbb{N}$ and $ \alpha_i \in K : \alpha_i \ \ \forall i \in \mathbb{N}$, satisfying:
 
