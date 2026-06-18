@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "The Complex Number System"
-subtitle: "Complex fields presentation. Geometric nuance. Inner product spaces. Cauchy-Schwarz."
+subtitle: "Complex field presentation. Geometric nuance. Inner product spaces. Cauchy-Schwarz."
 date: 2026-06-01 09:00:00 +0000
 categories: ['Maths', 'analisis_rudin']
 tags: ['Maths']

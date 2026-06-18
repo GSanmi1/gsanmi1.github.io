@@ -458,9 +458,9 @@ Thus, $\big(F,(F^{m\times n},+), \ · \big)$ is a vector space.
 
 ### 2.3.3. The space of functions from a set to a field. 
 
-Consider now some field $K$ and some set $S \neq \varnothing$, then, remember that being $f : S \to K$ a function, this gets identified with his graph $f \subseteq S \times K : (\forall s \in S \ \exists ! \alpha \in K \mid (s,\alpha) \in f)$. 
+Consider now some field $K$ and some set $S \neq \varnothing$, then, remember that being $f : S \to K$ a function, this gets identified with his graph $f \subseteq S \times K : (\forall s \in S \ \exists ! \alpha \in K \mid (s,\alpha) \in f)$, meaning that a function is a relation which every element of the domain has a unique image through $f$.
 
-Then, lets take the :
+Then, the set of all the relations from $S$ to $K$ that are applications is:
 
 $$K^S := \Set{f \in \mathcal{P}(S \times K) \mid \forall s \in S \ \exists ! \alpha \in K : (s,\alpha) \in f}$$
 
@@ -478,7 +478,8 @@ Observe that, due to the closure in $(K,+)$ we have that $f(s) + g(s) \in K$, so
 
 The addition definition agains get's defined directly against the addition in $K$, so $(K^S,+)$ is an abelian group. Being the neutral element  and the inverse defined as:
 
-$$0 := \Set{(s, 0_K) \mid s \in S}$$
+$$i := \Set{(s, 0_K) \mid s \in S}$$
+
 $$-f := \Set{(s, -f(s)) \mid s \in S}$$
 
 <br>

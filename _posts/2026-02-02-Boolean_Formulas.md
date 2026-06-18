@@ -43,11 +43,11 @@ lang: en
 
             - 4.2.1.2. Graph coloring.
 
-            - 4.2.1.3. Plannar graphs. Drawings and faces. Euler’s formula.
+            - 4.2.1.3. Planar graphs. Drawings and faces. Euler’s formula.
 
             - 4.2.1.4. Dual graphs.
 
-        - 4.2.2. Formuling the problems. Three-coloring problem.
+        - 4.2.2. Formulating the problems. Three-coloring problem.
 
             - 4.2.2.1. Describing the problem.
 
@@ -65,9 +65,9 @@ lang: en
 
 # 1. Expressing problems and solutions as Boolean formulas.
 
-What ties P and NP problems together is that both can be quickly verified. We remember that a verifier is a deterministic turing machine that operates an input and a witness and accepts a YES-instance of a given problem and rejects the NO-instances, on the other hand, we considered the witness of a YES-instance as a proof or certificate of the existance of that same instance.
+What ties P and NP problems together is that both can be quickly verified. We remember that a verifier is a deterministic Turing machine that operates on an input and a witness and accepts a YES-instance of a given problem and rejects the NO-instances; on the other hand, we considered the witness of a YES-instance as a proof or certificate of the existence of that same instance.
 
-In order to model a problem statement we make uses of formal languages, specifically, of boolean formulas. It is true that: **Verifying a solution to a problem in NP or P can be accomplished by verifying a solution to a boolean formula that models the problem.**
+In order to model a problem statement we make use of formal languages, specifically, of boolean formulas. It is true that: **Verifying a solution to a problem in NP or P can be accomplished by verifying a solution to a boolean formula that models the problem.**
 
 <br>
 
@@ -75,37 +75,37 @@ In order to model a problem statement we make uses of formal languages, specific
 
 ## 2.1. Introduction.
 
-The term *boolean-logic* refers to a formal framework for reasoning about propositions. It mainly consist of a formal language; an alphabet of symbols from which concatenations of symbols or simply *strings* are formed. This symbols can be either:
+The term *boolean-logic* refers to a formal framework for reasoning about propositions. It mainly consists of a formal language; an alphabet of symbols from which concatenations of symbols or simply *strings* are formed. These symbols can be either:
 
-- *Proposition* is a statement with a unique, unambiguous truth value (either true or false).
+- *Proposition*: a statement with a unique, unambiguous truth value (either true or false).
 
-- *Connectives*, symbols with a precise significancy that are use to relate primitive propositions to build more complex ones. 
+- *Connectives*: symbols with a precise meaning that are used to relate primitive propositions to build more complex ones. 
 
 Boolean logic formalizes reasoning with truth values. Its primitive objects are propositions (statements), and connectives that build new propositions from old or atomics ones.
 
 <br>
 
-## 2.2. Boolean Formulas. Propositional variables and conectives.
+## 2.2. Boolean Formulas. Propositional variables and connectives.
 
 **Boolean Formulas**
 
-As we say before, boolean-logic formalizes reasoning with truth values by relating propositions with connectives. In order to study those relations arises the *boolean formulas*, which abstract the logic relations between propositions using *propositional variables*.
+As we said before, boolean-logic formalizes reasoning with truth values by relating propositions with connectives. In order to study those relations, *boolean formulas* arise, which abstract the logical relations between propositions using *propositional variables*.
 
 <br>
 
 **Propositional variables and Logical Connectives**
 
-A propositional variable is mathematical object that stands for a proposition. Is not a preposition itself, it becames a preposition under a valuation, which maps the preposition variable to a truth value. It the most basic syntactic units, consider the following set; $ Var = \{p_0,p_1,p_2,...\} $, any $ p \in Var $ is a propositional variable.
+A propositional variable is a mathematical object that stands for a proposition. It is not a proposition itself; it becomes a proposition under a valuation, which maps the propositional variable to a truth value. It is the most basic syntactic unit; consider the following set; $ Var = \{p_0,p_1,p_2,...\} $, any $ p \in Var $ is a propositional variable.
 
-As a intuitional approach, a propositional variable stands for an unspecified statement, with lack of specific content, which eventually can by valuable as true or false becoming straight to a proposition: $ v: Var \to \{0,1\}$. Variables are syntactic placeholders; truth arises only after a valuation is chosen.
+As an intuitive approach, a propositional variable stands for an unspecified statement, lacking specific content, which can eventually be valued as true or false, becoming a proposition: $ v: Var \to \{0,1\}$. Variables are syntactic placeholders; truth arises only after a valuation is chosen.
 
 <br>
 
-On the other hand, the logical conectives are the symbols used to relate propositions or propositional variables resulting in other proposition (complex proposition). They are the grammar of propositional logic, this are also called as *logical operators*.
+On the other hand, the logical connectives are the symbols used to relate propositions or propositional variables, resulting in another proposition (complex proposition). They are the grammar of propositional logic; these are also called *logical operators*.
 
 For the following, consider $p, q \in Var$.
 
-- **NOT**, This is an unary operator which assigns the opposite truth value of the original proposition:
+- **NOT**, This is a unary operator which assigns the opposite truth value of the original proposition:
 
     | $p$ | $\lnot p$ |
     |---:|---:|
@@ -194,24 +194,24 @@ The following relations between conectives are true:
 <br>
 
 
-Note that, from the formulas above, we can safely assume that **every complex formula can be put in terms of Negation, Conjuntion and Disjunction connectives ($\neg, \wedge, \vee$)**. To demonstrate the equivalences of those expressions all we need is to compare the truth tables of each formula to validate it. 
+Note that, from the formulas above, we can safely assume that **every complex formula can be put in terms of the Negation, Conjunction and Disjunction connectives ($\neg, \wedge, \vee$)**. To demonstrate the equivalences of those expressions all we need is to compare the truth tables of each formula to validate it. 
 
 
-This way, a boolean formula is a well-formed syntactic object, semantically empty. Meaning that it does not have a truth value by itself until a valuation is performed.
+This way, a boolean formula is a well-formed syntactic object, semantically empty, meaning that it does not have a truth value by itself until a valuation is performed.
 
 <br>
 
-The valuation (or interpretation) is the process in which every propostional variable involved with a boolean formula adquires a truth value. It is defined as an application. Being $X = \Set{x_1,...,x_n}\subset Var$, then a interpretation of that set is an application as: 
+The valuation (or interpretation) is the process in which every propositional variable involved in a boolean formula acquires a truth value. It is defined as a mapping. Being $X = \Set{x_1,...,x_n}\subset Var$, then an interpretation of that set is a mapping such as: 
 
 $$ a: X  \to \Set{0,1}$$
 
-Often, since the propositional variables can be ordered, we can define $a$ as a string of the $\Set{0,1}$ alphabet satisfying $\vert a\vert = \vert X\vert$. Then when we fix a valuation that maps each propositional variable to under a truth value, the formula evaluates to a unique truth value as well.
+Often, since the propositional variables can be ordered, we can define $a$ as a string of the $\Set{0,1}$ alphabet satisfying $\vert a\vert = \vert X\vert$. Then when we fix a valuation that maps each propositional variable to a truth value, the formula evaluates to a unique truth value as well.
 
 <br>
 
-Thus; the boolean formulas are sintactically well formed strings involving prepositional variables and conectives which are suitable for be valuable or interpreted. 
+Thus, the boolean formulas are syntactically well-formed strings involving propositional variables and connectives which are suitable for being valued or interpreted. 
 
-They serve to plasm the relation about elements or statements represented in the propositional variables.
+They serve to express the relation between elements or statements represented by the propositional variables.
 
 <br>
 
@@ -221,33 +221,33 @@ Now, consider an example of arbitrary formula. $x_i \in Var: i = 1,2,3,4$, then 
 
 $$ out = (x_1 \vee \neg x_2 \vee \neg x_3)\ \wedge\ (\neg x_2 \vee x_3 \vee x_4)\ \wedge\ (x_1 \vee x_3 \vee \neg x_4)\ \wedge\ (\neg x_2 \vee \neg x_3 \vee \neg x_4)  $$
 
-Then, the question is, can we find values for $x_i: i = 1,2,3,4$ such makes $out$ true? This can be reformuled as, exists at least one *valuation* $a : \{x_1,x_2,x_3,x_4\} \to \{0,1\}$ which makes $out_{a} = 1$?
+Then, the question is, can we find values for $x_i: i = 1,2,3,4$ that make $out$ true? This can be reformulated as: does there exist at least one *valuation* $a : \{x_1,x_2,x_3,x_4\} \to \{0,1\}$ which makes $out_{a} = 1$?
 
 Lets consider, $a_0 = 1010$, which means $ a_0(x_1) = 1, \ a_0(x_2) = 0, \ a_0(x_3) = 1, \ a_0(x_4) = 0 $, then:
 
 $$ (out)_{a_0} = (1 \vee \neg 0 \vee \neg 1)\ \wedge\ (\neg 0 \vee 1 \vee 0)\ \wedge\ (1 \vee 1 \vee \neg 0)\ \wedge\ (\neg 0 \vee \neg 1 \vee \neg 0) = \\ = 1\ \wedge\ 1\ \wedge\ 1\ \wedge\ 1 = 1 $$
 
-Observe that, for we can consider the following problem $\Pi$. Being $\Sigma = \Set{Var} \bigcup \Set{\vee, \land, \neg }$: 
+Observe that we can consider the following problem $\Pi$. Being $\Sigma = \Set{Var} \bigcup \Set{\vee, \land, \neg }$: 
 
 $$\Pi: \Sigma^* \to \Set{0,1}: \Big(\Pi (B) = 1  \iff \exists a : (B)_a = 1\Big)$$
 
-In this context, $a_0=1010$ is a witness for $B = out$. Considering a $V \in DTM$ that accepts a boolean formula $B$ of $m$ connectives and a evalution $a$. $V$ operates connectives simplifying expressions and obtaining the truth value, then we call $V$ our verifier and it would be $V(out,a_0) = 1$.
+In this context, $a_0=1010$ is a witness for $B = out$. Consider a $V \in DTM$ that accepts a boolean formula $B$ of $m$ connectives and a valuation $a$. $V$ operates on connectives, simplifying expressions and obtaining the truth value; then we call $V$ our verifier and it would be $V(out,a_0) = 1$.
 
-Observe, that if it is $B$ a boolean formula that has $m$ conectives, then $V(B,a)$ operates simplfying one connective per step so it needs $m$ steps before give the truth value of $(B)_a$, thus is $t_V(n) \in \mathcal{O{(n^1)}}$ and runs in polynomial time, so; $\Pi \in NP$.
+Observe that if $B$ is a boolean formula that has $m$ connectives, then $V(B,a)$ operates by simplifying one connective per step, so it needs $m$ steps before giving the truth value of $(B)_a$, thus $t_V(n) \in \mathcal{O{(n^1)}}$ and runs in polynomial time, so; $\Pi \in NP$.
 
 <br>
 
 # 3. SAT is NP-complete: Cook-Levin Theorem.
 
-The reason why we introduce before the boolean formulas and demonstrate that the language of all the satisfiiable boolean formulas is an $NP$ language is because we are about to introduce a very important statement: **all problems in $P$ and $NP$ can be verified by transforming them into boolean formulas and showing a solution to the formula.**
+The reason why we introduced the boolean formulas before and demonstrated that the language of all the satisfiable boolean formulas is an $NP$ language is because we are about to introduce a very important statement: **all problems in $P$ and $NP$ can be verified by transforming them into boolean formulas and showing a solution to the formula.**
 
 <br>
 
 ## 3.1. SAT - Boolean Satisfiability Problem.
 
-$SAT$, also known as the *Boolean satisfiability problem*, asks whether there exists an interpretation that satisfies a given Boolean formula. What we provide above is a concrete case of a more extended language.
+$SAT$, also known as the *Boolean satisfiability problem*, asks whether there exists an interpretation that satisfies a given Boolean formula. What we provided above is a concrete case of a more extended language.
 
-Given an alphabet $\Sigma$ with all you need to create a boolean formula and consider as $\text{Form} \subset \Sigma^*$ all those strings which, as boolean formulas, are considered well-formed (in the behalf of simplity we will act as we all know what "well-formed" means so we don't have to provide a formal description about what $\text{Form}$ is). 
+Given an alphabet $\Sigma$ with all you need to create a boolean formula, consider as $\text{Form} \subset \Sigma^*$ all those strings which, as boolean formulas, are considered well-formed (for the sake of simplicity we will act as if we all know what "well-formed" means, so we don't have to provide a formal description of what $\text{Form}$ is). 
 
 Then, we can define $SAT$ language as:
 
@@ -255,19 +255,19 @@ $$SAT := \Set{B | \exists a : (B)_a = 1} \subset \text{Form}$$
 
 <br>
 
-## 3.2. NP-completness. Reductions.
+## 3.2. NP-completeness. Reductions.
 
 **Reduction. Karp reduction.**
 
-A *reduction* is a *morphism* that pretends to preserve the solvability (and efficient solviability) property between problems. Conceptually, is a way to translate one problem $A$ into another problem $B$ such that solving $B$ (on the translated input) automatically solves $A$. 
+A *reduction* is a *morphism* that aims to preserve the solvability (and efficient solvability) property between problems. Conceptually, it is a way to translate one problem $A$ into another problem $B$ such that solving $B$ (on the translated input) automatically solves $A$. 
 
 Formally is a function that preserves membership between languages:
 
-- First, we consider the **Many-one reduction (solvable-morphism)**. Being $A,B \subseteq \Sigma^*$, then we say that $A \text{ is many-one reductible to } B$:
+- First, we consider the **Many-one reduction (solvable-morphism)**. Being $A,B \subseteq \Sigma^*$, then we say that $A \text{ is many-one reducible to } B$:
 
     $$A \leq_m B \iff \exists f : \Sigma^* \to \Sigma^* : \forall x \in \Sigma^* \ \ (x \in A \leftrightarrow f(x) \in B)$$
 
-    As we say, this function preserves membership and once is defined between $A$ and $B$ solve either of the two problems solves the other one.
+    As we said, this function preserves membership, and once it is defined between $A$ and $B$, solving either of the two problems solves the other one.
 
     <br>
 
@@ -275,17 +275,17 @@ Formally is a function that preserves membership between languages:
 
     $$A \leq_p B \iff \exists f : \Sigma^* \to \Sigma^* :\begin{cases} x \in A \leftrightarrow  f(x) \in B \\ \exists M \in TM : \big( M(x)=f(x) \ \land \ t_M \in \mathcal{O}(n^k) \ \forall x \in A\big)\end{cases}$$
 
-    In this terms, as we saw above, relating $A$ with $B$ through $f$ means that solve efficiently either of the two garanties the efficient solving of the other one. In this terms, we say that $A$ is polynomially reductable to $B$.
+    In these terms, as we saw above, relating $A$ with $B$ through $f$ means that solving either of the two efficiently guarantees the efficient solving of the other one. In these terms, we say that $A$ is polynomially reducible to $B$.
 
     Note that the term $M(x)$ is non-standard but is a license to refer to the computation of $x$ by $M$.
 
 <br>
 
-**NP-completness**
+**NP-completeness**
 
 $NP$-complete problems are the hardest of the problems to which solutions can be verified quickly. 
 
-A problem $L$ is $NP-complete$ when satisfies:
+A problem $L$ is $NP-complete$ when it satisfies:
 
 - $L \in NP$
 - $L$ is $NP$-hard, this means; every other problem $H \in NP$ can be reduced to $L$ in polynomial time:
@@ -298,17 +298,17 @@ So $NP$-hard problems are “hard enough” (in complexity terms) to subsume the
 
 ## 3.3. SAT is NP-complete.
 
-Until this point, we have now enough tools to understand what the statment "$SAT$ is $NP$-complete" means. 
+Until this point, we now have enough tools to understand what the statement "$SAT$ is $NP$-complete" means. 
 
 $SAT$ is $NP$-complete means that any other problem $H \in NP$ can be polynomially reduced in terms of $SAT$ in the sense that deciding $SAT$ decides that problem. Observe that we have the following chain of implications.
 
-Being $x \in \Sigma^\ast: H \subseteq \Sigma^\ast$ and $y \in \Sigma_0^\ast : SAT \subseteq \Sigma_0^* \land y=f(x)$ and $f:H \to SAT$ is polynomically computable, then:
+Being $x \in \Sigma^\ast: H \subseteq \Sigma^\ast$ and $y \in \Sigma_0^\ast : SAT \subseteq \Sigma_0^* \land y=f(x)$ and $f:H \to SAT$ is polynomially computable, then:
 
 $$\text{verify } y \text{ (along with a witness, }w \text{)} \implies y = f(x)\in SAT \ \underbrace{\iff}_{H \leq_p SAT} \ x \in H$$
 
-And, besides $w$ is not formally a witness of $x$ since $w \in \Sigma^* \land w \notin \Sigma_0^*$ and thus there isn't a verifier that $V(x,w)=1$, conceptually we can assume that $w$ is proof enough about the $x \in H$ statement through $f$.
+And, even though $w$ is not formally a witness of $x$ since $w \in \Sigma^* \land w \notin \Sigma_0^*$ and thus there isn't a verifier such that $V(x,w)=1$, conceptually we can assume that $w$ is proof enough of the $x \in H$ statement through $f$.
 
-In other terms, in ZKP which is a discipline interested in the verifying process of computing, any instance of an $NP$ problem can be translate in polynomial time as an instance of $SAT$, this way; verifying an input of a $NP$ decision problem is equivalent to verify the satisfiability of one concrete boolean formula which can be done efficiently, or, as we say at the start of the post, any problem's solution (in the vulgar way) can be verified by verifying a boolean formula that models the problem.  
+In other terms, in ZKP, which is a discipline interested in the verifying process of computing, any instance of an $NP$ problem can be translated in polynomial time into an instance of $SAT$; this way, verifying an input of an $NP$ decision problem is equivalent to verifying the satisfiability of one concrete boolean formula, which can be done efficiently, or, as we said at the start of the post, any problem's solution (in the loose sense) can be verified by verifying a boolean formula that models the problem.  
 
 <br>
 
@@ -316,12 +316,12 @@ In other terms, in ZKP which is a discipline interested in the verifying process
  
 ## 4.1. Checking if a list is sorted using a boolean formula.
 
-Suppose you have two binary numbers $P,Q$ and you want to know if $P>Q$. This can be formuled in terms of decision problem. Consider $p,q \in \Set{0,1} \wedge 1 > 0$ it is:
+Suppose you have two binary numbers $P,Q$ and you want to know if $P>Q$. This can be formulated in terms of a decision problem. Consider $p,q \in \Set{0,1} \wedge 1 > 0$, it is:
 
 $$p > q \iff p \ \land \neg q$$
 $$p=q \iff (p \land q) \vee \neg (p \vee q)$$
 
-Essentially meaning that $p > q$ only if is $p$ is true and $q$ false. We can quicly check this result by comparing the true table:
+Essentially meaning that $p > q$ only if $p$ is true and $q$ false. We can quickly check this result by comparing the truth table:
 
 <br>
 
@@ -334,9 +334,9 @@ Essentially meaning that $p > q$ only if is $p$ is true and $q$ false. We can qu
 
 <br>
 
-If we consider $A \in \Set{0,1}^*$ then is: $A := a_1...a_n : a_i \in \Set{0,1} \forall i \leq n \in \mathbb{N}$ (although we are not force to it, we always consider finites strings in this case).
+If we consider $A \in \Set{0,1}^*$ then it is: $A := a_1...a_n : a_i \in \Set{0,1} \forall i \leq n \in \mathbb{N}$ (although we are not forced to, we always consider finite strings in this case).
 
-Now, being $P,Q \in \Set{0,1}^*$ interpreted both as a representation in base 2 of a numeric value (a binary number, can safely assume that $\vert P\vert  = \vert Q\vert  = n$, if not, we add zeros to the shortest string until the equiality is meeted) then it is 
+Now, being $P,Q \in \Set{0,1}^*$ both interpreted as a representation in base 2 of a numeric value (a binary number), we can safely assume that $\vert P\vert  = \vert Q\vert  = n$ (if not, we add zeros to the shortest string until the equality is met), then it is 
 
 $$P > Q \iff \exists i \leq n:p_i > q_i \ \land \ p_j = q_j \ \forall j < i$$
 
@@ -431,7 +431,7 @@ Let's demonstrate the statement above.
 
         <br>
 
-This essentially justifies the existence of an algorithm that for $P,Q \in \Set{0,1}^*$ goes checking $p_i, q_i : i \leq n \in \mathbb{N}$ and accepts the input considering that for the first $i: p_i > q_i \Rightarrow P > Q$, if this condition is not meet, the algorithm rejects and is $\neg (P > Q)$.
+This essentially justifies the existence of an algorithm that for $P,Q \in \Set{0,1}^*$ goes checking $p_i, q_i : i \leq n \in \mathbb{N}$ and accepts the input considering that for the first $i: p_i > q_i \Rightarrow P > Q$; if this condition is not met, the algorithm rejects and it is $\neg (P > Q)$.
 
 ```
 
@@ -447,7 +447,7 @@ Q2 = 1001
 
 ```
 
-Let's observe that the solution to this problem (the procedure of the algorithm) can model as a bolean formula:
+Let's observe that the solution to this problem (the procedure of the algorithm) can be modeled as a boolean formula:
 
 $$p_1 > q_1 \vee (p_1 = q_1 \land p_2 > q_2) \vee (p_1 = q_1 \land p_2 = q_2 \land p_3 > q_3) ...$$
 
@@ -457,7 +457,7 @@ $$\bigvee_{i=1}^{|P|} \Big[\bigwedge_{j=1}^{i -1} [p_j = q_j] \land (p_i > q_i)\
 
 <br>
 
-Lets observe that in the case $i=1$ results in an "empty conjunction" and an "empty disjunction", which by convention is:  
+Let's observe that the case $i=1$ results in an "empty conjunction" and an "empty disjunction", which by convention is:  
 
 $$ \bigwedge_{j=1}^{1-1} p_j = q_j  \iff \bigwedge_{j=1}^{0} (p_j \land q_j) \vee \neg(p_j \vee q_j) \iff \top \vee \neg \bot \equiv \top$$
 
@@ -474,23 +474,23 @@ Thus we define:
 $$f: \Set{0,1}^* \to \Sigma^*_{SAT}$$
 $$ f(x) := B_x $$
 
-This function satisfies the requisites of the karp reduction
+This function satisfies the requisites of the Karp reduction:
 
-- $f$ is polynomically computable since we can define $V \in DTM$ that computes $(B)_x$ in polynomial time as we see above.
-- $f$ preserves ownership between $L$ and $SAT$, $x \in L \iff f(x) = B_x \in SAT$.
+- $f$ is polynomially computable since we can define $V \in DTM$ that computes $(B)_x$ in polynomial time as we saw above.
+- $f$ preserves membership between $L$ and $SAT$, $x \in L \iff f(x) = B_x \in SAT$.
 
 
-So is $L_{\Pi_Q} \leq_p SAT$. 
+So $L_{\Pi_Q} \leq_p SAT$. 
 
-Observe that in this case, despite we showed that we can verify a solution to a problem verifying a solution to a trivial formula, there is no witness. This is because this is a P problem, and in this specific case $V$ that computes $(B)_x$ is also de decider of $L$ so no aid is needed. This does not mean that there are $P$ in problems that admits verificators that needs witness as well.
+Observe that in this case, although we showed that we can verify a solution to a problem by verifying a solution to a trivial formula, there is no witness. This is because this is a P problem, and in this specific case the $V$ that computes $(B)_x$ is also the decider of $L$, so no aid is needed. This does not mean that there are no $P$ problems that admit verifiers that need a witness as well.
 
 <br>
 
 ## 4.2. Map-coloring problem: Graph theory.
 
-There is a problem knew as the *map-coloring problem*, which ask about for how many colors do you need (in the sense of minimum required) to color a map. The canonical result is the *Four Color Theorem*, which states that any planar map can be colored with at most four colors so that adjacent regions differ. The Four Color Theorem has 3-color variant, known as the 3-colorability problem which asks what maps admits being colored with no more than 3 colors.
+There is a problem known as the *map-coloring problem*, which asks how many colors you need (in the sense of the minimum required) to color a map. The canonical result is the *Four Color Theorem*, which states that any planar map can be colored with at most four colors so that adjacent regions differ. The Four Color Theorem has a 3-color variant, known as the 3-colorability problem, which asks which maps admit being colored with no more than 3 colors.
 
-All this problematic is presented and understanded in the terminology of *Graph Theory*; which is the discipline of mathematics which occupies about the study of discrete relation's structures and his properties.
+All this is presented and understood in the terminology of *Graph Theory*; which is the discipline of mathematics that deals with the study of discrete relational structures and their properties.
 
 <br>
 
@@ -513,7 +513,7 @@ Where $\Set{u,v}$ is a not-ordered set (in contrast with $(u,v)$).
 
 Then, we have the following definitions:
 
-- If $\Set{u,v} \in E$, then $u,v \in V$ are say to be **adjacents**. 
+- If $\Set{u,v} \in E$, then $u,v \in V$ are said to be **adjacent**. 
 - For $v \in V$, $N(v) := \Set{u \vert  \Set{u,v} \in E} \subseteq V$ is the **neighborhood of $v$**, and $\vert N(v)\vert $ is called his **degree**.
 
 In general, is not safe to assume that $\vert N(v)\vert  \geq 1 \ \forall v \in V$.  We call $Iso(G) := \Set{v \in V : \vert N(v)\vert  = 0}$ and the following relation can be verified:
@@ -543,7 +543,7 @@ For a graph $G := (V,E)$:
 
     ![walk_path_cycle](/assets/images/Maths/DiscreteMath/walk_path_cycle.png)
 
-- A **complete** graph $G$ is a graph where every pair of vertices are connected by an edge:
+- A **complete** graph $G$ is a graph where every pair of vertices is connected by an edge:
 
     $$G := (V,E) : E = \binom{V}{2}$$
 
@@ -568,7 +568,7 @@ For $G$, we define his **chromatic number** as the minimum number for which exis
 
 $$\chi(G) := min\Set{k | \exists c : V \to \Set{1,...,k} \text{ is a } k\text{-coloring}}$$
 
-Observe that this means that the Four Colour theorem exposes $\chi(G) \leq 4 \ \ \forall G$ and the 3-coloring problem ask whether, $\chi(G) \leq 3$.
+Observe that this means that the Four Colour theorem states $\chi(G) \leq 4 \ \ \forall G$ and the 3-coloring problem asks whether $\chi(G) \leq 3$.
 
 <br>
 
@@ -590,7 +590,7 @@ Let's observe that:
 
     - Let's see now that $\neg (\exists i < n : c : V_K \to \Set{1,...,i} \text{ is a coloration})$.
 
-        Simply, considering $c : V_K \to \Set{1,...,i}$ with $ i < n$, then $c$ is *no injective* and it verifies the *pigeonhole principle*:
+        Simply, considering $c : V_K \to \Set{1,...,i}$ with $ i < n$, then $c$ is *not injective* and it verifies the *pigeonhole principle*:
 
         $$\exists u,v \in V_K : u \neq v \land c(u) = c(v)$$
 
@@ -598,7 +598,7 @@ Let's observe that:
 
         $$\exists \Set{u,v} \in E_K : c(u) = c(v)$$
 
-        And $c$ is no coloration.
+        And $c$ is not a coloration.
 
         <br>
 
@@ -673,11 +673,11 @@ Let's observe that:
 
 4. **2-colorability theorem**.
 
-    The 2-colorability caracterization stands for, being $G := (V,E)$ a graph, then:
+    The 2-colorability characterization states that, being $G := (V,E)$ a graph, then:
 
     $$\chi(G)=2 \iff G \text{ is bipartite } \iff \neg \exists\,\text{cycle } C \subseteq G : |C|\ \text{ is odd} $$
 
-    Observe that we already demonstrate that:
+    Observe that we already demonstrated that:
 
     - $G \text{ is bipartite } \implies \chi(G)=2$
     - $\chi(G)=2 \implies \neg \exists\,\text{cycle } C \subseteq G : \vert C\vert \ \text{ is odd}$ (since all odd cycle has a 3 as a chromatic number).
@@ -710,9 +710,9 @@ Let's observe that:
 
         The premise can be negated in two ways:
 
-        - First, $\neg \exists C \subseteq G : C \text{ is a cycle}$, then consider a vertex we call $r$ and: $A = \Set{u \vert  dist(r,u) \text{ is even}}$ and $B = \Set{u \vert  dist(r,u) \text{ is odd}}$. Then is pretty obvius that $A \cup B$ and we impose that $A \cap B = \varnothing$, let's observe that this impossition requires no odd cycles.
+        - First, $\neg \exists C \subseteq G : C \text{ is a cycle}$, then consider a vertex we call $r$ and: $A = \Set{u \vert  dist(r,u) \text{ is even}}$ and $B = \Set{u \vert  dist(r,u) \text{ is odd}}$. Then it is pretty obvious that $A \cup B$ and we impose that $A \cap B = \varnothing$; let's observe that this imposition requires no odd cycles.
 
-            Being $C \subseteq G : C \text{ is odd}$, then, $C:=v_0,...,v_{n-1},v_0$ where $v_0,...,v_{n-1}$ is a path and $\Set{v_{n-1},v_0} \in E$. Lets say $r : dist(r,v_0) \land r \notin C$. Then, since $C$ is a cycle there are two paths to measure the distance between $r$ and $v_{n-1}$:
+            Being $C \subseteq G : C \text{ is odd}$, then, $C:=v_0,...,v_{n-1},v_0$ where $v_0,...,v_{n-1}$ is a path and $\Set{v_{n-1},v_0} \in E$. Let's say $r : dist(r,v_0) \land r \notin C$. Then, since $C$ is a cycle there are two paths to measure the distance between $r$ and $v_{n-1}$:
 
             $$dist(r,v_{n-1}) = dist(r,v_0) + dist(v_0,v_{n-1})$$
 
@@ -720,9 +720,9 @@ Let's observe that:
 
            <br>
 
-#### 4.2.1.3. Plannar graphs. Drawings and faces. Euler's formula.
+#### 4.2.1.3. Planar graphs. Drawings and faces. Euler's formula.
 
-A *planar graph* is a graph that admits a graphical representation on a plane such its edges do not cross each other. For example, Complete graph $K_3$ do admit a representation in which the edges not cross, but $K_5$ do not.
+A *planar graph* is a graph that admits a graphical representation on a plane such that its edges do not cross each other. For example, the complete graph $K_3$ does admit a representation in which the edges do not cross, but $K_5$ does not.
 
 Let be $G:=(V,E)$ a finite simple graph, then an embedding of $G$ into $\mathbb{R}^2$ is a function $\phi: G \to \mathbb{R}^2$ that:
 
@@ -733,11 +733,11 @@ Let be $G:=(V,E)$ a finite simple graph, then an embedding of $G$ into $\mathbb{
 
 Where $\gamma_{uv}$ is a simple arc (non-self-intersecting, continuous curve) from $\phi(u)$ to $\phi(v)$. $\phi$ maps the edges of $G$ ensuring that two different arcs only share endpoints as much.
 
-Then, $G$ is said to be planar if admits a embedding $\phi$ in $\mathbb{R}^2$ as above.
+Then, $G$ is said to be planar if it admits an embedding $\phi$ in $\mathbb{R}^2$ as above.
 
 <br>
 
-Associated to a drawing of a planar graph are the so called *faces*, grouped in the set $F$; which are enclosed regions of the plane $\mathbb{R}^2$ by the planar drawing of the graph (here is included the unbound outer face extranl to the graph). The Euler's formula specifies that, for a complete planar graph $G:= (V,E)$, being $F$ the set of the faces of the drawing graph, then:
+Associated with a drawing of a planar graph are the so-called *faces*, grouped in the set $F$; which are regions of the plane $\mathbb{R}^2$ enclosed by the planar drawing of the graph (here the unbounded outer face external to the graph is included). Euler's formula specifies that, for a connected planar graph $G:= (V,E)$, being $F$ the set of the faces of the drawn graph, then:
 
 $$|V| - |E| + |F| = 2$$
 
@@ -745,7 +745,7 @@ $$|V| - |E| + |F| = 2$$
 
 #### 4.2.1.4. Dual graphs.
 
-Given a connected planar graph $G$, then, the *dual graph* is what you get when you turn faces into vertices in a planar embedding of $G$. 
+Given a connected planar graph $G$, the *dual graph* is what you get when you turn faces into vertices in a planar embedding of $G$. 
 
 The drawing (planar embedding) cuts the plane into regions (faces), one unbounded “outside” face plus the bounded ones, then the dual $G^*$ is built by:
 
@@ -764,17 +764,17 @@ In this context, a map coloring is equal to color a dual graph. A map representa
 
 <br>
 
-### 4.2.2. Formuling the problems. Three-coloring problem.
+### 4.2.2. Formulating the problems. Three-coloring problem.
 
 #### 4.2.2.1. Describing the problem.
 
-With the notion we have gathered, then, the Four Color Theorem (the “all maps” statement), states that, for every planar graph $G$, the chromatic number is as much 4 $\chi(G) \leq 4$. It only required four colour to color every planar map.
+With the notions we have gathered, the Four Color Theorem (the “all maps” statement) states that, for every planar graph $G$, the chromatic number is at most 4, $\chi(G) \leq 4$. It only requires four colours to color every planar map.
 
-How ever, for example $\chi(K_4)=4$, so three colors is not always sufficent. And we can formulate the problem as the language:
+However, for example $\chi(K_4)=4$, so three colors is not always sufficient. And we can formulate the problem as the language:
 
 $$L := \Set{G | \chi(G)\leq 3}$$
 
-How ever, in this terms, $G$ still a graph and not a string codificaction of a graph and it isn't a computable decision problem.
+However, in these terms, $G$ is still a graph and not a string codification of a graph, and it isn't a computable decision problem.
 
 <br>
 
@@ -788,7 +788,7 @@ Given a finite simple undirected graph $G :=(V,E) : \vert V\vert  = d \in \mathb
 
     $$T: V \to [d] : \Big(u \neq v \Rightarrow T(u) \neq T(v) \Big)\ \ \ \forall v,u \in V$$
 
-    Meaning that any vertex is mapped to a distinct natural number between $1$ and $\vert V\vert $. Observe that $T$ is bijective (our imposed condition makes it injective and since both domain and codomain have the same cardinal; from the injectivity we obtain the surjectivity and thus the bijectivity) and we can consider its inverse $T^{-1}$.
+    Meaning that any vertex is mapped to a distinct natural number between $1$ and $\vert V\vert $. Observe that $T$ is bijective (our imposed condition makes it injective and since both domain and codomain have the same cardinal, from the injectivity we obtain the surjectivity and thus the bijectivity) and we can consider its inverse $T^{-1}$.
 
     <br>
 
@@ -804,7 +804,7 @@ Given a finite simple undirected graph $G :=(V,E) : \vert V\vert  = d \in \mathb
 
     $$M_{d} := (a_{ij})_{i,j \in T(V)} : a_{ij} = \begin{cases}  \ 1 \ \ \ \Set{i,j} \in T'(E) \\ \ 0 \ \ \ \Set{i,j} \notin T'(E)\end{cases}$$
     
-    This is called the *edge matrix*, and it stores the edges of $G$ in form of entries up to one. Since this is a simmetric matrix, we end defining his upper part to evade redundances:
+    This is called the *edge matrix*, and it stores the edges of $G$ in the form of entries equal to one. Since this is a symmetric matrix, we end up defining its upper part to avoid redundancies:
 
     $$M^+_{d} := (a^+_{ij})_{i,j \in T(V)} : a_{ij}^+ = \begin{cases} \ \ a_{ij} \ \ \ i < j \\ \ \ 0  \ \ \ \ \ \ i \geq j\end{cases}$$
 
@@ -826,14 +826,14 @@ $$\langle M_n \rangle : = (a_{11}...,a_{1n},a_{21},...,a_{nn}) = (\alpha_s)_{s \
 
 Let's see how to reconstruct $M_n$ from the sequence $(\alpha_s)_{s \in [n^2]}$. 
 
-Let's think that in $M_n$, each row is a group of $n$ elements and each colum is a number between $1$ and $n$, thus the euclidian division fits well giving us as a final result:
+Let's think that in $M_n$, each row is a group of $n$ elements and each column is a number between $1$ and $n$, thus the Euclidean division fits well, giving us as a final result:
 
 
 
 
 $$(\alpha_s)_{s \in [n^2]} \to (a_{ij})_{i,j \in [n]}: \begin{cases} i =\left\lfloor \frac{s-1}{n}\right\rfloor +1 \\ j = ((s-1) \text{mod } n) +1 \end{cases}$$
 
-Observe that each row of $M_n$ is a set of $n$ elements, thus is in our interest to decompose any index $\alpha_m$ in terms of $n$ through the Euclid Division theorem.
+Observe that each row of $M_n$ is a set of $n$ elements, thus it is in our interest to decompose any index $\alpha_m$ in terms of $n$ through the Euclidean Division theorem.
 
 Being 
 
@@ -841,34 +841,34 @@ $$\alpha_m \in (\alpha_s)_{s \in [n^2]} \implies \exists p,q \in \mathbb{N} : m 
 
 Observe that this expression is telling us two things:
 
-1. $p$ tell us how many times is $m$ contained in $n$. This is related with how many rows $\alpha_m$ is down as $a_{ij}$ on $M_n$.
-2. $q$ how much is left over to $m$ to be a $n$-multiple. This is related with how many columns has left to the left $\alpha_m$ as $a_{ij}$ on $M_n$.
+1. $p$ tells us how many times $n$ is contained in $m$. This is related to how many rows down $\alpha_m$ is as $a_{ij}$ on $M_n$.
+2. $q$ is how much is left over for $m$ to be an $n$-multiple. This is related to how many columns to the left $\alpha_m$ has as $a_{ij}$ on $M_n$.
 
-Both of them are related to the position of $\alpha_m$ as $a_{ij} \in M_n$ but not in a straight way. 
+Both of them are related to the position of $\alpha_m$ as $a_{ij} \in M_n$ but not in a straightforward way. 
 
 Specifically, this equation has two problems:
 
-- First, $q$ adjusts just fine to the colum place $j$ in the sense that correctly defines the position $p·n \leq m \leq (p + 1)·n$ but $q$ do not exists in an interval compatible with $j$, since $q \in [0,n-1] \cap \mathbb{N}$ and $j \in [n]$. 
+- First, $q$ adjusts just fine to the column place $j$ in the sense that it correctly defines the position $p·n \leq m \leq (p + 1)·n$, but $q$ does not exist in an interval compatible with $j$, since $q \in [0,n-1] \cap \mathbb{N}$ and $j \in [n]$. 
 
-    Thus, we have to find a similar expression of the euclid division between $m$ and $n$ that fits $q$ in the correct set of values:
+    Thus, we have to find a similar expression of the Euclidean division between $m$ and $n$ that fits $q$ in the correct set of values:
 
     $$m = np + q : 0 \leq q < n \iff m-1 = np+ (q-1) : 0 \leq q-1 < n \implies q\in [n]$$
 
-    This expresion correctly defines $q$ in a compatible way with $j$. Clearing $q$ we obtain: 
+    This expression correctly defines $q$ in a way compatible with $j$. Solving for $q$ we obtain: 
     
     $$j = q = ((m-1)\text{mod } n) +1$$
 
     <br>
 
-- Now, we have a similar problem with the rows. As we said above, the expression tells us the number of times that $n$ fits on $m$. Traduced to $M_n$ if $p=0 \implies i=1, p = 1 \implies i = 2$, and so on. 
+- Now, we have a similar problem with the rows. As we said above, the expression tells us the number of times that $n$ fits in $m$. Translated to $M_n$, if $p=0 \implies i=1, p = 1 \implies i = 2$, and so on. 
 
-    Thus, $i = p + 1$, again clearing we have:
+    Thus, $i = p + 1$, again solving we have:
 
     $$i = p + 1 = \left\lfloor \frac{m-1}{n}\right\rfloor +1$$
 
-    Where $\left\lfloor \frac{a}{b}\right\rfloor$, denotes the entire divison of $a$ between $b$.
+    Where $\left\lfloor \frac{a}{b}\right\rfloor$ denotes the integer division of $a$ by $b$.
 
-    Note that, to obtain $i$ we did not cleared from $m = p·n + q$ but from $m-1 = p·n + (q-1)$, since the last accurately identifies $j \leftrightarrow q$, in the first expression this do not happen and thus there are unaccuracies from some edgy cases like for example $m$ being multiple of $n$.
+    Note that, to obtain $i$, we did not solve from $m = p·n + q$ but from $m-1 = p·n + (q-1)$, since the latter accurately identifies $j \leftrightarrow q$; in the first expression this does not happen and thus there are inaccuracies in some edge cases like, for example, $m$ being a multiple of $n$.
 
 
 <br>
@@ -881,13 +881,13 @@ Given a $G:=(V,E)$ and a function $c:V \to \Set{1,2,3}$, then if:
 
 $$\forall \Set{u,v} \in E, \ c(u) \neq c(v) \iff c \text{ is a coloration on G} \implies \chi(G) \leq 3$$
 
-This essentially means that, conceptually, we can ensure that $\chi(G) \leq 3$ if the function $c$ defined as above is indeed a coloration by checking that there are no neighbours vertex with the same color. 
+This essentially means that, conceptually, we can ensure that $\chi(G) \leq 3$ if the function $c$ defined as above is indeed a coloration, by checking that there are no neighbouring vertices with the same color. 
 
 <br>
 
 **Formalizing the language**
 
-Given the alphabet $\Sigma = \Set{0,1}$, then we just see above that any graph  can be reduced as follows:
+Given the alphabet $\Sigma = \Set{0,1}$, we just saw above that any graph can be reduced as follows:
 
 $$G:=(V,E):\vert V \vert = n \ \simeq \ M^+_n := (a_{ij})_{i,j \in [n]} \ \simeq \ (\alpha_s)_{s\in[n^2]}  \in \Sigma^*$$
 
@@ -900,7 +900,7 @@ Observe that as defined; $c$ is a coloration on $G:=(V,E)$ iff $c_T$ is a colora
 $$c(u) \neq c(v) \ \ \forall \Set{u,v} \in E \iff c_T(i) \neq c_T(j) \ \ \forall \Set{i,j} \in E_T$$
 
 
-Thus, applying $c_T$ to the sucession $(\alpha_s)_{s\in[n^2]}$ and $i,j$ translation. The language to decide is:
+Thus, applying $c_T$ to the sequence $(\alpha_s)_{s\in[n^2]}$ and the $i,j$ translation, the language to decide is:
 
 $$L = \Set{(\alpha_s)_{s\in[n^2]} | \exists c_T : [n] \to \Set{\alpha, \beta, \gamma}: c_T\left(\left\lfloor \frac{s-1}{n}\right\rfloor +1\right) \neq c_T\left(((s-1) \text{mod } n) +1\right) \ \ \forall s : \alpha_s=1}$$
 
@@ -908,7 +908,7 @@ $$L = \Set{(\alpha_s)_{s\in[n^2]} | \exists c_T : [n] \to \Set{\alpha, \beta, \g
 
 #### 4.2.2.4. Verifying L.
 
-In this terms, we can think in a verifier that admits a sucesion and a function as described above $V((\alpha_s)_{s\in[n^2]} ,c_T)$ and goes iterating over each term of the sequence $\alpha_s$ performing:
+In these terms, we can think of a verifier that admits a sequence and a function as described above, $V((\alpha_s)_{s\in[n^2]} ,c_T)$, and goes iterating over each term of the sequence $\alpha_s$ performing:
 
 <br>
 
@@ -920,20 +920,20 @@ In this terms, we can think in a verifier that admits a sucesion and a function 
 
 <br>
 
-Let's observe that calling each step $p^s_i,q^s_i$ for the term $s$ of the sequence from $i=1,2,3$, a non-rejected path for the term $\alpha_s \in (\alpha_s)_{s\in[n^2]}$ by $V$ can be described as:
+Let's observe that, calling each step $p^s_i,q^s_i$ for the term $s$ of the sequence with $i=1,2,3$, a non-rejected path for the term $\alpha_s \in (\alpha_s)_{s\in[n^2]}$ by $V$ can be described as:
 
 $$q^s_1 \vee (p^s_1 \land (q^s_2 \vee (p^s_2 \land q^s_3)))$$
 
-Thus, for the $n(n-1)$ terms (observe that from the sequence we are eliminating those that correspond to the last row of $M_d^+$ which is zeroed) the complete accept path of $V((\alpha_s)_{s\in[n^2]},c_T)$ is:
+Thus, for the $n(n-1)$ terms (observe that from the sequence we are eliminating those that correspond to the last row of $M_d^+$, which is zeroed) the complete accept path of $V((\alpha_s)_{s\in[n^2]},c_T)$ is:
 
 $$\bigwedge_{s=0}^{n(n-1)} \left[q^s_1 \vee (p^s_1 \land (q^s_2 \vee (p^s_2 \land q^s_3)))\right]$$
 
-Meaning that for each term, check if it is $1$ or $0$ and if it is $1$, then compares through $c_T$. By SAT, verifying and input of $L$ is equivalent to find a valuation to that expression that makes it true. 
+Meaning that for each term, we check if it is $1$ or $0$ and if it is $1$, then we compare through $c_T$. By SAT, verifying an input of $L$ is equivalent to finding a valuation for that expression that makes it true. 
 
 <br>
 
 # 5. Conclusion.
 
-As a summary, in this section we see what boolean formulas are and the NP's SAT problem, which ask wheter a boolean formula have a valuation making it true. 
+As a summary, in this section we saw what boolean formulas are and the NP SAT problem, which asks whether a boolean formula has a valuation making it true. 
 
-We also see that SAT is NP-complete, meaning that is hard enough (in complexity terms) to polynomially reduce any other NP problem to SAT which eventually decays on the following corolary: any NP problem instance can be verified by verifying a SAT instance, this is; a correct valuation to a boolean formula that models the problem.
+We also saw that SAT is NP-complete, meaning that it is hard enough (in complexity terms) to polynomially reduce any other NP problem to SAT, which eventually leads to the following corollary: any NP problem instance can be verified by verifying a SAT instance, this is; a correct valuation for a boolean formula that models the problem.
