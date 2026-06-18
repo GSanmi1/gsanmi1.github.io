@@ -37,7 +37,7 @@ Before starting, let's fix some conventions:
 - Being $a,b \in \mathbb{Z}: ab  \neq 0$, we call $gdc(a,b) = \max\Set{c \in \mathbb{N} : (c \mid a \wedge c \mid b)}$, this is the maximum integer that divides both numbers at once. Let's observe some interesting facts:
 
     - $1 \in gdc(a,b) \quad \forall a,b \in \mathbb{Z}$
-    - $\max \Set{|a|,|b|} \geq c \quad \forall c \in gcd(a,b)$, observe immediately that any number greater would not divide both of them so is not in $gcd(a,b)$.
+    - $\max \Set{\|a\|,\|b\|} \geq c \quad \forall c \in gcd(a,b)$, observe immediately that any number greater would not divide both of them so is not in $gcd(a,b)$.
 
     - $gcd(a,b) = gcd(b,a) \quad \forall a,b \in \mathbb{Z}$
     - $gcd(a,b) > 0 \quad \forall a,b \in \mathbb{Z}$
