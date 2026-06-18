@@ -91,7 +91,7 @@ Let's reconstruct the structure:
 Let's consider some well-known examples of subspaces. Consider some $V$ a $K$-vector space, then:
 
 1. $V$ is a subspace of $V$.
-2. $\Set{0} \subset V$ is the zero subspace of $V$; $\alpha 0 + 0 = 0 \in \Set{0} \quad \forall \alpha \in K$ so $\Set{0}$ is a subspace of $V$.
+2. $\Set{0} \subset V$ is the **zero subspace** of $V$; $\alpha 0 + 0 = 0 \in \Set{0} \quad \forall \alpha \in K$ so $\Set{0}$ is a subspace of $V$.
 
 3. $A:= \Set{x \in K^n \mid x_1 = 0}$ (the solution of a homogeneous equation) is a subspace of $K^n$, check that always $\alpha x + y \in A$, trivially.
 
@@ -111,3 +111,14 @@ Let's consider some well-known examples of subspaces. Consider some $V$ a $K$-ve
 
     Is a subspace of $K^K$.
 
+    Observe that, if we get $f,g \in Pol(K,K)$, then is: $ f(s) = \sum_{i=0}^{n} \alpha_i\, s^i$, $g(s) = \sum_{i=0}^{m} \beta_i\, s^i$, consider is $n \leq m$, then we can expand $f(s)$ to $\sum_{i=0}^{m} \alpha_i\, s^i = \sum_{i=0}^{n} \alpha_i\, s^i +\sum_{i=n+1}^{m} 0\, s^i$ and then is:
+
+    $$ (\gamma f + g)(s) = \gamma f(s) + g(s) = \gamma \sum_{i=0}^{m} \alpha_i\, s^i  + \sum_{i=0}^{m} \beta_i\, s^i =$$
+    
+    $$\sum_{i=0}^{m} \gamma\alpha_i\, s^i + \sum_{i=0}^{m} \beta_i\, s^i = \sum_{i=0}^{m} (\gamma\alpha_i + \beta_i) s^i = \sum_{i=0}^m \varphi_i \, s^i \in Pol(K,K)$$
+
+    <br>
+
+5. Consider $S:=\Set{(a_{ij})_{ij} \in M_n(K) \mid (a_{ij})_{ij} = (a_{ij})_{ji}}$ the set of all symmetric matrices form a subspace of $M_n(K)$
+
+    <br>
