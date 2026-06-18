@@ -12,7 +12,7 @@ lang: en
 
 # 0. Index.
 
-1. Multiples Input Features.
+1. Multiple Input Features.
 
 2. Vectorization.
 
@@ -26,10 +26,10 @@ lang: en
             - 2.2.3.3. Operation on vectors.
             - 2.2.3.4. Matrix and operation with matrices.
 
-3. Mupltiple Linear Regression.
+3. Multiple Linear Regression.
 
 - 3.1. Defining the problem.
-- 3.2. Writting our code.
+- 3.2. Writing our code.
 
 <br>
 
@@ -39,25 +39,25 @@ lang: en
 
 In the first section we talked about a model to find an approximation of an unknown relation between two variable sets $\mathcal{X}$ and $\mathcal{Y}$.
 
-This model consist in a template about this procedure based on an iterative process to find the local minima of the function that measures the error of the hypotesis over the training set. Minimizing the error results in a "fair" reliable aproximation of the wandered relation.
+This model consists of a template about this procedure based on an iterative process to find the local minimum of the function that measures the error of the hypothesis over the training set. Minimizing the error results in a "fair", reliable approximation of the sought relation.
 
-This template's componentes are:
+This template's components are:
 
-1. An *input space* $\mathcal{X}$ and output space $\mathcal{Y}$. This where the relation lives and where the predictions want to be made.
+1. An *input space* $\mathcal{X}$ and output space $\mathcal{Y}$. This is where the relation lives and where the predictions want to be made.
 
-2. The training set $\mathcal{D}$, this what the model consumes to optmize the approximation. 
+2. The training set $\mathcal{D}$, this is what the model consumes to optimize the approximation. 
 
 3. A *hypothesis set* $\mathcal{H} = \{h_\theta \mid \theta \in \Theta \subseteq \mathbb{R}^p\}$. The family of functions which determines the model's expressiveness; what patterns it can and cannot represent.
 
 4. A *loss function* $L : \mathcal{Y} \times \mathcal{Y} \to \mathbb{R}_{\geq 0}$. How do we measure error. 
 
-5. A *cost function* $J(\theta)$. How the loss functions gets aggregated across the training data. This determines what is optimized and what get's parametrized $\theta$ and decide the behavior of the model.
+5. A *cost function* $J(\theta)$. How the loss function gets aggregated across the training data. This determines what is optimized and what gets parametrized by $\theta$ and decides the behavior of the model.
 
 6. An *optimization algorithm*.
 
     <br>
 
-Every distinct decision over this parameters results in what we call a *learning model*. The learning models are in fact instantiations of the template we described in the post before. Most of the changes affects to the components $1$,$3$ and $4$, the cost function and the gradient descent remains still over the model we will see in this blog.
+Every distinct decision over these parameters results in what we call a *learning model*. The learning models are in fact instantiations of the template we described in the post before. Most of the changes affect components $1$, $3$ and $4$; the cost function and the gradient descent remain the same over the models we will see in this blog.
 
 <br>
 
@@ -69,13 +69,13 @@ A problem setup is a tuple:
 
 $$\mathcal{P} = (\mathcal{X}, \mathcal{Y}, \mathcal{D}, \mathcal{H}, L, J)$$
 
-With a fixed data, this is, given $(\mathcal{X}, \mathcal{Y}, \mathcal{D})$, then we decide the *learning model*, this is, how the model predicts and how we calibrate how good predicts (the hypotesis set and the loss function).
+With fixed data, this is, given $(\mathcal{X}, \mathcal{Y}, \mathcal{D})$, then we decide the *learning model*, this is, how the model predicts and how we calibrate how well it predicts (the hypothesis set and the loss function).
 
 Thus, a learning model is a pair:
 
 $$M:=(\mathcal{H}, L)$$
 
-This way, *linear regression model* means; learning model of afin transformation hypotesis and squared loss function: $M_{lr}:=(H_{at},L_s)$ 
+This way, *linear regression model* means; learning model of affine transformation hypothesis and squared loss function: $M_{lr}:=(H_{at},L_s)$ 
 
 
 <br>
@@ -84,33 +84,33 @@ This way, *linear regression model* means; learning model of afin transformation
 
 #### 1.2.1.1. Definition.
 
-Supervised Learning is one the three best well-known learning models, which trains a program to infere a relation between two data sets (input and outputs). 
+Supervised Learning is one of the three best-known learning models, which trains a program to infer a relation between two data sets (inputs and outputs). 
 
-This training model relays on the fact that the program count with a collection of pairs of inputs and outputs related by an unknown rule: $(x,y) \in \mathcal{X} \times \mathcal{Y} : y = f(x)$, and $f$ remains unknown (this function is typically an unknown joint distribution $P(X,Y)$, stochastic relation, the function is a concrete case where all noise vanish). 
+This training model relies on the fact that the program has a collection of pairs of inputs and outputs related by an unknown rule: $(x,y) \in \mathcal{X} \times \mathcal{Y} : y = f(x)$, and $f$ remains unknown (this function is typically an unknown joint distribution $P(X,Y)$, a stochastic relation; the function is a concrete case where all noise vanishes). 
 
-In this sense, *supervised* learning refers that during training (algorthim execution), every input, $x$ comes with a label $y$; a correct answer that "supervises" the learning process. 
+In this sense, *supervised* learning refers to the fact that during training (algorithm execution), every input $x$ comes with a label $y$; a correct answer that "supervises" the learning process. 
 
-In this sense, the task of supervised learning is, given the training the set: $\{ (x^{(i)}, y^{(i)}) \}\_{i=1}^{n} \subset \mathcal{X} \times \mathcal{Y}$ find some hipotesis $h : \mathcal{X} \to \mathcal{Y}$ of some hipotesis class $\mathcal{H}$ that minimizes the *expected risk*. However, taking again that $f$ is a simplification of $P$, in general, what is measured is the *empirical risk* instead which we call:
+In this sense, the task of supervised learning is, given the training set: $\{ (x^{(i)}, y^{(i)}) \}\_{i=1}^{n} \subset \mathcal{X} \times \mathcal{Y}$ find some hypothesis $h : \mathcal{X} \to \mathcal{Y}$ of some hypothesis class $\mathcal{H}$ that minimizes the *expected risk*. However, taking again that $f$ is a simplification of $P$, in general, what is measured is the *empirical risk* instead which we call:
 
 $$\hat{R}(h) = \frac{1}{n} \sum_{i=1}^{n} \ell\bigl(h(x^{(i)}), y^{(i)}\bigr)$$
 
-which basically measure the risk over the gathered sample instead of the entire population (which often is unnaccesible in real problems).
+which basically measures the risk over the gathered sample instead of the entire population (which often is inaccessible in real problems).
 
 Let's observe that this empirical risk is a template with three factors:
 
-- The hypothesis class $h$ that makes the prediction agains the labeled data.
+- The hypothesis class $h$ that makes the prediction against the labeled data.
 - The loss function $\ell$ which measures the error between each pair $(h(x)^{(i)},y^{(i)})$
-- Apply a convenience scaling $\frac{1}{n}$, for convenience we can scale the empirical risk to simplify the result.
+- A convenient scaling $\frac{1}{n}$; for convenience we can scale the empirical risk to simplify the result.
 
 Later we will select each one of the three factors to instantiate the empirical risk into the *cost function* $J$.
 
 <br>
 
-#### 1.2.1.2.  Linear Regression: The simpliest Supervised Learning Model instantiation.
+#### 1.2.1.2.  Linear Regression: The simplest Supervised Learning Model instantiation.
 
-*Linear Regression* is the simpliest instantiation of the Supervised Learning Model. 
+*Linear Regression* is the simplest instantiation of the Supervised Learning Model. 
 
-Let's take a moment two introduce the *affine* concept. *Linear* and *Affine* are forms to apply transformations over the data on a set of points which satisfies specific conditions. 
+Let's take a moment to introduce the *affine* concept. *Linear* and *Affine* are ways to apply transformations over the data on a set of points which satisfy specific conditions. 
 
 - *Linearity* applies a scalar transformation over the data, in linear algebra we did learn that a linear transformation $f$ satisfies:
 
@@ -118,35 +118,35 @@ Let's take a moment two introduce the *affine* concept. *Linear* and *Affine* ar
 
     <br>
 
-- *Affinity* can be described as a linear transformation incorporating a *traslation*, being $f: V \to W$ a linear transformation between two vector spaces, then we can consider an *affine transformation* $t: V \to W$ as:
+- *Affinity* can be described as a linear transformation incorporating a *translation*, being $f: V \to W$ a linear transformation between two vector spaces, then we can consider an *affine transformation* $t: V \to W$ as:
 
     $$t = f + b : b \in W$$
 
-    Where $b$ takes the rol of the translation.
+    Where $b$ takes the role of the translation.
 
     <br>
 
-Now, suposse it is: $\mathcal{X} = \mathbb{R}^d \wedge \mathcal{Y} = \mathbb{R}$ the problem, fixed this sets, is predict a real-valued output from a vector of features. The core assumption of linear regression is that the relationship between input and output is *affine*, meaning that the hypothesis class is:
+Now, suppose it is: $\mathcal{X} = \mathbb{R}^d \wedge \mathcal{Y} = \mathbb{R}$; the problem, having fixed these sets, is to predict a real-valued output from a vector of features. The core assumption of linear regression is that the relationship between input and output is *affine*, meaning that the hypothesis class is:
 
 $$\mathcal{H} := \Set{h_\theta : x \to \theta^{\top}x + b \ \vert \ \theta \in \mathbb{R}^d \wedge b \in \mathbb{R}}$$
 
-The reasong for which we force the hipotesis to be an affine transformation is because for many types of relation between a set of parameters and the data, a linear application simply doesn't fit, for example a professional with $0$ years of experience doesn't receive a salary of $0$, the relation between the experience in a professional industry and the salary exists and is documented but is not linear.
+The reason for which we force the hypothesis to be an affine transformation is that for many types of relation between a set of parameters and the data, a linear application simply doesn't fit; for example a professional with $0$ years of experience doesn't receive a salary of $0$; the relation between the experience in a professional industry and the salary exists and is documented but is not linear.
 
-Thus, suppose we have $n$ observations, each observation is a pair $(x^{(i)},y^{(i)}) \in \mathcal{X} \times \mathcal{Y}$ where the output is roughly determined by the input, with some noise on top: $y^{(i)} = f(x^{(i)}) + \varepsilon^{(i)}$ (this is the affine relation we talk above), then the linear regression is the decision to search only among affine maps as candidates for $f$:
+Thus, suppose we have $n$ observations, each observation is a pair $(x^{(i)},y^{(i)}) \in \mathcal{X} \times \mathcal{Y}$ where the output is roughly determined by the input, with some noise on top: $y^{(i)} = f(x^{(i)}) + \varepsilon^{(i)}$ (this is the affine relation we talked about above), then the linear regression is the decision to search only among affine maps as candidates for $f$:
 
 ![regression_lineal](/assets/images/ML/regression_lineal.png)
 
 <br>
 
-#### 1.2.1.3. Clasification Models.
+#### 1.2.1.3. Classification Models.
 
 Before, we've introduced Regression models with Linear Regression but we will cover that topic more extensively later.
 
-No we gonna cover the Classification Model, we've already internalized the regression setup: you have a hypothesis $h : \mathcal{X} \times \mathcal{Y}$ that predicts a continuous response, $h$ is continous at any point which only makes sense if $\mathcal{Y}$ is isomorph to some subset of $\mathbb{R}^n : n \in\mathbb{N}$. Classification arises when this hipotesis is no longuer continous, in the sense that $\mathcal{Y}$ is a discrete set. 
+Now we are going to cover the Classification Model; we've already internalized the regression setup: you have a hypothesis $h : \mathcal{X} \to \mathcal{Y}$ that predicts a continuous response; $h$ is continuous at any point which only makes sense if $\mathcal{Y}$ is isomorphic to some subset of $\mathbb{R}^n : n \in\mathbb{N}$. Classification arises when this hypothesis is no longer continuous, in the sense that $\mathcal{Y}$ is a discrete set. 
 
-In regression we talked about an error aproximation through the loss function $\ell$ which tries to predict how far the prediction is from the desired output in a geometric "metric" sense, you care of the magnitude of the error, how far you are. In classification, being $\mathcal{Y}:= \Set{1,...,k}$ there is no meaningful notion of "distance"; when you predict a wrong class in $Y$, there is no near notion to the correct answer in the sense that class $1$ isn't more closer or much better than class $7$ when the desired output is class $3$, there are only right or wrong answers.
+In regression we talked about an error approximation through the loss function $\ell$ which tries to predict how far the prediction is from the desired output in a geometric "metric" sense; you care about the magnitude of the error, how far you are. In classification, being $\mathcal{Y}:= \Set{1,...,k}$ there is no meaningful notion of "distance"; when you predict a wrong class in $Y$, there is no notion of nearness to the correct answer in the sense that class $1$ isn't any closer or much better than class $7$ when the desired output is class $3$; there are only right or wrong answers.
 
-This collapses $\ell$ to the *0-1 loss*, which counts missclasifications:
+This collapses $\ell$ to the *0-1 loss*, which counts misclassifications:
 
 $$\ell(h(x),y) = \mathbf{1}[h(x) \ne y]$$
 
@@ -154,17 +154,17 @@ In regression you minimize empirical risk with a continuous loss (squared error,
 
 ![classification](/assets/images/ML/clasification.png)
 
-Then, basically, clasification models force the machine to recognise previously labeled class (minimizing the error function results) by using the hipotesis $h$ over the input $x$ data and identifying it in some value of the discrete codomain $y$.
+Then, basically, classification models force the machine to recognise previously labeled classes (by minimizing the error function) using the hypothesis $h$ over the input $x$ data and identifying it as some value of the discrete codomain $y$.
 
 <br>
 
 ### 1.2.2. Unsupervised Learning. Clustering.
 
-The idea in a high scale is that, in contrast of supervised learning, the labeling of the output $y$ dissapear, there are no wrong answer when apply the hipotesis on the data. The task for the algorith is to find structures in the data; clusters.
+The idea on a high level is that, in contrast to supervised learning, the labeling of the output $y$ disappears; there are no wrong answers when applying the hypothesis on the data. The task for the algorithm is to find structures in the data; clusters.
 
-In Classification there is a training set $\Set{(x_i​,y_i​)}_{i=1}^n$​ where the labels $y_i$ where given by an oracle, in the sense that is desired output. Then, the task is to find a map that approximates $x \to y$ as much as posible. Observe that the categories exists before the algorithm starts the distinction.
+In Classification there is a training set $\Set{(x_i​,y_i​)}_{i=1}^n$​ where the labels $y_i$ were given by an oracle, in the sense that it is the desired output. Then, the task is to find a map that approximates $x \to y$ as much as possible. Observe that the categories exist before the algorithm starts the distinction.
 
-Clustering inverts this relationship. The training set consist only in $\Set{x_i​}_{i=1}^n$ (without labels). The task is to discover that there are groups at all, and to assign each point to one. The categories are not predefined; they emerge from the geometric or distributional structure of the data itself. The fundamental assumption behind clustering is that the data is not uniformly spread across $\mathcal{X}$. but concentrates around certain regions. Clustering algorithms formalize different notions of what "concentrate" means:
+Clustering inverts this relationship. The training set consists only of $\Set{x_i​}_{i=1}^n$ (without labels). The task is to discover that there are groups at all, and to assign each point to one. The categories are not predefined; they emerge from the geometric or distributional structure of the data itself. The fundamental assumption behind clustering is that the data is not uniformly spread across $\mathcal{X}$, but concentrates around certain regions. Clustering algorithms formalize different notions of what "concentrate" means:
 
 - *Centroid-based*; structure means proximity to a representative point.
 
@@ -188,19 +188,19 @@ The problem is ill-defined in a way classification is not.
 
 ## 2.1. Linear Regression Overview.
 
-Now, we gonna dive in the Linear Regression Model, this is the learning algorithm most widely used and many of the concepts used to explain it applies other training algorithms.
+Now, we are going to dive into the Linear Regression Model; this is the most widely used learning algorithm and many of the concepts used to explain it apply to other training algorithms.
 
-Let's clear that, Linear Regression is an instantiation of what we call Supervised Learning, which is a training model that consist on first train the machine with previously labeled data $(x,y)$, where $x$ is called as the *input feature* data and $y$ is the *output target* variable (the expected output). Also is important to know that we count with a finite number of traning pairs $n$. 
+Let's make clear that Linear Regression is an instantiation of what we call Supervised Learning, which is a training model that consists of first training the machine with previously labeled data $(x,y)$, where $x$ is called the *input feature* data and $y$ is the *output target* variable (the expected output). Also it is important to know that we have a finite number of training pairs $n$. 
 
-When you finish the training, you let the machine to predict output for new unlabeled data.
+When you finish the training, you let the machine predict outputs for new unlabeled data.
 
 <br>
 
-Each training pair is reflected in a *Cartesian coordinate system* forming a cloud of points. As we said before, linear regression consist in the assumption that the relation between each pair is an affin transformation, or simply a line:
+Each training pair is reflected in a *Cartesian coordinate system* forming a cloud of points. As we said before, linear regression consists of the assumption that the relation between each pair is an affine transformation, or simply a line:
 
 ![regression_lineal](/assets/images/ML/regression_lineal.png)
 
-The notation $(x^{(i)},y^{(i)}) \in \mathcal{X} \times \mathcal{Y}$ referes that we are treating te i-th pair in the sample. Also, each pair is reflect in a table oppositing $x$ and $y$ in a $n$-row table:
+The notation $(x^{(i)},y^{(i)}) \in \mathcal{X} \times \mathcal{Y}$ refers to the fact that we are treating the i-th pair in the sample. Also, each pair is reflected in a table opposing $x$ and $y$ in an $n$-row table:
 
 
 | pair | x | y | 
@@ -213,17 +213,17 @@ The notation $(x^{(i)},y^{(i)}) \in \mathcal{X} \times \mathcal{Y}$ referes that
 
 ## 2.2. Training the machine. Linear regression.
 
-Remember that the training algorthim's job is two form a function $f$ with the provided training set such the transformation of an input feature $x$ by $f$, the prediction; $f(x)=\hat{y}$, is approximated enough to the target $y$; expected output ; $\hat{y} \to y$.
+Remember that the training algorithm's job is to form a function $f$ with the provided training set such that the transformation of an input feature $x$ by $f$, the prediction; $f(x)=\hat{y}$, is approximated enough to the target $y$; the expected output; $\hat{y} \to y$.
 
-As we say before, *linear regression* assumes that $f$ is represented as a straight line in the graph of the form:
+As we said before, *linear regression* assumes that $f$ is represented as a straight line in the graph of the form:
 
 $$\hat{y} = f_{w,b}(x) := wx + b : w,b \in \mathbb{R}$$
 
-Is worth to note that this parameters tell to us how $\hat{y}$ is built from $x$:
+It is worth noting that these parameters tell us how $\hat{y}$ is built from $x$:
 
-- $w$ represent how much $x$ contributes to $\hat{y}$, this will be clearer when linear regression model for multiple variables gets introduced; $x$ and $w$ are vectors related in $f$ by the dot product. This way each $w_i \in w$ tell us how much $x_i \in x$ feature contribute in the value of $\hat{y}$.
+- $w$ represents how much $x$ contributes to $\hat{y}$; this will be clearer when the linear regression model for multiple variables gets introduced; $x$ and $w$ are vectors related in $f$ by the dot product. This way each $w_i \in w$ tells us how much the $x_i \in x$ feature contributes to the value of $\hat{y}$.
 
-- $b$ as well represent how much $y$ is independant from $x$ since is a constant value not related with the input. Observe that when $x = 0$, then $\hat{y} = b$ exactly showing that this is the value that separates $\hat{y}$ from any $wx$.
+- $b$ as well represents how much $y$ is independent of $x$ since it is a constant value not related to the input. Observe that when $x = 0$, then $\hat{y} = b$ exactly, showing that this is the value that separates $\hat{y}$ from any $wx$.
 
 <br>
 
@@ -231,17 +231,17 @@ Is worth to note that this parameters tell to us how $\hat{y}$ is built from $x$
 
 ### 2.3.1. Squared Error.
 
-Until now, we stablished that inear regression is about a finite training set that is represented in a coordinate system. We want a line such $y = wx + b$ that represents well enough the relation between the points.
+Until now, we established that linear regression is about a finite training set that is represented in a coordinate system. We want a line such that $y = wx + b$ represents well enough the relation between the points.
 
-Let's now dive what *well enough* means. Well enough means that minimizes the error in the prediction, let's now see what we call error and how to measure it.
+Let's now dive into what *well enough* means. Well enough means that it minimizes the error in the prediction; let's now see what we call error and how to measure it.
 
-The most natural thing to measure is the *residual*: how far off is the prediction from the true:
+The most natural thing to measure is the *residual*: how far off is the prediction from the truth:
 
 $$e^{(i)}= \hat{y}^{(i)} - y ^{(i)}$$
 
 So in intuitive terms, the thing we want to measure is $\displaystyle \sum_{i=1}^{n}e^{(i)}$, but positive and negative terms can cancel out and erase part of the information.
 
-The two natural candidates to solve the problem, $\vert e^{(i)} \vert$ and square $(e^{(i)})^2$, the reason why we decide to square is because is differentiable at any point (we will understand this later);$\displaystyle \sum_{i=1}^{n}(e^{(i)})^2$
+The two natural candidates to solve the problem, $\vert e^{(i)} \vert$ and the square $(e^{(i)})^2$; the reason why we decide to square is because it is differentiable at any point (we will understand this later); $\displaystyle \sum_{i=1}^{n}(e^{(i)})^2$
 
 Now we take the average (so the cost doesn't scale arbitrarily with dataset size):
 
@@ -269,9 +269,9 @@ One thing worth noting: $J$ being zero is typically impossible (or undesirable) 
 
 # 3. Gradient Descent.
 
-We just saw that, in linear regression model we assume that exists an affine transformation $f_{w,b}(x) := wx + b$ that makes a solid prediction over the labeled points $(x,y) \in \mathcal{X} \times \mathcal{Y}$. We also say that a way to measure how "solid" is this line is to build our Cost Function reprented as: $J(w,b) = \frac{1}{2m} \sum_{i=1}^{m} \bigl(f_{w,b}(x^{(i)}) - y^{(i)}\bigr)^2$ and we stablish it as an optimization problem over the $(w,b) \in \mathbb{R}^2$ that minimizes $J$ value as much as posible.
+We just saw that, in linear regression model we assume that exists an affine transformation $f_{w,b}(x) := wx + b$ that makes a solid prediction over the labeled points $(x,y) \in \mathcal{X} \times \mathcal{Y}$. We also said that a way to measure how "solid" this line is, is to build our Cost Function, represented as: $J(w,b) = \frac{1}{2m} \sum_{i=1}^{m} \bigl(f_{w,b}(x^{(i)}) - y^{(i)}\bigr)^2$ and we establish it as an optimization problem over the $(w,b) \in \mathbb{R}^2$ that minimizes the $J$ value as much as possible.
 
-Now, *Gradient Descent* taught us an way to consistently seach about $(w,b)$ pairs.
+Now, *Gradient Descent* taught us a way to consistently search for $(w,b)$ pairs.
 
 <br>
 
@@ -279,7 +279,7 @@ Now, *Gradient Descent* taught us an way to consistently seach about $(w,b)$ pai
 
 We have the *Mean Squared Error*; $J(\theta)$, which measures the average distance-error between the predicted values $\hat{y}$ and the labeled values $y$, and we want to find that parameter $\theta^*$ that minimizes that error. 
 
-For a simple system, for example a continous one-variable function on a real segment, we would calculate $\nabla J(\theta) = 0$:
+For a simple system, for example a continuous one-variable function on a real segment, we would calculate $\nabla J(\theta) = 0$:
 
 $$\nabla J(\theta) :=
     \begin{pmatrix}
@@ -298,30 +298,30 @@ But in the moment the parameter space grows, that closed-form solution either do
 
 ## 3.2. Gradient Descent Algorithm.
 
-Gradient Descent exploits one fundamental fact from calculus: the gradient $\nabla J(\theta)$ points in the direction of steepest ascent of $J$ at $\theta$, meaning that "decrease" $J$ implies move $\theta$ towards the opposite direction of $\nabla J$:
+Gradient Descent exploits one fundamental fact from calculus: the gradient $\nabla J(\theta)$ points in the direction of steepest ascent of $J$ at $\theta$, meaning that to "decrease" $J$ implies moving $\theta$ towards the opposite direction of $\nabla J$:
 
 
 $$\theta^{(t+1)} := \theta^{(t)} - \alpha \,\nabla J(\theta^{(t)}): \alpha \in \mathbb{R}^+$$
 
 Where $\alpha$ is the *learning rate* and controls the step size.
 
-This way, computing $\nabla_\theta J$ gives you *a concrete vector that tells you how each parameter contributes to the error*. In the sense that each component $\frac{\partial J}{\partial \theta_j}$​ tells you how $J$ (the error) changes, let's have in mind the image above, $\theta$ always advance from left towards right, this means that:
+This way, computing $\nabla_\theta J$ gives you *a concrete vector that tells you how each parameter contributes to the error*. In the sense that each component $\frac{\partial J}{\partial \theta_j}$​ tells you how $J$ (the error) changes, let's keep in mind the image above, $\theta$ always advances from left to right, this means that:
 
-- If $\frac{\partial J}{\partial \theta_j} > 0$, then the function is ascending and is moving away from the minimum, $\theta$ has overshot the minimum to the right so subtract a positive value $\alpha · \frac{\partial J}{\partial \theta}$ to $\theta$ nudges $\theta$ to the left, hence $J$ towards the minimum.
+- If $\frac{\partial J}{\partial \theta_j} > 0$, then the function is ascending and is moving away from the minimum, $\theta$ has overshot the minimum to the right so subtracting a positive value $\alpha · \frac{\partial J}{\partial \theta}$ from $\theta$ nudges $\theta$ to the left, hence $J$ towards the minimum.
 
-- If $\frac{\partial J}{\partial \theta_j} < 0$, then the function is descending and is approaching to the minimum, $\theta$ has the minimum in front, to the right, so subtract a negative value $\alpha · \frac{\partial J}{\partial \theta}$ is like add a positive one, nudging $\theta$ forward and hence $J$ towards the minimum.
+- If $\frac{\partial J}{\partial \theta_j} < 0$, then the function is descending and is approaching the minimum, $\theta$ has the minimum in front, to the right, so subtracting a negative value $\alpha · \frac{\partial J}{\partial \theta}$ is like adding a positive one, nudging $\theta$ forward and hence $J$ towards the minimum.
 
 So, the sign always corrects the direction in both cases.
 
-It is worth to note that convexity matters. For linear regression, $J$ is convex, there's a single global minimum and gradient descent will find it (given a reasonable $\alpha$). For neural networks, $J$ is non-convex with many local minima and saddle points.
+It is worth noting that convexity matters. For linear regression, $J$ is convex, there's a single global minimum and gradient descent will find it (given a reasonable $\alpha$). For neural networks, $J$ is non-convex with many local minima and saddle points.
 
 <br>
 
-It is also worth noting that, as $J$ gets closer to the minimum, the derivative term gets smaller in absolute terms, meaning that the term substracted to $\theta$ is smaller, so $J$ advance more slowly to the minimum as it gets closer through Gradient Descent.
+It is also worth noting that, as $J$ gets closer to the minimum, the derivative term gets smaller in absolute terms, meaning that the term subtracted from $\theta$ is smaller, so $J$ advances more slowly to the minimum as it gets closer through Gradient Descent.
 
 <br>
 
-Observe that applying this two our linear regression model:
+Observe that applying this to our linear regression model:
 
 $$J(w,b) := \frac{1}{2m} \sum_{i=1}^{m} \bigl(f_{w,b}(x^{(i)}) - y^{(i)}\bigr)^2 \implies \nabla J(w,b) := \begin{pmatrix} \frac{\partial J(w,b)}{\partial w} \\ \frac{\partial J(w,b)}{\partial b}  \end{pmatrix}$$
 
@@ -329,9 +329,9 @@ Where:
 
 $$\begin{cases}\frac{\partial J(w,b)}{\partial w} =\frac{1}{m} \sum_{i=1}^{m} \bigl(f_{w,b}(x^{(i)}) - y^{(i)}\bigr)x \\ \frac{\partial J(w,b)}{\partial b} = \frac{1}{m} \sum_{i=1}^{m} \bigl(f_{w,b}(x^{(i)}) - y^{(i)}\bigr)  \end{cases}$$
 
-# 1. Multiples Input Features.
+# 1. Multiple Input Features.
 
-In our previous notes, our input was a single feature $x \in \mathbb{R}$ and the linear regression imposes the hypotesis to be an affine transformation: $f_{w,b}(x):=wx + b$, with two parameters.
+In our previous notes, our input was a single feature $x \in \mathbb{R}$ and the linear regression imposes the hypothesis to be an affine transformation: $f_{w,b}(x):=wx + b$, with two parameters.
 
 Now suppose each observation has $d$ input features instead of one. The $i$-th training example is no longer a scalar $x^{(i)}$, but a vector:
 
@@ -345,11 +345,11 @@ x^{(i)}_d
 
 <br>
 
-Then, $w$ is also another vector, this can be seen as the complements of the features, so the affin transformation gets the form:
+Then, $w$ is also another vector, this can be seen as the complements of the features, so the affine transformation gets the form:
 
 $$f_{w,b}(x) = w_1 x_1 + w_2 x_2 + \cdots + w_d x_d + b = \sum_{i=1}^d (w_ix_i) + b =  w^\top x + b$$
 
-Let's observe that is easier now to observe that each $w_i$ tell us how much $x_i$ contributes to $\hat{y} = f_{w,b}$ and how $b$, remaining a scalar, keeps maintining the distance between $w · x$ and $\hat{y}$.
+Let's observe that it is easier now to observe that each $w_i$ tells us how much $x_i$ contributes to $\hat{y} = f_{w,b}$ and how $b$, remaining a scalar, keeps maintaining the distance between $w · x$ and $\hat{y}$.
 
 Let's now extend the vectorial product to simplify the expression by forming:
 
@@ -400,7 +400,7 @@ So conceptually, multivariate linear regression is identical to univariate — y
 
 ## 2.1. Mathematical concept.
 
-Vectorization is a technique to compute the gradient of a multivariable regression model efficiently. At the cost function there $n$ training examples, each a vector in $\mathbb{R}^{d+1}$. The direct implementation is a double loop over $n$ examples, and for each, loop over $d+1$ components to compute $\theta^\top \tilde{x}^{(i)}$. This is computationally terrible.
+Vectorization is a technique to compute the gradient of a multivariable regression model efficiently. At the cost function there are $n$ training examples, each a vector in $\mathbb{R}^{d+1}$. The direct implementation is a double loop over $n$ examples, and for each, loop over $d+1$ components to compute $\theta^\top \tilde{x}^{(i)}$. This is computationally terrible.
 
 The key observation is that the entire training set can be packed into a single matrix. 
 
@@ -412,7 +412,7 @@ $$X =
 (x^{(m)})^\top
 \end{pmatrix} \in \mathbb{R}^{m \times (d+1)}$$
 
-And thus, the vector of all predictions can be defined as the following matricial product:
+And thus, the vector of all predictions can be defined as the following matrix product:
 
 $$\hat{Y}= X \theta \in \mathbb{R}^m$$
 
@@ -422,7 +422,7 @@ The cost function becomes:
 
 $$J(\theta)=\frac{1}{2m}​\vert \vert X \theta−Y \vert \vert^2$$
 
-The entire gradient computation is, this way, expressed as two linear algebra operations. This is particularly important in computation, since  When you write a Python loop to compute $\sum_{i=1}^m (\theta^\top x^{(i)} - y^{(i)}) x_j^{(i)}$ for each $j$, every iteration has interpreter overhead, cache misses, and no parallelism. 
+The entire gradient computation is, this way, expressed as two linear algebra operations. This is particularly important in computation, since when you write a Python loop to compute $\sum_{i=1}^m (\theta^\top x^{(i)} - y^{(i)}) x_j^{(i)}$ for each $j$, every iteration has interpreter overhead, cache misses, and no parallelism. 
 
 When you write *X.T @ (X @ theta - y)* in NumPy, the actual work is dispatched to BLAS (Basic Linear Algebra Subprograms), highly optimized Fortran/C routines that exploit CPU vector instructions (SIMD: single instruction, multiple data), cache-aware memory access patterns, and sometimes multiple cores. The algorithmic complexity is the same $O(md)$, but the constant factor can differ by orders of magnitude.
 
@@ -432,7 +432,7 @@ When you write *X.T @ (X @ theta - y)* in NumPy, the actual work is dispatched t
 
 ### 2.2.1. Python and C.
 
-Python makes no assumptions at parse time about what type a variable holds. The price of that flexibility is paid per operation, every time. Is an interpreted, dynamically-typed language meaning that at runtime, every operation on every value requires the interpreter to inspect the object's type, resolve the appropriate method, perform type coercion if needed, and manage reference-counted memory, all before the actual arithmetic happens.
+Python makes no assumptions at parse time about what type a variable holds. The price of that flexibility is paid per operation, every time. It is an interpreted, dynamically-typed language meaning that at runtime, every operation on every value requires the interpreter to inspect the object's type, resolve the appropriate method, perform type coercion if needed, and manage reference-counted memory, all before the actual arithmetic happens.
 
 Also, Python represents every value as a heap-allocated object with a type pointer, a reference count, and the actual payload. When you store n floats in a Python list, you have a contiguous array of pointers, each pointing to a separate heap-allocated float object scattered across memory. The data is fragmented by design.
 
@@ -483,7 +483,7 @@ NumPy's basic data structure is an indexable, n-dimensional array containing ele
 
 The dimension or rank of a vector $v$ refers to the number of elements of the basis of the vector space $V : v \in V$ which essentially refers to the $n$ in $\mathbb{R}^n : V \simeq \mathbb{R}^n$ (informally speaking, the number of 'elements' of the vector).
 
-In computer science, dimension referes to the number of index in the array, the array has a shape, which refers to the number of elements per index and a dimension, which is the number of index. This way, a $n$-dimensional vector coincides with a $1$-D array of shape $n$.
+In computer science, dimension refers to the number of indices in the array; the array has a shape, which refers to the number of elements per index, and a dimension, which is the number of indices. This way, an $n$-dimensional vector coincides with a $1$-D array of shape $n$.
 
 <br>
 
@@ -585,7 +585,7 @@ In [18]: print(np.arange(0,100,10)[2])
 20
 ```
 
-If we pass a 'minus' index, we access the slots by the opposite said:
+If we pass a 'minus' index, we access the slots from the opposite side:
 
 ```python
 In [18]: print(np.arange(0,100,10)[-2])
@@ -614,9 +614,9 @@ In [26]: print(np.arange(100)[10:50:5])
 
 <br>
 
-**Uninary vector operations**
+**Unary vector operations**
 
-Let's see how operate with unary operations:
+Let's see how to operate with unary operations:
 
 ```python
 In [29]: print(-np.array([1,2,3,4]))
@@ -664,14 +664,14 @@ $$a·b = \sum_{i=1}^{n}a_ib_i$$
 
 The dot product multiplies the values in two vectors element-wise and then sums the result. Vector dot product requires the dimensions of the two vectors to be the same.
 
-Without we should implement a for loop to first perform $n$ products and then do the summatory, but, NumPy has the `.dot` method:
+Without it we would have to implement a for loop to first perform $n$ products and then do the summation, but NumPy has the `.dot` method:
 
 ```python
 In [7]: print(np.dot(np.array([1,2,3,4]),np.array([1,2,3,4])))
 30
 ```
 
-Let's also perform the same operation through the two methods and see which of the two spend more time computating the code and verify if the efficientcy of NumPy is worth.
+Let's also perform the same operation through the two methods and see which of the two spends more time computing the code and verify if the efficiency of NumPy is worth it.
 
 First, take a look over the following test file:
 
@@ -731,7 +731,7 @@ loop version duration: 1158.4625 ms
 
 #### 2.2.3.4. Matrix and operation with matrices.
 
-Matrices, are two dimensional arrays. The elements of a matrix are all of the same type.
+Matrices are two-dimensional arrays. The elements of a matrix are all of the same type.
 
 In math settings, numbers in the index typically run from 1 to n. In computer science and these labs, indexing will run from 0 to n-1.
 
@@ -741,7 +741,7 @@ NumPy's basic data structure is an indexable, n-dimensional array containing ele
 
 **Indexing**
 
-Matrix includes a second index. Matrices include a second index. The two indexes describe [row, column]. Access can either return an element or a row/column:
+Matrices include a second index. The two indexes describe [row, column]. Access can either return an element or a row/column:
 
 ```python
 In [4]: a = np.arange(6).reshape(-1, 2) #Reshape allow to expand dimension
@@ -754,15 +754,15 @@ a= [[0 1]
 
 <br>
 
-# 3. Mupltiple Linear Regression.
+# 3. Multiple Linear Regression.
 
-Let's now extend the previously viosited concepts and NumPy metods to build a Multi Variable Linear Regression.
+Let's now extend the previously visited concepts and NumPy methods to build a Multi-Variable Linear Regression.
 
 <br>
 
 ## 3.1. Defining the problem.
 
-We will use the motivating example of housing price prediction. The training dataset contains three examples with four features (size, bedrooms, floors and, age) shown in the table below.
+We will use the motivating example of housing price prediction. The training dataset contains three examples with four features (size, bedrooms, floors and age) shown in the table below.
 
 | Size (sqft) | Number of Bedrooms | Number of floors | Age of Home | Price (1000s dollars) |
 |:-----------:|:------------------:|:----------------:|:-----------:|:---------------------:|
@@ -772,9 +772,9 @@ We will use the motivating example of housing price prediction. The training dat
 
 <br>
 
-## 3.2. Writting our code.
+## 3.2. Writing our code.
 
-First, we start by importing the necesary libraries:
+First, we start by importing the necessary libraries:
 
 ```python
 import copy, math
@@ -799,7 +799,7 @@ X_train = np.array([[2104, 5, 1, 45], [1416, 3, 2, 40], [852, 2, 1, 35]])
 y_train = np.array([460, 232, 178])
 ```
 
-Let's observe that we built the following structure from out data:
+Let's observe that we built the following structure from our data:
 
 <br>
 
@@ -809,24 +809,24 @@ $$X := \begin{pmatrix} 2104, & 5, & 1, & 45 \\ 1416, & 3, & 2, & 40 \\ 852, & 2,
 
 Let's remember that our goal is to find $f: \mathcal{X} \to \mathcal{Y}: f(x) = y \ \ \forall (x,y) \in \mathcal{X} \times \mathcal{Y}$. 
 
-The linear regression model assumes that exists an affine transformation that approximate enough to $f$, in other words $\exists (w,b) \in \mathbb{Q^4} \times \mathbb{Q}$ such:
+The linear regression model assumes that there exists an affine transformation that approximates $f$ closely enough, in other words $\exists (w,b) \in \mathbb{Q^4} \times \mathbb{Q}$ such that:
 
 $$y = f(x) \simeq f_{w,b}(x) := w · x + b$$
 
-Thus, $w \in \mathbb{Q}^4$ is a vector of $4$ elements $(w_1,w_2,w_3,w_4 )$ where $w_i$ determines how much $x_i$ of  $x \in \mathbb{Q}^4$ affects to the $f_{w,b}(x)$ value and $b \in \mathbb{Q}$ is a scalar parameter that . Thus, we can reformulate $f_{w,b}$ as:
+Thus, $w \in \mathbb{Q}^4$ is a vector of $4$ elements $(w_1,w_2,w_3,w_4 )$ where $w_i$ determines how much $x_i$ of  $x \in \mathbb{Q}^4$ affects the $f_{w,b}(x)$ value and $b \in \mathbb{Q}$ is a scalar parameter. Thus, we can reformulate $f_{w,b}$ as:
 
 $$f_{w,b}(x) := w · x + b = \sum_{i=1}^4 w_ix_i + b$$
 
-This function depends on parameters $w$ and $b$, and in order to be $
+This function depends on parameters $w$ and $b$.
 
-For demonstration,$w$ and $b$ will be loaded with some initial selected values that are near the optimal.
+For demonstration, $w$ and $b$ will be loaded with some initial selected values that are near the optimal.
 
 ```python
 b_init = 785.1811367994083
 w_init = np.array([ 0.39133535, 18.75376741, -53.36032453, -26.42131618])
 ```
 
-In order to perform the operation we can use the `.dot` method of the NumPy module instead of craft a for loop as we see before:
+In order to perform the operation we can use the `.dot` method of the NumPy module instead of crafting a for loop as we saw before:
 
 ```python
 def f(x, w, b): 
@@ -844,7 +844,7 @@ def f(x, w, b):
     return p
 ```
 
-Now, lets modelize the *cost function* which measures the prediction error of $f_{w,b}$ for certain $w,b$ given by $\hat{y}^{(i)} := f_{w,b}(x^{(i)}) \simeq y^{(i)}$:
+Now, let's model the *cost function* which measures the prediction error of $f_{w,b}$ for certain $w,b$ given by $\hat{y}^{(i)} := f_{w,b}(x^{(i)}) \simeq y^{(i)}$:
 
 $$J(w,b):= \frac{1}{6}\sum_{i=1}^3(f_{w,b}(x^{(i)}) - y^{(i)})^2$$
 
@@ -874,13 +874,13 @@ def J(X, y, w, b):
 
 <br>
 
-We want to find $\theta := (w,b) : \displaystyle\min_{\theta \in \Theta} \ J(\theta)$ and for throuh the Gradient Descend algorithm. We remember that this algortihm tries to find a local minimum for $J$ by leveraging one fundamental fact, $\nabla J$ points to the direction which maximizes $J$, thus, we have to perform a finite sequence of steps of the form:
+We want to find $\theta := (w,b) : \displaystyle\min_{\theta \in \Theta} \ J(\theta)$ and we go through the Gradient Descent algorithm. We remember that this algorithm tries to find a local minimum for $J$ by leveraging one fundamental fact: $\nabla J$ points to the direction which maximizes $J$, thus, we have to perform a finite sequence of steps of the form:
 
 $$\theta_{t+1} := \theta_t - \alpha \nabla J (\theta_ t)$$
 
-Were $\alpha$ is our learning rate.
+Where $\alpha$ is our learning rate.
 
-Applyin the formula above to our mode, lets first unrable what $\nabla J$ is. 
+Applying the formula above to our model, let's first unravel what $\nabla J$ is. 
 
 Being $\theta := (w_1,w_2,w_3,w_4,b)$, then, we define:
 
@@ -901,7 +901,7 @@ dj_dw = np.zeros((n,))
 dj_db = 0.
 ```
 
-Observe that in python `m,n = X.shape` is unpacking the dimension of the matrix $X$, also we are "initiating" to zero the partial vector $dw$ and $db$. 
+Observe that in python `m,n = X.shape` is unpacking the dimension of the matrix $X$; also we are "initializing" to zero the partial vectors $dw$ and $db$. 
 
 Now, we feed each element of the vectors by mathematically computing the error and adding it to the vector entry, then divide the entry by $m$.
 
@@ -964,7 +964,7 @@ def gradient_descent(X, y, w_in, b_in, cost_function, gradient_function, alpha, 
     return w, b, J_history #return final w,b and J history for graphing
 ```
 
-Observe that the code above is just assembling the pieces we already craft in a step-by-step mechanism that resembles our gradient descent algorithm. By parts:
+Observe that the code above is just assembling the pieces we already crafted in a step-by-step mechanism that resembles our gradient descent algorithm. By parts:
 
 - First, we create some arrays to store the results and the modified data:
 
@@ -974,7 +974,7 @@ Observe that the code above is just assembling the pieces we already craft in a 
     b = b_in
     ```
 
-- Then, we stablish an number of iterations for our gradient descent algorithm which will determine how close we get to the local minimum and inside of the loop we perform the aproximation of the algorithm:
+- Then, we establish a number of iterations for our gradient descent algorithm which will determine how close we get to the local minimum and inside the loop we perform the approximation of the algorithm:
 
     ```python
     for i in range(num_iters):
@@ -1006,13 +1006,13 @@ We can find the whole code in the following [repository](https://github.com/GSan
 
 ## 4.1. Introducing the problem.
 
-Some times, having a cost function $J(\theta)$ and apply a correct learning rate $\alpha$ doesn't conclude into a smooth convergence on the local minimum. In practice, the gradient descent applies a single learning rate $\alpha$ to update all parameters simultaneously, as we know, the algorithm perform the assignations as:
+Sometimes, having a cost function $J(\theta)$ and applying a correct learning rate $\alpha$ doesn't conclude in a smooth convergence on the local minimum. In practice, the gradient descent applies a single learning rate $\alpha$ to update all parameters simultaneously; as we know, the algorithm performs the assignments as:
 
 $$w_i := w_{i} - \alpha \frac{\partial J}{\partial w_i}$$
 
-Let's observe that later, this new parameters, which are being updated in the same "proportion" $\alpha$, contribute to the next prediction:, leading to the risk of creating disproportions between the features since each lives in his own range of values. 
+Let's observe that later, these new parameters, which are being updated in the same "proportion" $\alpha$, contribute to the next prediction, leading to the risk of creating disproportions between the features since each lives in its own range of values. 
 
-For example; in certains conditions, $x_1 \in[0,1] \wedge x_2 \in [0,50000] \implies \frac{\partial J}{\partial w_2} >> \frac{\partial J}{\partial w_1}$ not because $w_2$​ is further from its optimum, but simply because $x_2$  has a larger numerical range. So the same $\alpha$ is simultaneously too large for $w_2$​ (causing oscillation or divergence) and too small for $w_1$​ (causing painfully slow progress). 
+For example; in certain conditions, $x_1 \in[0,1] \wedge x_2 \in [0,50000] \implies \frac{\partial J}{\partial w_2} >> \frac{\partial J}{\partial w_1}$ not because $w_2$​ is further from its optimum, but simply because $x_2$  has a larger numerical range. So the same $\alpha$ is simultaneously too large for $w_2$​ (causing oscillation or divergence) and too small for $w_1$​ (causing painfully slow progress). 
 
 You're forced into a compromise: pick a tiny $\alpha$ that prevents divergence along the sensitive direction, at the cost of crawling along every other direction.
 
@@ -1038,11 +1038,11 @@ Then a solution would be to divide each feature between the maximum value of the
 
 $$x_i':= \frac{x_i}{M_i}, m_i' := \frac{m_i}{M_i} \implies x_i' \in [m_i',1] \subset \mathbb{R}^+ : i \in [n]$$
 
-Suppose for example that $x_1 \in [300,2000],x_2 \in [0,5]$, then $x_1' \in [0,15,1], x_2 \in [0,1]$. Geometrically, we would pass from elpises to something more circunferential, allowing the path to the local minimum on the surface to be more accesible.
+Suppose for example that $x_1 \in [300,2000],x_2 \in [0,5]$, then $x_1' \in [0.15,1], x_2 \in [0,1]$. Geometrically, we would pass from ellipses to something more circular, allowing the path to the local minimum on the surface to be more accessible.
 
 ![feature_scaling](/assets/images/ML/feature_scaling.png)
 
-Note that the local minimum is accesible because the mapping $x \to x'$ we are applying here is an affine transformation; $x:= x'M +m$
+Note that the local minimum is accessible because the mapping $x \to x'$ we are applying here is an affine transformation; $x:= x'M +m$
 
 <br>
 
@@ -1054,13 +1054,13 @@ $$x_i':=\frac{x_i - u_i}{M_i - m_i}: u_i:= \frac{1}{n}\sum_{j=1}^nx_i^{(j)}$$
 
 Where $u_i$ is the sample mean, the mean of the feature $i$ of all the samples $x^{(j)}$ in the training set.
 
-The result is that each feature ends up roughly in $[-0,5,0.5]$ (assuming a reasonably uniform distribution), with mean approximately zero.
+The result is that each feature ends up roughly in $[-0.5,0.5]$ (assuming a reasonably uniform distribution), with mean approximately zero.
 
 <br>
 
-### 4.3.3. Z-Score (Standarization).
+### 4.3.3. Z-Score (Standardization).
 
-The Z-score normalization (also called standarization) transforms each feature as:
+The Z-score normalization (also called standardization) transforms each feature as:
 
 $$x_i' := \frac{x_i - u_i}{\sigma_i}$$
 
@@ -1070,23 +1070,23 @@ $$\sigma_i = \sqrt{\frac{1}{m} \sum_{j=1}^{m} \left(x_i^{(j)} - \mu_i\right)^2}$
 
 For each data point you compute how far it is from the mean $(x_i^{(j)} - \mu_i)$, square that distance (so negative and positive deviations don't cancel), average all those squared distances, and then take the square root to bring the result back to the original units of the feature.
 
-The core difference is in the denominator. Mean normalization divides by the range $(\max - \min)$, while Z-score divides by $\sigma$ which is more solid because maps based on how far is each feature from the mean instead of simply generalizing te range for every feature. Geometrically, both aim at the same thing: making the level sets of $J(\theta)$ more isotropic (closer to spherical) so that $\nabla J$ points more directly toward the optimum. But Z-score does this more reliably because $\sigma$ is a better measure of the "typical spread" of a feature than the range is.
+The core difference is in the denominator. Mean normalization divides by the range $(\max - \min)$, while Z-score divides by $\sigma$ which is more robust because it maps based on how far each feature is from the mean instead of simply generalizing the range for every feature. Geometrically, both aim at the same thing: making the level sets of $J(\theta)$ more isotropic (closer to spherical) so that $\nabla J$ points more directly toward the optimum. But Z-score does this more reliably because $\sigma$ is a better measure of the "typical spread" of a feature than the range is.
 
 Thus; if the features are reasonably well-behaved (no extreme outliers, roughly symmetric), both methods give you similar results, the contours get reshaped about equally well, and gradient descent converges in roughly the same number of steps. The difference becomes significant when the data has heavy tails or outliers, where Z-score keeps the scaling stable while mean normalization can degrade.
 
 <br>
 
-# 5. Gradient Descent efficency. Loss curve & Learning rate.
+# 5. Gradient Descent efficiency. Loss curve & Learning rate.
 
 ## 5.1. Introducing the concept.
 
-Let's now suppose we have a good gradient descent algorthim and we want to run and, as it runs, we want to be sure when the cost function $J$ converge to the local minimum.
+Let's now suppose we have a good gradient descent algorithm and we want to run it and, as it runs, we want to be sure when the cost function $J$ converges to the local minimum.
 
-For that purpouse we build what we call the *loss curve* or training curve, which is simply the plot of your objective function $J(\theta^{(t)})$ (which in our case gets instantiated as the *cost function*) evaluated at each iterate $\theta^{(t)}$ against the iteration index $t$.
+For that purpose we build what we call the *loss curve* or training curve, which is simply the plot of your objective function $J(\theta^{(t)})$ (which in our case gets instantiated as the *cost function*) evaluated at each iterate $\theta^{(t)}$ against the iteration index $t$.
 
 ![loss_function](/assets/images/ML/loss_function.png)
 
-It's the most direct tool to determine whether gradient descent is converging, how fast it's converging, and whether your hyperparameters are well-chosen. As the picture shows, a healthy loss curve is monotonically decreasing and flattening toward an asymptote (our local minumum).
+It's the most direct tool to determine whether gradient descent is converging, how fast it's converging, and whether your hyperparameters are well-chosen. As the picture shows, a healthy loss curve is monotonically decreasing and flattening toward an asymptote (our local minimum).
 
 <br>
 
@@ -1096,7 +1096,7 @@ Let $J : \mathbb{R}^n \to \mathbb{R}$ be your loss function and the gradient ite
 
 $$\theta^{(t+1)}=\theta^{(t)}−\alpha \nabla J(\theta^{(t)})$$
 
-being $\alpha \in \mathbb{R}$ the learning rate. Then, we define the *loss curve* as de sequence:
+being $\alpha \in \mathbb{R}$ the learning rate. Then, we define the *loss curve* as the sequence:
 
 $$\Big(J(\theta^{(t)})\Big)_{t=0}^\infty$$
 
@@ -1106,7 +1106,7 @@ Assuming that $J$ is $\beta$-smooth, meaning $\nabla J$ is $\beta$-Lipschitz:
 
 $$\vert \vert \nabla J(x) - \nabla J(y)\vert \vert \le \beta \vert \vert x-y\vert \vert \quad \forall x,y$$
 
-Conceptually, a function is β-Lipschitz when it has a bounded rate of change, it cannot "jump" too fast. Observe that if the gradient represents the "change ratio" of the function, how the function changes between two points is no greater than the metric between those same points (despite parameter factors). The change ratio grows (or decrease) proportionally per unit of distance in the domain (despite parameter factors).
+Conceptually, a function is β-Lipschitz when it has a bounded rate of change, it cannot "jump" too fast. Observe that if the gradient represents the "change ratio" of the function, how the function changes between two points is no greater than the metric between those same points (up to parameter factors). The change ratio grows (or decreases) proportionally per unit of distance in the domain (up to parameter factors).
 
 Then, by the *descent lemma* it is:
 
@@ -1114,14 +1114,14 @@ $$J(\theta^{(t+1)}) \le J(\theta^{(t)}) - \alpha \left(1 - \frac{\beta \alpha}{2
 
 The descent lemma gives you a *guaranteed upper bound* on how much a β-smooth function can deviate from its linear approximation. It's the formal reason why gradient descent works, it tells you that if you take a step in the direction of $-\nabla J(x)$, you can *guarantee* the function decreases, provided your step isn't too large.
 
-**Thus, this basically garantees that the sequence we called loss curve smoothly decreases in any step until $\nabla J =0$**
+**Thus, this basically guarantees that the sequence we called loss curve smoothly decreases at each step until $\nabla J =0$**
 
 <br>
 
 ## 5.3. Choosing the learning rate.
 
-As we set before, given a good gradient descent algorthim (a well-chosen learning rate $\alpha$) the results above tell us that the gradient descent algorithm should make $J$ function to decrease smoothly (descent lemma).
+As we set before, given a good gradient descent algorithm (a well-chosen learning rate $\alpha$) the results above tell us that the gradient descent algorithm should make the $J$ function decrease smoothly (descent lemma).
 
-Whenever we see that our loss curve does not behaves like that then mathematically we can ensure that the gradient descent algorithm is not well-formed.
+Whenever we see that our loss curve does not behave like that then mathematically we can ensure that the gradient descent algorithm is not well-formed.
 
-A recomended good practice is to choose a small $\alpha$ and then increase slowly. If this not fix the loss curve, maybe there exists a bug in the code.
+A recommended good practice is to choose a small $\alpha$ and then increase it slowly. If this does not fix the loss curve, maybe there is a bug in the code.

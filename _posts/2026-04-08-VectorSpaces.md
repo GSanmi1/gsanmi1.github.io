@@ -10,7 +10,7 @@ subject: linear-algebra
 lang: en
 ---
 
-1. Conceptual Approach: Algebra and Algebraics Structures.
+1. Conceptual Approach: Algebra and Algebraic Structures.
     - 1.1. Algebra as a discipline.
     - 1.2. Algebraic Structures.
         - 1.2.1. One operation algebraic structures.
@@ -29,7 +29,7 @@ lang: en
         - 2.3.3. The space of functions from a set to a field. 
         - 2.3.4. The space of polynomial functions over a field K.
             - 2.3.4.1. Introduction to polynomials.
-            - 2.3.4.2. Vector space of the polynomial functions over a field K
+            - 2.3.4.2. Vector space of the polynomial functions over a field K.
     - 2.4. Immediate Properties from vector spaces.
 
 3. Vector Spaces and Geometry.
@@ -39,16 +39,16 @@ lang: en
     - 3.2. Vectors as geometric objects: Arrows.
         - 3.2.1. Bound arrows. Vectors as arrows.
         - 3.2.2. Equipolence class: Free vectors.
-            - 3.2.2.1. Appex: Equivalence Class.
+            - 3.2.2.1. Appendix: Equivalence Class.
             - 3.2.2.2. Vector equipolence.
 
 4. Summary.
 
-# 1. Conceptual Approach. Algebra, Algebraics Structures.
+# 1. Conceptual Approach. Algebra, Algebraic Structures.
 
 ## 1.1. Algebra as a discipline.
 
-Let's start introducing what **Algebra** is, Algebra is the mathematics discipline in charge of the study of what *operating with the elements of a set means*: how items of a set are combined through a operation and what properties emerge from that context. It doesn't study the elements (like arithmetic would do) but the properties of the operations between them.
+Let's start by introducing what **Algebra** is. Algebra is the mathematical discipline in charge of the study of what *operating with the elements of a set means*: how items of a set are combined through an operation and what properties emerge from that context. It doesn't study the elements (like arithmetic would do) but the properties of the operations between them.
 
 <br>
 

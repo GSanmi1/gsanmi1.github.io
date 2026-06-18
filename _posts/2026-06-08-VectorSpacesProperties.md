@@ -12,17 +12,17 @@ lang: en
 
 # 1. Introduction.
 
-In the past post; [Vector Spaces](https://gsanmi1.github.io/posts/2026/04/08/VectorSpaces/), we've introduced that a vector space $(K,V,·)$ is the algebra structure resulting in use a field $K$ to weigh the compositions of an abelian group $V$, through a field's action $·$. Meaning that a vector space is as triple $(K,V, ·)$ where:
+In the past post; [Vector Spaces](https://gsanmi1.github.io/posts/2026/04/08/VectorSpaces/), we've introduced that a vector space $(K,V,·)$ is the algebraic structure resulting from using a field $K$ to weigh the compositions of an abelian group $V$, through a field action $·$. Meaning that a vector space is a triple $(K,V, ·)$ where:
 
 - $K$ is a field.
-- $V$ is an abelian (conmutative) group.
-- $· : K \times V \to V$ is a field action, which acts over $V$ using $K$'s elements to scalar vectors making families of *proportional vectors*.
+- $V$ is an abelian (commutative) group.
+- $· : K \times V \to V$ is a field action, which acts over $V$ using $K$'s elements to scale vectors, making families of *proportional vectors*.
 
-The resulting compositions is what we suit to call *linear combination*, independant contributions of group's elements mediated by field's scalars:
+The resulting compositions are what we call *linear combinations*, independent contributions of the group's elements mediated by the field's scalars:
 
 $$\alpha v + \beta u : \alpha ,\beta \in \mathbb{R}, v,u \in V$$
 
-We presented some examples of some sets which, with proper operations involved, are examples of vectorspaces:
+We presented some examples of sets which, with proper operations involved, are examples of vector spaces:
 
 - The $n$-tuples space: $F^n$
 - The space of $m \times n$ matrices: $M_{m \times n}(F)$ 
@@ -31,9 +31,9 @@ We presented some examples of some sets which, with proper operations involved, 
 
     <br>
 
-We also develop surreptitiously the affine space structure, which is the way in which we use the vectors to study a non-empty set in a simply transitive way and we define the *arrow* concept as the segment that connect two points of the affine space with magnitude, direction and orientation, which captures the displacement of the point at the base of the segment to the one laying at the end of the arrow.
+We also developed, surreptitiously, the affine space structure, which is the way in which we use vectors to study a non-empty set in a simply transitive way, and we defined the *arrow* concept as the segment that connects two points of the affine space with magnitude, direction and orientation, which captures the displacement from the point at the base of the segment to the one lying at the end of the arrow.
 
-We also demonstrated that if you fix one point $O$ and consider the family of all posible arrows with base at $O$, then that family has structure of vector space which leaves us with a geometric intuition of what a vector is.
+We also demonstrated that if you fix one point $O$ and consider the family of all possible arrows with base at $O$, then that family has the structure of a vector space, which leaves us with a geometric intuition of what a vector is.
 
 <br>
 
@@ -43,12 +43,12 @@ Then, with this information as a starting point, let's develop the fundamental p
 
 # 2. Subspaces.
 
-## 2.1. Definition and caracterization.
+## 2.1. Definition and characterization.
 
 In this section we shall introduce some of the basic concepts in the
 study of vector spaces. 
 
-**Let $V$ be a vector space over the field $F$. A subspace of $V$ is a subset non-empty $W$ of $V$ which is itself a vector space over $F$ with the operations of vector addition and scalar multiplication on $V$.**
+**Let $V$ be a vector space over the field $F$. A subspace of $V$ is a non-empty subset $W$ of $V$ which is itself a vector space over $F$ with the operations of vector addition and scalar multiplication on $V$.**
 
 <br>
 
@@ -58,11 +58,11 @@ Let's observe that, from the axioms of vector spaces, if $W$ is a vector space s
 
     $$v,u \in W \implies (\alpha v + \beta u \in V \ \forall \alpha, \beta \in  F)$$
 
-- Contains zero vector: $0_V \in W$, or $0_W = 0_V$. Remember that $V$ being a vector space means that $(V,+)$ is an abelian group, so $(W,+)$ is an abelian subgroup of $V$ and it inherites $0_v$ from $V$ by the uniquity of this element. (Observe that this also expands associativity, and inverses).
+- Contains zero vector: $0_V \in W$, or $0_W = 0_V$. Remember that $V$ being a vector space means that $(V,+)$ is an abelian group, so $(W,+)$ is an abelian subgroup of $V$ and it inherits $0_V$ from $V$ by the uniqueness of this element. (Observe that this also extends to associativity and inverses).
 
     <br>
 
-Let's take a characterization for any subset non-empty $W \subset V$ to be a vector space. If $V$ is a $K$-vector space, then:
+Let's take a characterization for any non-empty subset $W \subset V$ to be a vector space. If $V$ is a $K$-vector space, then:
 
 $$W \text{ is a vector space } \iff (\alpha u + v \in W \quad \forall u,v \in W, \alpha \in K)$$
 
@@ -70,7 +70,7 @@ Let's reconstruct the structure:
 
 - $(W,+)$ is an abelian subgroup of $(V,+)$.
 
-    Since $W \neq \varnothing$ (by the premise), we can consider $u,v \in W$, then: $(-1)u + v = v - u \in W$, so is a subgroup of $V$. Let's see that also $W$ inherites conmutativity from $V$ so is an abelian subgroup.
+    Since $W \neq \varnothing$ (by the premise), we can consider $u,v \in W$, then: $(-1)u + v = v - u \in W$, so it is a subgroup of $V$. Let's see that $W$ also inherits commutativity from $V$ so it is an abelian subgroup.
 
     <br>
 
@@ -88,14 +88,14 @@ Let's reconstruct the structure:
 
 ## 2.2. Example of subspaces.
 
-Let's consider some well-known example of subspaces. Consider some $V$ a $K$-vector space, then:
+Let's consider some well-known examples of subspaces. Consider some $V$ a $K$-vector space, then:
 
 1. $V$ is a subspace of $V$.
 2. $\Set{0} \subset V$ is the zero subspace of $V$; $\alpha 0 + 0 = 0 \in \Set{0} \quad \forall \alpha \in K$ so $\Set{0}$ is a subspace of $V$.
 
-3. $A:= \Set{x \in K^n \mid x_1 = 0}$ (the solution of an homogenean equation) is a subspace of $K^n$, check that always $\alpha x + y \in A$, trivially.
+3. $A:= \Set{x \in K^n \mid x_1 = 0}$ (the solution of a homogeneous equation) is a subspace of $K^n$, check that always $\alpha x + y \in A$, trivially.
 
-    But let's observe that $B := \Set{x \in K^n \mid x_1 = 1 + x_2}$ (the solution of a not-homogenean equation) does not satisfy the rule, take some $\alpha$ and observe that:
+    But let's observe that $B := \Set{x \in K^n \mid x_1 = 1 + x_2}$ (the solution of a non-homogeneous equation) does not satisfy the rule, take some $\alpha$ and observe that:
 
     $$\alpha x + y = (\alpha (1 + x_2) + 1 + y_2), \alpha x_2 + y_2,..., \alpha x_n + y_n)$$
 
