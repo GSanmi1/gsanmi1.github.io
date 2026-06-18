@@ -90,12 +90,12 @@ Let's reconstruct the structure:
 
 Let's consider some well-known example of subspaces. Consider some $V$ a $K$-vector space, then:
 
-- $V$ is a subspace of $V$.
-- $\Set{0} \subset V$ is the zero subspace of $V$; $\alpha 0 + 0 = 0 \in \Set{0} \quad \forall \alpha \in K$ so $\Set{0}$ is a subspace of $V$.
+1. $V$ is a subspace of $V$.
+2. $\Set{0} \subset V$ is the zero subspace of $V$; $\alpha 0 + 0 = 0 \in \Set{0} \quad \forall \alpha \in K$ so $\Set{0}$ is a subspace of $V$.
 
-- $A:= \Set{x \in K^n \mid x_1 = 0}$ is a subspace of $K^n$, check that always $\alpha x + y \in A$, trivially.
+3. $A:= \Set{x \in K^n \mid x_1 = 0}$ (the solution of an homogenean equation) is a subspace of $K^n$, check that always $\alpha x + y \in A$, trivially.
 
-    But let's observe that $B := \Set{x \in K^n \mid x_1 = 1 + x_2}$ do not satisfies the rule, take some $\alpha$ and observe that:
+    But let's observe that $B := \Set{x \in K^n \mid x_1 = 1 + x_2}$ (the solution of a not-homogenean equation) does not satisfy the rule, take some $\alpha$ and observe that:
 
     $$\alpha x + y = (\alpha (1 + x_2) + 1 + y_2), \alpha x_2 + y_2,..., \alpha x_n + y_n)$$
 
@@ -103,4 +103,11 @@ Let's consider some well-known example of subspaces. Consider some $V$ a $K$-vec
     
     So we have that $\forall \alpha \neq 0 \quad (x,y \in B \implies \alpha x + y \notin B)$
 
+    <br>
+
+4. The space of polynomial functions over $K$; 
+
+    $$\operatorname{Pol}(K, K) := \left\{\, f \in K^K \ \middle|\ \exists n \in \mathbb{N}_0,\ \exists (\alpha_0, \ldots, \alpha_n) \in K^{n+1} : \forall s \in K,\ f(s) = \sum_{i=0}^{n} \alpha_i\, s^i \,\right\}$$
+
+    Is a subspace of $K^K$.
 

@@ -6,7 +6,7 @@ date: 2026-02-17 09:00:00 +0000
 categories: ['Graphs']
 tags: ['Maths']
 author: German Sanmi
-subject: discrete-mathematics
+subject: graph-theory
 lang: en
 ---
 

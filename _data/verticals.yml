@@ -17,9 +17,12 @@
     - slug: logic-set-theory
       en: Logic & Set Theory
       es: Lógica y Teoría de Conjuntos
-    - slug: discrete-mathematics
-      en: Discrete Mathematics
-      es: Matemática Discreta
+    - slug: number-systems
+      en: Number Systems
+      es: Sistemas Numéricos
+    - slug: graph-theory
+      en: Graph Theory
+      es: Teoría de Grafos
 
 - slug: algebra
   page: /algebra.html

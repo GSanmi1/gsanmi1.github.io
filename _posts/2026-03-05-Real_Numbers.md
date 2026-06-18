@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "The Real Number Systems"
+title: "The Real Number System"
 subtitle: "Rational and Real fields presentation. Order. LUB. Dedekind cuts. Extended real field. Analisis definition."
 date: 2026-03-05 09:00:00 +0000
 categories: ['Maths', 'analisis_rudin']
