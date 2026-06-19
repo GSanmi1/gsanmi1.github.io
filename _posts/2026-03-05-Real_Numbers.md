@@ -356,7 +356,7 @@ Also, the field axioms clearly hold in $\mathbb{Q}$, the set of all rational num
 
 Although it is not our purpose to study fields (or any other algebraic structures) in detail, it is worthwhile to prove that some familiar properties of $\mathbb{Q}$ are consequences of the field axioms; once we do this, we will not need to do it again for the real numbers and for the complex numbers. 
 
-- *Cancelation*: 
+- *Cancellation*: 
 
     $$(x + y = x + z \implies y = z) \wedge (xy = xz \wedge x \neq 0 \implies y=z)$$
 
@@ -376,7 +376,7 @@ Although it is not our purpose to study fields (or any other algebraic structure
 
 <br>
 
-Also, let observe that:
+Also, let's observe that:
 
 - $0x = 0$. Immediately, we have that $0x = (0x + 0x) = 0x \implies 0x = 0$ by the axiom above.
 
@@ -384,7 +384,7 @@ Also, let observe that:
 
 - *Zero has no divisors*:
 
-    Lets observe that $x \neq 0 \wedge y \neq 0 \implies xy \neq 0$. 
+    Let's observe that $x \neq 0 \wedge y \neq 0 \implies xy \neq 0$. 
     
     Observe that $\neg(\neg p) \equiv p$ in classic logic, so to demonstrate $p$ let's see that $\neg(\neg p)$ holds or, in other words, let's see that $\neg p$ is not true.
 
@@ -422,11 +422,11 @@ An *ordered field* is a field $F$ which is also an ordered set. This implies def
 
 Before relating the operations of $F$ to the order, let's expand the definition of the operations in order to give it some geometric intuition. As a brief reminder, $F$ as a field is a triple $(F,+, \ ·)$ where $(F,+),(F,\ ·)$ are abelian groups and $+, \ ·$ are compatible (which means they both satisfy the distributive property). 
 
-Observe that, since $< \ \subset F$ as defined above is a total strict order, we can dispose the elements of $F$ in a line following the precedence that sets $<$. This give us some geometric intuition about the relation between the operations in the field and the order.
+Observe that, since $< \ \subset F$ as defined above is a total strict order, we can dispose the elements of $F$ in a line following the precedence that sets $<$. This gives us some geometric intuition about the relation between the operations in the field and the order.
 
 We can understand the $+$ and $·$ operations as the following:
 
-- For each $x \in F$, lets define:
+- For each $x \in F$, let's define:
 
     $$\tau_x : F \to F, \qquad \tau_x(y) = x + y$$
 
@@ -503,7 +503,7 @@ Thus, let's think of a line with the elements of the field $F$ represented on it
 
     This way; $\neg(p \leftrightarrow q) \equiv \neg [(\neg p \vee q) \wedge (\neg q \vee p)] \equiv (p \wedge \neg q) \vee (q \wedge \neg p)$
 
-    Now, lets call $p := x > 0$ and $q := -x <0$, then:
+    Now, let's call $p := x > 0$ and $q := -x <0$, then:
 
     - $p \wedge \neg q$ stands for $x>0 \wedge -x > 0$, but this statement is impossible, considering the first axiom above:
 
@@ -595,7 +595,7 @@ Thus, let's present $\mathbb{R}$ as an ordered field that satisfies the $LUB$ pr
 
 <br>
 
-## 5.1. Theorem: Existance of $\mathbb{R}$. Dedekind cuts.
+## 5.1. Theorem: Existence of $\mathbb{R}$. Dedekind cuts.
 
 **There exists an ordered field $\mathbb{R}$ which has the least-upper-bound property which contains $\mathbb{Q}$ as a subfield.** 
 
@@ -725,9 +725,9 @@ Thus exchanging $p = (\alpha < \delta \quad \forall \alpha \in A)$ and $q= \gamm
 
 $$\exists \delta \in \mathbb{R} : [(\alpha < \delta \quad \forall \alpha \in A) \wedge (\delta < \gamma)]$$
 
-Which means basically that exists an upperbound that preceeds $\gamma$. Thus, let's consider $\delta$ as above: $\exists \delta \in \mathbb{R} : \delta < \gamma \wedge (\alpha < \delta \ \ \forall \alpha \in A)$. Observe that $\delta < \gamma \implies \delta \neq \gamma$ which means that $\exists \alpha \in \gamma : \alpha \nsubseteq \delta \implies \delta < \alpha$ (due to the trychotomy of the order), thus and $\delta$ would not be an upperbound contradicting the initial assumption. 
+Which means basically that there exists an upperbound that precedes $\gamma$. Thus, let's consider $\delta$ as above: $\exists \delta \in \mathbb{R} : \delta < \gamma \wedge (\alpha < \delta \ \ \forall \alpha \in A)$. Observe that $\delta < \gamma \implies \delta \neq \gamma$ which means that $\exists \alpha \in \gamma : \alpha \nsubseteq \delta \implies \delta < \alpha$ (due to the trichotomy of the order), thus $\delta$ would not be an upperbound contradicting the initial assumption. 
 
-So, by reduction absurdio, $\gamma$ has to be the least upper bound; $\gamma = sup A$.
+So, by reductio ad absurdum, $\gamma$ has to be the least upper bound; $\gamma = sup A$.
 
 <br>
 
@@ -747,9 +747,9 @@ Now, we verify that the addition's axioms for a field hold in $\mathbb{R}$, with
 
     1. $\alpha, \beta \neq \varnothing \implies \alpha + \beta \neq \varnothing$. 
     
-        Also suppose that $p,q \in \mathbb{Q}$ are the upperbounds of $\alpha, \beta \in \mathbb{R}$ respectively (we can assume its existance since both of them are cuts and thus proper subsets of $\mathbb{Q}$ so there are indeed elements of $\mathbb{Q}$ out of each subsets), then is clear that $p + q \notin \alpha + \beta \implies \alpha + \beta \neq \mathbb{Q}$. 
+        Also suppose that $p,q \in \mathbb{Q}$ are the upperbounds of $\alpha, \beta \in \mathbb{R}$ respectively (we can assume their existence since both of them are cuts and thus proper subsets of $\mathbb{Q}$ so there are indeed elements of $\mathbb{Q}$ out of each subset), then it is clear that $p + q \notin \alpha + \beta \implies \alpha + \beta \neq \mathbb{Q}$. 
         
-        Observe that there is something worth to say of upperbounds when speaking about cuts. By definition, $p$ is an upperbound of $X$ iff $x \leq p \ \ \forall x \in X$, but if $X$ were a cut, by the third property if $\exists x_0 : p = x_0 \in X \implies \exists r \in X : p < r$ and $p$ would not an upperbound, thus, when talking about cuts, all upperbounds are always strict upperbounds, the definition of upperbounds always collapses to $x < p \ \ \forall x \in X$ and the cut do not contains it.
+        Observe that there is something worth saying about upperbounds when speaking about cuts. By definition, $p$ is an upperbound of $X$ iff $x \leq p \ \ \forall x \in X$, but if $X$ were a cut, by the third property if $\exists x_0 : p = x_0 \in X \implies \exists r \in X : p < r$ and $p$ would not be an upperbound; thus, when talking about cuts, all upperbounds are always strict upperbounds, the definition of upperbounds always collapses to $x < p \ \ \forall x \in X$ and the cut does not contain it.
 
         <br>
 
@@ -765,29 +765,29 @@ Now, we verify that the addition's axioms for a field hold in $\mathbb{R}$, with
 
         <br>
 
-- **Conmutativity**: $\alpha + \beta = \beta + \alpha \ \ \forall \alpha, \beta \in \mathbb{R}$, it gets immediately derivated from commutativity in $\mathbb{Q}$.
+- **Commutativity**: $\alpha + \beta = \beta + \alpha \ \ \forall \alpha, \beta \in \mathbb{R}$, it gets immediately derived from commutativity in $\mathbb{Q}$.
 
     <br>
 
-- **Asociativity**: $\alpha + (\beta + \gamma) = (\alpha + \beta) + \gamma \ \ \forall \alpha, \beta, \gamma \in \mathbb{R}$.
+- **Associativity**: $\alpha + (\beta + \gamma) = (\alpha + \beta) + \gamma \ \ \forall \alpha, \beta, \gamma \in \mathbb{R}$.
 
-    Let's look it closely, we have that the objects in $\mathbb{R}$ can be understanded as:
+    Let's look at it closely; we have that the objects in $\mathbb{R}$ can be understood as:
 
     $$\alpha + (\beta + \gamma) := \Set{a + p \mid a \in \alpha \wedge p \in \beta + \gamma}$$
 
     $$(\alpha + \beta) + \gamma := \Set{q + c \mid q \in \alpha + \beta \wedge c \in \gamma}$$
 
-    Observe that also $p \in \beta + \gamma \implies \exists (b , c) \in \beta \times \gamma : p = b + c$ and we can rewrite the expression $a + p = a + (b + c)$, but in $\mathbb{Q}$ is $a + (b + c) = (a + b) + c$ which means that the object $a+p$ lives in the counter part. A similar argument give us the reciproc inclusion ultimately standing that: $\alpha + (\beta + \gamma) = (\alpha + \beta) + \gamma$.
+    Observe that also $p \in \beta + \gamma \implies \exists (b , c) \in \beta \times \gamma : p = b + c$ and we can rewrite the expression $a + p = a + (b + c)$, but in $\mathbb{Q}$ is $a + (b + c) = (a + b) + c$ which means that the object $a+p$ lives in the counterpart. A similar argument gives us the reciprocal inclusion, ultimately standing that: $\alpha + (\beta + \gamma) = (\alpha + \beta) + \gamma$.
 
     <br>
 
 - **Identity**: 
 
-    Let's rememeber that we called $0^\ast:= \Set{q \in \mathbb{Q} \mid q < 0}$, then let's take
+    Let's remember that we called $0^\ast:= \Set{q \in \mathbb{Q} \mid q < 0}$, then let's take
 
     $$t \in \alpha + 0^\ast \implies \exists a \in \alpha \wedge \exists q < 0 : t = a + q$$
 
-    Then, if we consider some other $b \in \alpha : a < b$ (which its existance is garanteed by the third property of the cuts) then, following the axioms for ordered fields, since $q < 0$, is $t = a + q < a + 0 < b$ and then is $t < b \in \alpha \implies t \in \alpha$ for the second property of the cuts.
+    Then, if we consider some other $b \in \alpha : a < b$ (whose existence is guaranteed by the third property of the cuts) then, following the axioms for ordered fields, since $q < 0$, is $t = a + q < a + 0 < b$ and then is $t < b \in \alpha \implies t \in \alpha$ for the second property of the cuts.
 
     Thus, $\alpha + 0^\ast \leq \alpha$.
 
@@ -795,7 +795,7 @@ Now, we verify that the addition's axioms for a field hold in $\mathbb{R}$, with
 
     Thus, $\alpha \leq \alpha + 0^\ast$, meaning that $\alpha = \alpha + 0^\ast$
 
-    Lastly, by the conmutativity property presented before:
+    Lastly, by the commutativity property presented before:
 
     $$0^\ast + \alpha = \alpha + 0^\ast = \alpha \quad \forall \alpha \in \mathbb{R}$$
 
@@ -807,13 +807,13 @@ Now, we verify that the addition's axioms for a field hold in $\mathbb{R}$, with
 
     $$\beta := \Set{p \in \mathbb{Q} \mid \exists r>0 : -p -r \notin \alpha}$$
 
-    Observe that we are not considering those $p$ whose opposite $-p$ are strictly out from $\alpha$ (this would be $a < -p \ \ \forall a \in \alpha$) but only those $p$ whose opposite has a constant positive gap between themselves and any other element of $\alpha$ abstracted in $r > 0$. Specifically, we are considering the segment simetric (respect the origin) in the rational line to the one that is strictly out by a positive gap from $\alpha$.
+    Observe that we are not considering those $p$ whose opposite $-p$ is strictly outside $\alpha$ (this would be $a < -p \ \ \forall a \in \alpha$) but only those $p$ whose opposite has a constant positive gap between themselves and any other element of $\alpha$ abstracted in $r > 0$. Specifically, we are considering the segment symmetric (with respect to the origin) in the rational line to the one that is strictly out by a positive gap from $\alpha$.
 
     Note that $\beta$ as defined is smaller than $A := \Set{p \in \mathbb{Q} \mid -p \notin \alpha}$ since, $A$ admits a frontier element $p$ for which the elements of $a \in \alpha$ can get as close as wanted. However, with $-p -r \notin \alpha$ the difference between $-p -r$ and $\alpha$, again, can be as small as wanted, but the distance between $-p$ and $\alpha$ can't be smaller than $r$. That gap will always exists between $-p$ and any other element in $\alpha$ so $\beta$'s elements are deeper in $\mathbb{Q} \setminus \alpha$.
     
     Let's see that $\beta \in \mathbb{R}$ and $\alpha + \beta = 0^*$  
 
-    - First, $\beta \in \mathbb{R}$, this means that $\beta \neq \varnothing$ and $\beta \neq \mathbb{Q}$. In order to solve this, let's recover our conception of $\beta$ as the simetric segment to that one that is strictly out from $\alpha$ by a positive gap.
+    - First, $\beta \in \mathbb{R}$, this means that $\beta \neq \varnothing$ and $\beta \neq \mathbb{Q}$. In order to solve this, let's recover our conception of $\beta$ as the symmetric segment to that one that is strictly out from $\alpha$ by a positive gap.
 
         <br>
 
@@ -880,13 +880,13 @@ Now, we verify that the addition's axioms for a field hold in $\mathbb{R}$, with
 
     <br>
 
-With this we already prooved that $(\mathbb{R},+)$ is an abelian group. Observe now that this addition can be considered a traslation, $\alpha + \beta$ is the set that consider the rational addition between any item of $\alpha$ and $\beta$. Since $\mathbb{Q}$ is an ordered field it self, $+ : \mathbb{Q} \times \mathbb{Q} \to \mathbb{Q}$ is a traslation, thus the combination $a + b$ is a traslation that displaces $a$ a $b$ distance on the rational line. 
+With this we already proved that $(\mathbb{R},+)$ is an abelian group. Observe now that this addition can be considered a translation; $\alpha + \beta$ is the set that considers the rational addition between any item of $\alpha$ and $\beta$. Since $\mathbb{Q}$ is an ordered field itself, $+ : \mathbb{Q} \times \mathbb{Q} \to \mathbb{Q}$ is a translation, thus the combination $a + b$ is a translation that displaces $a$ a distance $b$ on the rational line. 
 
-Observe now that, in $\mathbb{R}$ we have the $LUB$ property which allow us to consider, for any non-empty and upperbounded subset $A \subset \mathbb{R}$ a minimal upperbound. Also, since any cut $\alpha \in \mathbb{R}$ can be treated as a subset it self (of $\mathbb{R}$, specifically, that subset that contains all the cuts that preceds him) we can consider a supreme in $\mathbb{R}$ for any element of $\alpha \in \mathbb{R}$, we can denote it as $sup(\alpha)$. 
+Observe now that, in $\mathbb{R}$ we have the $LUB$ property which allows us to consider, for any non-empty and upperbounded subset $A \subset \mathbb{R}$, a minimal upperbound. Also, since any cut $\alpha \in \mathbb{R}$ can be treated as a subset itself (of $\mathbb{R}$, specifically, that subset that contains all the cuts that precede it) we can consider a supremum in $\mathbb{R}$ for any element of $\alpha \in \mathbb{R}$, we can denote it as $sup(\alpha)$. 
 
-Observe then that the own $\alpha + \beta$ has is own supreme, $sup(\alpha + \beta)$ which is furtherest than any $a+b: (a,b) \in \alpha \times \beta$ in the rational line, and thus, that $sup(\alpha)$ or $sup(\beta)$, essentially $sup(\alpha + \beta) = sup(\alpha) + sup(\beta)$. This is how geometrically, the addition in $\mathbb{R}$ adquires form of traslation through the traslation conception defined in the ordered field $\mathbb{Q}$.
+Observe then that $\alpha + \beta$ has its own supremum, $sup(\alpha + \beta)$ which is further than any $a+b: (a,b) \in \alpha \times \beta$ in the rational line, and thus than $sup(\alpha)$ or $sup(\beta)$; essentially $sup(\alpha + \beta) = sup(\alpha) + sup(\beta)$. This is how, geometrically, the addition in $\mathbb{R}$ acquires the form of a translation through the translation conception defined in the ordered field $\mathbb{Q}$.
 
-In summary, if $\alpha \in \mathbb{R}$ then any $a \in \alpha$ is not further than $sup(\alpha)$ and $\tau_b(a) = a + b$ is not further than $sup(\alpha + \beta)$. Esentally this allow us to extrapole that, be $\alpha < \beta \implies \alpha + \gamma < \beta + \gamma \quad \forall \gamma \in \mathbb{R}$, so the total strict order $< \ \subset \mathbb{R}^2$ has an invariant through the traslations in $\mathbb{R}$.
+In summary, if $\alpha \in \mathbb{R}$ then any $a \in \alpha$ is not further than $sup(\alpha)$ and $\tau_b(a) = a + b$ is not further than $sup(\alpha + \beta)$. Essentially this allows us to extrapolate that $\alpha < \beta \implies \alpha + \gamma < \beta + \gamma \quad \forall \gamma \in \mathbb{R}$, so the total strict order $< \ \subset \mathbb{R}^2$ has an invariant through the translations in $\mathbb{R}$.
 
 <br>
 
@@ -929,8 +929,8 @@ From all below, consider $\alpha, \beta \in \mathbb{R}^+$
 
 <br>
 
-- **Asociativity**; Inmediate from associativity in $\mathbb{Q}$
-- **Conmutativity**; Inmediate from conmutativity in $\mathbb{Q}$
+- **Associativity**; Immediate from associativity in $\mathbb{Q}$
+- **Commutativity**; Immediate from commutativity in $\mathbb{Q}$
 - **Identitity**; Observe that: $1^\ast:= \Set{t \in \mathbb{Q} \mid t < 1} \subset \mathbb{Q}$, then, consider $\alpha^+ \in \mathbb{R}^+$:
 
     - $p·t \leq p \quad \forall (p,t) \in \alpha^+ \times 1^\ast \implies p \ · t \in \alpha \implies \alpha · 1^\ast \subset \alpha$, 
@@ -955,7 +955,7 @@ From all below, consider $\alpha, \beta \in \mathbb{R}^+$
 
     - $\alpha \alpha^{-1} \subset 1^\ast$: 
     
-        Let's observe that: $\alpha \alpha^{-1}= \Set{p \mid \exists (a,t) \in \alpha^+ \times {\alpha^{-1}}^+ : p \leq at}$, but let observe: 
+        Let's observe that: $\alpha \alpha^{-1}= \Set{p \mid \exists (a,t) \in \alpha^+ \times {\alpha^{-1}}^+ : p \leq at}$, but let's observe: 
         
         $$t \in \alpha^{-1} \implies \exists (y \notin \alpha \wedge y>0) : t < \frac{1}{y} \implies at < \frac{a}{y} < 1$$
         
@@ -967,7 +967,7 @@ From all below, consider $\alpha, \beta \in \mathbb{R}^+$
     
         Let's take note that, demonstrate this inclusion implies to demonstrate that, given any number $p < 1$ we can closer than $p$ to $1$ by finding and multiplicating the elements of a proper pair $(a,t) \in \alpha^+ \times {\alpha^{-1}}^+$.
 
-        First let's take some $p < 1 \implies \exists q > 0 \in \mathbb{Q} : p + q = 1$, so $q$ is the "distance" between $p$ and $1$, let's now take some $\alpha >1$ (we can assume this without loosing generality since otherwise it would be $\alpha^{-1}>1$) and consider some $a \notin \alpha : a - q \in \alpha$, observe $a \notin \alpha \implies \frac{1}{a} \in \alpha^{-1}$, thus:
+        First let's take some $p < 1 \implies \exists q > 0 \in \mathbb{Q} : p + q = 1$, so $q$ is the "distance" between $p$ and $1$; let's now take some $\alpha >1$ (we can assume this without losing generality since otherwise it would be $\alpha^{-1}>1$) and consider some $a \notin \alpha : a - q \in \alpha$, observe $a \notin \alpha \implies \frac{1}{a} \in \alpha^{-1}$, thus:
 
         $$1 > (a-q)\frac{1}{a} = 1 - \frac{q}{a} > 1 - q = p$$
 
@@ -979,7 +979,7 @@ From all below, consider $\alpha, \beta \in \mathbb{R}^+$
 
     <br>
 
-Now that we prooved that $(\mathbb{R}^+,\ ·)$ is an abelian group, let's extend to $\mathbb{R}$ this same operation.
+Now that we proved that $(\mathbb{R}^+,\ ·)$ is an abelian group, let's extend to $\mathbb{R}$ this same operation.
 
 Observe that $\alpha 0^ = 0^\ast$ and the argument is basically the same we provided with $1^\ast$:
 
@@ -1013,11 +1013,11 @@ $$\alpha(\beta + \gamma) = \alpha \beta + \alpha \gamma$$
 
 ### 5.1.6. $\mathbb{Q}$ in $\mathbb{R}$.
 
-Let's see that $\mathbb{Q} \subset \mathbb{R}$. Is worth to make a previous comentary about this statement. Formally is an abuse of language, in strict terms, $\mathbb{Q}$ is not part of $\mathbb{R}$ because their elements are simply not the same.
+Let's see that $\mathbb{Q} \subset \mathbb{R}$. It is worth making a previous commentary about this statement. Formally it is an abuse of language: in strict terms, $\mathbb{Q}$ is not part of $\mathbb{R}$ because their elements are simply not the same.
 
-Mathematically, we don't care about what things are made, mathematicians often don't know about what are they talking about, but they are pretty sure about what are saying which is not the same. In other words, what we care about is how elements relate between them. Thus, two structures whose elements behaves exactly the same way are externally indistinguishable and, for any structural purpouse, exchangeable.
+Mathematically, we don't care about what things are made of; mathematicians often don't know what they are talking about, but they are pretty sure about what they are saying, which is not the same. In other words, what we care about is how elements relate between them. Thus, two structures whose elements behave exactly the same way are externally indistinguishable and, for any structural purpose, exchangeable.
 
-The object that allows us to identify two equivalent structures is the *isomorphism*, in this case *field's isomorphism*. This is a biyection that allows to translate a structure to another, identifying pairs of elements from both set and implicating rules that preserve the behavior through the image of the isomorphism.
+The object that allows us to identify two equivalent structures is the *isomorphism*, in this case the *field isomorphism*. This is a bijection that allows us to translate one structure to another, identifying pairs of elements from both sets and implicating rules that preserve the behavior through the image of the isomorphism.
 
 Let's consider $\varphi:\mathbb{Q}\xrightarrow{\ \sim\ }\mathbb{Q}^\ast$ such: $q \mapsto q^\ast = \Set{p \mid  p < q}$, is clear that $q^\ast \in \mathbb{R}$ is the cut formed by the behind of $q$.
 
@@ -1029,11 +1029,11 @@ First, let see that $\varphi$, as defined is a *field homomorphism*:
 
     <br>
 
-Observe that this much is true and is already prooved above, that the segment of the addition is the addition of the segments and the product of the segment is the segment of the product.
+Observe that this much is true and is already proved above, that the segment of the addition is the addition of the segments and the product of the segment is the segment of the product.
 
-Observe also that each cut in $q^\ast \in \mathbb{Q}^\ast$ has a preimage through $\varphi$ and reverse, so $\varphi$ is biyective and is and field isomorphism, implying that $p\neq q \implies \varphi(p) \neq \varphi(q)$.
+Observe also that each cut $q^\ast \in \mathbb{Q}^\ast$ has a preimage through $\varphi$ and vice versa, so $\varphi$ is bijective and is a field isomorphism, implying that $p\neq q \implies \varphi(p) \neq \varphi(q)$.
 
-Lastly, consider some $p, q \in \mathbb{Q} : p < q$, we already know that $\varphi(p) \neq \varphi(q)$ but also observe that is pretty clear: $\forall t \big(t \in \varphi(p) \implies t <p < q \implies t \in \varphi(q)\big) \implies \varphi(p) < \varphi(q)$, a similar argument prooves $\varphi(p) < \varphi(q) \implies p<q$, thus $p<q \iff \varphi(p) < \varphi(q)$.
+Lastly, consider some $p, q \in \mathbb{Q} : p < q$, we already know that $\varphi(p) \neq \varphi(q)$ but also observe that it is pretty clear: $\forall t \big(t \in \varphi(p) \implies t <p < q \implies t \in \varphi(q)\big) \implies \varphi(p) < \varphi(q)$, a similar argument proves $\varphi(p) < \varphi(q) \implies p<q$, thus $p<q \iff \varphi(p) < \varphi(q)$.
 
 So $\varphi$ is an *isomorphism of ordered fields* meaning that $\mathbb{Q} \simeq \mathbb{Q}^\ast \subset \mathbb{R}$ and we can exchange $q$ and $q^\ast$ in the real number context.
 
@@ -1041,7 +1041,7 @@ So $\varphi$ is an *isomorphism of ordered fields* meaning that $\mathbb{Q} \sim
 
 With this, we conclude the presentation of $\mathbb{R}$ as a strict ordered field that also satisfies $LUB$ property, we say then that $\mathbb{R}$ is *ordered* and *complete*.
 
-In fact, despite this result will not be prooved: any two ordered fields with
+In fact, although this result will not be proved: any two ordered fields with
 the least-upper-bound property are isomorphic, meaning that **$\mathbb{R}$ is THE ordered and complete field**.
 
 <br>
@@ -1050,22 +1050,22 @@ the least-upper-bound property are isomorphic, meaning that **$\mathbb{R}$ is TH
 
 ### 5.2.1. Archimedean property of $\mathbb{R}$.
 
-We've nound this property before in the construction of $\mathbb{R}$ without properly defined it. This property says that every cuantity in $\mathbb{R}$ is reachable by considering a positive value a finite number of times. It is a powerful statement since it basically says that every point on the real line is reachable by any positive value repeated a finite number of times. 
+We've found this property before in the construction of $\mathbb{R}$ without properly defining it. This property says that every quantity in $\mathbb{R}$ is reachable by considering a positive value a finite number of times. It is a powerful statement since it basically says that every point on the real line is reachable by any positive value repeated a finite number of times. 
 
-This can be explained in other terms, the archimedean property says that $\mathbb{N}$ is unbounded on $\mathbb{R}$, there is always a natural number that can reach and surpass any real cuantitiy. 
+This can be explained in other terms: the archimedean property says that $\mathbb{N}$ is unbounded on $\mathbb{R}$, there is always a natural number that can reach and surpass any real quantity. 
 
 Meaning that $\mathbb{R}$ has no "infinitely large" or "infinitely small" elements; no matter how small a positive number $x$ you pick and no matter how large a target $y$, you can always reach (and surpass) $y$ by adding $x$ to itself enough times. Formally:
 
 $$\forall x\forall y (0 < x \implies  \exists n \in \mathbb{N} : y < nx)$$
 
-By absurdio reduction: 
+By reductio ad absurdum: 
 
 Let's observe that:
 
 $$\neg \forall x\forall y (0 < x \implies  \exists n \in \mathbb{N} : y < nx) \equiv \exists x\exists y (0 < x \wedge  y > nx \quad \forall n \in \mathbb{N})$$
 
 
-Thus, lets fix $x > 0$ and consider the set $A:=\Set{nx \ \vert \ n \in \mathbb{N}}$ upperbounded by $y$ as the statement says. By the $LUB$ property in $\mathbb{R}$ we can consider $\alpha = sup(A) \in \mathbb{R}$. 
+Thus, let's fix $x > 0$ and consider the set $A:=\Set{nx \ \vert \ n \in \mathbb{N}}$ upperbounded by $y$ as the statement says. By the $LUB$ property in $\mathbb{R}$ we can consider $\alpha = sup(A) \in \mathbb{R}$. 
 
 This way, we have that:
 
@@ -1083,9 +1083,9 @@ Let's observe that, considering $x \in \mathbb{R}\setminus \mathbb{Q}$, then tak
 
 $$x \in \mathbb{Q} \subset \mathbb{R} \implies x \in y \setminus x$$
 
-The existance of another $q \neq x : x < q < y$ need to be prooved.
+The existence of another $q \neq x : x < q < y$ needs to be proved.
 
-To demonstrate it, lets think about $x, y \in \mathbb{R} :x < y$, thus is $ 0 < y - x$ so for $1 \in \mathbb{R}$, the archimedean property furnishes the result: $1 < n(y-x)$.
+To demonstrate it, let's think about $x, y \in \mathbb{R} :x < y$, thus $ 0 < y - x$ so for $1 \in \mathbb{R}$, the archimedean property furnishes the result: $1 < n(y-x)$.
 
 Also, considering $z_1,z_2 \in \mathbb{R}^+ \implies \exists t_1,t_2 \in \mathbb{N}: nx < t_1z_1 \wedge -nx < t_2z_2$. Then, calling $m_i = t_iz_i$ is:
 
@@ -1099,7 +1099,7 @@ And thus:
 
 $$x < \frac{m}{n} < y$$
 
-Observe that this calls for we can approximate any real through rational values. Think that for any $x \in \mathbb{R}$ we can think in $x < x +1 \implies \exists y \in \mathbb{Q} : x < y < x + 1$, but since $\mathbb{Q} \subset \mathbb{R} \implies y \in \mathbb{R}$ and the result tell us that exists another $q \in \mathbb{Q} : x < q < y$ and so on.
+Observe that this means we can approximate any real through rational values. Think that for any $x \in \mathbb{R}$ we can think of $x < x +1 \implies \exists y \in \mathbb{Q} : x < y < x + 1$, but since $\mathbb{Q} \subset \mathbb{R} \implies y \in \mathbb{R}$ and the result tells us that there exists another $q \in \mathbb{Q} : x < q < y$ and so on.
 
 <br>
 
@@ -1119,7 +1119,7 @@ That there is at most one such $y \in \mathbb{R}$ is clear, since $\forall y\for
 
 <br>
 
-Now, let's demonstrate the existance if such number. Consider now the following set:
+Now, let's demonstrate the existence of such a number. Consider now the following set:
 
 $$E := \Set{t \in \mathbb{R} \mid t^n < x}$$
 
@@ -1134,7 +1134,7 @@ This set is not-empty and has an upperbound:
 
     <br>
 
-- Second, is upperbounded, consider $t \in \mathbb{R} : 1 + x < t \implies x < t \leq t^n$ and $1+x$ is an upperbound of $E$. Thus, we can consider the $y=sup(E)$ verifying necesarily $y^n = x$. (Although the proof of this last afirmation is not provided, is too complicated and the result, as presented, is intuitively enough to be accepted).
+- Second, it is upperbounded; consider $t \in \mathbb{R} : 1 + x < t \implies x < t \leq t^n$ and $1+x$ is an upperbound of $E$. Thus, we can consider the $y=sup(E)$ verifying necessarily $y^n = x$. (Although the proof of this last affirmation is not provided, as it is too complicated, the result, as presented, is intuitively enough to be accepted).
 
     <br>
 
@@ -1142,7 +1142,7 @@ Let's observe that $(ab)^{\frac{1}{n}} = a^{\frac{1}{n}}b^{\frac{1}{n}}$, take $
 
 $$(ab)^{\frac{1}{n}} = ((\alpha \beta)^n)^{\frac{1}{n}} = \alpha \beta = a^{\frac{1}{n}}b^{\frac{1}{n}}$$
 
-The step $\alpha^n \beta^n = (\alpha \beta)^n$ is taken by the conmutative property in the abelian group $(\mathbb{R}, \ ·)$.
+The step $\alpha^n \beta^n = (\alpha \beta)^n$ is taken by the commutative property in the abelian group $(\mathbb{R}, \ ·)$.
 
 <br>
 
@@ -1150,31 +1150,31 @@ The step $\alpha^n \beta^n = (\alpha \beta)^n$ is taken by the conmutative prope
 
 Let's make a brief recapitulation about what numbers are and how the conception of number changes when we talk about $\mathbb{R}$.
 
-Maths are abstractions of natural concepts with which we colive, specifically, numbers in a traditional way represent *cuantities*. $\mathbb{N}$ setup something we call unity or first element (which can be $0$ or $1$ depending on the convention, generally, $0$ is not a natural number) and define the rest of his elements by *succession*, thus, what place a number occupies in the iterative succession line represents how many time this identity is in this element which defines its value in an aritmetic sense; $n \in \mathbb{N}$ is literally $n$ times $1$.
+Maths are abstractions of natural concepts with which we coexist; specifically, numbers in a traditional way represent *quantities*. $\mathbb{N}$ sets up something we call unity or first element (which can be $0$ or $1$ depending on the convention; generally, $0$ is not a natural number) and defines the rest of its elements by *succession*; thus, the place a number occupies in the iterative succession line represents how many times this identity is in this element, which defines its value in an arithmetic sense; $n \in \mathbb{N}$ is literally $n$ times $1$.
 
-Then, the $0$ represent the abscense of cuantity and the negative numbers the debt and laterly the fractions changes the unity value (from which we extract the value of the rest of the elements as we see above) allowing to access to intermediate values intermediate values in the succession line. Thus, $\mathbb{Z}$ and $\mathbb{Q}$ expands the cuantity concept but we still talking about cuantities. 
+Then, the $0$ represents the absence of quantity and the negative numbers the debt, and later the fractions change the unity value (from which we extract the value of the rest of the elements as we saw above) allowing access to intermediate values in the succession line. Thus, $\mathbb{Z}$ and $\mathbb{Q}$ expand the quantity concept but we are still talking about quantities. 
 
-We already explained this in other terms by announcing the $LUB$ property, but we can now bring another perspective conceptually more ilustrative of the inadequatness of $\mathbb{Q}$. Since $\mathbb{Q}$ consider cuantities it makes his items totally disconected, meaning that we can made an split of $\mathbb{Q}$ by defining: 
+We already explained this in other terms by announcing the $LUB$ property, but we can now bring another perspective conceptually more illustrative of the inadequacy of $\mathbb{Q}$. Since $\mathbb{Q}$ considers quantities it makes its items totally disconnected, meaning that we can make a split of $\mathbb{Q}$ by defining: 
 
 $$U=\{q\in\mathbb{Q}: q^2<2\ \vee \ q<0\},\qquad V=\{q\in\mathbb{Q}: q>0 \vee \ q^2>2\}$$
 
-Observe that $U \cup V = \mathbb{Q}$ and neither of the two contains $p : p^2 = 2$, as if apparently this gap is never filled in $\mathbb{Q}$, like if there isn't no bridge between $U$ and $V$ that, however, builds $\mathbb{Q}$. This is a rational question involving rationals without a rational response, meaning that $\mathbb{Q}$ can't represent unconmensurable entities despite being "surrounded" by them, and is worth to enphasize the term "surrounded" because a lot of rationals get squeezed on the neighborhood of $p$ without never reach it. This unconmensurable entities manifest them selves as non-reachable frontiers to which we can approximate as much as we want.
+Observe that $U \cup V = \mathbb{Q}$ and neither of the two contains $p : p^2 = 2$; apparently this gap is never filled in $\mathbb{Q}$, as if there were no bridge between $U$ and $V$ that, however, builds $\mathbb{Q}$. This is a rational question involving rationals without a rational response, meaning that $\mathbb{Q}$ can't represent incommensurable entities despite being "surrounded" by them, and it is worth emphasizing the term "surrounded" because a lot of rationals get squeezed in the neighborhood of $p$ without ever reaching it. These incommensurable entities manifest themselves as non-reachable frontiers to which we can approximate as much as we want.
 
-$\mathbb{R}$ solves this by stop considering his elements as numbers or cuantities, but as *positions* in a line which, by definition, is continuous and any position (any "point") in the line is defined. In some informal sense, this real line is now "complete". 
+$\mathbb{R}$ solves this by no longer considering its elements as numbers or quantities, but as *positions* in a line which, by definition, is continuous and any position (any "point") in the line is defined. In some informal sense, this real line is now "complete". 
 
-This is achieved by changing $\mathbb{Q}$ arquitecture, tecnically, $\mathbb{R}$ and $\mathbb{Q}$ share the same substratum, rational numbers, but elements of $\mathbb{R}$ are subsets that satisfies certains properties; segments that "cut" the so called line at any point. The $LUB$ property offers a garantee that any bounded agrupation of this segments has a supremum, meaning that any subset that gets near to this frontiers non defined in $\mathbb{Q}$ has supremum in $\mathbb{R}$ in which the frontier, the non-measurable value, can be instantiated, filling this gaps from $\mathbb{Q}$.
+This is achieved by changing $\mathbb{Q}$'s architecture; technically, $\mathbb{R}$ and $\mathbb{Q}$ share the same substratum, rational numbers, but elements of $\mathbb{R}$ are subsets that satisfy certain properties; segments that "cut" the so-called line at any point. The $LUB$ property offers a guarantee that any bounded aggregation of these segments has a supremum, meaning that any subset that gets near to these frontiers not defined in $\mathbb{Q}$ has a supremum in $\mathbb{R}$ in which the frontier, the non-measurable value, can be instantiated, filling these gaps from $\mathbb{Q}$.
 
-The natural interpretation of a *cut* is an object that aims to a position in $\mathbb{R}$ cutting in two the line, this way, this so addresed position is characterized by what has back (which automatically characterizes what has in front). So the elements of $\mathbb{R}$ are positions in the line concretized by what surrounds it. This is why, in $4.3.1$ we care about present operations of an ordered field with a geometric nuance, because in $\mathbb{R}$ we do operate with positions in a geometric sense, the unique kind of "cuantities" we could consider in $\mathbb{R}$ are those which can be identified with rational elements as we see $5.1.6$.
+The natural interpretation of a *cut* is an object that points to a position in $\mathbb{R}$ cutting the line in two; this way, this addressed position is characterized by what it has behind (which automatically characterizes what it has in front). So the elements of $\mathbb{R}$ are positions in the line concretized by what surrounds them. This is why, in $4.3.1$ we care about presenting operations of an ordered field with a geometric nuance, because in $\mathbb{R}$ we do operate with positions in a geometric sense; the only kind of "quantities" we could consider in $\mathbb{R}$ are those which can be identified with rational elements as we saw in $5.1.6$.
 
 <br>
 
 Lastly, let's see what the three properties presented in $5.2$ tell us about $\mathbb{R}$:
 
-- **Arquimedean Property** states that any position in the line is reachable or surpasable by traslating a positive value a finite number of times.
+- **Archimedean Property** states that any position in the line is reachable or surpassable by translating a positive value a finite number of times.
 
-- **$\mathbb{Q}$ density** tell us that we can get closer enough to any position in $\mathbb{R}$ with a rational approach.
+- **$\mathbb{Q}$ density** tells us that we can get close enough to any position in $\mathbb{R}$ with a rational approach.
 
-- **nth-roots of positive real values**; tell us that any positive position is reachable by dilatating a finite number of times some positive value.
+- **nth-roots of positive real values**; tell us that any positive position is reachable by dilating some positive value a finite number of times.
 
     <br>
 
@@ -1182,7 +1182,7 @@ Lastly, let's see what the three properties presented in $5.2$ tell us about $\m
 
 ## 6.1. Definition.
 
-The extended real number sistem consist in form the set $\overline{\mathbb{R}} := \Set{\mathbb{R},+\infty,-\infty}$ defining:
+The extended real number system consists of forming the set $\overline{\mathbb{R}} := \Set{\mathbb{R},+\infty,-\infty}$ defining:
 
 $$-\infty < x < +\infty \quad \forall x \in \mathbb{R}$$
 
@@ -1201,21 +1201,21 @@ In this context, we say that real numbers are *finite*, while $+\infty,-\infty$ 
 
 <br>
 
-# 7. Summary. Analisis.
+# 7. Summary. Analysis.
 
-Until now, in  basic terms we've presented the rational numbers $\mathbb{Q}$ and evidenced some flaws in it as we develop in $5.3$. From $\mathbb{Q}$ we develop $\mathbb{R}$ as a complete ordered field ($LUB$) whose elements are no longer measurable cuantities but positiones in a continuous line, and lastly we stated that it is unique, meaning that any other complete ordered field is isomorph to $\mathbb{R}$.
+Until now, in basic terms, we've presented the rational numbers $\mathbb{Q}$ and evidenced some flaws in them as we developed in $5.3$. From $\mathbb{Q}$ we developed $\mathbb{R}$ as a complete ordered field ($LUB$) whose elements are no longer measurable quantities but positions in a continuous line, and lastly we stated that it is unique, meaning that any other complete ordered field is isomorphic to $\mathbb{R}$.
 
-Then, let's explain the need of this upgrade and how it relates with the Analisis and what is in fact Analisis as a mathematician discipline.
+Then, let's explain the need for this upgrade and how it relates to Analysis and what Analysis is in fact as a mathematical discipline.
 
 <br>
 
-Analisis is the matematician field which studies properties or objects by using the **limit**; which is a infinite aproximation process that returns a finite output. All analisis main's objects like derivates, integrals, continuity, etc are essentially limits.
+Analysis is the mathematical field which studies properties or objects by using the **limit**; which is an infinite approximation process that returns a finite output. All of analysis's main objects like derivatives, integrals, continuity, etc. are essentially limits.
 
 For the limit to have sense as an object two main ingredients are needed:
 
-- *Proximity notion*: A *metric*, which in $\mathbb{R}$ emerges from the *order*. How ever the order is not necesary for a metric to exists and $\mathbb{C}$ is the best example of it.
+- *Proximity notion*: A *metric*, which in $\mathbb{R}$ emerges from the *order*. However the order is not necessary for a metric to exist and $\mathbb{C}$ is the best example of it.
 
-- *Completness*: which garantees that the object of the approximation actually exists. $LUB$ garantees $\mathbb{R}$ completness.
+- *Completeness*: which guarantees that the object of the approximation actually exists. $LUB$ guarantees $\mathbb{R}$'s completeness.
 
 Thus, the limit is gradual approach to an existing object.
 
@@ -1225,11 +1225,11 @@ Thus, the limit is gradual approach to an existing object.
 
 ## 8.1. If $r \neq 0$ is rational and $x$ is irrational, prove that $r + x$ and $rx$ are irrational.
 
-Observe quicly that $r \in \mathbb{Q} \setminus \Set{0} \implies \exists p,q \in \mathbb{Z} : r = p/q$, thus, let's suppose that, being $x$ irrational (this is, not satisfying the implication above), 
+Observe quickly that $r \in \mathbb{Q} \setminus \Set{0} \implies \exists p,q \in \mathbb{Z} : r = p/q$, thus, let's suppose that, being $x$ irrational (this is, not satisfying the implication above), 
 
 - $r+x \in \mathbb{Q} \implies \exists m,n \in \mathbb{Z} : r + x = \frac{m}{n} \implies x = \frac{mq - pn}{qn} \in \mathbb{Q}$ contradicting the premise that $x  \notin \mathbb{Q}$.
 
-A similar argument for $rx$ give us $x = m/(nr) = (mq)/(np)$ contradicting the premise again
+A similar argument for $rx$ gives us $x = m/(nr) = (mq)/(np)$ contradicting the premise again
 
 <br>
 
@@ -1245,9 +1245,9 @@ $$\sqrt{3} \in \mathbb{Q} \implies \exists m,n \in \mathbb{Z}: (\frac{m^2}{n^2}=
 
 But: $m^2 = 3n^2 \implies 3 \| m^2 \implies 3 \| m \implies 3^2 \| m^2 = 3n^2 \implies 3 \| n $, in contradiction with the premise.
 
-Let's make a brief parentesis, observe that the fraction $\frac{m}{n}$ always express the same number, even if it is reducible, meaning that there is the same integer in the denominator and the numerator. This means that if $3 \| m  \wedge 3 \| n$ we can extract and cancel the $3$ in the denominator and the numerator and the fraction will still being $3$. That's why we can suppose that we can iterate until we find some $m^2$ and $n^2$ such $3$ do not divide both at the same time which justifies the premise condition that is violated.
+Let's make a brief parenthesis: observe that the fraction $\frac{m}{n}$ always expresses the same number, even if it is reducible, meaning that there is the same integer in the denominator and the numerator. This means that if $3 \| m  \wedge 3 \| n$ we can extract and cancel the $3$ in the denominator and the numerator and the fraction will still be $3$. That's why we can suppose that we can iterate until we find some $m^2$ and $n^2$ such that $3$ does not divide both at the same time, which justifies the premise condition that is violated.
 
-Also, observe that $3$ is prime, this justifies that $3 \| m^2 \implies 3 \| m$, observe that for any other composed number this isn't valid $12 \| 36  =6^2$ but $ 12 \cancel{\|} 6$.
+Also, observe that $3$ is prime; this justifies that $3 \| m^2 \implies 3 \| m$; observe that for any other composite number this isn't valid: $12 \| 36  =6^2$ but $ 12 \cancel{\|} 6$.
 
 Thus, $\sqrt{3} \notin \mathbb{Q}$. And by exercise one, the product of a rational by an irrational can't be rational, so $\sqrt{12} \notin \mathbb{Q}$.
 
@@ -1255,7 +1255,7 @@ Thus, $\sqrt{3} \notin \mathbb{Q}$. And by exercise one, the product of a ration
 
 Let's also observe some interesting fact.
 
-Consider some $\sqrt{p} \in \mathbb{N}$, suppose that $\sqrt{p} \in \mathbb{Q}$, then exists some irreductible fraction $\frac{m}{n}=\sqrt{p}$ 
+Consider some $\sqrt{p} \in \mathbb{N}$, suppose that $\sqrt{p} \in \mathbb{Q}$, then there exists some irreducible fraction $\frac{m}{n}=\sqrt{p}$ 
 
 Violating the premise so $\sqrt{p} \notin \mathbb{Q} \setminus \mathbb{N}$, or in other words, $\sqrt{p}\in \mathbb{Q} \implies \sqrt{p} \in \mathbb{N} \iff \exists q \in \mathbb{N} : p = q^2$, ($p$ is a perfect square).
 

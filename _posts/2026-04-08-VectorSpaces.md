@@ -33,7 +33,7 @@ lang: en
     - 2.4. Immediate Properties from vector spaces.
 
 3. Vector Spaces and Geometry.
-    - 3.1. Analitic Geometry: The affine space.
+    - 3.1. Analytic Geometry: The affine space.
         - 3.1.1. Definition.
         - 3.1.2. Isomorphism by origin.
     - 3.2. Vectors as geometric objects: Arrows.
@@ -69,7 +69,7 @@ We can review and develop the ideas presented in the [Linear Equation section](h
 
 ### 1.2.1. One operation algebraic structures.
 
-Let be $G := (S, \Omega) : \Omega := \Set{\star}$, where $\star : S \times S \to S$ is an internal operation (a function). 
+Let $G := (S, \Omega) : \Omega := \Set{\star}$, where $\star : S \times S \to S$ is an internal operation (a function). 
 
 Then we define:
 
@@ -262,7 +262,7 @@ In this context, we impose two rules $A1$, $A2$ over $\varphi : A \times S \to S
 
     $$\forall \varphi_a \ \exists \varphi^{-1}_{a}  \ \forall s \in S: \varphi_a(\varphi^{-1}_{a}(s)) = \varphi^{-1}_{a}(\varphi_a(s)) = s$$
 
-    Let's take $x = a^{-1}$ and observe that applying $A2$, $A1$ and the existance of the inverse in $G$ we get:
+    Let's take $x = a^{-1}$ and observe that applying $A2$, $A1$ and the existence of the inverse in $G$ we get:
 
     $$a^{-1} \ ·(a \ · s) = (a^{-1}a) \ · s = e \ · s = s$$
 
@@ -278,7 +278,7 @@ $$ \varphi_a(x) = s \iff x = \varphi_{a^{-1}}(s)$$
 
 Meaning that we can treat the elements of $S$ as elements over which we can define constraints, relations, etc. 
 
-Although, is worth to remember that $S$ is not a group an neither is the triple $(G,S, \varphi)$, what $S$ has aqcuired through $\varphi$ is a family of reversible parametrized transformations by the group $G$. Is a form to use $G$ in order to study $S$.
+Although, it is worth remembering that $S$ is not a group and neither is the triple $(G,S, \varphi)$; what $S$ has acquired through $\varphi$ is a family of reversible parametrized transformations by the group $G$. It is a way to use $G$ in order to study $S$.
 
 <br>
 
@@ -291,7 +291,7 @@ Now consider again a triple $(K,V,\ ·)$, where $K$ is a field and $V$ is an abe
 As we said before this action respects the algebraic structure of $K$, which remember; is a combined abelian group over two different compatible operations, by forcing the following axioms:
 
 - **M1**: $1_K \ · v = v$. The identity over the product doesn't transform anything.
-- **M2**: $\alpha \ · (\beta \ · v) = (\alpha \beta) \ · v \ \ \forall \alpha, \beta \in K, v \in V $. asociativity resembleance, order-independence while direction stays still.
+- **M2**: $\alpha \ · (\beta \ · v) = (\alpha \beta) \ · v \ \ \forall \alpha, \beta \in K, v \in V $. associativity resemblance, order-independence while direction stays still.
 - **D1**: $\alpha \ · (u + v) = \alpha \ · u + \alpha \ · v \ \ \forall \alpha \in K, u, v \in V $. Compatibility between $·$ and $+$ in $V$.
 - **D2**: $(\alpha + \beta) \ · v =\alpha \ · v + \beta \ · v \ \ \forall \alpha, \beta \in K, v \in V$. Compatibility between $·$ and $+$ in $K$.
 
@@ -313,7 +313,7 @@ Let's dive into "scaling", "linear" and "linear combination" terms in order to u
 
 Scaling is about relating $V$'s elements using $K$'s elements as mediators. The term "scalar" comes from scale; changing the size without changing the essential nature of the object.
 
-Then, being $u,v \in V$ and $\alpha \in K : \alpha \neq 0$, when we say that $u = \alpha \ · v$, we are really saying $u$ is obtained from $v$, keeping its structural information since, thanks to $K$ being a field and $·$ respecting $K$'s properties, we can revert this operation and go back from $u$ to $v$. Let's see that by $M2$ and $M1$ we can garantee the existance of some $\beta \in K$ such $\beta \ · u = v$. Take $\beta = \alpha ^{-1}$ and:
+Then, being $u,v \in V$ and $\alpha \in K : \alpha \neq 0$, when we say that $u = \alpha \ · v$, we are really saying $u$ is obtained from $v$, keeping its structural information since, thanks to $K$ being a field and $·$ respecting $K$'s properties, we can revert this operation and go back from $u$ to $v$. Let's see that by $M2$ and $M1$ we can guarantee the existence of some $\beta \in K$ such that $\beta \ · u = v$. Take $\beta = \alpha ^{-1}$ and:
 
 $$\alpha^{-1} \ · u = \alpha^{-1} \ · (\alpha \ · v) \underbrace{=}_{M2} (\alpha^{-1} \alpha) \ · v = (1_K) \ · v \underbrace{=}_{M1}  v  $$
 
@@ -598,7 +598,7 @@ Let's check some important properties from the vector spaces that are immediatel
 
     $$ v  = \sum_{i = 1}^n \alpha_i u_i$$
 
-    Then, we say that $v$ is a linear combination of the $u_1,u_2, \ldots,v_n$ vectors.
+    Then, we say that $v$ is a linear combination of the $u_1,u_2, \ldots,u_n$ vectors.
 
     <br>
 
@@ -606,80 +606,80 @@ Let's check some important properties from the vector spaces that are immediatel
 
 Before concluding this introductory section on vector spaces, we shall consider the relation of vector spaces with geometry or the geometric intuition of vector spaces.
 
-Although we haven't present this result yet, it is true that for any $K$-vector space $V$ with a finite dimension exists some $n \in \mathbb{N}$ for which $K^n$ and $V$ are isomorphic; $V \simeq K^n$, meaning that both are the same vector space and share the same specific properties, this will be completly acknowledge by the reader at the end of this post.
+Although we haven't presented this result yet, it is true that for any $K$-vector space $V$ with a finite dimension there exists some $n \in \mathbb{N}$ for which $K^n$ and $V$ are isomorphic; $V \simeq K^n$, meaning that both are the same vector space and share the same specific properties; this will be completely acknowledged by the reader at the end of this post.
 
-Thus, we can understand the geometric structure of any $K$-vector space by aluding to the geometric construction of $K^n$. 
+Thus, we can understand the geometric structure of any $K$-vector space by alluding to the geometric construction of $K^n$. 
 
 <br>
 
-## 3.1. Analitic Geometry: The affine space.
+## 3.1. Analytic Geometry: The affine space.
 
 ### 3.1.1. Definition.
 
-Let's say that $K = \mathbb{R}$, then $\mathbb{R}^n$ is what we call an *affine space*. In this section we gonna explain briefly what an affine space is and how it diverges from the vector space and why this idea is geometrically interesting.
+Let's say that $K = \mathbb{R}$, then $\mathbb{R}^n$ is what we call an *affine space*. In this section we are going to explain briefly what an affine space is and how it diverges from the vector space and why this idea is geometrically interesting.
 
 <br>
 
-Let be $V$ a $K$-vector space and $\mathcal{A} \neq \varnothing$, whose items we will call *points*. Then, we define as an *affine space* over $V$ to a pair $(\mathcal{A},+)$ where $+ : \mathcal{A} \times V \to \mathcal{A}$ is a *simple transitive group action*. 
+Let $V$ be a $K$-vector space and $\mathcal{A} \neq \varnothing$, whose items we will call *points*. Then, we define as an *affine space* over $V$ a pair $(\mathcal{A},+)$ where $+ : \mathcal{A} \times V \to \mathcal{A}$ is a *simply transitive group action*. 
 
 This means that $+$ satisfies group's action axioms:
 
 - **$A1$ (Identity)**: $P + 0_V = P \ \ \forall P \in \mathcal{A}$
 - **$A2$ (Associativity)**: $(P + u) + v = P + (u + v) \ \ \forall P \in \mathcal{A}, \forall u,v \in V$ 
 
-Observe that at this point, as we discusse above with the action groups, $+$ offers a family of reversible parametrized transformations by the vector space $V$ that allow us to study the points of $\mathcal{A}$ through the vectors of $V$.
+Observe that at this point, as we discussed above with the group actions, $+$ offers a family of reversible parametrized transformations by the vector space $V$ that allow us to study the points of $\mathcal{A}$ through the vectors of $V$.
 
-But also this action group is *free* and *transitive* (the combination give us the simple transitive property):
+But also this group action is *free* and *transitive* (the combination gives us the simply transitive property):
 
 - **Transitivity**: $\forall P, Q \in \mathcal{A} \ \exists v \in V : P + v = Q$
 
-    Every point on $\mathcal{A}$ is reachable by any other point through an $V$'s item. Thus, there are no distinguished, isolated or privileged points on $\mathcal{A}$.
+    Every point on $\mathcal{A}$ is reachable by any other point through a $V$'s item. Thus, there are no distinguished, isolated or privileged points on $\mathcal{A}$.
 
     <br>
 
 - **Free**: $\forall P \forall v (P + v = P \implies v = 0)$
 
-    This essentially means that no points gets translated over itself, each non-zero vector moves one point $P$ over other point $Q$ such $P \neq Q$
+    This essentially means that no point gets translated over itself; each non-zero vector moves one point $P$ to another point $Q$ such that $P \neq Q$
 
     <br>
 
-Observe that, **Transitivity** and **Free** property can be collapsed on:
+Observe that the **Transitivity** and **Free** properties can be collapsed into:
 
 $$\forall P, Q \in \mathcal{A} \ \exists! \ v \in V : P + v = Q$$
 
-Let's observe that, if we consider $u,v \in V : P + u = P + v$, then $(P + u) + -v = (P + v) + -v$, by $A2$ is $(P + u) + -v = P + (u - v) = (P + v) + -v = P + (v - v) = P + 0_V$ and then, by $A1$, $P + (u - v) =P$, then by the **Free** property $P + (u - v) =P \implies u - v = 0_V$, thus $u = v$, so both properties implies the one above.
+Let's observe that, if we consider $u,v \in V : P + u = P + v$, then $(P + u) + -v = (P + v) + -v$, by $A2$ is $(P + u) + -v = P + (u - v) = (P + v) + -v = P + (v - v) = P + 0_V$ and then, by $A1$, $P + (u - v) =P$, then by the **Free** property $P + (u - v) =P \implies u - v = 0_V$, thus $u = v$, so both properties imply the one above.
 
 <br>
 
-Also observe that if we consider as true the statement above, obviously the **transitivity** property applies but also the uniquity of $v$ implies the **Free** property since by $A1$ the $0_V$ already satisfies $P + 0_V  = P$, thus is $\forall v \in V \ (P + v = P \implies v = 0_V)$. So both statements coimplies themselves and can be substituted.
+Also observe that if we consider the statement above as true, obviously the **transitivity** property applies but also the uniqueness of $v$ implies the **Free** property since by $A1$ the $0_V$ already satisfies $P + 0_V  = P$, thus $\forall v \in V \ (P + v = P \implies v = 0_V)$. So both statements co-imply each other and can be substituted.
 
 <br>
 
-Thus, essentially, an affine space is the object resulting of applying vectors to study points of a non-empty set through a simple transitive group's action. 
+Thus, essentially, an affine space is the object resulting from applying vectors to study points of a non-empty set through a simply transitive group action. 
 
 <br>
 
 ### 3.1.2. Isomorphism by origin.
 
-Let's now check some interesting property of affines spaces. The transitive property asserts that, from the $V$ perspective all points in $\mathcal{A}$ are equals, as we said, there are no privileged or distinguished points.
+Let's now check some interesting property of affine spaces. The transitive property asserts that, from the $V$ perspective, all points in $\mathcal{A}$ are equal; as we said, there are no privileged or distinguished points.
 
-Now, lets take some $O \in \mathcal{A}$, then, we define the application: 
+Now, let's take some $O \in \mathcal{A}$, then, we define the application: 
 
 $$\Phi_O : \mathcal{A} \longrightarrow V \qquad P \longmapsto \overrightarrow{OP} : O + \overrightarrow{OP} = P$$
 
-Obviously is a biyection since, fixing $O$ only one vector corresponds to one point $P$.
+Obviously it is a bijection since, fixing $O$, only one vector corresponds to one point $P$.
 
-Let's also consider the following operations over the points of $A$ being $P,Q \in \mathcal{A}$ and $\lambda$ an scalar:
+Let's also consider the following operations over the points of $A$ being $P,Q \in \mathcal{A}$ and $\lambda$ a scalar:
 
 $$\begin{cases}P +_O Q := \Phi_O^{-1}\big(\Phi_O(P) + \Phi_O(Q)\big) \\ \lambda \cdot_O P := \Phi_O^{-1}\big(\lambda \ \Phi_O(P)\big)\end{cases}$$
 
-Basically, we operate with the vectors assigned by $\Phi_O$ and then return the resulting point of $A$ (note that since $\Phi_O$ is biyective, we can consider the inverse $\Phi_O^{-1}$).
+Basically, we operate with the vectors assigned by $\Phi_O$ and then return the resulting point of $A$ (note that since $\Phi_O$ is bijective, we can consider the inverse $\Phi_O^{-1}$).
 
-Let's see that $(\mathcal{A},+_O, ·_O)$ is a vectorspace:
+Let's see that $(\mathcal{A},+_O, ·_O)$ is a vector space:
 
 - $(\mathcal{A},+_O)$ is an abelian group:
 
-    - **Closure**: For any $P, Q \in \mathcal{A}$, $\Phi_O(P), \Phi_O(Q)$ ae defined as vectors of $V$ and since $V$ is a vector space, the lineal combination $\Phi_O(P) + \Phi_O(Q)$ is garanted to be in $V$ and thus, since $\Phi_O$ is biyective, there exists a point $P' \in \mathcal{A} : \Phi_O(P') = \Phi_O(P) + \Phi_O(Q)$, so is $P' = \Phi_O^{-1}(\Phi_O(P) + \Phi_O(Q)) = P +_O Q \in \mathcal{A}$
+    - **Closure**: For any $P, Q \in \mathcal{A}$, $\Phi_O(P), \Phi_O(Q)$ are defined as vectors of $V$ and since $V$ is a vector space, the linear combination $\Phi_O(P) + \Phi_O(Q)$ is guaranteed to be in $V$ and thus, since $\Phi_O$ is bijective, there exists a point $P' \in \mathcal{A} : \Phi_O(P') = \Phi_O(P) + \Phi_O(Q)$, so $P' = \Phi_O^{-1}(\Phi_O(P) + \Phi_O(Q)) = P +_O Q \in \mathcal{A}$
 
         <br>
 
@@ -707,9 +707,9 @@ Let's see that $(\mathcal{A},+_O, ·_O)$ is a vectorspace:
         
         <br>
 
-    - **Inverse**: Check that since $(V,+)$ is an abelian group for each $v \in V$ exists one and only one $u \in V$ such $v + u = u + v = 0$ and we say $u = -v$.
+    - **Inverse**: Check that since $(V,+)$ is an abelian group, for each $v \in V$ there exists one and only one $u \in V$ such that $v + u = u + v = 0$ and we say $u = -v$.
     
-        Thus since $\Phi_O$ is biyective, for each $P \in \mathcal{A} : \Phi_O(P)=v $ exists a unique $Q$ such $\Phi_O(Q) = -v$. And is:
+        Thus since $\Phi_O$ is bijective, for each $P \in \mathcal{A} : \Phi_O(P)=v $ there exists a unique $Q$ such that $\Phi_O(Q) = -v$. And is:
 
         $$P +_O Q =\Phi_O^{-1}(v + (-v)) = \Phi_O^{-1}(0) = O$$
 
@@ -717,7 +717,7 @@ Let's see that $(\mathcal{A},+_O, ·_O)$ is a vectorspace:
 
         <br>
 
-    - **Conmutativity**: Immediate from the conmutativity in $(V,+)$.
+    - **Commutativity**: Immediate from the commutativity in $(V,+)$.
 
         <br>
 
@@ -735,20 +735,20 @@ Let's see that $(\mathcal{A},+_O, ·_O)$ is a vectorspace:
 
     <br>
 
-And by the biyection $\Phi_O$ is isomorph to $V$. This means that when whenever we select an origin $O$ in which define $\Phi$ we automatically instantiate (through $+_O,·_O$) a copy of $V$. **An affine space aqcuires a vector space structure when you fix a point.**
+And by the bijection $\Phi_O$ it is isomorphic to $V$. This means that whenever we select an origin $O$ in which to define $\Phi$ we automatically instantiate (through $+_O,·_O$) a copy of $V$. **An affine space acquires a vector space structure when you fix a point.**
 
 <br>
 
 ## 3.2. Vectors as geometric objects: Arrows.
-Thus, let's conserve this conception about an affine space. Again an affine space is what result from use vectors to study a non empty set in a simple and transitive way. At this point we have introduced the idea of a vector as an algebraic item, but we know can introduce his natural geometric counterpart.
+Thus, let's conserve this conception about an affine space. Again, an affine space is what results from using vectors to study a non-empty set in a simple and transitive way. At this point we have introduced the idea of a vector as an algebraic item, but we now can introduce its natural geometric counterpart.
 
 <br>
 
 ### 3.2.1. Bound arrows. Vectors as arrows.
 
-Let's consider the affine space $(\mathcal{A},+)$ over the $K$-vector space $V$ and also, fixed an origin $O \in A$, define $\Phi_O, +_O,·_O$ as above, and subsequently we get the $K$-vector space: $(K,(\mathcal{A},+_O),·_O)$ isomorph to $V$.
+Let's consider the affine space $(\mathcal{A},+)$ over the $K$-vector space $V$ and also, fixed an origin $O \in A$, define $\Phi_O, +_O,·_O$ as above, and subsequently we get the $K$-vector space: $(K,(\mathcal{A},+_O),·_O)$ isomorphic to $V$.
 
-In this context, lets get two points $P,Q \in \mathcal{A}$, we subtly introduced before the idea of the *arrow*. When we said in $(A,+)$ there is some $v \in V: P + v = Q$ we were introducing the idea about $v$ being a "displacement" from $P$ to $Q$:
+In this context, let's get two points $P,Q \in \mathcal{A}$; we subtly introduced before the idea of the *arrow*. When we said in $(A,+)$ there is some $v \in V: P + v = Q$ we were introducing the idea about $v$ being a "displacement" from $P$ to $Q$:
 
 ![vector1](/assets/images/Maths/Algebra/vector1.png)
 
@@ -758,13 +758,13 @@ $$\delta : \mathcal{A} \times \mathcal{A} \longrightarrow V, \quad (P,Q) \longma
 
 Observe that $v$ is unique for each pair and that there are a few properties that $\delta$ satisfies that are released from the axioms of the affine space:
 
-- $\overrightarrow{PP} = 0_V$​, from $A1$ and simple transivity.
+- $\overrightarrow{PP} = 0_V$​, from $A1$ and simple transitivity.
 
     <br>
 
 - **Chasles Relation**: $\overrightarrow{PQ} + \overrightarrow{QR} = \overrightarrow{PR}$
 
-    Let's quicly observe that: $P + \overrightarrow{PQ} = Q \wedge Q + \overrightarrow{QR} = R$
+    Let's quickly observe that: $P + \overrightarrow{PQ} = Q \wedge Q + \overrightarrow{QR} = R$
 
     Thus, using $A2$ we get: $R = Q + \overrightarrow{QR} = (P + \overrightarrow{PQ}) + \overrightarrow{QR} = P + (\overrightarrow{PQ} + \overrightarrow{QR})$, thus:
 
@@ -776,9 +776,9 @@ Observe that $v$ is unique for each pair and that there are a few properties tha
 
     <br>
 
-In this context, we say that the pair $(P,Q)$ or simply $\overrightarrow{PQ}$ is a "bound arrow", which his base in $P$ and his end in $Q$. We formalize this idea applying $\delta$ construction.
+In this context, we say that the pair $(P,Q)$ or simply $\overrightarrow{PQ}$ is a "bound arrow", with its base in $P$ and its end in $Q$. We formalize this idea applying the $\delta$ construction.
 
-A *bound arrow* is a pair $(P,v) \in \mathcal{A} \times V$ often related as $(P,\overrightarrow{PQ})$ and interchangeble with $(P,Q)$ since two elements define the third.
+A *bound arrow* is a pair $(P,v) \in \mathcal{A} \times V$ often related as $(P,\overrightarrow{PQ})$ and interchangeable with $(P,Q)$ since two elements define the third.
 
 <br>
 
@@ -788,21 +788,21 @@ Let's observe that having fixed $O$, then we can collapse $\delta: A \times A \t
 
 $$\delta_O( \ ·) = \delta(O, \ · )$$
 
-Since the simple transivity of $+$ imposes a unique displacement from one point to another, fixing one of those points allow us to identify every each point on $A$ with a unique "position relative to $O$" vector in $V$. 
+Since the simple transitivity of $+$ imposes a unique displacement from one point to another, fixing one of those points allows us to identify each point on $A$ with a unique "position relative to $O$" vector in $V$. 
 
-This means that we can treat each point on $A$ as an arrow from $O$, the identity of the abelian group $(A,+_O)$. **In other words, the collection of arrows from an origin has a structure of vector space**. This allow us to think in vectors as arrows in a, line, plane, space and so on.
+This means that we can treat each point on $A$ as an arrow from $O$, the identity of the abelian group $(A,+_O)$. **In other words, the collection of arrows from an origin has a structure of vector space**. This allows us to think of vectors as arrows in a line, plane, space and so on.
 
 <br>
 
 ### 3.2.2. Equipolence class: Free vectors.
 
-Let's observe that bound vectora, conceptualized as a displacement, has magnitude, direction and an orientation in the direction. Thus, despite the point of application, two bound vectors are equal if both matches this three features.
+Let's observe that bound vectors, conceptualized as a displacement, have magnitude, direction and an orientation in the direction. Thus, despite the point of application, two bound vectors are equal if both match these three features.
 
-This leads to the construction of the notion of the *free vector* as a equivalent class of those bound vectors that share this three features.
+This leads to the construction of the notion of the *free vector* as an equivalence class of those bound vectors that share these three features.
 
 <br>
 
-#### 3.2.2.1. Appex: Equivalence Class.
+#### 3.2.2.1. Appendix: Equivalence Class.
 
 An *equivalence class* is the set of all elements in a set that we consider "equal" under a certain criterion of equality. The idea is that when we declare certain objects to be interchangeable for our purposes (even if they are not literally the same object), we group together all those that share that quality. That group is the class.
 
@@ -810,33 +810,33 @@ Their importance is structural: equivalence classes are the mechanism that allow
 
 <br>
 
-Formally, be $X$ a non-empty set, a *equivalence relation* is binary relation $\sim \ \subseteq X\times X$ satisfying:
+Formally, let $X$ be a non-empty set; an *equivalence relation* is a binary relation $\sim \ \subseteq X\times X$ satisfying:
 
 - *Reflexivity*: $\forall x \in X \quad x \sim x$
-- *Simetry*: $\forall x,y \in X \quad x \sim y \implies y \sim x$
+- *Symmetry*: $\forall x,y \in X \quad x \sim y \implies y \sim x$
 - *Transitivity*: $\forall x,y,z \quad x \sim y \wedge y \sim z \implies x \sim z$
 
 In this conditions, this equivalence relation defines our criterion to build the equivalence classes $[x]$, formally:
 
 $$[x] :=\ \Set{ y \in X : y \sim x }$$
 
-We say that $x$ is the representant of the class. Observe that the following immediate properties are satisfied by the equivalence class:
+We say that $x$ is the representative of the class. Observe that the following immediate properties are satisfied by the equivalence class:
 
 - $x \in [x] \ \ \forall x \in X$
 - $x \sim y \iff [x] = [y]$
 - $\forall x,y \in X \ (x \sim y \oplus x \not \sim y \implies [x] = [y] \oplus [x] \cap [y] = \varnothing)$
 
-    This means that two elements of $X$ are equivalent or not are equivalent at all, following the second property, this means that his equivalence classes are disjoints or are the same.
+    This means that two elements of $X$ are either equivalent or not equivalent at all; following the second property, this means that their equivalence classes are disjoint or are the same.
 
 - $\displaystyle\bigcup_{x \in X} [x] = X$
 
     <br>
 
-Lastly, we define the cocient set as:
+Lastly, we define the quotient set as:
 
 $$X/\sim := \Set{[x] : x \in X}$$
 
-This are the set whose elements are the group of elements that are qualitative different according with the $\sim$ criterion.
+This is the set whose elements are the groups of elements that are qualitatively different according to the $\sim$ criterion.
 
 <br>
 
@@ -846,29 +846,29 @@ Now, let's say that $X = A \times A$, then we define in $A \times A$ the relatio
 
 $$(P,Q) \sim (P',Q') \iff \overrightarrow{PQ} = \overrightarrow{P'Q'}$$
 
-Observe that reflexivity, simetry and transivity are immediate from $=$ in $V$. Thus, two bound vectors are equal as long as they displacement is the same in magnituted, direction and orientation despite the application point.
+Observe that reflexivity, symmetry and transitivity are immediate from $=$ in $V$. Thus, two bound vectors are equal as long as their displacement is the same in magnitude, direction and orientation despite the application point.
 
 <br>
 
-This criterion allow us to define the cocient set:
+This criterion allows us to define the quotient set:
 
 $$\mathfrak{F}(\mathcal{A}) := (\mathcal{A} \times \mathcal{A})/\sim$$
 
-Whose equivalent class are $[(P,Q)]$. Let's now observe carefully that this structure has a vector space structure.
+Whose equivalence classes are $[(P,Q)]$. Let's now observe carefully that this structure has a vector space structure.
 
 First, let's fix an origin in $\mathcal{A}$, $O$ and consider the vector space $(K,(\mathcal{A},+_O),·_O)$ and observe that for each equivalence class $[(P,Q)]$, there is some $T \in \mathcal{A} : (O,T) \in [(P,Q)] \iff [(O,T)] = [(P,Q)]$, meaning that we can define:
 
 $$\iota_O : \mathcal{A} \longrightarrow \mathfrak{F}(\mathcal{A}), \qquad P \longmapsto [\,(O,P)\,]$$
 
-This function is biyective since $O$ is fixed and we can transport $(+_O, \cdot_O)$ to the cocient set $\mathfrak{F}(\mathcal{A})$ by operating with the canonical representant of each class. 
+This function is bijective since $O$ is fixed and we can transport $(+_O, \cdot_O)$ to the quotient set $\mathfrak{F}(\mathcal{A})$ by operating with the canonical representative of each class. 
 
-So $(K, (\mathfrak{F}(\mathcal{A}),+_O),·_O)$ is a vectorspace and this ultimately means that, in an affine space, whenever we treat a vector $v$ we catch the canonical representant of his equivalence class relative to an origin $O$, and work with it as if both where the same vector.
+So $(K, (\mathfrak{F}(\mathcal{A}),+_O),·_O)$ is a vector space and this ultimately means that, in an affine space, whenever we treat a vector $v$ we catch the canonical representative of its equivalence class relative to an origin $O$, and work with it as if both were the same vector.
 
-As an example, observe that this matchs some known operation with points and vectors. Consider $P,Q \in \mathcal{A}$, we can identify each point with his vector from the origin, $\overrightarrow{OP}, \overrightarrow{OQ}$. Then, by Chasles:
+As an example, observe that this matches some known operations with points and vectors. Consider $P,Q \in \mathcal{A}$, we can identify each point with its vector from the origin, $\overrightarrow{OP}, \overrightarrow{OQ}$. Then, by Chasles:
 
 $$\overrightarrow{PQ} = \overrightarrow{PO} +\overrightarrow{OQ} = - \overrightarrow{OP} + \overrightarrow{OQ} \iff \overrightarrow{OP} + \overrightarrow{PQ} = \overrightarrow{OQ}$$
 
-Meaning that substract $P$ to $Q$ (from any arbitrary point) give us the displacement from $P$ to $Q$ formalized in $\overrightarrow{PQ}$ and the thing is that we would not work directly with $\overrightarrow{PQ}$ but with the canonical representant of his equivalence class, $\overrightarrow{OT} : \overrightarrow{OT} \sim \overrightarrow{PQ}$
+Meaning that subtracting $P$ from $Q$ (from any arbitrary point) gives us the displacement from $P$ to $Q$ formalized in $\overrightarrow{PQ}$, and the thing is that we would not work directly with $\overrightarrow{PQ}$ but with the canonical representative of its equivalence class, $\overrightarrow{OT} : \overrightarrow{OT} \sim \overrightarrow{PQ}$
 
 ![vector1](/assets/images/Maths/Algebra/vector1.png)
 
@@ -876,13 +876,13 @@ Meaning that substract $P$ to $Q$ (from any arbitrary point) give us the displac
 
 # 4. Summary.
 
-As a brief summary of the post, we have define Algebra as a mathematic discipline that occupies the study of the properties of operations. In this context, we develop an algebraic definition of the vector space as an algebraic structure in which a deformation mechanism acts on an abelian group standarizating the "linear combinations" as the natural operation of this space, understanded those as independants and weighted by a field contributions of elements from the abelian group. 
+As a brief summary of the post, we have defined Algebra as a mathematical discipline that deals with the study of the properties of operations. In this context, we developed an algebraic definition of the vector space as an algebraic structure in which a deformation mechanism acts on an abelian group, standardizing the "linear combinations" as the natural operation of this space, understood as independent and field-weighted contributions of elements from the abelian group. 
 
-Later, we explore the geometric intuition behind the vector spaces. For that, first we define the affine space as the object resulting of use a vector space in a simple and transitive way to study a non-empty set. We also see that the affine space is a "point-uniform" structure and whenever you fix one point as a source of vectors, the affine space aqcuires a vector space.
+Later, we explored the geometric intuition behind the vector spaces. For that, first we defined the affine space as the object resulting from using a vector space in a simple and transitive way to study a non-empty set. We also saw that the affine space is a "point-uniform" structure and whenever you fix one point as a source of vectors, the affine space acquires a vector space.
 
-Then, we build the concept of "bound vector" as a displacement between two points in the affine space and identify such bound vector with the mathematical object we call "arrow". This wat, with an origin fixed, we define a biyective application that identifies any point with a certain vector from the origin. Thus, the collection of all possible arrows that stems from a point in an affine space has structure of vector space and that is the precise visual representation we were searching.
+Then, we built the concept of "bound vector" as a displacement between two points in the affine space and identified such bound vector with the mathematical object we call "arrow". This way, with an origin fixed, we defined a bijective application that identifies any point with a certain vector from the origin. Thus, the collection of all possible arrows that stem from a point in an affine space has the structure of a vector space and that is the precise visual representation we were searching for.
 
-Ultimately we formalize the bound vector as a "free vector" being this the equivalence class of all the bound vectors that share magnitude, direction and orientation. The set of all free vectors has also a vector space structure which allow us to identify any bound vector on the affine space with his canonical class representant and operate with it as if both were the same vector.
+Ultimately we formalized the bound vector as a "free vector", this being the equivalence class of all the bound vectors that share magnitude, direction and orientation. The set of all free vectors has also a vector space structure which allows us to identify any bound vector on the affine space with its canonical class representative and operate with it as if both were the same vector.
 
 <br>
 
@@ -898,7 +898,7 @@ Done in  $2.3.1.$
 
 $$(a_1 +a_2) + (a_3 + a_4) = [a_2 + (a_3 + a_1)] + a_4$$
 
-Observe that since $(V,+)$ is an abelian group the exercise is immediate, it is just generalizing the asociativity and conmutativity for more than two elements.
+Observe that since $(V,+)$ is an abelian group the exercise is immediate, it is just generalizing the associativity and commutativity for more than two elements.
 
 <br>
 
@@ -928,7 +928,7 @@ $$c(x,y) = (cx,y)$$
 
 
 
-The addition $+$ is the clasic addition operation in $\mathbb{R}^2$ so is clear that $(V,+) = (\mathbb{R}^2,+)$ is an abelian group. Now, let's take a closer look on the field's action. 
+The addition $+$ is the classic addition operation in $\mathbb{R}^2$ so it is clear that $(V,+) = (\mathbb{R}^2,+)$ is an abelian group. Now, let's take a closer look at the field's action. 
 
 Observe that there is something weird; $0 · (x,y) = (0,0) \iff y = 0$ which should not be. 
 
@@ -956,7 +956,7 @@ $$\alpha \oplus \beta = \alpha - \beta$$
 
 $$c · \alpha = - c \alpha$$
 
-Observe that $\alpha \oplus \beta = \alpha - \beta \neq \beta - \alpha = \beta \oplus \alpha$, so $(\mathbb{R}, \oplus)$ is not an abelian group. Also, the application is not a field action, since the identity does transforms the vector; $1\alpha = - \alpha$. Thus, the structure as presented is not a vector space.
+Observe that $\alpha \oplus \beta = \alpha - \beta \neq \beta - \alpha = \beta \oplus \alpha$, so $(\mathbb{R}, \oplus)$ is not an abelian group. Also, the application is not a field action, since the identity does transform the vector; $1\alpha = - \alpha$. Thus, the structure as presented is not a vector space.
 
 <br>
 
@@ -970,13 +970,13 @@ $$(cf)(t)=cf(t)$$
 
 Observe that $V := \Set{f \in \mathbb{C}^{\mathbb{R}}\mid f(-t) = \overline{f(t)}}$, thus, let's first check $(V,+)$ is an abelian group:
 
-- Associativity and Conmutativity are immediate from Associativity and Conmutativity in addition in $(\mathbb{C},+)$.
+- Associativity and Commutativity are immediate from Associativity and Commutativity of addition in $(\mathbb{C},+)$.
 
     Let's check closure:  observe that 
     
     $$f,g \in V \implies (f+g)(-t) = f(-t) + g(-t) = \overline{f(t)}+\overline{g(t)} = \overline{f(t)+g(t)}= \overline{(f+g)(t)}$$
 
-    Let's think about the identity element. We have to demonstrate the existance of some element in $i \in V$ such 
+    Let's think about the identity element. We have to demonstrate the existence of some element $i \in V$ such that 
 
     $$(i+f)=(f+i)=f \quad \forall f \in V$$
 
@@ -997,7 +997,7 @@ Observe that $V := \Set{f \in \mathbb{C}^{\mathbb{R}}\mid f(-t) = \overline{f(t)
 Let's check now that $·:\mathbb{R} \times V \to V$ is a field's action:
 
 - **Identity**; Taking $1 \in \mathbb{R}$, is immediate.
-- **Asociativity**: Immediate from associativity in $(\mathbb{R}\setminus\Set{0}, ·)$.
+- **Associativity**: Immediate from associativity in $(\mathbb{R}\setminus\Set{0}, ·)$.
 - **Compatibility in $V$**; Immediate from compatibility in $\mathbb{C}$
 - **Compatibility in $\mathbb{R}$**; Immediate from compatibility in $\mathbb{C}$
 
@@ -1007,10 +1007,10 @@ As an example of a function in $V$ not real-valued is $f(t) = it$.
 
 <br>
 
-## 5.7. Take de following operations in $\mathbb{R}^2$. Is $(\mathbb{R},(\mathbb{R}^2,+),·)$ a vectorspace?
+## 5.7. Take the following operations in $\mathbb{R}^2$. Is $(\mathbb{R},(\mathbb{R}^2,+),·)$ a vector space?
 
 $$(a,b) + (c,d) = (a+c,0)$$
 
 $$c(a,b) = (ca,0)$$
 
-Observe that there are no identity in $(\mathbb{R}^2,+)$ so is not an abeliano group
+Observe that there is no identity in $(\mathbb{R}^2,+)$ so it is not an abelian group
