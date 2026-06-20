@@ -1265,3 +1265,147 @@ Violating the premise so $\sqrt{p} \notin \mathbb{Q} \setminus \mathbb{N}$, or i
 ## 8.3. Prove proposition 1.15. 
 
 This is already demonstrated in $4.2$ and below.
+
+<br>
+
+## 8.4. Let $E$ be a nonempty subset of an ordered set; suppose $\alpha$ is a lower bound of $E$. and $\beta$ is an upper bound of $E$. Prove that $\alpha \leq \beta $.
+
+First, observe that, by definition: $\alpha \leq x \wedge x \leq \beta \quad \forall x \in E$, so we can argue that, by transitivity in order:
+
+$$E \neq \varnothing \implies \exists x \in E : \alpha \leq x \leq \beta \implies \alpha \leq \beta$$
+
+Let's observe that this edge between low and upper bounds take it to the last consecuence means that for any non-empty set $E$ for which we can consider an ínfimum and a supremum, is; $inf E \leq sup E$.
+
+<br>
+
+But let's observe that this result is attained to the fact that $E$ must be non empty. Let's observe that if $E$ where empty then the afirmation $\alpha \leq x \quad \forall x \in E$ is vacuosly true for any $\alpha$, observe that:
+
+$$\forall x \in E, \alpha \leq x \equiv \forall x(x \in E \implies \alpha \leq x)$$
+
+Then, following the truth table of the implication, if $x \in E$ is false (because $E$ is empty) the implication with a false antecedent is always true, this is what we call vacuosly true; a property of how implication works with false antecedent.
+
+And the same happens with the upper bounds $\beta$, meaning that every element of the universe is at the same time an upper bound and a lower bounds, blurring the mathematical notion in it.
+
+<br>
+
+## 8.5. Let $A$ be a nonempty set of real numbers which is bounded below. Let $—A$ be the set of all numbers $—x$, where $x \in A$. Prove that $inf A = —sup(— A)$.
+
+Let's go step by step, consider $-A := \Set{-x \mid x \in A}$, then:
+
+1. $A \neq \varnothing \implies \exists x \in \mathbb{R} : x \in A \implies -x \in -A \implies -A \neq \varnothing$
+
+    <br>
+
+2. Since $A, -A \subseteq \mathbb{R}$ and non-empty, we can apply the combined properties of the operations and the order defined in $\mathbb{R}$. 
+
+    Hence, since $A$ is lowerbounded in $\mathbb{R}$, we can consider some lowerbound $\beta \in \mathbb{R}$ of $A$, verifying, through the properties of the order in $\mathbb{R}$:
+
+    $$\beta \leq x \quad \forall x \in A \iff -\beta \geq -x \quad \forall - x \in -A$$
+
+    Thus, $-\beta$ is an upperbound for $-A$ and this is an upperbounded subset of $\mathbb{R}$.
+
+    <br>
+
+3. By the $LUB$ property of $\mathbb{R}$, any non-empty subset upper/lower bounded has supremum/infimum in $\mathbb{R}$. Meaning we can consider $\inf A \in \mathbb{R}$ and $\sup (-A) \in \mathbb{R}$, verifying:
+
+    $$\beta \leq \inf A \leq x \quad \forall x \in A, \forall  \text{ lowerbound } \beta \in \mathbb{R} \text{ of A}$$
+
+    $$\alpha \geq \sup (-A) \geq - x \quad \forall -x \in -A, \forall  \text{ upperbound } \alpha \in \mathbb{R} \text{ of -A}$$
+
+4. Lastly let's point out that:
+
+    $$\alpha \geq \sup (-A) \geq -x \quad \forall -x \in -A \iff -\alpha \leq -sup(-A) \leq x \quad \forall x \in A$$
+
+    Let be $\beta$ some lowerbound of $A$, then, again $-\beta \geq -x \quad \forall -x \in -A$ which means that $-\beta$ is an upperbound of $-A$ it self, then, calling $\alpha = -\beta \iff -\alpha = \beta \leq -sup(-A)$, as we stated above, so $-\sup(-A)$ is greater than any lowerbound of $A$ being a lowerbound of $A$ it self.
+    
+    <br>
+    
+5. Note that, from all above, over $A$ there are two objetcs verifying:
+
+    $$\beta \leq \inf A \leq x \quad \forall x \in A, \forall  \text{ lowerbound } \beta$$
+
+    $$\beta \leq -\sup (- A) \leq x \quad \forall x \in A, \forall  \text{ lowerbound } \beta$$
+
+    Since both $\inf A$ and $-sup(-A)$ are lowerbounds of $A$, the statements above applies to each of them as $\beta$ at the same time, hence:
+
+    $$(-\sup (- A) \leq \inf A \wedge \inf A \leq -\sup (-A)) \implies \inf A = -sup (-A)$$
+
+    Which is the result we wanted to prove.
+
+    <br>
+
+## 8.6. Fix $b > 1$ and prove the following statements:
+
+1. **If $m,n>0,p,q>0 \in \mathbb{Z}$, being $r = m/n = p/q$, then prove that:**
+
+    $$(b^m)^{1/n} = (b^p)^{1/q}$$
+
+    Let's depart from the fact that: 
+    
+    $$m/n = p/q \iff mq = pn \iff b^{mq} = b^{pn} \iff (b^m)^q = (b^p)^n$$
+
+    The last step is justified by the fact that since $m,q,p,n$ are integers. Take $b^{mq}$ and call $B = b^m$, then $b^{mq} = \prod\_{i=1}^{mq} b = \prod\_{i=1}^q B = B^q = (b^m)^q$, a similar argument can be provided with the counter part.
+
+    Then, now we leverage the fact that by $n$-th root of a positive real is unique by $1.21$, thus we can take:
+
+    $$(b^m)^q = (b^p)^n \iff ((b^m)^q)^{1/q} = b^m = ((b^p)^n)^{1/q} $$
+
+    Also, observe that from the corollary of $1.21$ as well is:
+
+    $$((b^p)^n)^{1/q} = ((b^p)^{1/q})^n$$
+
+    And again by the unicity of the $n$-th root of positive reals numbers is:
+
+    $$(b^m)^{1/n} = (((b^p)^{1/q})^n)^{1/n} = (b^p)^{1/q}$$
+
+    <br>
+
+    Observe that this give sense to the notation:
+
+    $$(b^m)^{1/n} = b^{m/n}$$
+
+    Because we proved that whenever the operator of the fraction are, as long as the fraction remains equivalent, the root points to the same real number.
+
+    <br>
+
+2. **Prove that $b^{r+s} = b^rb^s$ if $r$ and $s$ are rational.** 
+
+    Observe that, taking $r = m/n$ and $s = p/q$ such $m,n,p,q \in \mathbb{Z} : n,q > 0$, then is:
+    
+    $$r + s = \frac{mq + np}{nq} \iff b^{r+s} = b^{\frac{mq + np}{nq}}$$
+
+    Recovering the notation stablished in $1.$ is:
+
+    $$b^{\frac{mq + np}{nq}} = (b^{mq + np})^{1/nq} = (b^{mq}b^{np})^{1/nq}$$
+
+    The last step is justified for being $m,n,p,q \in \mathbb{Z}$, then, lastly, leveraging the corollary of $1.21$ and taking advantage of the notation develop in $1$:
+
+    $$(b^{mq}b^{np})^{1/nq} = (b^{mq})^{1/nq} (b^{np})^{1/nq} = b^{mq/nq}b^{np/nq} = b^rb^s$$
+
+    <br>
+
+3. **If $x$ is real, define $B(x)$ to be the set of all numbers $b^t$, where $t$ is rational and $t\leq x$. Prove that: $b^r = sup B(r)$.**
+
+    Let's start considering that $B(x) := \Set{b^t \mid t \in \mathbb{R} : t \leq x}$, then, since $b>1$:
+
+    - First, take $a,b \in \mathbb{R} : 1 < a \leq b, n \in \mathbb{N}$ and let's call: $\alpha^n =a, \beta^n = b$, then we have that:
+
+        $$a \leq b \iff 1 \leq (\beta \alpha^{-1})^n \implies 1\leq \beta \alpha^{-1} \iff a^{1/n} \leq b^{1/n}$$
+
+        The implication is sustained by the fact that $1^n = 1 \quad \forall n \in \mathbb{N}$, so the powers tends to distance  positive numbers from $1$, meaning that any power with natural exponent of a positive number smaller than $1$ is always smaller than the number, and any power of natural exponent of a number above $1$ is greater than the number it self. This follows immediately from the properties of the axioms of the multiplication and the order.
+        
+        Formally: $1 < a \implies 1 < a^n \quad \forall n \in \mathbb{N}$, and $0< a < 1 \implies a^n < 1 \quad \forall n \in \mathbb{N}$ thus, let's suppose that $1<a^n$, if where $a < 1$ then by the above it would be $a^n < 1$, contradicting the premise.
+
+        <br>
+
+        Thus, let's now consider $r,s$ from point $2.$, then suppose $r\leq s$:
+        
+        $$m/n \leq p/q \iff mq \leq pn \iff b^{mq} \leq b^{pn}$$
+
+        And, making use of what we stated above since $b>1$, we can proceed as in point $1$ concluding: $b^r \leq b^s$.
+
+    - Now, it is clear that $B(x)$ is non-empty for any $x \in \mathbb{Q}$. Consider $b^x$, which clearly satisfies, as we stated above, that: $b^t\leq b^x \quad \forall t \leq x$, then $B(x)$ upperbounded. Let's consider some upperbound $\alpha$ of $B(x)$, then it verifies: $b^t \leq \alpha \quad \forall t \leq x$, since $x \leq x$ then is $b^x \leq \alpha$ so $b^x$ is the least upperbound of $B(x)$; $b^x = \sup B(x)$.
+
+    <br>
+
+    Thus, $b^x = supB(x) \quad \forall x \in \mathbb{R}$
