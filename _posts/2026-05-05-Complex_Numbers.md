@@ -332,7 +332,7 @@ Also, let's consider $z\overline{z}$, intuitively, we have that we are making ov
 
     Lastly, observe also that $z\overline{z} = \|z\|^2 \implies \|z\| = \sqrt{z\overline{z}}$. 
     
-    Thus $z \in \mathbb{R} \implies z = \overline{z}$  
+    Thus $z \in \mathbb{R} \iff z = \overline{z}$  
     
     $$|z| = \begin{cases} z \quad z \geq 0 \\ -z \quad z < 0\end{cases}$$
 
