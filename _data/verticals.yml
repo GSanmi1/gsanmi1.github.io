@@ -23,6 +23,9 @@
     - slug: graph-theory
       en: Graph Theory
       es: Teoría de Grafos
+    - slug: methods
+      en: Methods
+      es: Métodos
 
 - slug: algebra
   page: /algebra.html
