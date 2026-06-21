@@ -1409,3 +1409,42 @@ Let's go step by step, consider $-A := \Set{-x \mid x \in A}$, then:
     <br>
 
     Thus, $b^x = supB(x) \quad \forall x \in \mathbb{R}$
+
+    <br>
+
+4. Lastly, let's proof that $b^{x+y}=b^xb^y$.
+
+    Is almost immediately: $b^{x+y} = supB(x+y) = \Set{b^t \mid t \leq x+y}$ which by the above is $b^xb^y$.
+
+    <br>
+
+## 8.7. The logarithm of $y$ to the base $b$
+
+We are going to prove that $\forall b,y \in \mathbb{R} : b>1, y>1 \ \exists! x \in \mathbb{R} : b^x = y$, which is called logarithm of $y$ in the base $b$; $\log\_b y$ by completing the following outline. 
+
+1. **Bernoulli inequality in multiplicative form**: $b^n - 1 \geq n(b - 1) \quad \forall n \in \mathbb{N}$
+
+    First, let's take the geometric factorization which states that for any conmutative ring elements $x,y$ is:
+
+    $$x^n -y^n = (x-y)\sum_{i=0}^{n-1}(x^{n-1-i}y^i)$$
+
+    Now, take $x = b >1$ and $y=1$, then:
+
+    $$b^n -1 = (b-1)\sum_{i=0}^{n-1}(b^{n-1-i}1^i)= (b-1)\sum_{i=0}^{n-1}b^{n-1-i}$$
+
+    Take now that the question of the exercise is now to verify:
+
+    $$(b-1)\sum_{i=0}^{n-1}b^{n-1-i} \geq n(b - 1) \iff \sum_{i=0}^{n-1}b^{n-1-i} \geq n$$
+
+    But, observe that this result is almost immediately at is follows from the fract that $b^n > b > 1$ for any $n \in \mathbb{Z}^+$, then adding all the inequalities from $1$ to $n$ we have:
+    
+    
+    $$b>1 \implies \sum_{i=1}^n b^{n-i} \geq \sum_{i=1}^n 1 = n \quad \forall n \in \mathbb{Z}^+$$
+
+    Lastly, we just reconstruct: $b>1 \implies b-1 >0$ thus:
+
+    $$(b-1)\sum_{i=1}^n b^{n-i} \geq n(b-1) \quad \forall n \in \mathbb{Z}^+$$
+
+    Ultimately giving, combined with the original result, and considering the case $n=0$:
+
+    $$b^n -1 \geq n(b-1) \quad \forall n \in \mathbb{N}$$

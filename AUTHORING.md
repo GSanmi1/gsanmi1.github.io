@@ -27,7 +27,7 @@ live in [`_data/verticals.yml`](_data/verticals.yml):
 
 | Vertical | Subject slugs |
 | --- | --- |
-| Foundations | `logic-set-theory`, `number-systems`, `graph-theory` |
+| Foundations | `logic-set-theory`, `number-systems`, `graph-theory`, `methods` |
 | Algebra | `linear-algebra`, `abstract-algebra` |
 | Analysis | `real-analysis`, `complex-analysis`, `differential-equations`, `functional-analysis`, `measure-integration` |
 | Geometry & Topology | `geometry`, `differential-geometry`, `topology` |
