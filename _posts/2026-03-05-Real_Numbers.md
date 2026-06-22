@@ -1420,7 +1420,7 @@ Let's go step by step, consider $-A := \Set{-x \mid x \in A}$, then:
 
 ## 8.7. The logarithm of $y$ to the base $b$
 
-We are going to prove that $\forall b,y \in \mathbb{R} : b>1, y>1 \ \exists! x \in \mathbb{R} : b^x = y$, which is called logarithm of $y$ in the base $b$; $\log\_b y$ by completing the following outline. 
+We are going to prove that $\forall b,y \in \mathbb{R} : b>1, y>0 \ \exists! x \in \mathbb{R} : b^x = y$, which is called logarithm of $y$ in the base $b$; $\log\_b y$ by completing the following outline. 
 
 1. **Bernoulli inequality in multiplicative form**: $b^n - 1 \geq n(b - 1) \quad \forall n \in \mathbb{N}$
 
@@ -1448,3 +1448,65 @@ We are going to prove that $\forall b,y \in \mathbb{R} : b>1, y>1 \ \exists! x \
     Ultimately giving, combined with the original result, and considering the case $n=0$:
 
     $$b^n -1 \geq n(b-1) \quad \forall n \in \mathbb{N}$$
+
+    <br>
+
+2. From $1.$ we take immediately that, calling $B= b^{1/n} > 1$ is $B^n - 1 \geq n(B - 1) \quad \forall n \in \mathbb{Z^+}$, note that obviously $n \neq 0$ so reverting the inequality we have that: $b -1 \geq n(b^{1/n} - 1) \quad \forall n \in \mathbb{Z}^+$
+
+    <br>
+
+3. **If $t>1$ and $n>(b-1)/(t-1)$, then $b^{1/n}<t$**
+
+    Observe that, is also $b>1$, so:
+
+    $$\begin{cases} t> 1 \\ n > \frac{b-1}{t-1}\end{cases} \implies n(t-1)>b-1 \geq n(b^{1/n} - 1) \implies t > b^{1/n}$$
+
+    Since we treat $n \neq 0$, then we cancel $n$ and add $1$ to both sides.
+
+    <br>
+
+4. **If $w \in \mathbb{R} : b^w<y$, then $\exists n \in \mathbb{Z}^+ : b^{w+(1/n)}< y$**
+
+    Observe that $b^w< y \implies y/b^w > 1$ and for the result above we have that exists some $n \in \mathbb{Z}^+$ that $y/b^w > b^{1/n} \iff y = b^{w + 1/n}$
+
+    <br>
+
+5. **If $w \in \mathbb{R} : b^w>y$, then $\exists n \in \mathbb{Z}^+ : b^{w-(1/n)}> y$**
+
+    Observe again that by the point $3$:
+    
+    $$b^w> y \implies b^w/y > 1 \implies \exists n \in \mathbb{Z}^+ : b^w/y > b^{1/n} \iff b^w/b^{1/n} = b^{w-1/n} > y$$
+
+    <br>
+
+6. **Let $A := \Set{w \mid b^w < y}$, show that $x = \sup A \iff b^x=y$**
+
+    Since $b>1$ then $b^w<b^x \implies w <x$, thus $x : b^x = y$ is an upperbound of $A$. Let's see now that is the least upper bound of $A$. 
+    
+    Take some $t : b^w < b^t \quad \forall w \in A$. Observe that $t \notin A$, otherwise, by the prior results, it would exists some $n \in \mathbb{Z}^+ : t + 1/n \in A$ and $t$ would not be an upperbound.
+
+    This means basically that $t \notin A \implies y = b^x \leq b^t \implies x \leq t$ and $x$ is the least upper bound of $A$, so $x = supA$ and, by the uniqness of the supreme in a total ordered field like $\mathbb{R}$, $x$ as stated is unique.
+
+    <br>
+
+Let's make an appointment here, the theorem $1.21$. of Rudin's book (or $5.2.3$ in this posts), stated that for any natural exponent $n$ and any positive real $y$ exists only one real $x : x^n = y$ and we called $x$ the $n$-th root of $y$.
+
+This result, along with $8.6$ has extended it to real exponents, first by giving sense to real exponents and later proving that for any positive reals $b>1, y>0$ exists a unique real $x : b^x =y$ and we call it as *the logarithm of $y$ on the base $b$*.
+
+<br>
+
+Let's observe that there is an incremental factor about exponentials, let's consider the function with $a \in \mathbb{R}$ as: 
+
+$$f: A \to \mathbb{R} \mid f_a(x) = a^x : a \in \mathbb{R}^+$$
+
+<br>
+
+- First, we begin defining that, being $x \in \mathbb{R}$, then $x^n : n \in \mathbb{N}$ is $\prod\_{i=1}^n x$, this very number multiplied by itself a finite number of times. Hence, it has sense to consider $A = \mathbb{N}$
+
+- Then, by the properties of the powers with natural exponent, we see that $x^{-a} : a \in \mathbb{Z}^+$ is the power of the inverse: $x^{-a} = (x^{a})^{-1} = 1/x^a$. With this we extended to $A = \mathbb{Z}$
+
+- Now, we introduce the notion of the $n$-th root of a positive real as a way to express power of natural inverses $\sqrt[n]{x} = x^{1/n}$ and in $8.6$ we see that this notion is sufficent to consider rational exponents; $x^{m/n} = (\sqrt[n]{x})^m$ extending to $A = \mathbb{Q}$
+
+- Lastly, with the help of the supremum we stablished real exponents $A = \mathbb{R}$ and we presented the logarithm as the historical tool to calculate non-integer exponents.
+
+    <br>
