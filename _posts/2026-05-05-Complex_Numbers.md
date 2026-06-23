@@ -363,7 +363,7 @@ Meaning that $\|z+w\|$ is $\|z\|+\|w\|$ plus an angle correction; let's argue th
 Since, again $\|\cos\theta\| \leq 1$, then:
 
 
-$$\|z+w\|^2 \leq \|z\|^2 + \|w\|^2 + 2|z||w| = (\|z\| + \|w\|)^2 \implies \|z+w\|  \leq \|z\| + \|w\|$$
+$$|z+w|^2 \leq |z|^2 + |w|^2 + 2|z||w| = (|z\| + |w|)^2 \implies |z+w|  \leq |z| + |w|$$
 
 observe that this implication can be asserted since we are always dealing with the square of positive quantities; $\|z\| \geq 0 \quad \forall z \in \mathbb{C}$
 
@@ -530,3 +530,60 @@ $$\|r\|^2 = A - \frac{C^2}{B} \geq 0 \iff A B \geq C^2$$
 Now, just changing each part:
 
 $$AB = \|a\|^2\|b\|^2 \geq C^2 = \langle a,b \rangle^2 \implies \|a\| \|b\| \geq |\langle a,b \rangle|$$
+
+<br>
+
+# 7. Exercises.
+
+## 7.1. Prove that no order can be defined in the complex field that turns it into an ordered field.
+
+Let's make a brief reminder about what an ordered field is. An ordered field is a field which is also an ordered set and an ordered se which is a non-empty set in which there is defined a binary relation satisfying *reflexivity*, *antisymmetry* and *trychotomy*.
+
+Let's observe a simple fact, given any order $< \subseteq \mathbb{C}^2$, then since $\mathbb{C}$ is a field it satisfies the axiom of the product with the order; this is positive order closure, meaning that the product of any pair of positive numbers should be positive but observe that $i$ simply doesn't fit on it. 
+
+It doesnt care how we define it, always this invariance get's transgresed:
+
+- $i>0 \implies i^2 >0$, but by definition $i^2 = -1 <0$
+
+- $i< 0 \implies -i>0 \implies (-i) (-i) = i^2 >0$, but again $i^2 = -1 <0$
+
+Thus, $\mathbb{C}$ can't be an ordered field because $i$ simply don't fit on it.
+
+<br>
+
+Let's take a closer look on this fact. The real field is a total ordered set, we discussed that total orders allows to dispose all elements in a sequence along a line. We talk that a representation of this order is the positiveness and negativeness of a number which determines on what side of the $0$ this number lies. Then, we stablished that the multiplication had a geometric nuance as an homothety; in the sense that is an operation with a fixed point from which it dilitates each other point in the set. We defined that an homothety of positive ratio respects the sign and negative ratio reverses it, as a consecuence, any squared number is always positive; if the number it self is positive it stills positive and if not, then his own negativeness make his square positive and this is precisely the rule that $i$ brokes as we saw above. 
+
+This is because in $\mathbb{C}$ the product is a homothety combined with a rotation which takes number out of the line, breaking the total order.
+
+<br>
+
+## 7.2. Lexicographic order.
+
+Take $z=(a,b),w=(c,d) \in \mathbb{C}$, then we define the *lexicographic order* as:
+
+$$(a,b) < (c,d) \iff [a < c \vee  (a = c \wedge b < d)]$$
+
+Does $(\mathbb{C}, <)$ have the $LUB$ property?
+
+Let's remember that $LUB$ property stays that for any non-empty upperbounded subset exists the least upperbound element in the universe set.
+
+We can think in the set $A := \Set{z =(a,b) \in \mathbb{C} : a < 1}$, obviously is upperbounded since any $(1,b) \in \mathbb{C}$ is greater than any other element in $A$ so it is upperbounded, but there is not least upper bound, since for any upperbound $(p,q) : p \geq 1$, $(p,q-1)$ is also an upperbound smaller than the first one.
+
+<br>
+
+Let's observe that $\mathbb{C}$ is often presented without an order, not only because with the order it can't be an ordered field but also because there even total orders doesn't make it complete.
+
+<br>
+
+## 7.3. Dual complex roots.
+
+Suppose $z = a +bi$, $w = u + iv$ such:
+
+$$a = \left( \frac{|w| + u}{2} \right), \quad b = \left( \frac{|w| - u}{2} \right)$$
+
+1. Prove that $z^2 = w$ if $v \geq 0$
+
+2. Prove that $\overline{z}^2 = w$ if $v \leq 0$
+
+3. Conclude that every complex number (with one exception!) has two complex square roots.
+
