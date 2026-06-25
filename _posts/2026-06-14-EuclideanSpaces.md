@@ -21,6 +21,8 @@ lang: en
 3. Main properties of the norm in $\mathbb{R}^k$.
 4. Summary.
 
+    <br>
+
 # 1. Presentation and Definition. $\mathbb{R}^k$
 
 A *Euclidean space* is an affine space over the reals such that the associated vector space is a euclidean vector space; a finite-dimensional inner product space over the real numbers. 
@@ -32,15 +34,16 @@ $$(x_1,...,x_k)+(y_1,...,y_k)=(x_1+y_1,...,x_k+y_k)$$
 
 $$\alpha · (x_1,...,x_k) = (\alpha x_1,..., \alpha x_k)$$
 
-Being $+: \mathbb{R}^k \times V$ a simply transitive action over $\mathbb{R}^k$
+Being $+: V \times \mathbb{R}^k \to \mathbb{R}^k $ a simply transitive action over $\mathbb{R}^k$
 
 <br>
 
-Over $V$, we define the following inner product, which we remember from the [Complex Numbers](https://gsanmi1.github.io/posts/2026/03/05/Complex_Numbers/) post, on $6.3.1$, an inner product is the object which injects geometry by defining how a vector expresses its own direction (norm), introducing the orthogonality later:
+Over $V$, we define the following inner product, which we remember from the [Complex Numbers](https://gsanmi1.github.io/posts/2026/03/05/Complex_Numbers/) post, on $6.3.1$. 
+
+An inner product is the object which injects geometry by defining how a vector expresses its own direction (norm), introducing subsequently the orthogonality. In this particular presentation, this inner product receives the particular name *dot product*.
 
 $$\quad \quad \langle x,y \rangle = x · y =\sum_{i=1}^k x_iy_i$$
 
-In this case, this inner product receives the particular name *dot product*.
 
 <br>
 
@@ -180,3 +183,34 @@ Thus, we've seen that $\mathbb{R}^k$ as an affine space with $\mathbb{R}^k$ as t
 
 # 5. Exercises.
 
+## 5.1. 
+
+Suppose $k \geq 3$, $x,y \in \mathbb{R}^k : |x-y| = d > 0$ and $r>0$. Prove:
+
+1. If $2r > d$ there are infinitely many $z \in \mathbb{R}^k$ such:
+
+    $$|z - x| = |z - y| = r$$
+
+    Observe that by the triangle inequation is:
+
+    $$|x -y| \leq |x-z| + |z-y|$$
+
+    Thus, the points requested by the exercise are those points satisfying:
+    
+    $$z \in \mathbb{R}^k: \begin{cases}|x-z| = |z-y|\\ d = |x -y| < |x-z| + |z-y| = 2r\end{cases}$$
+
+    Note that the first condition give us a general caracterization of the points $z$, those whose coordinates satisfies the equation:
+
+    $$\left(\sum_{i=1}^k(x_i - z_i)^2\right)^{1/2} = \left(\sum_{i=1}^k(y_i - z_i)^2\right)^{1/2}  \iff \sum_{i=1}^k(x_i - z_i)^2 = \sum_{i=1}^k(y_i - z_i)^2$$
+
+    Note that for each square is: 
+    
+    $$(x_i - z_i)^2 = x^2_i -2x_iz_i + z^2_i = y^2_i -2y_iz_i + z^2_i = (y_i - z_i)^2$$
+
+    The $z^2_i$ cancels from both sides and sorting:
+
+    $$2z_i(y_i - x_i)=y^2_i - x^2_i$$
+
+    Adding now the summatories we have:
+
+    $$z·(y-x) = \frac{1}{2}(|y|^2 - |x|^2)$$
