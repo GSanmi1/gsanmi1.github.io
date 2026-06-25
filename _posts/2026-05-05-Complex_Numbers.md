@@ -146,9 +146,9 @@ Both axes form:
 
 Let's take some $z$ as in the image above and observe that this is a two-dimensional vector, thus we can identify each $z := (x,y)$ with the vector $\overrightarrow{z}=(x,y)$ and leverage vector space properties and the trigonometric relations of the object.
 
-- First, we call as **absolute value** of $z$ to the vector norm:
+- First, we call as **absolute value** of $z$ to the real number:
 
-    $$| z | := \| \overrightarrow{z} \| = \sqrt{x^2 + y^2}$$
+    $$|z| := (z\overline{z})^{1/2}$$
 
     <br>
 
@@ -579,7 +579,7 @@ Let's observe that $\mathbb{C}$ is often presented without an order, not only be
 
 Suppose $z = a +bi$, $w = u + iv$ such:
 
-$$a = \left( \frac{|w| + u}{2} \right), \quad b = \left( \frac{|w| - u}{2} \right)$$
+$$a = \left( \frac{|w| + u}{2} \right)^{1/2}, \quad b = \left( \frac{|w| - u}{2} \right)^{1/2}$$
 
 1. Prove that $z^2 = w$ if $v \geq 0$
 
@@ -587,3 +587,69 @@ $$a = \left( \frac{|w| + u}{2} \right), \quad b = \left( \frac{|w| - u}{2} \righ
 
 3. Conclude that every complex number (with one exception!) has two complex square roots.
 
+
+First, check that:
+
+$$z^2 = \left( \sqrt{\frac{|w| + u}{2}} + i \sqrt{\frac{|w| - u}{2}} \right)^2 = \frac{|w| + u}{2} - \frac{|w| - u}{2} + 2i \sqrt{\frac{|w| + u}{2} \frac{|w| - u}{2}}$$
+
+$$= u + i\sqrt{|w|^2 - u^2} = u + i\sqrt{(u^2 +v^2) - u^2} = u + i|v| = w$$
+
+Remember that the $n$-th root are defined as a real positive number, $\sqrt[n]{x}\geq 0$, this justifies the absolute value of $|v|$ in the computation of $z^2$ and the following result:
+
+$$w \in \mathbb{C} : w =(u,v) \neq 0 \implies \exists z \in \mathbb{C}: w = \begin{cases} z^2 \quad v \geq 0 \\ \overline{z}^2 \quad v \leq 0 \end{cases}$$
+
+<br>
+
+## 7.4. If $z$ is a complex number, prove that there exists an $r > 0$ and a complex number $w$ with $\|w\| = 1 : z= rw$. Are $w$ and $r$ always uniquely determined by $z$?
+
+Take the polar form of $z$ and call: 
+
+$$z = |z|_{\theta} = |z|(\cos\theta + i\sin\theta) \implies \begin{cases} r = |z| \\ w =\cos\theta + i\sin\theta \end{cases}$$
+
+Observe that; $r\geq 0$,  $\|w\| = \sqrt{cos^2\theta + sin^2\theta} = \sqrt{1} = 1$ and $z = rw$. Observe also that to compute both elements $z$ is only needed, so both are uniquely determined by $z$.
+
+<br>
+
+## 7.5. Generalization of the triangle inequality.
+
+If $z\_1,...,z\_n \in \mathbb{C}$, prove that:
+
+$$\left|\sum_{i=1}^n z_i \right| \leq \sum_{i=1}^n |z_i|$$
+
+<br>
+
+Let's proof this result by induction. 
+
+- First, for $n=2$, if we take $z\_1,z\_2 \in \mathbb{C}$, then, the real inner product given by the absolute value of a complex number states that:
+
+    $$|z_1 + z_2|^2 = |z_1|^2 + |z_2|^2 + 2\langle z_1,z_2 \rangle \leq |z_1|^2 + |z_2|^2 + 2|\langle z_1,z_2 \rangle|$$
+
+    And by Cauchy-Schwarz is:
+
+    $$|z_1|^2 + |z_2|^2 + 2|\langle z_1,z_2 \rangle|\leq |z_1|^2 + |z_2|^2 + 2 |z_1||z_2| = (|z_1| + |z_2|)^2$$
+
+    Thus, since the absolute value is always non-negative :
+
+    $$|z_1 + z_2|^2 \leq (|z_1| + |z_2|)^2 \iff |z_1 + z_2| \leq |z_1| + |z_2|$$
+
+    And we prove the result for $n=2$.
+
+    <br>
+
+- Let's consider it true for some $n$. Consider $z\_1,...,z\_n \in \mathbb{C}$, $w = \sum\_{i=1}^n z\_i$ and some $z \in \mathbb{C}$, then:
+
+    $$|z_1 \cdots + z_n + z| = |w + z| \leq |w| + |z| = |z_1 \cdots + z_n | + |z| \leq |z_1|  \cdots + |z_n| + |z|$$
+
+    <br>
+
+## 7.6. If $x,y \in \mathbb{C}$, prove that:
+
+$$||x| - |y|| \leq |x - y|$$
+
+- First, take $\|x\| = \|x -y + y\| \leq \|x -y\| + \|y\| \iff \|x\| - \|y\| \leq \|x-y\|$.
+
+- Second $\|y\| = \|y-x + x\| \leq \|y - x\| + \|x\| \iff \|y\| - \|x\| = - (\|x\| - \|y\|) \leq \|y -x\| = \|x - y\|$
+
+Ultimately: 
+
+$$-|x - y| \leq |x| - |y| \leq |x-y| \iff ||x| - |y|| \leq |x - y|$$
