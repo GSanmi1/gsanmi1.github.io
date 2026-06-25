@@ -175,3 +175,8 @@ Let's evaluate some main properties of the norm of $\mathbb{R}^k$.
 # 4. Summary. 
 
 Thus, we've seen that $\mathbb{R}^k$ as an affine space with $\mathbb{R}^k$ as the associated vector space and the real inner product as the dot product; $x · y$ conforms a Euclidean space; an affine space with a geometry induced by the vector space which crystallizes in the metric $d(x,y) = \|\|\overrightarrow{xy}\|\|$
+
+<br>
+
+# 5. Exercises.
+

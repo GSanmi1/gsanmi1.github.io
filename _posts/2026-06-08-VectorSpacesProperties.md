@@ -211,5 +211,32 @@ Be $S$ a non-empty subset of a $K$-vector space $V$, then the spanned subspace o
 
 - Let now be $\Set{W_i \leq V \mid S \subseteq W_i}_{i \in I}$ the family of subspaces of $V$ that contains $S$ let's see that in fact is $W = \bigcap_i W_i$ by demonstrating each set contains the other.
 
-    - 
+    - $W \subset \cap_i W_i$
 
+        If $w \in W \implies \exists u,v \in S : \alpha u + \beta v = w$. Since $S \subset \cap_i W_i \implies u,v \in \cap_i W_i$ and, since each $W_i \leq V$ and the intersection of vector spaces is a vector space then any linear combination is in $\cap_i W_i$, meaning $w = \alpha u + \beta v \in \cap_i W_i$
+
+        <br>
+
+    - $\cap_i W_i \subset W$
+
+        Let's observe $W$ is the subspace of all the linear combinations of $S$ elements, is contained in each $W_i$ because every vector space contains the linear combinations of the elements of $S$ for being vector spaces.
+
+        Thus, observe that $W$ is the minimum element of the collection which, coincides by definition with his ínfimum which is by definition the spanned vector space this is, the intersection $\cap_i W_i$.
+
+        <br>
+
+### 2.3.3. Sum of subsets of vector spaces.
+
+If $S_1,S_2,\cdots, S_k$ are subsets of a vectror space $V$, then the set of all sums:
+
+$$\sum_{i=1}^k S_i = S_1 + S_2 \cdots + S_k = \Set{\sum_{i=1}^k \alpha_i \mid  \alpha_i \in S_i}$$
+
+Now consider: $W_i \leq V : i = 1,2...,k$, then the set $\sum_{i=1}^k W\_i$ is immediately a subspace. Observe that this spaces is the space spanned by the set $\bigcup_i W_i$.
+
+<br>
+
+## 2.4 Example of combinated vector spaces.
+
+
+
+<br>
