@@ -1,25 +1,32 @@
 ---
 layout: default
 ---
-{%- comment -%} Resolve the human-readable subject + vertical for the eyebrow {%- endcomment -%}
-{%- assign subj_en = "" -%}{%- assign subj_es = "" -%}{%- assign subj_page = "/" -%}
+{%- comment -%}
+  Resolve the human-readable subject(s) + vertical(s) for the eyebrow. A post's
+  `subject:` is a comma-separated list, so it can belong to several subjects;
+  we render a link for each, matching by comma-wrapped token (",slug,").
+{%- endcomment -%}
+{%- assign psubj = page.subject | replace: " ", "" | prepend: "," | append: "," -%}
+{%- capture eyebrow -%}
+{%- assign eb_first = true -%}
 {%- for v in site.data.verticals -%}
   {%- for s in v.subjects -%}
-    {%- if s.slug == page.subject -%}
-      {%- assign subj_en = s.en -%}{%- assign subj_es = s.es -%}{%- assign subj_page = v.page -%}
+    {%- assign skey = s.slug | prepend: "," | append: "," -%}
+    {%- if psubj contains skey -%}
+      {%- unless eb_first %} <span class="eyebrow-sep">·</span> {% endunless -%}
+      <a href="{{ v.page | relative_url }}#{{ s.slug }}"><span class="i18n-en">{{ s.en }}</span><span class="i18n-es">{{ s.es }}</span></a>
+      {%- assign eb_first = false -%}
     {%- endif -%}
   {%- endfor -%}
 {%- endfor -%}
+{%- endcapture -%}
+{%- assign eyebrow_trim = eyebrow | strip -%}
 
 <div class="container">
 <article class="prose">
     <header class="post-header">
-        {% if subj_en != "" %}
-        <p class="post-eyebrow">
-            <a href="{{ subj_page | relative_url }}#{{ page.subject }}">
-                <span class="i18n-en">{{ subj_en }}</span><span class="i18n-es">{{ subj_es }}</span>
-            </a>
-        </p>
+        {% if eyebrow_trim != "" %}
+        <p class="post-eyebrow">{{ eyebrow }}</p>
         {% endif %}
         <h1 class="post-title">{{ page.title }}</h1>
         {% if page.subtitle %}<p class="post-subtitle">{{ page.subtitle }}</p>{% endif %}

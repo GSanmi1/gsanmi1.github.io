@@ -3,6 +3,12 @@
   posts. Reads `page.vertical` (the vertical slug) and the taxonomy in
   _data/verticals.yml. Each subject heading gets an id anchor (= subject slug)
   so the sidebar can deep-link to it.
+
+  A post's `subject:` is a comma-separated list, so a post can live under
+  several subjects/verticals at once. We match by wrapping both the post's
+  subject list and the target slug in commas (",slug,") so the test is exact
+  per token and never a substring (e.g. "geometry" must not match
+  "differential-geometry").
 {%- endcomment -%}
 {%- assign v = site.data.verticals | where: "slug", page.vertical | first -%}
 <div class="container container--wide">
@@ -12,20 +18,27 @@
         <p class="lede"><span class="i18n-en">{{ v.blurb_en }}</span><span class="i18n-es">{{ v.blurb_es }}</span></p>
     </header>
 
+    {% assign sorted_posts = site.posts | sort: "date" %}
     {% for s in v.subjects %}
-    {% assign posts = site.posts | where: "subject", s.slug | sort: "date" %}
-    <section class="subject-block" id="{{ s.slug }}">
-        <h2><span class="i18n-en">{{ s.en }}</span><span class="i18n-es">{{ s.es }}</span></h2>
-        {% if posts.size > 0 %}
-        <ul class="entry-list">
-            {% for post in posts %}
+    {% assign skey = s.slug | prepend: "," | append: "," %}
+    {% assign count = 0 %}
+    {% capture items %}
+        {% for post in sorted_posts %}
+        {% assign psubj = post.subject | replace: " ", "" | prepend: "," | append: "," %}
+        {% if psubj contains skey %}
+        {% assign count = count | plus: 1 %}
             <li class="entry">
                 <p class="entry-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></p>
                 {% if post.subtitle %}<p class="entry-sub">{{ post.subtitle }}</p>{% endif %}
                 <p class="entry-meta">{{ post.date | date: "%B %-d, %Y" }}{% if post.lang %} &middot; {{ post.lang | upcase }}{% endif %}</p>
             </li>
-            {% endfor %}
-        </ul>
+        {% endif %}
+        {% endfor %}
+    {% endcapture %}
+    <section class="subject-block" id="{{ s.slug }}">
+        <h2><span class="i18n-en">{{ s.en }}</span><span class="i18n-es">{{ s.es }}</span></h2>
+        {% if count > 0 %}
+        <ul class="entry-list">{{ items }}</ul>
         {% else %}
         <p class="subject-empty"><span class="i18n-en">No notes here yet.</span><span class="i18n-es">Aún no hay notas aquí.</span></p>
         {% endif %}
