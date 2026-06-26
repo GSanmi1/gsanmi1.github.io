@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "Basic Topology"
+title: "Topology of Metric Spaces"
 subtitle: "Finite,Countable & Uncountable Sets, Metric Spaces, Compact Sets, Perfect Sets, Connected Sets"
 date: 2026-06-17 09:00:00 +0000
 categories: ['Analisis Rudin']
 tags: ['Maths']
 author: German Sanmi
-subject: topology,real-analisis
+subject: topology, real-analysis
 lang: en
 ---
 
@@ -42,4 +42,8 @@ Thus:
 
     <br>
 
-- A **euclidean space**
+- A **euclidean space** is a particular case of the metric space in which the metric is the *euclid norm*
+
+    <br>
+
+Thus, the topology introduced 

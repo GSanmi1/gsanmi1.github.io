@@ -4,7 +4,8 @@ permalink: /search.json
 [
 {%- for post in site.posts -%}
 {%- assign subj_en = "" -%}{%- assign subj_es = "" -%}
-{%- for v in site.data.verticals -%}{%- for s in v.subjects -%}{%- if s.slug == post.subject -%}{%- assign subj_en = s.en -%}{%- assign subj_es = s.es -%}{%- endif -%}{%- endfor -%}{%- endfor -%}
+{%- assign psubj = post.subject | replace: " ", "" | prepend: "," | append: "," -%}
+{%- for v in site.data.verticals -%}{%- for s in v.subjects -%}{%- assign skey = s.slug | prepend: "," | append: "," -%}{%- if psubj contains skey -%}{%- if subj_en == "" -%}{%- assign subj_en = s.en -%}{%- assign subj_es = s.es -%}{%- else -%}{%- assign subj_en = subj_en | append: " · " | append: s.en -%}{%- assign subj_es = subj_es | append: " · " | append: s.es -%}{%- endif -%}{%- endif -%}{%- endfor -%}{%- endfor -%}
 {
 "title": {{ post.title | jsonify }},
 "subtitle": {{ post.subtitle | default: "" | jsonify }},

@@ -14,9 +14,14 @@ title: Home
     <div class="vertical-grid">
         {% for v in site.data.verticals %}
         {% assign vcount = 0 %}
-        {% for s in v.subjects %}
-            {% assign n = site.posts | where: "subject", s.slug | size %}
-            {% assign vcount = vcount | plus: n %}
+        {% for post in site.posts %}
+            {% assign psubj = post.subject | replace: " ", "" | prepend: "," | append: "," %}
+            {% assign in_vertical = false %}
+            {% for s in v.subjects %}
+                {% assign skey = s.slug | prepend: "," | append: "," %}
+                {% if psubj contains skey %}{% assign in_vertical = true %}{% endif %}
+            {% endfor %}
+            {% if in_vertical %}{% assign vcount = vcount | plus: 1 %}{% endif %}
         {% endfor %}
         <a class="vcard" href="{{ v.page | relative_url }}">
             <h2>

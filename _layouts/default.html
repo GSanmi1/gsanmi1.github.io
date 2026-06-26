@@ -126,9 +126,12 @@
                 </a>
                 <ul class="nav-subjects">
                     {% for s in v.subjects %}
-                    {% assign n = site.posts | where: "subject", s.slug | size %}
+                    {% assign skey = s.slug | prepend: "," | append: "," %}
+                    {% assign n = 0 %}
+                    {% for post in site.posts %}{% assign psubj = post.subject | replace: " ", "" | prepend: "," | append: "," %}{% if psubj contains skey %}{% assign n = n | plus: 1 %}{% endif %}{% endfor %}
                     {% assign s_current = false %}
-                    {% if page.subject == s.slug %}{% assign s_current = true %}{% endif %}
+                    {% assign pcur = page.subject | replace: " ", "" | prepend: "," | append: "," %}
+                    {% if pcur contains skey %}{% assign s_current = true %}{% endif %}
                     <li>
                         {% if n > 0 %}
                         <a href="{{ v.page | relative_url }}#{{ s.slug }}"{% if s_current %} aria-current="true"{% endif %}>

@@ -22,8 +22,11 @@ lang: en                                  # en | es  (shows a small badge)
 ---
 ```
 
-The **`subject:`** field is what places a post in the navigation. Valid slugs
-live in [`_data/verticals.yml`](_data/verticals.yml):
+The **`subject:`** field is what places a post in the navigation. You can give
+it **several slugs separated by commas** to file one post under multiple
+subjects (and verticals) at once — e.g. `subject: topology, real-analysis`
+makes a post appear under both Topology and Real Analysis. Valid slugs live in
+[`_data/verticals.yml`](_data/verticals.yml):
 
 | Vertical | Subject slugs |
 | --- | --- |

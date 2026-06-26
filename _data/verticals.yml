@@ -5,6 +5,8 @@
 #
 # Each subject `slug` matches the `subject:` field in a post's front matter.
 # To file a post under a subject, set `subject: <slug>` in its front matter.
+# A post may list several slugs separated by commas (e.g.
+# `subject: topology, real-analysis`) to appear under multiple subjects at once.
 # ==========================================================================
 
 - slug: foundations
