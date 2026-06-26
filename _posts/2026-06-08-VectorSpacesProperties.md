@@ -237,6 +237,41 @@ Now consider: $W_i \leq V : i = 1,2...,k$, then the set $\sum_{i=1}^k W\_i$ is i
 
 ## 2.4 Example of combinated vector spaces.
 
+### 2.4.1. Subspace defined by equations.
 
+Let $K$ be a subfield of the field $C$ of complex numbers. Then suppose:
+
+$$\begin{cases} \alpha_1 = (1,2,0,3,0) \\ \alpha_2 = (0,0,1,4,0) \\ \alpha_3 = (0,0,0,0,1) \end{cases}$$
+
+Let's observe that the spanned vector space by $\Set{\alpha_1,\alpha_2, \alpha_3}$, $W$, is the set of al the lineal combinations of $\alpha_1, \alpha_2$ and $\alpha_3$. Hence, a vector 
+
+$$\alpha \in W \iff \exists c_1,c_2,c_3, \in K : \alpha = \sum_{i=1}^5 c_i \alpha_i = (c_1,2c_1,c_2,3c_1 + 4c_2,c_3)$$
+
+Observe that this subspace $W$ can be described using the equations as the solution set of the linear equation system:
+
+$$M := \begin{cases} x_2 = 2x_1 \\ x_4 = 3x_1 + 4x_3\end{cases}$$
 
 <br>
+
+### 2.4.2. Matrix. 
+
+Let be $K$ a subfield of the field $\mathbb{C}$ of complex numb ers, and let $V$ be the vector space of all $2 \times 2$ matrices over $K$. 
+
+Let consider be the subset of $V$ consisting of all matrices of the form:
+
+$$W_1 := \Set{\begin{pmatrix} x & y \\ z & 0\end{pmatrix}: x,y,z \in K}$$
+
+$$W_2 := \Set{\begin{pmatrix} x & 0 \\ 0 & y\end{pmatrix}: x,y \in K}$$
+
+Observe that: $V = W_1 + W_2$, or, in other terms, the linear combinations of the elements of the two spaces can generate any other element in $V$:
+
+$$\begin{pmatrix} x & y \\ z & t\end{pmatrix} = \begin{pmatrix} x & y \\ z & 0\end{pmatrix} + \begin{pmatrix} 0 & 0 \\ 0 & t\end{pmatrix} \in V$$
+
+Also, the intersection subspace is:
+
+$$W_1 \cap W_2 = \Set{\begin{pmatrix} x & 0 \\ 0 & 0\end{pmatrix}: x \in K} $$
+
+<br>
+
+### 2.4.3. Row-spaces.
+

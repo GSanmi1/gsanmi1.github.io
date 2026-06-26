@@ -124,13 +124,13 @@ Let's see that $(\mathbb{R}^k,d)$ as defined is a metric space:
 
 - **Symmetry**:
 
-    $$d(x,y) = \|x - y\| = \sum_i^k (x_i -y_i)^2 = \sum_i^k (y_i - x_i)^2 = \| y - x \|  = d(y,x)$$
+    $$d(x,y) = \|x - y\| = \sqrt{\sum_i^k (x_i -y_i)^2} = \sqrt{\sum_i^k (y_i - x_i)^2} = \| y - x \|  = d(y,x)$$
 
     <br>
 
 - **Zero distance along the same point:**
 
-    $$d(x,y) = \|x - y\| = \sum_i^k (x_i -y_i)^2$$
+    $$d(x,y) = \|x - y\| = \sqrt{\sum_i^k (x_i -y_i)^2}$$
 
     Since it is a sum of positive terms, to be zero all the operands have to be zero, this is: 
     
