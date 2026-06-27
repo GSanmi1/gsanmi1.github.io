@@ -10,6 +10,24 @@ subject: linear-algebra
 lang: en
 ---
 
+# 0. Index.
+
+1. Introduction.
+2. Subspaces.
+    - 2.1. Definition and characterization.
+    - 2.2. Example of subspaces.
+    - 2.3. Combination of vector spaces.
+        - 2.3.1. Intersection of subspaces.
+        - 2.3.2. Spanned subspace by a set.
+        - 2.3.3. Sum of subsets of vector spaces.
+    - 2.4 Example of combinated vector spaces.
+        - 2.4.1. Subspace defined by equations.
+        - 2.4.2. Matrix.
+        - 2.4.3. Row-spaces.
+        - 2.4.4. Caracterization of the polynomial vectorspace.
+        - 2.4.5. Subspaces exercises.
+
+
 # 1. Introduction.
 
 In the past post; [Vector Spaces](https://gsanmi1.github.io/posts/2026/04/08/VectorSpaces/), we've introduced that a vector space $(K,V,·)$ is the algebraic structure resulting from using a field $K$ to weigh the compositions of an abelian group $V$, through a field action $·$. Meaning that a vector space is a triple $(K,V, ·)$ where:
@@ -167,7 +185,9 @@ Let's consider some well-known examples of subspaces. Consider some $V$ a $K$-ve
 
 ## 2.3. Combination of vector spaces.
 
-Let's now see finite composition or combinations of vector spaces that still being vector spaces.
+Let's now see that the intersection of vector subspaces is a subspace, the spanned vector space of a subset of vectors is at the same time the intersection of all the subspaces that contains the subset and the set of all linear combinations of the vectors of the subset. 
+
+The the addition or sum of subspaces is a subspace
 
 <br>
 
@@ -269,9 +289,46 @@ $$\begin{pmatrix} x & y \\ z & t\end{pmatrix} = \begin{pmatrix} x & y \\ z & 0\e
 
 Also, the intersection subspace is:
 
-$$W_1 \cap W_2 = \Set{\begin{pmatrix} x & 0 \\ 0 & 0\end{pmatrix}: x \in K} $$
+$$W_1 \cap W_2 = \Set{\begin{pmatrix} x & 0 \\ 0 & 0\end{pmatrix}: x \in K}$$
 
 <br>
 
 ### 2.4.3. Row-spaces.
 
+Let $A \in M\_{m \times n}(K)$. Then, the *row vectors* of $A$ are vectors $\alpha \in K^n$; $A := (\alpha\_1, \ldots, \alpha\_n)$.
+
+In this context we call the *row-space* of $A$ to the spanned vector space, $W \leq K^n$ of the elements $\Set{\alpha\_i \in K^n \mid A = (\alpha\_1,\ldots, \alpha\_n)}$. 
+
+<br>
+
+### 2.4.4. Caracterization of the polynomial vectorspace.
+
+Consider:
+
+$$Pol(K,K) := \Set{f \in K^K \mid \exists n \in \mathbb{N}, \exists (\alpha_1,\ldots, \alpha_n) \in K^n : f(x) = \sum_{i=1}^n \alpha_i x^i \ \forall x \in K}$$
+
+Then, consider now $ S \subset Pol(K,K)$ defined as:
+
+$$S := \Set{f \in K^K \mid \exists i \in \mathbb{N} :f(x)=x^i \ \forall x \in K}$$
+
+Note that the spanned vector space of $S$ is $Pol(K,K)$.
+
+<br>
+
+### 2.4.5. Subspaces exercises.
+
+#### 2.4.5.1. Subspaces of $\mathbb{R}^n$.
+
+1. $\Set{\alpha \in \mathbb{R^n} \mid a_1 \geq 0}$
+
+    Naturally isn't a vector space. Observe that trivially $A \neq \varnothing$ and $-1·\alpha + 0 = -\alpha \notin A$, since $a_1 \geq 0 \implies -a_1 \leq 0$.
+
+    <br>
+
+2. $\Set{\alpha \in \mathbb{R^n} \mid a_1 + 3a_2 =a_3}$
+
+    We already covered this set in $2.2-3$, the solution set of any homogeneous equation is a vector space but let's proove it.
+
+    Take $\alpha, \beta \in \mathbb{R}^n : $ 
+
+<br>
