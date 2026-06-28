@@ -319,16 +319,140 @@ Note that the spanned vector space of $S$ is $Pol(K,K)$.
 
 #### 2.4.5.1. Subspaces of $\mathbb{R}^n$.
 
-1. $\Set{\alpha \in \mathbb{R^n} \mid a_1 \geq 0}$
+1. $\Set{\alpha \in \mathbb{R^n} \mid a\_1 \geq 0}$
 
-    Naturally isn't a vector space. Observe that trivially $A \neq \varnothing$ and $-1·\alpha + 0 = -\alpha \notin A$, since $a_1 \geq 0 \implies -a_1 \leq 0$.
+    Naturally isn't a vector space. Observe that trivially $A \neq \varnothing$ and $-1·\alpha + 0 = -\alpha \notin A$, since $a\_1 \geq 0 \implies -a\_1 \leq 0$.
 
     <br>
 
-2. $\Set{\alpha \in \mathbb{R^n} \mid a_1 + 3a_2 =a_3}$
+2. $\Set{\alpha \in \mathbb{R^n} \mid a\_1 + 3a\_2 =a\_3}$
 
-    We already covered this set in $2.2-3$, the solution set of any homogeneous equation is a vector space but let's proove it.
+    We already covered this set in $2.2-3/7$, the solution set of any homogeneous linear equation system is a vector space.
 
-    Take $\alpha, \beta \in \mathbb{R}^n : $ 
+    <br>
+
+3.  $\Set{\alpha \in \mathbb{R^n} \mid a\_2 =a^2\_1}$
+
+    Let's see that this equation is not linear, thus, it do not respects linear combinations and is not a subspace. 
+
+    Take for example $\alpha = (1,1,0)$ and consider the linear combination $\alpha + \alpha$ which not satisfies the condition.
+
+    <br>
+
+4. $\Set{\alpha \in \mathbb{R^n} \mid a\_1a\_2=0}$
+
+    Clearly is not a subspace, consider again: $\alpha = (1,0,1)$ and $\beta = (0,1,0)$ and his linear combination $\alpha + \beta$ which, again, do not satisfies the condition. 
+
+    <br>
+
+5. $\Set{\alpha \in \mathbb{R^n} \mid a\_2 \in \mathbb{Q}}$
+
+    Is not a subspace, take $\alpha = (0,1,0)$, then $\sqrt{2}\alpha = (0,\sqrt{2},0)$ do not satisfies the condtion.
+
+    <br>
+
+#### 2.4.5.2. Function subspaces.
+
+Consider again $\mathbb{R}^{\mathbb{R}}:=\Set{f \in \mathcal{P}(\mathbb{R} \times \mathbb{R}) \mid \forall x \in \mathbb{R} \ \exists ! y \in \mathbb{R}: (x,y) \in f}$, with the operations:
+
+$$(f+g)(x) = f(x) + g(x)$$
+
+$$(\alpha f)(x) = \alpha (f(x)) : \alpha \in \mathbb{R}$$
+
+Then, which of the following sets of functions are subspaces of $\mathbb{R}^{\mathbb{R}}$
+
+1. $\Set{f \mid f(x^2) = f(x)^2}$
+
+    Let's observe immediately that $(\alpha f)(x^2) = \alpha f(x^2)= \alpha f(x)^2 \neq (\alpha f)(x)^2 = \alpha^2 f(x)^2$ for any $\alpha \neq 0$, so is not a vector subspace. 
+
+    <br>
+
+2. $\Set{f \mid f(0) = f(1)}$
+
+    Check that $(\alpha f + g)(0) = \alpha f(0) + g(0) = \alpha f(1) + g(1) = (\alpha f + g)(1)$, so is a subspace.
+
+    <br>
+
+3. $\Set{f \mid f(3) = 1 + f(-5)}$
+
+    Check that 
+    
+    $$(\alpha f + g)(3) = \alpha f(3) + g(3) = \alpha (1 + f(-5))+ 1 + g(-5) = (\alpha f + g)(-5) + 1 + \alpha$$
+
+    Thus, the condition is not meeted for any $\alpha \neq 0$.
+
+    <br>
+
+4. $\Set{f \mid f(-1) = 0}$
+
+    Check that $(\alpha f + g)(-1) = \alpha f(-1) + g(-1) = 0$, so is a subspace.
+
+    <br>
+
+5. $\Set{f \mid f \text{ is continuous}}$
+
+    Naturally yes.
+
+    <br>
+
+#### 2.4.5.3. Spanned vector.
+
+Consider the vector $\alpha = (3,-1,0,-1)$, is spanned by the vectors $u = (2, -1, 3, 2), v = (-1, 1, 1, -3), w = (1, 1, 9, -5)$?
+
+Consider $W$ the vector subspace spanned by the set $S := \Set{u,v,w}$. Then, the statement ask if $\alpha \in W$.
+
+By $2.3.2$, we do know that the spanned vector subspace, $W$ is the intersection of all the subspaces that contains $S$ which coincides with the set of all the linear combinations of the vectors of $S$ which is a subspace it self.
+
+Then, $\alpha$ is an element of $W$ only if is a linear combination of $u,v,w$, formally:
+
+$$\alpha \in W \iff \exists x,y,z \in \mathbb{R}: \alpha = xu + yv + zw$$
+
+Taking coordinate to coordinate, we can form the following equation system on $\mathbb{R}$:
+
+$$\begin{cases} 3 = 2x -y +z \\ -1 = -x + y + z \\0 = 3x + y +9z \\ -1 = 2x -3y -5z \end{cases}$$
 
 <br>
+
+#### 2.4.5.4. Set of spanned subspace.
+
+Consider $W \leq \mathbb{R}^5$ of those $(x\_1,x\_2,x\_3,x\_4,x\_5) \in \mathbb{R}^5$ satisfying the following equation system:
+
+$$M:=\begin{cases} 2x_1 -x_2 + \frac{4}{3}x_3 - x_4 = 0 \\ x_1 + \frac{2}{3} x_3 - x_5 = 0 \\ 9x_1 - 3x_2 + 6x_3 - 3x_4 - 3x_5 = 0 \end{cases}$$
+
+Find a finite set of vector that spans $W$.
+
+<br>
+
+We have to find some set $S$ such the set of the linear combinations of his elements coincides with $W$. Leveraging the exercise before, giving some $\alpha \in \mathbb{R}^5$, we have to find a finite some of vectors $u_1,u_2, \ldots, u_n$ such the equation system on the escalars $t_1,\ldots, t_n \in \mathbb{R} : \alpha = \sum_{i=1}^n t_i u_i$ is equivalent to the one gived by the exercise.
+
+First, let's consider the $RREM$ form of the matrix previous matrix:
+
+$$R := \begin{pmatrix} 1 & 0 & \frac{2}{3} & 0 & -1 \\ 0 & 1 & 0 & 1 & -2 \\ 0 & 0 & 0 & 0 & 0 \end{pmatrix}$$
+
+Which leave us with the system:
+
+$$M' := \begin{cases} x_1 + \frac{2}{3}x_3 - x_5 = 0 \\ x_2 + x_4 -2x_5 = 0 \end{cases}$$
+
+Since $M$ and $M'$ has row-equivalent asociated matrix, we do know that both are equivalents; $M \equiv M'$, so both shares the same solution set, $W$. 
+
+Ultimately, let's solve it, the solution of $M'$ is: 
+
+$$x_1 = -\tfrac{2}{3}x_3 + x_5, \quad x_2 = -x_4 + 2x_5$$
+
+Calling; $x_3 = \alpha,\ x_4 = \beta,\ x_5 = \gamma$, then:
+
+$$W := \Set{(\gamma -\frac{2}{3}\alpha,2\gamma - \beta ,\alpha, \beta, \gamma) : \alpha, \beta, \gamma \in \mathbb{R}}$$
+
+Let's observe that:
+
+$$\begin{pmatrix} \gamma -\frac{2}{3}\alpha \\ 2\gamma - \beta \\ \alpha \\ \beta \\ \gamma \end{pmatrix} = \alpha\begin{pmatrix} -\tfrac{2}{3} \\ 0 \\ 1 \\ 0 \\ 0 \end{pmatrix} + \beta \begin{pmatrix} 0 \\ -1 \\ 0 \\ 1 \\ 0 \end{pmatrix} +\gamma \begin{pmatrix} 1 \\ 2 \\ 0 \\ 0 \\ 1 \end{pmatrix}$$
+
+Hence, any vector of $W$ is a linear combination of $(−2/3​,0,1,0,0), (0,−1,0,1,0), (1,2,0,0,1)$
+
+<br>
+
+In summary, the solution set of a homogeneous linear system is a vector subspace. Writing the solution in its parametrized form yields the vectors that span the subspace.
+
+<br>
+
+#### 2.4.5.5. 

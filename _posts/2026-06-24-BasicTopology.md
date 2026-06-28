@@ -76,7 +76,7 @@ $$f(x) := \Set{ y \in B \mid x \ \underbrace{\mapsto}_{f} \ y}$$
 
 Observe that we implicitly define a rule that every function $f$ must satisfy, which is that $f(x)$ is a unary set or simply $card(f(x)) = 1$ and thus, through an economization of notation we simply state $f(x) = y$ when $f$ is a function:
 
-$$\forall x \in A \ \exists y \in B : f(x) = y$$
+$$\forall x \in A \ \exists! y \in B : f(x) = y$$
 
 In this context we state that $A$ is the domain and $B$ is the codomain of $B$ which not necesarily coincide with the set of all the images of $A$ through $f$, denoted by $f(A) := \Set{y \in B \mid \exists x \in A : y = f(x)}$ and called *range* of $f$. 
 
