@@ -27,6 +27,8 @@ lang: en
         - 2.4.4. Caracterization of the polynomial vectorspace.
         - 2.4.5. Subspaces exercises.
 
+            <br>
+
 
 # 1. Introduction.
 
@@ -455,4 +457,47 @@ In summary, the solution set of a homogeneous linear system is a vector subspace
 
 <br>
 
-#### 2.4.5.5. 
+#### 2.4.5.5. Matrix subspaces.
+
+Let be $M_{n \times n} (K) : n \geq 2$, which of the following sets $\Phi\_n$ are subspaces?
+
+1. $ \Set{A \in M_{n \times n}(K) \mid \exists A^{-1}}$
+
+    Let's observe that if we consider $A \in \Phi\_n \implies -A \in \Phi_n$ but $A + -A = 0 \notin \Phi\_n$, hence is not a subspace.
+
+    Observe that, we could quicker check that isn't a subspace because is not a vector space since it not contains $0$.
+
+    <br>
+
+2. $\Set{A \in M_{n \times n}(K) \mid \nexists A^{-1}}$
+
+    Let observe that we can consider:
+
+    $$A = \begin{pmatrix}1 & 0 & 0\\ 0 & 1 & 0 \\ 0 & 0 & 0 \end{pmatrix}, \quad B = \begin{pmatrix}0 & 0 & 0\\ 0 & 0 & 0 \\ 0 & 0 & 1 \end{pmatrix}$$
+
+    Both of them aren't invertible since they are already their $RREM$ which not coincides with $I\_3$ but $A+B = I\_3 \in \Phi\_n$
+
+    <br>
+
+3. $\Set{A \in M_{n \times n}(K) \mid AB = BA}$, for some fixed $B$.
+
+    Observe that taking $A, C \in \Phi\_n$ then:
+
+    $$(\alpha A + C)B = \alpha AB + CB = B(\alpha A) + BC = B(\alpha A + C)$$
+
+    Thus, it conforms a subspace
+
+    <br>
+
+4. $\Set{A \in M_{n \times n}(K) \mid A^2 = A}$
+
+    Observe that if $A,B \in \Phi\_n$, then:
+
+    $$(\alpha A + B)^2 = \alpha^2 A^2 + B^2 + \alpha AB + B \alpha A = \alpha^2A + B + \alpha AB + \alpha BA \neq \alpha A + B$$
+
+    
+    <br>
+
+#### 2.4.5.6. Subspaces of $\mathbb{R}$.
+
+    
