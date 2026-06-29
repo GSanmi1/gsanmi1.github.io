@@ -456,6 +456,10 @@ Thus, $\big(F,(F^{m\times n},+), \ · \big)$ is a vector space.
 
 <br>
 
+Let's observe that, despite we already touched some operation properties from the addition and product of matrix, the fact that this set is a vector space finish refining the details of both operations and how they related them selves.
+
+<br>
+
 ### 2.3.3. The space of functions from a set to a field. 
 
 Consider now some field $K$ and some set $S \neq \varnothing$, then, remember that being $f : S \to K$ a function, this gets identified with its graph $f \subseteq S \times K : (\forall s \in S \ \exists ! \alpha \in K \mid (s,\alpha) \in f)$, meaning that a function is a relation in which every element of the domain has a unique image through $f$.
