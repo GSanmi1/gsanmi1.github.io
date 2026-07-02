@@ -14,7 +14,7 @@ lang: en
 
 1. Introduction.
 
-2. Finite, Countable adn Uncountable Sets.
+2. Finite, Countable and Uncountable Sets.
 
     <br>
 
@@ -62,7 +62,7 @@ We begin this section with a definition of the function concept.
 
 ## 2.1. Functions. Applications.
 
-**Main concepts**
+### 2.1.1. Main concepts.
 
 Consider two sets. $A,B \neq \varnothing$. 
 
@@ -82,7 +82,7 @@ In this context we state that $A$ is the domain and $B$ is the codomain of $B$ w
 
 <br>
 
-**Injectivity, Surjectivity and Bijectivity**
+### 2.1.2. Injectivity, Surjectivity and Bijectivity.
 
 Let's explore three important concepts about how relations connect input with outputs. Be $f : A \to B$ a application, then: 
 
@@ -107,7 +107,7 @@ Let's explore three important concepts about how relations connect input with ou
 
 <br>
 
-**Inverse**
+### 2.1.3. Inverse.
 
 Consider $f : A \to B$ to been a relation. In this context we talk about a mappping of $A$ into $B$ through $f$, then we consider the inverse mapping from $B$ to $A$, denoted by $f^{-1}$ as:
 
@@ -135,6 +135,8 @@ Let's observe that:
 - If a biyection is stablished from $A$ to $B$, then the inverse is a biyection of $B$ to $A$ (symmetric).
 - If there are biyection from $A$ to $B$ and from $B$ to $C$, the composition of the both is a biyection from $A$ to $C$ (transitivity).
 
+    <br>
+
 Thus, we can define a *equivalent relation* around cardinality; two sets are equivalent if they share his cardinality.
 
 <br>
@@ -149,7 +151,7 @@ Now, let's introduce that in mathematics, count consist basically in measure the
 
 - $A$ is *at most countable* if its finite.
 
-- $A$ is *uncountable* if $\nexists S \in P(\mathbb{Z}^+)  : A \sim S$, note that this involves $\mathbb{Z}^+$ it self.
+- $A$ is *uncountable* if $\nexists S \in \mathcal{P}(\mathbb{Z}^+)  : A \sim S$, note that this involves $\mathbb{Z}^+$ it self.
 
 Note that with this notions two finite cardinal-equivalents sets $A, B$ has the same number of elements, but observe that with infinite sets the idea of have *the same number of elements* becomes quite vague but the biyection idea retains its clarity. 
 
@@ -157,7 +159,7 @@ Note that with this notions two finite cardinal-equivalents sets $A, B$ has the 
 
 Let's see an example with $\mathbb{Z}$ and $\mathbb{Z}^+$ and consider $f: \mathbb{Z}^+ \to \mathbb{Z}$:
 
-$$f(z) := \begin{cases} z/2 \quad z \in 2\mathbb{Z} \\ -\frac{z-1}{2} \quad n \notin 2\mathbb{Z} \end{cases}$$
+$$f(z) := \begin{cases} z/2 \quad z \in 2\mathbb{Z} \\ -\frac{z-1}{2} \quad z \notin 2\mathbb{Z} \end{cases}$$
 
 Observe that this function is injective and suprajective so is a biyection and $\mathbb{Z}$ and $\mathbb{Z}^+$ has the same cardinality.
 
@@ -168,3 +170,65 @@ Observe that this happens despite the fact that $\mathbb{Z}^+ \subset \mathbb{Z}
 <br>
 
 ## 2.3. Sequences.
+
+### 2.3.1. Definition.
+
+Let's introduce the notion of a *sequence*. Intuitively a sequence is an infinite sorted list. Formally, a sequence is a function $s : \mathbb{Z}^+ \to A : s(n) \in A$, where $A \neq \varnothing$. 
+
+This function contains two objects that characterizes the information and the set:
+
+- An index over the elements of $A$, which is given by the preimage $n \in \mathbb{Z} : x = s(n) \to x\_n$
+
+- To each index, each position, there is only one element ocupping the slot (this is given by the fact that $s$ is a function) which is called the $n$-th term of the sequence. Observe that two terms of distinct index not need to be distinct.
+
+We often call as $\Set{x\_n}$ to the sequence.
+
+<br>
+
+Observe some interesting relation between sequences and countable sets. Since every countable set is the range of a $1-1$ function defined on $\mathbb{Z}^+$, we may regard every countable set as the range of a sequence of distinct terms. Speaking more loosely, we may say that the elements of any countable set can be arranged in a sequence.
+
+<br>
+
+### 2.3.2. Theorem; Every infinite subset of a countable subset is countable.
+
+Take some $A \subset E$, such $E$ is countable and $A$ is not finite. Since $E$ is countable then exists some biyection $f : \mathbb{Z}^+ \to E$, then we can consider $g: \mathbb{Z}^+ \to A$ as follows; since $A \subset E$ then we can consider the range of $f$ over $A$. Then, each element of $f(A)$ has an index, and since $\mathbb{Z}^+ \subset \mathbb{N}$ has good order, then we can consider first some minimum index $m$ and then we can order $f(A)$ items through his index. Then, $g(1) = x\_m$, and the sucesor of $x_m$ in $A$ receives $g(2)$ and so on, ultimately, we crafted a sequence, $g$ in $A$, thus $g$ is a biyection and $A$ is countable.
+
+<br>
+
+## 2.4. Families. Intersection and Union of a family of sets.
+
+### 2.4.1. Definition.
+
+Let's now introduce the *family* languages, the indexes family sets and define the union and intersection of an arbitrary family set.
+
+<br>
+
+Let $A$ and $\Omega$ be sets such each $\alpha \in A$ is asociated with a subset of $\Omega$, denoted by $E\_\alpha \subset \Omega$. We denote as $\Set{E\_\alpha}$ to set whose elements are the sets $E\_\alpha$ and call it *collection* of sets or *family* of sets.
+
+<br>
+
+### 2.4.2. Union and Intersection of sets.
+
+The union of the sets $E\_\alpha$ is defined as:
+
+$$\bigcup_{\alpha \in A} E_\alpha := \Set{x \in \Omega \mid \exists \alpha \in A : x \in E_\alpha}$$
+
+<br>
+
+The intersection:
+
+$$\bigcap_{\alpha \in A} E_\alpha := \Set{x \in \Omega \mid x \in E_\alpha \quad \forall \alpha \in A}$$
+
+<br>
+
+### 2.4.3. Relation between Union/Intersection and Sum/Product.
+
+Many properties of unions and intersections are quite similar to those of sums and products; in fact, the words sum and product were sometimes used in this connection, and the symbols $\sum$ and $\prod$ were written in place of $\cup$ and $\cap$. The asociativity and distributivity laws comes from this very same laws in disjuntion and conjuntion.
+
+<br>
+
+### 2.4.4. The arbitrary union of countable sets is countable. Cantor method.
+
+Let 
+
+<br>
