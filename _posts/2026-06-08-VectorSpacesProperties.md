@@ -500,4 +500,126 @@ Let be $M_{n \times n} (K) : n \geq 2$, which of the following sets $\Phi\_n$ ar
 
 #### 2.4.5.6. Subspaces of $\mathbb{R}$.
 
-    
+1. **Prove that the only subspaces of $\mathbb{R}$ are $\mathbb{R}$ and the zero subspace.**
+
+    That $\mathbb{R} \leq \mathbb{R}$ and $\Set{0} \leq \mathbb{R}$ comes immediately from $2.2.$
+
+    Note directly that if there is some subspace $V \leq \mathbb{R}$, then $V$ contains all the linear combinations of himself, so consider some $a \in V \implies 1 = (a/a) \in V$, then since we can multiply $1$ by any scalar, we can reach any element of $\mathbb{R}$ inside of $V$ so $V = \mathbb{R}$.
+
+    <br>
+
+2. **Prove that a subspace of $\mathbb{R}$ is $\mathbb{R}^2$, or the zero subspace, or consists of all scalar multiples of some fixed vector in $\mathbb{R}^2$**.
+
+    First, again that $\mathbb{R} \leq \mathbb{R}$ and $\Set{0} \leq \mathbb{R}$ comes immediately from $2.2.$
+
+    Next, the lines on $\mathbb{R}^2$ are subspaces is also clear, take some not null $v \in R^2$ then any scaled element of $v$ is a linear combination of $v$ so the line contains all the linear combinations of his elements.
+
+    Lastly, let's suppose two elements $u,v \in \mathbb{R}^2: \nexists \alpha \in \mathbb{R} : u = \alpha v$. Then, this two elements doesn't belong to the same line. Suppose  $u = (a,b), v = (c,d)$, hence observe that for some $\alpha, \beta \in \mathbb{R}$ is $\alpha u + \beta v = (\alpha a+ \beta c,0) + (0, \alpha b+ \beta d)$, observe that we can form the following equation system: 
+
+    $$\begin{cases} \alpha a + \beta b = 1 \\ \alpha c + \beta d = 1\end{cases}$$
+
+    Solving it we get:
+
+    $$\alpha=\dfrac{d-c}{ad-bc},\qquad \beta=\dfrac{a-b}{ad-bc}$$
+
+    Observe that the solution has sense, since $u,v$ are no proportionals, $a,c$ and $b,d$ can't be zero at the same time so $ad - bc \neq 0$
+
+
+    And:
+
+    $$\dfrac{d-c}{ad-bc} u + \dfrac{a-b}{ad-bc} v = (1,0) + (0,1) = e_1 + e_2$$
+
+    Observe that (without the need to invocate orthogonality or basis), we can ensure that, being $w = (x,y) \in \mathbb{R}^2$, then is:
+
+    $$w = \dfrac{x(d-c)}{ad-bc} u + \dfrac{y(a-b)}{ad-bc} v \quad \forall w \in \mathbb{R}^2$$
+
+    Meaning, with two non-proportional vectors, we can reach any other element in $\mathbb{R}^2$ thus the spanned subspace $V$ of the subset $S := \Set{u,v \mid \nexists \alpha \in \mathbb{R} : u = \alpha v} \subset \mathbb{R}^2$ is $\mathbb{R}^2$ it self.
+
+    Thus, observe that for any $W \leq V$, then if $W$ contain at least two non-proportional vectors then $W = \mathbb{R}^2$, since a vector space contain all the linear combination of his vectors, if do not then is either a line or the zero subspace.
+
+    <br>
+
+3. **Can you describe the subspaces of R3?**
+
+    Extending the argumentation in $2.$ is the zero subspace, those subspaces for which exists at least three independant vectors (one vector which is not linear combination of other two) which spans $\mathbb{R}^3$, then those subspaces with at least two non-proportional vectors which are planes and those with all his vectors proportionals which are lines.
+
+    <br>
+
+#### 2.4.5.7. Union of subspaces.
+
+Let $W\_1, W\_2 \leq V$ be subspaces of a vector space such that the set-theoretic
+union of $W\_1$ and $W\_2$ is also a subspace. Prove that one of the spaces $W\_i$ is contained in the other. 
+
+<br>
+
+Let's consider some interesting visual approach about the union of subspaces. Consider $\mathbb{R}^2$, then consider two non proportional vectors and the spanned subspaces of each of them, which are two distinct lines crossing in the origin. Is easy to see that a linear combination of the vectors of each line can fall out of each line since the subspace containing two non-proportional vectors coincides with $\mathbb{R}^2$. This means that the union of the two lines doesn't contains all his linear combinations so is not a subspace. For the union to be a subspace, each linear combination should end up as vector of one of the lines wich is pretty much to say that is proportional to one of the vectors of the linear combination but observe that this also implies that the third vector is also proportional so to the two lines are the same.
+
+<br>
+
+Then, generalizing:
+
+$$\bigcup_i W_i \leq V \implies w = u + v \in \bigcup_i W_i \quad \forall u \in W_1, \forall v \in W_2$$
+
+Then, suppose $w \in W_i \implies v  = w - u \in W_i$, observe that this means that we can't consider simulatenously $u \in W_i \setminus W_j$ and $v \in W_j \setminus W_i$ since the last afirmation would be false.
+
+<br>
+
+#### 2.4.5.8. Even and odd function subspaces. Direct Sum.
+
+Consider $\mathbb{R}^\mathbb{R}$ and the following subsets:
+
+$$A := \Set{f \in \mathbb{R}^\mathbb{R} \mid f(-x) = f(x)}$$
+$$B := \Set{f \in \mathbb{R}^\mathbb{R} \mid f(-x) = -f(x)}$$
+
+Then, prove that:
+
+1. Both subsets are subspaces of $\mathbb{R}^\mathbb{R}$
+
+    Observe that:
+
+    $$(\alpha f + g)(-x) = \alpha f(-x) + g(-x) = \begin{cases} \alpha f(x) + g(x) = (\alpha f + g)(x) \quad \forall f,g \in A \\ -\alpha f(x) - g(x) = -(\alpha f + g)(x) \quad \forall f,g \in B \end{cases}$$
+
+    So both contains the linear combinations of his own elements so their are subspaces.
+
+    <br>
+
+2. $A + B  = \mathbb{R}^\mathbb{R}$
+
+    Let's suppose that $f \in \mathbb{R}^\mathbb{R}$, then let's suppose also $g \in A$ and $h \in B$ such $f = g + h$, observe that this functions verifies at the same time:
+
+    $$\begin{cases}f(x) = g(x) + h(x) \\ f(-x) = g(-x) + h(-x) = g(x) - h(x) \end{cases}$$
+
+    In this context is, combining both equatlities we get:
+
+    - $g(x) =  \frac{1}{2}[f(x) + f(-x)]$
+    - $h(x) =  \frac{1}{2}[f(x) - f(-x)]$
+
+    So is:
+
+    $$f(x) = \frac{1}{2}[f(x) + f(-x)] + \frac{1}{2}[f(x) - f(-x)] $$
+   
+   <br>
+
+3. $A \cap B = \Set{0}$
+
+    Observe that this is almost immediate, suppose some common function from $A \cap B$, then:
+
+    $$f(x) = \frac{1}{2}(f(-x) - f(-x)) = 0 \quad \forall x \in \mathbb{R}$$
+
+    <br>
+
+Observe that we have demonstrated that two disjoint subspaces $A,B \leq \mathbb{R}^\mathbb{R}$ sum the total space:
+
+$$A,B \leq \mathbb{R}^\mathbb{R} : A \oplus B \iff (A \cap B =\Set{0} \wedge A + B = \mathbb{R}^\mathbb{R})$$
+
+Observe that this allows to dispose every vector of $\mathbb{R}^\mathbb{R}$ in terms of two componentes of $A$ and $B$.
+
+<br>
+
+#### 2.4.5.9. Property of direct sum.
+
+Let $W_1, W_2$ subspace such are direct sum of $V$. Prove that for each vector $\alpha \in V$ there are unique vectors $\alpha\_1 \in W\_1$ and $\alpha\_2 \in W\_2$ such that $a = \alpha\_1 + \alpha\_2$.
+
+<br>
+
+Take $a \in V$ and suppose that is $a = \alpha\_1 + \alpha\_2 = \beta\_1 + \beta\_2 : \alpha\_i, \beta\_i \in W\_i$ with $i = 1,2$, then observe that it cannot be $\alpha\_i - \beta\_j = 0$ since that would imply $\alpha\_i \in W\_j$ or $\beta\_j \in W\_i$ contradicting the premise that both subspaces do not share not-null vectors, so it can only be $\alpha\_i - \beta\_i = 0 : i = 1,2$, so both vectors are the same exact vector.
