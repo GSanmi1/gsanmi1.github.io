@@ -227,8 +227,36 @@ Many properties of unions and intersections are quite similar to those of sums a
 
 <br>
 
-### 2.4.4. The arbitrary union of countable sets is countable. Cantor method.
+### 2.4.4. Result for countable sets. First Cantor diagonal method.
 
-Let 
+We have the following results:
+
+**The arbitrary union of countable sets is a countable set.**
+
+Let' be $\Set{E\_n} : n = 1,2,3,\ldots$ be a collection or family of countable sets, then consider:
+
+$$S = \bigcup_{i=1}^\infty E_n$$
+
+First, since $E\_n$ for each $n =1,2,3,\ldots$ is numerable, then we can consider a biyection $f : \mathbb{Z}^+ \to E\_n$ for each $n$, this biyection allow us to arrange or list the elements of $E\_n$ in a row
+
+$$E_n :=\Set{x_{1n}, x_{2n}, x_{3n}, \ldots}$$
+
+Let's do this for each $n$ obtaining something like a matrix where each row is the sorted $E\_n : n = 1,2,3,\ldots$ 
+
+$$S =\begin{pmatrix} x_{11} & x_{12} & x_{13} & \ldots \\ x_{21} & x_{22} & x_{23} & \ldots \\ x_{31} & x_{32} & x_{33} & \ldots \\ \vdots & \vdots & \vdots & \ddots \end{pmatrix}$$
+
+Note that the 'matrix' denomination of this structure is just an intuitive approximation and we are not saying that it is properly a matrix at all.
+
+Then, observe we can sort this elements by diagonalizating them, forming the sequence:
+
+$$x_{11}, x_{21},  x_{12},  x_{31},  x_{22},  x_{13}, \ldots $$
+
+Observe then that as an arranged list, we can define a biyection over it, thus $S$ is countable.
+
+<br>
+
+**The at most countable union of at most countable sets is at most countable**
+
+The proof is similar to the above.
 
 <br>

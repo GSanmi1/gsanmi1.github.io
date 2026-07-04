@@ -623,3 +623,111 @@ Let $W_1, W_2$ subspace such are direct sum of $V$. Prove that for each vector $
 <br>
 
 Take $a \in V$ and suppose that is $a = \alpha\_1 + \alpha\_2 = \beta\_1 + \beta\_2 : \alpha\_i, \beta\_i \in W\_i$ with $i = 1,2$, then observe that it cannot be $\alpha\_i - \beta\_j = 0$ since that would imply $\alpha\_i \in W\_j$ or $\beta\_j \in W\_i$ contradicting the premise that both subspaces do not share not-null vectors, so it can only be $\alpha\_i - \beta\_i = 0 : i = 1,2$, so both vectors are the same exact vector.
+
+<br>
+
+# 3. Bases and Dimension.
+
+## 3.1. Conceptal introduction.
+
+Let's first introduce what a basis is, a *basis* is the minimum set of a vector space which contains all the information the vector space is capable to express. Meaning that is the minimum set of vectors that spans the vector space; any vector is reachable trough a linear combination of the elements of a basis and at the same time this set is minimum, any subset of a basis is uncapable to span the vector space.
+
+The *dimension* of the vector space is the number of "degrees of freedom" that a vector space has; the number of independent vector required to specify an arbitrary vector materialized in the cardinal number of the basis set.
+
+This two concepts has a fundamental importance; the dimension is the fundamental invariant that clasifies vector spaces, and the basis what transform linear algebra (operation with vectors) in matrix computations.
+
+<br>
+
+## 3.2. Linearly dependent/independent.
+
+Let first introduce the concept of dependant and independant linearity, which basically determines wheter a vector is owned by the spanned vector space of a set of vectors. 
+
+Let be $V$ a $K$-vector space and $S \subset V$. Then:
+
+- $S$ is said to be *linear dependant* if and only if: 
+
+    $$\exists \alpha_1,\ldots, \alpha_n \in S \text{ distinct}, \exists c_1,\ldots, c_n \in K \text{ not all 0} : \sum_{i=1}^n c_i\alpha_i = 0$$
+
+    <br>
+
+- $S$ is said to be *linear independant* if and only if is not dependant, negating the above we get
+
+    $$\forall \alpha_1,\ldots, \alpha_n \in S \text{ distinct}, \forall c_1,\ldots, c_n \in K \text{ not all 0} : \sum_{i=1}^n c_i\alpha_i \neq 0$$
+
+    Observe that we can convert the statement by quitting the "not all 0" obtaining:
+
+    $$\forall \alpha_1,\ldots, \alpha_n \in S \text{ distinct}, \forall c_1,\ldots, c_n \in K : \sum_{i=1}^n c_i\alpha_i = 0 \iff c_i = 0 \quad \forall i \in [n]$$
+
+    <br>
+
+Let's see some easy consequences of the definition.
+
+1. Any set which contains a linearly dependent set is linearly dependent.
+2. Any subset of a linearly independent set is linearly independent.
+3. Any set which contains the 0 vector is linearly dependent; for $1 · 0 = 0$. 
+
+    <br>
+
+### 3.2.1. Examples.
+
+Consider $K$ a field, then in $K^3$ the vectors:
+
+$$\begin{cases} \alpha_1 = (3,0,-3) \\ \alpha_2 = (-1,1,2) \\ \alpha_3 = (4,2,-2) \\ \alpha_4 = (2,1,1)\end{cases}$$
+
+Satisfies:
+
+$$2\alpha_1 + 2\alpha_2 - \alpha_3 + 0 · \alpha_4 = 0 $$
+
+So are linear dependant. Note that $\Set{\alpha\_1, \alpha\_2, \alpha\_3}$ are linear dependant as well, hence, any set containing this vectors is also linear dependant.
+
+<br>
+
+The vectors:
+
+$$\begin{cases} \alpha_1 = (1,0,0) \\ \alpha_2 = (0,1,0) \\ \alpha_3 = (0,0,1)\end{cases}$$
+
+Are linear independant.
+
+<br>
+
+## 3.3. Basis definition and examples.
+
+Let $V$ be a vector space. A basis for $V$ is a linearly independent set of vectors in $V$ which spans the space $V$. The space $V$ is finitedimensional if it has finite basis.
+
+<br>
+
+### 3.3.1. Standard basis of $K^n$.
+
+Let $K$ be a field and in $K^n$, consider the subset:
+
+$$ \mathcal{B}: = \begin{cases} \alpha_1 = (1,0,0,\ldots, 0) \\ \alpha_2 = (0,1,0,\ldots,0) \\ \alpha_3 = (0,0,1,\ldots,0) \\ \quad \vdots \\ \alpha_n = (0,0,0,\ldots,1) \end{cases}$$
+
+At first, observe that for any $x = (x_1,x_2,\ldots,x_n) \in K^n$ is:
+
+$$x = \sum_{i=1}^n \alpha_i x_i$$
+
+So $\mathcal{B}$ spans $K^n$ and also is linear independent as we see in the particular case with $K^3$. So $\mathcal{B}$ is a basis of $K^n$, particularly called **standard basis**.
+
+<br>
+
+### 3.3.2. Invertible matrix and basis.
+
+Let's consider some $P \in M_n(K)$ invertible. We do know that $P \simeq I_n$, which means that no row in $P$ can be zeroed through a linear combination of the other rows in $P$ so the set of the rows in $P$ forms a linear independent set. Observe that, in more simple terms, be $X \in K^{n\times 1}$, then, by $6.3.3$ in [Linear Equations](https://gsanmi1.github.io/posts/2026/02/06/Linear_Equations/):
+
+$$\exists P^{-1} \iff (PX = 0 \iff X = 0)$$
+
+Thus, $PX = \sum_{i=1}^n x\_iP\_i = 0 \iff x\_i = 0 \quad \forall i \in [n]$, meaning that $\Set{P_1, \ldots, P_n}$ is a linear independent set. 
+
+And also, as we see above, it spans any column on $K^{n \times 1}$ so $\Set{P_1, \ldots, P_n} \subset K^{n \times 1}$ is in fact a basis of $K^{n \times 1}$.
+
+<br>
+
+Let's observe that we are saying that in $K^n$, a basis and an invertible matrix is literally the same object. Is the naturall continuity to the conception of matrix seen as linear-information codified packeges viewed in  [Linear Equations](https://gsanmi1.github.io/posts/2026/02/06/Linear_Equations/).
+
+The columns of any invertible matrix become a basis of the same matrix-dimension tuple vector space, in a way that the coordinates of any vector in terms of that basis becomes the solution of a linear equation system. Again from $6.3.3$ in the post above the solution is unique so:
+
+$$\forall Y \in K^{n \times 1} \ \exists ! X \in K^{n \times 1} :  \quad (PX = Y \iff X = P^{-1} Y)$$
+
+<br>
+
+### 3.3.3. Basis of non-sqaured matrix vector spaces.
