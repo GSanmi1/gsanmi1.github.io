@@ -722,7 +722,7 @@ And also, as we see above, it spans any column on $K^{n \times 1}$ so $\Set{P_1,
 
 <br>
 
-Let's observe that we are saying that in $K^n$, a basis and an invertible matrix is literally the same object. Is the naturall continuity to the conception of matrix seen as linear-information codified packeges viewed in  [Linear Equations](https://gsanmi1.github.io/posts/2026/02/06/Linear_Equations/).
+Let's observe that we are saying that in $K^n$, a basis and an invertible matrix is literally the same object. Is the naturall continuity to the conception of matrix seen as linear-information codified packeges viewed in [Linear Equations](https://gsanmi1.github.io/posts/2026/02/06/Linear_Equations/).
 
 The columns of any invertible matrix become a basis of the same matrix-dimension tuple vector space, in a way that the coordinates of any vector in terms of that basis becomes the solution of a linear equation system. Again from $6.3.3$ in the post above the solution is unique so:
 
@@ -730,4 +730,23 @@ $$\forall Y \in K^{n \times 1} \ \exists ! X \in K^{n \times 1} :  \quad (PX = Y
 
 <br>
 
-### 3.3.3. Basis of non-sqaured matrix vector spaces.
+### 3.3.3. Basis of non-squared matrix vector spaces.
+
+Let $A \in M_{m \times n}(K)$ and let $S := \Set{X \mid AX = 0}$ the solution on the homogeneous system. Take the $RREM$, $R \simeq A$, then, $RX=0$ share the space solution. 
+
+Observe that since $R$ is $RREM$, it has $r$ non-zero rows, which allow to clear $r$ unknowns in terms of $n-r$ unknowns, be $J$ the set of the index of the uncleared unknowns, then $RX = 0$ is equivalent to the system:
+
+$$\begin{cases} x_1 = \displaystyle\sum_{i = 1}^J \alpha_{1i} x_i \\ \quad \vdots \\ x_r = \displaystyle\sum_{i = 1}^J \alpha_{ri} x_i\end{cases}$$
+
+All solution are retrieved by giving values to the dependent unknowns assigning arbitrary values to the independent unknows, those with and index in $J$.
+
+Observe then that, be $j \in J$ then consider $E\_j$ the solution by giving $x\_j=1$ and $x_i=0$ for any other $i \in J$. Observe since the solutions are indeed linear combinations of the independent unknowns, then any arbitrary solution are is a linear combination of the family $\Set{E\_j}\_{j \in J}$ as described above and also is clear that are linearly independant so is a basis.
+
+<br>
+
+### 3.3.4. Infinite Basis.
+
+
+
+<br>
+

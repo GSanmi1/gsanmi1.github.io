@@ -195,7 +195,7 @@ Take some $A \subset E$, such $E$ is countable and $A$ is not finite. Since $E$ 
 
 <br>
 
-## 2.4. Families. Intersection and Union of a family of sets.
+## 2.4. Families. Intersection and Union of a family of sets. Countable and Uncountable example sets.
 
 ### 2.4.1. Definition.
 
@@ -227,11 +227,11 @@ Many properties of unions and intersections are quite similar to those of sums a
 
 <br>
 
-### 2.4.4. Result for countable sets. First Cantor diagonal method.
+### 2.4.4. Cantor's diagonal methods and auxiliary results.
 
 We have the following results:
 
-**The arbitrary union of countable sets is a countable set.**
+**The arbitrary union of countable sets is a countable set. First Cantor's diagonal method.**
 
 Let' be $\Set{E\_n} : n = 1,2,3,\ldots$ be a collection or family of countable sets, then consider:
 
@@ -258,5 +258,77 @@ Observe then that as an arranged list, we can define a biyection over it, thus $
 **The at most countable union of at most countable sets is at most countable**
 
 The proof is similar to the above.
+
+<br>
+
+**If $A$ is countable, then $A^n$ is countable for any $n \in \mathbb{N}$**
+
+Let's proof this result by induction.
+
+Take $n = 1$, then this result is immediate since $A^1$ is $A$.
+
+Then, let's give it true for some $n \in \mathbb{N}$, and consider $A^{n}$, each element is of the form $(a\_1,\ldots, a\_{n-1}, a_n) \in A^n$, calling $\alpha = (a\_1,\ldots,a\_{n-1}) \in A^{n-1}$, then the first is identifiable with the pair $(\alpha,a\_n)$, observe that fixed some $\alpha$, the set of the pairs $(\alpha,a) : a \in A$ can be identified with $A$ it self, meaning that is countable and his elements can be arranged in a row:
+
+$$(\alpha,a_1)_1,(\alpha,a_2)_2,(\alpha,a_3)_3,\ldots $$
+
+Also observe that since $A^{n-1}$ is countable as well, then, for each $a \in A$ the set of the pairs $(\alpha,a) : \alpha \in A^{n-1}$ is countable as well and it can be disposed in a column, obtaining a structure in which we can use the first Cantor diagonal method.
+
+$$(\alpha_1,a_1),(\alpha_1,a_2),(\alpha_1,a_3),\ldots $$
+
+$$(\alpha_2,a_1),(\alpha_2,a_2),(\alpha_2,a_3),\ldots $$
+
+$$(\alpha_3,a_1),(\alpha_3,a_2),(\alpha_3,a_3),\ldots $$
+
+$$\quad \quad \vdots \quad \quad \quad \quad \vdots \quad \quad \quad \quad \vdots \quad \quad \quad$$
+
+Allowing us to create the sequence:
+
+$$(\alpha_1,a_1)_1,(\alpha_2,a_1)_2, (\alpha_1,a_2)_3, (\alpha_3,a_1)_4, (\alpha_2,a_2)_5, (\alpha_1,a_3)_6,\ldots $$
+
+Reidentificating the pair $(\alpha,a)$ with the tuple $(a_1,\ldots,a_n) \in A^n$, we have created a biyection from $\mathbb{Z}^+$ over the elements of $A^n$, so this is is countable as well.
+
+<br>
+
+Essentially observe that we reused the argument provided in the first point since $A^n$ is the countable union of the countable sets $\Set{(\alpha,a) : a \in A}$ for each $\alpha \in A^{n-1}$, so is countable.
+
+<br>
+
+**$\mathbb{Q}$ is countable**
+
+Observe that we can again reuse the argument before. We did see that $\mathbb{Z}$ is countable so each set $E\_m = \Set{n/m : n \in \mathbb{Z}}$ for some $m \neq 0$ is countable, thus:
+
+$$\mathbb{Q} := \bigcup_{m \in \mathbb{Z}^+}E_m$$
+
+Is countable.
+
+<br>
+
+**Uncountable set. Second Cantor's diagonal method. $\mathbb{R}$ is uncountable.**
+
+This is an example of an infinity which is strictly greater than $\mathbb{N}$. Consider the set $A:=\Set{0,1}^\mathbb{N}$, of all the functions $s:\mathbb{N} \to \Set{0,1}$. Observe that each sequence is the *indicator* function of some subset of $\mathbb{N}$, for which is in biyection with $\mathcal{P}(\mathbb{N})$, hence the theorem is $card(\mathbb{N}) \leq card(\mathcal{P}(\mathbb{N}))$.
+
+<br>
+
+Take $E \subseteq A$ as countable consisting in the sequences $s\_1,s\_2,s\_3,\ldots$. Then, take some sequence $s$ crafted as:
+
+If the $n$-th digit in $s\_n$ is $1$, then the $n$-th digit of $s$ is $0$ provoking that $s$ differs from any element of $E$ in at least one place so $s \notin E$ but $s \in A$ since $s$ is composed of $0$ and $1$ so $E \subset A$. Any countable subset of $A$ is a proper subset, thus $A$ can't be countable (or it would be its own countable subset) and is uncountable. 
+
+<br>
+
+Laterly we will see that $\mathbb{R}$ admits a binary representation and this same result will apply to demonstrate that $\mathbb{R}$ is uncountable.
+
+<br>
+
+## 2.5. Summary.
+
+Let's take a brief summary of section $2$. First, we introduce the relation and a concrete form or relation which we called *function*, which is a relation for which the image set for any element of the domain is a unary-non-empty set.
+
+Then we introduced the biyection, or one-to-one relations and along with it the mathematically conception of *count* which is identify the elements of two sets through a biyection in the sense that we can attach each element with another unique item of other set, stablishing that both sets has the same number of elements, the same cardinality. The cardinality equivalence is a relation equivalence in which the canonical representant is the natural number subsets, $[n]$.
+
+Later
+
+# 3. Metric Spaces.
+
+
 
 <br>
