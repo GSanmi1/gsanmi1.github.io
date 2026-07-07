@@ -660,6 +660,12 @@ Let be $V$ a $K$-vector space and $S \subset V$. Then:
 
     <br>
 
+Let's observe this more carefully, check something interesting, a subset of vectors of a vector space is said to be *dependant* when it can reference the zero vector, $0$ through a finite, non-trivial, linear combination.
+
+Take for example two vectors, $u,v \neq 0 \in V$, then if $\exists \alpha,\beta\neq 0 \in K : \alpha u + \beta v = 0 \iff u = \frac{-\beta}{\alpha}v$, both are proportionals and we can retrieve one from the other without involve any other vector, so we can say they contains the same information, both are the same type of vector so to speak. Thus, let's suppose that $u,v$ can't reference null vector and consider $w = tu + lv \neq 0 : t,l \neq 0 \in K$, then observe that this three vectors can again reference the zero vector, $tu + lv -w = 0$ through a finite non-trivial linear combination, qwe can think in $w$ as a proportional vector to a combination of $u,v$, thus $w$ and $u,v$ contains the same information despite scaling and observe that the fact that three vectors can reference through a non-trivial linear combination states the same, each of them is proportional to a combination of the other ones. 
+
+Thus, information redundancy is the essense of linear dependence, a set of vectors is said to be linear dependent when at least one of them carries complete redundant information, in the sense that the whole set can express a part and the counterpart leading to a cancelation on the zero vector. Linear independence is just the negation of this statement, a set of vectors is said to be linear independent when all vectors contribute with some non-replicable information, or, in other terms, substract any vector in the set implies to loose information.
+
 Let's see some easy consequences of the definition.
 
 1. Any set which contains a linearly dependent set is linearly dependent.
@@ -692,7 +698,17 @@ Are linear independant.
 
 ## 3.3. Basis definition and examples.
 
-Let $V$ be a vector space. A basis for $V$ is a linearly independent set of vectors in $V$ which spans the space $V$. The space $V$ is finitedimensional if it has finite basis.
+Let $V$ be a vector space. A basis, $\mathcal{B}$, of $V$ is a linearly independent set of vectors in $V$ which spans the space $V$. The space $V$ is finitedimensional if it has finite basis.
+
+<br>
+
+Let's observe here that we are giving continuity to the dependence/independence frame but we are adding generators sets in the process. A basis is nothing more that the combination of two objects:
+
+- A generator set, this is; a set which contains all the information that the vector space can express.
+
+- A independent set, a set from which you can't free any element without loose information.
+
+This two objects gives us a compress notion; a basis is the minimal generator set of a vector space; substracting a vector make a piece of information to get lost, so the span doesn't hold. This will be explain in a later theorem.
 
 <br>
 
@@ -746,7 +762,27 @@ Observe then that, be $j \in J$ then consider $E\_j$ the solution by giving $x\_
 
 ### 3.3.4. Infinite Basis.
 
-
+Let's note first that an infinite basis do not introduce infinite sums, each vector gets obtained through a finite linear combination. Which is infinite is the generator engine, the basis it self which, algebraicly speacking, means that there is only no finite basis at all. The richness of infinite-dimensional theory (functional analysis, operators) lies not in the vector space structure itself, but in the additional structure superimposed upon it.
 
 <br>
+
+Take some subfield $W \subset \mathbb{C}$, and consider $Pol(W,W)$, remember:
+
+$$Pol(W,W) := \Set{f \in W^W \mid \exists n \in \mathbb{N}:(\exists \alpha \in \mathbb{C}^n : f(x) = \sum_{i=0}^n \alpha_i x^i \quad \forall x \in W )}$$
+
+Note then that, for any $f \in Pol(W,W)$, it takes the form:
+
+$$f(x) = \alpha_0 + \alpha_1 x + \ldots + \alpha_n x^n$$
+
+Let's call $f\_n(x) = x^n$, then the family $\Set{f\_n}\_{n \in \mathbb{N}}$ is a basis over $Pol(W,W)$. 
+
+First, is clear that it can generate any element of $Pol(W,W)$, but let's also see that they are independent. We do know that a set is independent if any linear combination of his elements is $0$, it would be sufficent to proove that for any $n$, the finite family $\Set{f\_0,f\_1,\ldots,f\_n}$ is independent, then, for some $n$ is:
+
+$$\sum_{i=0}^n \alpha_i f_i = \alpha_0 + \alpha_1 x + \cdots + \alpha_n x^n = 0$$
+
+We assume that the reader knows that a polynomial of degree $n$ with complex coefficients cannot have more than $n$ distinct roots. It follows that $\alpha\_0 = \cdots = \alpha\_n = 0$. 
+
+<br>
+
+## 3.5. 
 
