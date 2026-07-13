@@ -891,3 +891,9 @@ Suppose $W < V$ and $dim V, dim W \in \mathbb{N}$. Then:
     <br>
 
 So it has to be $dim W < dim V$ and $W$ is finite-dimensional.
+
+<br>
+
+### 3.5.5. Invertible Matrix and independent vectors.
+
+Extending our example of $3.3.2.$ invertible matrix and basis, observe that an immediate result from above is that if $A \in M_n(K)$ such the set of his $\Set{\alpha_i}_{i \in [n]}$ conforms a linear independent set, then $A \simeq I_n$, if not, $A$ would be equivalent to some $RREM$ with a finite number of zero rows. With an argument similar than the one provided in the example, this would mean that it would exists some non-trivial linear combination of the rows of $A$ refering the zero-row, so $\Set{\alpha_i}_{i \in [n]}$ would be a dependent set.
