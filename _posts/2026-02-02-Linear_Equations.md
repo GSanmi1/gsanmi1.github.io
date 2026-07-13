@@ -255,6 +255,16 @@ Then, a **system of linear equations** is a collection of constraints or predica
 
 <br>
 
+Is worth to make a depicting about why are we interested in a linear algebra course to introduce first of all linear equations and matrix. Linear Algebra, as a discipline, is the field of mathematics that talk about the properties of vectors, this is, those objects that relates between themm in a "linear" way, we will clarify this idea in the *vector space* post.
+
+In this sense, a linear equation system, as we say above, is nothing but the tool we have to ask questions about vectors in a vector space, is the way in which we implement relations between those objects. Then, a matrix is nothing but a sofisticated encoding-device of linear-related data. We will see that manipulate linear system of equation through matrix terminology is way softer.
+
+<br>
+
+Thus, the relevance of this section becames from the fact that we are going to present the indispensable tools to work with vectors before present vector spaces and his properties.
+
+<br>
+
 ## 2.2. Formal definition.
 
 Let be $F$ a field and $m,n \geq 1$, then a finite system of $m$ linear equations in $n$ unknowns over $F$ is specified by:

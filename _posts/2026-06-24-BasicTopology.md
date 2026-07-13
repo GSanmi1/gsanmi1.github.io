@@ -321,13 +321,191 @@ Laterly we will see that $\mathbb{R}$ admits a binary representation and this sa
 
 ## 2.5. Summary.
 
-Let's take a brief summary of section $2$. First, we introduce the relation and a concrete form or relation which we called *function*, which is a relation for which the image set for any element of the domain is a unary-non-empty set.
+Let's take a brief summary of section $2$. 
 
-Then we introduced the biyection, or one-to-one relations and along with it the mathematically conception of *count* which is identify the elements of two sets through a biyection in the sense that we can attach each element with another unique item of other set, stablishing that both sets has the same number of elements, the same cardinality. The cardinality equivalence is a relation equivalence in which the canonical representant is the natural number subsets, $[n]$.
+First, we introduce the relation and then a specific form or relation which we called *function*, which the image set for any element of the domain is a unary-non-empty set.
 
-Later
+Then we introduced the *biyection*, or one-to-one relations and along with it the mathematically conception of *count* which is identify the elements of two sets through a biyection in the sense that we can attach each element with another unique item of other set, stablishing that both sets has the same number of elements, the same cardinality. The cardinality equivalence is a relation equivalence in which the canonical representant is the natural number subsets, $[n]$.
+
+Later, we define what sequences are and define some concepts with sequences and biyections; finitness (biyection with some $[n]$ for some $n \in \mathbb{Z}^+$) and countableness (biyection with $\mathbb{Z}^+$) and by opposition, infinite and uncoutableness.
+
+Then presented the definition of family sets and presented some results involving family of sets and countable sets along with Cantor diagonalization methods with which we try to present to types of infinites, $\mathbb{N}$ for countable sets, every countable sets has the same number of elements than $\mathbb{N}$ and then uncountables sets which has more elements than $\mathbb{N}$, $\mathbb{Q}$ is countable meanwhile $\mathbb{R}$ is uncountable.
+
+<br>
 
 # 3. Metric Spaces.
+
+## 3.1. Reminder.
+
+We shall now introduce what metric spaces were. Be $X$ a set of points, then we define $d:X \times X \to \mathbb{R}$ a function called *distance* or *metric* function, satisfying the following properties:
+
+- **Defined positive**: $d(x,y) > 0  \wedge \big[d(x,y) = 0 \iff x = y\big] \quad \forall x,y \in X$
+
+- **Simetric** $d(x,y) = d(y,x) \quad \forall x,y \in X$
+
+- **Triangle Inequality**: $d(x,z) \leq d(x,y) + d(y,z) \quad \forall x,y,z \in X$
+
+Metric spaces tries to capture structures in which is possible to measure a property between elements that we call distance. For now on, we should think in $\mathbb{R}^2$ or $\mathbb{R}$ as examples of metric spaces.
+
+Observe also that any subset of a metric space is also a metric space.
+
+<br>
+
+## 3.2. Bounded neighborhoods of $\mathbb{R}^k$.
+
+### 3.2.1. $K$-cells.
+
+Let's introduce the following notions:
+
+- We call *segment*, and we denote it as $(a,b)$, to be the collection of all the real numbers from $a$ to $b$ without neither of the two to being included:
+
+    $$(a,b) := \Set{x \in \mathbb{R} : a < x < b}$$
+
+    <br>
+
+- We call *interval* to the segment with his endpoints included:
+
+    $$[a,b] := \Set{x \in \mathbb{R} : a \leq x \leq b}$$
+
+    <br>
+
+- This both definitions can be combined, in what we call *half-open intervals*:
+
+    $$[a,b) := \Set{x \in \mathbb{R} : a \leq x < b}$$
+
+    $$(a,b] := \Set{x \in \mathbb{R} : a < x \leq b}$$
+
+    <br>
+
+Note then that, if $\mathbb{R}$ is a total ordered set, which legitimate to arrange it in line, the real line, then segments and intervales are collections of elements which respects that total order as singular pieces of the real line.
+
+<br>
+
+However, segments and intervals are just the one-dimension representation of those collections. 
+
+Consider now $\mathbb{R}^k$, and $\alpha = (a\_1, \ldots, a\_k), \beta = (b\_1,\ldots, b\_k) \in \mathbb{R}^k : a\_i < b\_i \quad \forall i \in [k]$, then we call as $k$-cell to those $x = (x\_1,\ldots,x\_k)  \in \mathbb{R}^k : a\_i < x\_i < b\_i$.
+
+$$\sigma^{\alpha \beta}_k :=\Set{\mathbf{x} = (x_1, \ldots, x_k) : a_i \le x_i \le b_i \quad \forall i \in [k]}$$
+
+Let's observe some interesting caracterization, $\sigma^{\alpha \beta}_k$ is in fact a cartesian product of real intervals:
+
+$$\sigma^{\alpha \beta}_k := \prod_{i=1}^k [a_i,b_i] = \Set{\mathbf{x} \in \mathbb{R}^k \mid x_i \in [a_i,b_i]}$$
+
+Which delimitates an hipersurface for any $k \geq 2$ caracterized by two points, $a$ and $b$. Essentially, $k$-cells are the generalization of intervals and segments two multiple dimensions which are the collection of common neighborhs that two points of the space share.
+
+<br>
+
+### 3.2.2. Neighboorhood. Balls. Convexity.
+
+**Neighboorhood. Balls.**
+
+Let's start talking about what a neighboorhod is. 
+
+In colloquial language, we usually use the term *neighboor* or *neighboorhood* to talk about those entities, those equals, that are reasonably near between them, it could be people coliving in the same building, in the same town or even in the same city.
+
+Here, talking about real numbers in a metric space, we will concrete this grade of nearness by using the distance/metric. Take for example some point $p \in \mathbb{R}^k$, then we delimit the neighboorhod of $p$ to be the set of all the points satisfying not being farest away from some distance:
+
+$$N_r(p) := \Set{ x \in \mathbb{R}^k \mid d(x,p) < r}$$
+
+Which is traduced on some ball of radius $x$ centered on $p$.
+
+<br>
+
+We talk about open/closed balls to refer if the distance is strictly less or less or equal than $r$.
+
+<br>
+
+**Convexity**
+
+We are going to present the *convexity*, which is strongest and simplest form of geoemtric regularity. Despiste this is in a topology section, convexity is an afine property but it fits as an important $\mathbb{R}^k$ property.
+
+<br>
+
+Then, consider now $E \subset \mathbb{R}^k$, then:
+
+$$E \text{ is convex } \iff \lambda x + (1 - \lambda) y \in E \quad  \forall x,y \in E \wedge \lambda \in (0,1)$$
+
+Let's observe carefully here that $\lambda x + (1 - \lambda) y = \lambda(x-y) + y$, calling $\overrightarrow {v} = x - y$, then we are just unwrapping the point-vector equation of the line at $y$ towards $\overrightarrow {v}$ and restricting it to the segment $(y,x)$ by restricting $\lambda$ to $(0,1)$. 
+
+Thus, essentially, we define a subset of the euclidian space to be *convex* when it contains the segment of any two points of the subset.
+
+<br>
+
+Observe for example that balls are convex subsets. We can think in a ball $N_r(p)$ and in two points in it and think in the plane going through those 3 points and then in thre triangle of vertix those three points. Is obvious that no point in the $XY$ side is more than $r$ distance from the center.
+
+Also, we can stablish that, being $q \in (y,x)$, then for some $\lambda \in (0,1)$:
+
+$$|q - p | = |\lambda x + (1 - \lambda) y - p | = |\lambda(x - p) + (1 - \lambda)(y-p)| \leq $$
+
+$$\leq \lambda |x - p| + (1-\lambda)|y-p| < \lambda r + (1-\lambda)r < r $$
+
+Since $\lambda \in (0,1)$.
+
+<br >
+
+
+## 3.3. Essential topologic notions.
+
+Now we are going to present the vocubulary in which the results of the real analysis are presented.
+
+In generic topology all departs from the family of open the sets, then the general notions in which the rest of the definition are describe departs from open sets. How ever, since we are not interested in toplogy at all but in topology of metric spaces, we leverage the metric or distance to define a natural object; the ball, which will be used to build the complete structure:
+
+<br>
+
+### 3.3.1. Neighborhood.
+
+As we stated above, for some element $p \in X$, we define the neigborhood of $p$ in $X$ to be a ball; $N\_r(p)$. This balls groups those $x \in X$ which are reasonably (arbitrary) near to $p$:
+
+$$N_r(p) := \Set{ x \in \mathbb{R}^k \mid d(x,p) < r}$$
+
+<br>
+
+### 3.3.2. Limit points, Isolated points and Closed Sets.
+
+Let's now talk about limit points. These are those points upon which $E$ piles up. We consider $p \in X$ to be a *limit point* of $E$ if every neighborhood contains at least someother point from $E$ :
+
+$$\forall r \in \mathbb{R}^+ \quad N_r(p) \cap E \neq \varnothing$$
+
+<br>
+
+If $x$ is not a limit point, then is called *isolated point*:
+
+$$\exists r \in \mathbb{R}^+ \quad  N_r(p) \cap E = \varnothing \quad  $$
+
+<br>
+
+Taking again $E \subset X$, then $E$ is a *closed* set if every limit point is a point of $E$. A closed set is basically a set without "gaps", for example, take $\mathbb{Q} \subset \mathbb{R}$, then $\mathbb{Q}$ by the stated in the chapter 1 of the book, $\mathbb{Q}$ is naturally not a closed subset of $\mathbb{R}$. 
+
+Observe that essentially is *stability under limitness*; a closed set contains those points to which other points of $E$ piles up. 
+
+<br>
+
+### 3.3.3. Interior points and Open Sets. Boundary.
+
+We call *interior* of $E$, to those points $p \in X$ for which exists some neigborhood in $E$, formally:
+
+$$E^\circ := \Set{p \in X \mid \exists r \in \mathbb{R}^+ : N_r(p) \subset E}$$
+
+Thus, observe that an interior point of $E$ is, intuitively a "well embebbed" point in $E$. We say that an *open set* is a set such all his points are interior points.
+
+<br>
+
+Observe something interesting, take $X = \mathbb{R}$ and the set $E := \Set{x \mid x < \sqrt{2}}$, observe then that we can consider as well $X \setminus E := \Set{x \mid x \geq \sqrt{2}}$, but $E^\circ \cup (X \setminus E)^\circ \neq X$, since $\sqrt{2}$ doesn't fall as an interior point of $E$ or his complementary. In other words $E^\circ \cup (X \setminus E)^\circ \subset X$ and we call the *boundary* of $E$, $\partial E$, to those points which aren't interiors nor exteriors of $E$:
+
+$$\partial E := X \setminus \big[E^\circ \cup (X \setminus E)^\circ\big]$$
+
+<br>
+
+Then, an open set is simply a set not containing any point of his boundary:
+
+$$E \text{ is an open set } \iff E \cap \partial E = \varnothing$$
+
+
+<br>
+
+### 3.3.4. Perfect Sets.
+
+# 4. Compact sets.
 
 
 
