@@ -698,7 +698,7 @@ Are linear independant.
 
 ## 3.3. Basis definition and examples.
 
-Let $V$ be a vector space. A basis, $\mathcal{B}$, of $V$ is a linearly independent set of vectors in $V$ which spans the space $V$. The space $V$ is finitedimensional if it has finite basis.
+Let $V$ be a vector space. A basis, $\mathcal{B}$, of $V$ is a linearly independent set of vectors in $V$ which spans the space $V$. The space $V$ is finite-dimensional if it has finite basis.
 
 <br>
 
@@ -784,5 +784,110 @@ We assume that the reader knows that a polynomial of degree $n$ with complex coe
 
 <br>
 
-## 3.5. 
+## 3.5. Dependence, Basis and Dimension results.
 
+### 3.5.1. Maximum independent vectors of a spanned vector space.
+
+**Let be $V$ the vector space spanned by $v_1,\ldots, v_n$, then the maximum number of independent vectors in $V$ is no greater than $n$.**
+
+Take some $A \subset V : \| A \| = m > n$ and $S=\Set{v_i}_{i \in [n]}$ the generator subset of $V$, then:
+
+$$\forall i \in [m] \ \exists \alpha_{i1},\ldots,\alpha_{in} \in K : u_i = \sum_{j=1}^n \alpha_{ij}v_j \in A$$
+
+Giving place to the following linear equation system:
+
+$$\begin{cases}\alpha_{11}v_1 \cdots + \alpha_{1n}v_n = u_1 \\ \quad \vdots \\ \alpha_{m1}v_1 \cdots + \alpha_{mn}v_n = u_m \end{cases} \iff \begin{pmatrix} \alpha_{11} & \cdots & \alpha_{1n} \\ \ \vdots & \quad  & \vdots \\ \alpha_{m1} & \cdots & \alpha_{mn}\end{pmatrix} \begin{pmatrix} v_1 \\ \vdots \\ v_n\end{pmatrix} =\begin{pmatrix} u_1 \\ \vdots \\ u_n\end{pmatrix}$$
+
+Note that since $m > n$, then the $RREM$ form of the matrix has at least $m-n$ zero rows, meaning that, exists $m-n$ non-trivial linear combinations over some $u$ vectors referencing $0$, so exists scalars, not all zero, such: $x_1u_1 \cdots +x_mu_m = 0$, so $A$ is dependent.
+
+<br>
+
+Essentially, since $S$ spans $A$, then we can't extend $S$ with non linear vectors, thus in $V$ which is $S$ aloing with all his linear combinations there cannot exists more linear independents vectors than the number of independent vectors in $S$.
+
+<br>
+
+### 3.5.2. Basis elements. Dimension.
+
+**Two basis of the same vector space has the same number of elements.**
+
+From the result above, neither of them can have more elements than the other since both are generators subsets with all his elements independent by definition, so if $\mathcal{B}_1, \mathcal{B}_2$ are two basis, from above we have:
+
+$$\|\mathcal{B}_1\| \leq \|\mathcal{B}_2\| \wedge \|\mathcal{B}_2\| \leq \|\mathcal{B}_1\| \iff \|\mathcal{B}_1\| = \|\mathcal{B}_2\|$$
+
+<br>
+
+**Dimension**
+
+Let observe that this allow us to present the *dimension* of a vector space definition as the number of vector any basis of the vector space has.
+
+Observe then, be $V$ a vector space with $dimV = n$, then any subset with more than $n$ vectors is dependant and no subset with less than $n$ vectors can span $V$.
+
+<br>
+
+An important minor example about dimensions is that the zero vector space $\Set{0}$ has dimension $0$. Observe that $\Set{0}$ is a dependent set so it cant be a basis, hence as a vector space $\Set{0}$ is spanned by the empty set. Observe that the intersection of all vector spaces containing the empty set (which is a subset of any set) is literally $\Set{0}$.
+
+<br>
+
+### 3.5.3. Independent set extension.
+
+**Consider $V$ a vector space and $S$ a subset of independent vectors of $V$. Consider $v \in V : v \notin span(S)$, then $S \cup \Set{v}$ is a set of independent vectors of $v$.** 
+
+<br>
+
+Is immediate, if not, it would be a non-trivial linear combination referencing zero involving $S$ elements plus $v$, which will allow us to put $v$ as a linear combination of the vectors of $S$ contradicting the premise of $v \notin span(S)$ or in other hand $S$ is a dependant set it self contradicting again the premise.
+
+<br>
+
+### 3.5.4. Basis of subvector-spaces.
+
+
+**Consider some finite-dimensional vector space $V$ and $W \leq V$, then any finite linearly independent subset of $W$ is finite and part of a basis of $V$.**
+
+<br>
+
+Take $V : dimV = n$ and let's obvious the case in which $W = V$, then the result would be trivial and immediate.
+
+In $V$ there cannot be more than $n$ independentent vectors from $3.5.1$, and by the fact that $W \subset V$ for being a strict subspace, any set of independent vectors of $W$ is a set of independent vectors in $V$ so in $W$ it cannot exists more than $n$ indenpendent vector as well, hence, any subset of independent vectors in $W$ is finite.
+
+<br>
+
+Now, consider some subset of independent vectors of $S \subset W$. As much is $span(S) \subseteq W < V$.
+
+Thus, $span(S) \subset V$ and exists at least one vector $v \in V \setminus span(S)$. 
+
+By $3.5.3$, $v \notin span(S) \implies S \cup \Set{v} \text{ is indepedent }$. Then we repeat the argument, if $S \cup \Set{v}$ doesnt group $n$ vectors, then by $3.5.2$ it can't be a basis of $V$ so it do not span $V$ and again: 
+
+$$span(S \cup \Set{v}) \neq V \implies \exists u \in V \setminus S \cup \Set{v} : S \cup \Set{u,v} \text{ is independent }$$
+
+and so on, observe that this implies that $u,v$ are independent as well.
+
+Eventually, we will get some finite set of independent vectors $L \subset V \setminus S : \mathcal{B} = S \cup L$ groups $n$ independent vectors, if $\mathcal{B}$ does not generate $V$ it would exists some $w \in V : \mathcal{B} \cup \Set{w}$ is independent but that cannot be since by $3.5.2$, in $V$ cannot exists more than $n$ independent vectors so $\mathcal{B}$ is a basis from which $S$ is part of it.
+
+<br>
+
+Observe that basically we are saying that: *In a finite-dimensional vector space $V$ every non-empty linearly independent set of vectors is part of a basis.*
+
+<br>
+
+**Consider some finite-dimensional vector space $V$ and $W \leq V$, then any finite linearly independent subset of $W$ is finite and part of a basis of $W$.**
+
+Is the theorem above but changing $V$ with $W$. Observe that in this case we cannot refugee our selves in the dimension argumento to stop de iteration.
+
+However, we can argue nearly the same. Consider some $S \subset W$ independent set then, if $span(S) \neq W$, there is some $w \in W: S \cup \Set{w} = S^\ast$ is independent. Observe that there is somepoint in which we cannot consider such $w \in W$ from the fact we stated above (everly linear independent set is finite), that would mean that $span(S^\ast)$ can generate any vector in $W$ so $W \subset span(S^\ast)$, and by definition is $S^\ast \subset span(S^\ast) \subset W$, so $span(S^\ast)=W$ and $S^\ast$ is a basis of $W$ taht contains $S$.
+
+
+$$\big(\nexists\, w\in W:\ S^\ast\cup\{w\}\ \text{indep.}\big)\ \underset{\neg\exists=\forall\neg}{\equiv}\ \big(\forall w\in W:\ S^\ast\cup\{w\}\ \text{dep.}\big)\ \overset{\text{contra-}3.5.3}{\Longrightarrow}\ \forall w\in W:\ w\in\operatorname{span}(S^\ast)$$
+
+<br>
+
+**If $W$ is a proper subspace of a finite-dimensional vector space $V$, then $W$ is a finite-dimensional and $dim W < dim V$**
+
+Suppose $W < V$ and $dim V, dim W \in \mathbb{N}$. Then:
+
+- Suppose $dim W = dim W = n$. Immediately, any basis of $W$ would be a basis of $V$, hence it has to be both the same vector space $V = span(S) = W$, in contradiction with the premise $W < V$.
+
+- It cannot be $dim W > dim V$ as well by the result above, any independent set of vectors of $W$ cannot be superior in number to $dim V$.
+
+    <br>
+
+So it has to be $dim W < dim V$ and $W$ is finite-dimensional.
