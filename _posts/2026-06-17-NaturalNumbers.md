@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Natural Numbers"
+title: "Axiomatic presentation of Natural Numbers."
 subtitle: "Peano, Induction, Recursion Theorem,  & Good Order, Integers; Divisibility, Bézout, Coprimality"
 date: 2026-06-17 09:00:00 +0000
-categories: ['Number Theory']
+categories: ['Number Systems']
 tags: ['Maths']
 author: German Sanmi
 subject: number-systems
@@ -12,52 +12,26 @@ lang: en
 
 # 0. Index.
 
-# 1. Introduction.
+# 1. Introduction: Algebraic structure of natural numbers.
 
-We are going to present part of the basics of number theory, culminating in the demonstration of the fact that the root of any natural number is rational iff this natural number is a perfect square.
+In this post we are going to present the *natural numbers*, usually denoted by $\mathbb{N}$. 
 
-The results shown in the present post are a single deductive chain with no added ingredient that starts from a single premise axiom of the natural numbers $\mathbb{N}$ (good order) and stops at the irrationality of $\sqrt{2}$. The idea that is worth remembering throughout the paper is: the good order produces the division algorithm, the division algorithm produces Bézout, which is a result that translates divisibility into linearity, and that expands to the rest.
+Essentially, **$\mathbb{N}$ abstracts the structure in which count** makes sense. 
 
-<br>
+Dedekind and Peano isolates a minimal machinery; a starting point, and a unary operation (the successor) that never returns to the origin and never collides with itself, plus a principle of induction which generates a *unique* structure identifiable with an *existing* model of this system.
 
-## 1.1. Conventions.
+Let's explain this two points a little further:
 
-Before starting, let's fix some conventions:
+- First, the Peano axioms determines a unique structure despite isomorphism. 
 
-- Being $a,b \in \mathbb{Z}$ then we say "$b$ divides $a$" and write $b \mid a$ when:
+    This is exceptional, algebraic axiomatics like vector spaces are deliberately non-categorics, in the sense that there are at least two structures identifiable as vector spaces which are not isomorph between them (think in $\mathbb{R}$ and $\mathbb{R}^2$, both vector spaces of different dimensions, hence, not isomorph).
 
-    $$b \mid a \iff \exists k \in \mathbb{Z} : a = kb$$
-
-    Let's observe that divisibility respects linearity:
-
-    $$c \mid a \wedge c \mid b \implies c \mid (ma + nb) \quad \forall m,n \in \mathbb{Z}$$
+    We say that **the axiomatic developed by Peano-Dedekind is categoric** because all the structures identifiable with it are indeed isomorph between them, in some sense, the axiomatic system fix completly the structure which is, as a categoric axiomatic system, an **isomorphism class**.
 
     <br>
 
-- Being $a,b \in \mathbb{Z}: ab  \neq 0$, we call $gcd(a,b) = \max\Set{c \in \mathbb{N} : (c \mid a \wedge c \mid b)}$, this is the maximum integer that divides both numbers at once. Let's observe some interesting facts:
+- Second, as an isomorphism class, we need a canonical representant of this isomorphism, some model satisfying the axiomatic system to which compare any other structure, this are the Von Neumann Ordinals, which are the canonical representant of $\mathbb{N}$.
 
-    - $1 \in gcd(a,b) \quad \forall a,b \in \mathbb{Z}$
-    - $\max \Set{\|a\|,\|b\|} \geq c \quad \forall c \in gcd(a,b)$, observe immediately that any greater number would not divide both of them so it is not in $gcd(a,b)$.
+    <br>
 
-    - $gcd(a,b) = gcd(b,a) \quad \forall a,b \in \mathbb{Z}$
-    - $gcd(a,b) > 0 \quad \forall a,b \in \mathbb{Z}$
-
-        <br>
-
-# 2. Good Order in $\mathbb{N}$. Induction.
-
-## 2.1. Conceptual presentation.
-
-Having clarified these concepts, let's talk about the "good order" and the induction principle. This idea is expressed as a property of a set; a set is said to have good order or be well-ordered if it has a minimum, this is, a least element. In a more generic way; a good order is a total order in which any non-empty subset has a minimum.
-
-The canonical example is the set of the natural numbers. This will be our departure point:
-
-**$\mathbb{N}$ is a well-ordered set**
-
-<br>
-
-Let's now talk about the induction principle which is tightly related to $\mathbb{N}$ and co-implies good order.
-
-<br>
-
-## 2.2. Formal definition. Good order.
+The resulting structuralist reading is clear: $\mathbb{N}$ is an *isomorphism class*; $\omega$ (the von Neumann finite ordinals) is a canonical representant and *categoricity* ensures that the choice of representative is irrelevant.
