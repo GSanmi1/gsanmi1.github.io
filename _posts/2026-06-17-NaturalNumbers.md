@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Axiomatic presentation of Natural Numbers."
-subtitle: "Peano, Induction, Recursion Theorem,  & Good Order, Integers; Divisibility, Bézout, Coprimality"
+subtitle: "Peano-Dedekind, Induction, Recursion Theorem,  & Good Order, Integers; Divisibility, Bézout, Coprimality"
 date: 2026-06-17 09:00:00 +0000
 categories: ['Number Systems']
 tags: ['Maths']
@@ -35,3 +35,57 @@ Let's explain this two points a little further:
     <br>
 
 The resulting structuralist reading is clear: $\mathbb{N}$ is an *isomorphism class*; $\omega$ (the von Neumann finite ordinals) is a canonical representant and *categoricity* ensures that the choice of representative is irrelevant.
+
+<br>
+
+# 2. Peano's system. Induction Principle.
+
+## 2.1. Peano's System.
+
+We define a Peano's system to be a triple $(N,0,S)$ with $N$ a non-empty set, $0 \in N$ and the sucessor function $S : N \to N$, satisfying the following axioms:
+
+- $P1, \nexists n \in N : s(n) = 0$, or in simple terms $0$ isn't the sucessor of any other element.
+
+- $P2, \forall m,n \in N : m \neq n \implies s(m) \neq s(n)$
+
+- $P3$ **Induction Principle**:
+
+    $$\forall A \subseteq N \quad \big[\big(0 \in A \wedge \forall n(n \in A \implies s(n) \in A) \big) \implies A = N\big]$$
+
+    <br>
+
+So, $0$ is the starting point, the sucesor function is inyective, it does not collide which is the same to say that it do not goes back at any moment and it satisfies the *Induction Principle* which asserts that $S$ does not left any element in $N$ by go sucessor to sucessor.
+
+<br>
+
+## 2.2. Induction Principle.
+
+Hence, basically a Peano's system is nothing more that a non-empty set and an inyective function that satisfyies the existance of the zero element and the induction principle.
+
+Let's stop a bit and talk more about the induction principle. Observe that $P1$ garantees an starting point, $P2$ garantees no colission, meaning that $S$ doesn't go back and assign an element the sucessor of other element. Until this point the function takes one element and start assigning successors
+
+<br>
+
+
+## 2.2. Recursion Theorem (Dedekind). 
+
+Before continue with Peano's system, let's present the recursion theorem. 
+
+<br>
+
+Be $(N,0,S)$ a Peano's system and $X$ a non empty set. Then consider $a \in X$, and any function $f \in X^X$, then exists a unique function $\varphi \in X^N : \varphi(0)=a \wedge \varphi(S(n)) = f(\varphi(n))$.
+
+<br>
+
+
+
+
+
+## 2.3. Categoricity; isomorphism between two Peano's systems.
+
+We are about to see that the axiomatic system presented before is categoric, in the sense that; **two Peano's systems $(N,0,S), (N',0',S)$ are isomorphs**.
+
+<br>
+
+# 3. Finite von Neumann ordinals.
+

@@ -460,50 +460,190 @@ $$N_r(p) := \Set{ x \in \mathbb{R}^k \mid d(x,p) < r}$$
 
 <br>
 
-### 3.3.2. Limit points, Isolated points and Closed Sets.
+### 3.3.2. Closed Sets: Limit points and Isolated points.
 
-Let's now talk about limit points. These are those points upon which $E$ piles up. We consider $p \in X$ to be a *limit point* of $E$ if every neighborhood contains at least someother point from $E$ :
+Let's introduce the *limit points*. These are basically those points upon which $E$ piles up. We consider $p \in X$ to be a *limit point* of $E$ if every neighborhood contains at least some other point of $E$, formally:
 
-$$\forall r \in \mathbb{R}^+ \quad N_r(p) \cap E \neq \varnothing$$
-
-<br>
-
-If $x$ is not a limit point, then is called *isolated point*:
-
-$$\exists r \in \mathbb{R}^+ \quad  N_r(p) \cap E = \varnothing \quad  $$
+$$p \in X \text{ is a limit point of } E \iff  (N_r(p)\setminus \Set{p}) \cap E \neq \varnothing \quad \forall r \in \mathbb{R}^+$$
 
 <br>
 
-Taking again $E \subset X$, then $E$ is a *closed* set if every limit point is a point of $E$. A closed set is basically a set without "gaps", for example, take $\mathbb{Q} \subset \mathbb{R}$, then $\mathbb{Q}$ by the stated in the chapter 1 of the book, $\mathbb{Q}$ is naturally not a closed subset of $\mathbb{R}$. 
+We define the *isolated point* notion by negating the idea of limit point, this is an isolated point is that point which is not a limit point formally:
+
+$$p \in X \text{ is an isolated point of } E \iff (\exists r \in \mathbb{R}^+ :  (N_r(p)\setminus \Set{p}) \cap E = \varnothing \wedge p \in E) $$
+
+<br>
+
+Having this two concepts clear, let's introduce the main notion of *closed set*, which abstract the idea of own everything to which it piles up. Taking again $E \subset X$, then $E$ is a *closed* set if every limit point is a point of $E$. Formally;
+
+$$E \subseteq X \text{ is a closed set } \iff \Big[\forall p\big(\forall r[(N_r(p)\setminus \Set{p}) \cap E \neq \varnothing]\implies p \in E \big) \Big]$$
+
+Then, observe that $E$ is closed if every $p \in X$ satisfies a condition, which is if $p$ is a limit point then $p \in E$. Let's call $E' := \Set{p \in X \mid \forall r[(N_r(p)\setminus \Set{p}) \cap E \neq \varnothing] }$, the set of all the limit points of $E$, then, the definition above can be reexpresed as: $E \subset X \text{ is a closed set } \iff[\forall p( p \in E'\implies p \in E)]$, or simply:
+
+$$E \subseteq X \text{ is a closed set } \iff E' \subseteq E$$
+
+<br>
+
+A closed set is basically a set without "gaps", for example, take $\mathbb{Q} \subset \mathbb{R}$, then $\mathbb{Q}$ by the stated in the chapter 1 of the book, $\mathbb{Q}$ is naturally not a closed subset of $\mathbb{R}$. 
 
 Observe that essentially is *stability under limitness*; a closed set contains those points to which other points of $E$ piles up. 
 
 <br>
 
-### 3.3.3. Interior points and Open Sets. Boundary.
+### 3.3.3. Open Sets: Interior points and Boundary points.
 
-We call *interior* of $E$, to those points $p \in X$ for which exists some neigborhood in $E$, formally:
+An interior point of $E \subseteq X$ is, intuitively, a "well embebbed" (or strictly inside) point in $E$. A point $p \in X$ is called to be an *interior point* of $E$ if exists some neigborhood of $p$ in $E$, formally:
 
-$$E^\circ := \Set{p \in X \mid \exists r \in \mathbb{R}^+ : N_r(p) \subset E}$$
+$$ p \in X \text{ is an interior point of } E \iff \exists r \in \mathbb{R}^+ : N_r(p) \subseteq E$$
 
-Thus, observe that an interior point of $E$ is, intuitively a "well embebbed" point in $E$. We say that an *open set* is a set such all his points are interior points.
+We denote as $E^\circ$ to the set of all the interior points of $E$ and we call it, *interior* of $E$. Observe quickly that we have: $p \in E^\circ \implies \exists r : N_r(p) \subseteq E \implies p \in E$, hence $E^\circ \subseteq E$.
+
+<br>
+
+We say that an *open set* is a set such all his points are interior points.
+
+$$E \subseteq X \text{ is an open set } \iff \forall p( p \in E \implies \exists r : N_r(p) \subseteq E) \iff E = E^\circ$$
 
 <br>
 
-Observe something interesting, take $X = \mathbb{R}$ and the set $E := \Set{x \mid x < \sqrt{2}}$, observe then that we can consider as well $X \setminus E := \Set{x \mid x \geq \sqrt{2}}$, but $E^\circ \cup (X \setminus E)^\circ \neq X$, since $\sqrt{2}$ doesn't fall as an interior point of $E$ or his complementary. In other words $E^\circ \cup (X \setminus E)^\circ \subset X$ and we call the *boundary* of $E$, $\partial E$, to those points which aren't interiors nor exteriors of $E$:
+Observe something interesting, take $X = \mathbb{R}$ and the set $E := \Set{x \mid x < \sqrt{2}}$, observe then that we can consider as well $X \setminus E := \Set{x \mid x \geq \sqrt{2}}$, but $E^\circ \cup (X \setminus E)^\circ \neq X$, since $\sqrt{2}$ doesn't fall as an interior point of $E$ or his complementary. 
 
-$$\partial E := X \setminus \big[E^\circ \cup (X \setminus E)^\circ\big]$$
+In other words, in general is: $E^\circ \cup (X \setminus E)^\circ \subseteq X$ and we call the *boundary* of $E$, $\partial E$, to those points which aren't interiors nor exteriors (exterior as what is strictly out of $E$, this is; the interior of the complementary of $E$) of $E$:
+
+$$\partial E := X \setminus \big[E^\circ \cup (X \setminus E)^\circ\big] = \Set{ p \in X \mid \nexists r(N_r(p) \subseteq E \vee N_r(p) \subseteq X \setminus E) }$$
 
 <br>
+
+Observe that, by definition is $\partial E \cap E^\circ = \varnothing$. Observe also that the following statements are equivalents
+
+$$\underbrace{\forall E (X = E \sqcup X \setminus E)}_{1} \iff \underbrace{\forall E\forall p(p \in X \implies p \in E \oplus p \in X \setminus E)}_{2} \iff$$
+
+$$\underbrace{\forall E,N \big[ (N \cap E = \varnothing \iff N \subseteq X \setminus E) \wedge (N \cap X \setminus E = \varnothing \iff N \subseteq E) \big]}_{3}$$
+
+$1$ and $2$ coimplies by definition, let's see $2 \leftrightarrow 3$ with generic sets $A,B \subset X$
+
+- $2 \to 3$; Suppose $A,B \subset X : X = A \sqcup B$, then consider some $N \subseteq X$, we have that:
+
+    $$\begin{cases} N \cap A = \varnothing \iff \forall x \in N (x \notin A) \iff \forall x \in N (x \in B) \iff N \subseteq B \\ N \cap B = \varnothing \iff \forall x \in N (x \notin B) \iff \forall x \in N (x \in A) \iff N \subseteq A \end{cases}$$
+
+- $3 \to 2$; Suppose now some $A,B \subset X$ for which the following statement is true:
+
+    $$\forall N \big[ (N \cap A = \varnothing \iff N \subseteq B) \wedge (N \cap B = \varnothing \iff N \subseteq A) \big]$$
+
+    Then, consider some $p \in X$ and call $N = \Set{p}$, for any point and any subset, the point can be in or out of the subset, then:
+
+    $$ \begin{cases} p \in A \iff N \subseteq A \iff N \cap B = \varnothing \iff p \notin B \\ p \notin A \iff N \cap A = \varnothing \iff N \subseteq B \iff p \in B\end{cases}$$
+
+    Hence, in this conditions is $[p \in X \implies (p \in A \oplus p \in B)] \iff X = A \sqcup B$.
+
+<br>
+
+This essentially means that in an disjoint union, any disjoint subset from one part falls enterely in the counter part. We can transport this equivalence to the $\partial E$ definition:
+
+$$\partial E = \Set{ p \in X \mid \nexists r(N_r(p) \subset E \vee N_r(p) \subset X \setminus E) }$$
+
+$$ = \Set{ p \in X \mid \nexists r(N_r(p) \cap X \setminus E = \varnothing\vee N_r(p) \cap E = \varnothing) }$$
+
+$$= \Set{ p \in X \mid \forall r(N_r(p) \cap X \setminus E \neq \varnothing \wedge N_r(p) \cap E \neq \varnothing) } $$
+
+Hence $\partial E$ is the set of those points for which any neigboorhood contains points from $E$ and the complementary of $E$. Observe that, as defined is:
+
+$$\forall E [X = E^\circ \sqcup \partial E \sqcup (X \setminus E)^\circ]$$
 
 Then, an open set is simply a set not containing any point of his boundary:
 
-$$E \text{ is an open set } \iff E \cap \partial E = \varnothing$$
+$$E \subseteq X \text{ is an open set } \iff E \cap \partial E = \varnothing$$
 
+Observe as a brief explanation that $\Rightarrow$ is inmediate, observe that also is $\Leftarrow$ since if we consider some $p \in X$, then it only can be in one and only one of the three sets, we do know that $E$ and $(X \setminus E)^\circ$ are disjoint as well as $E$ and $\partial E$ by the premise so we have that $\forall p(p \in E \implies p \in E^\circ) \implies E = E^\circ$ and $E$ is open.
 
 <br>
 
 ### 3.3.4. Perfect Sets.
+
+The *perfect* sets are in some way a restriction of the notion of closed sets.
+
+We recall that a closed set is a set that contains everything it approaches, abstracted behind the idea of limitness or limit point, those containing in every possible neighborhood part of the set (without being the point it self).
+
+<br>
+
+Then, the perfect sets add to the closed sets the reverse statement; meaning that a perfect set is a closed set such every point is also a limit point (or, in other words, a closed set without isolated points). In this sense, a perfect set is a closed set that also approachs every point it owns.
+
+<br>
+
+Is important to warn the nuance that a closed set adds to perfect sets. Be a closed set garantee that every limit point is a point of the set, a perfect set without being closed is just a set without isolated points, but that doesn't means that every limit point is part of the set, it just means that every point of the set is a limit point of the set, giving some blurred perception of the structure.
+
+Perfect sets abstract in some manner an informal idea of density, it owns everything it approachs and every point close enough to the set is in fact a point of the set. 
+
+<br>
+
+### 3.3.5. Bounded Sets.
+
+$E$ is bounded if there is a $M \in \mathbb{R}$ and $q \in X$ such $d(p,q) < M$ for any $p \in E$.
+
+Take as an example $E := (0,2)$, then $E$ is bound since for $2 \in \mathbb{R}$ is $d(2,e)< 2$ for any $e \in E$.
+
+<br>
+
+### 3.3.6. Dense.
+
+We say that $E \subset X$ is dense in $X$ if any point of $X$ is a point of $E$ or a limit point of $E$. Think for example that $\mathbb{Q}$ is dense in $\mathbb{R}$, take some point in $\mathbb{R}$, if is not a rational, then is an irrational to which we can approximate through rationals as much as we want.
+
+
+## 3.4. Important topologic result.
+
+Let's see some important results around the concepts seen before.
+
+<br>
+
+
+
+### 3.4.1. Every neighborhood is an open set.
+
+Let's observe some interesting fact. An open set is a set in which every point has enough space to have an enviroment. Observe that this same applies to an enviroment it self, this is, any neighborhood is it self an open set and this is a property allowed directly by the triangular inequality satisfied by the metric $d$.
+
+<br>
+
+To formally demonstrate it we have to demonstrate that each point of a neigborhood is wrapped in his own ball.
+
+Take some $x \in X$ and consider some generic neighborhood $N_r(x) := \Set{p \mid d(x,p)<r}$ and take some point $p \in N_r(x)$. Now, consider $t \leq r - d(x,p) \in \mathbb{R}$ and $N_t(p)$. Let's see that $N_t(p) \subset N_r(x)$.
+
+Consider the point $q \in N_t(p) \implies d(p,q)< t \leq r - d(x,p)$. Hence:
+
+$$d(x,q) \leq d(x,p) + d(p,q) < d(x,p) + (r - d(x,p)) = r \implies q \in N_r(x)$$
+
+Following the triangular inequality.
+
+<br>
+
+### 3.4.2. Limit points contains infinite points of the set for each neighborhood.
+
+Let's reason to the absurd.
+
+Consider $p \in X$ a limit point of $E \subset X$ and some $N_r(p)$. Then, $(N\_r(p)\setminus \Set{p}) \cap E \neq \varnothing$. Let's suppose is finite, then, since $\mathbb{R}$ is a total ordered set, we can consider a minimum distance: 
+
+$$\alpha = \min\Set{d(p,q) \mid q \in  (N_r(p)\setminus \Set{p}) \cap E} \implies \nexists q \in (N_r(p)\setminus \Set{p}) \cap E : d(q,p) < \alpha$$
+
+But observe that, since $p$ is a limit point, again:
+
+$$(N_\alpha(p)\setminus \Set{p}) \cap E \neq \varnothing \implies \exists t \in (N_\alpha(p)\setminus \Set{p}) \cap E : d(p,t) < \alpha < r$$
+
+
+$$\implies t \in (N_r(p)\setminus \Set{p}) \cap E$$
+
+
+
+In contradiction with the fact that $\alpha$ is the minimum distance achiveable in $(N\_r(p)\setminus \Set{p}) \cap E$. 
+
+Hence, finitness in the intersection of any neighborhood with $E$ implies that we can consider a minimum distance leading to a contradiction, so this intersection for any neigborhood is not a finite set.
+
+<br>
+
+
+### 3.4.3. Examples.
+
+Let's consider now some subsets of $\mathbb{R}^2$ and let's see what type of topological set they are:
+
+
 
 # 4. Compact sets.
 
