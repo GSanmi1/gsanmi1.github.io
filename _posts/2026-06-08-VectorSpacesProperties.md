@@ -140,9 +140,9 @@ Let's consider some well-known examples of subspaces. Consider some $V$ a $K$-ve
 
     <br>
 
-5. Consider $S:=\Set{(a_{ij})_{ij} \in M_n(K) \mid (a_{ij})_{ij} = (a_{ij})_{ji}}$, the **set of all symmetric matrices** form a subspace of $M_n(K)$
+5. Consider $S:=\Set{(a\_{ij})\_{ij} \in M\_n(K) \mid (a\_{ij})\_{ij} = (a\_{ij})\_{ji}}$, the **set of all symmetric matrices** form a subspace of $M\_n(K)$
 
-    Take, $A,B \in S$, then let's see that $\alpha A + B = \alpha (a_{ij})_{ij} + (b_{ij})_{ij} = (\alpha a_{ij} + b_{ij})_{ij}$, then let's see that this matrix is in $S$ by observing that:
+    Take, $A,B \in S$, then let's see that $\alpha A + B = \alpha (a\_{ij})\_{ij} + (b\_{ij})\_{ij} = (\alpha a\_{ij} + b\_{ij})\_{ij}$, then let's see that this matrix is in $S$ by observing that:
 
     $$A \in S \implies a_{ij} = a_{ji} \quad \forall i,j \implies \alpha a_{ij} = \alpha a_{ji} \quad \forall i,j  \implies \alpha A \in S$$
 
@@ -154,9 +154,9 @@ Let's consider some well-known examples of subspaces. Consider some $V$ a $K$-ve
 
     <br>
 
-6. Consider $M_n(\mathbb{C})$, then we say that $A \in M_n(\mathbb{C})$ is Hermitian or self-adjoint if $(a_{ij})_{ij} = \overline{(a_{ij})_{ji}}$, meaning that is equal to the transverse of the conjugate.
+6. Consider $M\_n(\mathbb{C})$, then we say that $A \in M\_n(\mathbb{C})$ is Hermitian or self-adjoint if $(a\_{ij})\_{ij} = \overline{(a\_{ij})\_{ji}}$, meaning that is equal to the transverse of the conjugate.
 
-    Then, the set $H := \Set{A \in M_n(\mathbb{C}) \mid (a_{ij})_{ij} = \overline{(a_{ij})_{ji}} }$ is not a subspace of $M_n(\mathbb{C})$ check that the diagonal elements impose $(a_{ii})_{ii} = \overline{(a_{ii})_{ii}}$, since the entries are complex numbers, a complex number is equal with his conjugate when is real.
+    Then, the set $H := \Set{A \in M\_n(\mathbb{C}) \mid (a\_{ij})\_{ij} = \overline{(a\_{ij})\_{ji}} }$ is not a subspace of $M\_n(\mathbb{C})$ check that the diagonal elements impose $(a\_{ii})\_{ii} = \overline{(a\_{ii})\_{ii}}$, since the entries are complex numbers, a complex number is equal with his conjugate when is real.
 
     Consider some $A \in H$ and observe that $iA \notin H$, since the diagonal is not real and is not an Hermitic matrix, so our criteria $\alpha A +B \in H \quad \forall A,B \in H, \alpha \in \mathbb{C}$ doesn't apply.
 
@@ -850,7 +850,7 @@ $$\|\mathcal{B}_1\| \leq \|\mathcal{B}_2\| \wedge \|\mathcal{B}_2\| \leq \|\math
 
 **Dimension**
 
-Let observe that this allow us to present the *dimension* of a vector space definition as the number of vector any basis of the vector space has.
+Let observe that this allow us to present the *dimension* of a vector space definition as the number of vectors any basis of the vector space has.
 
 Observe then, be $V$ a vector space with $dimV = n$, then any subset with more than $n$ vectors is dependant and no subset with less than $n$ vectors can span $V$.
 
@@ -928,17 +928,41 @@ So it has to be $dim W < dim V$ and $W$ is finite-dimensional.
 
 ### 3.3.5. Invertible Matrix and independent vectors.
 
-Extending our example of $3.3.2.$ invertible matrix and basis, observe that an immediate result from above is that if $A \in M_n(K)$ such the set of his $\Set{\alpha_i}_{i \in [n]}$ conforms a linear independent set, then $A \simeq I_n$, if not, $A$ would be equivalent to some $RREM$ with a finite number of zero rows. With an argument similar than the one provided in the example, this would mean that it would exists some non-trivial linear combination of the rows of $A$ refering the zero-row, so $\Set{\alpha_i}_{i \in [n]}$ would be a dependent set.
+Extending our example of $3.3.2.$ invertible matrix and basis, observe that an immediate result from above is that if $A \in M\_n(K)$ such the set of his $\Set{\alpha\_i}\_{i \in [n]}$ conforms a linear independent set, then $A \simeq I\_n$, if not, $A$ would be equivalent to some $RREM$ with a finite number of zero rows. With an argument similar than the one provided in the example, this would mean that it would exists some non-trivial linear combination of the rows of $A$ refering the zero-row, so $\Set{\alpha_i}\_{i \in [n]}$ would be a dependent set.
 
 <br>
 
 ### 3.3.6. Characterization of the dimension of sum of subspaces.
 
-**Take $W_1, W_2 \leq V$ finite-dimensional subspaces, then $W_1 + W_2$ is finite dimensional satisying:**
+**Take $W_1, W_2 \leq V$ finite-dimensional subspaces, then $W_1 + W_2$ is finite dimensional satisfying:**
 
 $$dim (W_1 + W_2) = dim W_1 + dim W_2 - dim (W_1 \cap W_2) $$
 
 <br>
 
-First, remember that $W_1 \cap W_2$ is a subspace of $V$ and is it self a subset of $W_1,W_2$, then since $V$ is a finite-dimensional vector space, $W_1 \cap W_2$ is as well finite dimensional and any basis of it, as a linear independent set $3.5.4$ is part of a basis of $W_1$ and $W_2$. 
+First, remember that $W\_1 \cap W\_2$ is a subspace of $V$ and is it self a subset of $W\_1,W\_2$, then since $V$ is a finite-dimensional vector space, $W\_1 \cap W\_2$ is as well finite dimensional and any basis of it, as a linear independent set ($3.5.4$), is part of a basis of $W\_1$ and $W\_2$. 
 
+We can think in $\mathcal{B}\_1 : span(\mathcal{B}\_1) = W\_1$, $\mathcal{B}\_2: span(\mathcal{B}\_2) = W\_2$, and $\mathcal{B}\_3: span(\mathcal{B}\_3) =  W\_1 \cap W\_2$ such is $\mathcal{B}\_3 \subset \mathcal{B}\_1$ and $\mathcal{B}\_3 \subset \mathcal{B}\_2$.
+
+Observe that, as constructed, $B\_1 \cup B\_2$ is linear independent (the common information exists in $\mathcal{B}\_3$, which has been used to form $\mathcal{B}\_1$ and $\mathcal{B\_2}$), is easy to prove by contridiction. We can make the partition:
+
+$$\mathcal{B}_1 \cup \mathcal{B}_2 = (\mathcal{B}_1 \setminus \mathcal{B}_3) \sqcup (\mathcal{B}_2 \setminus \mathcal{B}_3) \sqcup \mathcal{B}_3$$
+
+Observe naturally that: $W\_1 + W\_2 = span(\mathcal{B}\_1 \cup \mathcal{B}\_2) = span\big((\mathcal{B}\_1 \setminus \mathcal{B}\_3) \sqcup (\mathcal{B}\_2 \setminus \mathcal{B}\_3) \sqcup \mathcal{B}\_3\big)$, also each block form a completly disjoint subspace, then the sum of those subspaces are direct sum:
+
+$$ span\big((\mathcal{B}_1 \setminus \mathcal{B}_3) \sqcup (\mathcal{B}_2 \setminus \mathcal{B}_3) \sqcup \mathcal{B}_3\big) = span\big(\mathcal{B}_1 \setminus \mathcal{B}_3\big) \oplus span\big(\mathcal{B}_2 \setminus \mathcal{B}_3\big) \oplus span\big( \mathcal{B}_3\big) = $$
+
+$$= [W\_1 \setminus (W\_1 \cap W\_2)] \oplus [W\_2 \setminus (W\_1 \cap W\_2)] \oplus (W\_1 \cap W\_2)$$
+
+<br>
+
+As a brief commentary, remember that f is $W < V$, then $V \setminus W = V \cap \overline{W}$, which is a subspace as we know and is completly legit to consider a dimension of it.  Furthermore, $V$ is direct sum of both subspaces $V = (V \setminus W) \oplus W$, since is the union of complementary subsets, hence, if we consider a basis of each subspace we have that the union (which is disjoint) form a basis of $V$: $\mathcal{B}\_V = \mathcal{B}\_{V \setminus W} \sqcup \mathcal{B}\_W$, then:
+
+$$W < V \implies dim V = dim(V \setminus W) + dim W \iff dim (V \setminus W) =  dim V - dim W$$
+
+Thus:
+
+
+$$dim (W_1 + W_2) = [dim W_1 - dim (W_1 \cap W_2)] + [dim W_2 - dim (W_1 \cap W_2)] + dim (W_1 \cap W_2) =$$
+
+$$=dim W_1 + dimW_1 - dim (W_1 \cap W_2)$$
