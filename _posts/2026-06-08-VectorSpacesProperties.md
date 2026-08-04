@@ -37,7 +37,7 @@ In the past post; [Vector Spaces](https://gsanmi1.github.io/posts/2026/04/08/Vec
 
 - $K$ is a field.
 - $V$ is an abelian (commutative) group.
-- $· : K \times V \to V$ is a field action, which acts over $V$ using $K$'s elements to scale vectors, making families of *proportional vectors*.
+- $· : K \times V - V$ is a field action, which acts over $V$ using $K$'s elements to scale vectors, making families of *proportional vectors*.
 
 The resulting compositions are what we call *linear combinations*, independent contributions of the group's elements mediated by the field's scalars:
 
@@ -95,7 +95,7 @@ Let's reconstruct the structure:
 
     <br>
 
-- $· \|_W: K \times W \to W$ is a field action:
+- $· \|_W: K \times W - W$ is a field action:
 
     - Observe that $-1 u + u = 0 \in W$, thus $1 u + 0 = u \in W$ so the unit in $F$ doesn't change the vector and it falls inside $W$.
 
@@ -962,7 +962,119 @@ $$W < V \implies dim V = dim(V \setminus W) + dim W \iff dim (V \setminus W) =  
 
 Thus:
 
-
 $$dim (W_1 + W_2) = [dim W_1 - dim (W_1 \cap W_2)] + [dim W_2 - dim (W_1 \cap W_2)] + dim (W_1 \cap W_2) =$$
 
-$$=dim W_1 + dimW_1 - dim (W_1 \cap W_2)$$
+$$=dim W_1 + dimW_2 - dim (W_1 \cap W_2)$$
+
+<br>
+
+## 3.4. Exercises.
+
+### 3.4.1. Prove that if two vectors are linearly dependent, one of them is a scalar multiple of the other. 
+
+Consider some $V$ a $K$-space, then consider some set $S := \Set{u,v}$ and asume is dependent. Then, exists a non-trivial linear combination equal to zero:
+
+$$\alpha u + \beta v = 0$$
+
+Then, one of the scalar is not zero, suppose is $\alpha$, then:
+
+$$u = \frac{- \beta}{\alpha} v$$
+
+<br>
+
+### 3.4.2. Are the following vectores linearly independent in $\mathbb{R}^4$:
+
+$$\alpha_1=(1,1,2,4), \alpha_2=(2,-1,-5,2), \alpha_3=(1,-1,-4,0), \alpha_4=(2,1,1,6)$$
+
+In order to check whether the vectors are linear dependendent or independent consist to prove if there exists a non-trivial linear combination (with not all scalars $0$) that reference the $0$ vector with the vectors of the exercise.
+
+This eventually lead to form an homogeneous system with an associated matrix $AX = 0$. If this system has trivial solution, then $A$ is row-equivalent to $I\_4$ and the system is linear dependent, if not, this non-trivial linear combination exists and the set is linear dependent.
+
+<br>
+
+### 3.4.3. Find a basis for the subspace of $\mathbb{R}^4$ spanned by the four vectors of the previous exercise.
+
+Doing the exercise before,we get that the range of the matrix is $2$ and the subspace formed by those 4 vectors is a plane. Reducing the matrix give us the following relation between the vectors:
+
+$$\begin{cases} \alpha_1 - 2\alpha_2 + 3\alpha_3 = 0 \\ -4\alpha_1 - \alpha_2 + 3\alpha_4 = 0\end{cases}$$
+
+Observe then that, $\alpha_3, \alpha_4$ can be expressed as linear combinations of $\alpha_1, \alpha_2$ and this two vectors are not proportionals, hence are linear independent.
+
+Thus, $span(\alpha_1,\alpha_2, \alpha_3,\alpha_4) = span(\alpha_1,\alpha_2)$ and $\Set{\alpha_1, \alpha_2}$ is a basis of the proposed subspace of the exercise for be a independent generator set of the subspace.
+
+<br>
+
+### 3.4.4. Show that the following vectors form a basis on $\mathbb{R}^3$, express each vector from the standard basis as linear combinations of this ones:
+
+$$u = (1,0,-1), \quad v = (1,2,1), \quad w = (0,-3,2)$$
+
+Forming the equation system is clear that the only escalar that makes the linear combination $0$ is $0$ for each vector, so the linear combination is trivial and these are three independent vectors. Since the dimension of $\mathbb{R}^3$ is also $3$, you cannot expand the set $\Set{u,v,w}$ with more independent vectors from $\mathbb{R}^3$, or in other terms, $span(\Set{u,v,w}) = \mathbb{R}^3$ and the set is a basis of $\mathbb{R}^3$.
+
+Lastly, we can again force a system to find each linear combiation to produce the canonical base $\Set{e_1,e_2,e_3}$.
+
+<br>
+
+### 3.4.5. Find three vectors in $\mathbb{R}^3$ which are linearly dependent, and are such that any two of them are linearly independent. 
+
+$$\Set{(1,0,0),(0,1,0),(1,1,0)}$$
+
+<br>
+
+### 3.4.6. Respond the following questions. 
+
+Take $V = M\_{2}(K)$, consider:
+
+$$A := \Set{\begin{pmatrix} x & -x \\ y & z\end{pmatrix} \mid x,y,z \in K} \quad B:= \Set{\begin{pmatrix} x & y \\ -x & z\end{pmatrix} \mid x,y,z \in K}$$
+
+Then:
+
+**Prove that both sets are subspaces of $V$.**
+
+
+
+
+<br>
+
+# 4. Coordinates.
+
+## 4.1. Ordered pair. Tuples.
+
+Let's consider some superset $X$ and $a,b \in X$, then we define
+
+$$(a,b) := \Set{\Set{a},\Set{a,b}}$$
+
+This is what we call an *ordered pair*. Recursively, taking some $n \in \mathbb{Z}^+ : n > 2$ we define the *$n$-tuple* as:
+
+$$(a_1,a_2, \ldots, a_n) : = (a_1,(a_2, \ldots a_n)) = \Set{\Set{a_1}, \Set{a_1,(a_2,\ldots,a_n)}}$$
+
+Then, let's observe that a set is simply a collection of elements from the superset according to some criterion. This is, given some criteria about some universe of elements, then a set gather all the posible instantiations of the criterion in terms of the elements of the universe. Think for example in $\mathbb{Z}$ and take $2\mathbb{Z}$ which is the collection of those integers such the integer is even. (Also a set can be defined "by extension", this is; giving a complete enumeration of his elements, in that case, the criterion gets autodefined; an element is in the set if and only if it coincides with one of the enumerated elements).
+
+In any case, giving some criterion, a "set" stablish what distinct elements exists or can be contemplated according to the criterion's perspective.
+
+<br>
+
+Now, an ordered pair is a set of two sets; one of them containing an element and the other both. 
+
+This is, relative to the two elements, an ordered pair stablish a preference between the two elements, asserting that you can consider the first alone or both but never the second alone, since is not at the same level than the first one. The tuple extend this preference relation to all the list by nesting the elements inside the two elements set and so on.
+
+$$(a_1,a_2, \ldots, a_n) = \Set{\Set{a_1},\Set{a_1,\Set{\Set{a_2},\Set{a_2,...\Set{\Set{a_{n-1}},\Set{a_{n-1},a_n}}}}}}$$
+
+<br>
+
+Observe that if $a \neq b$, while $\Set{a,b} = \Set{b,a}$ is $(a,b) \neq (b,a)$ and:
+
+$$(a,b) = (c,d) \iff a = c \wedge b = d$$
+
+Which extends to the tuple as:
+
+$$(a_1,\ldots,a_n) = (b_1,\ldots,b_n) \iff a_i = b_i \quad \forall i \in [n]$$
+
+Ultimately a tuple disregard the criterion comparison and prorize the preference relation to distinguish between elements. Observe that an element of the tuple is caracterized by the position and the value, but it prefers position before value; since distinct positions elements are never compared to stablish equality between tuples so repeated values do not mean same tuple if at least two of thems are in different nesting levels.
+
+<br>
+
+## 4.2. Linear dependence in Tuples.
+
+Until now, we defined the linear dependence with sets 
+
+<br>
