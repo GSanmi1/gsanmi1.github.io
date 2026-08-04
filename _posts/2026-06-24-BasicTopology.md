@@ -123,21 +123,31 @@ Thus, we assert that for any function $f$ the inverse function exists if and onl
 
 ## 2.2. Cardinality. Count. Finiteness.
 
-The following section stablishes the mathematically notion of *count*. Let's present the tools used to count.
+The following section stablishes the mathematically notion of *count*. Take some $X$ and consider the set $\mathcal{P}(X)$ and let be $A,B \in \mathcal{P}(X)$.
 
 <br>
 
-First, let's introduce the *cardinality*. Take $A,B \neq \varnothing$, then we say that both sets has the same cardinality if we can define a biyection between them.
+In this context, we define the *cardinality* over $\mathcal{P}(X)$ as the invariant between elements related by a biyection.
 
-Let's observe that:
+$$A, B \text{ has the same cardinality } \iff \exists \text{ a biyection } f : A \to B$$
 
-- We can define a biyection over any set with himself (reflexivity).
+Let's consider the relation between two sets that share cardinality; $A \sim B$. Observe that:
+
+- We can define a biyection over any set with himself (reflexivity); $A \sim A$
 - If a biyection is stablished from $A$ to $B$, then the inverse is a biyection of $B$ to $A$ (symmetric).
+
+    $$A \sim B \implies \exists f \in B^A : f \text{ is a biyection } \implies f^{-1} \in A^B \text { is a biyection } \implies B \sim A $$
 - If there are biyection from $A$ to $B$ and from $B$ to $C$, the composition of the both is a biyection from $A$ to $C$ (transitivity).
+
+    $$A \sim B \wedge B \sim C \implies \exists f \in B^A, g \in C^B : f,g \text{ are biyections }$$
+    
+    $$\implies f \circ g \in C^A \text { is a biyection} \implies A \sim C$$
 
     <br>
 
-Thus, we can define a *equivalent relation* around cardinality; two sets are equivalent if they share his cardinality.
+Ultimately meaning that "share cardinality", is a equivalence relation. Two sets are equivalent if they share his cardinality. Observe that, when two sets are finite and share cardinality, essentially we are saying that both has the same number of elements.
+
+
 
 <br>
 
@@ -154,6 +164,10 @@ Now, let's introduce that in mathematics, count consist basically in measure the
 - $A$ is *uncountable* if $\nexists S \in \mathcal{P}(\mathbb{Z}^+)  : A \sim S$, note that this involves $\mathbb{Z}^+$ it self.
 
 Note that with this notions two finite cardinal-equivalents sets $A, B$ has the same number of elements, but observe that with infinite sets the idea of have *the same number of elements* becomes quite vague but the biyection idea retains its clarity. 
+
+The key is that *biyections* abstracts the idea of pairing up. Count is pairing two finite set of elements in the sense that we can say that $A$ has many elements as $B$. This idea how every loose sense when the sets has infinite elements, because there is no finite secuence of naturales to pair up with the set, count this set never ends. How ever, cardinality as the invariant property under biyection retains this sense and its restrictions.
+
+**Cardinality is not the number of elements a set has, it is the perspective that treats two sets as equal insofar as we can pair their elements one-to-one.**
 
 <br>
 
@@ -562,11 +576,11 @@ Observe as a brief explanation that $\Rightarrow$ is inmediate, observe that als
 
 The *perfect* sets are in some way a restriction of the notion of closed sets.
 
-We recall that a closed set is a set that contains everything it approaches, abstracted behind the idea of limitness or limit point, those containing in every possible neighborhood part of the set (without being the point it self).
+We recall that a closed set is a set that contains everything it approaches, abstracted behind the idea of limitness or limit point, those points containing in every possible neighborhood other points of the set.
 
 <br>
 
-Then, the perfect sets add to the closed sets the reverse statement; meaning that a perfect set is a closed set such every point is also a limit point (or, in other words, a closed set without isolated points). In this sense, a perfect set is a closed set that also approachs every point it owns.
+Then, the perfect sets standsby adding the reverse statement; meaning that a perfect set is a closed set such every point is also a limit point (or, in other words, a closed set without isolated points). In this sense, a perfect set is a closed set that also approachs every point it owns.
 
 <br>
 
@@ -580,14 +594,24 @@ Perfect sets abstract in some manner an informal idea of density, it owns everyt
 
 $E$ is bounded if there is a $M \in \mathbb{R}$ and $q \in X$ such $d(p,q) < M$ for any $p \in E$.
 
-Take as an example $E := (0,2)$, then $E$ is bound since for $2 \in \mathbb{R}$ is $d(2,e)< 2$ for any $e \in E$.
+$$E \text{ is bounded } \iff \exists q \exists M: d(p,q) < M \quad \forall p \in X$$
+
+Observe that $E \subset X$ is bounded iff it exists as a subset of a neighbourhood of a point of $X$.
+
+$$E \text{ is bounded } \iff \exists p \exists r: E \subset N_r(p)$$
 
 <br>
 
-### 3.3.6. Dense.
+### 3.3.6. Dense Sets.
 
-We say that $E \subset X$ is dense in $X$ if any point of $X$ is a point of $E$ or a limit point of $E$. Think for example that $\mathbb{Q}$ is dense in $\mathbb{R}$, take some point in $\mathbb{R}$, if is not a rational, then is an irrational to which we can approximate through rationals as much as we want.
+We say that $E \subset X$ is dense in $X$ if any point of $X$ is a point of $E$ or a limit point of $E$. 
 
+$$E \text{ is dense in } X \iff \forall p \Big(p \in E \vee \forall r \big([N_r(p) \setminus \Set{p}] \cap E \neq \varnothing \big) \Big)$$
+
+
+Think for example that $\mathbb{Q}$ is dense in $\mathbb{R}$, take some point in $\mathbb{R}$, if is not a rational, then is an irrational to which we can approximate through rationals as much as we want.
+
+<br>
 
 ## 3.4. Important topologic result.
 
@@ -599,19 +623,28 @@ Let's see some important results around the concepts seen before.
 
 ### 3.4.1. Every neighborhood is an open set.
 
-Let's observe some interesting fact. An open set is a set in which every point has enough space to have an enviroment. Observe that this same applies to an enviroment it self, this is, any neighborhood is it self an open set and this is a property allowed directly by the triangular inequality satisfied by the metric $d$.
+Let's observe some interesting fact. 
+
+An open set is a set in which every point has enough space to have an environment this applies to the notion of "environment" it self. Any neighborhood is it self an open set and this is a property allowed directly by the triangular inequality satisfied by the metric $d$.
 
 <br>
 
-To formally demonstrate it we have to demonstrate that each point of a neigborhood is wrapped in his own ball.
+To formally demonstrate it let's build, for each point of a generic neighbourhood, a ball contained in the neighbourhood.
 
-Take some $x \in X$ and consider some generic neighborhood $N_r(x) := \Set{p \mid d(x,p)<r}$ and take some point $p \in N_r(x)$. Now, consider $t \leq r - d(x,p) \in \mathbb{R}$ and $N_t(p)$. Let's see that $N_t(p) \subset N_r(x)$.
+Let be $(X,d)$ a metric space, consider $p \in X$ and the neighborhood $N_r(p)$ for some $r \in \mathbb{R}^+$. Now consider $q \in N_r(p)$, since $d(p,q) < r \implies \exists t \in \mathbb{R}^+ : d(p,q) + t < r$. Let's consider then consider such $t$ and take the set $N_t(q)$.
 
-Consider the point $q \in N_t(p) \implies d(p,q)< t \leq r - d(x,p)$. Hence:
+Observe then that, for any $h \in N_t(q)$, using the triangular inequality:
 
-$$d(x,q) \leq d(x,p) + d(p,q) < d(x,p) + (r - d(x,p)) = r \implies q \in N_r(x)$$
+$$d(h,p) \leq d(h,q) + d(p,q) < \big(r - d(p,q)\big) + d(p,q) = r \implies h \in N_r(p)$$
 
-Following the triangular inequality.
+
+
+Lastly, again, since $h$ and $q$ are arbitrary, the demonstration above applies to each $h$ of some neighborhood of any point $q$ of $N_r(p)$, hence:
+
+$$\forall q \in N_r(p) \ \exists t : \forall h (h \in N_t(q) \implies h \in N_r(p))  \iff \forall q( q \in N_r(p) \implies \exists t: N_t(q) \subset N_r(p))$$
+
+
+And $N_r(p)$ is an open set. 
 
 <br>
 
@@ -619,7 +652,9 @@ Following the triangular inequality.
 
 Let's reason to the absurd.
 
-Consider $p \in X$ a limit point of $E \subset X$ and some $N_r(p)$. Then, $(N\_r(p)\setminus \Set{p}) \cap E \neq \varnothing$. Let's suppose is finite, then, since $\mathbb{R}$ is a total ordered set, we can consider a minimum distance: 
+Consider $p \in X$ a limit point of $E \subset X$ and some $N_r(p)$. 
+
+Then, $(N\_r(p)\setminus \Set{p}) \cap E \neq \varnothing$. Let's suppose is finite, then, since $\mathbb{R}$ is a total ordered set, we can consider a minimum distance: 
 
 $$\alpha = \min\Set{d(p,q) \mid q \in  (N_r(p)\setminus \Set{p}) \cap E} \implies \nexists q \in (N_r(p)\setminus \Set{p}) \cap E : d(q,p) < \alpha$$
 
@@ -638,12 +673,11 @@ Hence, finitness in the intersection of any neighborhood with $E$ implies that w
 
 <br>
 
-
 ### 3.4.3. Examples.
 
 Let's consider now some subsets of $\mathbb{R}^2$ and let's see what type of topological set they are:
 
-
+<br>
 
 # 4. Compact sets.
 
