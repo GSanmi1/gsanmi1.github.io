@@ -1024,14 +1024,49 @@ $$\Set{(1,0,0),(0,1,0),(1,1,0)}$$
 
 Take $V = M\_{2}(K)$, consider:
 
-$$A := \Set{\begin{pmatrix} x & -x \\ y & z\end{pmatrix} \mid x,y,z \in K} \quad B:= \Set{\begin{pmatrix} x & y \\ -x & z\end{pmatrix} \mid x,y,z \in K}$$
+$$A := \Set{\begin{pmatrix} a_1 & -a_1 \\ a_2 & a_3\end{pmatrix} \mid a_i \in K \ \forall i \in [3]} \quad B:= \Set{\begin{pmatrix} b_1 & b_2 \\ -b_1 & b_3\end{pmatrix} \mid b_i \in K \ \forall i \in [3]}$$
 
 Then:
 
 **Prove that both sets are subspaces of $V$.**
 
+Observe first that $A, B \neq \varnothing$. Thus, is inmediate that $u,v \in A \implies \alpha u + v \in A$ and the same with $B$. So $A,B \leq M_2(K)$.
 
+<br>
 
+**Find the dimension for: $A, B, A + B, A \cap B$.**
+
+Let's observe that:
+
+$$\forall u \in A \ \exists \alpha, \beta, \gamma  \in K : u = \begin{pmatrix} \alpha & -\alpha \\ \beta & \gamma \end{pmatrix} = \alpha \begin{pmatrix} 1 & -1 \\ 0 & 0 \end{pmatrix} + \beta\begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} + \gamma \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} $$
+
+$$= \alpha e_1 + \beta e_2 + \gamma e_3$$
+
+Hence $span(\Set{e_1, e_2,e_3}) = A$. Also:
+
+$$\alpha e_1 + \beta e_2 + \gamma e_3 = \begin{pmatrix} \alpha & -\alpha \\ \beta & \gamma \end{pmatrix} = \begin{pmatrix} 0 & 0 \\ 0 & 0\end{pmatrix} \iff \alpha = \beta = \gamma = 0$$
+
+So this set is a linear independent generator of $A$, this is; a basis of $A$.
+
+<br>
+
+Observe also that: $\forall u(u \in A \iff u^t \in B) \iff \Set{e_1^t,e_2^t,e_3^t} \text{ is a basis of } B$. 
+
+Hence, we have that $dim A = dim B = 3$.
+
+<br>
+
+Also, take $A \cap B$, then:
+
+$$u = \begin{pmatrix} u_1 & u_2 \\ u_3 & u_4 \end{pmatrix}  \in A \cap B \iff \begin{cases} u \in A \implies  u_2 = -u_1 \\ u \in B \implies u_3 = -u_1 \\ u_4 \in K \end{cases}$$
+
+Thus, calling $u_1 = \lambda, u_4 = \varphi$, we have that:
+
+$$\forall u \in A \cap B \ \exists \lambda, \varphi \in K : u = \begin{pmatrix} \lambda & - \lambda \\ - \lambda & \varphi \end{pmatrix} = \lambda \begin{pmatrix} 1 & - 1 \\ - 1 & 0 \end{pmatrix} + \varphi \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}$$
+
+Meaning that $\Set{e_1^\ast,e_3}$ is a basis of $A \cap B$. So, $dim A \cap B = 2$ and 
+
+$$dim A + B = dim A + dim B - dim A \cap B = 4$$
 
 <br>
 
