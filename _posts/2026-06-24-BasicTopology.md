@@ -687,7 +687,7 @@ Let's consider now some subsets of $\mathbb{R}^2$ and let's see what type of top
     
     Then, observe that for any $r \in \mathbb{R}^+$ is $S \cap \big[N_r(p) \setminus \Set{p}\big] \neq \varnothing$
 
-    Observe that:
+    Observe that is:
 
     $$q \in S \implies (y= 0 \wedge 0 < x < 1)$$
 
