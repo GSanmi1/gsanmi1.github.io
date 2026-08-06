@@ -677,6 +677,32 @@ Hence, finitness in the intersection of any neighborhood with $E$ implies that w
 
 Let's consider now some subsets of $\mathbb{R}^2$ and let's see what type of topological set they are:
 
+- $E= \Set{z \in \mathbb{C} \mid \|z\| < 1}$
+
+    Observe that the set is essentially the disk of center $0$ and radious $1$ without the border.
+
+    Let's consider the point $p = (1,0) \notin E$. Let's see $p \in E'$, so $E' \nsubseteq E$ and $E$ is not closed.
+    
+    Take the set, $S := \Set{(x,y) \mid y = 0 \wedge x \in (0,1)}$, this is, the segment $(0,1)$ of the axis $x$. Naturally, is $S \subset E$.
+    
+    Then, observe that for any $r \in \mathbb{R}^+$ is $S \cap \big[N_r(p) \setminus \Set{p}\big] \neq \varnothing$
+
+    Observe that:
+
+    $$q \in S \implies (y= 0 \wedge 0 < x < 1)$$
+
+    $$q \in N_r(p) \setminus \Set{p} \implies 0 < d(q,p) = |(1-x,y)|< r$$
+
+    Ultimately $(x,y)$ is in the intersection if:
+
+    $$\begin{cases} y= 0 \\ 0 < x < 1 \\ 0 < (1 - x)^2 < r^2 \end{cases}$$
+
+    Observe that $0 < 1-x \implies 1-x < r \iff 1 - r < x < 1$. 
+
+    Meaning that, if $1-r< 0$ (when $r > 1$) then any $(x,0) : 0 < x < 1$ is in the intersection, if not, then any $x \in (1 - r,1) : r < 1$ is in the intersection.
+
+    Observe that $ r>0 \iff 1 - r < 1$ and since $\mathbb{R}$ is dense and total ordered, there is always an $x$ satisfying $1 - r < x < 1$. Hence in any case the intersection is not empty and $E$ is not closed.
+
 <br>
 
 # 4. Compact sets.
