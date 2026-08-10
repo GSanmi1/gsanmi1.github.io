@@ -679,6 +679,8 @@ Let's consider now some subsets of $\mathbb{R}^2$ and let's see what type of top
 
 - $E= \Set{z \in \mathbb{C} \mid \|z\| < 1}$
 
+    **$E$ is not closed**.
+
     Observe that the set is essentially the disk of center $0$ and radious $1$ without the border.
 
     Let's consider the point $p = (1,0) \notin E$. Let's see $p \in E'$, so $E' \nsubseteq E$ and $E$ is not closed.
@@ -702,6 +704,75 @@ Let's consider now some subsets of $\mathbb{R}^2$ and let's see what type of top
     Meaning that, if $1-r< 0$ (when $r > 1$) then any $(x,0) : 0 < x < 1$ is in the intersection, if not, then any $x \in (1 - r,1) : r < 1$ is in the intersection.
 
     Observe that $ r>0 \iff 1 - r < 1$ and since $\mathbb{R}$ is dense and total ordered, there is always an $x$ satisfying $1 - r < x < 1$. Hence in any case the intersection is not empty and $E$ is not closed.
+
+    <br>
+
+    **$E$ is open**.
+
+    Consider some $q \in E \implies \|q \| = d(q,O) < 1$. Take then $r \in \mathbb{R}^+ : r < 1 - \|q \|$ and consider the ball $N_r(q)$.
+
+    If is $t \in N_r(q)$, then applying the tringular inequality:
+
+    $$|t| = d(t,O) \leq d(t,q) + d(q,O) < r + |q| < (1 - |q|) + |q| = 1 \implies t \in E$$
+
+    Since $t$ is arbitrary, $N_r(q) \subset E$, and we can state:
+
+    $$\forall q \in E \ \exists r \in \mathbb{R}^+ :N_r(q) \subset E \iff E \text{ is an open set}$$
+
+    <br>
+
+    **$E$ is not perfect**
+
+    Since is not close, it cannot be perfect either.
+
+    <br>
+
+    **$E$ is bounded**
+
+    Let's see that is also bounded. Take for example $O$ and $1$, or in orther words, $N_1(O)$. Is clear that $E \subset N_1(O)$ since:
+
+    $$\forall p(p \in E \implies |p| < 1 \implies d(p,O) < 1 \implies p \in N_1(O))$$
+
+    <br>
+
+- $E= \Set{z \in \mathbb{C} \mid \|z\| \leq 1}$
+
+    **$E$ is closed**.
+
+    Take some $q \in E'$, then $\forall r(N_r(q) \setminus \Set{q} \cap E \neq \varnothing)$. Let's suppose that $q \notin E \implies \|q\| > 1$ and we can think in some $t \in \mathbb{R}^+ : 1 + t < \|q\|$.
+
+    Consider $p \in N_t(q) \setminus \Set{q} \cap E \implies (d(p,O) \leq 1 \wedge d(p,q) < t)$ but:
+
+    $$1 + t < |q| = d(q,O) \leq d(q,p) + d(p,O) < t + 1 = 1 +t$$
+
+    Hence, we reach an absurd and $q \in E$, so $E' \subset E$ and $E$ is closed.
+
+    <br>
+
+    **$E$ is not open**.
+
+    
+
+    <br>
+
+## 3.5. Complement of a family of sets.
+
+Let be $\Set{E_\alpha}$ be a finite or infinite family of sets. Then, the complementary of the union is the global intersection of each complementary set:
+
+$$X \setminus\bigcup_\alpha E_\alpha = \bigcap_\alpha (X \setminus E_\alpha)$$
+
+Immediately:
+
+$$p \in X \setminus\bigcup_\alpha E_\alpha \iff \neg \big[\exists \alpha (p \in E_\alpha)\big] \iff \forall \alpha (p \in X \setminus E_\alpha) \iff p \in \bigcap_\alpha X \setminus E_\alpha$$
+
+<br>
+
+## 3.6. Caracterization of open sets.
+
+A set $E$ is open if and only if its complement is closed. Formally:
+
+$$E \text{ is open} \iff X \setminus E \text{ is closed}$$
+
 
 <br>
 
