@@ -1070,6 +1070,126 @@ $$dim A + B = dim A + dim B - dim A \cap B = 4$$
 
 <br>
 
+### 3.4.7. 
+
+**Again let $V$ be the space of $2 \times 2$ matrices over $F$. Find a basis $\Set{A_1, A_2, A_3, A_4}$ for $V$ such that $A_i^2 = A_i$ for each $i$.** 
+
+Observe that be $A:=(a_{ij})_{i,j \in [2]}$, then: $AA = (\alpha_{ij})_{i,j \in [2]} : \alpha_{ij} = \sum_{k=1}^p a_{ik}a_{kj}$. Hence, let's call:
+
+$$A := \begin{pmatrix}a_1 & a_2 \\ a_4 & a_3 \end{pmatrix}$$
+
+Then, we define:
+
+$$E_i:= A : \begin{cases} a_i = 1 \\ a_j = 0 \quad \forall j \neq i \in [4]\end{cases}$$
+
+Is clear $\Set{E_i}_{i \in [4]}$ is a basis of $V = M_2(K)$, but also: $E_i^2 = 0 \quad \forall i \in [4]$. Hence, let's then define $H_i := E_i + E_{i+1}$. Clearly $\Set{H_i}_{i \in [4]}$ is a basis and $H_i^2 = H_i$ for each $i$.
+
+<br>
+
+### 3.4.8. Linear independence invariance under combination.
+
+**Let $V$ be a vector space over a subfield $F$ of the complex numbers. Suppose $\alpha$, $\beta$, and $\gamma$ are linearly independent vectors in $V$. Prove that $(\alpha +  \beta), (\beta + \gamma)$ and $(\gamma + \alpha)$ are linearly independent.**
+
+Is clear that be:
+
+$$a,b,c \in F : a(\alpha +  \beta) + b(\beta + \gamma) + c(\gamma + \alpha) = 0 \iff 2a = 2b = 2 c = 0$$
+
+Since $F \leq \mathbb{C} \implies 2 \neq 0$, thus $a = b = c = 0$ and the three vectors are linear independent.
+
+<br>
+
+### 3.4.9. Finite dimensional spaces.
+
+**Let $V$ be a $K$-vector space. Suppose there are a finite number
+of vectors $v_1, \ldots , v_n \in V : span(\Set{v_1, \ldots v_n}) = V$. Prove that V is finite-dimensional.**
+
+Observe that, if $S = \Set{v_1,\ldots,v_n}$ spans $V$, then in $V$ there is as much $\| \Set{v_1,\ldots,v_n}\|$ independent vectors, or any independent subset of vectors of $V$ have as much $n$ vectors.
+
+Since any basis is by definition an independent set, no basis can have more than $n$ vectors, hence is finite and $dimV$, as the number of vectors of a basis, is a natural number, thus $V$ is finite-dimensional.
+
+<br>
+
+### 3.4.10. 
+
+Let $V$ be:
+
+$$V := \Set{(a_{ij})_{i,j \in \mathbb{N}} \in M_2(\mathbb{C}) \mid \sum_{i}a_{ii} = 0}$$
+
+Then, prove:
+
+**V is a $\mathbb{R}$ vector space with the usual operation of adding and scaling**
+
+In basic terms, the statement is asking us to prove that:
+
+- $(V,+)$ is an abelian group.
+- $\cdot : \mathbb{R} \times V \to V$ is a field's action over $V$.
+
+    <br>
+
+First, let's see that $(V,+)$ is a subgroup of $(M_2(\mathbb{C}),+)$. 
+
+- $V$ is not empty, $0 \in V$. Also, is clear that $V \subset M_2(\mathbb{C})$ by definition.
+
+- Lastly, $V$ contains the composition of any pairs of elements in $V$.
+
+    $$(a_{ij}),(b_{ij}) \in V \implies \Big( \sum_i a_{ii} = 0 \wedge \sum_i b_{ii} = 0 \Big)\implies$$
+    
+    $$\implies \sum_i (a_{ii} + b_{ii}) = 0 \implies (a_{ij}) + (b_{ij}) = (a_{ij} + b_{ij}) \in V$$
+
+    <br>
+
+Second, let's see that $\cdot : \mathbb{R} \times V \to V$ is a field's action.
+
+Observe that we can consider $· : \mathbb{R} \times M_2(\mathbb{C}) \to M_2(\mathbb{C})$ which is a field's action, then consider the restriction $·\mid_V$, let's see that $v \in V \implies  \alpha v \in V$ since $\sum_i \alpha v_{ii} = \alpha (\sum_i v_{ii}) = \alpha 0 = 0$, thus the codomain is $V$. And we can consider $·\mid_V$ as a field's action over $V$.
+
+<br>
+
+**Find a basis for $V$**
+
+Consider: 
+
+$$e_1 =\begin{pmatrix}1 & 0 \\ 0 & -1 \end{pmatrix}, \quad e_2 = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}, \quad e_3 = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}$$
+
+<br>
+
+Then, is obvious that $\Set{e_1, e_2, e_3}$ is an independent set. Then:
+
+
+$$\forall v ( v\in span(\Set{e_1, e_2, e_3}) \implies \sum_i v_{ii} = 0 \implies v \in V)$$
+
+Take then $v \in V \implies \sum_i v_{ii} = 0 \iff v_{22} = -v_{11}$, thus:
+
+$$v = \begin{pmatrix}v_{11} & v_{12} \\ v_{21} & -v_{11} \end{pmatrix} = v_{11}\begin{pmatrix}1 & 0 \\ 0 & -1 \end{pmatrix} + v_{12}\begin{pmatrix}0 & 1 \\ 0 & 0 \end{pmatrix} + v_{21}\begin{pmatrix}0 & 0 \\ 1 & 0 \end{pmatrix} = $$
+
+$$= v_{11}e_1 + v_{12}e_2 + v_{21}e_3 : v_{11},v_{12},v_{21}$$
+
+Observe that this entries are complex numbers, each $v_{ij} = a_{ij} +b_{ij}i$ but the field's action do not contemplate complex expressions, this means that we need to extend our previous basis with:
+
+$$e_4 =\begin{pmatrix}i & 0 \\ 0 & -i \end{pmatrix}, \quad e_5 = \begin{pmatrix} 0 & i \\ 0 & 0 \end{pmatrix}, \quad e_6 = \begin{pmatrix} 0 & 0 \\ i & 0 \end{pmatrix}$$
+
+
+To state: 
+
+$$v = v_{11}e_1 + v_{12}e_2 + v_{21}e_3 =$$
+
+$$ = a_{11}e_1 + b_{11}e_4 + a_{12}e_2 + b_{12}e_5 + a_{21}e_3 + b_{21}e_6 : a_{ij},b_{ij} \in \mathbb{R} \ \forall i,j \in [2]$$
+
+<br>
+
+In other words, $V$ is a $3$ dimension $\mathbb{C}$-space or a $6$ dimensional $\mathbb{R}$-space. This means that the dimension is not a property of the set, as long as you restrain the scalars field, you need more vectors to express the same information.
+
+<br>
+
+**Consider the set $W := \Set{ (a_{ij}) \in V \mid a_{21} = - \overline{a_{12}}}$, prove that $W \leq V$**
+
+First, $W$ is not empty, since $0 \in W$, also, by definition $W \subset V$, ultimately:
+
+$$u,v \in W \implies u_{21} + v_{21} = (-\overline{u_{12}}) + (-\overline{v_{12}}) = -(\overline{u_{12}} + \overline{v_{12}}) = - (\overline{u_{12} + v_{12}}) \implies u + v \in W$$
+
+And $W \leq V$.
+
+<br>
+
 # 4. Coordinates.
 
 ## 4.1. Ordered pair. Tuples.
@@ -1110,6 +1230,6 @@ Ultimately a tuple disregard the criterion comparison and prorize the preference
 
 ## 4.2. Linear dependence in Tuples.
 
-Until now, we defined the linear dependence with sets 
+Until now, we defined the linear dependence with sets. We said that linear dependence abstracts linear redundance. A set of vectors is linear dependent if there is a non-trivial linear combination referencing the $0$ vector. Observe that this means that 
 
 <br>

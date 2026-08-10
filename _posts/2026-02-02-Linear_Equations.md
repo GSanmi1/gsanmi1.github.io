@@ -1563,11 +1563,9 @@ $$AB = (A \beta_1, ..., A \beta_n) \in M_{m \times n} (F)$$
 
 Where $A \beta_i \in M_{m \times 1} (F) : i=1,...,n$. **This is that $AB$ denotes the linear combinations of the elements of the columns $\beta_i \subset B$ by the elements of $A$.**
 
-Let's observe that the number of rows of $A$ and the number of columns of $B$ must match.
+Let's observe that the number of columns of $A$ and the number of rows of $B$ must match. Each entry can have a singular definition. Let be $A := (a_{ij})_{i \in [m], j \in [t]}$ and $B := (b_{ij})_{i \in [t], j \in [n]}$, then:
 
-Each entry can have a singular definition as:
-
-$$(ab_{ij})_{i \in [m], j \in [n]} := \sum_{k = 1}^p a_{ik}b_{kj} $$
+$$AB := (ab_{ij})_{i \in [m], j \in [n]} : ab_{ij} = \sum_{k = 1}^p a_{ik}b_{kj} $$
 
 <br>
 
