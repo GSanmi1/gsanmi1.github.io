@@ -860,6 +860,14 @@ An important minor example about dimensions is that the zero vector space $\Set{
 
 <br>
 
+Let's also observe that if $V$ as a $K$-space has finite dimension, $dim V$ **is the amount of irreducible information that must be specified to determine an element of $V$, measured in terms of the field.** 
+
+This basically means that *dimension* doesn't lives in the group, lives in the relation between the field and the group. If you change the field, the relation changes. Consider for example $(\mathbb{C}, \mathbb{C}, ·)$, since the relation between the group and the field is one-to-one, you only need one component to express any other element and the dimension is $1$. Consider now $(\mathbb{R}, \mathbb{C},·)$, this vectorspace has dimension $2$, hence you need to components, you need two refer two times to $\mathbb{R}$ to map any complex.
+
+Observe now $(\mathbb{Q}, \mathbb{R}, ·)$, in this case, this space has no finite dimension, this is because $\mathbb{R}$ has a part that cannot be described totallity in rational terms, hence, you cannot refer a finite number of times to $\mathbb{Q}$ to describe any element of $\mathbb{R}$
+
+<br>
+
 ### 3.3.3. Independent set extension.
 
 **Consider $V$ a vector space and $S$ a subset of independent vectors of $V$. Consider $v \in V : v \notin span(S)$, then $S \cup \Set{v}$ is a set of independent vectors of $v$.** 
@@ -1190,6 +1198,7 @@ And $W \leq V$.
 
 <br>
 
+
 # 4. Coordinates.
 
 ## 4.1. Ordered pair. Tuples.
@@ -1201,6 +1210,8 @@ $$(a,b) := \Set{\Set{a},\Set{a,b}}$$
 This is what we call an *ordered pair*. Recursively, taking some $n \in \mathbb{Z}^+ : n > 2$ we define the *$n$-tuple* as:
 
 $$(a_1,a_2, \ldots, a_n) : = (a_1,(a_2, \ldots a_n)) = \Set{\Set{a_1}, \Set{a_1,(a_2,\ldots,a_n)}}$$
+
+If $a_i \in X$ for each $i \in [n]$, we should call $X^n$ to the set off all the $n$-tuples of elements of $X$.
 
 Then, let's observe that a set is simply a collection of elements from the superset according to some criterion. This is, given some criteria about some universe of elements, then a set gather all the posible instantiations of the criterion in terms of the elements of the universe. Think for example in $\mathbb{Z}$ and take $2\mathbb{Z}$ which is the collection of those integers such the integer is even. (Also a set can be defined "by extension", this is; giving a complete enumeration of his elements, in that case, the criterion gets autodefined; an element is in the set if and only if it coincides with one of the enumerated elements).
 
@@ -1230,6 +1241,31 @@ Ultimately a tuple disregard the criterion comparison and prorize the preference
 
 ## 4.2. Linear dependence in Tuples.
 
-Until now, we defined the linear dependence with sets. We said that linear dependence abstracts linear redundance. A set of vectors is linear dependent if there is a non-trivial linear combination referencing the $0$ vector. Observe that this means that 
+Until now, we defined the linear dependence with sets. We said that linear dependence abstracts linear redundance. A set of vectors is linear dependent if there is a non-trivial linear combination referencing the $0$ vector.
 
 <br>
+
+Then, we define the linear dependence of tuples as follows. Be the $K$-space $V$, then we say that:
+
+$$(v_1, \ldots, v_n) \text{ is linear dependent } \iff \exists (\alpha_1,\dots,\alpha_n) \in K^n \setminus \Set{0} : \sum_{i = 1}^n \alpha_iv_i = 0$$
+
+By negation we obtain:
+
+$$(v_1, \ldots, v_n) \text{ is linear independent } \iff \forall (\alpha_1,\dots,\alpha_n) \in K^n \setminus \Set{0} : \sum_{i = 1}^n \alpha_iv_i \neq 0$$
+
+$$ \iff \Big( \sum_{i = 1}^n \alpha_iv_i = 0 \iff (\alpha_1, \ldots, \alpha_n) = 0 \in K^n \Big)$$
+
+As we discuss before, $(v_1, \ldots, v_n)$ distinguish not only between value but also by position, two same values in different positions are different elements. Let's form from the tuple $(v_1, \ldots, v_n)$ the set of his elements $\Set{v_1,\ldots,v_n}$ note that this set do not tolerate different elements and:
+
+Hence, is clear that:
+
+$$(v_1,\ldots,v_n) \text{ is linear independent } \implies \Set{v_1,\ldots,v_n} \text{ is linear indepent}$$
+
+And negating it:
+
+$$\Set{v_1,\ldots,v_n} \text{ is linear dependent} \implies (v_1,\ldots,v_n) \text{ is linear dependent}$$
+
+However and this is the key of the matter it is possible that $(v_1,\ldots,v_n)$ is linear dependent while $\Set{v_1,\ldots,v_n}$ is linear independent..
+
+<br>
+
