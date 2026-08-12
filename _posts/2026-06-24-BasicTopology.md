@@ -751,6 +751,12 @@ Let's consider now some subsets of $\mathbb{R}^2$ and let's see what type of top
 
     **$E$ is not open**.
 
+    Take $O$ and $p \in E : \|p\| = 1$. Let's now use $d$ to get a parametrized family of points satisfying:
+
+    $$d(O,q) = d(O,p) + d(p,q) \iff |q-p| = |q| - |p|$$
+
+     
+
     
 
     <br>
@@ -773,6 +779,36 @@ A set $E$ is open if and only if its complement is closed. Formally:
 
 $$E \text{ is open} \iff X \setminus E \text{ is closed}$$
 
+
+<br>
+
+Consider some $A$ and call $B = X \setminus A$.
+
+- $\Rightarrow$ 
+
+    First, $A$ is open. Consider:
+    
+    $$p \in B' \implies \forall r(N_r(p) \setminus \Set{p} \cap B \neq \varnothing) \implies p \notin A \implies p \in B$$
+    
+    Observe that $p \notin A$ otherwise the statement above wouldn't apply since $A$ is open so $p \in B$. 
+    
+    Thus, $B' \subset B$ and $B$ is closed.
+
+    <br>
+
+- $\Leftarrow$
+
+    Now, $B$ is closed, then $B' \subset B$. Consider some $p \in A$, then $p \notin B' \subset B$ hence:
+
+    $$\neg[\forall r(N_r(p) \setminus \Set{p} \cap B \neq \varnothing)] \ \underbrace{\implies}_{p \notin B} \ \exists r : N_r(p) \cap B = \varnothing \underbrace{\implies}_{A = X \setminus B} \exists r : N(r) \subset A$$
+
+    And $A$ is open.
+
+    <br>
+
+Observe that there is an immediate corollary; 
+
+$$E \text{ is closed} \iff X \setminus E \text{ is open}$$
 
 <br>
 
