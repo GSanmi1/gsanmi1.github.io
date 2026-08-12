@@ -862,9 +862,13 @@ An important minor example about dimensions is that the zero vector space $\Set{
 
 Let's also observe that if $V$ as a $K$-space has finite dimension, $dim V$ **is the amount of irreducible information that must be specified to determine an element of $V$, measured in terms of the field.** 
 
-This basically means that *dimension* doesn't lives in the group, lives in the relation between the field and the group. If you change the field, the relation changes. Consider for example $(\mathbb{C}, \mathbb{C}, ·)$, since the relation between the group and the field is one-to-one, you only need one component to express any other element and the dimension is $1$. Consider now $(\mathbb{R}, \mathbb{C},·)$, this vectorspace has dimension $2$, hence you need to components, you need two refer two times to $\mathbb{R}$ to map any complex.
+This basically means that *dimension* doesn't lives in the group, lives in the relation between the field and the group. If you change the field, the relation changes. 
 
-Observe now $(\mathbb{Q}, \mathbb{R}, ·)$, in this case, this space has no finite dimension, this is because $\mathbb{R}$ has a part that cannot be described totallity in rational terms, hence, you cannot refer a finite number of times to $\mathbb{Q}$ to describe any element of $\mathbb{R}$
+- Consider for example $(\mathbb{C}, \mathbb{C}, ·)$, since the relation between the group and the field is one-to-one, you only need one component to express any other element and the dimension is $1$. 
+
+- Consider now $(\mathbb{R}, \mathbb{C},·)$, this vectorspace has dimension $2$, hence you need two components, you need two refer two time s to $\mathbb{R}$ to map any complex. This is not coincidence, since the complex set is defined as the set of pairs of reals numbers, two reals for one complex.
+
+- Observe now $(\mathbb{Q}, \mathbb{R}, ·)$, in this case, this space has no finite dimension, this is because $\mathbb{R}$ get's formed through segments of $\mathbb{Q}$, in the sense that $\mathbb{R}$ is $\mathbb{Q}$ an infinite number of times.
 
 <br>
 
