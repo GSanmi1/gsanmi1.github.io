@@ -578,11 +578,11 @@ The *perfect* sets are in some way a restriction of the notion of closed sets.
 
 We recall that a closed set is a set that contains everything it approaches, abstracted behind the idea of limitness or limit point, those points containing in every possible neighborhood other points of the set.
 
-<br>
+$$E \subset X \text{ is closed } \iff E' \subset E$$
 
 Then, the perfect sets standsby adding the reverse statement; meaning that a perfect set is a closed set such every point is also a limit point (or, in other words, a closed set without isolated points). In this sense, a perfect set is a closed set that also approachs every point it owns.
 
-<br>
+$$E \subset X \text{ is perfect } \iff E' = E$$
 
 Is important to warn the nuance that a closed set adds to perfect sets. Be a closed set garantee that every limit point is a point of the set, a perfect set without being closed is just a set without isolated points, but that doesn't means that every limit point is part of the set, it just means that every point of the set is a limit point of the set, giving some blurred perception of the structure.
 
@@ -613,7 +613,7 @@ Think for example that $\mathbb{Q}$ is dense in $\mathbb{R}$, take some point in
 
 <br>
 
-## 3.4. Important topologic result.
+## 3.4. Important topologic results.
 
 Let's see some important results around the concepts seen before.
 
@@ -751,15 +751,36 @@ Let's consider now some subsets of $\mathbb{R}^2$ and let's see what type of top
 
     **$E$ is not open**.
 
-    Take $O$ and $p \in E : \|p\| = 1$. Let's now use $d$ to get a parametrized family of points satisfying:
+    Take $O$ and $p \in E : \|p\| = 1$. Let's now use $d$ to get a parametrized family of points $q$ satisfying:
 
-    $$d(O,q) = d(O,p) + d(p,q) \iff |q-p| = |q| - |p|$$
+    $$d(O,q) = d(O,p) + d(p,q) \iff |q| = |p| + |q - p|$$
 
-     
-
-    
+     Thus, in this context, $\|q\| > 1 \implies q \not \in E$, but $q$ is in any neighbourhood with radius superior to $d(p,q)$. Observe also that as long as this distance is greater than $0$, $q \notin E$ and any neighbourhood of $p$ contains points out of $E$, hence $E$ is not open.
 
     <br>
+
+    **$E$ is perfect**
+
+    We do know that $E$ is closed.
+
+    Take first $p \in E : \|p\| < 1$, we did see that this set is open, so for $p$ we can consider a neighbourhood $N_r(p) \subset E$. Then, for any $t < r$, $N_t(p) \subset N_r(E) \subset E$ and for any $l > t$, is $N_t(p) \subset N_l(p) \implies N_l(p) \setminus \Set{p} \cap E \neq \varnothing$ and $p \in E'$.
+
+    <br>
+
+    Consider now $p \in E : \|p\| = 1$, then we take the same argument given above and we can think in the parametric family of points $q$ satisfying:
+
+    $$d(O,p) = d(O,q) + d(q,p) \iff |p| = |q| + |q - p|$$
+
+    Observe again that, as long as $q \neq p$, $q \in N_t(p) \setminus \Set{p} \cap E$ where $t \in \mathbb{R}^+ : d(p,q)<t$ and we can make $d(p,q)$ as small as we want. So $p \in E'$. So $E$ is perfect.
+
+    <br> 
+
+    **$E$ is bounded**
+
+    Yes by te same argument as $E$ above is bounded too.
+
+    <br>
+    
 
 ## 3.5. Complement of a family of sets.
 
@@ -773,7 +794,9 @@ $$p \in X \setminus\bigcup_\alpha E_\alpha \iff \neg \big[\exists \alpha (p \in 
 
 <br>
 
-## 3.6. Caracterization of open sets.
+## 3.6. Caracterizations.
+
+### 3.6.1. Caracterization of Open sets.
 
 A set $E$ is open if and only if its complement is closed. Formally:
 
@@ -806,11 +829,72 @@ Consider some $A$ and call $B = X \setminus A$.
 
     <br>
 
+### 3.6.2. Caracterization of Closed sets.
+
 Observe that there is an immediate corollary; 
 
 $$E \text{ is closed} \iff X \setminus E \text{ is open}$$
 
 <br>
+
+### 3.6.3. Some families caracterization.
+
+We have the following immediate results:
+
+- For any collection $\Set{O_a}$ of open sets, $\bigcup_a O_a$ is an open set.
+- For any collection $\Set{C_a}$ of closed sets, $\bigcap_a C_a$ is an closed set.
+
+<br>
+
+Also,
+
+- For any finite collection of open sets, $O_1,\ldots, O_n: n \in \mathbb{N}$, the intersection $\bigcap_{i=1} O_i$ is open.
+
+- For any finite collection of closed sets $C_1, \ldots, C_n$, the union $\bigcup_{i=1}^n C_i$ is closed.
+
+    <br>
+
+## 3.7. Closure of a set.
+
+Be $X$ a metric space and $E \subset X$. Then we define the *closure* of $E$ as the set 
+
+$$\overline{E} = E \cup E'$$
+
+This is, the set along with the acumulation set of $E$.
+
+<br>
+
+1. Note first that $\overline{E}$ is closed. 
+
+    Consider $p \in \overline{E}'$. Then: $\forall r(N_r(p) \setminus \Set{p} \cap \overline{E} \neq \varnothing)$, which means that for each $r \in \mathbb{R}^+$:
+    
+    
+    $$(N_r(p) \setminus \Set{p} \cap E \neq \varnothing) \vee (N_r(p) \setminus \Set{p} \cap E' \neq \varnothing)$$
+    
+    But $N_r(p) \setminus \Set{p} \cap E' \neq \varnothing$, means that $\exists q \in N_r(p) \setminus \Set{p} : \forall t(N_t(q) \setminus \Set{q} \cap E \neq \varnothing)$, hence, we can take some $t : N_t(q) \subset N_r(p)$ and assert $N_r(p) \cap E \neq \varnothing$.
+    
+    - If $p \in E \implies p \in \overline{E}$.
+    - If $p \notin E$ then $N_r(p) \setminus \Set{p} \cap E \neq \varnothing$ and this applies from above for each $r \in \mathbb{R}^+$ and $p \in E' \implies p \in \overline{E}$.
+
+    In any case, $\overline{E}' \subset \overline{E}$, and $\overline{E}$ is closed.
+
+    <br>
+
+2. The smallest closed set that contains $E$. To prove it, let's demonstrate that any closed set containing $E$ contains $\overline{E}$ as well. Formally:
+
+    $$\forall  A \subset X : A' \subset A \quad [E \subset A \implies \overline{E} \subset A]$$
+
+    First, take some $A \subset X : (E \subset A \wedge A' \subset A)$, then consider some $e \in E'$ (the case $e \in E \subset A$ is trivial), then observe that, since $E \subset A$ is:
+
+    $$\forall r(N_r(e) \setminus \Set{e} \cap E \neq \varnothing) \implies \forall r(N_r(e) \setminus \Set{e} \cap A \neq \varnothing)  \implies e \in A ' \subset A$$
+
+    Hence, $E \cup E' = \overline{E} \subset A$.
+
+    <br>
+
+    Note also that:
+
+- $E = \overline{E} \iff E \text{ is closed }$
 
 # 4. Compact sets.
 
