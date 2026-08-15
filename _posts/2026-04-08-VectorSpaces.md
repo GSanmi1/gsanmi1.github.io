@@ -73,7 +73,7 @@ Let $G := (S, \Omega) : \Omega := \Set{\star}$, where $\star : S \times S \to S$
 
 Then we define:
 
-- $G$ (or $S$ by default) is said to be a *Magma* if $\star$ only verifies the closure property:
+- $G$ (or $S$ by default) is said to be a *Magma* if $\star$ only verifies the closure property which is inherent to the operation definition (as presented):
 
     - $a \star b \in S \ \ \forall a,b \in S$ (Closure)
 
@@ -212,55 +212,54 @@ Let's dive into this.
 
 ## 2.1. Actions. Algebraic Actions.
 
-### 2.1.1. Definition.
+### 2.1.1. Presentation. Core esqueme and transformations.
 
-First, let's define what an action is. Let $A$ and $S$ be two sets, then we define an action as a function:
+Matematically, an *action* is the mecanism in which abstract algebra exports over any other mathematic discipline.
+
+Let's begin with a preamble. Let $A$ and $S$ be two sets, then we define the following function:
 
 $$\varphi: A \times S \to S$$
-$$\ \ \ \ \ \ \ (a,s) \to s$$
 
-It grabs two elements, one from $A$ and another from $S$ and it maps it to a third element from $S$.
+Tecnically, it grabs two elements from $A$ and $S$ and maps it back to $S$, but let's break it down. 
 
-As defined, this function doesn't have any interest at all; it becomes interesting when $\varphi$ respects the structure of $A$; this way it is said that an action transforms $S$ using $A$'s algebraic structure.
+Essentially, the $\varphi$ can be seen as generator for each element of $S$ of a family of parametrized functions by the elements of $A$; $\Set{\varphi_a}_{a \in A}$ such:
+
+$$\varphi \simeq \bigcup_{a \in A} \varphi_a : \Big[\varphi_a \in S^S \mid \varphi_a(s) = \varphi(a,s)\Big] $$
+
+As defined, $(a,s) \mapsto t$ can be read as $s,t \in S$ are identified in some relation described by $a \in A$. Each function of the family is what we call a *transformation*.
 
 <br>
 
 ### 2.1.2. Group's Action.
 
-**Group's action**
+Consider $(G,S,\varphi)$ such $G$ is a group with some internal operation $\star : G \times G \to G$ and $\varphi \in S^{G \times S}$.
 
-Consider again $(G,S,\varphi)$ such that $\varphi : G \times S \to S$, let's suppose now that $G$ is a group for some internal operation $\star : G \times G \to G$. 
+In this context, we say that $\varphi$ is a group's action if it satisfies $A1$ and $A2$ 
 
-In this context, we impose two rules $A1$, $A2$ over $\varphi : A \times S \to S$. In total, the triple $(G,S,\varphi)$ satisfies: 
+- **$A1$ Identity**: The identity $e \in G$ do not performs any change: 
 
-- **Closure**: $\varphi(a,s) \in S \ \ \forall a \in G, s \in S$, forced by $\varphi$ definition.
-
-    <br>
-
-- **(A1) Identity**: Be $e \in G$ the identity on $G$ then we require: $\varphi(e,s) = s \ \ \forall s \in S$
-
-    Meaning that the $G$'s identity doesn't move anything through $\varphi$.
+    $$\varphi_e = id_S \iff \varphi_e(s) = s \quad \forall s \in S$$
 
     <br>
 
-- **(A2) Associativity**: $\varphi(a,\varphi(b,s)) = \varphi(a \star b,s) \ \ \forall a,b \in G, s \in S$
+- **$A2$ Associativity**: Transformation iteration is the transformation of the composition:
 
-    Observe that this resembles the order invariant we talked about in groups; as long as the direction of the composition remains still ($a \to b \to s$) it doesn't matter the order in which you perform these compositions.
 
-    Composing $b$ with $s$ through $\varphi$ and then this with $a$ is the same that "multiply" $a \star b$ in $G$ and then compose it with $s$ through $\varphi$. Check that if we write $a \star b = ab \wedge \varphi(a,s) = a\ ·s$ then, the rule above states that:
+    $$\varphi_a \circ \varphi_b = \varphi_{a \star b} \quad \forall a,b \in G$$
 
-    $$a \ ·(b \ ·s) = (ab)\ ·s \ \ \forall a,b \in G, s \in S $$
+    Observe that this resembles the order invariant (associativity) we discussed in groups; as long as the direction of the composition remains still ($a \to b \to s$) it doesn't matter the order in which you perform these compositions, we can rewrite it in a simpler and familiar way as:
 
-    And it appears more familiar.
+    $$a (b s) = (ab)s \quad \forall a,b \in G, s \in S $$
 
     <br>
 
+Lastly, observe some immediate consecuence of this two defined axioms:
 
-- **Inverse**: Observe this is not labeled as an axiom because it can be deduced from the two above but is included from pedagogic reasons.
+- **Inverse**: We rememeber that the idea of the inverse on a group intends to formalice the idea of revert a composition or go back. 
 
-    The idea of the inverse on a group intends to formalice the idea of revert a composition or go back. Thus, we are looking to demonstrate that, calling $\varphi_a(s) = \varphi(a,s)$
+    Observe that, from the axioms $A1$ and $A2$ we can assert that for each transformation exists a transformation that reverts the effect of the given one called *inverse* transformation:
 
-    $$\forall \varphi_a \ \exists \varphi^{-1}_{a}  \ \forall s \in S: \varphi_a(\varphi^{-1}_{a}(s)) = \varphi^{-1}_{a}(\varphi_a(s)) = s$$
+    $$\forall \varphi_a \ \exists (\varphi_a)^{-1} \big[\varphi_a \circ (\varphi_a)^{-1}= (\varphi_a)^{-1} \circ \varphi_a = id_S\big]$$
 
     Let's take $x = a^{-1}$ and observe that applying $A2$, $A1$ and the existence of the inverse in $G$ we get:
 
@@ -268,42 +267,66 @@ In this context, we impose two rules $A1$, $A2$ over $\varphi : A \times S \to S
 
     $$a \ · (a^{-1} \ · s) = (aa^{-1}) \ · s = s$$
 
-    Meaning that $\varphi^{-1}\_{a}= \varphi_{a^{-1}} \ \ \forall a \in G$.
-
+    Meaning that:
+    
+    $$(\varphi_a)^{-1}= \varphi_{a^{-1}} \quad \forall a \in G$$
+    
     <br>
 
-Thus, this four properties makes that the triple $(G,S,\varphi)$ behaves like a group in the sense that we can define and solve equations over the elements of $S$ which remember, initially wasn't a group:
-
-$$ \varphi_a(x) = s \iff x = \varphi_{a^{-1}}(s)$$
-
-Meaning that we can treat the elements of $S$ as elements over which we can define constraints, relations, etc. 
-
-Although, it is worth remembering that $S$ is not a group and neither is the triple $(G,S, \varphi)$; what $S$ has acquired through $\varphi$ is a family of reversible parametrized transformations by the group $G$. It is a way to use $G$ in order to study $S$.
+Thus,$\varphi$ inyects the algebra of $\star$ from $G$ to $S$ through a **family of reversible parametrized transformations**. It is a way to use $\star$ in order to operate with $S$'s elements through $G$'s elements.
 
 <br>
 
-## 2.2. Field's action. Vector Space.
+## 2.2. Field's action: Vector Space.
 
-### 2.2.1. Definition.
+### 2.2.1. Field's action.
 
-Now consider again a triple $(K,V,\ ·)$, where $K$ is a field and $V$ is an abelian group and $·: K \times V \to V$ is a field's action. 
+Now consider a triple $(K,V,\ ·)$, where $K$ is a field, $V$ is an abelian group and $·: K \times V \to V$ is what we call a *field's action*. 
 
-As we said before this action respects the algebraic structure of $K$, which remember; is a combined abelian group over two different compatible operations, by forcing the following axioms:
+$·$ verifies the axioms $A1,A2,D1,D2$:
 
-- **M1**: $1_K \ · v = v$. The identity over the product doesn't transform anything.
-- **M2**: $\alpha \ · (\beta \ · v) = (\alpha \beta) \ · v \ \ \forall \alpha, \beta \in K, v \in V $. associativity resemblance, order-independence while direction stays still.
-- **D1**: $\alpha \ · (u + v) = \alpha \ · u + \alpha \ · v \ \ \forall \alpha \in K, u, v \in V $. Compatibility between $·$ and $+$ in $V$.
-- **D2**: $(\alpha + \beta) \ · v =\alpha \ · v + \beta \ · v \ \ \forall \alpha, \beta \in K, v \in V$. Compatibility between $·$ and $+$ in $K$.
+- **$A1$ Product Identity**; The identity over the product doesn't changes anything:
+
+    $$ ·_{1} = id_V \iff 1_K ·v = v \quad \forall v \in V$$
+
+    <br>
+
+
+- **$A2$ Associativity of the product in $K$**: Iterate transformations is the transformation of the product:
+
+    $$·_\alpha \circ \ ·_\beta = \ ·_{\alpha \beta} \iff \alpha \ · (\beta \ · v) = (\alpha \beta) \ · v \quad \forall \alpha, \beta \in K, v \in V$$
+    
+    <br>
+
+    Observe immediately that this is telling us that $·$ restricted over $(K \setminus \Set{0}, \cdot)$ is an action group.
+
+    <br>
+
+- **$D1$ Respect for the additive group $(V,+)$**. The transformation of the addition is the addition of the transformations:
+
+    $$·_\alpha (u + v) = \ ·_\alpha (u) \ + \ ·_\alpha (v) \quad \forall \alpha \in K, u, v \in V $$
+
+    <br>
+
+- **$D2$ Compatibility between addition structures**: The addition in $K$ is directly traduced as the addition of the transformations in $V$.
+
+    $$(\alpha + \beta) \ · v =\alpha \ · v + \beta \ · v \quad \forall \alpha, \beta \in K, v \in V$$
+
+<br>
+
+Hence, we can state that a field's action is a group's action of the multiplicative group of $K \setminus \Set{0}$ over $V$ that respects the additive group $(V,+)$ and connect $+_K$ with $+_V$ in a compatible way. Basically, the field's action inyects the algebra of $·$ in $V$ through the elements of $K$ in a respetable and compatible way with $(V,+)$.
 
 This four axioms plus the four axioms of the group $V$ gives us the eight axioms of the vector space $(K,V, \ ·)$. 
 
 <br>
 
-### 2.2.2. Conceptually Approach.
+### 2.2.2. Vector spaces. Scaling and linear combinations.
+
+Thus, the triple $(K,V, \cdot)$ as described above is what we call a *vector space*, which is basically the resulting structure of using a field to measure an abelian group and incorporating divisibility.
 
 This time, a field's action over a group doesn't intend to give an algebraic structure to $V$; instead it provides, through $K$, a uniform deformation mechanism. The arithmetic system of $K$ as a field is used to perform richer algebraic manipulations on $V$ as a group.
 
-$·: K \times V \to V$ gives to $V$ a parametric scaling mechanism through $(K,+, \ ·)$ which, ultimately, allows a coherent way to perform linear combinations on the elements of $V$. 
+$·: K \times V \to V$ gives to $V$ a parametric *scaling* mechanism through $(K,+, \ ·)$ which, ultimately, allows a coherent way to perform *linear combinations* on the elements of $V$. 
 
 Let's dive into "scaling", "linear" and "linear combination" terms in order to understand what this introduction means.
 
