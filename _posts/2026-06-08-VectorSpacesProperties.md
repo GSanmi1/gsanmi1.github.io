@@ -964,7 +964,7 @@ Observe naturally that: $W\_1 + W\_2 = span(\mathcal{B}\_1 \cup \mathcal{B}\_2) 
 
 $$ span\big((\mathcal{B}_1 \setminus \mathcal{B}_3) \sqcup (\mathcal{B}_2 \setminus \mathcal{B}_3) \sqcup \mathcal{B}_3\big) = span\big(\mathcal{B}_1 \setminus \mathcal{B}_3\big) \oplus span\big(\mathcal{B}_2 \setminus \mathcal{B}_3\big) \oplus span\big( \mathcal{B}_3\big) = $$
 
-$$= [W\_1 \setminus (W\_1 \cap W\_2)] \oplus [W\_2 \setminus (W\_1 \cap W\_2)] \oplus (W\_1 \cap W\_2)$$
+$$= [W_1 \setminus (W_1 \cap W_2)] \oplus [W_2 \setminus (W_1 \cap W_2)] \oplus (W_1 \cap W_2)$$
 
 <br>
 
@@ -1273,3 +1273,14 @@ However and this is the key of the matter it is possible that $(v_1,\ldots,v_n)$
 
 <br>
 
+## 4.3. Ordered Basis. Coordinates.
+
+If $V$ is a $n$-dimensional $K$-space, an ordered basis for $V$ is a linear independent $n$-tuple of vectors that spans $V$.
+
+$$\mathscr{B} := (v_1,\ldots,v_n) \text{ is a basis of } V \iff \begin{cases} (v_1,\ldots,v_n) \text{ is linear independent } \\ span(\Set{v_1,\ldots,v_n}) = V \end{cases}$$
+
+Then, an ordered a *coordinate system* is what you get when you define an isormorphism $\varphi_{\mathscr{B} }$ between a $V$ and an standard model, in this case and for the purpouses of the section; $K^n$ through $\mathscr{B}$.
+
+$$\varphi_\mathscr{B}  : K^n \to V  \mid  \varphi_{\mathscr{B} }(\alpha_1,\ldots,\alpha_n) = \sum_{i=1}^n \alpha_i v_i : v_i \in \Set{v_1,\ldots,v_n}  \quad \forall i \in [n]$$
+
+<br>
