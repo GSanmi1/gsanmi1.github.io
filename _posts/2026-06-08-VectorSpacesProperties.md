@@ -69,43 +69,45 @@ Then, with this information as a starting point, let's develop the fundamental p
 In this section we shall introduce some of the basic concepts in the
 study of vector spaces. 
 
-**Let $V$ be a $K$-vector space. A subspace of $V$ is a non-empty subset $W$ of $V$ which is itself a vector space over $K$ with the operations of vector addition and scalar multiplication on $V$.**
+**Let $V$ be a $K$-vector space. A subspace of $V$ is a non-empty subset $W$ of $V$ which is itself a vector space over $K$ with the restricted operations of $V$ on $W$.**
 
 <br>
 
-Let's observe that, a vector space is simply an abelian group described through a field through a field's action. This means that $W \subset V$, then:
+Let's observe something interesting, from the [vector spaces](https://gsanmi1.github.io/posts/2026/04/08/VectorSpaces/) post, we know that for $(K,V, \cdot)$ to be a vector space; $K$ must be a field, $V$ must be an abelian group and $·$ must be a field's action over $V$. Hence, if $W \subset V : W \neq \varnothing$ then, for the triple $(K,W,·\mid_W)$ to be a vector space there are two structures that must survive, the abelian group and the field's action. 
 
-- Closure relative to linear combinations:
+- First, let's see that $\cdot \mid_{W}$ is a field's action only if it is closed in $W$, since all his axioms departs from the universal quantifier $\forall$, hence all the pairs elements from $\cdot \mid_{W}$ inherites the properties from the original action, we have only to ensure that no image falls from $W$.
 
-    $$v,u \in W \implies (\alpha v + \beta u \in V \ \forall \alpha, \beta \in  F)$$
-
-- Contains zero vector: $0_V \in W$, or $0_W = 0_V$. Remember that $V$ being a vector space means that $(V,+)$ is an abelian group, so $(W,+)$ is an abelian subgroup of $V$ and it inherits $0_V$ from $V$ by the uniqueness of this element. (Observe that this also extends to associativity and inverses).
+    $$\begin{cases} \cdot \in V^{K \times V} \text{ is a field's action }\\ W \subset V : W \neq \varnothing \end{cases} \implies (\cdot \mid_{W} \text{ is a field's action } \longleftrightarrow \cdot \mid_W \text{ is closed in } W)$$
 
     <br>
 
-Let's take a characterization for any non-empty subset $W \subset V$ to be a vector space. If $V$ is a $K$-vector space, then:
+- Second, we can't ensure the same for the group, since from the four axioms the *identity* and the *inverse* involves and existential quantifier, however, this two elements are garantuee in $W$ if $\cdot \mid_W$ is a field's action:
 
-$$W \text{ is a vector space } \iff (\alpha u + v \in W \quad \forall u,v \in W, \alpha \in K)$$
+    $$(\cdot \mid_W \text{ is a field's action} \wedge W \neq \varnothing) \implies \begin{cases} \exists v \in V : v \in W \implies 0_Kv = 0_V \in W \\ \forall v(v \in W \implies -1_K v= -v \in W) \end{cases}$$
 
-Let's reconstruct the structure:
+    Hence, we can state that:
 
-- $(W,+)$ is an abelian subgroup of $(V,+)$.
+    $$\begin{cases} W \subset V : W \neq \varnothing \\ \cdot \mid_W \text{ is a field's action }\end{cases} \implies (W \text{ is a subgroup of V } \longleftrightarrow +\mid_W \text{ is closed in } W)$$
 
-    Since $W \neq \varnothing$ (by the premise), we can consider $u,v \in W$, then: $(-1)u + v = v - u \in W$, so it is a subgroup of $V$. Let's see that $W$ also inherits commutativity from $V$ so it is an abelian subgroup.
-
-    <br>
-
-- $· \|_W: K \times W - W$ is a field action:
-
-    - Observe that $-1 u + u = 0 \in W$, thus $1 u + 0 = u \in W$ so the unit in $F$ doesn't change the vector and it falls inside $W$.
-
-    - Take some $v \in W \implies \alpha v + 0 = \alpha v \in W \implies \beta (\alpha v) + 0 = \beta (\alpha v) \in W$. For the same reason $(\alpha \beta)v \in W$. Then observe that in $V$, by associativity, is $\beta (\alpha v) = (\beta \alpha)v$ so both elements are equal in $V$ and the same in $W$ (by unicity of the inverse), thus $\beta (\alpha v) = (\beta \alpha)v$
-
-    - Take $(\alpha + \beta)v + 0 = (\alpha + \beta)v \in W \subset V$, then in $V$ is $(\alpha + \beta)v = \alpha v + \beta v$ so, for the same argument as above, is $(\alpha + \beta)v = \alpha v + \beta v$ in $W$.
-
-    - Take $\alpha v + 0 \in W \implies \exists w = \alpha v \in W$, take now other $u \in W$, then  $\alpha u + w \in W$, again in $V$ is $\alpha u + w = \alpha u + \alpha v = \alpha(u + v)$ and again is $ \alpha(u + v) = \alpha u + \alpha v$ in $W$.
+    Observe that the despite we don't mention it, the commutativity also get's inheritated so is not necesary to mention.
 
     <br>
+
+
+This can be summarized in, be $V$ a vector space and $W \subset V : W \neq \varnothing$, then:
+
+$$W \leq V \iff +\mid_W, \cdot \mid_{W} \text{ are closed in } W $$
+
+Which is the same as:
+
+$$\begin{rcases}\forall u \forall v(u,v \in W \implies u + v \in W) \\ \forall u (u \in W \implies \alpha u \in W \quad \forall \alpha \in K)\end{rcases} \iff \forall u \forall v(u,v \in W \implies \alpha u + v \in W \quad \forall \alpha \in K)$$
+
+Essentially, a *subset of vectors is a subspace as long as it retains all the posible linear combinations of his elements*, and it allows to assert if some subset is a subspace without reconstruct the entire structure.
+
+A good observation is to realize that if $W$ is not empty, then $W \leq V \implies -u + u = 0 \in W$, is a necesary but not sufficent condition. Anyways is a good opening point in any comprobation since this is quicly telling that if you can't find the zero element in $W$ this can't be a subspace.
+
+<br>
+
 
 ## 2.2. Example of subspaces.
 
