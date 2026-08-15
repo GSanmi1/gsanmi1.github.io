@@ -69,11 +69,11 @@ Then, with this information as a starting point, let's develop the fundamental p
 In this section we shall introduce some of the basic concepts in the
 study of vector spaces. 
 
-**Let $V$ be a vector space over the field $F$. A subspace of $V$ is a non-empty subset $W$ of $V$ which is itself a vector space over $F$ with the operations of vector addition and scalar multiplication on $V$.**
+**Let $V$ be a $K$-vector space. A subspace of $V$ is a non-empty subset $W$ of $V$ which is itself a vector space over $K$ with the operations of vector addition and scalar multiplication on $V$.**
 
 <br>
 
-Let's observe that, from the axioms of vector spaces, if $W$ is a vector space such $W \subset V$, then:
+Let's observe that, a vector space is simply an abelian group described through a field through a field's action. This means that $W \subset V$, then:
 
 - Closure relative to linear combinations:
 
@@ -946,13 +946,13 @@ Extending our example of $3.3.2.$ invertible matrix and basis, observe that an i
 
 ### 3.3.6. Characterization of the dimension of sum of subspaces.
 
-**Take $W_1, W_2 \leq V$ finite-dimensional subspaces, then $W_1 + W_2$ is finite dimensional satisfying:**
+**Take $U, W \leq V$ finite-dimensional subspaces, then $W + U$ is finite dimensional satisfying:**
 
-$$dim (W_1 + W_2) = dim W_1 + dim W_2 - dim (W_1 \cap W_2) $$
+$$dim (W + U) = dim W + dim U - dim (W \cap U) $$
 
 <br>
 
-First, remember that $W\_1 \cap W\_2$ is a subspace of $V$ and is it self a subset of $W\_1,W\_2$, then since $V$ is a finite-dimensional vector space, $W\_1 \cap W\_2$ is as well finite dimensional and any basis of it, as a linear independent set ($3.5.4$), is part of a basis of $W\_1$ and $W\_2$. 
+First, remember that $W \cap U$ is a subspace of $V$ and is it self a subset of $W,U$, then since $V$ is a finite-dimensional vector space, $W\_1 \cap W\_2$ is as well finite dimensional and any basis of it, as a linear independent set ($3.5.4$), is part of a basis of $W\_1$ and $W\_2$. 
 
 We can think in $\mathcal{B}\_1 : span(\mathcal{B}\_1) = W\_1$, $\mathcal{B}\_2: span(\mathcal{B}\_2) = W\_2$, and $\mathcal{B}\_3: span(\mathcal{B}\_3) =  W\_1 \cap W\_2$ such is $\mathcal{B}\_3 \subset \mathcal{B}\_1$ and $\mathcal{B}\_3 \subset \mathcal{B}\_2$.
 
