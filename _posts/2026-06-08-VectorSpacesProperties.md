@@ -75,24 +75,24 @@ study of vector spaces.
 
 Let's observe something interesting, from the [vector spaces](https://gsanmi1.github.io/posts/2026/04/08/VectorSpaces/) post, we know that for $(K,V, \cdot)$ to be a vector space; $K$ must be a field, $V$ must be an abelian group and $·$ must be a field's action over $V$. Hence, if $W \subset V : W \neq \varnothing$ then, for the triple $(K,W,·\mid_W)$ to be a vector space there are two structures that must survive, the abelian group and the field's action. 
 
-- First, let's see that $\cdot \mid_{W}$ is a field's action only if it is closed in $W$, since all his axioms departs from the universal quantifier $\forall$, hence all the pairs elements from $\cdot \mid_{W}$ inherites the properties from the original action, we have only to ensure that no image falls from $W$.
+- First, let's see that $W$ is a subgroup if $\cdot \mid_W, + \mid_W$ are closed in $W$. From the four axioms of the group, two departs from the universal quantifier $\forall$, hence all the elements inherites the properties from $V$ action, but the *identity* and the *inverse* involves and existential quantifier, $\exists$, let's see that the clausure of $\cdot \mid_W$, garantuee the properties:
 
-    $$\begin{cases} \cdot \in V^{K \times V} \text{ is a field's action }\\ W \subset V : W \neq \varnothing \end{cases} \implies (\cdot \mid_{W} \text{ is a field's action } \longleftrightarrow \cdot \mid_W \text{ is closed in } W)$$
+    $$\begin{cases} \cdot \in V^{K \times V} \text{ is a field's action } \\ W \subseteq V : W \neq \varnothing \\ \cdot \mid_W \text{ is closed in } W   \end{cases} \implies \begin{cases} \exists v \in V : v \in W \implies 0_Kv = 0_V \in W \\ \forall v(v \in W \implies -1_K v= -v \in W) \end{cases}$$
 
     <br>
 
-- Second, we can't ensure the same for the group, since from the four axioms the *identity* and the *inverse* involves and existential quantifier, however, this two elements are garantuee in $W$ if $\cdot \mid_W$ is a field's action:
+- Second, hence if the restriction of the field's action is closed, then we can assert that $W$ is a subgroup of $V$ if $+ \mid_W$ is also closed:
 
-    $$(\cdot \mid_W \text{ is a field's action} \wedge W \neq \varnothing) \implies \begin{cases} \exists v \in V : v \in W \implies 0_Kv = 0_V \in W \\ \forall v(v \in W \implies -1_K v= -v \in W) \end{cases}$$
-
-    Hence, we can state that:
-
-    $$\begin{cases} W \subset V : W \neq \varnothing \\ \cdot \mid_W \text{ is a field's action }\end{cases} \implies (W \text{ is a subgroup of V } \longleftrightarrow +\mid_W \text{ is closed in } W)$$
+    $$\begin{cases} \cdot \in V^{K \times V} \text{ is a field's action } \\ W \subseteq V : W \neq \varnothing \\ \cdot \mid_W \text{ is closed in } W   \end{cases} \implies (+\mid_W \text{ is closed in } W \rightarrow W \text{ is a subgroup of V } )$$
 
     Observe that the despite we don't mention it, the commutativity also get's inheritated so is not necesary to mention.
 
     <br>
 
+- Ultimately, if $W$ is a subgroup of $V$ and the restriction of the field's action in $V$ is closed on $W$, then the restriction is also a field's action over $W$ since all the axioms departs from the $\forall$ quantifier and the triple $(K,W,·\mid_W)$ is indeed a vector space.
+
+
+    <br>
 
 This can be summarized in, be $V$ a vector space and $W \subset V : W \neq \varnothing$, then:
 
