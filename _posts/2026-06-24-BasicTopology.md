@@ -781,6 +781,9 @@ Let's consider now some subsets of $\mathbb{R}^2$ and let's see what type of top
 
     <br>
     
+- **$\exists n \in \mathbb{N} \exists \varphi \in E^{[n]} : \varphi \text{ is a biyection } \wedge E \neq \varnothing$ ($E$ is a finite non-empty set).**
+
+
 
 ## 3.5. Complement of a family of sets.
 
@@ -892,9 +895,28 @@ This is, the set along with the acumulation set of $E$.
 
     <br>
 
-    Note also that:
 
-- $E = \overline{E} \iff E \text{ is closed }$
+3.  $E = \overline{E} \iff E \text{ is closed }$. Is immediate.
+
+    <br>
+
+## 3.8. Caracterization of the supreme as the maximum of the reals.
+
+Let be $E \subset R : E \neq \varnothing$ and $E$ is bounded above. Then we can consider $y = supE$ and $y \in \overline{E}$.
+
+This result is almost immediate, since $y$ is the least upperbound of $E$, $y \notin E \implies y \in E' \subset \overline{E}$.
+
+
+
+And we have $E \text { is closed } \implies y \in E$.
+
+<br>
+
+## 3.9. Relative open subsets.
+
+Let be $(X,d)$ a metric space, then be $Y \subset X$, $(Y,d)$ is as well a metric space. In this context, a set $E \subset Y$ can be open in $Y$ without being open in $X$.
+
+<br>
 
 # 4. Compact sets.
 
