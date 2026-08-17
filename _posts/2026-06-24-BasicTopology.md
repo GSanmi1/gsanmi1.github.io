@@ -986,7 +986,7 @@ $$n + |a_0| + |a_1| + \cdots + |a_n| = 0$$
 
 Y para $N = 0$, solo hay un número finito de ecuaciones y por tanto debería de haber solo un número finito de tuplas que identificasen un número finito de complejos. Pero claro, cada conjunto finito de tuplas es por número de elementos de la tupla, es decir, para n = 2 una familia finita, para n =3 una familia finita, y así. Por lo que, al final, el numero total de algebraicos es una union contable de conjuntos finitos, que se traduce en un conjunto contable. 
 
-
+<br>
 
 ## 3. Prove that there exist real numbers which are not algebraic.
 
