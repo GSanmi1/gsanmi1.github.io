@@ -1285,4 +1285,76 @@ Then, an ordered a *coordinate system* is what you get when you define an isormo
 
 $$\varphi_\mathscr{B}  : K^n \to V  \mid  \varphi_{\mathscr{B} }(\alpha_1,\ldots,\alpha_n) = \sum_{i=1}^n \alpha_i v_i : v_i \in \Set{v_1,\ldots,v_n}  \quad \forall i \in [n]$$
 
+Let's see first that $\varphi_{\mathscr{B}}$ is an isormorphism by demostrating is a biyective homomorphism:
+
+
+- First, let's see that is biyective. Take a given ordered basis $\mathscr{B}$. Then, for any vector there is a tuple, becuase the basis span $V$. Let's see also that there is a unique tuple for any vector, this immediate from the tuple definition:
+
+    $$(\alpha_1,\ldots,\alpha_n) = v =  (\beta_1,\ldots,\beta_n) \iff \alpha_i = \beta_i \quad \forall i \in [n]$$
+
+    Hence, $\varphi_{\mathscr{B}}$ is a biyection.
+
+    <br>
+    
+    
+- Second, take two tuples and consider their images, is easy to see that $\varphi_\mathscr{B}$ respects linearity between vectors, hence is an homomorphism.
+
 <br>
+
+We can use indistintcly:
+
+$$u = (\alpha_1,\ldots,\alpha_n) = \begin{pmatrix}\alpha_1 \\ \vdots \\\alpha_n \end{pmatrix}$$
+
+To refer to the same object, he coordinate matrix of $u$ relative to the ordered basis $\mathscr{B}$.
+
+<br>
+
+## 4.4. Dependence between ordered basis.
+
+
+<br>
+
+## 4.5. Exercises.
+
+### 4.5.1. 
+
+**1.** Show that the vectors
+
+$$
+\alpha_1 = (1, 1, 0, 0), \qquad \alpha_2 = (0, 0, 1, 1)
+$$
+$$
+\alpha_3 = (1, 0, 0, 4), \qquad \alpha_4 = (0, 0, 0, 2)
+$$
+
+form a basis for $\mathbb{R}^4$. Find the coordinates of each of the standard basis vectors in the ordered basis $\{\alpha_1, \alpha_2, \alpha_3, \alpha_4\}$.
+
+<br>
+
+We simply form the equation system: $\sum_{i=1}^4 x_i\alpha_i=0$ and conclude that $x_i=0 \quad \forall i \in [4]$. Now, taking the standard basis in $\mathbb{R}^4: \Set{e_1,e_2,e_3,e_4}$, for each $j \in [4]$ we form the equation $\sum_{i=1}^4 x_{ji} e_i = \alpha_j$. Solving it we get:
+
+$$\begin{cases} \alpha_1 = e_1 + e_2 \\ \alpha_2 = e_3 + e_4 \\ \alpha_3 = e_1 + 4e_4 \\ \alpha_4 = 2e_4 \end{cases}$$
+
+<br>
+
+### 4.5.2.
+
+**2.** Find the coordinate matrix of the vector $(1, 0, 1)$ in the basis of $\mathbb{C}^3$ consisting of the vectors $(2i, 1, 0)$, $(2, -1, 1)$, $(0, 1 + i, 1 - i)$, in that order.
+
+We take that, coordinate to coordinate is: $(1,0,1) = \alpha (2i,1,0) + \beta(2,-1,1) + \gamma (0,1+i.1-i)$, and we form the following equation system in $\mathbb{C}$:
+
+<br>
+
+$$\begin{cases} 2i \alpha + 2 \beta = 1 \\ \alpha - \beta + (1+i) \gamma = 0 \\ \beta + (1-i) \gamma = 1\end{cases}$$
+
+<br>
+
+Obtaining:
+
+$$
+\alpha = -\frac{1+i}{2}, \qquad \beta = \frac{i}{2}, \qquad \gamma = \frac{3+i}{4}
+$$
+
+<br>
+
+The coordinate matrix is: $\left(-\frac{1+i}{2},\ \frac{i}{2},\ \frac{3+i}{4}\right)^{t}$.
