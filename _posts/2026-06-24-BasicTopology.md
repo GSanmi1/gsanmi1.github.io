@@ -159,7 +159,7 @@ Now, let's introduce that in mathematics, count consist basically in measure the
 
 - $A$ is *countable* (or enumerable or denumerable) if $A \sim \mathbb{Z}^+$.
 
-- $A$ is *at most countable* if its finite.
+- $A$ is *at most countable* if its finite or countable.
 
 - $A$ is *uncountable* if $\nexists S \in \mathcal{P}(\mathbb{Z}^+)  : A \sim S$, note that this involves $\mathbb{Z}^+$ it self.
 
@@ -783,6 +783,10 @@ Let's consider now some subsets of $\mathbb{R}^2$ and let's see what type of top
     
 - **$\exists n \in \mathbb{N} \exists \varphi \in E^{[n]} : \varphi \text{ is a biyection } \wedge E \neq \varnothing$ ($E$ is a finite non-empty set).**
 
+    **$E$ is NOT open**
+
+    If $E$ is finite then we can consider $p,q \in E : d(p,q) = min\Set{d(x,y) \mid x,y \in E }$, then $N_r(p)$ for $r < d(p,q)$ is $N_r(p) \cap E \neq \varnothing$
+
 
 
 ## 3.5. Complement of a family of sets.
@@ -914,7 +918,32 @@ And we have $E \text { is closed } \implies y \in E$.
 
 ## 3.9. Relative open subsets.
 
-Let be $(X,d)$ a metric space, then be $Y \subset X$, $(Y,d)$ is as well a metric space. In this context, a set $E \subset Y$ can be open in $Y$ without being open in $X$.
+### 3.9.1. Definition.
+
+Let be $(X,d)$ a metric space, then be $Y \subset X$, $(Y,d)$ is as well a metric space. In this context, we define
+
+$$E \subseteq Y \subseteq X \text{ is open relative to } Y \iff \forall p(p \in E \implies \exists r [N_r(p) \cap Y \subset E])$$
+
+Naturally, in $(X,d)$, all open sets are relative open to $X$, but observe that set $E \subset Y \subset X$ can be open relative to $Y$ without necesarily being open in $X$. 
+
+Let's think for example in $\mathbb{R}^2$ with the distance $d(x,y) = \mid x - y \mid$, then let's consider the subset of $X $ as, $N = \Set{x \mid \|x \| < r}$, now for any $x \in \mathbb{R}^2$, we define: $\lceil \|x\| \rceil = \min\Set{z \in \mathbb{Z}:  z\geq\|x\|}$ and consider $Y = \Set{x \mid \lceil \|x\| \rceil \in 2 \mathbb{Z}}$. Observe that $E = N \cap Y$ is open relative to $Y$ but is not open in $\mathbb{R}^2$.
+
+<br>
+
+
+
+
+### 3.9.2. Caracterization.
+
+**Suppose $Y \subset X$. A subset $E \subseteq Y$ is *open relative* to $Y$ if and only if $E = Y \cap G$ where $G$ is an open set of $X$.**
+
+$$E \subseteq Y \subseteq X \text{ is open relative to } Y \iff \exists \text{ an open set } G \subseteq X  : E = Y \cap G$$
+
+One hand, if there is $E$ open relative to $Y$, then, for each $p \in E$ exists a neighbourhood $N_p \cap Y \subset E$, then we call $G = \bigcup_{p \in E} N_p$ and $E = Y \cap G$.
+
+<br>
+
+On the other hando, if $E = Y \cap G$ for some open set $G$, then, for each $p \in E$ there is some neighbourhood $N_p \subset G \implies (N_p \cap Y) \subset (G \cap Y = E)$ and $E$ is open relative to $Y$.
 
 <br>
 
@@ -923,3 +952,55 @@ Let be $(X,d)$ a metric space, then be $Y \subset X$, $(Y,d)$ is as well a metri
 
 
 <br>
+
+# Exercises.
+
+## 1. The empty set is a subset of every set.
+
+
+
+We can think that, be $X$ a superset and $A \subseteq X$, then by the properties of the union is: 
+
+$$\varnothing \subset A \cup \varnothing = A$$
+
+<br>
+
+## 2. Algebraic complex numbers.
+
+We have that:
+
+$$z \in \mathbb{C} \text{ is said to be algebraic} \iff \exists (a_1,\ldots,a_n) \neq 0 \in \mathbb{Z}^n : \sum_{i = 1}^n z^{n+1 -i}a_i = 0$$
+
+Prove that the set of all algebraic numbers is countable. Hint: For every positive
+integer $N$ there are only finitely many equations with:
+
+$$n + |a_0| + |a_1| + \cdots + |a_n| = N$$
+
+<br>
+
+
+Llevo un rato dándole vueltas y estoy pensando que para cada complejo algebraico, la condicion se desdobla en dos ecuaciones de la forma:
+
+$$n + |a_0| + |a_1| + \cdots + |a_n| = 0$$
+
+
+Y para $N = 0$, solo hay un número finito de ecuaciones y por tanto debería de haber solo un número finito de tuplas que identificasen un número finito de complejos. Pero claro, cada conjunto finito de tuplas es por número de elementos de la tupla, es decir, para n = 2 una familia finita, para n =3 una familia finita, y así. Por lo que, al final, el numero total de algebraicos es una union contable de conjuntos finitos, que se traduce en un conjunto contable. 
+
+
+
+## 3. Prove that there exist real numbers which are not algebraic.
+
+If don't then, the real subset of $\mathbb{C}$ would be an infinity subset of a countable set, and by $2.3.2$ then it would be countable, and we do know that $\mathbb{R}$ is uncountable so that's not possible. So there must be not-algebraic numbers in $\mathbb{R}$.
+
+<br>
+
+## 4. Uncountableness of irrational numbers.
+
+Is the set of all irrational real numbers countable?
+
+No, since $\mathbb{R}$ is the union of the rational set and irrational set and the irrational set is countable, if the irrational set was countable as well, then $\mathbb{R}$ would be a finite union of countable sets, and by $2.4.4$, the at most countable union of at moust countable sets is at most countable, but $\mathbb{R}$ is uncountable.
+
+<br>
+
+## 5. Construct a bounded set of real numbers with exactly three limit points.
+
