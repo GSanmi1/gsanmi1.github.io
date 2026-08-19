@@ -785,9 +785,55 @@ Let's consider now some subsets of $\mathbb{R}^2$ and let's see what type of top
 
     **$E$ is NOT open**
 
-    If $E$ is finite then we can consider $p,q \in E : d(p,q) = min\Set{d(x,y) \mid x,y \in E }$, then $N_r(p)$ for $r < d(p,q)$ is $N_r(p) \cap E \neq \varnothing$
+    Consider any $N_r(p)$ for some $p \in E$.
+    
+    Since $E$ is finite, observe that then we can consider $d(p,q) = min\Set{d(x,y) \mid x,y \in E }$, then $N_r(p)$ for $r < d(p,q)$ is $N_r(p) \cap E = \varnothing$.
 
+    <br>
 
+    **$E$ is closed**
+
+    Observe that $E$ has no limit points, $E' = \varnothing \subset E$, hence $E$ is closed.
+
+    <br>
+
+    **$E$ is NOT perfect**
+
+    Since $E' \neq E$.
+
+    <br>
+
+    **$E$ is bounded**
+
+    Arguien the same as in the open case, we can consider $d(p,q) = \max\Set{d(x,y) \mid x,y \in E }$, then $E \subset N_r(p)$ for some $r > d(p,q)$ and $E$ is bounded.
+
+    <br>
+
+- $E = \mathbb{Z}$
+
+    **$E$ is NOT open**
+
+    $$\forall z \in \mathbb{Z} \ (r \in (0,1) \implies N_r(z)\setminus \Set{z} \cap \mathbb{Z} = \varnothing) \implies \forall z \in \mathbb{Z} \ \nexists r : N_r(z) \subset \mathbb{Z}$$
+
+    <br>
+
+    **$E$ is closed but is not perfect**
+
+    Arguin the same as above.
+
+    <br>
+
+    **$E$ is NOT bounded**
+
+    Take any $z \in \mathbb{Z}$ and any $r \in \mathbb{R}^+$ and observe that $z + \lceil r \rceil \notin N_r(z)$, hence is not bounded.  
+
+    <br>
+
+- $E := \Set{1/n : n  \in \mathbb{Z}^+}$
+
+    **$E$ is NOT open**
+
+    Take $p = 1$ and $r = 1/2$, then $N_r(p)\setminus \Set{p} \cap E = \varnothing$
 
 ## 3.5. Complement of a family of sets.
 
