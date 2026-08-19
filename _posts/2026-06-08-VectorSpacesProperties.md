@@ -1287,10 +1287,9 @@ $$\varphi_\mathscr{B}  : K^n \to V  \mid  \varphi_{\mathscr{B} }(\alpha_1,\ldots
 
 Let's see first that $\varphi_{\mathscr{B}}$ is an isormorphism by demostrating is a biyective homomorphism:
 
-
 - First, let's see that is biyective. Take a given ordered basis $\mathscr{B}$. Then, for any vector there is a tuple, becuase the basis span $V$. Let's see also that there is a unique tuple for any vector, this immediate from the tuple definition:
 
-    $$(\alpha_1,\ldots,\alpha_n) = v =  (\beta_1,\ldots,\beta_n) \iff \alpha_i = \beta_i \quad \forall i \in [n]$$
+    $$(\alpha_1,\ldots,\alpha_n) = [v]_{\mathscr{B}} =  (\beta_1,\ldots,\beta_n) \iff \alpha_i = \beta_i \quad \forall i \in [n]$$
 
     Hence, $\varphi_{\mathscr{B}}$ is a biyection.
 
@@ -1301,31 +1300,92 @@ Let's see first that $\varphi_{\mathscr{B}}$ is an isormorphism by demostrating 
 
 <br>
 
-We can use indistintcly:
+From now on, we will use:
 
-$$u = (\alpha_1,\ldots,\alpha_n) = \begin{pmatrix}\alpha_1 \\ \vdots \\\alpha_n \end{pmatrix}$$
+$$[v]_{\mathscr{B}} = \begin{pmatrix}\alpha_1 \\ \vdots \\\alpha_n \end{pmatrix}: \alpha_i \in K \quad \forall i \in [n]$$
+
+Hence, we define: $v = [v]_{\mathscr{B}} \mathscr{B}$
+
+$$v = \mathscr{B} [v]_{\mathscr{B}} = \begin{pmatrix}v_1, \cdots, v_n\end{pmatrix}  \begin{pmatrix}\alpha_1 \\ \vdots \\\alpha_n \end{pmatrix} $$
 
 To refer to the same object, he coordinate matrix of $u$ relative to the ordered basis $\mathscr{B}$.
 
 <br>
 
-## 4.4. Dependence between ordered basis.
+## 4.4. Change of basis matrix.
 
+**Let' be $V$ an $n$-dimensional $K$-space and two ordered basis, $\mathscr{B}, \mathscr{B}'$, then:**
+
+$$\exists P! \in M_n(K) : P \simeq I_n \ \Big([v]_{\mathscr{B}} = P [v]_{\mathscr{B}'} \iff P^{-1}[v]_{\mathscr{B}} = [v]_{\mathscr{B'}} \quad \forall v \in V \Big)$$
+
+**$P$ is called *change of basis* matrix.**
 
 <br>
 
-## 4.5. Exercises.
+Take that $\mathscr{B}:= (u_1,\ldots,u_n)$ and $\mathscr{B}':=(w_1,\ldots,w_n)$, then each $w_i$ can be put in terms of $\mathscr{B}$ as:
 
-### 4.5.1. 
+$$\begin{cases} w_1 = x_{11}u_1 + \cdots x_{1n}u_n = [w_1]_{\mathscr{B}} \\ \quad \vdots \\ w_n = x_{n1}u_1 + \cdots x_{nn}u_n = [w_n]_{\mathscr{B}}\end{cases} \implies P = \begin{pmatrix}[w_1]_{\mathscr{B}}, \ldots, [w_n]_{\mathscr{B}} \end{pmatrix}$$
 
-**1.** Show that the vectors
+Then, at this point, let's call $P$ to the *matrix of the coordinates of $\mathscr{B}'$ in terms of $\mathscr{B}$*, observe that $P$ is unique since the scalars are unique for each vector. Then let's take some $v \in V$, again, since the tuple is unique for each ordered basis is:
 
-$$
-\alpha_1 = (1, 1, 0, 0), \qquad \alpha_2 = (0, 0, 1, 1)
-$$
-$$
-\alpha_3 = (1, 0, 0, 4), \qquad \alpha_4 = (0, 0, 0, 2)
-$$
+$$v =\mathscr{B}' [v]_{\mathscr{B}'} =  \begin{pmatrix}w_1, \cdots, w_n\end{pmatrix} \begin{pmatrix}\alpha_1 \\ \vdots \\ \alpha_n \end{pmatrix} = \begin{pmatrix}u_1, \cdots, u_n\end{pmatrix} \begin{pmatrix}x_{11} & \cdots & x_{n1} \\ \vdots &  & \vdots \\ x_{1n} & \cdots & x_{nn}\end{pmatrix}  \begin{pmatrix}\alpha_1 \\ \vdots \\ \alpha_n \end{pmatrix} = $$
+
+$$ = \begin{pmatrix}u_1, \cdots, u_n\end{pmatrix} \begin{pmatrix}\sum\alpha_i x_{i1} \\ \vdots \\ \sum \alpha_i x_{in}\end{pmatrix}  = \mathscr{B}[v]_{\mathscr{B}}$$
+
+Hence this matrix chang from $\mathscr{B}'$ to $\mathscr{B}$. Observe that, since the basis are formed by independent vectors, then, the $RREM$ form of $P$ is $I_n$ (otherwise the basis would be linear dependent), so exists $P^{-1}$ and we can stablish:
+
+$$[v]_{\mathscr{B}}=P[v]_{\mathscr{B}'} \iff [v]_{\mathscr{B}'}= P^{-1}[v]_{\mathscr{B}}$$
+
+
+Let's, observe some interesting fact, let's take some invertible matrix $P \in M_n(K)$ and some ordered basis $\mathscr{B}$ from $V$, then, from the construction above the $n$-tuple $\mathscr{B}' = \mathscr{B}P$ is independent since $P$ is invertible, hence the vectors of the $n$-tuple are a set of $n$ independent vectors of the $K$-space $V$ which is $n$-dimensional so is a basis. And since it is the result of a equation system with an invertible asociated matrix, this result is unique, this is, $\mathscr{B}'$ is univocaly determinated by $\mathscr{B}$ and $P$.
+
+<br>
+
+As a brief summary and before see some examples, we can think about the coordinates of a vector as *labeling* in terms of an ordered basis. In the sense that the coordinates is a description of some vector $v \in V$ in terms of the vectors of the basis $\mathscr{B}$. Appliying the change of basis $\mathscr{B} \underbrace{\to}_{P} \mathscr{B}'$ matrix consist in change this description while $v$ remains the same, it only changes the perspective from which you see it.
+
+<br>
+
+## 4.5. Examples.
+
+### 4.5.1. Standard ordered basis.
+
+Take some field $K$ and consider $v \in K^n$, this means that $v$ can be identified with some tuple of elements of $K$; $(\alpha_1, \ldots, \alpha_n) = v$. Then, take the standard basis of $K$; $\mathcal{B}:=\Set{e_1,\ldots,e_n}$, such  
+
+$$e_i =(\alpha_1,\ldots,\alpha_n) : \alpha_j =\begin{cases} 0 \quad j \neq i \\ 1 \quad j = i\end{cases}$$
+
+And form the ordered basis in crecesent order: $\mathscr{B} := (e_1,\ldots,e_n)$. 
+
+Then: 
+
+$$[v]_{\mathscr{B}} = \begin{pmatrix} \alpha_1 \\ \vdots \\ \alpha_n \end{pmatrix}$$
+
+<br>
+
+### 4.5.2. Rotation matrix.
+
+In $\mathbb{R}^2$ consider the matrix:
+
+$$P = \begin{pmatrix} \cos \theta & - \sin \theta \\ \sin \theta & \cos \theta \end{pmatrix} : \theta \in \mathbb{R}$$
+
+Take the standard basis $\mathscr{B} = (e_1,e_2)$ and let's multiply in order to obtain a new basis:
+
+$$\mathscr{B}' = \mathscr{B} P = (v_1,v_2) : \begin{cases} v_1 = \cos\theta e_1 + \sin\theta e_2 \\ v_2 = \cos\theta e_2 - \sin \theta e_1\end{cases}$$
+
+According to the euclid geometry in $\mathbb{R}^2$, observe that $v_1$ and $v_2$ are now the projections of $e_1$ and $e_2$ a long the axis regard some angle, $\theta$.
+
+<br>
+
+Note that $P$ is invertible, this is coherent since we should undo a rotation.
+
+## 4.6. Exercises.
+
+### 4.6.1. 
+
+**1. Show that the vectors**
+
+$$\alpha_1 = (1, 1, 0, 0), \qquad \alpha_2 = (0, 0, 1, 1)$$
+
+$$\alpha_3 = (1, 0, 0, 4), \qquad \alpha_4 = (0, 0, 0, 2)$$
 
 form a basis for $\mathbb{R}^4$. Find the coordinates of each of the standard basis vectors in the ordered basis $\{\alpha_1, \alpha_2, \alpha_3, \alpha_4\}$.
 
@@ -1351,10 +1411,79 @@ $$\begin{cases} 2i \alpha + 2 \beta = 1 \\ \alpha - \beta + (1+i) \gamma = 0 \\ 
 
 Obtaining:
 
-$$
-\alpha = -\frac{1+i}{2}, \qquad \beta = \frac{i}{2}, \qquad \gamma = \frac{3+i}{4}
-$$
+$$\alpha = -\frac{1+i}{2}, \qquad \beta = \frac{i}{2}, \qquad \gamma = \frac{3+i}{4}$$
 
 <br>
 
 The coordinate matrix is: $\left(-\frac{1+i}{2},\ \frac{i}{2},\ \frac{3+i}{4}\right)^{t}$.
+
+<br>
+
+### 4.5.3. 
+
+**3. Let $\mathcal{B} = \Set{\alpha_1, \alpha_2, \alpha_3}$ be the ordered basis for $\mathbb{R}^3$ consisting of**
+
+$$\alpha_1 = (1, 0, -1), \qquad \alpha_2 = (1, 1, 1), \qquad \alpha_3 = (1, 0, 0)$$
+
+**What are the coordinates of the vector $(a, b, c)$ in the ordered basis $\mathcal{B}$?**
+
+Observe that $[v]_\mathcal{(e_1,e_2,e_3)} = (a,b,c)$, then from the perspective of the standard basis, the change of basis matrix is:
+
+$$P = [\mathcal{B}]_{(e_1,e_2,e_3)} = ([\alpha_1]_{(e_1,e_2,e_3)}, [\alpha_2]_{(e_1,e_2,e_3)}, [\alpha_3]_{(e_1,e_2,e_3)}) = \begin{pmatrix}1 & 1 & 1 \\ 0 & 1 & 0 \\ -1 & 1 & 0 \end{pmatrix}$$
+
+This is the change of basis matrix from $\mathcal{B}$ to $(e_1,e_2,e_3)$. Hence:
+
+$$P[v]_\mathcal{B}=[v]_{(e_1,e_2,e_3)} \iff [v]_\mathcal{B} = P^{-1}[v]_{(e_1,e_2,e_3)}$$
+
+
+$$[v]_{(e_1,e_2,e_3)} = \begin{pmatrix}0 & 1 & -1 \\ 0 & 1 & 0 \\ 1 & -2 & 1 \end{pmatrix} \begin{pmatrix}a \\ b \\ c \end{pmatrix} = \begin{pmatrix}b - c  \\ b \\ a + c - b \end{pmatrix}$$
+
+### 4.5.4.
+
+**4. Let $W$ be the subspace of $\mathbb{C}^3$ spanned by $\alpha_1 = (1, 0, i)$ and $\alpha_2 = (1 + i, 1, -1)$.**
+
+- **(a)** Show that $\alpha_1$ and $\alpha_2$ form a basis for $W$.
+
+    Since $W = span\Set{\alpha_1, \alpha_2}$, it only remains to prove that this two vectors are not dependent, which is obvious since are not proportionals.
+
+    <br>
+
+- **(b)** Show that the vectors $\beta_1 = (1, 1, 0)$ and $\beta_2 = (1, i, 1 + i)$ are in $W$ and form another basis for $W$.
+
+    Firs't let's see that $\beta_1 = \alpha_1 + i^{-1} \alpha_2$ and $\beta_2 = (2-i)\alpha_1 + i \alpha_2$, hence are in $W$ and they are not proportional, hence form a basis of $W$.
+
+    <br>
+
+- **(c)** What are the coordinates of $\alpha_1$ and $\alpha_2$ in the ordered basis $\{\beta_1, \beta_2\}$ for $W$?
+
+    Let's call $\mathscr{B}=(\alpha_1,\alpha_2)$ and $\mathscr{B}'=(\beta_1,\beta_2)$, then:
+
+    $$[\mathscr{B}']_{\mathscr{B}} = ([\beta_1]_\mathscr{B}, [\beta_2]_\mathscr{B}) = \begin{pmatrix} 1 & 2 - i \\ -i & i \end{pmatrix}$$
+
+    And we can state that:
+
+    $$[\mathscr{B}']_{\mathscr{B}}^{-1} = [\mathscr{B}]_{\mathscr{B'}} = \begin{pmatrix} 1 & 2 - i \\ -i & i \end{pmatrix}^{-1} = \frac{1}{10}\begin{pmatrix} 3+i & 1 + 7i \\ 3+i & 1 -3i \end{pmatrix}$$
+
+    Thus:
+
+    $$\begin{cases} [\alpha_1]_\mathscr{B'} = ((3+i)/10,(3+i)/10) \\ [\alpha_2]_\mathscr{B'} = ((1+7i)/10,(1-3i)/10)\end{cases}$$
+
+    <br>
+
+### 4.5.5.
+
+**5.** Let $\alpha = (x_1, x_2)$ and $\beta = (y_1, y_2)$ be vectors in $\mathbb{R}^2$ such that
+
+$$x_1 y_1 + x_2 y_2 = 0, \qquad x_1^2 + x_2^2 = y_1^2 + y_2^2 = 1$$
+
+Prove that $\mathcal{B} = \{\alpha, \beta\}$ is a basis for $\mathbb{R}^2$. Find the coordinates of the vector $(a, b)$ in the ordered basis $\mathcal{B} = \{\alpha, \beta\}$. (The conditions on $\alpha$ and $\beta$ say, geometrically, that $\alpha$ and $\beta$ are perpendicular and each has length 1.)
+
+For the first part, let's see that $\alpha$ and $\beta$ can't be proportionals, otherwise, it cannot be perpendicular (the first equation is not solvable for two not null and non-proportionals vectors). Hence is a set of two independent vectors and form a basis in $\mathbb{R}^2$.
+
+Now, let's form the change of basis matrix:
+
+$$P =[(\alpha,\beta)]_{(e_1,e_2)} = \begin{pmatrix} x_1 & y_1 \\ x_2 & y_2\end{pmatrix} \iff [(e_1,e_2)]_{(\alpha_1,\alpha_2)} = P^{-1}$$
+
+Observe that, the two equations above, fixing one of the two components allow us to derive one vector from the other, hence we can simplify $\beta$ in terms of $\alpha$ and get the inverse of $P^{-1}$.
+
+$$P = \begin{pmatrix} x_1 & -x_2 \\ x_2 & x_1 \end{pmatrix}$$
