@@ -995,6 +995,119 @@ On the other hando, if $E = Y \cap G$ for some open set $G$, then, for each $p \
 
 # 4. Compact sets.
 
+## 4.1. Open Covers.
+
+Take some subset of a metric space $E \subseteq X$. Then we say that a collection of open sets $\Set{G_\alpha}$ is an open cover of $E$ iff $\displaystyle E \subseteq \bigcup_{\alpha} G_\alpha$.
+
+<br>
+
+## 4.2. Compact Formal Definition.
+
+Then, we say that a subset of a metric space $E \subseteq X$ is compact if every open cover of $K$ contains an open subcover.
+
+$$E \subseteq X \text{ is compact } \iff \exists n \in \mathbb{N} : \Set{G_i}_{i \in [n]} \text{ is an open cover of } E$$
+
+<br>
+
+## 4.3. Compactness intuition and historic motivation.
+
+In brief terms, compactness is the topological abstraction of finitness, understanded it as the capability of extrapolate local information to global information.
+
+Note that any finite set is compact, and that a finite set has properties that some infinite set loss, like for example, the reachness of the maximum in the set. Compactness property isolate those infinite sets which mantain thoses properties.
+
+<br>
+
+### 4.3.1. Topology prolegomena.
+
+Until now, we have only seen that metric spaces are those spaces where a mathematically precise notion of *distance* is defined, meaning that metric spaces provide a quantitative notion of proximity, which allows to reference local structures in quantitative terms.
+
+Topology spaces are a more general scenario which try to clear what means to be in the surroundings of a point, this is; admits a qualitative reference for local structures. If metric spaces references it through the distance (this is, translating the property as some real number value), then topology spaces references it in qualitative terms through the notion of open sets.
+
+More precisely, a topologic space $(X,\mathcal{T})$ is formed by a non-empty set $X$ and a topology $\mathcal{T}$ which is a description of those subsets of $X$ for which is valid to consider the surroundings of any point, open sets. 
+
+<br>
+
+### 4.3.2. Open sets and Neigbourhoods.
+
+Let be $(X, \mathcal{T})$ a topologic space (remember that $\mathcal{T}$ is a set of open sets defined by extension), then, we stablish that:
+
+$$N \subseteq X \text{ is a neighbourhood of } x \iff \exists U \in \mathcal{T} : x \in U \subseteq N$$
+
+This is a set is a neigbourhood of a point if contains some open set containing each point. We refer to the family of all neigbourhoods of $x$ as $\mathcal{N}(x) := \Set{ N \subseteq X \mid \exists U \in \mathcal{T} : x \in U \subseteq N}$. 
+
+Hence, observe that *open sets* are those sets that are neighbourhoods for all his points.
+
+$$U \in \mathcal{T} \iff \forall x( x \in U \implies U \in \mathcal{N}(x))$$
+
+In this sense, they are "ample for everything inside it".
+
+<br>
+
+Then, we call a system of neighbourhoods over $X$ to an asignation $x \mapsto \mathcal{N}(x) \neq  \varnothing$ that satisfies:
+
+- $N1 \ -$ **Every neighbourhood of $x$ owns $x$**, formally: 
+
+    $$\forall N(N \in \mathcal{N}(x) \implies x \in N)$$
+
+- $N2 \ -$ **$\mathcal{N}(x)$ owns any set contaning a neigbourhood of $x$**; or in more simpler terms, any set containing a neigbourhood is also a neigbourhood it self. 
+
+    $$\forall N \in \mathcal{N}(x) \ \forall M \big[N \subseteq M \implies M \in \mathcal{N}(x)\big]$$
+
+- $N3 \ -$ **$\mathcal{N}(x)$ owns any finite intersection of neigbourhoods of $x$**
+
+    $$\forall N,M \big[N,M \in \mathcal{N}(x)  \implies N\cap M \in \mathcal{N}(x)\big]$$
+
+    Observe that by associativity, $N3$ works for any finite intersection of neighbourhoods of $x$. 
+
+- $N4 \ - $ **Any neighbourhood $N$ of a point $x$ contains some other neighbourhood $M$ of $x$ for which $N$ is a neighbourhood of any point of $M$**:
+
+    $$\forall N \in \mathcal{N}(x) \exists M \in \mathcal{N}(x) \big[M \subseteq N \wedge \forall y( y \in M \implies  N \in \mathcal{N}(y))\big]$$
+
+    <br>
+
+Observe that $N4$ es the only axiom that speaks about two distinct points of $X$, basically saying that for any neighbourhood $N$ of a $x$ we can find a narrower neighbourhood $M$ of $x$ for whose elements $N$ is a neighbourhood as well. Meaning that a neighborhood allows you to speak of a local community of points, in the sense that you cannot single out a privileged point upon which the structure is centered; they all lay claim to the neighborhood as their own.
+
+This axiom system over $N(x)$ codifies a proximity notion over $x$. Observe also that:
+
+$$\forall N,N' \in \mathcal{N}(x) \big[N' \subset N  \iff N' \text{ is more restrictive than } N\big]$$
+
+With this in mind observe that
+
+- In one hand, $N1 - N3$ states what a local structure or enviroment of a point $x$ is by defining how it behaves; it contains $x$, is stable with the expansion and finite intersection retains a surrounding of the point. 
+
+- On the other hand, $N4$ states some notion of proximity by asserting that any neighbourhood $N \in \mathcal{N}(x)$ is simultaneously a neighbourhood for any point $y$ in a narrower $M \in \mathcal{N}(x)$. 
+
+    Then, $N$ is a common local structure of any point of $M$ (including $x$). Any $y \in M$ is in the neighbourhood of $x$ as much as $x$ is in $y$'s and in that sense, $x$ and $y$ are "suficiently close" relative to $N$. In summary, these points share a set that all call as "his own neighbourhood", in this sense all are part of the same descentrilized local structure.
+
+    Hence any neighbourhood of $x$ is a common local structure for some "sufficently close" amount of points among which $x$ is incluyded. Which gives sense to the term "surroundings" of $x$.
+
+    <br>
+
+
+This means that, in contrast with metric spaces, topologic proximity is comparative between a point an a set; topology answer when a point belongs or not to a set with the subsequent conclusion that a point could belong or not to the neighbourhood of other point, and $N4$ ensures that both are in the surroundings of the other.
+
+This allows to talk about *local properties*, this is, properties that points satisfies regards his surrondings.
+
+<br>
+
+### 4.3.4. Local information. Local property. Local to Global properties.
+
+Let's consider a topologic space, $(X,\mathcal{T})$ and an structure over it, for example a function. We refer as *local information on $x$* to what remains of the structure when you restrict it over the surroundings of $x$.
+
+This is where the vocabulary developed with the open sets takes place which allows to refer to the local structure in which a point is embebed and look it closely to see how some property behaves. Formally, if $M_x$ is a property satisfied by a point $x \in X$, then,  if:
+
+$$ M_x \text{ is a local property of } x \iff \exists U \in  \mathcal{N}(x) : \forall y \big( y \in U \implies M_y\big)$$
+
+We could state that $U_x$ is the neighbourhood in which the local property $M_x$ is true, then the problem begins with the fact that you cannot extrapolate a local property satisfied by every point as a global property:
+
+$$\exists M_x : \forall x \exists U_x \quad \cancel{\Longrightarrow}  \quad \exists  M_x : \exists U_x \forall x $$
+
+What get's broken here is that the arbitrary intersection doesn't garantee neighborhood preservation, meaning that ultimately, finitness must be introduced in some way.
+
+<br>
+
+### Compactness arisness and local properties: Finitness and Discretness.
+
 
 
 <br>
