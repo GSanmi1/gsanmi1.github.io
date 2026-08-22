@@ -1003,9 +1003,7 @@ Take some subset of a metric space $E \subseteq X$. Then we say that a collectio
 
 ## 4.2. Compact Formal Definition.
 
-Then, we say that a subset of a metric space $E \subseteq X$ is compact if every open cover of $K$ contains an open subcover.
-
-$$E \subseteq X \text{ is compact } \iff \exists n \in \mathbb{N} : \Set{G_i}_{i \in [n]} \text{ is an open cover of } E$$
+Then, we say that a subset of a metric space **$E \subseteq X$ is compact if every open cover of $K$ contains a finite open subcover**.
 
 <br>
 
@@ -1084,85 +1082,63 @@ With this in mind observe that
     <br>
 
 
-This means that, in contrast with metric spaces, topologic proximity is comparative between a point an a set; topology answer when a point belongs or not to a set with the subsequent conclusion that a point could belong or not to the neighbourhood of other point, and $N4$ ensures that both are in the surroundings of the other.
-
-This allows to talk about *local properties*, this is, properties that points satisfies regards his surrondings.
+This means that, in contrast with metric spaces, topologic's proximity is comparative between a point an a set; topology answer when a point belongs or not to a set with the subsequent conclusion that a point could belong or not to the neighbourhood of other point, and $N4$ ensures that both are in the surroundings of the other.
 
 <br>
 
-### 4.3.4. Local and Global information.
+### 4.3.4. Local information.
 
 Let's review a bit what we were talking about and let's think in what we say with this vocabulary about the points of $X$, this is, what properties can be annonced.
 
-On one hand, we have topological spaces $(X,\mathcal{T})$ which introduces the *neighborhood* structure which allows to identify a decentralized structure of points, a *local structure*. $N4$ states that, given a neighborhood $N \in \mathcal{N}(x)$, then there exists a collection of points that decentralizes the neighborhood; all of them play the same role as $x$ in $N$; $N$ serves as the certificate of a resolution that treats all points belonging to that collection (including $x$) equally. Meaning that within any neighborhood, we can identify a subset of points that the neighborhood itself cannot distinguish from each other; it merely "knows" that they lie sufficiently "inside" to qualify himself as a neighborhood for each of them. Essentially, we are dealing with the homogenization of a sub-collection in which none stands out from the rest because none plays a more significant role than the others. In other terms, one could select any of those points, identify the same neighborhood, and then consequently identify the same subset of points, the local structure at that resolution. This constitutes an invariant under a shared neighborhood that makes two points indistinguishable at certain resolution. Then, local structures are homogeneity relative to a specific local observation.
+On one hand, we have topological spaces $(X,\mathcal{T})$ which introduces the *neighborhood* structure which allows to identify a decentralized structure of points, an associated *local structure*. $N4$ states that, given a neighborhood $N \in \mathcal{N}(x)$, then there exists a collection of points that decentralizes the neighborhood; in the sense that all of them play the same role as $x$ in $N$, the neighborhood itself cannot distinguish a point from other; it merely "knows" that all lie sufficiently "inside" to qualify himself as a neighborhood for each of them. Then, $N$ serves as a certificate (some kind of "optic resolution") that treats equally to all points belonging to that collection (including $x$). To strengthen this descentralized conception, observe that one could select any of those points, identify $N$, and then consequently identify the same subset of points. In summary, local structures are homogeneity relative to a specific local observation.
 
 Observe that this is coherent with the idea presented above about what topology can say about two points; whether both coexists in the same neighbourhood or not. If two points share some open set as his own neighbourhood, nothing more can be said about them until distinct neighbourhoods are reached. This is stablished as the separation criteria:
 
 $$x,y \in X \text{ are topologically indistinguishable} \iff N(x) = N(y)$$
 
-Let's see an example, consider $(-2,2)$ which is an open set, then take two points $x,y : \|x\|,\|y\| < 2$, then naturally both are inside the set. Let ask our selves, in which way we could ensure $x \neq y$ without declaring nothing that allows to create other neighbourhood. The reallity is that, topologicly speaking, we can't say nothing more without reference other neighbourhood because all topology can declare is membership between points and a sets. Hence, $x,y$ are sufficiently close each other to not allow a distinction to be made up without more information, this is, more sets, more neighbourhoods, other resolution. In fact, what we need in a topological sense is to do a "graduation"; increase the scale until appreciable differences are found traduced as the finding of a non-shared neigbourhood: $N \in N(x) : N \notin N(y)$.
-
-The core of topology lies in the ability to discuss about these local structures. Say something of some neighbourhood is saying it over all the points that can reclaim the neighbourhood for himself. If $P$ is a predicate over the points of $X$ and $U \in \mathcal{T}$, then 
-
-$$P_U \iff \forall x( U \in \mathcal{N}(x) \implies P_x)$$
-
-Attributing a property to a local structure is exactly as say that every point within it satisfies that property exactly as any other point would, and the property cannot be used to distinguish who carries it.
-
-This is what we call *local information*; an individualizable observation asserted over the neighbourhood entity as a mass expresed not as punctual predicate but as a family of punctual predicates indexed by a witness, and the local statement uses a different witness in each piece:
-
-$$\text{Local information over } x \iff \exists U_x \in \mathcal{N}(x) \exists w_x : U_x \subseteq \Set{P^{w_x}}$$
-
-This is that, local information is a collection of predicates (the elements for which that predicate is valid) validated by different witness that covers some neighbourhood of $x$, $U_x$. Observe that, continouing with our perspective, any local property of $x$ is asserted over his local structure at some resolution.
-
-Then, while local information refers to an indexed family of witness of a predicated, global information referes to a unique witness valid for any point:
-
-$$\text{ Global information in } X \iff \exists w : X \subseteq \Set{P^w}$$
-
-
-We are therefore interested in understanding when can we use local information to extrapolate global information. In other words, we want to know when a collection of local properties covering $X$ allows us to identify a single property satisfied by all points in $X$. 
-
-$$\exists \big[\Set{N_\alpha} : \bigcup_\alpha N_\alpha = X\big] : \forall \alpha \exists P_{N_\alpha}\quad \Longrightarrow ?  \quad \exists P_X$$
-
-
-Observe that something that takes on a global form yet becomes a local property when restricted to a neighborhood. Ultimately, while it is very easy to derive or construct the individual for from the general through restriction ($P_N = {P_X}_{\mid N}$) the question is when can we do the reverse.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-The point is that; two points are considered undifferentiated insofar as a shared neighborhood can be found for both. The core of topology lies in the ability to discuss homogeneous regions of points—regions where points are so close that they behave in a way that precludes distinguishing them from one another based on a specific criterion. This does not imply that they are indistinguishable in a strictly topological sense; rather, it means that attributing a property to that region automatically implies that every point within it satisfies that property exactly as any other does, and the property cannot be refined in a way that would allow one to distinguish between two points in that neighborhood.
-
-Let's consider a topologic space, $(X,\mathcal{T})$ and an structure over it, for example a function. We refer as *local information on $x$* to what remains of the structure when you restrict it over the surroundings of $x$.
-
-This is where the vocabulary developed with the open sets takes place which allows to refer to the local structure in which a point is embebed and look it closely to see how some property behaves. Formally, if $M_x$ is a property satisfied by a point $x \in X$, then,  if:
-
-$$ M_x \text{ holds near } x \iff \exists U \in  \mathcal{N}(x) : \forall y \big( y \in U \implies M_y\big)$$
-
-Observe that the problem is that generalized local information not means global information:
-
-$$\forall x \exists M_x\quad \cancel{\Longrightarrow}  \quad \exists M_x \forall x$$
-
-
-
-What get's broken here is that the arbitrary intersection doesn't garantee neighborhood preservation, meaning that ultimately, finitness must be introduced in some way.
+Let's see an example, consider $(-2,2)$ which is an open set, then take two points $x,y : \|x\|,\|y\| < 2$, then naturally both are inside the set. Let's ask our selves, in which way we could ensure $x \neq y$ without declaring nothing more that allows to create other neighbourhood. The reallity is that, topologicly speaking, we can't say nothing more without reference other neighbourhood because all topology can declare is membership between points and a sets. Hence, $x,y$ are sufficiently close each other to not allow a distinction to be made up without more information, this is, more sets, more neighbourhoods, other resolution. In fact, what we need in a topological sense is to do a "graduation"; increase the scale until appreciable differences are found traduced as the finding of a non-shared neigbourhood: $N \in N(x) : N \notin N(y)$.
 
 <br>
 
-### 4.3.5. Local and Global information.
+Then core of topology lies in the ability to discuss about these local structures.
+
+First, let's say we assert something about some point $x \in X$, $P(x,w)$, where $w$ certifies the way in which $x$ satisfies $P$. Then, we say that $w$ is *local data* if, following our local structure intuition, we can find some open set of $x$ for which $w$ works as well. If $P^w = \Set{y \in X \mid P(y,w)}$, then:
+
+$$w \text{ is local data for } P \text{ at } x \iff \exists U_x \in \mathcal{T}: x \in U_x \subseteq P^w$$
+
+Then, the formulation of local data over each point of $X$ is what we call *local information* of $X$:
+
+$$P \text{ is local information of } X \iff \forall x \exists w_x : w_x \text{ is local data for } P \text{ at } x$$
+
+*Local information* is information of $X$ expressed in terms of *local structures*. 
+
+Let's see that it naturally produces families of open sets that cover the space. Observe that we can consider, for each point, a local region and a local data that works over it, abstracted in the mapping 
+
+$$x \mapsto (U_x,w_x)\mid U_x \in \mathcal{T} : x \in U_x \subseteq P^{w_x}$$
 
 
+Then, this $U_x$ satisfies:
+
+$$X = \bigcup_{x \in X} U_x $$
+
+Observe that nothing restrict the collection local data to be infinite, which, in general, cannot be reduced to a single witness in a single operation. The reason is that operations that produce a common witness from several are finitary: the maximum of finitely many finite bounds is finite, the minimum of finitely many positive radius is positive, and the intersection of finitely many neighborhoods is a neighborhood. For infinite families, each of these operations degenerates (to $\infty$, $0$, or $\varnothing$). 
+
+Hence, we are interested in conditions under which the associated cover can be reduced to finitely many local regions.
 
 
+<br>
 
+### 4.3.5. Compactness
+
+Is at this point where compactness arrives.
+
+Topologic spaces introduces *local structures* through open sets and allows to make afirmations over them in the form of *local data* that could be grouped in an open cover forming *local information*, information refered to each point of the space through open sets. 
+
+Then *compactness* is the condition that ensures that every open cover of the space admits a finite open subcover. Hence, we can understand local information through a finite number of local descriptions in the given cover.
+
+Compactness is a topological finiteness principle, we are introducing some kind *finitness* inside a non-neccesarily discrete or finite set. The idea is that, although a space may contain infinitely many points (which could require infinitely many local observations), any open cover describing the whole space can be reduced to finitely many of those local regions. We can then describe the total space by a finite number of assertions.
+
+Essentially, compactness is the property of being "finitely understood". Any description of the space in terms of open sets can be reduced to a sufficient finite number of descriptions.
 
 <br>
 
