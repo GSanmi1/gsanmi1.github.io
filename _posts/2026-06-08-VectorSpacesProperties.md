@@ -1487,3 +1487,19 @@ $$P =[(\alpha,\beta)]_{(e_1,e_2)} = \begin{pmatrix} x_1 & y_1 \\ x_2 & y_2\end{p
 Observe that, the two equations above, fixing one of the two components allow us to derive one vector from the other, hence we can simplify $\beta$ in terms of $\alpha$ and get the inverse of $P^{-1}$.
 
 $$P = \begin{pmatrix} x_1 & -x_2 \\ x_2 & x_1 \end{pmatrix}$$
+
+<br>
+
+### 4.5.6.
+
+**6.** Let $V = \mathbb{C}^{\mathbb{R}}$ and let $f_1(x) = 1$, $f_2(x) = e^{ix}$, $f_3(x) = e^{-ix}$.
+
+- **Prove that $f_1$, $f_2$, and $f_3$ are linearly independent.**
+
+    First, 
+
+- **(b)** Let $g_1(x) = 1$, $g_2(x) = \cos x$, $g_3(x) = \sin x$. Find an invertible $3 \times 3$ matrix $P$ such that
+
+$$
+g_j = \sum_{i=1}^{3} P_{ij} f_i.
+$$
