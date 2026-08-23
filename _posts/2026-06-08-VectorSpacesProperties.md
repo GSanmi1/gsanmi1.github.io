@@ -1496,10 +1496,35 @@ $$P = \begin{pmatrix} x_1 & -x_2 \\ x_2 & x_1 \end{pmatrix}$$
 
 - **Prove that $f_1$, $f_2$, and $f_3$ are linearly independent.**
 
-    First, 
+    First, let's see that if it were linear dependent, then the equation:
+
+    $$\exists (\alpha, \beta, \gamma) \neq 0 \in \mathbb{C} \  \forall x \in \mathbb{R} :  \alpha f_1(x) + \beta f_2(x) + \gamma f_3(x) = 0$$
+
+    Hence, we could form tuples 
+
+    $$\begin{pmatrix} f_1(x_1) \\ f_2(x_1) \\ f_3(x_1)\end{pmatrix}, \begin{pmatrix} f_1(x_2) \\ f_2(x_2) \\ f_3(x_2)\end{pmatrix},\begin{pmatrix} f_1(x_3) \\ f_2(x_3) \\ f_3(x_3)\end{pmatrix}$$
+
+    All satisfying:
+
+    $$\alpha f_1(x_i) + \beta f_2(x_i) + \gamma f_3(x_i) = 0 \quad \forall i \in [3] \iff$$
+
+
+
+    $$\begin{cases} \alpha f_1(x_1) + \beta f_2(x_1) + \gamma f_3(x_1) = 0 \\ \alpha f_1(x_2) + \beta f_2(x_2) + \gamma f_3(x_2) = 0 \\ \alpha f_1(x_3) + \beta f_2(x_3) + \gamma f_3(x_3) = 0\end{cases} \iff $$
+
+
+    $$\begin{pmatrix} f_1(x_1) &  f_2(x_1) &  f_3(x_1) \\ f_1(x_2) &  f_2(x_2) &  f_3(x_2) \\f_1(x_3) &  f_2(x_3) &  f_3(x_3) \end{pmatrix}\begin{pmatrix} \alpha \\ \beta \\ \gamma \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0\end{pmatrix}$$
+
+    <br>
+
+    Hence, if for some $x_1,x_2,x_3 \in \mathbb{R}$ the system above admits only the trivial solution, then the system is independent.
+
+    Taking $x_1 = 0, x_2 = 1$ and $x_3=-1$ we can see that the system only admits trivial solution.
+
+    <br>
 
 - **(b)** Let $g_1(x) = 1$, $g_2(x) = \cos x$, $g_3(x) = \sin x$. Find an invertible $3 \times 3$ matrix $P$ such that
 
-$$
-g_j = \sum_{i=1}^{3} P_{ij} f_i.
-$$
+$$g_j = \sum_{i=1}^{3} P_{ij} f_i$$
+
+
