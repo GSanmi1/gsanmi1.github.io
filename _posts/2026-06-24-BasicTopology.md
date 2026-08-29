@@ -976,9 +976,6 @@ Let's think for example in $\mathbb{R}^2$ with the distance $d(x,y) = \mid x - y
 
 <br>
 
-
-
-
 ### 3.9.2. Caracterization.
 
 **Suppose $Y \subset X$. A subset $E \subseteq Y$ is *open relative* to $Y$ if and only if $E = Y \cap G$ where $G$ is an open set of $X$.**
@@ -1142,9 +1139,66 @@ Essentially, compactness is the property of being "finitely understood". Any des
 
 <br>
 
-### 4.3.6. Compactness arisness and local properties: Finitness and Discretness.
+## 4.4. Compactness properties.
+
+### 4.4.1. Compactness Metric Spaces. Compact Absolutness.
+
+Above we have relativized the concept of open set. We've stated that there are sets that can be open sets relative to one super set and not open relative to other superset. Hence, it corresponds to see if compactness, since is defined through the concept of open sets, is relative or dependent from the inclusion relation.
 
 
+<br>
+
+**Suppose $K \subset Y \subset X$. Then $K$ is compact relative to $X$ if and only if $K$ is compact relative to $Y$**. 
+
+We shall say that $K$ is compact relative to $X$ if for any cover of open sets relative to $X$ exists a finite subcover of open sets relative to $X$.
+
+<br>
+
+- $\Rightarrow$ 
+
+    Consider $K$ compact relative to $X$. Then, any open cover of $K$ admits an open subcover relative to $X$. Let's be $\Set{G_\alpha}$ an open cover relative to $Y$, then we do know that, since $Y \subset X$ then, for each $G_i \exists V_i : G_i = V_i \cap Y$ where $V_i$ is open relative to $X$. Note that $K \subset \bigcup G \subset \bigcup V$, hence, since $K$ is compact relative to $X$, $\Set{V_\alpha}$ admits a finite subcover and, by inclusión, also do $\Set{G_\alpha}$ and $K$ is compact relative to $Y$.
+
+<br>
+
+- $\Leftarrow$
+
+    Consider $K$ compact relative to $Y$. Be $\Set{V_\alpha}$ an open cover of $K$ relative to $X$, then we can identify the collection with some open cover relative to $Y$ as we do above and $K$ is compact relative also to $Y$.
+
+    <br>
+
+By virtue of this theorem we are able, in many situations, to regard compact sets as metric spaces in their own right, without paying any attention to any embedding space. In particular, although it makes little sense to talk of open spaces, or of closed spaces (every metric space X is an open subset of itself, and is a closed subset of itself), it does make sense to talk of **compact metric spaces**.
+
+<br>
+
+### 4.4.2. Compact subsets of metrics spaces are closed.
+
+Let be $(X,d)$ a metric space and let be $K \subset X$ compact. Then, let's proof that $X \setminus K$ is open. 
+
+Let's take some $p \in X \setminus K$ and $q \in K$ and for this two points the neigbourhoods $W_q, V_q$ of radius less than $d(p,q)/2$, which means $W_q \cap V_q = \varnothing$.
+
+Consider now that $\Set{V_q}_{q \in K}$ is an open cover for $K$, hence, since $K$ is compact, there is a finite subcover, meaning there is a a finite number of points $q_i : i \in [n]$ for some $n \in \mathbb{N}$ such $K \subset \bigcup_{i=1}^n V_{q_i}$.
+
+Thus, observe that $ p \in \bigcap_{i=1}^n W_{q_i}$ is a neigbourhood disjoint from $K$, hence $p$ is an interior point of the complementary and $X \setminus K$ is open.
+
+<br>
+
+### 4.4.3. Closed subsets of compacts sets are compacts sets.
+
+Suppose $F \subset K \subset X$, being $F$ closed and $K$ compact.
+
+Take some open cover of $F$, since $K \setminus F$ is open, we can adjoint to the open cover before to form an open cover of $K$ and extract a finite subcover from which we disjoint $K \setminus F$ taking a finite subcover of $F$. Hence $F$ is compact.
+
+<br>
+
+Observe that this means that in a compact set, for any subset to be closed and to be compact are equivalent statements. 
+
+If we think in a set, then there are two ways in which set can not be compact in two ways:
+
+- First goint out to infinite. This prevent to any cover to be finite.
+
+- Second by not containing his frontier. If at least one limit point is not on the set, then there at least one point out of the set that shares infinite points in any neighbourhood, hence no finite open cover can handle it.
+
+In the case of $F$, the fact that $F \subset K$ being $K$ compact prevents the first point to be valid, if $F$ went out to infinite so would $K$ in contradiction with compactness. Hence, $F$ is compact only iff contains his own frontier, this is, if is closed.
 
 <br>
 
