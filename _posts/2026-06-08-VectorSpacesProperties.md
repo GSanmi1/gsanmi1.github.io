@@ -1527,4 +1527,42 @@ $$P = \begin{pmatrix} x_1 & -x_2 \\ x_2 & x_1 \end{pmatrix}$$
 
 $$g_j = \sum_{i=1}^{3} P_{ij} f_i$$
 
+<br>
 
+# 5. Summary of row equivalence.
+
+n this section we shall utilize some elementary facts on bases and dimension in finite-dimensional vector spaces to complete our discussion of row-equivalence of matrices. 
+
+<br>
+
+## 5.1. Row-space and row-vectors.
+
+### 5.1.1. Definition.
+
+We recall that if $A \in M_{m \times n}(K)$, then we define the *row vectors* $\alpha_1,\ldots \alpha_n \in K^n$ such:
+
+$$\alpha_i = (a_{i1},\ldots, a_{in})$$
+
+Then, we shall define as the *row space* of $A$ to the subspace $W=span(\Set{\alpha_1,\ldots, \alpha_m}) \leq K^n$.
+
+We say that the *row-rank* of $A$ is the dimension of the dimension of the row-space of $A$.
+
+<br>
+
+### 5.1.2. Row-equivalent matrix have the some row-space.
+
+Observe that if $A,B \in M_{m \times n}(K) : A \sim_r B$ then we can obtain $A$ from $B$ and viceversa by elemental row-operations which is the same as say that each row of each matrix can be obtained through a non-trivial linear combination of the rows of the counterpart matrix, hence both share row-spaces.
+
+<br>
+
+Hence, we did see that the whole class of row-requivalent matrix shares his row-space. We shall now see that the canonical representant of the class contains a basis on his non-zeroed rows.
+
+<br>
+
+### 5.1.3. Basis of the row-space.
+
+**The row-vectors of the RREM matrix form a basis of his row-space.**
+
+Is enough to see that, necesarily each non-zero row is linear-independent from the others or it would be zero. Also, this linear independent rows form the row-space so is a linear independent generator set and is a basis.
+
+<br>
