@@ -1202,6 +1202,63 @@ In the case of $F$, the fact that $F \subset K$ being $K$ compact prevents the f
 
 <br>
 
+**Corolary**
+
+Observe then that, considering $F,K \subset X$ being $X$ a metric space. Then:
+
+$$F \text{ is closed } \wedge K \text{ is compact } \implies F \cap K \text{ is compact }$$
+
+Note that, $K$ is closed since is compact and a subset of a metric space, and any intersection of closed set is a closed set, hence $F \cap K$ is closed and a subset of $K$, compact, so is compact.
+
+<br>
+
+### 4.4.4. Non-emptyness compact collection intersection.
+
+**Let be $\Set{K_\alpha}$ a collection of compact sets of a metric space such the intersection of any finite subcollection is not empty. Then $\cap_\alpha K_\alpha \neq \varnothing$.**
+
+<br>
+
+If we suppose that $\cap_\alpha K_\alpha = \varnothing$, then, we can fix some $\beta$ and state: $K_\beta \cap (\cap_{\alpha \neq \beta} K_\alpha) = \varnothing$, so no point in $K_\beta$ is in the rest of elements of $K_\alpha$. Take $G_\alpha = X \setminus K_\alpha$, and observe that $G_\alpha$ form an open cover of $K_\beta$ and since this is compact, there are only a finite number of $G_\alpha$ needed to cover $K_\beta$, which means that exists a finite subcollection of sets in $\Set{K_\alpha}$ such no point of $K_\beta$ is in the intersection, so the finite subcollection formed by adding $\beta$ to the index of that collection is empty, in contradiction with the premise. 
+
+<br>
+
+Observe that this means that if $\Set{K_n}$ is a sequence of non-empty subsets such $K_{n+1} \subset K_n$ for $n \in \mathbb{N}$, then the whole intersection is non-empty.
+
+
+Let's observe that if $K_n= [n, +\infty)$, then $\cap_1^\infty K_n$ is empty, since the intervals are not compact, but $K_n=[0,1/n]$ are so $\cap_1^\infty K_n = 0$.
+
+<br>
+
+### 4.4.5. 
+
+**If $E$ is an infinite subset of a compact set $K$, then $E$ has a limit point in $K$**.
+
+Let's suppose that $E \subset K$ is infinite, being $K$ compact and without having a limit point in $K$.
+
+If there is no limit point of $E$ in $K$, this means that each $q \in K$ has a neighbourhood with at most one point of $E$ (if $q \in E \subset K$) and the union of this neighbourhood must be a cover of $K$, but since $E$ has infinite points, it can admit a finite subcover, in contradiction with the compactness of $K$.
+
+<br>
+
+### 4.4.6.
+
+**If $\Set{I_n}$ is a sequence of intervals in $\mathbb{R}^1$ such $I_{n+1} \subset I_n: n \in \mathbb{N}$, then $\cap_1^\infty I_n$ is not empty.**
+
+<br>
+
+Consider $E$ the set of all $a_n \in I_n : n \in \mathbb{N}$, is clearly bounded above by $b_1$, consider $supE$. It satisfies:
+
+$$a_n \leq sup E \leq b_n \quad \forall n \in \mathbb{N} \implies sup E \in I_n \quad \forall n \in \mathbb{N}$$
+
+And $supE \in \cap_{n \in \mathbb{N}} I_n$
+
+<br>
+
+**Observe that, as a corollary, if $\Set{I_n}$ is a sequence of $k$-cells in $\mathbb{R}^1$ such $I_{n+1} \subset I_n: n \in \mathbb{N}$, then $\cap_1^\infty I_n$ is not empty.**
+
+A $k$-cell is formed by tuples bounded in intervals by coordinate, by the result above, each coordinate has a value in the intersection so there is a tuple in the intersection and the intersection is non-empty.
+
+<br>
+
 # Exercises.
 
 ## 1. The empty set is a subset of every set.
