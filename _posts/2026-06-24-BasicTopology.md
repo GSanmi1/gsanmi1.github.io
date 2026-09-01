@@ -1259,6 +1259,80 @@ A $k$-cell is formed by tuples bounded in intervals by coordinate, by the result
 
 <br>
 
+### 4.4.7. Every $k$-cell is compact.
+
+Let be $I$ a $k$-cell, remember, a $k$-cell is the set of those points such:
+
+$$I = \Set{\mathbf{x} = (x_1,\ldots,x_n) \mid a_i \leq x_i \leq b_i \quad \forall i \in [k]}$$
+
+Then take:
+
+$$\delta = \left(\sum_{j=1}^{k}(b_j-a_j)^2\right)^{1/2}$$
+
+Note that $\delta$ is essentially the maximum distance of two points in $I$. 
+
+$$\mathbf{x}, \mathbf{y} \in I \implies x_i,y_i \in [a_i,b_i] \quad \forall i \in [k] \implies |\mathbf{x} - \mathbf{y}| \leq \delta$$
+
+<br>
+
+With this ingredients, let's suppose $I$ is not compact, meaning that there is a cover $\Set{G_\alpha}$ of $I$ not allowing a finite subcover.
+
+Take the middle point $c_i$ of each $[a_i,b_i]$, this form $2^k$ $k$-cells and, from the hypotesis, at least on of them, call it $I_1$ must reject a finite subcover of $\Set{G_\alpha}$, let's iterate this process over $I_1$ as we did over $I$ and we will find some $I_2$ in the same conditions eventually reaching to a sucession of $k$-cells, $\Set{I_n}$ satisfying the conditions of the corollary of $4.4.8$ among others:
+
+- $I_{n+1} \subset I_n \quad \forall n \in \mathbb{N}$
+- $I_n$ do not admits a finite subcover from $\Set{G_\alpha}$.
+- $\|x - y\| \leq 2^{-n} \delta \quad \forall x,y \in I_n : n \in \mathbb{N}$
+
+Let's realize that, by the corollary above, $\cap I_n$ is not empty, so there is some $x$ in all of them which also lies in some open $G_\alpha$ and since it is open there is some $y : \|x-y\| < r$ for some $r > 0$.
+
+Since $\mathbb{R}$ is arquimedean, there is some $n$ that $2^{-n}\delta <r$ and that implies that $I_n \subset \Set{G_\alpha}$ in contradiction with the second point.
+
+<br>
+
+This proof ultimately state that a $k$-cell to not be compact requires to compactness to be heritated through decomposition in small pieces, but we already see that in $\mathbb{R}^k$ the intersection of a sequence of included $k$-cells is never empty, it forma an interval it self lying in some open so compactness do not hold on decomposition and every $k$-cell is compact.
+
+<br>
+
+### 4.4.8. Compactness caracterization in $\mathbb{R}^k$. Heine-Borel.
+
+Let be $E \subset \mathbb{R}^k$, then, the following statements are equivalent:
+
+- $E$ is compact.
+- $E$ is closed and bounded.
+- Every infinite subset of $E$ has a limit point in $E$.
+
+Observe the chain that if $E$ is closed and bounded, then is included in a $k$-cell and by $4.4.3$ this is a closed subset of a compact set hence is compact and if is compact, then by $4.4.5$; every infinite subset of $E$ has a limit point in $E$. This is:
+
+$$b \implies a \implies c$$
+
+Let's see that $c \implies b$.
+
+<br>
+
+- Suppose that $E$ satisfying $c$ isn't bounded. 
+
+    If is not bounded, for each $n$ we can find points $x_n \in E : \|x_n\|> n$, the subset $S \subset E$ of this points is clearly infinite and it has no limit points in $\mathbb{R^k}$ contradicting the premise, hence $E$ is bounded.
+
+    <br>
+
+- Now, suppose is not closed. Then, exists a limit point of $E$, $x \notin E$. Hence, there are points of $E$ arbitrary close to $x$:
+
+    $$\forall n \in \mathbb{N} \ \exists x_0 \in E:|x_0 - x| < 1/n$$
+
+    Let' take again $S \subset E$ as the set of this $x_0$ points and observe that is clearly infinite and has as $x$ to be a limit point and it hasn't other limit point in $\mathbb{R}^k$ since, by definition it approachs specifically to $x$, meaning that is an infinite subset of $E$ without a limit point in $E$ and the premise doesn't hold so $E$ must be closed.
+
+    <br>
+
+We should close this section by asserting that in metric spaces, first and third point are equivalent, but the equivalence of this statements with the second is specific of $\mathbb{R}^k$. Essentially, say that a set is compact is as say that 
+
+<br>
+
+**(Weierstrass): Every bounded infinite subset of $\mathbb{R}^k$ has a limit point in $\mathbb{R}^k$**
+
+Note that this works as a corollary of above, if is bounded, then is included in some $k$-cell, then if is closed is compact, is not, then it has some limit point in $\mathbb{R}^k$ out of the set. **It states that an infinite set of points that remain separated from one another cannot fit into $E$. Any attempt to place infinitely many points in $E$ inevitably results in them clustering around some point in $E$.**
+
+<br>
+
 # Exercises.
 
 ## 1. The empty set is a subset of every set.
