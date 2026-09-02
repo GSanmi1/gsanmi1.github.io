@@ -1566,3 +1566,27 @@ Hence, we did see that the whole class of row-requivalent matrix shares his row-
 Is enough to see that, necesarily each non-zero row is linear-independent from the others or it would be zero. Also, this linear independent rows form the row-space so is a linear independent generator set and is a basis.
 
 <br>
+
+### 5.1.4. Row-space associated matrix.
+
+**Let be $n, m \in \mathbb{Z}$ and $W \leq K^n : dimW = m$, being $K$ a field. Then, there is one only RREM, $R = (r_{ij})_{i \in [m],j \in [n]} \in M_{m \times n}(K) : W=span(\Set{r_1,\ldots,r_m})$**.
+
+<br>
+
+Observe that, take a basis of $W$, this must be a set of $m$ linear independent vectors of $K^n$ spanning $W$. The matrix formed by the rows of this vectors has associated as a vectorspace $W$, and since his rows are basis, this matrix must be a row-reduced form. Hence, the RREM form of this matrix must share $W$ has row-space and is unique.
+
+<br>
+
+This allows to identifify any subspace $W$ with a matrix $R$ able to span any vector $u \in W$ through:
+
+$$R X = [u]_{(r_1, \ldots,r_n)}$$
+
+Where $X$ is the column of scalars that combine with the basis representated in the rows of $R$ to form to form the coordinates of $u$.
+
+<br>
+
+As a corollary, $A,B \in M_{m \times n}(K)$ are row equivalent if and only if both share the same row-space. To summarize, the following statements are equivalents:
+
+1. $A \sim_r B$
+2. $span(\Set{\alpha_1,\ldots,\alpha_m})=span(\Set{\beta_1,\ldots,\beta_m})$
+3. $\exists P \in M_{m \times m}(K) \text{ invertible }: B = PA$ (basis change matrix).
