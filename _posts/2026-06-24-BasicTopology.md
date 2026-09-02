@@ -1333,6 +1333,34 @@ Note that this works as a corollary of above, if is bounded, then is included in
 
 <br>
 
+# 5. Perfect and Connect sets properties.
+
+## 5.1. Perfect Sets properties.
+
+Here we are going to present some important results but we are not going to demonstrate them:
+
+- Any perfect set $P \subset \mathbb{R}^k$ is uncountable.
+- By above, any interval $[a,b] \subset \mathbb{R}$ is incountable and $\mathbb{R}$ it self is an uncountable set, in contrast with $\mathbb{Q}$.
+
+<br>
+
+## 5.2. Separated Sets. Connected Sets.
+
+Let be $X$ a metric space, then $A,B \subset X$ are said to be *separated* when no point of each lies in the closure of the other:
+
+$$A,B \text{ are separated } \iff A \cap \overline{B} = \overline{A} \cap B = \varnothing$$
+
+We remember that $\overline{A} = A \cup A'$, where $A'$ is the set of the limit points of $A$. Separated sets are of course disjoint, but disjoint sets need not be separated. For example, the interval $[0, 1]$ and the segment $(1, 2)$ are not separated, since $1$ is a limit point of $(1, 2)$. However, the segments $(0, 1)$ and $(1, 2)$ are separated. 
+
+
+Then, $E \subset X$ is said to be *connected* if is not the union of the separated sets. Connected sets of $\mathbb{R}$ has an important properties:
+
+$$E \subset \mathbb{R} \text{ is connected } \iff \forall x,y,z([x,z \in E \wedge x<y<z] \implies y \in E)$$
+
+This is the caracterization of intervals.
+
+<br>
+
 # Exercises.
 
 ## 1. The empty set is a subset of every set.
