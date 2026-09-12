@@ -36,7 +36,7 @@ Later, topologic concepts rebuilt the limit concept in a simplier way, disregard
 
 <br>
 
-Thus, there is three level of abstractions. First let's barely introduce what the *open sets* are; an open set is a set in which all its points are interior points. Intuitively, this means that the set does not contain its boundary, allowing you to approach any element without stepping outside the set's limits.
+Thus, there is three abstractions levels. First let's barely introduce what the *open sets* are; an open set is a set in which all its points are interior points. Intuitively, this means that the set does not contain its boundary, allowing you to approach any element without stepping outside the set's limits.
 
 <br>
 
@@ -1315,7 +1315,7 @@ Let's see that $c \implies b$.
 
     <br>
 
-- Now, suppose is not closed. Then, exists a limit point of $E$, $x \notin E$. Hence, there are points of $E$ arbitrary close to $x$:
+- Now, suppose is not closed. Then, exists a limit point of $E$, $x \notin E$. Hence, there are points of $E$ arbitrarily close to $x$:
 
     $$\forall n \in \mathbb{N} \ \exists x_0 \in E:|x_0 - x| < 1/n$$
 
@@ -1361,9 +1361,13 @@ This is the caracterization of intervals.
 
 <br>
 
-# Exercises.
+# 6. Summary.
 
-## 1. The empty set is a subset of every set.
+In this chapter 
+
+# 7. Exercises.
+
+## 7.1. The empty set is a subset of every set.
 
 
 
@@ -1373,7 +1377,7 @@ $$\varnothing \subset A \cup \varnothing = A$$
 
 <br>
 
-## 2. Algebraic complex numbers.
+## 7.2. Algebraic complex numbers.
 
 We have that:
 
@@ -1396,13 +1400,13 @@ Y para $N = 0$, solo hay un número finito de ecuaciones y por tanto debería de
 
 <br>
 
-## 3. Prove that there exist real numbers which are not algebraic.
+## 7.3. Prove that there exist real numbers which are not algebraic.
 
 If don't then, the real subset of $\mathbb{C}$ would be an infinity subset of a countable set, and by $2.3.2$ then it would be countable, and we do know that $\mathbb{R}$ is uncountable so that's not possible. So there must be not-algebraic numbers in $\mathbb{R}$.
 
 <br>
 
-## 4. Uncountableness of irrational numbers.
+## 7.4. Uncountableness of irrational numbers.
 
 Is the set of all irrational real numbers countable?
 
@@ -1410,5 +1414,57 @@ No, since $\mathbb{R}$ is the union of the rational set and irrational set and t
 
 <br>
 
-## 5. Construct a bounded set of real numbers with exactly three limit points.
+## 7.5. Construct a bounded set of real numbers with exactly three limit points.
 
+Let's consider at first, the following set $E = \Set{\frac{1}{n}}_{n \in \mathbb{N}}$. Let's see that, $0$ is a limit point of $E$. Observe that, since $E \subset \mathbb{R}$, then $E$'s points satisfies the arquimedean property, take some $p \in \mathbb{R}^+$:
+
+$$p>0 \implies 1/p >0 \implies \exists n \in \mathbb{N} : 1/p < n \iff 1/n < p$$
+
+
+, and since $p$ is arbitrary, then any neighbourhood of $N_p(0)$ contains points of $E$.
+
+<br>
+
+Take any other point in $\mathbb{R}$, observe that $E \subset [0,1]$, if $p \notin [0,1]$, then obviously there is a gap between $p$ and $E$ in which there aren't points of $E$ and it can be a limit point.
+
+If $p \in [0,1]$ then, since $E$ is a discrete set, take some $n \in \mathbb{N}$ and, in $\mathbb{R}$, 
+
+$$\left(\frac{1}{n},\frac{1}{n+1}\right) \cap E = \varnothing$$
+
+Hence any point in $[0,1]$ isn't a limit point.
+
+Thus, let's call: $E_1 = \Set{\frac{1}{n}}_{n \in \mathbb{N}}$, $E_2 = \Set{2 + \frac{1}{n}}_{n \in \mathbb{N}}$, $E_3 = \Set{4 + \frac{1}{n}}_{n \in \mathbb{N}}$, are three separates sets and $\bigcup_{i =1}^3 E_i$ only have three limit points.
+
+<br>
+
+## 7.6. 
+
+**Consider some set $E \subset X$ of a metric space, then:**
+
+- **Prove that $E'$ is closed**.
+
+    By $3.7$, we would prove that $E'$ is closed if we prove that $(E')' \subset E'$. Observe that:
+
+    $$p \in (E')' \iff \forall r(N_r(p)\setminus \Set{p} \cap E' \neq \varnothing) \iff$$
+    
+    $$\iff \forall r \exists q \neq p \in N_r(p) : \forall t(N_t(q)\setminus \Set{q}  \cap E \neq \varnothing)$$
+
+    Considering the cuantificators, we can take $t$ such $t < d(p,q)$ (making $p \notin N_t(q)$), hence:
+
+    $$ \begin{rcases}\forall r \exists q \in N_r(p) : \forall t(N_t(q)\setminus \Set{q} \cap E \neq \varnothing) \\ \forall r \exists t : N_t(q) \subset N_r(p) \end{rcases} \implies \forall r (N_r(p) \setminus \Set{p} \cap E \neq \varnothing) \implies p \in E'$$
+
+    In summary, any limit point of $E'$ is surrounded by infinite points which can be arbitrarily near and this points as well are surrounded by infinite points of $E$ that can be arbitrarily near, hence any limit point of $E'$ has arbitrarily near infinite points of $E$.
+
+    <br>
+
+- **Prove that $E$ and $\overline{E}$ has the same limit points**
+
+    Observe quickly that, since $\overline{E} = E \cup E'$ is $\overline{E}' = E' \cup (E')'$, but, by the above is $(E')' \subset E'$, hence $\overline{E}'= E'$.
+
+    <br>
+
+- **Do $E$ and $E'$ always have the same limit points?**
+
+    No, take for example the set $E = \Set{1/n : n \in \mathbb{N}}$, by $7.5$ is $E' = \Set{0}$ and $(E')' = \varnothing$.
+
+    <br>
