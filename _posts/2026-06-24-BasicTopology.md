@@ -835,6 +835,8 @@ Let's consider now some subsets of $\mathbb{R}^2$ and let's see what type of top
 
     Take $p = 1$ and $r = 1/2$, then $N_r(p)\setminus \Set{p} \cap E = \varnothing$
 
+    <br>
+
 ## 3.5. Complement of a family of sets.
 
 Let be $\Set{E_\alpha}$ be a finite or infinite family of sets. Then, the complementary of the union is the global intersection of each complementary set:
@@ -1468,3 +1470,83 @@ Thus, let's call: $E_1 = \Set{\frac{1}{n}}_{n \in \mathbb{N}}$, $E_2 = \Set{2 + 
     No, take for example the set $E = \Set{1/n : n \in \mathbb{N}}$, by $7.5$ is $E' = \Set{0}$ and $(E')' = \varnothing$.
 
     <br>
+
+## 7.7.
+
+**Let $A_1, A_2, A_3, \ldots$, subsets of a metric space.**
+
+- **If $B_n = \bigcup_{i=1}^n A_i$, then prove that $\overline{B}_n=\bigcup_{i=1}^n\overline{A}_i$**
+
+    By definition, we would have that: $\overline{B}_n=B_n \cup B_n'$, hence the proper question is, what is $B_n'$.
+
+    If we consider $p \in B_n'$, then, $p$ is a limit point of $B_n$ and since this is a finite union of subsets, this means that exists at least one subset, one $j$, such $p \in A_j'$, then $B_n' \subseteq \bigcup A_i'$.
+
+    Let's see this more carefully:
+
+    $$p \in B_n' \implies \forall r(N_r(p) \setminus \Set{p} \cap B_n \neq \varnothing)\iff \forall r \left( \bigcup_{i = 1} ^n \left[N_r(p) \setminus \Set{p} \cap A_i\right] \neq \varnothing\right)$$
+
+    This means that, the union of the intersections with the neighbourhood is not-empty. Let's recall that we do know that there are infinite points in $N_r(p)$ from the union, but since this union is finite, there are infinite points for at least one of the subsets getting that, intuitively, at least one of the subsets is arbitrarily near to $p$.
+
+    Let's take by contradiction, suppose that there is no $j : p \in A_j'$, then, this means:
+    
+    $$\forall i \exists r (N_r(p) \cap A_i = \varnothing)$$
+    
+    Since the union is finite, we could think in $m = \min\Set{r \mid \exists i : N_r(p) \cap A_i = \varnothing }$, in this context, $\bigcup_{i = 1} ^n \left[N_m(p) \setminus \Set{p} \cap A_i\right] = \varnothing$ or $m$ wouldn't be the smallest radius making some intersection empty and $p$ isn't a limit point of $B_n$ reaching a contradiction with the premise.
+
+    <br>
+
+    On the other hand, if we consider $p \in \bigcup A_i'$, then again, $p$ is a limit point for some subset included in $B_n$ and is also a limit point of $B_n$, thus $B_n' = \bigcup A_i'$.
+
+    Ultimately we have:
+
+    $$\overline{B}_n=B_n \cup B_n' = \bigcup_{i=1}^n A_i \cup \bigcup_{i=1}^n A_i' = \bigcup_{i=1}^n (A_i \cup A_i') = \bigcup_{i=1}^n \overline{A}_i$$
+
+    <br>
+
+- **If $B_n = \bigcup_{i=1}^\infty A_i$, then prove that $\bigcup_{i=1}^\infty\overline{A}_i \subset \overline{B}_n$**
+
+    Note that we can depart from the explanation above. Since there are infinite subsets, the fact that $p$ shares in any neighbourhood infinite points with $B_n$ do not garantee an infinite aproximation of one of them to $p$, the aproximation could live in the infinity of the collection.
+
+    Hence, the acumulation set $\bigcup A_i' \subset B_n'$ and $\bigcup_{i=1}^\infty\overline{A}_i \subset \overline{B}_n$.
+
+    <br>
+
+## 7.8. 
+
+**Is every point of every open set $E \subset \mathbb{R}^2$? a limit point of $E$? Answer the same question for closed sets in R?.**
+
+The first question can be traduced in, is $E^\circ \subset E'$ for any $E \subset \mathbb{R}^2$?.
+
+Let's start by referencing the definicion of an interior point. An interior point $p \in E^\circ$ of $E$, is a point for which exists a neighbourhood enterely embebbed in $E$.
+
+$$p \in E^\circ \iff \exists r (N_r(p) \subset E)$$
+
+Here is where the metric space $\mathbb{R}^2$ take place. In the conventional $\mathbb{R}^2$ metric space happens that:
+
+$$\forall p(r < s  \implies N_r(p) \subset N_s(p))$$
+
+Hence, if you find an enterily embebbed neighbourhood in $E$, then any smaller neighbourhood is also contained in $E$ and in greater neighbourhoods of $p$, subsequently, any neighbourhood of $p$ contains points of $E$, then $p \in E'$.
+
+<br>
+
+In the counter part, a closed set contains his own accumulation set, this is:
+
+$$E \text{ is closed} \iff E' \subset E$$
+
+Meaning that there could be points in $E$ that are not limit points. The case in which this applies is the perfect set in which every point is also a limit point.
+
+<br>
+
+## 7.9. Interior Set.
+
+# 8. Summary.
+
+Finite sets are the only ones for which analysis would be trivial. In a finite set, every covering admits a finite subcover, there are no infinite subsets, every supremum is attained, and every continuous function has a maximum. Analysis, by definition, deals with infinities. Rudin devotes the chapter to constructing two relaxations of finiteness that preserve some of that well-behaved nature.
+
+Chapter 2 is not a toolbox: it is a chapter about substitutes for finitude. Rudin spends the chapter building two concepts:
+
+- **Countability**: the finitude of counting — the set is exhausted by a list.
+
+- **Compactness**: finiteness of the covering — the set is exhausted by a finite number of pieces, however thick they may be.
+
+<br>
