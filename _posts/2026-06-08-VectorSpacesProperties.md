@@ -1590,3 +1590,27 @@ As a corollary, $A,B \in M_{m \times n}(K)$ are row equivalent if and only if bo
 1. $A \sim_r B$
 2. $span(\Set{\alpha_1,\ldots,\alpha_m})=span(\Set{\beta_1,\ldots,\beta_m})$
 3. $\exists P \in M_{m \times m}(K) \text{ invertible }: B = PA$ (basis change matrix).
+
+<br>
+
+# 6. Exercises.
+
+## 6.1. 
+
+**Let $s < n$ and $A \in M_{s \times n}(K)$. Use Theorem 4 (our $3.3.1$) to show that there is a non-zero $X \in K^{n \times 1} : AX = 0$.**
+
+First, let's recall what theorem $4$ says: if $V$ is a vector space spanned by $m$ vectors, then, the there cannot be more than $m$ independent vectors in $V$.
+
+
+
+Now, let's consider $A^t \in M_{n \times s}(K)$. The rowspace of $A^t$, $U \leq K^s$ satisfies $dimU \leq s < n$, hence, the $n$ rows of $A^t$ are linear dependent and there is a non-trivial linear combination of $\alpha_1^t\ldots, \alpha^t_n$ that results in $0$:
+
+$$x_1 \alpha^t_1 \ldots + x_n \alpha^t_n = (x_1,\ldots,x_n)\begin{pmatrix} \alpha^t_1 \\ \vdots \\ \alpha^t_n \end{pmatrix} = 0 : x_i \in K \quad \forall i \in [n]$$
+
+Note that this product remains with $A$ instead if we change the side, because multiply by the files on the right is like multiply by the columns of the left, but the colums of $A^t$ are exactly the rows of $A$:
+
+$$(x_1,\ldots,x_n)\begin{pmatrix} \alpha^t_1 \\ \vdots \\ \alpha^t_n \end{pmatrix} = (\alpha^t_1,\ldots,\alpha^t_n)^t \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}^t  = AX = 0$$
+
+<br>
+
+## 6.2. 
