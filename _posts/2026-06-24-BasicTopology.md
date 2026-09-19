@@ -1012,7 +1012,7 @@ In brief terms, compactness is the topological abstraction of finitness, underst
 
 Note that any finite set is compact, and that a finite set has properties that some infinite set loss, like for example, the reachness of the maximum in the set. Compactness property isolate those infinite sets which mantain thoses properties.
 
-<br>
+<br>SS
 
 ### 4.3.1. Topology prolegomena.
 
@@ -1243,7 +1243,7 @@ If there is no limit point of $E$ in $K$, this means that each $q \in K$ has a n
 
 ### 4.4.6.
 
-**If $\Set{I_n}$ is a sequence of intervals in $\mathbb{R}^1$ such $I_{n+1} \subset I_n: n \in \mathbb{N}$, then $\cap_1^\infty I_n$ is not empty.**
+**If $\Set{I_n}$ is a sequLet $K = \Set{0} \cup \Set{1/n}_{n \in \mathbb{Z}^+}$, then, proove that $K$ is compact straight from the definition.ence of intervals in $\mathbb{R}^1$ such $I_{n+1} \subset I_n: n \in \mathbb{N}$, then $\cap_1^\infty I_n$ is not empty.**
 
 <br>
 
@@ -1539,14 +1539,113 @@ Meaning that there could be points in $E$ that are not limit points. The case in
 
 ## 7.9. Interior Set.
 
+**Take some set $E \subset X$ being $X$ a metric space. Then:**
+
+- **Prove that $E^\circ$ is always open.**
+
+    Take some limit point $p$ of $X \setminus E^\circ$. Observe that if $p \notin X \setminus E^\circ \implies p \in E^\circ \implies \exists r : N_r(p) \subset E$ and $p$ wouldn't be a limit point of $X \setminus E^\circ$, since $N_r(p) \cap X \setminus E = \varnothing$ and $X \setminus E \subset X \setminus E^\circ$, hence $X \setminus E^\circ$ contains all his limit points, so is closed and $E^\circ$ is open.
+
+    <br>
+
+- **$E$ is open iff $E = E^\circ$**
+
+    Is clear that $E^\circ \subset E$, if $E$ is open, then $\forall p(p \in E \implies p \in E^\circ) \implies E \subset E^\circ$. Thus, $E$ is open iff it coincides with his interior. 
+
+    <br>
+
+- **If $G \subset E$ is open, then $G \subset E^\circ$**
+
+    If $G$ is open, $\forall p(p \in G \implies \exists r : N_r(p) \subset G \subset E \implies p \in E^\circ)$ and $G \subset E^\circ$.
+
+    <br>
+
+- **Prove that the complement of $E^\circ$ is the closure of the complement of $E$.**
+
+    We did see that $X \setminus E^\circ$ is a closed set containing $X \setminus E$. let's see now that is the smallest closed set containing $X \setminus E$.
+
+    Let be $D$ some closed set containing $X \setminus E$, take $p \in X \setminus E^\circ$. Since $p \notin E^\circ$, there is always points from $X \setminus E$ in any neighbourhood of $p$. Trivially, we could assume that $p \in E$, otherwise $p \in X \setminus E \subset D$. Hence, $p$ is a limit point of $X \setminus E \subset D$ and since $D$ is closed, it contains all his limit points so $p \in D$.
+
+    In any case, any closed set containing $X \setminus E$ also contains $X \setminus E^\circ$, then $X \setminus E^\circ$ is the smallest closed set containing $X \setminus E$ and thus, is his closure.
+
+    <br>
+
+- **Do $E$ and $\overline{E}$ always has the same interiors?**
+
+    No, $\overline{E}$ is the smallest closed set containing $E$ and the interior of the closure could have points of the interior of $E'$ which are not necesarily in $E^\circ$.
+    
+    <br>
+
+- **Do $E^\circ$ and $E$ has always the same closure?**
+
+    No, $E^\circ$ is the greatest open set contained in $E$, but limit points of $E$ could not be limit points of $E^\circ$.
+
+    <br>
+
+## 7.10. Discrete Metric.
+
+
+Let $X$ be an infinite set. For $p \in X$ and $q \in X$, define
+
+$$ d(p,q)= \begin{cases} 1 & \text{if } p\neq q,\\ 0 & \text{if } p=q. \end{cases}$$
+
+- **Prove that this is a metric**
+
+    Trivially; it satisfies:
+
+    $$\begin{cases} d(p,q) > 0 \wedge d(p,q) = 0 \iff p = q \\ d(p,q) = d(q,p) \quad  \forall p,q \in X \\ d(p,q) \leq d(p,t) + d(q,t) \quad \forall p,q,t \in X\end{cases}$$
+
+    <br>
+
+- **Which subsets of the resulting metric space are open?** 
+
+    Observe that, for $0<r<1$, $N_r(p) = \Set{p} \quad \forall p \in X$, hence we have:
+
+    $$\forall E \subset X \forall p(p \in E \implies  \exists r : N_r(p) \subset E)$$
+
+    Thus, any subset is open in $X$.
+
+    <br>
+
+- **Which are closed?** 
+
+    Consider any $E \subset X$, then $X \setminus E \subset X$ and is open by the previous statement, hence $E$ is closed.
+
+    <br>
+
+- **Which are compact?**
+
+    If we consider $E \subset X$, finite, then any open cover has the trivial subcover $\Set{N_x}$ where $N_x$ is some neighbourhood of radius less than one of the element $x \in E$.
+
+    Take now $E$ infinite and again the open cover $\Set{N_x}$, is obvious that is not a finite cover and $N_x \cap N_y = \varnothing \iff x \neq y$, hence it can be reduce to a finite subcover without loosing elements.
+
+    <br>
+
+    So, only finite subsets are compact, infinite are not compact.
+
+    <br>
+
+The discrete metric represents the extreme case where every point is isolated: it induces the topology $\mathcal{P}(X)$, the finest possible topology on $X$. Thus, the exercise challenges two intuitions that $\mathbb{R}$ instills almost imperceptibly. The first is that "open" and "closed" are mutually exclusive; here, every subset is both. The second is that "closed and bounded" implies "compact"; here, $X$ is closed and bounded without being compact. Furthermore, it reveals compactness in its purest form; as a generalization of finiteness.
+
+<br>
+
+## 7.12.
+
+**Let $K = \Set{0} \cup \Set{1/n}_{n \in \mathbb{Z}^+}$, then, proove that $K$ is compact straight from the definition.** 
+
+Note that $K = [0,1]$, let be $\Set{G_x}$ an open cover of $K$.
+
+Let be $\Set{G_x}$ an open cover, then $\forall p \forall x(p \in G_x \implies \exists r : N_r(p) \subset G_x)$. Let's consider then the family of neighbourhoods $\Set{N_x} : N_x \subset G_x$. Observe that, since $0$ need's to be covered and is a limit point of the range of $\Set{1/n}$, then any neighbourhood of $0$ contains infinite terms of the sequence. This means that from some term $n$ of the sequence, all the neighbourhoods are included in the neighbourhood of $0$, hence there is a finite subcover of $\Set{G_x}$.
+
+<br>
+
 # 8. Summary.
 
 Finite sets are the only ones for which analysis would be trivial. In a finite set, every covering admits a finite subcover, there are no infinite subsets, every supremum is attained, and every continuous function has a maximum. Analysis, by definition, deals with infinities. Rudin devotes the chapter to constructing two relaxations of finiteness that preserve some of that well-behaved nature.
 
 Chapter 2 is not a toolbox: it is a chapter about substitutes for finitude. Rudin spends the chapter building two concepts:
 
-- **Countability**: the finitude of counting — the set is exhausted by a list.
+- **Countability**: the finitude of counting - the set is exhausted by a list.
 
-- **Compactness**: finiteness of the covering — the set is exhausted by a finite number of pieces, however thick they may be.
+- **Compactness**: finiteness of the covering - the set is exhausted by a finite number of pieces, however thick they may be.
 
 <br>
