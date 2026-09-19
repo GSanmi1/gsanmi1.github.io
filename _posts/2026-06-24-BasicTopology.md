@@ -1178,9 +1178,9 @@ Let be $(X,d)$ a metric space and let be $K \subset X$ compact. Then, let's proo
 
 Let's take some $p \in X \setminus K$ and $q \in K$ and for this two points the neigbourhoods $W_q, V_q$ of radius less than $d(p,q)/2$, which means $W_q \cap V_q = \varnothing$.
 
-Consider now that $\Set{V_q}_{q \in K}$ is an open cover for $K$, hence, since $K$ is compact, there is a finite subcover, meaning there is a a finite number of points $q_i : i \in [n]$ for some $n \in \mathbb{N}$ such $K \subset \bigcup_{i=1}^n V_{q_i}$.
+Consider now that $\Set{V\_q}\_{q \in K}$ is an open cover for $K$, hence, since $K$ is compact, there is a finite subcover, meaning there is a a finite number of points $q\_i : i \in [n]$ for some $n \in \mathbb{N}$ such $K \subset \bigcup\_{i=1}^n V\_{q\_i}$.
 
-Thus, observe that $ p \in \bigcap_{i=1}^n W_{q_i}$ is a neigbourhood disjoint from $K$, hence $p$ is an interior point of the complementary and $X \setminus K$ is open.
+Thus, observe that $p \in \bigcap\_{i=1}^n W\_{q\_i}$ is a neigbourhood disjoint from $K$, hence $p$ is an interior point of the complementary and $X \setminus K$ is open.
 
 <br>
 
@@ -1243,7 +1243,7 @@ If there is no limit point of $E$ in $K$, this means that each $q \in K$ has a n
 
 ### 4.4.6.
 
-**If $\Set{I_n}$ is a sequLet $K = \Set{0} \cup \Set{1/n}_{n \in \mathbb{Z}^+}$, then, proove that $K$ is compact straight from the definition.ence of intervals in $\mathbb{R}^1$ such $I_{n+1} \subset I_n: n \in \mathbb{N}$, then $\cap_1^\infty I_n$ is not empty.**
+**If $\Set{I_n}$ is a sequence, let $K = \Set{0} \cup \Set{1/n}\_{n \in \mathbb{Z}^+}$, then, proove that $K$ is compact straight from the definition.ence of intervals in $\mathbb{R}^1$ such $I\_{n+1} \subset I\_n: n \in \mathbb{N}$, then $\cap\_1^\infty I\_n$ is not empty.**
 
 <br>
 
@@ -1435,7 +1435,7 @@ $$\left(\frac{1}{n},\frac{1}{n+1}\right) \cap E = \varnothing$$
 
 Hence any point in $[0,1]$ isn't a limit point.
 
-Thus, let's call: $E_1 = \Set{\frac{1}{n}}_{n \in \mathbb{N}}$, $E_2 = \Set{2 + \frac{1}{n}}_{n \in \mathbb{N}}$, $E_3 = \Set{4 + \frac{1}{n}}_{n \in \mathbb{N}}$, are three separates sets and $\bigcup_{i =1}^3 E_i$ only have three limit points.
+Thus, let's call: $E\_1 = \Set{\frac{1}{n}}\_{n \in \mathbb{N}}$, $E\_2 = \Set{2 + \frac{1}{n}}\_{n \in \mathbb{N}}$, $E\_3 = \Set{4 + \frac{1}{n}}\_{n \in \mathbb{N}}$, are three separates sets and $\bigcup\_{i =1}^3 E\_i$ only have three limit points.
 
 <br>
 
@@ -1453,7 +1453,7 @@ Thus, let's call: $E_1 = \Set{\frac{1}{n}}_{n \in \mathbb{N}}$, $E_2 = \Set{2 + 
 
     Considering the cuantificators, we can take $t$ such $t < d(p,q)$ (making $p \notin N_t(q)$), hence:
 
-    $$ \begin{rcases}\forall r \exists q \in N_r(p) : \forall t(N_t(q)\setminus \Set{q} \cap E \neq \varnothing) \\ \forall r \exists t : N_t(q) \subset N_r(p) \end{rcases} \implies \forall r (N_r(p) \setminus \Set{p} \cap E \neq \varnothing) \implies p \in E'$$
+    $$ \begin{cases}\forall r \exists q \in N_r(p) : \forall t(N_t(q)\setminus \Set{q} \cap E \neq \varnothing) \\ \forall r \exists t : N_t(q) \subset N_r(p) \end{cases} \implies \forall r (N_r(p) \setminus \Set{p} \cap E \neq \varnothing) \implies p \in E'$$
 
     In summary, any limit point of $E'$ is surrounded by infinite points which can be arbitrarily near and this points as well are surrounded by infinite points of $E$ that can be arbitrarily near, hence any limit point of $E'$ has arbitrarily near infinite points of $E$.
 
@@ -1475,7 +1475,7 @@ Thus, let's call: $E_1 = \Set{\frac{1}{n}}_{n \in \mathbb{N}}$, $E_2 = \Set{2 + 
 
 **Let $A_1, A_2, A_3, \ldots$, subsets of a metric space.**
 
-- **If $B_n = \bigcup_{i=1}^n A_i$, then prove that $\overline{B}_n=\bigcup_{i=1}^n\overline{A}_i$**
+- **If $B_n = \bigcup_{i=1}^n A_i$, then prove that $\overline{B}\_n=\bigcup\_{i=1}^n\overline{A}\_i$**
 
     By definition, we would have that: $\overline{B}_n=B_n \cup B_n'$, hence the proper question is, what is $B_n'$.
 
@@ -1637,6 +1637,10 @@ Note that $K = [0,1]$, let be $\Set{G_x}$ an open cover of $K$.
 Let be $\Set{G_x}$ an open cover, then $\forall p \forall x(p \in G_x \implies \exists r : N_r(p) \subset G_x)$. Let's consider then the family of neighbourhoods $\Set{N_x} : N_x \subset G_x$. Observe that, since $0$ need's to be covered and is a limit point of the range of $\Set{1/n}$, then any neighbourhood of $0$ contains infinite terms of the sequence. This means that from some term $n$ of the sequence, all the neighbourhoods are included in the neighbourhood of $0$, hence there is a finite subcover of $\Set{G_x}$.
 
 <br>
+
+## 7.13.
+
+**Construct a compact set of real numbers whose limit points form a countable set.**
 
 # 8. Summary.
 
