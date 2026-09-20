@@ -182,7 +182,7 @@ This theorem allow us to say that $T$ maps $V$ information over $W$ and $Ker(T)$
 <br>
 
 
-## 2.6. 3.1 section exercises.
+## 2.6. Section exercises.
 
 ### 2.6.3. 
 
@@ -217,6 +217,34 @@ Then, the same again:
 
 <br>
 
+### 2.6.4.
+
+**Is there a linear transformation $T$ from $R^3$ into $R^2$ such that $T(1, -1, 1) = (1, 0)$ and $T(1, 1, 1) = (0, 1)$?**
+
+<br>
+
+Let's start saying that, theorem $1$ ($2.4$) garantee that if $\mathcal{B}$ is a basis of some vector space $V$, then there is a unique linear transformation $T : V \to W$ sending $\mathcal{B}$ vectors to some other vectors of $W$
+
+<br>
+
+In $\mathbb{R}^3$, $(1,-1,1)$ and $(1,1,1)$ are non-proportional vectors. Hence, let's say $(x,y,z) \in \mathbb{R}^3$ is a third vector linear independent from two above, then the three of them satisfies:
+
+$$\alpha(1,-1,1) + \beta(1,1,1) + \gamma(x,y,z) = 0 \iff \alpha = \beta = \gamma = 0$$
+
+This give us, the following system:
+
+$$\begin{cases} \alpha + \beta + \gamma x = 0 \\ \beta - \alpha + \gamma y = 0 \\ \alpha + \beta + \gamma z = 0\end{cases} \iff x \neq z$$
+
+This means that parametric family: $\Set{(1,1,1),(1,-1,1),(x,y,z) : x \neq z}$ give us basis of $\mathbb{R}^3$ and allow us to define the family of transformations $T : \mathbb{R}^3 \to \mathbb{R}^2$ such satisfies the premise of the exercise:
+
+$$\begin{cases} T(1,-1,1) = (1,0) \\ T(1,1,1) = (0,1) \\ T(x,y,z) = (a,b) : x \neq z\end{cases}$$
+
+<br>
+
+Ultimately, observe that this set gathers all the posible linear transformations satisfying the condition. If $T$ is some linear transformation satisfying the condition, there has to be some vector that form a basis with the other two which is sended to some vector in $\mathbb{R}^2$ and hence it would be included in our set.
+
+<br>
+
 # 3. The algebra of linear transformations.
 
 Let's explore operations between linear transformations.
@@ -229,6 +257,7 @@ Let be $V$, $W$ $K$-spaces, and $T,U: V \to W$ linear transformations, then, let
 
 - $T+U : V \to W \mid (T+U)(v) = T(v) + U(v)$
 
+   
     Is a linear transformation. To proove it, let's see that:
 
     $$(T+U)(\alpha v + u) = T(\alpha v + u) + U(\alpha v + u) = $$

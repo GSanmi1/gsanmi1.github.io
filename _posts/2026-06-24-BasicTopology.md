@@ -1642,6 +1642,9 @@ Let be $\Set{G_x}$ an open cover, then $\forall p \forall x(p \in G_x \implies \
 
 **Construct a compact set of real numbers whose limit points form a countable set.**
 
+
+<br>
+
 # 8. Summary.
 
 Finite sets are the only ones for which analysis would be trivial. In a finite set, every covering admits a finite subcover, there are no infinite subsets, every supremum is attained, and every continuous function has a maximum. Analysis, by definition, deals with infinities. Rudin devotes the chapter to constructing two relaxations of finiteness that preserve some of that well-behaved nature.

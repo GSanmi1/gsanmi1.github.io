@@ -146,12 +146,74 @@ Is easy to demonstrate to each case that the proposed limit respects the converg
 
 # 3. Subsequences.
 
+## 3.1. Definition.
 
+Given a sequence $\Set{p_n}$, consider a sequence $\Set{n_k} \subset \mathbb{Z}^+: n_i \leq n_{i+1} \quad \forall i \in \mathbb{Z}^+$, then $\Set{p_{n_k}} \subset \Set{p_n}$ is called a subsequence of $\Set{p_n}$
 
 <br>
 
-## 3.1. Definition.
+## 3.2. Convergence in terms of subsequences.
 
+Observe that is clear that a sequence converges to $p$ in $X iff any subsequence converges to $p$ in $X$ as well.
 
+$$\Set{p_n} \to_X p \iff \forall \Set{p_{n_k}} \subset \Set{p_n} \Big(\Set{p_{n_k}} \to_X p\Big)$$
+
+<br>
 
 ## 3.2. Compactness and Subsequences.
+
+### 3.2.1. Sequences in compact metric spaces.
+
+**Let's consider some $\Set{p_n} \subset X$ being $X$ a compact metric space. Then, there is at least one subsequence $\Set{p_{n_k}} \subset \Set{p_n}$ converging in $X$.**
+
+<br>
+
+Let's consider the range of $\Set{p_n}$, let's call it $E$. In the case that $E$ were finite, trivially, there must be at least one point that appears infinitely in the sequence since the index set is countable, and we can take some subsequence $\Set{p_{n_k}}$ whose range is only one point. This subsequence trivially converges to that very point in $X$.
+
+If $E$ is infinite, then, for being $E$ an infinite subset of a compact set, by [$4.4.5$](https://gsanmi1.github.io/posts/2026/06/17/BasicTopology/), there is a limit point $p \in E'$.
+
+
+Let's depart from the fact that this point verifies that any neigbourhood contains infinite terms of the sequence, and the radius $r$ can have an arbitrary positive value. This way, we could select the terms of the subsequence by decreasing $r$ of $N_r(p)$ narrowing the distance to $p$ of consecutive terms of the subsequence. By selecting:
+
+$$\Set{p_{n_k}} \subset \Set{p_n} : p_{n_i} \in N_{i^{-1}}(p) : n_i < n_{i+1}$$
+
+Observe that:
+
+- We force the index to increase, $n_1< n_2 < n_3 \ldots$, trivially we can do that because there are infinite terms in any neigbourhood and upwards, but there are only finite terms backwards any term of the subsequence.
+
+- The distance of the terms tends below any real positive: 
+
+    $$p_{n_i} \in N_{i^{-1}} \implies d(p_{n_i},p) < \frac{1}{i}$$
+
+    Is well known that $\Set{1/n} \to_{\mathbb{R}} 0$, hence $\Set{d(p_{n_i},p)} \to_{\mathbb{R}} 0$.
+
+    Observe that, in first instance we could fall in the wrong misconception that monotone decrease of $d(p_{n_k},p)$ is what the subsequence does to approximates to $p$. But this is neither necessary nor sufficient for convergence, what is needed is that the radii be prescribed in advance, so that the distances fall below every $\mathcal{E}$.
+
+    Observe that if $\Set{p_n}$ would have several limit points, any sequence or subqecuence would gradually decrease to any of them without garantee convergence. What is needed is distance tending to $0$.
+
+    <br>
+
+In other terms: $\Set{p_{n_k}} \subset \Set{p_n}$ moves on through $\Set{p_n}$ towards $p$. 
+
+Then, take some $\mathcal{E} > 0$, then, by the arquimedean property, there is some $i \in \mathbb{Z}^+ : \mathcal{E} \geq 1/i > 0$ and $p_{n_i} \in N_\mathcal{E}(p)$. 
+
+Let's call $N = n_i$ and observe that any term of the subsequence further than $p_N$ verifies to be in $N_\mathcal{E}(p)$:
+
+$$N = n_i < n_k  \underbrace{\implies}_{\text{increasing index}} i < k \implies d(p_{n_k},p) < k^{-1} < i^{-1} \leq \mathcal{E}$$
+
+Since $\mathcal{E}$ is arbitrary, we can state that:
+
+$$\forall \mathcal{E} > 0 \ \exists N \in \mathbb{Z}^+ : (N \leq {n_k} \implies d(p_{n_k},p) < \mathcal{E}) \iff \Set{p_{n_k}} \to_X p$$
+
+In any case, there is some subsequence converging in some point of $X$.
+
+<br>
+
+### 3.2.1. Bounded sequences in $\mathbb{R}^k$.
+
+**Every bounded sequence in $\mathbb{R}^k$ has a convergent subsequence is $\mathbb{R}^k$**
+
+This comes from the fact that every bounded subset of $\mathbb{R}^k$ lies in some $k$-cell which is compact and from above, any sequence in a compact set has a convergent subsequence.
+
+<br>
+
