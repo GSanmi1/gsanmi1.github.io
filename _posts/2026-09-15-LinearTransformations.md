@@ -245,13 +245,31 @@ Ultimately, observe that this set gathers all the posible linear transformations
 
 <br>
 
+### 2.6.5.
+
+**If:** 
+
+$$\begin{cases} a_1 = (1,-1) & b_1 = (1,0) \\ a_2=(2,-1) & b_2 = (0,1) \\ a_3=(-3,2) & b_3 = (1,1)\end{cases}$$
+
+**Is there some linear transformation $T : \mathbb{R}^2 \to \mathbb{R}^2 \mid T(a_i) = b_i \quad \forall i = 1,2,3$?**
+
+Observe that, by theorem $1$ ($2.4.$), since $(1,-1)$ and $(2,-1)$ are two non-proportional vectors of a $2$-dimenional vector space and form a basis of $\mathbb{R}^2$, the linear transformation $T$ that pairs $a_i \to_T b_i : i = 1,2$ is univoquely determinated by this same pairings and the and we only have to see if it satisfies $T(a_3) = b_3$:
+
+$$T(-3,2) = T(-a_1-a_2) = -T(a_1) - T(a_2) = -(1,0) - (0,1)=(-1,-1) \neq b_3$$
+
+Hence, such $T$ does not exist.
+
+<br>
+
 # 3. The algebra of linear transformations.
 
 Let's explore operations between linear transformations.
 
 <br>
 
-## 3.1. Vector space of linear transformations. $L(V,W)$.
+## 3.1. Operations with linear transformations. 
+
+### 3.1.1. Vector space of linear transformations. $L(V,W)$.
 
 Let be $V$, $W$ $K$-spaces, and $T,U: V \to W$ linear transformations, then, let's see that:
 
@@ -284,13 +302,13 @@ Observe that we can argue as well that $W^V$ with the operations defined is also
 
 <br>
 
-## 3.2. Basis and Dimension of the $L(V,W)$ space.
+### 3.1.2. Basis and Dimension of the $L(V,W)$ space.
 
 Let be $V$ and $W$, respectively $n$ and $m$ dimensional $K$-spaces. Then $L(V,W)$ is a $mn$-dimensional $K$-space.
 
 Let's consider $\mathcal{B}=(v_1, \ldots, v_n)$ and $\mathcal{B}' = (w_1, \ldots, w_m)$ two ordered basis of $V$ and $W$. For each $(p,q) \in [n] \times [m]$, we define the linear transformation given by:
 
-$$E^{p,q} : V \to W \mid E^{p,q}(v_i) = \begin{cases} 0  \ \ \quad i \neq q \\ w_p \quad i  =q\end{cases} = \delta_{iq} w_p$$
+$$E^{p,q} : V \to W \mid E^{p,q}(v_i) = \begin{cases} 0  & i \neq q \\ w_p & i  =q\end{cases} = \delta_{iq} w_p$$
 
 According to $2.4$ there is only one linear transformation for this basis.
 
@@ -315,3 +333,69 @@ $$\sum_{p=1}^m \sum_{q=1}^n \alpha_{pq} E^{p,q} = 0$$
 Observe that each $\alpha_{pq}$ comes along attached with some $E^{p,q}$ that in at least one iteration of the loop is not $0$, so if at least one $\alpha_{pq} \neq 0$ the summatory can't be zero since each $E^{p,q}$ became a distinct vector from an independent set. 
 
 Hence $\alpha_{pq} = 0 \quad \forall (p,q) \in [n] \times [m]$ and $\Set{E^{p,q}}_{p \in [n], q \in [m]}$ is independent, then is a basis.
+
+<br>
+
+### 3.1.3. Composition of linear transformations.
+
+**Let be $V,W,Z$ $K$-spaces and $T : V \to W$, $U : W \to Z$ linear transformations, then $U \circ T : V \to Z$ is a linear transformation:**
+
+$$(U \circ T)(\alpha v + u) = U(\alpha T(v) + T(u)) = \alpha (U \circ T)(u) + (U \circ T)(v)$$
+
+<br>
+
+## 3.2. Linear operators of a vector space.
+
+### 3.2.1. Definition.
+
+In what follows, we shall be primarily concerned with linear transformation of a vector space into itself. Since we would so often have to write $T$ is a linear transformation from $V$ into $V$, we shall replace this with $T$ is a linear operator on $V$.
+
+Let be $V$ a $K$-space, then, any linear transformation $T : V \to V$ is called a *linear operator on V*.
+
+<br>
+
+### 3.2.2. Multiplication between linear operators.
+
+Observe that since the composition respects the linearity we can define some multiplication on $L(V,V)$:
+
+$$·: V \times V \to V \mid UT = U \circ T$$
+
+Observe that this multiplication acts in sinergy with additive group $(L(V,V),+)$:
+
+- *Identity*:
+
+    $$IT = TI = I \quad \forall T \in L(V,V)$$
+
+    <br>
+
+- *Compatibility*:
+
+    $$\begin{cases} U(T + H) = UT + UH \\ (T+H)U = TU + HU\end{cases} \quad \forall U,H,T \in L(V,V)$$
+
+    <br>
+
+- *Conmutativity with scalars*:
+
+    $$\alpha UT = (\alpha U)T = U(\alpha T) \quad \forall \alpha \in K, \forall U,T \in L(V,V)$$
+
+    Observe that this last property comes from the fact that:
+
+    $$(\alpha U)(T(v)) =U(\alpha T(v)) = U((\alpha T)(v))$$
+
+    <br>
+
+### 3.2.3. Examples of linear operators.
+
+Take some $K$-spaces $V$ and $W$ and let be $\mathcal{B}$ and ordered basis of $V$, then consider the transformation $E^{p,q}$:
+
+$$E^{p,q}(v_i) = \delta_{iq}w_p = \begin{cases} 0 & i \neq q \\ w_p & i = q \end{cases} : w_p \in W$$
+
+Then, we have that these $n^2$ linear operators forma a basis of $L(V,V)$:
+
+$$E^{p,q} \circ E^{r,s} = \begin{cases} 0 & r \neq q \\ E^{p,s} & r = q\end{cases}$$
+
+<br>
+
+## 3.3. Invertible linear transformations.
+
+<br>
