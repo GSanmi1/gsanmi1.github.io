@@ -209,7 +209,7 @@ In any case, there is some subsequence converging in some point of $X$.
 
 <br>
 
-### 3.2.1. Bounded sequences in $\mathbb{R}^k$.
+### 3.2.2. Bounded sequences in $\mathbb{R}^k$.
 
 **Every bounded sequence in $\mathbb{R}^k$ has a convergent subsequence is $\mathbb{R}^k$**
 
@@ -217,3 +217,84 @@ This comes from the fact that every bounded subset of $\mathbb{R}^k$ lies in som
 
 <br>
 
+# 4. Cauchy Sequences.
+
+## 4.1. Conceptual Introduction.
+
+Until now, we've just seen that a sequence converges when the distance between the terms of the sequence and some point gradually becomes closer and closer to $0$.
+
+In contrast, a Cauchy Sequence is a sequence in whose terms gradually get closer betweem them without referencing a convergent point, it abstracts the behaviour of a convergent sequence in a space in which the convergence point does not necesarily exists.
+
+When for each cauchy sequence in a set exists a convergence point in that very set, then the set is called to be *complete*. Later we will see that the completness definition given in terms of the supremum and this one are equivalent statements.
+
+<br>
+
+## 4.2. Formal Definition.
+
+Let be $(X,d)$ a metric space, then a sequence $\Set{p_n} \subset X$ is said to be a Cauchy Sequence if:
+
+$$\forall \mathcal{E} > 0 \ \exists N \in \mathbb{N} : (N \leq n,m \implies d(p_n,p_m)< \mathcal{E})$$
+
+Meaning that, at some point, the terms of the sequence are arbitrarily near between them.
+
+<br>
+
+## 4.3. Geometrical Definition.
+
+### 4.3.1. Diameter of a set.
+
+Let be $E \neq \varnothing \subset X$, then consider the $D_E \subset \mathbb{R}$ of all the distances between the points of $E$:
+
+$$D_E = \Set{d(p,q) \mid p,q \in E}$$
+
+Then, we call as *diameter* of $E$ to the supremum of $D_E$:
+
+$$diamE = sup D_E$$
+
+Observe that this definition doesn't stablish to the diameter to be a distance between some points, that would be the maximum which is not garantee to exists.
+
+<br>
+
+### 4.3.2. Tail of a sequence.
+
+Consider a sequence $\Set{p_n} \subset X$ and the $i$-th tail $T_i = \Set{p_n : n \geq i}$ of the sequence. 
+
+<br>
+
+### 4.3.3. Geometric definition.
+
+A sequence $\Set{p_n} \subset X$ is said to be a Cauchy Sequence if, the sequence of the diameter of the tails of $\Set{p_n}$, converges to $0$;
+
+$$\Set{diamT_n} \to_\mathbb{R} 0$$
+
+Let's recall the definition of convergence
+
+$$\lim_{n \to \infty} diamT_n = 0 \iff \forall \mathcal{E} \in \mathbb{R}^+ \exists N \in \mathbb{Z}^+ : (N \leq n \implies |diamT_n| < \mathcal{E})$$
+
+<br>
+
+First, let's recall that: $diamT_n = sup D_{T_n}$, and $D_{T_n} = \Set{d(p,q) \mid p,q \in T_n} = \Set{d(p_s,p_t) \mid s,t \geq n}$, hence, $diamT_n$ is the less upperbound of a set of distances and:
+
+$$n \leq s,t \implies d(p_s,p_t) \leq diamT_n = |diamT_n|$$
+
+Hence
+
+$$\forall \mathcal{E} \in \mathbb{R}^+ \exists N \in \mathbb{Z}^+ : (N \leq n \implies |diamT_n| < \mathcal{E}) \implies$$
+
+$$\implies \forall \mathcal{E} \in \mathbb{R}^+ \exists N \in \mathbb{Z}^+ : (N \leq n \leq s,t \implies d(p_s,p_t) < diamT_n < \mathcal{E}) \implies$$
+
+$$\implies \forall \mathcal{E} \in \mathbb{R}^+ \exists N \in \mathbb{Z}^+ : (N \leq s,t \implies d(p_s,p_t) < \mathcal{E})$$
+
+Observe that, if we depart from the first definition, we get:
+
+$$m > n\implies T_m \subset T_n \implies diamT_m < diamT_n$$
+
+Because the definition impose the far you go the smaller is the distance between the elements:
+
+$$s>m>n \implies d(p_s,p_m)< d(p_m,p_n) \implies sup D_{T_s} < sup D_{T_m} < sup D_{T_n}$$
+
+Which allow us to say that:
+
+$$\forall \mathcal{E} \in \mathbb{R}^+ \exists N \in \mathbb{Z}^+ : (N \leq n \implies |diamT_n| < \mathcal{E})$$
+
+Both definitions are equivalent for the cauchy sequences.
