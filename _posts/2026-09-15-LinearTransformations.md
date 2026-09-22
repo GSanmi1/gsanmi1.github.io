@@ -137,7 +137,7 @@ Is clear that the rank and kernel of a linear transformation are indeed subspace
 
 <br>
 
-### 2.5.2. Intuition: Rank-Nulity theorem.
+### 2.5.2. Intuition: Rank-Nullity theorem.
 
 Let's see some interesting interpretation of this two subspaces. 
 
@@ -258,6 +258,20 @@ Observe that, by theorem $1$ ($2.4.$), since $(1,-1)$ and $(2,-1)$ are two non-p
 $$T(-3,2) = T(-a_1-a_2) = -T(a_1) - T(a_2) = -(1,0) - (0,1)=(-1,-1) \neq b_3$$
 
 Hence, such $T$ does not exist.
+
+<br>
+
+### 2.6.10.
+
+**Consider $V$ the $\mathbb{C}$ set as a $\mathbb{R}$-space. Find a linear operator in $V$ which is not a linear operator in $\mathbb{C}$ as a $\mathbb{C}$-space.**
+
+Take $T:V \to V \mid T(1,0) = (1,0) \wedge T(0,1) = (1,0)$, by theorem $1$, the mapping garantee that $T$ is a linear transformation. But observe that in $\mathbb{C}$ as a $\mathbb{C}$-space only has dimension $1$, hence any non-zero complex element serve as a basis of the vector space. 
+
+Then, if $T$ is as $T(i) = 1$ (which is the equivalent of the second mapping above), again by theorem $1$ that determines $T$ as a linear transformation, then:
+
+$$T(i) = iT(1) = 1 \iff T(1) = \frac{1}{i} = -i \neq 1$$
+
+Hence $T$ as a linear operator in $V$ does not exists a linear transformation in $\mathbb{C}$ as a $\mathbb{C}$-space.
 
 <br>
 
@@ -398,4 +412,96 @@ $$E^{p,q} \circ E^{r,s} = \begin{cases} 0 & r \neq q \\ E^{p,s} & r = q\end{case
 
 ## 3.3. Invertible linear transformations.
 
+### 3.3.1. Introduction. Invertible function.
+
+There is an interesting question about linear transformation which is, whether there is for some linear transformation $T$ other linear transformation $T^{-1}$ such $TT^{-1} = T^{-1}T = I$?. In this context, $T$ is what we would call *invertible* linear transformation. 
+
+First, let's consider $T \in W^V$, then we say $T$ is invertible when:
+
+- $T$ is an inyective function: $T(u) = T(v) \implies u = v \quad \forall u,v \in V$
+
+- $T$ is a surjective function; the range of $T$ is his codomain: $T(V) = W$
+
 <br>
+
+### 3.3.2. Caracterization of invertible linear transformations.
+
+**We have that the inverse of an invertible linear transformation is a linear transformation.** 
+
+Let $V$ and $W$ be $K$-spaces. Then, formally:
+
+$$T \in L(V,W) :\begin{cases}T(u) = T(v) \implies u = v \quad \forall u,v \in V \\  T(V) = W\end{cases} \implies T^{-1} \in L(W,V)$$
+
+The proove is trivial.
+
+<br>
+
+Observe also that if $T,U \in L(V,W)$ invertibles, then:
+
+$$(U \circ T)^{-1} = T^{-1} \circ U^{-1}$$
+
+<br>
+
+## 3.4. Non-singular linear transformations.
+
+### 3.4.1. Definition.
+
+Let's see that, take some $T \in L(V,W)$, if $T$ is inyective, then it satisfies $T(u) = T(v) \implies u = v$ for any $u,v \in V$. Check that linearity allow us to reformulate the statement as:
+
+$$(T(u) = T(v) \implies u = v \quad \forall u,v \in V) \iff (T(u-v) = 0 \implies u-v = 0 \quad \forall u,v \in V)$$
+
+Or simply: $T(u) = 0 \implies u = 0 \quad \forall u \in V$. The opposite implication is direct, so both statements are equivalents and it develops in a biconditional since $\Leftarrow$ is true because linearity needs that $T(0) = 0$, so:
+
+$$T \text{ is inyective } \iff [T(v) = 0 \iff v = 0 \quad \forall v \in V] \iff Ker(T) = \Set{0}$$
+
+Ultimately, if $V$ is finite dimensional and $Ker(T) = \Set{0} \implies dim(Ker(T)) = 0$. then $dim(T(V)) = dimV$ by the range-nullity theorem ($2.5.2$). 
+
+Note that, under this conditions if $dimW = dimV$, then $T(V) \leq W : dimT(V) = dimW  \implies T(V) = W$ and $T$ is also suprayective and hence, invertible.
+
+So, if $V,W$ are two finite-dimensional $K$-spaces:
+
+$$ dimV = dimW \implies \forall T \in L(V,W) \big[Ker(T) = \Set{0} \implies T^{-1} \in L(W,V)\big]$$
+
+<br>
+
+Then, we define the *non-singular* linear transformations to those linear transformations $T \in L(V,W)$ such:
+
+$$T(u) = 0 \implies u = 0 \quad \forall u \in V$$
+
+Note then that, by the described above, non-singular linear transformations are those which do not loose information in the mapping of $V$ onto $W$ since $Ker(T) = \Set{0}$, are those whose nullity ($Ker$ dimension) is $0$. And the rest of the explained above can be broadly summarized in the fact that if $W$ and $V$ are the same finite-direction-size, then any non-singular transformation between them is invertible.
+
+<br>
+
+### 3.4.2. Caracterization of non-singular linear transformations.
+
+Let $T \in L(V,W)$. Then $T$ is non-singular if and only if $T$ carries each linearly independent subset of $V$ onto a linearly independent subset of $W$. 
+
+<br>
+
+- $\Rightarrow$: Take $T$ non-singular, then, let be $S = \Set{v_1,\ldots,v_n}$ an independent subset of $V$:
+
+    $$T(\alpha_1 v_1 \cdots + \alpha_n v_n) = \alpha_1 T(v_1) \cdots + \alpha_n T(v_n) = 0 \implies$$
+
+    $$\implies \alpha_1 v_1 \cdots + \alpha_n v_n = 0$$
+
+    Observe that, since $S$ is an independent set, the second line give us that all $\alpha_i$ are $0$ and this scalars are the same above, so $T(S)$ is also a linear independent subset of $W$, if not $S$ would not be independent since both shares the same scalars in the linear combinations.
+
+    <br>
+
+- $\Leftarrow$: Suppose $T$ carries independent sets to independent sets, then, take some $v \in V$, as a unitary set $\Set{v} \subset V$ is independent iff $v \neq 0$, hence $T(v) = 0 \implies v = 0$ because both share dependence which in unary vector sets is equivalent to be the $0$ vector. 
+
+<br>
+
+### 3.4.3. Relation between invertible transformations and non-singular transformations.
+
+We already catch a glimpse of this statment but lets formalized it in a theorem.
+
+Let be $V, W$ finite-equal-dimensional $K$-spaces ($dimV = dimW \in \mathbb{N}$). Then for ahy $T \in L(V,W)$ the following statements are equivalent:
+
+- $T$ is invertible.
+- $T$ is non-singular.
+- $T(V) = W$.
+
+We already demonstrate these above, let's also see that under this very conditions, we have also that the following statements are also equivalents to the first ones and between them.
+
+- 
