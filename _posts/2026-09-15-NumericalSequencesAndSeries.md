@@ -16,7 +16,7 @@ lang: en
 
 # 2. Convergent Sequences.
 
-## 2.1. Sequence's reminder.
+## 2.1. Sequence's reminder. Definition and Intuition.
 
 We remind that we understand as a sequence to be a function $f$ whose domain is the positive integerse set:
 
@@ -24,9 +24,14 @@ $$f : \mathbb{Z}^+ \to A$$
 
 Often refered with the symbol $\Set{x_n}$, where $x_n = f(n)$ is the $n$-st term of the sequence.
 
-<br>
 
 We recall that the *range* of a sequence $\Set{p_n} \subset X$ is the set of all his terms $p_n$, and it can be infinite or a finite set, it depends of the definition of the sequence. Think trivially in $f(n) = n$ and $f(n) = 0$.
+
+<br>
+
+The formal definition of a sequence as "a function whose domain is $\mathbb{Z}^+$" is formally correct but conceptually quite poor. In the context of analysis, a sequence is much more than a way of talking about countability.
+
+Intuitively, a sequence is the mathematical abstraction of an object that changes through ordered steps ($\mathbb{Z}^+$ is a good ordered set). In the chapter before, we used it to count, in this chapter we will care about it from a certain point on (through the infinite). Its importance lies in the fact that it is the mechanism by which analysis reduces the infinitely close to finite stages, is the introduction to the limit as a tool.
 
 <br>
 
@@ -40,11 +45,11 @@ Formally:
 
 $$\lim_{n \to \infty} p_n = p \iff \forall \mathcal{E} \in \mathbb{R}^+ \exists N \in \mathbb{Z}^+ : (N \leq n \implies d(p_n,p) < \mathcal{E})$$
 
-And we say that $p$ is the limit of $\Set{p_n}$ in $X$, we denote it as $\Set{p_n} \to_{X} p$.
+And we say that $p$ is the limit of $\Set{p_n}$ in $X$, we denote it as $\Set{p_n} \to_{X} p$. If $\Set{p_n}$ don't have a limit point in $X$ then it says to *diverge in $X$*.
 
 <br>
 
-If $\Set{p_n}$ don't have a limit point in $X$ then it says to *diverge in $X$*.
+Hence, we would say that a sequence if get
 
 <br>
 
