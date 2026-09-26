@@ -238,7 +238,6 @@ When for each cauchy sequence in a set exists a convergence point in that very s
 
 Let be $(X,d)$ a metric space, then a sequence $\Set{p_n} \subset X$ is said to be a Cauchy Sequence if:
 
-$$\forall \mathcal{E} > 0 \ \exists N \in \mathbb{N} : (N \leq n,m \implies d(p_n,p_m)< \mathcal{E})$$
 
 Meaning that, at some point, the terms of the sequence are arbitrarily near between them.
 
@@ -262,7 +261,7 @@ Observe that this definition doesn't stablish to the diameter to be a distance b
 
 ### 4.3.2. Tail of a sequence.
 
-Consider a sequence $\Set{p_n} \subset X$ and the $i$-th tail $T_i = \Set{p_n : n \geq i}$ of the sequence. 
+Consider a sequence $\Set{p_n} \subset X$ and the $i$-th tail $T_i = \Set{p_n : n \geq i}$ of the sequence. The tail is what remains of the sequence at some index $n$.
 
 <br>
 
@@ -272,7 +271,7 @@ A sequence $\Set{p_n} \subset X$ is said to be a Cauchy Sequence if, the sequenc
 
 $$\Set{diamT_n} \to_\mathbb{R} 0$$
 
-Let's recall the definition of convergence
+Let's recall the definition of convergence:
 
 $$\lim_{n \to \infty} diamT_n = 0 \iff \forall \mathcal{E} \in \mathbb{R}^+ \exists N \in \mathbb{Z}^+ : (N \leq n \implies |diamT_n| < \mathcal{E})$$
 
@@ -286,20 +285,155 @@ Hence
 
 $$\forall \mathcal{E} \in \mathbb{R}^+ \exists N \in \mathbb{Z}^+ : (N \leq n \implies |diamT_n| < \mathcal{E}) \implies$$
 
-$$\implies \forall \mathcal{E} \in \mathbb{R}^+ \exists N \in \mathbb{Z}^+ : (N \leq n \leq s,t \implies d(p_s,p_t) < diamT_n < \mathcal{E}) \implies$$
+$$\implies \forall \mathcal{E} \in \mathbb{R}^+ \exists N \in \mathbb{Z}^+ : (N \leq n \leq s,t \implies d(p_s,p_t) \leq diamT_n < \mathcal{E}) \implies$$
 
 $$\implies \forall \mathcal{E} \in \mathbb{R}^+ \exists N \in \mathbb{Z}^+ : (N \leq s,t \implies d(p_s,p_t) < \mathcal{E})$$
 
 Observe that, if we depart from the first definition, we get:
 
-$$m > n\implies T_m \subset T_n \implies diamT_m < diamT_n$$
+$$m > n\implies T_m \subset T_n \implies diamT_m \leq diamT_n$$
 
 Because the definition impose the far you go the smaller is the distance between the elements:
 
-$$s>m>n \implies d(p_s,p_m)< d(p_m,p_n) \implies sup D_{T_s} < sup D_{T_m} < sup D_{T_n}$$
+$$s>m>n \implies d(p_s,p_m)< d(p_m,p_n) \implies sup D_{T_s} \leq sup D_{T_m} \leq sup D_{T_n}$$
 
 Which allow us to say that:
 
 $$\forall \mathcal{E} \in \mathbb{R}^+ \exists N \in \mathbb{Z}^+ : (N \leq n \implies |diamT_n| < \mathcal{E})$$
 
 Both definitions are equivalent for the cauchy sequences.
+
+<br>
+
+### 4.3.4. Properties of the diameter.
+
+- Let be a subset of a metric space: $E \subset X$, then:
+
+    $$diam\overline{E} = diamE$$
+
+    If we take $D_E = \Set{d(p,q) \mid p,q \in E}$ and $D_{\overline{E}} = \Set{d(p,q) \mid p,q \in \overline{E}}$. Let's suppose that, $diam\overline{E} < diamE$, in that case it would be $supD_{\overline{E}} < supD_E \implies \exists a \in \mathbb{R} : supD_{\overline{E}} < a < supD_E \implies a = d(p,q) : p,q \in E\setminus \overline{E}$ which is impossible since $E \subseteq \overline{E}$.
+
+    Hence is $diam\overline{E} \geq diamE$, but if you consider $p,q \in \overline{E}$, then, if both are limit points, there are $p',q' \in E : d(p,p') <\mathcal{E} \wedge d(q,q')< \mathcal{E}$, (if not trivially $p' = p \wedge q' = q$ and we get the same), therefore:
+
+    $$d(p,q) \leq d(p,p') + d(p',q') + d(q',q) < 2\mathcal{E} + d(p',q') \leq 2\mathcal{E} + diamE$$
+
+    Since $\mathcal{E},p,q$ are arbitrary, then $diamE$ is upperbound of $D_{\overline{E}}$ and $diamE = diam\overline{E}$.
+
+    <br>
+
+- If $\Set{K_n}: K_{n+1} \subset K_n \wedge \Set{diamK_n} \to_{X} 0$, then $\cap_1^\infty K_n$ contains exactly one point.
+
+    We remember that in $4.4.4$ of the BasicTopology post, since $K_{n+1} \subset K_n$ any finite intersection of the collection of compact sets is not empty, hence the arbitrary intersection is not empty either.
+
+    If $\cap_1^\infty K_n$ has two (or more) distinct elements, by the metric spaces properties $p \neq q \implies d(p,q) \neq 0$. Also, this two terms would be in any $K_n$; $p,q \in \cap_1^\infty K_n \implies p,q \in K_n \quad \forall n \in \mathbb{Z}^+ $ hence take $0 < \mathcal{E} < d(p,q)$ and observe that, by the said above $diamK_n \geq d(p,q) > \mathcal{E} \quad \forall n \in \mathbb{Z}^+$, and there cannot be some $diamK_n : diamK_n < \mathcal{E}$ so the sequence could not converge to $0$. 
+
+    Hence $\cap_1^\infty K_n$ is not empty and it doesn't have two distinct elements or more.
+
+    <br>
+
+## 4.4. Important properties of Cauchy Sequences.
+
+### 4.4.1. Convergent Sequences are Cauchy Sequences.
+
+Let be $\Set{p_n} \to_X p$, then $\forall \mathcal{E}>0 \exists N \in \mathbb{Z}^+ (N \leq n \implies d(p_n,p)<\mathcal{E})$. Then, take some $\mathcal{E}' = \mathcal{E}/2$, for $\mathcal{E}'$ there is some $N$ as the definition says, take $n,m \geq N$ and observe that, by the triangle inequality:
+
+$$d(p_n,p_m) \leq d(p_n,p) + d(p,p_m) < 2\mathcal{E}' = \mathcal{E}$$
+
+<br>
+
+And $\Set{p_n}$ is a Cauchy Sequence.
+
+<br>
+
+### 4.4.2. In compact metric spaces, any Cauchy Sequence is a Convergence Sequence.
+
+Take some compact metric space $X$ and consider some cauchy sequence $\Set{p_n}$. Then, consider $E = range \Set{p_n}$, if $E$ is finite, $\Set{p_n}$ must converge, otherwise, if the sequence iterates between finite values infinitely it would not be a Cauchy Sequence (just take $\mathcal{E} < \min \Set{d(p,q) \neq 0 \mid p,q \in E}$).
+
+If $E$ is infinite, then, since $X$ is a compact space $E' \neq \varnothing$. Take some $p \in E'$, observe that it contains infinite terms of the sequence. Consider $N_{\mathcal{E}/2}(p)$ and since $\Set{p_n}$ is Cauchy's $\Set{diamT_n} \to_\mathbb{R} 0$ and we can consider some $T_N : diamT_N < \mathcal{E}/2$.
+
+Observe that in one hand, $T_N$ contains all but finite many terms of $\Set{p_n}$ and in the other $N_{\mathcal{E}/2}(p)$ contains infinite terms of $\Set{p_n}$ so, let be $p_t \in N_{\mathcal{E}/2}(p) \cap T_N$, then $d(p_n,p) \leq d(p_n,p_t) + d(p_t,p) < \mathcal{E} \quad \forall n \geq N$, since $\mathcal{E}$ is arbitrary we can state that $\Set{p_n} \to_X p$.
+
+<br>
+
+### 4.4.3. In $\mathbb{R}^k$ every Cauchy Sequence converges.
+
+Let's observe that, if we presume that a Cauchy Sequence is bounded in $\mathbb{R}^k$, then it can be included a compact space (take the clousure of the bounded set) and by the $4.4.2$ it would converge in $\mathbb{R}^k$
+
+<br>
+
+Let be $\Set{p_n}$ a Cauchy Sequence in a metric space. Take some $\mathcal{E}>0$, exists some $N \in \mathbb{Z}^+ : (d(p_n,p_m) < \mathcal{E} \quad \forall n,m \geq N)$. Is clear that $T_N \subset N_\mathcal{E}(p_N)$ and $T_N$ contains all the terms of the sequence but a finite many of them. 
+
+Hence, we can consider $\mathcal{E}' = \max\Set{d(p_t,p_N) \mid t< N}$, then $T_1 \subset N_{\max\Set{\mathcal{E},\mathcal{E}'}+1}(p_N)$ and $\Set{p_n}$ is bounded.
+
+The intuitive idea behind this reasoning is that as we stated above, Cauchy Sequence term's groups around something, groups around himself, and this means that the sequence can be encapsulated at some point (some $N$ for some $\mathcal{E} > 0$ as the Cauchy condition's state) and this capsule can be expanded if is needed.
+
+<br>
+
+Since $X$ as a metric space is generic, this also applies to $\mathbb{R}^k$ and then, following the reasoining above, every Cauchy Sequence converges in $\mathbb{R}^k$.
+
+<br>
+
+## 4.5. Metric-completness.
+
+A metric space in which every Cauchy sequence converges is said to be *complete*.
+
+
+- Thus $4.4.3$ says that all compact metric spaces and all Euclidean spaces $\mathbb{R}^k$ are complete. 
+
+- It also implies also that every closed subset $E$ of a complete metric space $X$ is complete. (Every Cauchy sequence in $E$ is a Cauchy sequence in $X$, hence it converges to some $p \in X$, and actually $p \in E$ since $E$ is closed.) 
+
+
+An example of a metric space which is not complete is the space of all rational numbers $\mathbb{Q}$. 
+
+<br>
+
+Is useful to recall the $LUB$ property presented in [Real Number's post](https://gsanmi1.github.io/posts/2026/03/05/Real_Numbers/) as a distinct form of completness. That is a ordered field's form of completness, often called as *Dedekind's completness*.
+
+These are two distinct concepts, not one concept expressed in two different ways. Dedekind completeness (the least-upper-bound property) is a property of ordered sets, whereas Cauchy completeness is a property of metric spaces. In general, neither implies the other: $(0,1)$ has the least-upper-bound property but is not Cauchy-complete, while $\mathbb{R}((t))$ is Cauchy-complete but lacks that property.
+
+They share the name because they formalize the same intuition—"there are no gaps"—and because in Archimedean ordered fields, particularly in $\mathbb{R}$, they are equivalent. However, that coincidence is a theorem, not a definition.
+
+<br>
+
+## 4.5. Monotonic Sequences of real numbers.
+
+### 4.5.1. Definition.
+
+We stated that boundedness is necesary for Cauchy's and Convergent sequences, but is not sufficent, a Cauchy's sequence is always bounded as we see before but there are not-convergent Cauchy's sequence.
+
+Let's give now the context for which boundedness is sufficent for (or equivalent to) convergence. This is the case of the *monotonic sequences*.
+
+<br>
+
+Let be $\Set{s_n} \subset \mathbb{R}$, then is said to be:
+
+- monotonically increasing if: $s_n \leq s_{n+1} \quad \forall n \in \mathbb{Z}^+$.
+
+- monotonically decreasing if: $s_n \geq s_{n+1} \quad \forall n \in \mathbb{Z}^+$.
+
+<br>
+
+### 4.5.2. Monotonic Sequences converges iff are bounded.
+
+Take $\Set{s_n} \subset \mathbb{R}$ monotonic, concretely, decreasingly monotonic, and bounded. Consider $range\Set{s_n}$, then, since is bounded, in $\mathbb{R}$ has a supremum and an infimum let's call it $i \in \mathbb{R}$.
+
+Then, $i$ verifies $s_n \geq i \quad \forall n \in \mathbb{Z}$. Take $\mathcal{E} > 0$, since $i = \inf range{\Set{s_n}}$, there is always some term behind $i + \mathcal{E}$:
+
+$$\forall \mathcal{E}>0 \exists N \in \mathbb{Z}^+ (i + \mathcal{E} > s_N \geq i )$$
+
+Observe that by the monotonic behaviour $s_N \geq s_{N+1} \geq s_{N+2} \ldots \geq i$, hence $s_n - i < \mathcal{E} \quad \forall n \geq N$ and we can reformulate above as:
+
+$$\forall \mathcal{E}>0 \exists N \in \mathbb{Z}^+ (i + \mathcal{E} > s_n \geq i \quad \forall n \geq N) \iff$$
+
+$$\iff \forall \mathcal{E}>0 \exists N \in \mathbb{Z}^+ (\mathcal{E} > s_n -i \geq 0 \quad \forall n \geq N) \iff$$
+
+$$\iff \forall \mathcal{E}>0 \exists N \in \mathbb{Z}^+ (N \leq n \implies d(s_n,i) < \mathcal{E})$$
+
+Which is exactly our definition of convergence.
+
+<br>
+
+# 5. Upper and Lower limits.
+
+
+<br>
