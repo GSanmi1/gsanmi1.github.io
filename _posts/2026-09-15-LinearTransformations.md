@@ -450,7 +450,9 @@ Let's see that, take some $T \in L(V,W)$, if $T$ is inyective, then it satisfies
 
 $$(T(u) = T(v) \implies u = v \quad \forall u,v \in V) \iff (T(u-v) = 0 \implies u-v = 0 \quad \forall u,v \in V)$$
 
-Or simply: $T(u) = 0 \implies u = 0 \quad \forall u \in V$. The opposite implication is direct, so both statements are equivalents and it develops in a biconditional since $\Leftarrow$ is true because linearity needs that $T(0) = 0$, so:
+Or simply: $T(u) = 0 \implies u = 0 \quad \forall u \in V$ (in a vector space any vector is linear combination of others vectors, hence the difference of two vectors reference any vector). 
+
+The opposite implication is direct, so both statements are equivalents and it develops in a biconditional since $\Leftarrow$ is true because linearity needs that $T(0) = 0$, so:
 
 $$T \text{ is inyective } \iff [T(v) = 0 \iff v = 0 \quad \forall v \in V] \iff Ker(T) = \Set{0}$$
 
@@ -504,4 +506,30 @@ Let be $V, W$ finite-equal-dimensional $K$-spaces ($dimV = dimW \in \mathbb{N}$)
 
 We already demonstrate these above, let's also see that under this very conditions, we have also that the following statements are also equivalents to the first ones and between them.
 
-- 
+- Let be $\mathcal{B} \subset V$ a basis, then $T(\mathcal{B}) \subset W$ is also a basis ($3.4.2$ and same dimension.)
+
+- There is some basis $\mathcal{B} \subset V$ such $T(\mathcal{B}) \subset W$ is also a basis. This is the most powerful result of all, if for a linear transformation is known that it sends some basis to other basis, then $Ker(T) = 0$ (since $dimT(V) = dimW$) and is a non-singular transformation connecting space of same finite-dimension, hence is invertible.
+
+<br>
+
+## 3.5. Other interesting algebraic structures.
+
+### 3.5.1. The group of invertible linear operators with composition.
+
+Let be $I(V)$ the set of all invertible linear operators of a finite-dimensional space $V$ (which is in fact the set of all non-singular transformations), then $(I(V),\circ)$ is a group, taking $I(v)=v$ as the identity. Consider $T,U,H \in I(V)$
+
+- *Associativity*: $((T \circ U) \circ H)(v) = (T\circ U)(H(v)) = T(U(H(v))) = T(U\circ H(v)) = (T \circ (U \circ H))(v)$
+
+- *Identity*: $IT = TI = T$
+
+- *Inverse*: $TT^{-1} = T^{-1}T = I$
+
+<br>
+
+### 3.5.2. The group of invertible square matrix.
+
+Let be $I \subset M_{n}(K)$ the set of the invertible matrix. Then $(I,\cdot)$ is a group with $I_n = (\delta_{ij})_{i,j \in [n]}$ as the identity. We already seen the associativity and the identity beavior in past sections. The garantee now is that every matrix of $I$ has an inverse.
+
+<br>
+
+# 4. Isomorphism.
