@@ -116,3 +116,44 @@
     - slug: modeling-computation
       en: Modeling & Computation
       es: Modelado y Computación
+
+- slug: computing-security
+  page: /computing-security.html
+  en: Computing & Security
+  es: Computación y Seguridad
+  blurb_en: Handwritten notes on systems programming, reverse engineering and offensive security.
+  blurb_es: Apuntes propios sobre programación de sistemas, ingeniería inversa y seguridad ofensiva.
+  subjects:
+    - slug: systems-programming
+      en: Systems Programming & C
+      es: Programación de Sistemas y C
+    - slug: memory-management
+      en: Memory Management
+      es: Gestión de Memoria
+    - slug: reverse-engineering
+      en: Reverse Engineering & Assembly
+      es: Ingeniería Inversa y Ensamblador
+    - slug: binary-exploitation
+      en: Binary Exploitation
+      es: Explotación de Binarios
+    - slug: fuzzing
+      en: Fuzzing & Vulnerability Research
+      es: Fuzzing e Investigación de Vulnerabilidades
+    - slug: networking
+      en: Networking
+      es: Redes
+    - slug: web-security
+      en: Web Security
+      es: Seguridad Web
+    - slug: pentesting
+      en: Pentesting & OSCP
+      es: Pentesting y OSCP
+    - slug: red-team
+      en: Red Team
+      es: Red Team
+    - slug: defensive-security
+      en: Defensive Security
+      es: Seguridad Defensiva
+    - slug: ctf-wargames
+      en: CTF & Wargames
+      es: CTF y Wargames
