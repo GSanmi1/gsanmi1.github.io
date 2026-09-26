@@ -36,6 +36,7 @@ makes a post appear under both Topology and Real Analysis. Valid slugs live in
 | Geometry & Topology | `geometry`, `differential-geometry`, `topology` |
 | Probability & Statistics | `probability`, `statistical-inference`, `stochastic-processes` |
 | Applied Mathematics | `numerical-analysis`, `optimization`, `modeling-computation` |
+| Computing & Security | `systems-programming`, `memory-management`, `reverse-engineering`, `binary-exploitation`, `fuzzing`, `networking`, `web-security`, `pentesting`, `red-team`, `defensive-security`, `ctf-wargames` |
 
 To add a new subject area, edit `_data/verticals.yml` — the sidebar, landing
 page and vertical pages all update automatically.
