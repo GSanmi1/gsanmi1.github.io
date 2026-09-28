@@ -130,9 +130,12 @@
     - slug: memory-management
       en: Memory Management
       es: Gestión de Memoria
-    - slug: reverse-engineering
-      en: Reverse Engineering & Assembly
-      es: Ingeniería Inversa y Ensamblador
+    - slug: x86-64
+      en: 'Reverse Engineering: x86-64'
+      es: 'Ingeniería Inversa: x86-64'
+    - slug: arm64
+      en: 'Reverse Engineering: ARM64'
+      es: 'Ingeniería Inversa: ARM64'
     - slug: binary-exploitation
       en: Binary Exploitation
       es: Explotación de Binarios

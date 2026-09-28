@@ -433,8 +433,28 @@ Which is exactly our definition of convergence.
 
 <br>
 
-# 5. Upper and Lower limits.
+# 5. Upper and Lower limits. Infinite convergence.
 
+In this section, we are gonna presento those sequences that diverges in $\mathbb{R}$ but do converge in $\overline{\mathbb{R}} = \mathbb{R} \cup \Set{+\infty , - \infty}$. We do now have the neccesary vocabulary to state that $\overline{\mathbb{R}}$ is indeed the clausure of $\mathbb{R}$.
 
+<br>
+
+## 5.1. Metric definition of infinite convergence.
+
+In a metric space $X$, we do say that that a sequence $\Set{x_n} \subset X$ converges to $\infty$ when they ends out of any bounded set. Formally:
+
+$$\Set{x_n} \to_X \infty \iff \forall \mathcal{E} > 0, \forall p \in X \ \exists N \in \mathbb{Z}⁺\big[N \leq n \implies  x_n \notin N_\mathcal{E}(p)\big]$$
+
+Basically, infinite convergence means incompatbility with be bounded.
+
+<br>
+
+## 5.2. $\mathbb{R}$ infinite convergence. Upper and lower limits.
+
+In $\mathbb{R}$, the notion is virtually the same. Associated with infinite convergent sequences there are two ways to escape from a segment, through the left or through the right. 
+
+We are interested in isolated those sequences that get out of bounds through the left $-\infty$ or through the right $+ \infty$:
+
+$$\Set{x_n} \to_\mathbb{R} -\infty \iff $$
 
 <br>
