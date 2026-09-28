@@ -6,7 +6,7 @@ date: 2025-12-12 09:00:00 +0000
 categories: ['Past Blogs', 'Assembly']
 tags: ['x86', 'reverse-engineering']
 author: German Sanmi
-subject: reverse-engineering
+subject: x86-64
 lang: en
 ---
 
