@@ -455,6 +455,6 @@ In $\mathbb{R}$, the notion is virtually the same. Associated with infinite conv
 
 We are interested in isolated those sequences that get out of bounds through the left $-\infty$ or through the right $+ \infty$:
 
-$$\Set{x_n} \to_\mathbb{R} -\infty \iff adas$$
+$$\Set{x_n} \to_\mathbb{R} -\infty \iff  $$
 
 <br>
