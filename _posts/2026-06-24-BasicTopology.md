@@ -1616,7 +1616,7 @@ $$ d(p,q)= \begin{cases} 1 & \text{if } p\neq q,\\ 0 & \text{if } p=q. \end{case
 
     If we consider $E \subset X$, finite, then any open cover has the trivial subcover $\Set{N_x}$ where $N_x$ is some neighbourhood of radius less than one of the element $x \in E$.
 
-    Take now $E$ infinite and again the open cover $\Set{N_x}$, is obvious that is not a finite cover and $N_x \cap N_y = \varnothing \iff x \neq y$, hence it can be reduce to a finite subcover without loosing elements.
+    Take now $E$ infinite and again the open cover $\Set{N_x}$, is obvious that is not a finite cover and $N_x \cap N_y = \varnothing \iff x \neq y$, hence it can be reduce to a finite subcover without loosing elements
 
     <br>
 
@@ -1642,6 +1642,43 @@ Let be $\Set{G_x}$ an open cover, then $\forall p \forall x(p \in G_x \implies \
 
 **Construct a compact set of real numbers whose limit points form a countable set.**
 
+Observe that a countable set, by definition, is a set for which a biyection with the natural numbers can be stablished. On the other hand, the limit points of a set is, intuitively, the set of those points for which the original set gets arbitrary closer. Any neighboorhoud of the any limit points has points of the original set.
+
+Hence, if the original set is compact, the set of the limit points must be at least bounded. Bounded and countable aims to the range of a sequence to be a good candidate.
+
+<br>
+ 
+Let's start thinking in the following sequence, $\Set{1/n} \subset \mathbb{R}$. This sequence has only one limit point $0$ and the set $\Set{0} \cup range\Set{1/n}$ is bounded and obviously closed so is compact. This sequence structure can be understanded as $\Set{1/n + c} : c \in \mathbb{R}$ where $c$ is a constant an in the limit, the only limit point of the range of the sequence being $\Set{c} \cup \Set{1/n +c}$ a compact set.
+
+Then, let's consider the following set:
+
+$$K = \bigcup_{t \in \mathbb{Z^+}} range\Set{1/n + 1/t}_{n \in \mathbb{Z}^+} \cup \Set{0}$$
+
+This set is the union of the ranges of the sequences of the form $\Set{1/n + 1/t}_{n \in \mathbb{Z}^+}$, hence is countable and it obviously do not produces limit points outside of $K$. Hence the limit point set of $K$ is also countable.
+
+<br>
+
+## 7.14. 
+
+**Give an example of an open cover of the segment $(0,1)$ which has no finite subcover.**
+
+Observe at first that the difference between $[0,1]$ and $(0,1)$ is that the first is closed and the second is not. And the first is closed because it contains his endpoints.
+
+<br>
+
+Hence, $(0,1)$ is not compact because an open cover that covers the segment by approaching indefinitely to one of this endpoints cannot be finitely subcovered (observe that this same coverage doesn't work with the interval because it do not cover the endpoints).
+
+<br>
+
+Hence, let be $s_n = \Set{1/n}_{n \in \mathbb{N}}$ and  $\Set{G_n} : G_n = N_{d(s_{n},s_{n+1})}(s_n)$, then, let's see that:
+
+$$(0,1) \subset \bigcup_n G_n$$
+
+Let be $p \in (0,1)$, observe that $s_1 = 1 > p$. Also, since $\Set{1/n} \rightarrow_\mathbb{R} 0$, there is some $N \in \mathbb{Z}^+ : (N \leq n \implies s_n < p)$, and we can consider that $p$ is between some terms of the sequence: $s_1 > p > s_N$. Take the tail $T_N$, this tail contains all the terms of the sequences except finite many of them. Let's build $A = \Set{d(s_n,p) \mid s_n \geq p}$ which is trivially finite so we can consider $\min A = d(s_i,p)$, then (by the monotonic decrease of $s_n$) is $s_i \geq p > s_{i+1}$ and $d(s_i,p) < d(s_i,s_{i+1}) \implies p \in G_{i}$.
+
+<br>
+
+Let's observe that $d(s_{i-1},s_i)> d(s_i,s_{i+1}) \implies s_{i-1} \notin G_i$ and trivially, $s_{i+1} \notin G_i$ which means that discard some $G_i$ implies to leave $s_i$, hence you cannot keep a finite number of $G_n$ without loose terms of $s_n$ on the way which means that not finite subcover exists for $\Set{G_n}$.
 
 <br>
 

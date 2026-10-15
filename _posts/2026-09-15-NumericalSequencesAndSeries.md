@@ -16,7 +16,9 @@ lang: en
 
 # 2. Convergent Sequences.
 
-## 2.1. Sequence's reminder. Definition and Intuition.
+## 2.1. Sequences: Definition and Intuition.
+
+### 2.2.1. Reminder.
 
 We remind that we understand as a sequence to be a function $f$ whose domain is the positive integerse set:
 
@@ -34,6 +36,35 @@ The formal definition of a sequence as "a function whose domain is $\mathbb{Z}^+
 Intuitively, a sequence is the mathematical abstraction of an object that changes through ordered steps ($\mathbb{Z}^+$ is a good ordered set). In the chapter before, we used it to count, in this chapter we will care about it from a certain point on (through the infinite). Its importance lies in the fact that it is the mechanism by which analysis reduces the infinitely close to finite stages, is the introduction to the limit as a tool.
 
 <br>
+
+### 2.1.2. Preorders, Directed sets, Tails. 
+
+Let's introduce other perspectiove about sequences. First, let's introduce preorders and nets.
+
+<br>
+
+We call a *preorder*, $\preceq$, to a reflexive and transitive relation defined in a set. In other words, a preorder is an order not forced to be antisimmetric, in the sense that non-equal elements can precede reciprocally each other. In contrast with orders, preorders abstracts a weakest property which cannot be used as a identifier mechanism.
+
+Then, a *directed set* is a non-empty set in which a preorder has been defined satisfying that for any pair of elements, an upperbound element can be found.
+
+
+$$D \text{ is a directed set } \iff \forall a,b \in D \ \exists c \in D : (a \preceq c \wedge b \preceq c)$$
+
+We can think about it as the family of those preordered sets without infinite branchs.
+
+<br>
+
+In a directed set, upperbounds makes coherent the idea of the *tail*: 
+
+$$T_a := \Set{b \in D \mid a \preceq b}$$
+
+Which encompasses those elements that preceeds $a$.
+
+<br>
+
+### 2.1.3. Eventually and Frecuently properties.
+
+
 
 ## 2.2. Convergence.
 
