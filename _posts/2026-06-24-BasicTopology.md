@@ -1220,7 +1220,7 @@ Note that, $K$ is closed since is compact and a subset of a metric space, and an
 
 <br>
 
-If we suppose that $\cap_\alpha K_\alpha = \varnothing$, then, we can fix some $\beta$ and state: $K_\beta \cap (\cap_{\alpha \neq \beta} K_\alpha) = \varnothing$, so no point in $K_\beta$ is in the rest of elements of $K_\alpha$. Take $G_\alpha = X \setminus K_\alpha$, and observe that $G_\alpha$ form an open cover of $K_\beta$ and since this is compact, there are only a finite number of $G_\alpha$ needed to cover $K_\beta$, which means that exists a finite subcollection of sets in $\Set{K_\alpha}$ such no point of $K_\beta$ is in the intersection, so the finite subcollection formed by adding $\beta$ to the index of that collection is empty, in contradiction with the premise. 
+If we suppose that $\cap_\alpha K_\alpha = \varnothing$, then, we can fix some $\beta$ and state: $K_\beta \cap (\cap_{\alpha \neq \beta} K_\alpha) = \varnothing$, so no point in $K_\beta$ is in the rest of elements of $K_\alpha$. Take $G_\alpha = X \setminus K_\alpha$, and observe that $\cup G_\alpha$ form an open cover of $K_\beta$ and since this is compact, there are only a finite number of $G_\alpha$ needed to cover $K_\beta$, which means that exists a finite subcollection of sets in $\Set{K_\alpha}$ such no point of $K_\beta$ is in the intersection, so the finite subcollection formed by adding $\beta$ to the index of that collection is empty, in contradiction with the premise. 
 
 <br>
 
@@ -1681,6 +1681,27 @@ Let be $p \in (0,1)$, observe that $s_1 = 1 > p$. Also, since $\Set{1/n} \righta
 Let's observe that $d(s_{i-1},s_i)> d(s_i,s_{i+1}) \implies s_{i-1} \notin G_i$ and trivially, $s_{i+1} \notin G_i$ which means that discard some $G_i$ implies to leave $s_i$, hence you cannot keep a finite number of $G_n$ without loose terms of $s_n$ on the way which means that not finite subcover exists for $\Set{G_n}$.
 
 <br>
+
+# 7.15.
+
+**Show that Theorem 2.36 and its Corollary become false (in R', for example) if the word "compact" is replaced by "closed" or by "bounded".**
+
+Theorem $2.36$ of the book states that: 
+ 
+**If $\Set{K_\alpha}$ is a collection of compact subsets of a metric space $X$ such that the intersection of every finite subcollection of $\Set{K_\alpha}$ is nonempty, then $\cap K_\alpha$ is nonempty.** (is the point $4.4.4$ in this notes).
+
+<br>
+
+Let's say that if $\cap K_\alpha = \varnothing$, then at least one $K_i$ share no points with any other $K_j$, this way $\cap_{i \neq j }K^c_j$ forms an open cover of $K_i$ in $X$ (compact sets are closed sets and any arbitrary intersection of closed sets is closed) and since $K_i$ is compact, we can take some finite number of index $\alpha_1, \ldots, \alpha_n$ such $\cup K^c_{\alpha_i} : i =1, \ldots, n$ is an open cover of $K_i$. Observe that would mean that $\cap K_{\alpha_i} \cap K_1$ is a finite family of $K_\alpha$ whose intersection is empty in contradiction with the premise.
+
+<br>
+
+- Then, in $\mathbb{R}$, take for example the family of segments $\Set{(0,1/n)}_{n \in \mathbb{N}}$, they are all bounded sets and no finite intersection is empty, but since $\Set{1/n} \to_{\mathbb{R}} 0$, then $\cap (0,1/n) = (0,0) = \varnothing$. This shows that, although the sets can be bounded, if they do not contains all his limits points the intersection approach to one of those collapsing to the emptyness
+
+- Now, take a closed set not bounded (this way is not compact in $\mathbb{R}$), take for example $(-n,n)$ and consider the complementary $(-n,n)^c$. Note that the intersection of the complementary is not empty as the intersection is finite, but in the limit $(-n,n) \to_{\mathbb{R}} \mathbb{R}$, hence $\mathbb{R}^c = \varnothing$ in $\mathbb{R}$. Since the segment is open, the complementary is closed.
+
+    <br>
+
 
 # 8. Summary.
 
