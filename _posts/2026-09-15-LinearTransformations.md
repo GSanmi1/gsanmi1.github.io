@@ -19,13 +19,13 @@ lang: en
 
 # 1. Introduction.
 
-A vector space is, in the essence, a set such his elements can be crafted through linear combinations of other elements. Observe that what defines a subspace as a subspace of a vector space is the fact that is closed through linear combinations of his own elements, it contains any linear combinations of his elements by definition.
+A vector space is, in the essence, a set such his elements can be crafted through linear combinations of other elements, in abstract algebra is what we would call a *free object** onto the operation of the linear combination. Observe that what defines a subspace as a subspace of a vector space is the fact that is closed through linear combinations of his own elements, it contains any linear combination of his elements by definition.
 
-A basis is in fact a set containing the minimum number of independent vectors you need to generate any other vector of the space through a linear combination. We should say that the information is not the in the set, but in the relation between the elements of the set weighted by the field of scalars.
+A basis is in fact a set containing the minimum number of independent vectors you need to generate any other vector of the space through a linear combination. We should say that the information is not in the set, but in the relation between the elements of the set weighted by the field of scalars.
 
 <br>
 
-Hence, in mathematics a structure is not studied alone but with the functions that preserves it, and in this case, preserve the structure consist in preserve the way  in which the elements relates between them.
+Then, in mathematics a structure is not studied alone but with the functions that preserves it, and in this case, preserve the structure consist in preserve the way in which the elements relates between them.
 
 This is interesting since through this functions we can stablish when two sets sharing the same structure type are in fact the same structure and we can work with any of them indistinctly. (Isomorphism).
 
@@ -37,15 +37,13 @@ This functions also remains invariants those properties that are genuily structu
 
 ## 2.1. Definition.
 
-If vector spaces are algebraic structures in which the natural operation is the linear combination between vectors: $\alpha v + \beta u$, then; linear transformations are nothing but functions between vectors spaces that respects the linear combination as operation between both spaces.
+If vector spaces are algebraic structures in which the natural operation is the linear combination, then *linear transformations* are those functions between vector spaces that respects the linear combination. 
 
 Let be $V,W$ two $K$-spaces, then: $T : V \to W$ is a linear transformation if it is a function satisfying:
 
 $$T(\alpha v + u) = \alpha T(v) + T(u) \quad \forall \alpha \in K, \forall u,v \in V$$
 
-This is, when get the image of the combination in $V$ is as if we combine the images in $W$ with the same scalars. Observe quickly that a linear transformations always preserve null vector:
-
-$$T(0) = 0$$
+This is, when get the image of the combination in $V$ is as if we combine the images in $W$ with the same scalars. Observe quickly that a linear transformations always preserve null vector: $T(0) = 0$.
 
 <br>
 
@@ -78,7 +76,7 @@ Let's see a few examples about linear transformations:
 
 $$T(v_i) = w_i \quad \forall i \in [n]$$
 
-Basically, we are saying that we can arbitrarily decide where to send the vectors of a basis, and that determines exactly one and only one linear transformation between the spaces.
+<br>
 
 Let's observe that, given a function $T : V \to W$. Take any vector $v \in V$, then is $[v]_{\mathcal {B}} = (\alpha_1,\ldots,\alpha_n)$ and we define: 
 
@@ -95,7 +93,8 @@ $$ = \alpha T(v) + T(u)$$
 And $T$ is a linear transformation. And the dependence of $T$ from the basis $\mathcal{B}$ also demonstrates is unique. Any vector from $V$ has a unique tuple from $\mathcal{B}$, hence, any linear transformation mapping $\mathcal{B}$ over the same vectors in $W$ would generate the same vectors in $W$, the codomain of $T$ is determinated by the basis and the mapped vectors in $W$.
 
 
-In other terms, **a linear transformation between two spaces is a way to map a basis from one of the spaces over vectors from the other vector space**.
+In other terms, **a linear transformation between two spaces is a way to map a basis from one of the spaces over vectors from the other vector space**. This way, the result garantee the existance of a unique linear transformation between a finite-dimensional space to other vector space whenever we have a basis and the same basis-size vectors from the other vector space.
+
 
 <br>
 
@@ -116,6 +115,8 @@ $$[T(v)]_{\mathcal{B'}} = [v]_{\mathcal{B}}M_{T_{\mathcal{B'}}}$$
 The logic is the same that we used in the change of matrix basis, in further section we will discuss deeper the relation between linear transformations and matrix.
 
 <br>
+
+
 
 ## 2.5. Rank and Kernel of a Linear Transformation.
 
@@ -149,7 +150,7 @@ Observe that, if there is some $v \in V : v \neq 0 \wedge T(v) = 0$, then, the l
 
 $$T(v) = T(\alpha_1 v_i \ldots + \alpha_n v_n) = \alpha_i T(v_i) \ldots + \alpha_n T(v_n) = 0$$
 
-This is, the image of the basis $T(\mathcal{B})$ is no longer an independent set in $W$, meaning that the $Ker(T)$ space reflects the information of $V$ that $T$ can't transfer to $W$.
+This is, the image of the basis $T(\mathcal{B})$ is no longer an independent set in $W$, meaning that the $Ker(T)$ space reflects the information of $V$ that $T$ can't transfer to $W$, in the sense that it contains the inyectivity degree that has been lost in the mapping process; two different vectors have the same image through $T$ when his difference is in $Ker(T)$.
 
 Furthermore, consider $V$ a finite-dimensional space and let be $\|\mathcal{B}\| = n$. Then, $Ker(T) \neq \varnothing \implies T(\mathcal{B})$ is dependent. Let's also suppose that $T(V) \neq \Set{0}$ so we can take out a finite number of vectors $m$ from $T(\mathcal{B})$ until we left an independent subset of vectors. Let's call it $T(S)$, being $S \subset \mathcal{B}$ those vectors whose image belongs to some vector in $T(S)$ ; naturally: $span(T(S)) = range(T)$ and $dim(span(T(S))) = dim V - m$.
 
