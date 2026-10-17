@@ -1692,7 +1692,7 @@ Theorem $2.36$ of the book states that:
 
 <br>
 
-Let's say that if $\cap K_\alpha = \varnothing$, then at least one $K_i$ share no points with any other $K_j$, this way $\cap_{i \neq j }K^c_j$ forms an open cover of $K_i$ in $X$ (compact sets are closed sets and any arbitrary intersection of closed sets is closed) and since $K_i$ is compact, we can take some finite number of index $\alpha_1, \ldots, \alpha_n$ such $\cup K^c_{\alpha_i} : i =1, \ldots, n$ is an open cover of $K_i$. Observe that would mean that $\cap K_{\alpha_i} \cap K_1$ is a finite family of $K_\alpha$ whose intersection is empty in contradiction with the premise.
+Let's remember that if $\cap K_\alpha = \varnothing$, then at least one $K_i$ share no points with any other $K_j$, this way $\cap_{i \neq j }K^c_j$ forms an open cover of $K_i$ in $X$ (compact sets are closed sets and any arbitrary intersection of closed sets is closed) and since $K_i$ is compact, we can take some finite number of index $\alpha_1, \ldots, \alpha_n$ such $\cup K^c_{\alpha_i} : i =1, \ldots, n$ is an open cover of $K_i$. Observe that would mean that $\cap K_{\alpha_i} \cap K_1$ is a finite family of $K_\alpha$ whose intersection is empty in contradiction with the premise.
 
 <br>
 
@@ -1702,6 +1702,41 @@ Let's say that if $\cap K_\alpha = \varnothing$, then at least one $K_i$ share n
 
     <br>
 
+This way, this shows that compactness needs, in euclidean spaces, to have all his limits points, all the points over the set pile onto and boundness.
+
+<br>
+
+# 7.16.
+
+**Consider $(\mathbb{Q},\|\cdot\|)$. Let $E:=\Set{p \in \mathbb{Q} \mid 2 < p^2 < 3}$. Show that:**
+
+- **$E$ is closed in $\mathbb{Q}$**: 
+
+    Take $E_\mathbb{R} = \Set{p \in \mathbb{R} \mid 2 < p^2 < 3} = (-\sqrt{3}, -\sqrt{2}) \cup (\sqrt{2}, \sqrt{3})$, then, in $\mathbb{R}$, is $E = E_\mathbb{R} \cap \mathbb{Q}$. 
+    
+    Observe that $\overline{E}_\mathbb{R} = [-\sqrt{3},-\sqrt{2}] \cup [\sqrt{2}, \sqrt{3}]$, and since $\sqrt{2}, \sqrt{3} \notin \mathbb{Q}$, then in $\mathbb{R}$: 
+    
+    $$\overline{E} = \overline{E_\mathbb{R} \cap \mathbb{Q}}  = (E_\mathbb{R} \cap \mathbb{Q}) \cup (E_\mathbb{R} \cap \mathbb{Q})' = (E_\mathbb{R} \cap \mathbb{Q}) \cup (E'_\mathbb{R} \cap \mathbb{Q}') = (E_\mathbb{R} \cap \mathbb{Q}) \cup (\overline{E}_\mathbb{R} \cap \mathbb{R}) = \overline{E}_\mathbb{R}$$
+
+    Thus, restricted to $\mathbb{Q}$:  $\overline{E} \cap \mathbb{Q} = \overline{E}_\mathbb{R} \cap \mathbb{Q} = E \cap \mathbb{Q}$, hence $E$ is closed in $\mathbb{Q}$.
+
+    <br>
+
+- **$E$ is bounded in $\mathbb{Q}$**: Trivially.
+
+    <br>
+
+- **$E$ is not compact.** (The key is that $\mathbb{Q}$ is not Dedekind-complete (neither metricly-complete), hence closeness is meaningless in compactness terms).
+
+    Observe that $E \subset \mathbb{Q}$, since $\mathbb{Q}$ is countable so is $E$. Also, since $E$ is a rational segment, given some sequence $f_n : \mathbb{N} \to E$, since $E$ has no doubled values, $f$ is inyective, and since $\mathbb{Q}$ is a total ordered set, all the elements in $E$ are comparable between them so $f_n$ can be monotonic.
+
+    Then, we have retrieved the conditions of exercise $14$ and we can again consider $\Set{G_n} : G_n = N_{d(f_{n},f_{n+1})}(f_n)$. This is an open cover of the segments where each $G_n$ contains a point that is not contained in other $G_m : m \neq n$ (the center of the neighbourhood). Hence, there cannot be a finite subcover for it without loosing a term of the sequence and $E$ is not compact.
+
+    <br>
+
+- **Is E open in Q?**
+
+<br>
 
 # 8. Summary.
 
