@@ -474,7 +474,7 @@ In this section, we are gonna presento those sequences that diverges in $\mathbb
 
 In a metric space $X$, we do say that that a sequence $\Set{x_n} \subset X$ converges to $\infty$ when they ends out of any bounded set. Formally:
 
-$$\Set{x_n} \to_X \infty \iff \forall \mathcal{E} > 0, \forall p \in X \ \exists N \in \mathbb{Z}⁺\big[N \leq n \implies  x_n \notin N_\mathcal{E}(p)\big]$$
+$$\Set{x_n} \to_X \infty \iff \forall \mathcal{E} > 0, \forall p \in X \ \exists N \in \mathbb{Z}^+\big[N \leq n \implies  x_n \notin N_\mathcal{E}(p)\big]$$
 
 Basically, infinite convergence means incompatbility with be bounded.
 
@@ -482,10 +482,36 @@ Basically, infinite convergence means incompatbility with be bounded.
 
 ## 5.2. $\mathbb{R}$ infinite convergence. Upper and lower limits.
 
+### 5.2.1. Infinite tendency.
+
 In $\mathbb{R}$, the notion is virtually the same. Associated with infinite convergent sequences there are two ways to escape from a segment, through the left or through the right. 
 
 We are interested in isolated those sequences that get out of bounds through the left $-\infty$ or through the right $+ \infty$:
 
-$$\Set{x_n} \to_\mathbb{R} -\infty \iff  $$
+$$\Set{x_n} \to_\mathbb{R} -\infty \iff \forall \mathcal{E} > 0 \exists N \in \mathbb{Z}^+ : (N \leq n \implies x_n < - \mathcal{E})$$
+
+$$\Set{x_n} \to_\mathbb{R} +\infty \iff \forall \mathcal{E} > 0 \exists N \in \mathbb{Z}^+ : (N \leq n \implies \mathcal{E} < x_n)$$
+
+Note that we are saying that some sequence tends to infinity when for any positive value, we can find a term in the sequence such that all subsequent terms lie beyond that positive value (or its negative) on the real line.
 
 <br>
+
+### 5.2.2. Upper and lower limits.
+
+Let's now consider some sequence $\Set{x_n} \subset \mathbb{R}$, let be $E \subset \overline{\mathbb{R}} : \forall x \in E \ \exists \Set{{x_n}_k} : \Set{{x_n}_k} \to_\mathbb{R} x$, the set of all the convergent points for all posible subsequences of $\Set{x_n}$. Then, consider $supE$ and $inf E$, and observe that:
+
+- Since in $\overline{\mathbb{R}}$ all subset has a supremum and infimum, then $supE, infE \in E$.
+
+- We remember that if $p$ is a limit point of $range \ x_n$, then there is some subsequence of $\Set{x_n}$ converging in $p$. Then if all the posible convergent points for all posible subsequences are summarized in $E$, if $x > sup E$ or $inf E < x$, then, eventually, $\Set{x_n}$ keeps behind or above $x$ because $x$ is not a limit point of $range \ x_n$. 
+
+    Formally:
+
+    $$\forall x \in \mathbb{R} \ [x > sup E \implies \exists N : (N \leq n \implies x_n < x)]$$
+
+    $$\forall x \in \mathbb{R} \ [x < inf E \implies \exists N : (N \leq n \implies x_n > x)]$$
+
+    To prove it, just assume the opposite, if for some $x > supE$ were $x_n > x$ for any $n$ up to some $N$, then necesarilly, some value $p \in E$ would satisfy $p > x > sup E$ in contradiction with the definition of upperbound. The infimum proof is analog.
+
+    <br>
+
+Observe that 
