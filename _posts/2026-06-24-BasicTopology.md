@@ -1726,15 +1726,13 @@ This way, this shows that compactness needs, in euclidean spaces, to have all hi
 
     <br>
 
-- **$E$ is not compact.** (The key is that $\mathbb{Q}$ is not Dedekind-complete (neither metricly-complete), hence closeness is meaningless in compactness terms).
-
-    Observe that $E \subset \mathbb{Q}$, since $\mathbb{Q}$ is countable so is $E$. Also, since $E$ is a rational segment, given some sequence $f_n : \mathbb{N} \to E$, since $E$ has no doubled values, $f$ is inyective, and since $\mathbb{Q}$ is a total ordered set, all the elements in $E$ are comparable between them so $f_n$ can be monotonic.
-
-    Then, we have retrieved the conditions of exercise $14$ and we can again consider $\Set{G_n} : G_n = N_{d(f_{n},f_{n+1})}(f_n)$. This is an open cover of the segments where each $G_n$ contains a point that is not contained in other $G_m : m \neq n$ (the center of the neighbourhood). Hence, there cannot be a finite subcover for it without loosing a term of the sequence and $E$ is not compact.
+- **$E$ is not compact.** 
 
     <br>
 
 - **Is E open in Q?**
+
+
 
 <br>
 
