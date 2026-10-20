@@ -514,4 +514,33 @@ Let's now consider some sequence $\Set{x_n} \subset \mathbb{R}$, let be $E \subs
 
     <br>
 
-Observe that 
+### 5.2.3. Examples and some special sequences.
+
+Let's see a couple of examples about upper and lower limits.
+
+- Let $\Set{s_n}$ be a sequences containing all rationals. First, since $\mathbb{Q}' = \mathbb{R}$, then $\mathbb{R} \subset E_{s_n}$ and $supE = + \infty$ and $inf E = - \infty$.
+
+- Si $p > 0$, then 
+
+    $$\lim_{n \to \infty} \frac{1}{n^p} = 0$$
+
+- Si $p > 0$, then
+
+    $$\lim_{n \to \infty} \sqrt[n]{p} = 1$$
+
+- $$\lim_{n \to \infty} \sqrt[n]{n} = 1$$
+
+- Si $p > 0$ y $\alpha \in \mathbb{R}$, then
+
+    $$\lim_{n \to \infty} \frac{n^\alpha}{(1+p)^n} = 0$$
+
+- Si $\| x \| < 1$, then 
+
+    $$\lim_{n \to \infty} x^n = 0$$
+
+    <br>
+
+# 6. Series.
+
+
+<br>

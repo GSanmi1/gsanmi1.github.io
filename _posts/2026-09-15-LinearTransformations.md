@@ -152,6 +152,10 @@ $$T(v) = T(\alpha_1 v_i \ldots + \alpha_n v_n) = \alpha_i T(v_i) \ldots + \alpha
 
 This is, the image of the basis $T(\mathcal{B})$ is no longer an independent set in $W$, meaning that the $Ker(T)$ space reflects the information of $V$ that $T$ can't transfer to $W$, in the sense that it contains the inyectivity degree that has been lost in the mapping process; two different vectors have the same image through $T$ when his difference is in $Ker(T)$.
 
+<br>
+
+Let's think that 
+
 Furthermore, consider $V$ a finite-dimensional space and let be $\|\mathcal{B}\| = n$. Then, $Ker(T) \neq \varnothing \implies T(\mathcal{B})$ is dependent. Let's also suppose that $T(V) \neq \Set{0}$ so we can take out a finite number of vectors $m$ from $T(\mathcal{B})$ until we left an independent subset of vectors. Let's call it $T(S)$, being $S \subset \mathcal{B}$ those vectors whose image belongs to some vector in $T(S)$ ; naturally: $span(T(S)) = range(T)$ and $dim(span(T(S))) = dim V - m$.
 
 Now, consider some basis of $Ker(T)$, $K$. This is an independent subset of $V$ and can be expanded to a basis of $V$. Note that, if we recall $S$ from above, $S \cup \mathcal{K}$ is independent, otherway, $T(S)$ wouldn't be independent (since some linear combination of his vectors would be in $Ker(T)$) or some linear combination of the images of $K$ wouldn't be $0$, in contradiction with the fact that $Ker(T)$ is a vector space. 
