@@ -498,7 +498,7 @@ Note that we are saying that some sequence tends to infinity when for any positi
 
 ### 5.2.2. Upper and lower limits.
 
-Let's now consider some sequence $\Set{x_n} \subset \mathbb{R}$, let be $E \subset \overline{\mathbb{R}} : \forall x \in E \ \exists \Set{{x_n}_k} : \Set{{x_n}_k} \to_\mathbb{R} x$, the set of all the convergent points for all posible subsequences of $\Set{x_n}$. Then, consider $supE$ and $inf E$, and observe that:
+Let's now consider some sequence $\Set{x_n} \subset \mathbb{R}$, let be $E \subset \overline{\mathbb{R}} : \forall x \in E \ \exists \Set{ {x_n}_k } : \Set{ {x_n}_k } \to_\mathbb{R} x$, the set of all the convergent points for all posible subsequences of $\Set{x_n}$. Then, consider $supE$ and $inf E$, and observe that:
 
 - Since in $\overline{\mathbb{R}}$ all subset has a supremum and infimum, then $supE, infE \in E$.
 
