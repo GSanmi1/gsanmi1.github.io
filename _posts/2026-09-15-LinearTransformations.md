@@ -539,6 +539,15 @@ Let be $I \subset M_{n}(K)$ the set of the invertible matrix. Then $(I,\cdot)$ i
 
 # 4. Isomorphism.
 
+If $V$ and $W$ are vector spaces over the field $F$, any one-one linear transformation $T$ of $V$ onto $W$ is called an isomorphism of $V$ onto $W$. If there exists an isomorphism of $V$ onto $W$, we say that $V$ is isomorphic to $W$.
 
+Note that $V$ is trivially isomorphic to $V$, the identity operator being an isomorphism of $V$ onto $V$. Also, if $V$ is isomorphic to $W$ via an isomorphism $T$, then $W$ is isomorphic to $V$, because $T^-1$ is an isomorphism of $W$ onto $V$. The reader should find it easy to verify that if $V$ is isomorphic to $W$ and $W$ is isomorphic to $Z$, then $V$ is isomorphic to $Z$. 
+
+Briefly, isomorphism is an equivalence relation on the class of vector spaces. If there exists an isomorphism of $V$ onto $W$, we may sometimes say that $V$ and $W$ are isomorphic, rather than $V$ is isomorphic to $W$. This will cause no confusion because $V$ is isomorphic to $W$ if and only if $W$ is isomorphic to $V$.
+
+Note that is easy to understand the importance of the isomorphisms between structures. Basically, both are the same structure and you can operate with one of them and extrapolate the result to the other space.
 
 <br>
+
+There is an important result: Every $n$-dimensional vector space $V$ over the field $K$ is isomorphic to the space $K^n$. Just take some ordered basis $\mathcal{B}$ and consider $T: V \to K^n \mid T(v) = [v]_{\mathcal{B}}$
+
