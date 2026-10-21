@@ -542,5 +542,66 @@ Let's see a couple of examples about upper and lower limits.
 
 # 6. Series.
 
+In past sections we talked about sequences and use sequences to introduce those divergent sequences converging in $\overline{\mathbb{R}}$ $(+\infty, -\infty)$. Let's now speak about how to use sequences to give forms to study infinite sums. We are going to present series in $\mathbb{C}$ and then we gonna extend some results to any euclidean space in subsequent exercises.
 
 <br>
+
+## 6.1. Introduction.
+
+### 6.1.1. Definition.
+
+Given a sequence $\Set{a_n} \subset \mathbb{C}$, then, we stablish the following notation:
+
+$$\sum_{n = p}^q a_n = a_p + a_{p+1} \ldots + a_q$$
+
+Then, with $\Set{a_n}$ we associate the following sequence called *infinite serie* or just *serie:
+
+$$\Set{s_n} \subset \mathbb{C} \mid s_n = \sum_{k = 1}^n a_k$$
+
+We can use indistinguishably:
+
+$$\Set{s_n} \iff \sum_{n = 1}^\infty a_n$$
+
+And the term $s_n$ is called the *partial sums* of the serie.
+
+<br>
+
+### 6.1.2. Convergence and divergence in series.
+
+Given some infinite serie $\Set{s_n}$, if as a sequence, it converges $\Set{s_n} \to_{\mathbb{C}} s$, then we write:
+
+$$\sum_{n = 1}^\infty a_n = s$$
+
+<br>
+
+We say that diverges if not converges.
+
+<br>
+
+### 6.1.3. Some important results of convergent series. Comparison test.
+
+First of all, we are not going to proof this now but let's note that we can recall the convergence definition:
+
+$$\Set{S_n} := \sum_{k=1}^\infty a_n = s  \iff \forall \mathcal{E}>0 \exists N : \left(\forall n \geq N \implies \left|\sum_{k=1}^n a_k - s\right| < \mathcal{E}\right) $$
+
+Intuitively, we are saying that, progresively, each term add less to the partial sum as this gets near to $s$. In other words:
+
+$$\Set{S_n} := \sum_{k=1}^\infty a_n = s \implies \Set{a_n} \to_\mathbb{C} 0$$
+
+<br>
+
+Also, consider $\sum a_n, \sum c_n \subset \mathbb{R}$, then, we present the *comparison test*:
+
+- $\|a_n\| \leq c_n \quad \forall n \geq N \implies (\sum c_n = c \implies \exists a \in \mathbb{R} : \sum a_n = a)$ 
+
+    This is, if $a_n$ is term to term smaller (or equal) than $c_n$, then $c_n$ convergency implies $a_n$ convergency.
+
+    <br>
+
+-  $a_n \geq c_n \geq 0 \quad \forall n \geq N \implies (\nexists c \in \mathbb{R} : \sum c_n = c \implies \nexists a \in \mathbb{R} : \sum a_n = a)$ 
+
+    This is the negation of above, if $a_n$ is term by term equal or greater than $d_n$, then $d_n$'s divergence implies the $a_n$'s divergence.
+
+    <br>
+
+## 6.2. Series of non-negative terms.
