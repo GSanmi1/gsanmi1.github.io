@@ -551,3 +551,14 @@ Note that is easy to understand the importance of the isomorphisms between struc
 
 There is an important result: Every $n$-dimensional vector space $V$ over the field $K$ is isomorphic to the space $K^n$. Just take some ordered basis $\mathcal{B}$ and consider $T: V \to K^n \mid T(v) = [v]_{\mathcal{B}}$
 
+<br>
+
+# 5. Representation of Transformations by Matrices.
+
+In this chapter, we are discussing linear transformations properties and intuition. Until now, we've discussed as an object, we are now going to present the description of a linear transformation, just as we did with vectors and his coordenates.
+
+<br>
+
+We've seen that if $V$ and $W$ are finite-dimensional $K$-spaces, then you can compress the
+
+           

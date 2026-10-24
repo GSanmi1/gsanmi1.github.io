@@ -605,3 +605,33 @@ Also, consider $\sum a_n, \sum c_n \subset \mathbb{R}$, then, we present the *co
     <br>
 
 ## 6.2. Series of non-negative terms.
+
+Observe that whenever refer to a non-negative serie, we are refering to a real term series. Then, relativa to non-negative series, we show the following results.
+
+<br>
+
+### 6.2.1. Some important results about non-negative term series.
+
+We are going to present what we call a *geometric serie*. A Geometric Serie is nothing but the sum of a geometric progression; each term of the serie is obtained recursiverly by multiplying the precedent term by a fixed ratio.
+
+- Te most simple form is the geometric serie of ratio $x \in \mathbb{R}$, giving $S_n = \displaystyle\sum_{k = 0}^n x^k$, then, we have:
+
+    $$\begin{cases} \displaystyle\sum_{k = 0}^\infty x^k = \frac{1}{1 - x} &  0 \leq x < 1 \\ \nexists a \in \mathbb{C}: \displaystyle\sum_{k = 0}^\infty x^k= a & 1\leq x\end{cases}$$
+
+    <br>
+
+
+- Let be $\Set{a_n}$ a monotonic decreasing sequence, then following result allows to discuss whether $\sum a_n$ converges when $\Set{a_n}$ satisfies some conditions. Let be $\Set{a_n}$ a monotonically decreasing sequence, then $\sum a_n$ converges if $\sum 2^ka_{2k}$ converges.
+
+    <br>
+
+- Let now be $\displaystyle S_n = \sum \frac{1}{n^p}$ , then $S_n$ converges when $p > 1$ and diverges if not.
+
+    <br>
+
+- Let be $\displaystyle S_n = \sum_{k=2}^n \frac{1}{k(\log k)^p}$ converges if $p > 1$ and diverges if $p \leq 1$.
+
+    <br>
+
+### 6.2.2. The number $e$.
+
