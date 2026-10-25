@@ -481,7 +481,7 @@ Note then that, by the described above, non-singular linear transformations are 
 
 ### 3.4.2. Caracterization of non-singular linear transformations.
 
-Let $T \in L(V,W)$. Then $T$ is non-singular if and only if $T$ carries each linearly independent subset of $V$ onto a linearly independent subset of $W$. 
+**Let $T \in L(V,W)$. Then $T$ is non-singular if and only if $T$ carries each linearly independent subset of $V$ onto a linearly independent subset of $W$.**
 
 <br>
 
@@ -559,6 +559,60 @@ In this chapter, we are discussing linear transformations properties and intuiti
 
 <br>
 
-We've seen that if $V$ and $W$ are finite-dimensional $K$-spaces, then you can compress the
+We've seen that if $V$ and $W$ are finite-dimensional $K$-spaces, then you can compress the space information in a finite set of vectors, $S \subset V$, the basis, and a concrete operation since a vector space is a free object onto linear combinations. This means basically that you can also compress some linear transformation's, $T$ information in the set of the images of the basis $T(S)$ and the operation of the linear combination. The idea can be summarized in the following statement: "It suffices to know where the two vectors of a basis go in order to know where the rest of the information goes."
 
-           
+<br>
+
+The description of this compression can be achieved in the coordinates of the images sorted in the matrix of coordinaetes of the vectors of $T(S)$. 
+
+<br>
+
+## 5.1. Definition. Matrix of the lineal transformation relative to some ordered basis.
+
+Let be $V,W$ two finte-dimensional $K$-spaces and consider two ordered basis $\mathcal{B} \subset V, \mathcal{B}' \subset W$ and $T \in L(V,W)$. Then, note that as we did with the basis change matrix, each $w \in W$ has associated some coordinates in terms of $\mathcal{B}'$, $[w]_\mathcal{B'}$, then, let's consider the matrix:
+
+$$P_{\mathcal{B},\mathcal{B'}} = \begin{pmatrix}[T(v_1)]_{\mathcal{B'}}, \ldots, [T(v_n)]_{\mathcal{B'}}]\end{pmatrix} \in M_{m \times n}(K)$$
+
+This matrix contains the information of the linear transformation $T$ and express the images in terms of coordinates of the basis $\mathcal{B}'$, satisfying then:
+
+$$P_{\mathcal{B},\mathcal{B'}}[v]_\mathcal{B} = [T(v)]_\mathcal{B'}$$
+
+<br>
+
+## 5.2. Theorem 11. Existance and uniquity.
+
+**Let $V$ be an $n$-dimensional $K$-space and $W$ an $m$-dimensional vector $K$-space over F. Let $\mathcal{B}$ be an ordered basis for $V$ and $\mathcal{B}'$ an ordered basis for $W$. For each linear transformation $T \in L(V,W)$ there is a unique $A \in M_{m \times n}(K)$ such that:**
+
+$$[T(v)]_{\mathcal{B}'} = A[v]_\mathcal{B} \quad \forall v \in V$$
+
+The existance of $A$ is almost clear. 
+
+Let's think that $A$ is a precise description of $T$'s transformation over $V$'s vectors. If $A$ wouldn't be unique and two $T,T'$ share the same $A$ relative to the same $\mathcal{B},\mathcal{B}'$, then $T$ and $T'$ would send the same basis over the same set, applying in fact the same transformation in $V$ meaning $T = T'$. So no distinct transformations share the same $A$ and $A$ is unique for each $T$.
+
+<br>
+
+## 5.3. Isomorphism between matrix space and linear transformation spaces.
+
+We shall now present a result that incise in the fact that linear transformations between finite-dimensional vector spaces are indistinguisable as objects from matrices.
+
+<br>
+
+**Let $V, W$ be an $n,m$-dimensional $K$-spaces. For each pair of ordered bases $\mathcal{B}, \mathcal{B}'$ for $V$ and $W$ respectively, the function which assigns to a linear transformation $T$ its matrix relative to $\mathcal{B}, \mathcal{B}'$ is an isomorphism between the space $L(V, W)$ and the space $M_{m \times n}(K)$.**
+
+<br>
+
+This result, along with the isomorfism between a $n$-dimensional space and $K^n$ share the same principle, select a basis instantiate the object onto a calculable surface. Matrix are the object that codifies linear information on operational packages.
+
+<br>
+
+## 5.4. Matrix representation of linear operators.
+
+We are particulary interested in the matrix asociated a linear operators relative to the same matrix. This is, take the conditions of the statements above and select $W = V$ and $\mathcal{B}' = \mathcal{B}$. Then $A_{\mathcal{B}}$ is the matrix of $T$ relative to $\mathcal{B}$. We shall call $A_\mathcal{B} =[T]_\mathcal{B}$
+
+$$[T(v)]_\mathcal{B} = [T]_\mathcal{B}[v]_\mathcal{B}$$
+
+This is an important concept because this allow us to measure the transformation of $T$ in $V$ by checking how $T$ acts in $V$'s vectors eliminating the matrix exchange, keeping only the linear transformation difference.
+
+<br>
+
+Let's notice the following observation. We state that $I(V)$ was a group, meaning that $L(V,V)$ has some distinct element, $I$, which do not exists in $L(V,W)$ as long as $W \neq V$. Comparing or measure $T$ action over $V$ consist in eval $T$ over $I$ and that is only possible when $T$'s input and output basis is the same. From this fact we will develop an invariant theory over linear transformations.
