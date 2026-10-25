@@ -616,3 +616,18 @@ This is an important concept because this allow us to measure the transformation
 <br>
 
 Let's notice the following observation. We state that $I(V)$ was a group, meaning that $L(V,V)$ has some distinct element, $I$, which do not exists in $L(V,W)$ as long as $W \neq V$. Comparing or measure $T$ action over $V$ consist in eval $T$ over $I$ and that is only possible when $T$'s input and output basis is the same. From this fact we will develop an invariant theory over linear transformations.
+
+<br>
+
+### 5.5. Matrix representation of the composition.
+
+Let $V,W,Z$ some finite-dimensional $K$-spaces. Then, consider $T \in L(V,W), U \in L(W,Z)$, and consider now $\mathcal{B},\mathcal{B}',\mathcal{B}''$ three basis for each vectorspace. Then, we do know that $UT \in L(V,Z)$ and:
+
+$$[UT]_{\mathcal{B}\mathcal{B}''} = [U]_{\mathcal{B}'\mathcal{B}''}[T]_{\mathcal{B} \mathcal{B}'}$$
+
+Observe that, since composition of linear transformations is associative, then, due to the isomorfism of $L(V,W)$ with $M_{m \times n}(K)$, matrix multiplication is also associative (despite we did prove this in chapter one).
+
+<br>
+
+### 5.6. Similar matrix.
+
