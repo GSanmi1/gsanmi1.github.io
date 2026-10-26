@@ -632,6 +632,3 @@ We are going to present what we call a *geometric serie*. A Geometric Serie is n
 - Let be $\displaystyle S_n = \sum_{k=2}^n \frac{1}{k(\log k)^p}$ converges if $p > 1$ and diverges if $p \leq 1$.
 
     <br>
-
-### 6.2.2. The number $e$.
-

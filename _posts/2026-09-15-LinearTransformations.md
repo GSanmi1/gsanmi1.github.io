@@ -601,7 +601,10 @@ We shall now present a result that incise in the fact that linear transformation
 
 <br>
 
-This result, along with the isomorfism between a $n$-dimensional space and $K^n$ share the same principle, select a basis instantiate the object onto a calculable surface. Matrix are the object that codifies linear information on operational packages.
+This result, along with the isomorfism between a $n$-dimensional space and $K^n$ share the same principle, select a basis instantiate the object onto a calculable surface. Matrix are the object that codifies linear information on operational packages. 
+
+
+**Let's observe something interesting, we did present in chapter $1$ the matrix as a computational object that codifies linear information and we present it along with linear equations to make visible that very codification. But in fact, matrices appears as a natural objects in finite-dimensional vector spaces whenever you select a basis. At the moment you take an ordered basis you can express and operate with any vector in the space treating it exactly as a column matrix and instantiate and operate any linear transformation between two finite dimensional spaces. Matrix appears as an operational instantiation relative to some field of the objects we began to study two chapters ago.**
 
 <br>
 
@@ -631,3 +634,6 @@ Observe that, since composition of linear transformations is associative, then, 
 
 ### 5.6. Similar matrix.
 
+In chapter $1$ we stablished that equivalents matrix were matrix that could be reduced to the same RREM form, and we state that equivalent matrix transport the same information expressed in different forms (despite elemental row-operations). Now, we presente the concept of similar matrix, $A$ and $B$ are similar if both represent the same linear transformation between two spaces. We say that $A$ and $B$ are similar matrix when exists some invertible matrix such: $A = P^{-1} B P$.
+
+<br>
