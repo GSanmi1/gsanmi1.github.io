@@ -18,23 +18,23 @@ In this post we are going to present the *natural numbers*, usually denoted by $
 
 Essentially, **$\mathbb{N}$ abstracts the structure in which count** makes sense. 
 
-Dedekind and Peano isolates a minimal machinery; a starting point, and a unary operation (the successor) that never returns to the origin and never collides with itself, plus a principle of induction which generates a *unique* structure identifiable with an *existing* model of this system.
+Dedekind and Peano isolates a minimal machinery; a starting point, and a unary operation (the successor) that never returns to the origin and never collides with itself, plus an the induction principle which generates a *unique* structure identifiable with an *existing* model of this system.
 
 Let's explain this two points a little further:
 
 - First, the Peano axioms determines a unique structure despite isomorphism. 
 
-    This is exceptional, algebraic axiomatics like vector spaces are deliberately non-categorics, in the sense that there are at least two structures identifiable as vector spaces which are not isomorph between them (think in $\mathbb{R}$ and $\mathbb{R}^2$, both vector spaces of different dimensions, hence, not isomorph).
+    This is exceptional, algebraic axiomatics like vector spaces are deliberately non-categorics, in the sense that there are at least two structures identifiable as vector spaces which are not isomorph between them (think in $\mathbb{R}$ and $\mathbb{R}^2$).
 
-    We say that **the axiomatic developed by Peano-Dedekind is categoric** because all the structures identifiable with it are indeed isomorph between them, in some sense, the axiomatic system fix completly the structure which is, as a categoric axiomatic system, an **isomorphism class**.
-
-    <br>
-
-- Second, as an isomorphism class, we need a canonical representant of this isomorphism, some model satisfying the axiomatic system to which compare any other structure, this are the Von Neumann Ordinals, which are the canonical representant of $\mathbb{N}$.
+    We say that **the axiomatic developed by Peano-Dedekind is categoric** because all the peano systems are indeed isomorphfic to each other. In some sense, the axiomatic system fix completly the structure and is what we call an **isomorphism class**.
 
     <br>
 
-The resulting structuralist reading is clear: $\mathbb{N}$ is an *isomorphism class*; $\omega$ (the von Neumann finite ordinals) is a canonical representant and *categoricity* ensures that the choice of representative is irrelevant.
+- Second, an isomorphism class needs a canonical representant of this isomorphism. We can think in the model but we need to ensure that the model can be instantiated in some structure fitting the axiomatic system. This structure, the canonical representant of the natural numbers, are the Von Neumann's Ordinals.
+
+    <br>
+
+The resulting structuralist reading is clear: $\mathbb{N}$ is an *isomorphism class*; $\omega$ (the von Neumann finite ordinals) is a canonical representant and *categoricity* ensures that the choice of the structure is irrelevant as long as it fits as a peano's system.
 
 <br>
 
