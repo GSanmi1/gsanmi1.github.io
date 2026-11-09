@@ -117,6 +117,26 @@
       en: Modeling & Computation
       es: Modelado y Computación
 
+- slug: physics
+  page: /physics.html
+  en: Physics
+  es: Física
+  blurb_en: Motion, forces, gravity, and electromagnetic fields — the classical laws of nature.
+  blurb_es: Movimiento, fuerzas, gravedad y campos electromagnéticos — las leyes clásicas de la naturaleza.
+  subjects:
+    - slug: dynamics
+      en: Dynamics
+      es: Dinámica
+    - slug: mechanics
+      en: Mechanics
+      es: Mecánica
+    - slug: gravitation
+      en: Gravitation
+      es: Gravitación
+    - slug: electromagnetism
+      en: Electromagnetism
+      es: Electromagnetismo
+
 - slug: computing-security
   page: /computing-security.html
   en: Computing & Security
