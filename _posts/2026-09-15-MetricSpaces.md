@@ -13,7 +13,12 @@ lang: en
 # 0. Index.
 
 - 1. Introduction.
--
+- 2. Metric Spaces. Distance.
+- 3. Isometries. Isometric Spaces.
+    - 3.1. Definition.
+    - 3.2. Theorem 1.7. Composition and Inverse of isometries are isometries.
+
+    <br>
 
 # 1. Introduction.
 
