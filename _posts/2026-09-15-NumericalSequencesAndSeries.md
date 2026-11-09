@@ -39,16 +39,16 @@ Intuitively, a sequence is the mathematical abstraction of an object that change
 
 ### 2.1.2. Preorders, Directed sets, Tails. 
 
-Let's introduce other perspectiove about sequences. First, let's introduce preorders and nets.
+Let's introduce other perspective about sequences. First, let's introduce preorders and nets.
 
 <br>
 
 We call a *preorder*, $\preceq$, to a reflexive and transitive relation defined in a set. In other words, a preorder is an order not forced to be antisimmetric, in the sense that non-equal elements can precede reciprocally each other. In contrast with orders, preorders abstracts a weakest property which cannot be used as a identifier mechanism.
 
-Then, a *directed set* is a non-empty set in which a preorder has been defined satisfying that for any pair of elements, an upperbound element can be found.
+Then, a *directed set* is a preordered set satisfying that for any pair of elements, an upperbound element can be found. Formally:
 
 
-$$D \text{ is a directed set } \iff \forall a,b \in D \ \exists c \in D : (a \preceq c \wedge b \preceq c)$$
+$$(D, \preceq) \text{ is a directed set } \iff \forall a,b \in D \ \exists c \in D : (a \preceq c \wedge b \preceq c)$$
 
 We can think about it as the family of those preordered sets without infinite branchs.
 
@@ -58,13 +58,67 @@ In a directed set, upperbounds makes coherent the idea of the *tail*:
 
 $$T_a := \Set{b \in D \mid a \preceq b}$$
 
-Which encompasses those elements that preceeds $a$.
+Which encompasses those elements that preceeds $a$. Observe that in a preordered set a tail could be the entire set it self, which is not mathematically wrong but it serves no purpouse.
 
 <br>
 
-### 2.1.3. Eventually and Frecuently properties.
+### 2.1.3. Eventually and Frequently properties.
+
+#### 2.1.3.1. Intuitive notion.
+
+We are going to present two topologic notios to refer to some subsets of elements. Intuitively:
+
+- *Eventually* refers to "all but some negligible amount of elements".
+
+- *Frequently* referes to "some non-negligible amount of elements".
+
+The majority of topologic notions are expressed in this two terms. In fact, in analysis, an important amount of results expressed for limits or limit points are rigorously described in such terms.
+
+<br>
+
+#### 2.1.3.2. Filters.
+
+Let $D$ be some preordered set, we define $F$ to be a filter (or dual ideal) in $D$ as a non-empty subset of $D$ satisfying:
+
+- $F$ is *Downward directed*, this is, for every pairs of elements from $F$ a lowerbound can be found.
+
+    $$\forall x,y \in F \exists z \in F : (z \leq x \wedge z \leq y)$$
+
+- $F$ is *Upward closed*, or $F$ contains every element greater than some element in $F$:
+
+    $$\forall d \in D \forall f \in F (f \leq d \implies d \in F)$$
+
+Intuitively, a filter $F$ abstract the idea of something large enough within a preordered set, a structure that has some lowerbound and travels up through all the branchs of the preordered set sharing the same lowerbound.
+
+<br>
+
+#### 2.1.3.3. Definition.
+
+Consider now some preordered set $D$ and some property $P$ over the elements of $D$, we denote by $[P]$ to the set of those elements of $D$ satisfying $P$, $[P] = \Set{d \in D \mid P(d)}$. 
+
+Then, we define:
+
+- $P$ is satisfied eventually or simply *Eventually $P$* when $[P]$ contains some filter of $D$:
+
+    $$Eventually \ P \iff \exists \text{ a filter }F  \text{ of } D: F \in \mathcal{P}([P])$$
+
+- $P$ is satisfied Frequently or simply *Frequently $P$* when the intersection of $[P]$ with any subset of $F$ is not empty:
+
+    $$Frequently \ P \iff [P] \cap F \neq \varnothing \quad \forall \text{ filter }F \text{ of } D$$
+
+<br>
+
+Observe then that a property $P$ is satisfied eventually when the sets of the elements that satisfies the property acts as a filter. And is satisfied frequently when, in any filter you can find, there are elements satisfying the property.
+
+In summary, if a filter abstracts a non-negligible amount of elements, eventually and frequently properties are the two forms of interacting with a non-negligible amount of elements of a set which is, in a manner of speaking, a way to be considered a non-despicable property of that set.
+
+<br>
+
+#### 2.1.3.4. Logic properties of Eventually and Frequently cuantifiers.
 
 
+
+<br>
 
 ## 2.2. Convergence.
 
