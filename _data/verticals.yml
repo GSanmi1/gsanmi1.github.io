@@ -137,6 +137,17 @@
       en: Electromagnetism
       es: Electromagnetismo
 
+- slug: cryptography
+  page: /cryptography.html
+  en: Cryptography
+  es: Criptografía
+  blurb_en: Keys, ciphers, signatures, and the mathematics that makes secure communication possible.
+  blurb_es: Claves, cifrados, firmas y las matemáticas que hacen posible la comunicación segura.
+  subjects:
+    - slug: pki
+      en: PKI / Public-Key Cryptography
+      es: PKI / Criptografía de Clave Pública
+
 - slug: computing-security
   page: /computing-security.html
   en: Computing & Security
