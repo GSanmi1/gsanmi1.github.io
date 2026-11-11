@@ -16,9 +16,9 @@ lang: en
 
 In this post we are going to present the *natural numbers*, usually denoted by $\mathbb{N}$. 
 
-Essentially, **$\mathbb{N}$ abstracts the structure in which count** makes sense. 
+Essentially, **$\mathbb{N}$ abstracts the recursive iteration process**, $\mathbb{N}$ is the structure in which count makes sense. 
 
-Dedekind and Peano isolates a minimal machinery; a starting point, and a unary operation (the successor) that never returns to the origin and never collides with itself, plus an the induction principle which generates a *unique* structure identifiable with an *existing* model of this system.
+Dedekind and Peano isolates a minimal machinery; a starting point, and a unary operation (the successor) that never returns to the origin and never collides, plus an the induction principle which generates a *unique* structure identifiable with an *existing* model of this system.
 
 Let's explain this two points a little further:
 
@@ -38,9 +38,9 @@ The resulting structuralist reading is clear: $\mathbb{N}$ is an *isomorphism cl
 
 <br>
 
-# 2. Peano's system. Induction Principle.
+# 2. Peano's system.
 
-## 2.1. Peano's System.
+## 2.1. Definition. Axioms and Example.
 
 We define a Peano's system to be a triple $(N,0,S)$ with $N$ a non-empty set, $0 \in N$ and the sucessor function $S : N \to N$, satisfying the following axioms:
 
@@ -54,38 +54,39 @@ We define a Peano's system to be a triple $(N,0,S)$ with $N$ a non-empty set, $0
 
     <br>
 
-So, $0$ is the starting point, the sucesor function is inyective, it does not collide which is the same to say that it do not goes back at any moment and it satisfies the *Induction Principle* which asserts that $S$ does not left any element in $N$ by go sucessor to sucessor.
+So, the element $0$ is what we call *the starting point*, the sucessor function needs to be inyective in order to not "collide" (which is as much as to say that it do not goes back to any element) and we make the whole structure to satisfy the *Induction Principle* which asserts that $S$ does not left any element in $N$ by going on from sucessor to sucessor.
+
+We can imagine it as a staircase with infinite steps. The ground step is our $0$ and the inmediate step above is the sucessor, then let's us think that if we get a bunch of steps $A$ such the ground step is in $A$ and $A$ contains the sucessor of any step in $A$, then $A$ is the whole staircase.
+
+![staircase](/assets/images/Maths/DiscreteMath/staircase.png)
+
+Essentially, a peano's system is a structrure that allows to go through all his elements in a consecutive way.
 
 <br>
 
-## 2.2. Induction Principle.
+## 2.2. Peano's system as an isomorphism class. Pointed Unary Algebra and Morphisms.
 
-Hence, basically a Peano's system is nothing more that a non-empty set and an inyective function that satisfyies the existance of the zero element and the induction principle.
+We are going to give a brief commentary about how a Peano's system is understanded in moderns days in mathematics.
 
-Let's stop a bit and talk more about the induction principle. Observe that $P1$ garantees an starting point, $P2$ garantees no colission, meaning that $S$ doesn't go back and assign an element the sucessor of other element. Until this point the function takes one element and start assigning successors
+Any Peano's system is what we call *Pointed Unary Algebra*. Decodifying the name; is nothing but a single unary operation; $S : N \to N$, defined within a pointed set; $N$, meaning; a set with one distinct element among the rest; $0$.
 
-<br>
+The quid about it is that a pointed unary algebra is the complete abstraction of the free recursive iteration without collision, the bare-bones pattern of “starting somewhere and repeatedly pressing a step button”: a clock, a staircase, a sequence or even a turing machine are all the same type of structure from the Algebra point of view, this is what this is all about.
 
-
-## 2.2. Recursion Theorem (Dedekind). 
-
-Before continue with Peano's system, let's present the recursion theorem. 
+Observe that what we usually call 'sequence' $\mathbb{N} \to A$ is the proper operation of iteration. The universal property of $\mathbb{N}$ it is the statement “iterating $n$ times is well-defined”, without circularity.
 
 <br>
 
-Be $(N,0,S)$ a Peano's system and $X$ a non empty set. Then consider $a \in X$, and any function $f \in X^X$, then exists a unique function $\varphi \in X^N : \varphi(0)=a \wedge \varphi(S(n)) = f(\varphi(n))$.
+In Algebra a morphism is an application between two algebraic structures preserving the operation defined on them. 
+
+
+In this case, a morphism $m$ between two peano's system $(S,0,N),(S',0',N')$ preserves the starting point and the iteration process (this is that, the image of the $n$-step is the $n$-step of the image of the starting point) by definition:
+
+$$\begin{cases} m(0) = 0' \\ m(S(\underbrace{\ldots}_nS(0))) = S'(\underbrace{\ldots}_nS'(m(0)))\end{cases}$$
+
+Is easy to see that in this conditions $m$ is totally fixed. Between two peano's system a morphism transforms one to another indistinguibly, or, in other words, the unique valid type of morphism between peano's system is an isomorphism.
+
+An isomorphism behaves as a mathematical identifier of algebraic structures. Meaning, Peano's system is always the same structure despite isomorphism. This is what lead us to say that Peano's system is an *isomorphism class*; a categoric axiomatic system that enterely describes the structure it defines.
 
 <br>
 
-
-
-
-
-## 2.3. Categoricity; isomorphism between two Peano's systems.
-
-We are about to see that the axiomatic system presented before is categoric, in the sense that; **two Peano's systems $(N,0,S), (N',0',S)$ are isomorphs**.
-
-<br>
-
-# 3. Finite von Neumann ordinals.
-
+# 3. Canonical representant: von Neumman Ordinals.
