@@ -142,4 +142,4 @@ Observe that $\delta_G$ is a valid metric:
 
     $$\delta_G(x,y) \leq \delta_G(x,z) + \delta_G(z,y) \quad \forall x,y,z \in M$$
 
-    Which is the Triangular Inequality.
+    Which is the Triangular Inequality
