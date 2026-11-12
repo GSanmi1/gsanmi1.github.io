@@ -113,9 +113,9 @@ Let's instante the concept defined above in an example. Let's consider the set $
 
 <br>
 
-We say that a *path* is a finite ordered tuple of vertex $p=(m_1,m_2, \ldots, m_l) \in M^l$ such each vertex is tied to the contiguous vertex by an edge, meaning $(m_i,m_{i+1}) \in A \quad \forall i \in[l-1]$.
+We say that a *path* is a finite tuple of vertex $p=(m_1,m_2, \ldots, m_l) \in M^l$ such each vertex is tied to the contiguous vertex by an edge, meaning $(m_i,m_{i+1}) \in A \quad \forall i \in[l-1]$.
 
-The number of edges in a path is called *length* of the path.
+The number of edges in a path is called *length* of the path; $l(p)$.
 
 A graph such any pair of vertex exists a path involving them is called *connected graph*.
 
@@ -125,7 +125,7 @@ A graph such any pair of vertex exists a path involving them is called *connecte
 
 Let's consider $G = (M,A)$ a connected graph. 
 
-Then we define the function $\delta_G M \times M \to \mathbb{R} \mid \delta_G(x,y) = \min\Set{l(p) \mid x,y \in p}$. In our image above, $\delta_G(m_1,m_6) = 3$. Is worth to note that in our definition of $\delta$ we are making an abuse of notation by stating $x,y \in p$ since $p$ is not an ordinary set, but here we would make an effort and assume that two vertex $x,y$ are "in" a path when both take place at some position of the ordered pair.
+Then we define the function $\delta_G : M \times M \to \mathbb{R} \mid \delta_G(x,y) = \min\Set{l(p) \mid x,y \in p}$. In our image above, $\delta_G(m_1,m_6) = 3$. Is worth to note that in our definition of $\delta_G$ we are making an abuse of notation by stating $x,y \in p$ since $p$ is not an ordinary set, but here we would make an effort and assume that two vertex $x,y$ are "in" a path when both take place at some position of the tuple.
 
 Observe that $\delta_G$ is a valid metric:
 
@@ -136,10 +136,52 @@ Observe that $\delta_G$ is a valid metric:
 
 - Lastly, consider $x,y \in M$ and the path, $p_{xy} : \delta_G(x,y) = l(p_{xy})$. Then, for any other vertex $z$ in $M$, there are two posibilities, $z \in p$ or $z \notin p$.
 
-    If $z \in p$, then $p = p_{xz} \cup p_{zy}$ (here is again an abuse of notation, since $p$ is not an ordinary set and is questionable to use set theory notions on it, but we will asume that a union of path is just the joint of the tail of the first with the head of the second). Then, $\delta_G(x,z) = l(p_{xz})$ and $\delta_G(z,y) = l(p_{zy})$, then we have $\delta_G(x,y) = \delta_G(x,z) + \delta_G(y,z)$, (observe that if not and, for example, there was $p'\_{xz}$ shortest than $p\_{xz}$ then $l(p\_{xz} \cup p\_{zy})< l(p'\_{xz} \cup p\_{zy})$ in contradiction with our premise).
+    If $z \in p$, then $p = p_{xz} \cup p_{zy}$ (here is again an abuse of notation, since $p$ is not an ordinary set and use set theory notions on it is questionable to say the least, but here we will asume that a union of two paths is just the joint of the tail of the first path with the head of the second). Then, $\delta_G(x,z) = l(p_{xz})$ and $\delta_G(z,y) = l(p_{zy})$, then we have $\delta_G(x,y) = \delta_G(x,z) + \delta_G(y,z)$, (observe that if not and, for example, there was $p'\_{xz}$ shortest than $p\_{xz}$ then $l(p\_{xz} \cup p\_{zy})< l(p'\_{xz} \cup p\_{zy})$ in contradiction with our premise).
 
     If $z \notin p$, then $l(p) < l(p\_{xz} \cup p\_{zy})$ by the same argumentation that before. So, in any case, we can state that:
 
     $$\delta_G(x,y) \leq \delta_G(x,z) + \delta_G(z,y) \quad \forall x,y,z \in M$$
 
     Which is the Triangular Inequality
+
+    <br>
+
+# 5. Segments and Alignment.
+
+## 5.1. Segments. Definition.
+
+Let be $(M, \delta)$ a metric space. Then, we call *segment* of endpoints $a, b \in M$; $[a,b]$ to the set of those elements such:
+
+$$[a,b] = \Set{x \in M \mid \delta(a,b) = \delta(a,x) + \delta(x,b)}$$
+
+Let's recall the $M3$ property (triangular inequality). This statement of the metric spaces stated that measure the "distance" between two points passing through a third always produce an equal or greater number than to measure directly from this two points. 
+
+Diversify the measure of the distance between two points in general only results in an increment of the measured property except for some subset of points of $M$. Then, we consider this subset deserves an special designation: a segment is just the set of those points such do not increment the distance between the endpoints of the segment when this is measured through them.
+
+<br>
+
+## 5.2. Alignment. Definition.
+
+In the context of a segment in a metric space, the special condition characterizing the elements of the segment is what we call to be *aligned* with the endpoints. We now extend this notions into a more wide form:
+
+*Three elements of a metric space are said to be aligned if one of them fits inside the segment of endpoints the other elements*.
+
+<br>
+
+## 5.3. Observation 1.13 about segments and alignment.
+
+1. Observe that:
+
+    $$ x \in [a,a] \iff \delta(a,x) + \delta(x,a) = \delta(a,a) = 0 \underbrace{\iff}_{M2} \delta(x,a) = 0 \underbrace{\iff}_{M1} x = a$$
+
+    So, $[a,a] = \Set{a} \quad \forall a \in M$.
+
+    <br>
+
+2. Also, by $M2$ and the fact that $(\mathbb{R},+)$ is a commutative group:
+
+    $$[a,b] = \Set{x \in M \mid \delta(a,b) = \delta(a,x) + \delta(x,b)} =\Set{x \in M \mid \delta(b,a) = \delta(b,x) + \delta(x,a)} = [b,a]$$
+
+    <br>
+
+# 6. Exercises.
