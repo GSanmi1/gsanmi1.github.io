@@ -17,7 +17,18 @@ lang: en
 - 3. Isometries. Isometric Spaces.
     - 3.1. Definition.
     - 3.2. Theorem 1.7. Composition and Inverse of isometries are isometries.
+- 4. Example: Graphs.
+    - 4.1. Definition and basic notions.
+    - 4.2. Distance in a connected graph.
 
+- 5. Segments and Alignment.
+    - 5.1. Segments: Definition.
+    - 5.2. Alignment: Definition.
+    - 5.3. Observation of segments and alignment.
+
+- 6. Exercises.
+    - 6.1. The absolute value real metric.
+    - 6.2.
     <br>
 
 # 1. Introduction.
