@@ -12,23 +12,22 @@ lang: en
 
 # 0. Index.
 
-- 1. Introduction.
-- 2. Metric Spaces. Distance.
-- 3. Isometries. Isometric Spaces.
-    - 3.1. Definition.
-    - 3.2. Theorem 1.7. Composition and Inverse of isometries are isometries.
-- 4. Example: Graphs.
-    - 4.1. Definition and basic notions.
-    - 4.2. Distance in a connected graph.
+1. Introduction.
+2. Metric Spaces. Distance.
+3. Isometries. Isometric Spaces.
+- 3.1. Definition.
+- 3.2. Theorem 1.7. Composition and Inverse of isometries are isometries.
+4. Example: Graphs.
+- 4.1. Definition and basic notions.
+- 4.2. Distance in a connected graph.
+5. Segments and Alignment.
+- 5.1. Segments: Definition.
+- 5.2. Alignment: Definition.
+- 5.3. Observation of segments and alignment.
+6. Exercises.
+- 6.1. Isometries of $(\mathbb{R},\delta_\mathbb{R})$.
+- 6.2.
 
-- 5. Segments and Alignment.
-    - 5.1. Segments: Definition.
-    - 5.2. Alignment: Definition.
-    - 5.3. Observation of segments and alignment.
-
-- 6. Exercises.
-    - 6.1. The absolute value real metric.
-    - 6.2.
     <br>
 
 # 1. Introduction.
