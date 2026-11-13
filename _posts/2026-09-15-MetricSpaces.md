@@ -185,3 +185,58 @@ In the context of a segment in a metric space, the special condition characteriz
     <br>
 
 # 6. Exercises.
+
+## 6.1. Isometries of $(\mathbb{R},\delta_{\mathbb{R}})$.
+
+Consider $\mathbb{R}$ and the function: $\delta_\mathbb{R}: \mathbb{R}^2 \to \mathbb{R} \mid \delta_\mathbb{R}(x,y) = \|x - y \|$. Then:
+
+- **Show that $(\mathbb{R},\delta_\mathbb{R})$ is a metric space.**
+
+    First, take $x,y \in \mathbb{R}$, then is clear that $\delta_\mathbb{R}$ is positive definitness and simetric, so $M1$ and $M2$ holds.  Let's see triangular inequality.
+
+    Let be $z \in \mathbb{R}$, then by the property of the absolute value in $\mathbb{R}$, is:
+
+    $$|x - y | = |x - z + z - y| \leq |x - z| + |z - y|$$
+
+    Since $x,y,z \in \mathbb{R}$ are arbitrary and the translation $\delta_\mathbb{R}(x,y) = \|x - y \|$ is immediate, then $M3$ holds and we have finished.
+
+    <br>
+
+- **Show that the aplication $f \in {\mathbb{R}}^{\mathbb{R}} \mid f(x) = \sigma x + \tau : (\sigma \in \Set{-1,1} \wedge \tau \in \mathbb{R})$ satisfies $f \in Isom(\mathbb{R},\delta_\mathbb{R})$.**
+
+    We recall that the applications we consider isometries those applications from a metric space to another such are biyectives and preserve distances. First of all $f$ as defined is clearly biyecive, let's see that it preserves distances.
+
+    Preserve the distance meant to be: 
+
+    $$\delta_\mathbb{R}(f(x),f(y)) = \delta_\mathbb{R}(x,y) \quad \forall x,y \in \mathbb{R}$$
+
+    Let's see that, taking some arbitrary values $x,y \in \mathbb{R}$, then:
+
+    $$\delta_\mathbb{R}(f(x),f(y)) = |\sigma x + \tau -(\sigma y + \tau)| = |\sigma|\delta_\mathbb{R}(x,y)$$
+
+    But, since $\sigma \in \Set{-1,1}$, then $\|\sigma\| = 1$ and we have finish.
+
+    <br>
+
+- **Show that if $g \in Isom(\mathbb{R},\delta_\mathbb{R}) : g(a) = a \neq b = g(b)$ then $g = id_\mathbb{R}$**
+
+    Observe that, the intuition behind this point of the exercise is that in a line a point of the line is completly determined by his distance to two other points.
+
+    It is worth to note also that this leads to use mathematically a non-demonstrated intuition about $\mathbb{R}$ as a metric space which is the fact it is a line, hence three points in a line are always alignment which could lead to rabbit holes in the process of demonstration of the asked result by this section. This property exists within the metric $\delta_\mathbb{R}$ and the exercise cannot be resolved without use it.
+
+    With this stablished, let be $x \in \mathbb{R} \setminus \Set{a,b}$, then consider $\delta_\mathbb{R}(x,a)$ and $\delta_\mathbb{R}(x,b)$, since $g$ fix $a$ and $b$, both are distinct from $x$ and $g$ is an isometry, we have:
+
+    $$\begin{cases} \delta_\mathbb{R}(x,a) = \delta_\mathbb{R}(g(x),a) \\ \delta_\mathbb{R}(x,b) = \delta_\mathbb{R}(g(x),b)\end{cases} \iff \begin{cases}|x -a| = |g(x) -a| \\ | x - b| = |g(x) - b| \end{cases}$$
+
+    Observe that $x$ is an arbitrary point and the real unknown is $g(x)$. Squaring both sides and using the well-known "sum and difference" pattern we reach:
+
+    $$\begin{cases}(x - g(x))(x + g(x) - 2a) = 0 \\ (x - g(x))(x + g(x) - 2b) = 0\end{cases}$$
+
+    Observe that since $a \neq b$ is $x = g(x)$ and since the point is arbitrary, $g = id_\mathbb{R}$.
+
+
+    <br>
+
+- **Let be $h \in Isom(\mathbb{R},\delta_\mathbb{R})$. Demonstrate that exists $\sigma \in \Set{-1,1} \wedge \tau \in \mathbb{R} : h(x) = \sigma x + \tau$**
+
+
