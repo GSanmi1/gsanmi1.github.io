@@ -244,9 +244,40 @@ Consider $\mathbb{R}$ and the function: $\delta_\mathbb{R}: \mathbb{R}^2 \to \ma
 
     Observe that since $a \neq b$ is $x = g(x)$ and since the point is arbitrary, $g = id_\mathbb{R}$.
 
+    <br>
+
+- **Let be $h \in Isom(\mathbb{R},\delta_\mathbb{R})$. Demonstrate that exists $\sigma \in \Set{-1,1} \wedge \tau \in \mathbb{R} : h(x) = \sigma x + \tau$**.
+
+    First, since $h \in Isom(\mathbb{R},\delta_\mathbb{R})$:
+
+    $$\delta_\mathbb{R}(x,0) = \delta_\mathbb{R}(h(x),h(0)) \iff |x| = |h(x) - h(0)| \underbrace{\iff}_{\text{square and clean } h(x)} h(x) = \pm x + h(0) $$
+ 
+    Observe that, reached this point, we have found a double solution for each $x$. The equation can't tell us whether is $-x$ or $x$, mathematically both are valid.
+
+    But, let's call $\sigma \in \Set{-1,1}$ such $h(x) = \sigma x + h(0)$, observe that $h(1) = \sigma + h(0) \iff \sigma = h(1) - h(0)$ which means that $\sigma$ is determined by $h$ and is unique for every $x \in \mathbb{R}$ which means that only one solution of the equation above is valid, not both at the same time, only instantiating $h$ we would be able to tell what value takes.
+
+    For each $h \in Isom(\mathbb{R},\delta_\mathbb{R})$ exists $\sigma \in \Set{-1,1} \wedge \tau =h(0) \in \mathbb{R}$ such $h(x)= \sigma x + \tau$ for any $x \in \mathbb{R}$.
 
     <br>
 
-- **Let be $h \in Isom(\mathbb{R},\delta_\mathbb{R})$. Demonstrate that exists $\sigma \in \Set{-1,1} \wedge \tau \in \mathbb{R} : h(x) = \sigma x + \tau$**
+    **Alternative solution**.
 
+    From the previous section, we know that, being $h,g \in Isom(\mathbb{R},\delta_\mathbb{R})$, then:
 
+    $$\exists x_1,x_2 \in \mathbb{R}, x_1 \neq x_2 :  (g^{-1} \circ h(x_i) = x_i\quad  i = 1,2 )\implies g^{-1} \circ h = id_\mathbb{R}$$
+
+    Remeber that the inverse and the composition of isommetries are isommetries.
+
+    Hence, we say that $g = \sigma x + \tau$ (which we know by section $2$ that is an isometry) and force $x_1 = 0, x_2 = 1$ (observe that the selected points does not make a difference since fixed two, both isometries are the same as we stated before, meaning that this coinditions over $g$ doesn't loose generality). 
+    
+    This absolute valid if the following conditions are satisfied:
+
+    $$\begin{cases} h(0) = g(0) = \tau \\ h(1) = g(1) = \sigma + h(0)\end{cases}$$
+
+    Observe then that: $\|\sigma\| =  \delta_\mathbb{R}(h(1),h(0)) = \delta_\mathbb{R}(1,0) = 1 \implies \sigma \in \Set{-1,1}$ and $\tau = h(0) \in \mathbb{R}$.
+
+    Then: $h(x) = g(x) = \sigma x + \tau \quad \forall x \in \mathbb{R}$.
+    
+    <br>
+
+    Essentially, this close the exercise which is a specific framework: a family of examples (Section 2), a rigidity lemma (Section 3), and a demonstration that this family is sufficiently rich to match any isometry at the points that determine it (Section 4).
