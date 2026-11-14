@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Kinematics of the single particule."
+title: "Kinematics of the single particle."
 subtitle: "Fundamentals Magnitudes. Uniform Rectilinear Motion"
 date: 2026-06-17 09:00:00 +0000
 categories: ['Number Systems']
