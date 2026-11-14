@@ -117,7 +117,7 @@ Now, let's name as $Isom(M)$ to the set of all isometries $g \in M^M$. We have d
 
 ## 4.1. Definition and basic notions.
 
-Let's instante the concept defined above in an example. Let's consider the set $M$ to be a finite set whose elements we will call 'vertex'. Asociated with $M$ we can find the subset $A \subset M^2$ whose elements we will call 'edges'. The pair $G = (M,A)$ is called *graph*.
+Let's instante the concept defined above in an example. Let's consider the set $M$ to be a finite set whose elements we will call 'vertex'. Asociated with $M$ we can find the subset $A \subset \binom{M}{2}$ whose elements we will call 'edges'. The pair $G = (M,A)$ is called *graph*.
 
 ![Graph1](/assets/images/Maths/Geometry/graph1.png)
 
@@ -281,3 +281,67 @@ Consider $\mathbb{R}$ and the function: $\delta_\mathbb{R}: \mathbb{R}^2 \to \ma
     <br>
 
     Essentially, this close the exercise which is a specific framework: a family of examples (Section 2), a rigidity lemma (Section 3), and a demonstration that this family is sufficiently rich to match any isometry at the points that determine it (Section 4).
+
+    <br>
+
+## 6.2. Isommetries on $(G, \delta_G)$.
+
+Let be the following graph $G = (M,A)$ as the following picture suggest:
+
+![Q3cube](/assets/images/Maths/Geometry/q3cube.png)
+
+And consider the metric $\delta_G : M^2 \to \mathbb{R} \mid \delta_G(u,v) = \min\Set{l(p) \mid u,v \in p}$ of the example 1.11. We do know in thix context that $(G,\delta_G)$ is a metric space.
+
+Then:
+
+- **Calculate the distances from any vertex to $v_2$**
+
+    Let's settle an agreement before start. 
+    
+    
+    1. The vertex set $M$ is gonna be split in two; $U,V \subset M :U \cup V = M$:
+    
+    $$U = \Set{u_1,u_2,u_3,u_4}, V = \Set{v_1,v_2,v_3,v_4}$$
+    
+    2. In all it follows, we gonna designate a vertex through a number and a subindex. 
+    
+    $$x_i,y_i \in M: x,y \in \Set{u,v} \wedge i \in \mathbb{N}/4\mathbb{N}$$
+
+    3. We are going to define an operation we are gonna call *swap*:
+    
+    
+    $$\ast : \Set{u,v}^2 \to \Set{0,1} \mid x \ast y = \begin{cases} 1 \quad x \neq y \\ 0 \quad x = y  \end{cases}$$
+
+
+    
+    Now, let's observe that the image let us say that each vertex $x_i$ is in contact with one of the other letter but same number; $y_i$ and two of same letter and number up and number down $x_{i+1}, x_{i-1}$: 
+    
+    $$\forall x_i \in M \ \begin{cases} \Set{x_i,y_i} \\ \Set{x_i, x_{i+1}} \\ \Set{x_i, x_{i-1}}\end{cases} \in A$$
+
+    Which let's say that:
+    
+    - Among vertex of the same letter, the greatest distance is $2$ since the maximum number is $4$ and each vertex is connected to the other one by two ways (by paths of vertex with the same letter).
+    
+    - Those paths that change letters only can salt between vertex of different letter but same number. There are no cross salts; changing letters and numbers at the same time.
+
+    This allow us to state a generic form for the distance in $G$:
+    
+    $$\delta_G(x_i,y_j) = \begin{cases} | i - j | + x \ast y & |i-j| \leq 2\\ 1 + x \ast y & |i - j| > 2\end{cases}$$
+    
+    This is, the distance between two arbitrary vertices is the distance between the numbers plus the swap of letter if it applies.
+
+    Then, we can instantiate this formula to $v_2$:
+
+    $$\delta_G(x_i,v_2) = |i - 2| + x \ast v$$
+
+    <br>
+
+- **Find an element of $Isom(M)$ with order $3$, meaning that $g \circ g \circ g = id_M$ (observe that $id_M$ has order $1$ since $1$ is the least number of compositions you need to obtain $id_M$ with $id_M$).**
+
+    Let's observe again the figure, is a cube. Following the section above which mentions $v2$, we are going to consider the rotation of axis $r_{v2,u4}$ and ratio $1/3$. This application, this rotation does not deform the figure so the distances remains equal and is an isommetry and since the ratio is $1/3$ the rotation needs three iterations to go back the first position, so has order $3$.
+
+    Formally, this isommetry fix $v_2$ and $u_4$, and rotate those vertices that has the same distance to $v_2$ with the same orientation:
+
+    $$\begin{aligned} v_2 &\mapsto v_2 &  \\ u_2 &\mapsto v_3 & v_3 &\mapsto v_1 & v_1 &\mapsto u_2 \\ u_3 &\mapsto v_4 & v_4 &\mapsto u_1 & u_1 &\mapsto u_3 \\ u_4 &\mapsto u_4\end{aligned} $$
+
+    ![q3cube2](/assets/images/Maths/Geometry/q3cube2.png)
