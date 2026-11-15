@@ -26,7 +26,7 @@ lang: en
 - 5.3. Observation of segments and alignment.
 6. Exercises.
 - 6.1. Isometries of $(\mathbb{R},\delta_\mathbb{R})$.
-- 6.2.
+- 6.2. Isometries on $(G,\delta_G)$
 
     <br>
 
@@ -301,16 +301,16 @@ Then:
     
     1. The vertex set $M$ is gonna be split in two; $U,V \subset M :U \cup V = M$:
     
-    $$U = \Set{u_1,u_2,u_3,u_4}, V = \Set{v_1,v_2,v_3,v_4}$$
+        $$U = \Set{u_1,u_2,u_3,u_4}, V = \Set{v_1,v_2,v_3,v_4}$$
     
     2. In all it follows, we gonna designate a vertex through a number and a subindex. 
     
-    $$x_i,y_i \in M: x,y \in \Set{u,v} \wedge i \in \mathbb{N}/4\mathbb{N}$$
+        $$x_i,y_i \in M: x,y \in \Set{u,v} \wedge i \in \mathbb{N}/4\mathbb{N}$$
 
-    3. We are going to define an operation we are gonna call *swap*:
+    3. We are going to define an operation we gonna call *swap*:
     
     
-    $$\ast : \Set{u,v}^2 \to \Set{0,1} \mid x \ast y = \begin{cases} 1 \quad x \neq y \\ 0 \quad x = y  \end{cases}$$
+        $$\ast : \Set{u,v}^2 \to \Set{0,1} \mid x \ast y = \begin{cases} 1 \quad x \neq y \\ 0 \quad x = y  \end{cases}$$
 
 
     
