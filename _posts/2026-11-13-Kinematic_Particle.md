@@ -65,7 +65,7 @@ First we settle what we call the *initial conditions*, which is the initial posi
 
 Then, after some time, the particle will ocuppie a position $r_t = (x(t),y(t),z(t))$, we call this the parametric path equations.
 
-$$r(t) = x\bold{i} + y\bold{j} + z\bold{k} = \begin{cases} x = x(t) \\ y = y(t) \\ z = z(t)\end{cases}$$
+$$r(t) = x\textbf{i} + y\textbf{j} + z\textbf{k} = \begin{cases} x = x(t) \\ y = y(t) \\ z = z(t)\end{cases}$$
 
 <br>
 
