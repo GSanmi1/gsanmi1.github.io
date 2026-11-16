@@ -105,7 +105,7 @@ $$L(r) = \int_a^b \|\frac{dr}{dx}(x)\| dx = \int_a^b \sqrt{1 + \frac{dy}{dx}(x) 
 
 Then, the arc length of $P_0P$ is, asuming $P_0({P_x}_0, {P_y}_0)$, $P(P_x,P_y)$, then:
 
-$$L_{{P_x}_0}(P_x) = \int_{x_0}^{x} \sqrt{1 + \frac{dy}{du}(u) + \frac{dz}{du}(u)} du$$
+$$L_{ {P_x}_0 }(P_x) = \int_{x_0}^{x} \sqrt{1 + \frac{dy}{du}(u) + \frac{dz}{du}(u)} du$$
 
 <br>
 
