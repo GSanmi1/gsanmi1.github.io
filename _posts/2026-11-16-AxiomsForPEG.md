@@ -50,11 +50,11 @@ A subset $r \subset \textbf{P}$ is called a *line* if the following conditions a
 
 1. $\exists A,B \in r : A \neq B$. 
 
-2. $A,B,C \text{ are aligned } \quad \forall A,B,C \in r : A \neq B \wedge B \neq C \wedge C \neq A$.
+2. $\forall A,B,C \ [A,B,C \in r \implies Al(A,B,C)] $.
 
-3. $\forall A,B \in r : A \neq B, \forall X \ (A,B,X \text{ are aligned } \implies X \in r)$.
+3. $\forall A,B \in r : A \neq B, \forall X \ [Al(A,B,X) \implies X \in r]$.
 
-This means that lines are non-empty, non-singleton $(1.)$, aligned $(2.)$ subsets $\textbf{P}$ that owns any point of the plane aligned with his own points $(3.)$.
+This means that lines are non-empty, non-singleton $(1.)$, aligned $(2.)$ subsets that owns any point of the plane aligned with his own points $(3.)$.
 
 ![line](/assets/images/Maths/Geometry/line.png)
 
@@ -66,7 +66,7 @@ We are going to see that any segment of endpoints included in a line is a subset
 
 Having said that, let be $r \subset \textbf{P}$ a line and $A,B \in r : A \neq B$ which exists by $(1.)$ and consider $[A,B]$. By definition of the segment:
 
-$$[\forall X \in [A,B] \quad A,B,X \text{ are aligned } \underbrace{\implies}_{(3.)} X \in r] \implies  [A,B] \subset r$$
+$$[\forall X \in [A,B] \quad Al(A,B,X) \underbrace{\implies}_{(3.)} X \in r] \implies  [A,B] \subset r$$
 
 Observe that $A = B \implies [A,B] = \Set{A} \subset r$ since $A \in r$ by premise.
 
@@ -88,11 +88,11 @@ Observe directly that:
 
     <br>
 
-Then, using $P2,(i)$ we can consider three non-aligned points $A,B,C$, (observe that this means they are three distinct points, since one point and two points in the plane are always aligned points). Then, by $P2,(ii)$, we can consider $r$, unique, passing through $A,B$; $g$, unique, passing through $B,C$ and $h$, unique, passing through $A,C$. This three lines are distinct subsets of $\textbf{P}$.
+Then, using $P2's (i)$ we can consider three non-aligned points $A,B,C$, (observe that this means they are three distinct points, since one point and two points in the plane are always aligned points). Then, by $P2's(ii)$, we can consider $r$, unique, passing through $A,B$; $g$, unique, passing through $B,C$ and $h$, unique, passing through $A,C$. This three lines are distinct subsets of $\textbf{P}$.
 
 ![axiomP2](/assets/images/Maths/Geometry/AxiomP2.png)
 
-$P2,(i)$ let's to consider it and $P2, (ii)$ let us to build it.
+$P2's(i)$ let's to consider it and $P2's (ii)$ let us to build it.
 
 <br>
 
