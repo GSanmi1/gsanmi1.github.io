@@ -16,4 +16,10 @@ lang: en
 
 In this section we are going to present several important results about number theory involving modular aritmetic.
 
-Modular aritmetic is the aritmetic operation involving integers refering only of what is left when dividing by some fixed integer *n*.
+Modular aritmetic is the aritmetic operation involving integers refering only of what is left when dividing by some fixed integer *n*, called *remainder*.
+
+<br>
+
+# 2. Euclidiean Division: Reminder.
+
+

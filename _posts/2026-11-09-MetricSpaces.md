@@ -174,7 +174,18 @@ Diversify the measure of the distance between two points in general only results
 
 In the context of a segment in a metric space, the special condition characterizing the elements of the segment is what we call to be *aligned* with the endpoints. We now extend this notions into a more wide form:
 
-*Three elements of a metric space are said to be aligned if one of them fits inside the segment of endpoints the other elements*.
+*Three elements of a metric space are said to be aligned if one of them fits inside the segment of endpoints the other elements*:
+
+$$\mathrm{Al}(x,y,z) \iff x \in [y,z] \lor y \in [x,z] \lor z \in [x,y]$$
+
+We would like to mention that:
+
+- $[a,a] = \{a\}$ since $d(a,a) + d(a,a) = d(a,a) = 0$. 
+- $a, b \in [a,b]$ since $d(a,b) + d(b,b) = d(a,b)$, the same with $a$ instead.
+
+    <br>
+
+So, is reasonable to always consider sets of less than three points as aligned structures despite the fact the definition doesn't apply rigorously here.
 
 <br>
 
