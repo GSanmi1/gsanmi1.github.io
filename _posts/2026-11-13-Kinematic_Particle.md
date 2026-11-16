@@ -157,6 +157,5 @@ $$\mathbf{r} = (2t^2 - 1)\mathbf{i} + (t^3 + 1)\mathbf{j}$$
 
     $$L_{x_0}(x) = \int_{x_0}^x \|r'(u)\|du = \int_{x_0}^x \sqrt{1 + \frac{3(u+1)^2}{2\sqrt{\frac{(u+1)^3}{8} -1}}} du$$
 
-
     <br>
 
