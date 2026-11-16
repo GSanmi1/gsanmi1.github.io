@@ -100,7 +100,7 @@ $$W \leq V \iff +\mid_W, \cdot \mid_{W} \text{ are closed in } W $$
 
 Which is the same as:
 
-$$\begin{rcases}\forall u \forall v(u,v \in W \implies u + v \in W) \\ \forall u (u \in W \implies \alpha u \in W \quad \forall \alpha \in K)\end{rcases} \iff \forall u \forall v(u,v \in W \implies \alpha u + v \in W \quad \forall \alpha \in K)$$
+$$\begin{cases}\forall u \forall v(u,v \in W \implies u + v \in W) \\ \forall u (u \in W \implies \alpha u \in W \quad \forall \alpha \in K)\end{cases} \iff \forall u \forall v(u,v \in W \implies \alpha u + v \in W \quad \forall \alpha \in K)$$
 
 Essentially, a *subset of vectors is a subspace as long as it retains all the posible linear combinations of his elements*, and it allows to assert if some subset is a subspace without reconstruct the entire structure.
 
