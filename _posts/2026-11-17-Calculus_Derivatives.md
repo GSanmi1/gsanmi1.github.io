@@ -12,7 +12,11 @@ lang: en
 
 # 0. Index.
 
-
+1. Introduction.
+2. Defining the Derivate.
+- 2.1. Difference Quotient. Tangent Line to a function at a point.
+- 2.2. The derivate of a Function at a Point.
+- 2.3. Derivative Interpretation: Velocity.
 
 <br>
 
@@ -62,7 +66,7 @@ $$f(x) = m_{tan} (x - a) + f(a)$$
 
 <br>
 
-## 2.4. The derivate of a Function at a Point.
+## 2.2. The derivate of a Function at a Point.
 
 We are now going to formally presentate the limit to which we give a geometrical interpretation; the *derivative*. The process of finding a derivative is called *differentiation*.
 
@@ -80,7 +84,7 @@ provided this limit exists.
 
 <br>
 
-## 2.5. Derivative Interpretation: Velocity.
+## 2.3. Derivative Interpretation: Velocity.
 
 We are going an example of application of the derivate of a function at a point which is directly implied by the direct interpretation of the derivate: **The derivate of a function measures the instantaneous rate of change at a point**.
 
