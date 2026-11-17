@@ -124,6 +124,9 @@
   blurb_en: Motion, forces, gravity, and electromagnetic fields — the classical laws of nature.
   blurb_es: Movimiento, fuerzas, gravedad y campos electromagnéticos — las leyes clásicas de la naturaleza.
   subjects:
+    - slug: preliminary-calculus
+      en: Calculus praeliminaris
+      es: Calculus praeliminaris
     - slug: dynamics
       en: Dynamics
       es: Dinámica

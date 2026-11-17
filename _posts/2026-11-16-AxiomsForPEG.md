@@ -146,7 +146,7 @@ If both share more than one point, then, let be $A,B \in r \cap t : A \neq B$ an
 
 #### 3.5.1. Definition.
 
-We are already familiar with this result, which basically recovers the analisis's fact about real numbers as positions in a line (Dedekind's cut) and transfer it too the line's subsets of $\textbf{P}$.
+We are already familiar with this result, which basically recovers the analysis's fact about real numbers as positions in a line (Dedekind's cut) and transfer it too the line's subsets of $\textbf{P}$.
 
 Remember that $(\textbf{P},d)$ is a metric space and since any line is a subset of the plane; $r \subset \textbf{P}$, then the set $(r,d\|_{r \times r})$ inheritates the metric space structure from the first one. Having this said, then:
 
