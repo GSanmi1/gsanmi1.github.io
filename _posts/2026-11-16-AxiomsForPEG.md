@@ -167,3 +167,79 @@ Then, we are inyecting the real distance to any generic line in the plane.
 <br>
 
 #### 3.5.2. Observation 2.8: Midpoint.
+
+Let's define a useful object in the following sections that also serve us as a good application example of the axiom $P3$. Let $r \subset \textbf{P}$ be a line and $A,B \in r : A \neq B$, then:
+
+- $\exists! M \in r : d(A,M) = d(M,B)$ and we call it *midpoint*.
+
+    By $P3$, we know that we can measure $r's$ as if they were real elements, importing an isommetry from $Isom((r,d|_{r \times r}),(\mathbb{R},\delta_\mathbb{R}))$ which is not empty (by $P3$). So, let be $\gamma \in Isom((r,d|_{r \times r}),(\mathbb{R},\delta_\mathbb{R}))$, then, let's call $X$ to be the real unknown satisfying:
+    
+    $$|\gamma(A) - X| = |\gamma(B) - X|$$
+
+    Squaring both parts, dusing the ifference of square's identity and cleaning $X$ (keeping in mind that $A \neq B$ and $\gamma$ is a biyection) we have that this real number is determinated by the expression:
+
+    $$X = \frac{\gamma(A) + \gamma(B)}{2}$$
+
+    Then, since $X$ do exists as a real number, there must exists some unique $M \in r : M = \gamma^{-1}(X) = \gamma^{-1}(\frac{\gamma(A) + \gamma(B)}{2})$.
+
+    <br>
+
+- Observe quicly the result above forces $M \in [A,B]$, if not, $A,B,M \in r \implies Al(A,B,M)$, (by $(2.)$ of the line's properties), and by the alignment definition in a metric space (which state that three alignment elements means for one of them to be in the segment formed by the other two):
+
+
+    $$M \notin [A,B] \iff (A \in [M,B] \oplus B \in [M,A])$$
+
+
+    But:
+
+    $$ \begin{aligned} A \in [X,B] \iff d(M,B) = d(M,A) + d(A,B) \underbrace{>}_{A \neq B} d(M,A)\\ \\  B \in [M,A] \iff d(M,A) = d(M,B) + d(A,B) \underbrace{>}_{A \neq B} d(X,B) \end{aligned}$$
+
+    Hence, by the trycotomy property of the real numbers, the only compatible position for $M$ is to be in the segment of endpoints $A,B$.
+    
+    <br>
+
+Hence, as a summary, $\forall A,B \in \textbf{P} \ \exists! M \in [A,B] : d(A,M) = d(M,B)$, and we call $M$ to be the midpoint between $A, B \in \textbf{P}$; $M = mid[A,B]$. (Note that trivially $A=B \implies mid[A,B] = A = B$).
+
+<br>
+
+## 3.6. Exercise 1.
+
+**Let be $r \subset \textbf{P}$ and $\gamma, \gamma' \in Isom((r,d|_{r \times r}),(\mathbb{R},\delta_\mathbb{R}))$, then** 
+
+$$\exists a \in \mathbb{R} : [(\gamma' \circ \gamma^{-1} (x) = a + x \quad \forall x \in \mathbb{R}) \oplus (\gamma' \circ \gamma^{-1} (x) = a - x \quad \forall x \in \mathbb{R})]$$
+
+Observe that this result is immediate from the fourth section of the exercise 2 of the post of MetricSpaces.
+
+Since:
+
+$$\delta_\mathbb{R}(x,y) = d(\gamma^{-1}(x), \gamma^{-1}(y)) = \delta_\mathbb{R}(\gamma' \circ \gamma^{-1}(x),\gamma' \circ \gamma^{-1}(y))$$
+
+Then, $\gamma' \circ \gamma^{-1} \in Isom((\mathbb{R},\delta_\mathbb{R}))$ and there exists $\tau \in \mathbb{R}$, $\sigma \in \Set{-1,1}$ such:
+
+$$\gamma' \circ \gamma^{-1}(x) = \sigma x + \tau \quad \forall x \in \mathbb{R}$$
+
+Call $\tau = a$ and conmutate the expression, getting:
+
+$$\gamma' \circ \gamma^{-1}(x) =a + \sigma x  \quad \forall x \in \mathbb{R}$$
+
+<br>
+
+## 3.7. Rays.
+
+### 3.7.1. Definition.
+
+Let be $r \subset \textbf{P}$, $P \in r, \gamma \in Isom((r,d|_{r \times r}),(\mathbb{R},\delta_\mathbb{R}))$, then we define as *ray with vertex $P$* to the sets:
+
+$$\Set{Q \in r \mid \gamma(Q) > \gamma(P)}, \quad \Set{Q \in r \mid \gamma(Q) < \gamma(P)}$$
+
+We often can refer to any of both sets as $\overline{r}$. Observe that both rays doesn't joint in to $r$:
+
+$$\Set{Q \in r \mid \gamma(Q) > \gamma(P)} \cup \Set{Q \in r \mid \gamma(Q) < \gamma(P)} = r \setminus \Set{P}$$
+
+We say two points $S,T$ are on the same side of $P$ when both are in the same ray with vertex $P$.
+
+<br>
+
+### 3.7.2. Observation 2.10. Points in distinct side of a third point.
+
+Two points $X,Y \in r$ are in different sides of $P \in r$ only iff $P \in [X,Y]$.
