@@ -103,6 +103,34 @@ $$v(a) = s'(a) = \lim_{t \to a} v_{[a,t]} = lim_{t \to a} \frac{s(t) - s(a)}{t -
 
 # 3. The Derivative as a Function.
 
+## 3.1. Definition.
 
+Let $f$ be a function. The **derivative function**, denoted by $f'$, is the function whose domain consists of those values of $x$ such that the following limit exists:
+
+$$f'(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}. \tag{3.9}$$
+
+We have the following conventions:
+
+- A function $f$ is said to be **differentiable at $a$** if $\exists f'(a)$.
+- A function $f$ is said to be **differentiable on $S$** if $\exists f'(a) \quad \forall a \in S$
+- A function $f \in B^A$ is said to be a **differentiable function** if it is differentiable on $A$.
+- We can use several notations to designate the derivative of a function $y = f(x)$:
+
+    $$ f'(x), \quad \frac{df(x)}{dx}, \quad \frac{d}{dx}(f(x)), \quad y', \quad \frac{dy}{dx}$$
+
+
+    <br>
+
+## 3.2. Derivatives and Continuity.
+
+Intuitively, a continous function is just a function that travels along his definition's domain smoothly, without abrupt gaps or salts between close values. 
+
+Formally, a function is say to be continue at some point $a$ when the following condition is satisfied:
+
+$$\lim_{x \to a^+} f(x) = \lim_{x \to a^-} f(x) = f(a) $$
+
+Which topologically means that all what is near of $x$ is near to $f(x)$ through $f$ catches the intuition statement.
 
 <br>
+
+Then, we are going to present an important result relating differentiation and continuity
