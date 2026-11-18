@@ -172,7 +172,7 @@ Let's define a useful object in the following sections that also serve us as a g
 
 - $\exists! M \in r : d(A,M) = d(M,B)$ and we call it *midpoint*.
 
-    By $P3$, we know that we can measure $r's$ as if they were real elements, importing an isommetry from $Isom((r,d|_{r \times r}),(\mathbb{R},\delta_\mathbb{R}))$ which is not empty (by $P3$). So, let be $\gamma \in Isom((r,d|_{r \times r}),(\mathbb{R},\delta_\mathbb{R}))$, then, let's call $X$ to be the real unknown satisfying:
+    By $P3$, we know that we can measure $r's$ as if they were real elements, importing an isommetry from $Isom((r,d\|_{r \times r}),(\mathbb{R},\delta_\mathbb{R}))$ which is not empty (by $P3$). So, let be $\gamma \in Isom((r,d\|_{r \times r}),(\mathbb{R},\delta_\mathbb{R}))$, then, let's call $X$ to be the real unknown satisfying:
     
     $$|\gamma(A) - X| = |\gamma(B) - X|$$
 
@@ -204,7 +204,7 @@ Hence, as a summary, $\forall A,B \in \textbf{P} \ \exists! M \in [A,B] : d(A,M)
 
 ## 3.6. Exercise 1.
 
-**Let be $r \subset \textbf{P}$ and $\gamma, \gamma' \in Isom((r,d|_{r \times r}),(\mathbb{R},\delta_\mathbb{R}))$, then** 
+**Let be $r \subset \textbf{P}$ and $\gamma, \gamma' \in Isom((r,d\|_{r \times r}),(\mathbb{R},\delta_\mathbb{R}))$, then** 
 
 $$\exists a \in \mathbb{R} : [(\gamma' \circ \gamma^{-1} (x) = a + x \quad \forall x \in \mathbb{R}) \oplus (\gamma' \circ \gamma^{-1} (x) = a - x \quad \forall x \in \mathbb{R})]$$
 

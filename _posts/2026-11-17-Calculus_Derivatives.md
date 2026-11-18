@@ -99,3 +99,10 @@ Then, observe that as $t$ approaches $a$, $v_{[a,t]}$ get's closer to the instan
 
 $$v(a) = s'(a) = \lim_{t \to a} v_{[a,t]} = lim_{t \to a} \frac{s(t) - s(a)}{t - a}$$
 
+<br>
+
+# 3. The Derivative as a Function.
+
+
+
+<br>
