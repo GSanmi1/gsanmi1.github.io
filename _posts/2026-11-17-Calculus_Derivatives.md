@@ -129,8 +129,10 @@ Formally, a function is say to be continue at some point $a$ when the following 
 
 $$\lim_{x \to a^+} f(x) = \lim_{x \to a^-} f(x) = f(a) $$
 
-Which topologically means that all what is near of $x$ is near to $f(x)$ through $f$ catches the intuition statement.
+Which topologically means that all what is near of $x$ is near to $f(x)$ through $f$. Is easy to see that it catches the intuition statement.
 
 <br>
 
-Then, we are going to present an important result relating differentiation and continuity
+Then, we are going to present an important result relating differentiation and continuity:
+
+**Let $f(x)$ be a function and $a$ be in its domain. If $f(x)$ is differentiable at $a$, then $f$ is continuous at $a$.**
