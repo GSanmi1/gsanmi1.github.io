@@ -228,7 +228,7 @@ $$\gamma' \circ \gamma^{-1}(x) =a + \sigma x  \quad \forall x \in \mathbb{R}$$
 
 ### 3.7.1. Definition.
 
-Let be $r \subset \textbf{P}$, $P \in r, \gamma \in Isom((r,d|_{r \times r}),(\mathbb{R},\delta_\mathbb{R}))$, then we define as *ray with vertex $P$* to the sets:
+Let be $r \subset \textbf{P}$, $P \in r, \gamma \in Isom((r,d\|_{r \times r}),(\mathbb{R},\delta_\mathbb{R}))$, then we define as *ray with vertex $P$* to the sets:
 
 $$\Set{Q \in r \mid \gamma(Q) > \gamma(P)}, \quad \Set{Q \in r \mid \gamma(Q) < \gamma(P)}$$
 
