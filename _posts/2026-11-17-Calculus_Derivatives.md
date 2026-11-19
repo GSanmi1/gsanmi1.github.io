@@ -136,3 +136,57 @@ Which topologically means that all what is near of $x$ is near to $f(x)$ through
 Then, we are going to present an important result relating differentiation and continuity:
 
 **Let $f(x)$ be a function and $a$ be in its domain. If $f(x)$ is differentiable at $a$, then $f$ is continuous at $a$.**
+
+<br>
+
+# 4. Differentiation Rules.
+
+We are going to present the basic rules of derivation for generic class of functions:
+
+<br>
+
+## 4.1. Derivatives of elementary functions.
+
+| Function | Derivative | Valid for |
+|:---|:---|:---|
+| $c$ (constant) | $0$ | $x \in \mathbb{R}$ |
+| $x^{n}$, with $n \in \mathbb{Z}$ | $n x^{n-1}$ | $x \in \mathbb{R}$ if $n \geq 1$; $x \neq 0$ if $n \leq 0$ |
+| $x^{a}$, with $a \in \mathbb{R}$ | $a x^{a-1}$ | $x > 0$ |
+| $\sqrt{x}$ | $\dfrac{1}{2\sqrt{x}}$ | $x > 0$ |
+| $e^{x}$ | $e^{x}$ | $x \in \mathbb{R}$ |
+| $a^{x}$, with $a > 0$ | $a^{x} \ln a$ | $x \in \mathbb{R}$ |
+| $\ln x$ | $\dfrac{1}{x}$ | $x > 0$ |
+| $\ln\lvert x\rvert$ | $\dfrac{1}{x}$ | $x \neq 0$ |
+| $\log_{a} x$, with $a > 0$ and $a \neq 1$ | $\dfrac{1}{x \ln a}$ | $x > 0$ |
+| $\sin x$ | $\cos x$ | $x \in \mathbb{R}$ |
+| $\cos x$ | $-\sin x$ | $x \in \mathbb{R}$ |
+| $\tan x$ | $\dfrac{1}{\cos^{2} x} = 1 + \tan^{2} x$ | $\cos x \neq 0$ |
+| $\cot x$ | $-\dfrac{1}{\sin^{2} x} = -(1 + \cot^{2} x)$ | $\sin x \neq 0$ |
+| $\arcsin x$ | $\dfrac{1}{\sqrt{1 - x^{2}}}$ | $\lvert x\rvert < 1$ |
+| $\arccos x$ | $-\dfrac{1}{\sqrt{1 - x^{2}}}$ | $\lvert x\rvert < 1$ |
+| $\arctan x$ | $\dfrac{1}{1 + x^{2}}$ | $x \in \mathbb{R}$ |
+| $\sinh x$ | $\cosh x$ | $x \in \mathbb{R}$ |
+| $\cosh x$ | $\sinh x$ | $x \in \mathbb{R}$ |
+| $\tanh x$ | $\dfrac{1}{\cosh^{2} x} = 1 - \tanh^{2} x$ | $x \in \mathbb{R}$ |
+
+<br>
+
+## 4.2. Operational rules.
+
+
+Unless the hypotheses column states otherwise, $f$ and $g$ are differentiable at $x$ and every identity is evaluated at $x$; $\alpha$ and $\beta$ are real constants.
+ 
+| Rule | Identity | Requirement |
+|:---|:---|:---|
+| Linearity | $(\alpha f + \beta g)' = \alpha f' + \beta g'$ | — |
+| Product | $(fg)' = f'g + fg'$ | — |
+| Quotient | $\left(\dfrac{f}{g}\right)' = \dfrac{f'g - fg'}{g^{2}}$ | $g(x) \neq 0$ |
+| Chain | $(g \circ f)'= (g'\circ f) \cdot f'$ | $f$ differentiable at $x$ and $g$ differentiable at $f(x)$ |
+| Inverse function | $(f^{-1})' = (f'\circ f^{-1})^{-1}$ | $f$ continuous and injective on an interval and differentiable at $f^{-1}(x)$, with $f'(f^{-1}(x)) \neq 0$ |
+| Logarithmic derivative | $(\ln\lvert f\rvert)' = \dfrac{f'}{f}$ | $f(x) \neq 0$ |
+| Variable base and exponent | $(f^{g})' = f^{g}\left(g' \ln f + \dfrac{g f'}{f}\right)$ | $f(x) > 0$ |
+| Leibniz (order $n$) | $(fg)^{(n)} = \sum_{k=0}^{n} \binom{n}{k} f^{(k)} g^{(n-k)}$ | $f$ and $g$ differentiable $n$ times at $x$ |
+
+
+
+<br>

@@ -335,11 +335,11 @@ We call $H^i, \ i=1,2$ half-plane of edge $r$. We say two points of $\textbf{P}$
 
 ## 4.2. Immediate consecuences.
 
-Observe that, as a consecuences of the postualtes of $P4$:
+Observe that, as a consecuences of the postulates of $P4$:
 
 - $H^i \neq \varnothing \quad i = 1,2$
 
-    We demonstrated this before, is garantee by $P2$. In $\textbf{P}$ there are at least three points not aligned so at least one of them is not empty, then considering the line passing through the not aligned point and the other, we can infere that the opposite set is also not empty.
+    We demonstrated this before, is garanteed by $P2$. In $\textbf{P}$ there are at least three points not aligned so at least one of the subsets $H^i$ is not empty. Then considering the line passing through the not aligned point and other point of the other line, we can infere that the opposite set is also not empty.
 
     <br>
 
