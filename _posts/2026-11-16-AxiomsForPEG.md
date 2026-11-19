@@ -96,7 +96,7 @@ Hence, ultimately, we can state: $[A,B] \subset r \quad \forall A,B \in r$.
 
 ## 3.3. Axiom $P2$: More than one line in $\textbf{P}$. The line passing through two points.
 
-The following axiom, $P2$, states that in $\textbf{P}$ there is more than one single line to consider in $\textbf{P}$:
+The following axiom, $P2$ allows to difference $(\textbf{P},d)$ as a metric space from a single line, this is; from linear metric space. Basically, it states that in $\textbf{P}$ we can consider several different lines:
 
 $$\boxed{ \begin{aligned}\text{ Axiom P2:}&  \\  (i) \quad & \exists A,B,C : \neg [Al(A,B,C)] \\  (ii) \quad & \forall A,B(A \neq B \implies \exists !r : A,B \in r)\end{aligned}}$$
 
@@ -321,7 +321,9 @@ Is easy to see that $(i)$ and $(ii)$ applies for our construction, how ever, how
 
 
 
-$P4$ commit us to believe that $\textbf{P}$ is a metric structure for which the line is enough and necesary to split it in half and, as a consecuence, is a garantee that the cost of go through a line is to cut it. In summary, $P4$ is what converts $\textbf{P}$ as a metric structure into a plane.
+$P4$ commit us to believe that $\textbf{P}$ is a metric structure for which the line is enough and necesary to split it in half and, as a consecuence, is a garantee that the cost of go through a line is to cut it.
+
+In summary, $P4$ is what converts $\textbf{P}$ into a plane metric space:
 
 ![AxiomP4_2](/assets/images/Maths/Geometry/AxiomP4_2.png)
 
