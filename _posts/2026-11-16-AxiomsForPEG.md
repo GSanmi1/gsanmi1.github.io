@@ -22,10 +22,12 @@ lang: en
 - 3.5. Axiom $P3$: Ruler Postulate.
     - 3.5.1. Definition.
     - 3.5.2. Observation 2.8: Midpoint.
+
 - 3.6. Exercise 1. Characterizating the isommetries of $P3$.
 - 3.7. Rays.
     - 3.7.1. Definition.
     - 3.7.2. Observation 2.10. Points in distinct side of a third point.
+
 4. Axiom P4: Separation Axiom.
 - 4.1. Definition.
 - 4.2. Immediate consecuences.
