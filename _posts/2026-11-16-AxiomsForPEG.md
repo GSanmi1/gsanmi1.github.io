@@ -222,7 +222,10 @@ Call $\tau = a$ and conmutate the expression, getting:
 
 $$\gamma' \circ \gamma^{-1}(x) =a + \sigma x  \quad \forall x \in \mathbb{R}$$
 
+Note that one of the conclusions we can get from this exercises is that the difference between two isommetries $\gamma, \gamma' \in \mathbb{R}^r$ as $P3$ requires is as much: $\gamma' = \sigma \gamma + \tau : \sigma \in \Set{-1,1} \wedge \tau \in \mathbb{R}$, again, a uniform slidging, with orientation and wide.
+
 <br>
+
 
 ## 3.7. Rays.
 
@@ -240,6 +243,106 @@ We say two points $S,T$ are on the same side of $P$ when both are in the same ra
 
 <br>
 
+Let's do a minor observation to discuss why we the ray do not depedend on the select $\gamma$. Intuitively, we did see in exercise $6.1$ that any $h \in (\mathbb{R},\delta_\mathbb{R})$ is essentially a uniform oriented sliding (what later we'll call a translation plus a rotation over a line) over $\mathbb{R}$, since this the only way to preserve distances in a line.
+
+Formally, if $a,b,c \in \mathbb{R}$ distinct, the trycotomy and transitivity properties of the total order in $\mathbb{R}$ stablish that, for example and without loose generality: $a < b < c$. If we choose an isommetry $h$, there exists $\sigma \in \Set{-1,1} \wedge \tau \in \mathbb{R} : h(x) = \sigma x + \tau$. Then, the images of $a,b,c$ by $h$ satisfies: 
+
+
+$$\begin{cases}h(c) - h(b) = \sigma (c-b) > 0 \\ h(b) - h(a) = \sigma (b-a) > 0\end{cases}$$
+
+Then, we have two posibilities depending on the value of $\sigma$:
+
+$$\begin{cases} h(a) < h(b) < h(c) \quad \sigma = 1 \\ h(c) < h(b) < h(a) \quad \sigma = -1\end{cases}$$
+
+
+Geometrically we would say that $h$ "preserve" the segment (remember that in any metric space is $[x,y] = [y,x]$). 
+
+Observe nevertheless that an isommetry could invert the orientation, this is important in $\mathbb{R}$ because any point is identified by a number which is distinguishable from any other through a total order, we will see that $r$, despite be isommetric, is not a full copy of $\mathbb{R}$ in $\textbf{P}$ (is just a metric copy) and one of the differences is precisely this one, so orientation in the lines of the plane doesn't matters at all.
+
+
+Axiom $P3$ tell us that any line $r$ in the plane is an isommetric structure to $\mathbb{R}$, hence, any traduction of the line to $\mathbb{R}$ done by some isommetry $\gamma \in \mathbb{R}^r$ as $P3$ requires is in summary a replication of the slidging shown above. Meaning that, take $r \subset \textbf{P}$ and $X,Y,Z \in r$, distinct, such $Z \in [X,Y]$. Then, in terms of $\gamma$ is $\gamma(Z) \in [\gamma(X), \gamma(Y)]$, let's suppose $\gamma(X) < \gamma(Z) < \gamma(Y)$, now, let be $\gamma ' \in \mathbb{R}^r$ another isommetry as $P3$ requires, then $\gamma' \circ \gamma^{-1} \in Isom(\mathbb{R},\delta_\mathbb{R})$ and just as we see above there are two posibilities:
+
+$$\gamma(X) < \gamma(Z) < \gamma(Y) \implies \begin{cases}\gamma' \circ \gamma^{-1}(\gamma(X)) < \gamma' \circ \gamma^{-1}(\gamma(Z)) < \gamma' \circ \gamma^{-1}(\gamma(Y)) \\ \gamma' \circ \gamma^{-1}(\gamma(X)) > \gamma' \circ \gamma^{-1}(\gamma(Z)) > \gamma' \circ \gamma^{-1}(\gamma(Y))\end{cases}$$
+
+But $\gamma'\circ \gamma^{-1}(\gamma(X)) = \gamma'(X) \quad \forall X \in r$, then:
+$$\gamma(X) < \gamma(Z) < \gamma(Y) \implies \begin{cases}\gamma'(X) < \gamma' (Z) < \gamma' (Y) \\ \gamma'(X) > \gamma' (Z) > \gamma'(Y)\end{cases}$$
+
+Which means that essentially the election of $\gamma$ doesnt matter in the ray definition because it preserves the segments and only invert the line as much, but, since the points in a line are indistinguisable among them (despite the distance's identification) this is not much of a problem.
+
+In other words, the election of $\gamma$ could interchange both rays relative to a vertex of a line as much, but as a matter of a fact, we dont care because this change isn't metrically appretiable.
+
+<br>
+
 ### 3.7.2. Observation 2.10. Points in distinct side of a third point.
 
-Two points $X,Y \in r$ are in different sides of $P \in r$ only iff $P \in [X,Y]$.
+Two points $X,Y \in r$ are in different sides of $P \in r$ only iff $P \in [X,Y]$. Let be some $\gamma \in \mathbb{R}^r$ as $P3$ requires, then, if $X$ and $Y$ are in different sides of $P$ in $r$ it could satisfy, without loose generality: 
+
+$$\gamma(X) < \gamma(P) < \gamma(Y) \iff \gamma(P) \in [\gamma(X), \gamma(Y)] \iff P \in [X,Y]$$
+
+Note that since $[X,Y] = [Y,X]$, the case $\gamma(X) > \gamma(P) > \gamma(Y)$ is exactly the same, the equivalence presentation closes the demonstration.
+
+<br>
+
+# 4. Axiom P4: Separation Axiom.
+
+## 4.1. Definition.
+
+Above we did split a line in a point and identified two sides relative to the vertex. We are now going to present the separation axiom, $P4$, which extends this splitness to the whole plane $\textbf{P}$.
+
+<br>
+
+
+$$\boxed{ \begin{aligned}\text{ Axiom P4:} &  \quad  \forall \text{ line } r \ \exists H^1, H^2 \subset \textbf{P} :   \\  (i) \quad & H^1 \cup H^2 = \textbf{P} - r \\  (ii) \quad & \forall X,Y( X,Y \in H^i \implies  [X,Y] \subset H^i) \quad i = 1,2 \quad \\ (iii) \quad & \forall X,Y( (X \in H^i \wedge Y \in H^j) \implies  [X,Y] \cap r \neq \varnothing) \quad i,j = 1,2; \quad j \neq i \quad \end{aligned}}$$
+
+<br>
+
+Let's observe something interesting, let's take two distinct points $M, M' \in \textbf{P}$ and consider the line $r_{M,M'}$. Then, by axiom $P2$, consider a third point $X \in \textbf{P} : \neg Al(X,M,M') \iff X \notin r_{M,M'}$, and consider $Y \in \textbf{P} : M = mid[X,Y]$, then we call:
+
+$$H^1 = \Set{T \mid [T,X] \cap r_{MM'} = \varnothing }$$
+
+$$H^2 = \Set{T \mid [T,Y] \cap r_{MM'} = \varnothing }$$
+
+Is easy to see that $(i)$ and $(ii)$ applies for our construction, how ever, how can we garantee $(iii)$? $(iii)$ is basically the statement that asserts that is impossible to go from one set to the other without cross $r_{MM'}$, but this is not true in three dimensions geometry for example:
+
+![AxiomP4](/assets/images/Maths/Geometry/AxiomP4.png)
+
+
+
+$P4$ commit us to believe that $\textbf{P}$ is a metric structure for which the line is enough and necesary to split it in half, and as a consecuence, is a garantee that the cost of go through a line is to cut it. In summary, $P4$ is what converts $\textbf{P}$ as a metric structure into a plane.
+
+<br>
+
+We call $H^i, \ i=1,2$ half-plane of edge $r$. We say two points of $\textbf{P}$ are in the same side of $r$ if both are in the same half-plane.
+
+<br>
+
+## 4.2. Immediate consecuences.
+
+Observe that, as a consecuences of the postualtes of $P4$:
+
+- $H^i \neq \varnothing \quad i = 1,2$
+
+    We demonstrated this before, is garantee by $P2$. In $\textbf{P}$ there are at least three points not aligned so at least one of them is not empty, then considering the line passing through the not aligned point and the other, we can infere that the opposite set is also not empty.
+
+    <br>
+
+- $H^1 \cap H^2 = \varnothing$
+
+    This is precisely what follows from $(iii)$. Reasonning to the absurd, suppose: $H^1 \cap H^2 \neq \varnothing$, then:
+
+    $$X \in H^1 \cap H^2 \underbrace{\implies}_{(iii)} ([X,X] \cap r \neq \varnothing \iff X \in r) \implies H^1 \cup H^2 \neq \textbf{P} - r$$
+
+    Entering in contradiction with $(i)$.
+
+    <br>
+
+- $P^i \in H^i \implies H^i=\Set{T \mid [T, P^i] \cap r = \varnothing} \quad i = 1,2$
+
+    Observe that:
+    
+    $$X \in H^i \iff [X,P^i] \subset H^i \iff [X,P^i] \cap r = \varnothing$$
+    
+    We also see that $(i)$ and $(ii)$ emerges naturally, hence, the $Axiom P4$ core is in fact the third condition; $(iii)$.
+
+    <br>
+

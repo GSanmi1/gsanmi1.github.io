@@ -291,7 +291,7 @@ Consider $\mathbb{R}$ and the function: $\delta_\mathbb{R}: \mathbb{R}^2 \to \ma
     
     <br>
 
-    Essentially, this close the exercise which is a specific framework: a family of examples (Section 2), a rigidity lemma (Section 3), and a demonstration that this family is sufficiently rich to match any isometry at the points that determine it (Section 4).
+    Essentially, this close the exercise which is a specific framework: a family of examples (Section 2), a rigidity lemma (Section 3), and a demonstration that this family is sufficiently rich to match any isometry at the points that determine it (Section 4). The final conclusion is that pick an isommetry in $\mathbb{R}$ is to perform a uniform oriented slidging over the line, $\sigma$ is the orientation and $\tau$ is the wide of the slide
 
     <br>
 
