@@ -275,6 +275,7 @@ Axiom $P3$ tell us that any line $r$ in the plane is an isommetric structure to 
 $$\gamma(X) < \gamma(Z) < \gamma(Y) \implies \begin{cases}\gamma' \circ \gamma^{-1}(\gamma(X)) < \gamma' \circ \gamma^{-1}(\gamma(Z)) < \gamma' \circ \gamma^{-1}(\gamma(Y)) \\ \gamma' \circ \gamma^{-1}(\gamma(X)) > \gamma' \circ \gamma^{-1}(\gamma(Z)) > \gamma' \circ \gamma^{-1}(\gamma(Y))\end{cases}$$
 
 But $\gamma'\circ \gamma^{-1}(\gamma(X)) = \gamma'(X) \quad \forall X \in r$, then:
+
 $$\gamma(X) < \gamma(Z) < \gamma(Y) \implies \begin{cases}\gamma'(X) < \gamma' (Z) < \gamma' (Y) \\ \gamma'(X) > \gamma' (Z) > \gamma'(Y)\end{cases}$$
 
 Which means that essentially the election of $\gamma$ doesnt matter in the ray definition because it preserves the segments and only invert the line as much, but, since the points in a line are indistinguisable among them (despite the distance's identification) this is not much of a problem.
@@ -318,7 +319,9 @@ Is easy to see that $(i)$ and $(ii)$ applies for our construction, how ever, how
 
 
 
-$P4$ commit us to believe that $\textbf{P}$ is a metric structure for which the line is enough and necesary to split it in half, and as a consecuence, is a garantee that the cost of go through a line is to cut it. In summary, $P4$ is what converts $\textbf{P}$ as a metric structure into a plane.
+$P4$ commit us to believe that $\textbf{P}$ is a metric structure for which the line is enough and necesary to split it in half and, as a consecuence, is a garantee that the cost of go through a line is to cut it. In summary, $P4$ is what converts $\textbf{P}$ as a metric structure into a plane.
+
+![AxiomP4_2](/assets/images/Maths/Geometry/AxiomP4_2.png)
 
 <br>
 
