@@ -19,6 +19,16 @@ lang: en
 - 3.2. Segments and Lines in the plane.
 - 3.3. Axiom $P2$: More than one line in $\textbf{P}$. The line passing through two points.
 - 3.4. Parallel and Secant lines.
+- 3.5. Axiom $P3$: Ruler Postulate.
+    - 3.5.1. Definition.
+    - 3.5.2. Observation 2.8: Midpoint.
+- 3.6. Exercise 1. Characterizating the isommetries of $P3$.
+- 3.7. Rays.
+    - 3.7.1. Definition.
+    - 3.7.2. Observation 2.10. Points in distinct side of a third point.
+4. Axiom P4: Separation Axiom.
+- 4.1. Definition.
+- 4.2. Immediate consecuences.
 
     <br>
 
@@ -144,7 +154,7 @@ If both share more than one point, then, let be $A,B \in r \cap t : A \neq B$ an
 
 ## 3.5. Axiom $P3$: Ruler Postulate.
 
-#### 3.5.1. Definition.
+### 3.5.1. Definition.
 
 We are already familiar with this result, which basically recovers the analysis's fact about real numbers as positions in a line (Dedekind's cut) and transfer it too the line's subsets of $\textbf{P}$.
 
@@ -166,7 +176,7 @@ Then, we are inyecting the real distance to any generic line in the plane.
 
 <br>
 
-#### 3.5.2. Observation 2.8: Midpoint.
+### 3.5.2. Observation 2.8: Midpoint.
 
 Let's define a useful object in the following sections that also serve us as a good application example of the axiom $P3$. Let $r \subset \textbf{P}$ be a line and $A,B \in r : A \neq B$, then:
 
@@ -202,7 +212,7 @@ Hence, as a summary, $\forall A,B \in \textbf{P} \ \exists! M \in [A,B] : d(A,M)
 
 <br>
 
-## 3.6. Exercise 1.
+## 3.6. Exercise 1. Characterizating the isommetries of $P3$.
 
 **Let be $r \subset \textbf{P}$ and $\gamma, \gamma' \in Isom((r,d\|\_{r \times r}),(\mathbb{R},\delta\_\mathbb{R}))$, then** 
 
