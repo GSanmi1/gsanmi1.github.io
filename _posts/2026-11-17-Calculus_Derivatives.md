@@ -182,7 +182,7 @@ Unless the hypotheses column states otherwise, $f$ and $g$ are differentiable at
 | Product | $(fg)' = f'g + fg'$ | — |
 | Quotient | $\left(\dfrac{f}{g}\right)' = \dfrac{f'g - fg'}{g^{2}}$ | $g(x) \neq 0$ |
 | Chain | $(g \circ f)'= (g'\circ f) \cdot f'$ | $f$ differentiable at $x$ and $g$ differentiable at $f(x)$ |
-| Inverse function | $(f^{-1})' = (f'\circ f^{-1})^{-1}$ | $f$ continuous and injective on an interval and differentiable at $f^{-1}(x)$, with $f'(f^{-1}(x)) \neq 0$ |
+| Inverse function | $(f^{-1})' = \dfrac{1}{f'\circ f^{-1}}$ | $f$ continuous and injective on an interval and differentiable at $f^{-1}(x)$, with $f'(f^{-1}(x)) \neq 0$ |
 | Logarithmic derivative | $(\ln\lvert f\rvert)' = \dfrac{f'}{f}$ | $f(x) \neq 0$ |
 | Variable base and exponent | $(f^{g})' = f^{g}\left(g' \ln f + \dfrac{g f'}{f}\right)$ | $f(x) > 0$ |
 | Leibniz (order $n$) | $(fg)^{(n)} = \sum_{k=0}^{n} \binom{n}{k} f^{(k)} g^{(n-k)}$ | $f$ and $g$ differentiable $n$ times at $x$ |

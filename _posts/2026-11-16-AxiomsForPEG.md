@@ -184,7 +184,7 @@ Let's define a useful object in the following sections that also serve us as a g
 
 - $\exists! M \in r : d(A,M) = d(M,B)$ and we call it *midpoint*.
 
-    By $P3$, we know that we can measure $r's$ as if they were real elements, importing an isommetry from $Isom((r,d\||_{r \times r}),(\mathbb{R},\delta|_\mathbb{R}))$ which is not empty (by $P3$). So, let be $\gamma \in Isom((r,d\mid\_{r \times r}),(\mathbb{R},\delta\_\mathbb{R}))$, then, let's call $X$ to be the real unknown satisfying:
+    By $P3$, we know that we can measure $r's$ as if they were real elements, importing an isommetry from $Isom((r,d\mid_{r \times r}),(\mathbb{R},\delta\mid_\mathbb{R}))$ which is not empty (by $P3$). So, let be $\gamma \in Isom((r,d\mid\_{r \times r}),(\mathbb{R},\delta\_\mathbb{R}))$, then, let's call $X$ to be the real unknown satisfying:
     
     $$|\gamma(A) - X| = |\gamma(B) - X|$$
 
