@@ -363,3 +363,94 @@ Observe that, as a consecuences of the postulates of $P4$:
 
     <br>
 
+- Observe that, given two lines $r,s : r \not{\mid \mid} \ s$. Then, observe that ${H^i}\_r \cap s : i = 1,2$ are precisely the rays of $s$ relative to $r \cap s  \in \text{P}$.
+
+# 5. Triangles.
+
+The triangles are the basic figures of the plane geometry.
+
+<br>
+
+## 5.1. Definition.
+
+Let $P,Q,R \in \textbf{P} : \neg Al(P,Q,R)$. Then we call as *triangule of vertex $P,Q,R$* to:
+
+$$\triangle\Set{P,Q,R} := \Set{P,Q,R,[P,Q],[Q,R],[R,P]}$$
+
+This singular structure makes his elements to have specific name:
+
+- The points $P,Q,R$ are called *vertex* of the triangle.
+- The segments of the vertex of the triangle are called *sides* of the triangle.
+
+We say a vertex and a side to be *opposite* if the vertex does not belongs to the side as a point, for example $Q \notin [R,P]$:
+
+![triangle1](/assets/images/Maths/Geometry/triangle1.png)
+
+<br>
+
+## 5.2. Theorem 2.16: Pasch Axiom.
+
+We are now, making use of $P4$, proove an important result of triangles. The purpouse is to highlight the importance of $P4$ axiom using triangles prooving a result that at first looks trivial.
+
+<br>
+
+Given some triangle $\triangle{P,Q,R}$, then if some line $r$ cross $[P,Q]$, then is forced to cross either $[R,P]$ or $[R,Q]$.
+
+$$r \cap [P,Q] \neq \varnothing \implies r\cap ([R,Q] \cup [P,R]) \neq \varnothing$$
+
+Note that, if we consider ${H^i}_r : i =1,2$ as the axiom $P4$, then $P \in {H^i}_r \wedge Q \in {H^j}_r$. So, by $P4, (iii)$ we have the following posibilities:
+
+$$\begin{cases} R \in {H^i}_r \implies r \cap [R,Q] \neq \varnothing \\ R \in {H^j}_r \implies r \cap [R,P] \neq \varnothing \\ R \in r \implies r \cap ([R,Q] \cap [R,P]) \neq \varnothing\end{cases}$$
+
+The key is to understand that, whenever you catch in a segment (and by extension, in a line) two points on distinct half-planes, then $A4, (iii)$ garantee the cut with the edge of the halp-planes.
+
+<br>
+
+# 6. Isommetries.
+
+## 6.1. Theorem 2.18. Isommetries of the plane preserves half-plane, lines, segments and alignment.
+
+Let be $g \in Isom(\textbf{P})$, then we recall that:
+
+$$d(g(X),g(Y)) = d(X,Y)$$
+
+<br>
+
+Then, observe that:
+
+- Recall that: $[X,Y] = \Set{T \mid d(X,T) + d(T,Y) = d(X,Y)}$, so since is:
+
+    $$d(X,T) + d(T,Y) = d(X,Y) \iff d(g(X),g(T)) + d(g(T),g(Y)) = d(g(X),g(Y))$$
+
+    Because $g$ preserves the distances, then:
+    
+    $$\forall T \forall g \in Isom(\textbf{P})(T \in [X,Y] \iff g(T) \in [g(X),g(Y)])$$
+    
+    Which, along with $g$ biyectivity, allow us to state: $g([X,Y]) = [g(X), g(Y)]$. The biyectivity of $g$ will be considered without mention in the following points of the section.
+
+    <br>
+    
+- Since segments are preserved, then alignment is also preserved. Remember that three points of a metric space is said to be aligned if the whole are in the same segment, then, since segments are preserved:
+
+    $$\forall X,Y,Z \forall g \in Isom(\textbf{P})(Al(X,Y,Z) \iff Al(g(X), g(Y), g(Z)))$$
+
+    <br>
+
+- Now, take a line $r \subset \textbf{P}$ and two distintct points $A,B \in r$ then, remeber that the third point in line's definition allow us to say wheter a point belong or do not belong to a line:
+
+    $$X \in r_{AB} \underbrace{\iff}_{(l, 2.) \Rightarrow, (l, 3.) \Leftarrow} Al(X,A,B) \iff Al(g(X),g(A),g(B)) \underbrace{\iff}_{(l, 3.) \Rightarrow, (l, 2.) \Leftarrow} g(X) \in r_{g(A)g(B)}$$
+
+    The equivalences allow us to say that $\forall \text{ line } r, \forall g \in Isom(\textbf{P}) (g(r_{AB}) = r_{g(A)g(B)})$.
+
+    <br>
+
+- Ultimately, suppose $r$ as before and ${H_r}^i : i=1,2$, then, consider $g(H_r^i)$, is easy to see that by the alignment and segment preservation, $P4,(i), (ii), (iii)$ holds relative to $g(r)$, so 
+
+    $$\forall \text{ line } r \forall g \in Isom(\textbf{P})(g(H_r^i) = H_{g(r)}^j \quad i,j = 1,2)$$
+
+    Note that we not force $i \neq j$, meaning that the 
+
+    <br>
+
+
+## 6.2. Axioms about isommetries of the plane.
