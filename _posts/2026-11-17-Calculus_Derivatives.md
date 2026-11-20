@@ -187,6 +187,6 @@ Unless the hypotheses column states otherwise, $f$ and $g$ are differentiable at
 | Variable base and exponent | $(f^{g})' = f^{g}\left(g' \ln f + \dfrac{g f'}{f}\right)$ | $f(x) > 0$ |
 | Leibniz (order $n$) | $(fg)^{(n)} = \sum_{k=0}^{n} \binom{n}{k} f^{(k)} g^{(n-k)}$ | $f$ and $g$ differentiable $n$ times at $x$ |
 
-
-
 <br>
+
+# 5. Applications of derivatives.

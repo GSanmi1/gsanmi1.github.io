@@ -22,4 +22,10 @@ Modular aritmetic is the aritmetic operation involving integers refering only of
 
 # 2. Euclidiean Division: Reminder.
 
+We have the following theorem in $\mathbb{Z}$. Let $n\geq 1$ a fixed integer, then:
 
+$$\forall a \in \mathbb{Z} \ \exists! q,r \in \mathbb{Z} : (a = nq + r \wedge 0 \leq r < n)$$
+
+This is theorem, called Euclidean Division, is a powerfull decomposition tool for which any integer $a$ can be 
+
+<br>
