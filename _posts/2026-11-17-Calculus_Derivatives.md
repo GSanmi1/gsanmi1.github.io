@@ -35,6 +35,8 @@ Let $f$ be a function defined in an interval $I$, and let be $a,x \in I : x \neq
 
 $$Q = \frac{f(x) - f(a)}{x - a}$$
 
+This quotient measures how did $f$ increases in a bounded $x$-axis shift.
+
 This quotient can be reformulated taking $h : x = a + h$ and simply substituting:
 
 $$Q = \frac{f(a + h) - f(a)}{h}$$
