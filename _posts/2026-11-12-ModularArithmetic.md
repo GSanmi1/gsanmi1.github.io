@@ -16,6 +16,8 @@ lang: en
 2. Euclidean Division: Reminder.
 3. Definition of $\mathbb{Z}/n\mathbb{Z}$.
 
+    <br>
+    
 # 1. Introduction. 
 
 In this section we are going to present several important results about number theory involving modular aritmetic.

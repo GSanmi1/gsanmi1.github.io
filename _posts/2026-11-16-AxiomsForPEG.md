@@ -365,6 +365,8 @@ Observe that, as a consecuences of the postulates of $P4$:
 
 - Observe that, given two lines $r,s : r \not{\mid \mid} \ s$. Then, observe that ${H^i}\_r \cap s : i = 1,2$ are precisely the rays of $s$ relative to $r \cap s  \in \text{P}$.
 
+    <br>
+
 # 5. Triangles.
 
 The triangles are the basic figures of the plane geometry.
@@ -394,11 +396,11 @@ We are now, making use of $P4$, proove an important result of triangles. The pur
 
 <br>
 
-Given some triangle $\triangle\Set{P,Q,R}$, then if some line $r$ cross $[P,Q]$, then is forced to cross either $[R,P]$ or $[R,Q]$.
+Given some triangle $\triangle\Set{P,Q,R}$, then if some line $r$ cross $[P,Q]$, then is forced to cross either $[R,P]$ or $[R,Q]$. Formally:
 
-$$r \cap [P,Q] \neq \varnothing \implies r\cap ([R,Q] \cup [P,R]) \neq \varnothing$$
+$$\forall \text{ line } r \forall \triangle \Set{P,Q,R}(r \cap [P,Q] \neq \varnothing \implies r\cap ([R,Q] \cup [P,R]) \neq \varnothing)$$
 
-Note that, if we consider ${H^i}_r : i =1,2$ as the axiom $P4$, then $P \in {H^i}_r \wedge Q \in {H^j}_r$. So, by $P4, (iii)$ we have the following posibilities:
+Note that, if we consider ${H^i}_r : i =1,2$ as the axiom $P4$, then $P \in {H^i}_r \wedge Q \in {H^j}_r$. So, by $P4, (iii)$ we have the following posibilities for $R$:
 
 $$\begin{cases} R \in {H^i}_r \implies r \cap [R,Q] \neq \varnothing \\ R \in {H^j}_r \implies r \cap [R,P] \neq \varnothing \\ R \in r \implies r \cap ([R,Q] \cap [R,P]) \neq \varnothing\end{cases}$$
 
@@ -406,51 +408,85 @@ The key is to understand that, whenever you catch in a segment (and by extension
 
 <br>
 
-# 6. Isommetries.
+# 6. Isometries.
 
-## 6.1. Theorem 2.18. Isommetries of the plane preserves half-plane, lines, segments and alignment.
 
-Let be $g \in Isom(\textbf{P})$, then we recall that:
+Let's start saying, in vague terms, a structure is a set with some properties described as  relations between the elements of the set. For example in $(\textbf{P},d)$, to be a line $r$ is a particular behaviour of some elements of $\textbf{P}$ with $d$ described in three statements. 
 
-$$d(g(X),g(Y)) = d(X,Y)$$
+Then, to say that "some application preserve the structure" means basically that the transformation do not alter the properties a set satisfy when it get transformed. In an intuitive sense, we would say that a structure is a set along with a defined behaviour between his elements and the preservation of the structure means to preserve the elements (existance) and the behaviour between them.
+
+
+The Klein's Erlangen program stablish that the geometric properties of $\textbf{P}$ are precisely those such doesn't change by $Isom(\textbf{P})$. This means that, understand what structures are preserved by $Isom(\textbf{P})$'s group is essentially the study-object of plane euclidean geometry. 
 
 <br>
 
-Then, observe that:
+## 6.1. Theorem 2.18. Structures preserved by isommetries of the plane.
 
-- Recall that: $[X,Y] = \Set{T \mid d(X,T) + d(T,Y) = d(X,Y)}$, so since is:
+Let be $g \in Isom(\textbf{P})$, then we recall that $g$ take the distant as an invariant, meaning that $g$ do not alter the way in which the elements of $\textbf{P}$ interact between them through $d$:
 
-    $$d(X,T) + d(T,Y) = d(X,Y) \iff d(g(X),g(T)) + d(g(T),g(Y)) = d(g(X),g(Y))$$
+$$d(g(X),g(Y)) = d(X,Y)$$
 
-    Because $g$ preserves the distances, then:
-    
-    $$\forall T \forall g \in Isom(\textbf{P})(T \in [X,Y] \iff g(T) \in [g(X),g(Y)])$$
-    
-    Which, along with $g$ biyectivity, allow us to state: $g([X,Y]) = [g(X), g(Y)]$. The biyectivity of $g$ will be considered without mention in the following points of the section.
+We are about to see that, departing from this point and keeping in mind that in $\textbf{P}$ the main structures we present before (half-plane, lines, segments and alignment) are defined in terms of the relation of the points of $\textbf{P}$ through $d$, then, any $g \in Isom(\textbf{P})$ preserves this same structures, in the sense that the properties caracterizing any of this structures holds in the image of the structure through $g$.
 
-    <br>
-    
-- Since segments are preserved, then alignment is also preserved. Remember that three points of a metric space is said to be aligned if the whole are in the same segment, then, since segments are preserved:
+<br>
 
-    $$\forall X,Y,Z \forall g \in Isom(\textbf{P})(Al(X,Y,Z) \iff Al(g(X), g(Y), g(Z)))$$
+### 6.1.1. Segments and Isommetries.
 
-    <br>
+Recall that: $[A,B] = \Set{X \mid d(A,X) + d(X,B) = d(A,B)}$, so since is:
 
-- Now, take a line $r \subset \textbf{P}$ and two distintct points $A,B \in r$ then, remeber that the third point in line's definition allow us to say wheter a point belong or do not belong to a line:
+$$d(A,X) + d(X,B) = d(A,YB) \iff d(g(A),g(X)) + d(g(X),g(B)) = d(g(A),g(B))$$
 
-    $$X \in r_{AB} \underbrace{\iff}_{(l, 2.) \Rightarrow, (l, 3.) \Leftarrow} Al(X,A,B) \iff Al(g(X),g(A),g(B)) \underbrace{\iff}_{(l, 3.) \Rightarrow, (l, 2.) \Leftarrow} g(X) \in r_{g(A)g(B)}$$
 
-    The equivalences allow us to say that $\forall \text{ line } r, \forall g \in Isom(\textbf{P}) (g(r_{AB}) = r_{g(A)g(B)})$.
+The fact that $g$ is a biyection allow us to state that:
 
-    <br>
+$$\forall X \forall g \in Isom(\textbf{P})(X \in [g(A),g(B)] \iff g^{-1}(X) \in [A,B])$$
 
-- Ultimately, suppose $r$ as before and ${H_r}^i : i=1,2$, then, consider $g(H_r^i)$, is easy to see that by the alignment and segment preservation, $P4,(i), (ii), (iii)$ holds relative to $g(r)$, so 
+Then: $g([A,B]) = [g(A), g(B)] \quad \forall g \in Isom(\textbf{P})$.
 
-    $$\forall \text{ line } r \forall g \in Isom(\textbf{P})(g(H_r^i) = H_{g(r)}^j \quad i,j = 1,2)$$
+<br>
 
-    Note that we not force $i \neq j$, meaning that the 
+### 6.1.2. Alignment.
 
-    <br>
+Since segments are preserved, then alignment is also preserved. 
+
+Remember that three points of a metric space are said to be aligned if they coexists in the same segment. Hence, since segments are preserved we have:
+
+$$\forall A,B,C \forall g \in Isom(\textbf{P})(Al(A,B,C) \iff Al(g(A), g(B), g(C)))$$
+
+<br>
+
+### 6.1.3. Lines.
+
+Now, take a line $r \subset \textbf{P}$ and two distintct points $A,B \in r$ then, the third point in line's definition allow us to say wheter a point belong or do not belong to a line:
+
+$$X \in r_{g(A)g(B)} \underbrace{\iff}_{(l, 2.) \Rightarrow, (l, 3.) \Leftarrow} Al(X,g(A),g(B)) \iff Al(g^{-1}(X),A,B) \underbrace{\iff}_{(l, 3.) \Rightarrow, (l, 2.) \Leftarrow} g^{-1}(X) \in r_{AB}$$
+
+Note that $A \neq B \iff g(A) \neq g(B)$ since $g$ is biyective, so $r_{g(A),g(B)}$ is unique. 
+
+
+The equivalences and $g$'s biyectivity allow us to say that  $g(r_{AB}) = r_{g(A)g(B)} \quad \forall \text{ line } r, \forall g \in Isom(\textbf{P})$.
+
+<br>
+
+### 6.1.4. Half-planes and rays.
+
+Ultimately, suppose $r \subset \textbf{P}$ as before and ${H_r}^i : i=1,2$. Then, consider $g(H_r^i) : i = 1,2$. Then, take $P_i \in H^i_{r} : i = 1,2$ then we recall that: $H^i_r = \Set{X \mid [X,P^i] \cap r = \varnothing} : i=1,2$. Thus, take $X_i \in H_r^i : i =1,2$ and observe that necesarily: 
+
+$$[X_i,P^i] \cap r = \varnothing \iff g([X_i,P^i]) \cap g(r) = \varnothing : i=1,2$$
+
+First, from the statments above, we do know about segments and lines preservations which means that the second part of the equivalence means exactly what appears to mean; the image through $g$ of a segment and a line are segment and line aswell and this same premise let us to go back to the first equivalence through the inverse of $g^{-1}$ which is an isometry also. 
+
+Note ultimately that the alignment preservation do the rest; if was $g([X_i,P^i]) \cap g(r) \neq \varnothing$, then alignment wouldn't preserve.
+
+Then, the equivalences allow us to say that: $g(H_r) = H_{g(r)}$, this is; the image of a half-plane of edge $r$ is a half-plane of edge $g(r)$, but observe that in which side the halfplane lies depends on the image of $P^i : i =1,2$ which can change of half-plane, hence:
+
+
+
+$$\forall \text{ line } r \forall g \in Isom(\textbf{P})(g(H_r^i) = H_{g(r)}^j \quad i,j = 1,2)$$
+
+Note that we not force $i \neq j$, meaning that the images could invert and so can the rays of any line cutting $r$.
+
+<br>
 
 
 ## 6.2. Axioms about isommetries of the plane.
