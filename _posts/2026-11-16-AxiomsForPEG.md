@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Axioms for plane Euclidean geometry"
-subtitle: "Plane, Lines, Separation, Trinagles, Isommetries and Ortogonality."
+subtitle: "Plane, Lines, Separation, Trinagles, Isometries and Ortogonality."
 date: 2026-11-16 09:00:00 +0000
 categories: ['Geometría Básica']
 tags: ['Maths']
@@ -23,7 +23,7 @@ lang: en
     - 3.5.1. Definition.
     - 3.5.2. Observation 2.8: Midpoint.
 
-- 3.6. Exercise 1. Characterizating the isommetries of $P3$.
+- 3.6. Exercise 1. Characterizating the isometries of $P3$.
 - 3.7. Rays.
     - 3.7.1. Definition.
     - 3.7.2. Observation 2.10. Points in distinct side of a third point.
@@ -32,13 +32,26 @@ lang: en
 - 4.1. Definition.
 - 4.2. Immediate consecuences.
 
+5. Triangles.
+- 5.1. Definition.
+- 5.2. Theorem 2.16: Pasch Axiom.
+
+6. Isometries.
+- 6.1. Theorem 2.18. Structures preserved by isometries of the plane.
+    - 6.1.1. Segments.
+    - 6.1.2. Alignment.
+    - 6.1.3. Lines.
+    - 6.1.4. Half-planes and Rays.
+- 6.2. Axioms about isometries of the plane.
+    - 6.2.1. Axiom $P5$. Movility Axiom. Definition 2.19: Congruent Figures.
+
     <br>
 
 # 1. Introduction.
 
 In this chapter we are going to develop the *Plane Euclidean Geometry* in an axiomatic way. This basically means we will start by announcing some properties assuming them as true or principles (axioms) from which we will develop other properties such theorems, lemma, proposition, etc.
 
-This axioms will be stablished in set theory language, in this sense, we will say that the plane is a set of points, the figures on the plane such lines or triangles are subsets of the plane satisfying some conditions and distances, isommetries and more are applications.
+This axioms will be stablished in set theory language, in this sense, we will say that the plane is a set of points, the figures on the plane such lines or triangles are subsets of the plane satisfying some conditions and distances, isometries and more are applications.
 
 Is important to keep in mind that PEG emerges as an abstraction of what we can draw in a paper with a pencil. The objective of this course is to form the student to instantiate clear or strong intuitions into logically correct and syntactically well-constructed propositions.
 
@@ -214,7 +227,7 @@ Hence, as a summary, $\forall A,B \in \textbf{P} \ \exists! M \in [A,B] : d(A,M)
 
 <br>
 
-## 3.6. Exercise 1. Characterizating the isommetries of $P3$.
+## 3.6. Exercise 1. Characterizating the isometries of $P3$.
 
 **Let be $r \subset \textbf{P}$ and $\gamma, \gamma' \in Isom((r,d\|\_{r \times r}),(\mathbb{R},\delta\_\mathbb{R}))$, then** 
 
@@ -234,7 +247,7 @@ Call $\tau = a$ and conmutate the expression, getting:
 
 $$\gamma' \circ \gamma^{-1}(x) =a + \sigma x  \quad \forall x \in \mathbb{R}$$
 
-Note that one of the conclusions we can get from this exercises is that the difference between two isommetries $\gamma, \gamma' \in \mathbb{R}^r$ as $P3$ requires is as much: $\gamma' = \sigma \gamma + \tau : \sigma \in \Set{-1,1} \wedge \tau \in \mathbb{R}$, again, a uniform slidging, with orientation and wide.
+Note that one of the conclusions we can get from this exercises is that the difference between two isometries $\gamma, \gamma' \in \mathbb{R}^r$ as $P3$ requires is as much: $\gamma' = \sigma \gamma + \tau : \sigma \in \Set{-1,1} \wedge \tau \in \mathbb{R}$, again, a uniform slidging, with orientation and wide.
 
 <br>
 
@@ -337,13 +350,13 @@ We call $H^i, \ i=1,2$ half-plane of edge $r$. We say two points of $\textbf{P}$
 
 Observe that, as a consecuences of the postulates of $P4$:
 
-- $H^i \neq \varnothing \quad i = 1,2$
+1. $H^i \neq \varnothing \quad i = 1,2$
 
     We demonstrated this before, is garanteed by $P2$. In $\textbf{P}$ there are at least three points not aligned so at least one of the subsets $H^i$ is not empty. Then considering the line passing through the not aligned point and other point of the other line, we can infere that the opposite set is also not empty.
 
     <br>
 
-- $H^1 \cap H^2 = \varnothing$
+2. $H^1 \cap H^2 = \varnothing$
 
     This is precisely what follows from $(iii)$. Reasonning to the absurd, suppose: $H^1 \cap H^2 \neq \varnothing$, then:
 
@@ -353,7 +366,7 @@ Observe that, as a consecuences of the postulates of $P4$:
 
     <br>
 
-- $P^i \in H^i \implies H^i=\Set{T \mid [T, P^i] \cap r = \varnothing} \quad i = 1,2$
+3. $P^i \in H^i \implies H^i=\Set{T \mid [T, P^i] \cap r = \varnothing} \quad i = 1,2$
 
     Observe that:
     
@@ -363,7 +376,7 @@ Observe that, as a consecuences of the postulates of $P4$:
 
     <br>
 
-- Observe that, given two lines $r,s : r \not{\mid \mid} \ s$. Then, observe that ${H^i}\_r \cap s : i = 1,2$ are precisely the rays of $s$ relative to $r \cap s  \in \text{P}$.
+4. Observe that, given two lines $r,s : r \not{\mid \mid} \ s$. Then, observe that ${H^i}\_r \cap s : i = 1,2$ are precisely the rays of $s$ relative to $r \cap s  \in \text{P}$.
 
     <br>
 
@@ -420,7 +433,7 @@ The Klein's Erlangen program stablish that the geometric properties of $\textbf{
 
 <br>
 
-## 6.1. Theorem 2.18. Structures preserved by isommetries of the plane.
+## 6.1. Theorem 2.18. Structures preserved by isometries of the plane.
 
 Let be $g \in Isom(\textbf{P})$, then we recall that $g$ take the distant as an invariant, meaning that $g$ do not alter the way in which the elements of $\textbf{P}$ interact between them through $d$:
 
@@ -430,7 +443,7 @@ We are about to see that, departing from this point and keeping in mind that in 
 
 <br>
 
-### 6.1.1. Segments and Isommetries.
+### 6.1.1. Segments and Isometries.
 
 Recall that: $[A,B] = \Set{X \mid d(A,X) + d(X,B) = d(A,B)}$, so since is:
 
@@ -489,4 +502,65 @@ Note that we not force $i \neq j$, meaning that the images could invert and so c
 <br>
 
 
-## 6.2. Axioms about isommetries of the plane.
+## 6.2. Axioms about isometries of the plane.
+
+In $\textbf{P}$, the structures defined through the distance notion are used to create figures. The most direct and basic example about a figure in $\textbf{P}$ are the triangles, presented in the section $5$ of this same post. Then, the isometries of $\textbf{P}$, which we already know that preserve this structures, can also preserve (depends on what type of isometry is being used) the figures created with this structures of the plane.
+
+The fundamental use of the elements of $Isom(\textbf{P})$ lies in the capability of manipulate, in a calculated manner, figures in the plane. With this purpouse we introduce the following axioms involving whether can we invoke an isometry of the plane with some concrete behaviour over the points of $\textbf{P}$.
+
+<br>
+
+Until now, we've discuss how the points behaves under the transformation of some $g \in Isom(\textbf{P})$. Now, we are going to see whether can we ensure the existance of an isometry of the plane sending those points between them, under what conditions in $\textbf{P}$ is justified to invoke a concrete isometry of the plane.
+
+<br>
+
+Is usefull to keep in mind that isometries in the plane are just forms of move things in the plane in a way the distances holds.
+
+<br>
+
+### 6.2.1. Axiom $P5$. Movility Axiom. Definition 2.19: Congruent Figures.
+
+The following axiom let us believe that any where two pair of points sharing distance exists, there is an isometry sending one pair over the other:
+
+$$\boxed{ \begin{aligned}\text{ Axiom } & P5:   \quad \forall  A_1,A_2,B_1,B_2  \\ & d(A_1,A_2) = d(B_1,B_2) \iff \exists g \in Isom(\textbf{P}) : g(A_i) = B_i \quad i=1,2 \quad \end{aligned}}$$
+
+In this context, we say $g$ moves the pair $A_1,A_2$ over $B_1,B_2$.
+
+<br>
+
+Two figures in the plane $\mathcal{F_1}, \mathcal{F_2}$ are said to be *congruent* if there is an isometry moving one over the other:
+
+$$\mathcal{F}_1 \simeq_d \mathcal{F_2} \iff \exists g \in Isom(\textbf{P}) : g(\mathcal{F}_1) = \mathcal{F}_2 $$
+
+As an example, $P5$ ensures two segments are congruent when the distances between the endpoints coincides:
+
+$$[X,Y] \simeq_d [X',Y'] \iff d(X,Y) = d(X',Y')$$
+
+<br>
+
+### 6.2.2. Axiom $P6$: Reflexion axiom. Definition and properties.
+
+The following axiom is the formalization of what happens when we place a sheet of paper on the edge of a mirror and observe the reflexion.
+
+$$\boxed{ \begin{aligned}\text{ Axiom } &  P6: \  \forall  \text{ line } r \ \exists \sigma \in Isom(\textbf{P}) : \\ & (i) \quad \sigma(X) = X \iff X \in r \quad \forall X \in \textbf{P}  \quad  \\ & (ii) \quad \sigma \circ \sigma = id_\textbf{P} \quad \end{aligned}}$$
+
+
+We bother to difference the isometry from the usual notation $g$ because it has its own name. An isometry as $P6$ is called *reflexion of axis* $r$ or simply *axial reflexion*.
+
+<br>
+
+Let's demonstrate some properties of the axial reflexion isometry. Let be $\sigma$ the axial reflexion of axis $r$, then:
+
+1. $mid[X,\sigma(X)] \in r \quad \forall X \in \textbf{P}$.
+
+    We already know that isometries preserves segments, specifically: $\sigma [X, \sigma(X)] = [\sigma(X), \sigma(\sigma(X))]$. In virtue of $P6, \ (ii)$, is $\sigma(\sigma(X)) = X$, so $\sigma([X,\sigma(X)]) =[X,\sigma(X)]$, hence $\sigma(mid[X,\sigma(X)]) = mid[X,\sigma(X)] \in r$ by $P6, \ (i)$. (Note that, we haven't said it before, but the mid point is the only equidistant point to the endpoints so, of course, is preserved by any isometry relative to the image of the segment).
+
+    <br>
+
+2. Let be $H^i_r : i = 1,2$, then $\sigma(H^i_r) = H^j_r : i,j = 1,2 \wedge i \neq j$.
+
+    Naturally, let be $X \in H^i_r$, then, by the statement above and $P4, \ (iii)$:
+    
+    $$mid[X, \sigma(X)] \in r \implies [X, \sigma(X)] \cap r \neq \varnothing \implies \sigma(X) \in H^j_r$$
+
+    So $\sigma(H^i) \subseteq H^j$, but, since we know that the image of a half-plane by an isometry is a half-planes, and there is only two half-plane, then it must be $\sigma(H^i) =H^j : i,j = 1,2 \wedge i \neq j$.
