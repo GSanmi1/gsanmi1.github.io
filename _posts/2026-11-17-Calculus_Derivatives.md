@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Derivate"
-subtitle: "Conceptual notion, Diferentials, Minimum and Maximum, Antiderivates."
+subtitle: "Conceptual notion. Derivate at a point. Derivate as a function. Differentiation Rules."
 date: 2026-11-17 09:00:00 +0000
 categories: ['Cálculo']
 tags: ['Maths']
@@ -16,7 +16,15 @@ lang: en
 2. Defining the Derivate.
 - 2.1. Difference Quotient. Tangent Line to a function at a point.
 - 2.2. The derivate of a Function at a Point.
-- 2.3. Derivative Interpretation: Velocity.
+- 2.3. Derivative Interpretation: Change rate.
+
+3. The derivate as a function.
+- 3.1. Definition.
+- 3.2. Derivatives and Continuity.
+
+4. Differentiation Rules.
+- 4.1. Derivatives of elementary functions.
+- 4.2. Operational rules.
 
 <br>
 
@@ -86,7 +94,7 @@ provided this limit exists.
 
 <br>
 
-## 2.3. Derivative Interpretation: Velocity.
+## 2.3. Derivative Interpretation: Change rate.
 
 We are going an example of application of the derivate of a function at a point which is directly implied by the direct interpretation of the derivate: **The derivate of a function measures the instantaneous rate of change at a point**.
 
@@ -190,5 +198,3 @@ Unless the hypotheses column states otherwise, $f$ and $g$ are differentiable at
 | Leibniz (order $n$) | $(fg)^{(n)} = \sum_{k=0}^{n} \binom{n}{k} f^{(k)} g^{(n-k)}$ | $f$ and $g$ differentiable $n$ times at $x$ |
 
 <br>
-
-# 5. Applications of derivatives.
