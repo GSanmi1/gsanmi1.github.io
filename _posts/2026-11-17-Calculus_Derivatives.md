@@ -99,7 +99,7 @@ $$v_{[a,t]} = \frac{s(t) - s(a)}{t - a}$$
 
 Then, observe that as $t$ approaches $a$, $v_{[a,t]}$ get's closer to the instantaneous velocity at $a$, hence, as we seen above:
 
-$$v(a) = s'(a) = \lim_{t \to a} v_{[a,t]} = lim_{t \to a} \frac{s(t) - s(a)}{t - a}$$
+$$v(a) = s'(a) = \lim_{t \to a} v_{[a,t]} = \lim_{t \to a} \frac{s(t) - s(a)}{t - a}$$
 
 <br>
 

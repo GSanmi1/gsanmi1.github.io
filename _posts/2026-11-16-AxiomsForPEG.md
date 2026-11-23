@@ -117,7 +117,7 @@ Observe directly that:
 
 - $(i)$ of $P2$ let us to consider at least one point not aligned with other two in $\textbf{P}$, meaning that the three are not in the same line.
 
-- $(ii)$ of $P2$ let us to consider a line whenever we identify two distinct points of the plane and this line is unique. Note that the uniqness of the line is not necesary, is forced by the alignement logic of the structure (the points of two lines passing through two distinct points are enterely aligned with those two points, hence, each point is in his own line and in the other, thus both lines are in fact the same line).
+- $(ii)$ of $P2$ let us to consider a line whenever we identify two distinct points of the plane and this line is unique. Note that the uniqness of the line is not necesary, is forced by the alignement logic of the structure (the points of two lines passing through two distinct points are enterely aligned with those two points, hence, each point is in his own line and in the other, thus perph lines are in fact the same line).
 
     <br>
 
@@ -139,13 +139,13 @@ For now on, we will design the unique line passing through $A,B \in \textbf{P}$ 
 
 Let be $r,t \subset \textbf{P}$ two lines, then we say that:
 
-- Both lines are *secant* (or just, both intersect) $\not{\|\|}$ when share a unique point:
+- Both lines are *secant* (or just, perph intersect) $\not{\|\|}$ when share a unique point:
 
     $$r \not{||} \ \ t \iff \exists A \in \textbf{P} : r \cap t = \Set{A}$$
 
     <br>
 
-- We say both are *parallel* lines $\|\|$ when do not share any points:
+- We say perph are *parallel* lines $\|\|$ when do not share any points:
 
     $$r \ \| \ t \iff r \cap t = \varnothing$$
 
@@ -153,11 +153,11 @@ Let be $r,t \subset \textbf{P}$ two lines, then we say that:
 
 ### 3.4.2. Theorem 2.7: Characterization of the pairs of lines in $\textbf{P}$.
 
-**Is clear that, given two lines $r,t \subset \textbf{P}$, then, there are three posibilities; both are parallel lines, secant lines, or the same line.** 
+**Is clear that, given two lines $r,t \subset \textbf{P}$, then, there are three posibilities; perph are parallel lines, secant lines, or the same line.** 
 
-As subsets of $\textbf{P}$ if both doesn't share points $r \cap t = \varnothing$, then are parallel, if both share exactly one point $r \cap t = \Set{A}$, then are secant lines.
+As subsets of $\textbf{P}$ if perph doesn't share points $r \cap t = \varnothing$, then are parallel, if perph share exactly one point $r \cap t = \Set{A}$, then are secant lines.
 
-If both share more than one point, then, let be $A,B \in r \cap t : A \neq B$ and consider $r_{AB}$. The same reasoning is valid for $r$, take some point $X \in t$, then we have by $(2.)$ of lines's definition: $A,B,X \in t \implies Al(A,B,X)$, then also by $(3.)$ $X \in r_{AB}$ and since $X$ is an arbitrary point of $t$, then $t \subseteq r_{AB}$. The same reasoning demonstrates that $r_{AB} \subseteq t$, hence $t = r_{AB} = r$.
+If perph share more than one point, then, let be $A,B \in r \cap t : A \neq B$ and consider $r_{AB}$. The same reasoning is valid for $r$, take some point $X \in t$, then we have by $(2.)$ of lines's definition: $A,B,X \in t \implies Al(A,B,X)$, then also by $(3.)$ $X \in r_{AB}$ and since $X$ is an arbitrary point of $t$, then $t \subseteq r_{AB}$. The same reasoning demonstrates that $r_{AB} \subseteq t$, hence $t = r_{AB} = r$.
 
 <br>
 
@@ -201,7 +201,7 @@ Let's define a useful object in the following sections that also serve us as a g
     
     $$|\gamma(A) - X| = |\gamma(B) - X|$$
 
-    Squaring both parts, dusing the ifference of square's identity and cleaning $X$ (keeping in mind that $A \neq B$ and $\gamma$ is a biyection) we have that this real number is determinated by the expression:
+    Squaring perph parts, dusing the ifference of square's identity and cleaning $X$ (keeping in mind that $A \neq B$ and $\gamma$ is a biyection) we have that this real number is determinated by the expression:
 
     $$X = \frac{\gamma(A) + \gamma(B)}{2}$$
 
@@ -260,11 +260,11 @@ Let be $r \subset \textbf{P}$, $P \in r, \gamma \in Isom((r,d\|\_{r \times r}),(
 
 $$\Set{Q \in r \mid \gamma(Q) > \gamma(P)}, \quad \Set{Q \in r \mid \gamma(Q) < \gamma(P)}$$
 
-We often can refer to any of both sets as $\overline{r}$. Observe that both rays doesn't joint in to $r$:
+We often can refer to any of perph sets as $\overline{r}$. Observe that perph rays doesn't joint in to $r$:
 
 $$\Set{Q \in r \mid \gamma(Q) > \gamma(P)} \cup \Set{Q \in r \mid \gamma(Q) < \gamma(P)} = r \setminus \Set{P}$$
 
-We say two points $S,T$ are on the same side of $P$ when both are in the same ray with vertex $P$.
+We say two points $S,T$ are on the same side of $P$ when perph are in the same ray with vertex $P$.
 
 <br>
 
@@ -295,7 +295,7 @@ $$\gamma(X) < \gamma(Z) < \gamma(Y) \implies \begin{cases}\gamma'(X) < \gamma' (
 
 Which means that essentially the election of $\gamma$ doesnt matter in the ray definition because it preserves the segments and only invert the line as much, but, since the points in a line are indistinguisable among them (despite the distance's identification) this is not much of a problem.
 
-In other words, the election of $\gamma$ could interchange both rays relative to a vertex of a line as much, but as a matter of a fact, we dont care because this change isn't metrically appretiable.
+In other words, the election of $\gamma$ could interchange perph rays relative to a vertex of a line as much, but as a matter of a fact, we dont care because this change isn't metrically appretiable.
 
 <br>
 
@@ -342,7 +342,7 @@ In summary, $P4$ is what converts $\textbf{P}$ into a plane metric space:
 
 <br>
 
-We call $H^i, \ i=1,2$ half-plane of edge $r$. We say two points of $\textbf{P}$ are in the same side of $r$ if both are in the same half-plane.
+We call $H^i, \ i=1,2$ half-plane of edge $r$. We say two points of $\textbf{P}$ are in the same side of $r$ if perph are in the same half-plane.
 
 <br>
 
@@ -545,7 +545,7 @@ The following axiom is the formalization of what happens when we place a sheet o
 $$\boxed{ \begin{aligned}\text{ Axiom } &  P6: \  \forall  \text{ line } r \ \exists \sigma \in Isom(\textbf{P}) : \\ & (i) \quad \sigma(X) = X \iff X \in r \quad \forall X \in \textbf{P}  \quad  \\ & (ii) \quad \sigma \circ \sigma = id_\textbf{P} \quad \end{aligned}}$$
 
 
-We bother to difference the isometry from the usual notation $g$ because it has its own name. An isometry as $P6$ is called *reflexion of axis* $r$ or simply *axial reflexion*.
+We perpher to difference the isometry from the usual notation $g$ because it has its own name. An isometry as $P6$ is called *reflexion of axis* $r$ or simply *axial reflexion*.
 
 <br>
 
@@ -564,3 +564,80 @@ Let's demonstrate some properties of the axial reflexion isometry. Let be $\sigm
     $$mid[X, \sigma(X)] \in r \implies [X, \sigma(X)] \cap r \neq \varnothing \implies \sigma(X) \in H^j_r$$
 
     So $\sigma(H^i) \subseteq H^j$, but, since we know that the image of a half-plane by an isometry is a half-planes, and there is only two half-plane, then it must be $\sigma(H^i) =H^j : i,j = 1,2 \wedge i \neq j$.
+
+    <br>
+
+# 7. Orthogonality.
+
+## 7.1. Definition.
+
+Let be $r,l \subset \textbf{P}$ two secant lines. 
+
+Then, we say that $l$ is *orthogonal* to $r$ if any point of $l$ is equidistant to any pair of points of $r$ equidistants as well to the intersection point of perph lines:
+
+$$l \perp r \iff d(S,A) = d(S,B) \quad \forall S \in l \forall A,B \in r : (A \neq B \wedge mid[A,B] = r \cap l)$$
+
+![orthogonality](/assets/images/Maths/Geometry/orthogonality.png)
+
+<br>
+
+## 7.2. Properties of orthogonal lines.
+
+### 7.2.1. Isometries preserve orthogonality.
+
+Note that, let be $l\perp r$ and $g \in Isom(\textbf{P})$.
+
+We do know that $g$ preserves distances so, at first, $g(r), g(l)$ are two lines. 
+
+Then, consider some $T \in g(l)$ and take $P,Q \in g(r) : P \neq Q, mid[P,Q] = g(r) \cap g(l)$. Observe that, since $g$ is biyective, we can consider $g^{-1} \in Isom(\textbf{P})$, then: 
+
+$$\begin{cases} g^{-1}(P),g^{-1}(Q) \in r, \quad g^{-1}(T) \in l \\ P \neq Q \iff g^{-1}(P) \neq g^{-1}(Q) \\ mid[P,Q] \in g(r) \cap g(l) \iff g^{-1}(mid[P,Q]) \in r \cap l \\ \end{cases}$$
+
+In this context, since $l \perp r$, then:
+
+$$d(g^{-1}(T),g^{-1}(P)) = d(g^{-1}(T),g^{-1}(Q))$$
+
+And since $g^{-1}$ is an isometry:
+
+$$d(g^{-1}(T),g^{-1}(P)) = d(g^{-1}(T),g^{-1}(Q))\iff d(T,P) = d(T,Q)$$
+
+
+Hence, since $T,P,Q$ were arbitrary points: $l\perp r \implies g(l) \perp g(r)$ and we can apply $g^{-1}$ obtaining $g(l) \perp g(r) \implies l \perp r$, ultimately $l \perp r \iff g(l) \perp g(r) \quad \forall g \in Isom\textbf{P}$. 
+
+<br>
+
+### 7.2.2. Theorem 2.25. Characterization of the line orthogonal to other one.
+
+We are now considering two orthogonal lines $l \perp r$, then we are going to describe the points of $l$ in terms of two points of $r$.
+
+$$l =\Set{ X \in \textbf{P} \mid d(X,A) = d(X,B) : A,B \in r \wedge A \neq B \wedge mid[A,B] = r\cap l}$$
+
+By the definition of orthogonality, is easy to see that any point of $l$ satisfies the condition. The proof goes about to demonstrate that $l$'s points are the only points in the plane satisfying this coinditions.
+
+<br>
+
+Take some point $P \in \textbf{P} - l$ and assume that $d(P,A) = d(P,B) : mid[A,B] = r \cap l$. 
+
+Since $P \notin l \underbrace{\implies}_{P4, \ (i)} \exists i \in \Set{1,2}: P \in H^i_l$, also, let's say that $A \in H_l^i, B \in H_l^j : i,j \in \Set{1,2}, i\neq j$. Thus, $P,A$ lies on the same half-plane of edge $l$.
+
+Hence, observe that, by $P4, \ (iii)$ is $[P, B] \cap l \neq \varnothing$, let's call $S = [P,B] \cap l$, then we have:
+
+$$\begin{cases} d(P,A) = d(P,B) \\ d(S,A) = d(S,B) \\ d(P,B) = d(P,S) + d(S,B)\end{cases} \implies d(P,A) = d(P,S) + d(S,A) \implies S \in [P,A] \implies [P,A] \cap l \neq \varnothing$$
+
+Contradicting $P4, \ (ii)$, since $P,A \in H^i_l \iff [P,A] \cap l = \varnothing$.
+
+<br>
+
+![orthogonality2](/assets/images/Maths/Geometry/orthogonality2.png)
+
+This allows us to say that $l$, orthogonal to $r$, is the geometric place of the points that are equidistant to any pair of points equidistant to the intersection point of perph lines. This also let us to say that there is only one unique line orthogonal to other one intersection at some point. 
+
+This is, take some point at one line and there is only a unique orthogonal line intersecting at that point. This comes from the fact that the geometric place is a line and the line, as a localized structure, is unique.
+
+<br>
+
+### 7.2.3. Orthogonality is a simetric relation.
+
+We define whether a line is orthogonal to other one, buy carefull readers would note that 
+
+ 
