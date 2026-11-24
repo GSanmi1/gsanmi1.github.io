@@ -636,8 +636,67 @@ This is, take some point at one line and there is only a unique orthogonal line 
 
 <br>
 
-### 7.2.3. Orthogonality is a simetric relation.
+### 7.2.3. Theorem 2.26: Orthogonality is a simetric relation.
 
-We define whether a line is orthogonal to other one, buy carefull readers would note that 
+We are about to see that if $l,r$ are two lines of the plane, then the following equivalences are true: 
 
- 
+$$l \bot r \iff r \bot l \iff \sigma_l(r) = r \iff \sigma_r(l) = l$$
+
+
+To prove it, let's see that. Let be $\sigma_l, \sigma_r$ reflexion of axis $l,r$ respectively. 
+
+- Note then, that, if $r \cap l = \Set{M}$ and $A,B \in r : A \neq B \wedge mid[A,B]=M$, then:
+
+    $$l := \Set{X \in \textbf{P} \mid d(A,X) = d(B,X)} \iff $$
+
+    $$\iff \sigma_r(l) = \Set{X \in \textbf{P} \mid d(\sigma_r(A),X) = d(\sigma_r(B),X)}$$
+
+    But, we do know that $\sigma_r(A) = A$ and $\sigma_r(B) = B$ hence: $\sigma_r(l) = l$.
+
+    <br>
+
+- Let's now see that $\sigma_r(l) = l \implies r \bot l$.
+
+    Take $A',B' \in l : mid[A',B'] = M$, consider some $S \in r$, then since $\sigma_r(A') =B'$ is:
+
+    $$d(A',S) = d(\sigma_r(A'),\sigma_r(S)) = d(B',S)$$
+
+    Which means that $r \bot l$.
+
+    <br>
+
+- And naturally, $r \bot l \implies \sigma_l(r) = r \implies l \bot r$.
+
+    <br>
+
+Then, we did see that there is a cycle of implications that closes:
+
+$$l \perp r \implies \sigma_r(l) = l \implies r \perp l \implies \sigma_r(l) = l$$
+
+<br>
+
+### 7.2.4. Theorem 2.27: Uniquity of the orthogonal line to other one passing through a point.
+
+We are going to see that for each line $r \subset \textbf{P}$ and each $P \in \textbf{P} - r$ there is only one line $l \bot r$.
+
+- The existance can be easily proved by $\sigma_r$. By $P2, \ (i)$, there is some $P \notin r$, take then $l = r_{P\sigma_r(P)}$, observe that, by the properties of the isometries is: $\sigma_r(l) = r_{\sigma_r(P)P} = r_{P\sigma_r(P)} = l \iff l \cap r$.
+
+- Let see that the uniquity follows immediately, if $l'$ is an orthogonal line passing through $P$, then $l' \cap r \iff \sigma_r(l') = l'$ which means $\sigma_r(P) \in l'$, hence $l = l' = r_{\sigma_r(P)P}$.
+
+    <br>
+
+### 7.2.5. Corolary 2.28: Uniquity of the axis reflexion.
+
+Consider a line $r$ of the plane and two axis reflexion of edge $r$, $\sigma_r$, $\sigma'_r$. 
+
+Then, take some $P \in \textbf{P}$, in this context:
+
+- $P \in r \implies \sigma_r (P)  = \sigma'_r (P) = P$
+- $P \in \textbf{P} - r \implies (\exists ! l \subset \textbf{P} : l \bot r \wedge P \in l) \implies \begin{cases}d(P,\sigma_r(P)) = d(P,\sigma'_r(P)) \\ M = mid[P,\sigma_r(P)] = mid[P,\sigma'_r(P)] \underbrace{\in}_{6.2.2 - 1} r \cap l \\ d(M,\sigma_r(P)) = d(M,\sigma'_r(P)) \end{cases}$. 
+
+    Which means that $\sigma_r(P), \sigma'_r(P) \in l$ are two points in the same line equidistant to other two distinct points in the same line $P,M \in l$ so there are the same point.
+
+    <br>
+
+Ultimately, $\sigma_r(P) = \sigma'_r(P) \quad \forall P \in \textbf{P}$.
+
