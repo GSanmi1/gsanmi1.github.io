@@ -692,7 +692,9 @@ Consider a line $r$ of the plane and two axis reflexion of edge $r$, $\sigma_r$,
 Then, take some $P \in \textbf{P}$, in this context:
 
 - $P \in r \implies \sigma_r (P)  = \sigma'_r (P) = P$
-- $P \in \textbf{P} - r \implies (\exists ! l \subset \textbf{P} : l \bot r \wedge P \in l) \implies \begin{cases}d(P,\sigma\_r(P)) = d(P,\sigma'\_r(P)) \\ M = mid[P,\sigma\_r(P)] = mid[P,\sigma'\_r(P)] \underbrace{\in}\_{6.2.2 - 1} r \cap l \\ d(M,\sigma\_r(P)) = d(M,\sigma'\_r(P)) \end{cases}$. 
+- $P \in \textbf{P} - r \implies (\exists ! l \subset \textbf{P} : l \bot r \wedge P \in l)$ , then observe that $\sigma\_r, \sigma'\_r$ sends $P$ two $\sigma_r(P), \sigma'_r(P) \in l$ verifying $M = mid[P,\sigma\_r(P)] = mid[P,\sigma'\_r(P)] \in r \cap l$ by the $6.2.2 -1$ and the fact $r \neq l$, hence:
+
+    $$\begin{cases} d(P,\sigma_r(P)) = d(P,\sigma'_r(P)) \\ d(M,\sigma_r(P)) = d(M,\sigma'_r(P)) \end{cases}$$
 
     Which means that $\sigma\_r(P), \sigma'\_r(P) \in l$ are two points in the same line equidistant to other two distinct points in the same line $P,M \in l$ so there are the same point.
 
