@@ -15,35 +15,35 @@ lang: en
 1. Introduction.
 2. Axiom P1. The plane's metric space. Distance.
 3. Lines.
-- 3.1. Line: Definition.
-- 3.2. Segments and Lines in the plane.
-- 3.3. Axiom $P2$: More than one line in $\textbf{P}$. The line passing through two points.
-- 3.4. Parallel and Secant lines.
-- 3.5. Axiom $P3$: Ruler Postulate.
-    - 3.5.1. Definition.
-    - 3.5.2. Observation 2.8: Midpoint.
+    - 3.1. Line: Definition.
+    - 3.2. Segments and Lines in the plane.
+    - 3.3. Axiom $P2$: More than one line in $\textbf{P}$. The line passing through two points.
+    - 3.4. Parallel and Secant lines.
+    - 3.5. Axiom $P3$: Ruler Postulate.
+        - 3.5.1. Definition.
+        - 3.5.2. Observation 2.8: Midpoint.
 
-- 3.6. Exercise 1. Characterizating the isometries of $P3$.
-- 3.7. Rays.
-    - 3.7.1. Definition.
-    - 3.7.2. Observation 2.10. Points in distinct side of a third point.
+    - 3.6. Exercise 1. Characterizating the isometries of $P3$.
+    - 3.7. Rays.
+        - 3.7.1. Definition.
+        - 3.7.2. Observation 2.10. Points in distinct side of a third point.
 
 4. Axiom P4: Separation Axiom.
-- 4.1. Definition.
-- 4.2. Immediate consecuences.
+    - 4.1. Definition.
+    - 4.2. Immediate consecuences.
 
 5. Triangles.
-- 5.1. Definition.
-- 5.2. Theorem 2.16: Pasch Axiom.
+    - 5.1. Definition.
+    - 5.2. Theorem 2.16: Pasch Axiom.
 
 6. Isometries.
-- 6.1. Theorem 2.18. Structures preserved by isometries of the plane.
-    - 6.1.1. Segments.
-    - 6.1.2. Alignment.
-    - 6.1.3. Lines.
-    - 6.1.4. Half-planes and Rays.
-- 6.2. Axioms about isometries of the plane.
-    - 6.2.1. Axiom $P5$. Movility Axiom. Definition 2.19: Congruent Figures.
+    - 6.1. Theorem 2.18. Structures preserved by isometries of the plane.
+        - 6.1.1. Segments.
+        - 6.1.2. Alignment.
+        - 6.1.3. Lines.
+        - 6.1.4. Half-planes and Rays.
+    - 6.2. Axioms about isometries of the plane.
+        - 6.2.1. Axiom $P5$. Movility Axiom. Definition 2.19: Congruent Figures.
 
     <br>
 
