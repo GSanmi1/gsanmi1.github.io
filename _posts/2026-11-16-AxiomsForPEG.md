@@ -538,6 +538,14 @@ $$[X,Y] \simeq_d [X',Y'] \iff d(X,Y) = d(X',Y')$$
 
 <br>
 
+**Displacement in $\textbf{P}$.**
+
+Let's also observe an interesting use case of Axiom $P5$, suppose a line $r$ and consider $P,Q \in r$, then take $M = mid[P,Q]$. Then $d(P,M) = d(Q,M)$ by the axiom $P5$, there is some $g \in Isom(\textbf{P}) : g(P) = Q, g(M) = M$ and $g(r_{PM}) = r_{QM} =r$. 
+
+![shift](/assets/images/Maths/Geometry/shift.png)
+
+<br>
+
 ### 6.2.2. Axiom $P6$: Reflexion axiom. Definition and properties.
 
 The following axiom is the formalization of what happens when we place a sheet of paper on the edge of a mirror and observe the reflexion.
@@ -601,7 +609,6 @@ And since $g^{-1}$ is an isometry:
 
 $$d(g^{-1}(T),g^{-1}(P)) = d(g^{-1}(T),g^{-1}(Q))\iff d(T,P) = d(T,Q)$$
 
-
 Hence, since $T,P,Q$ were arbitrary points: $l\perp r \implies g(l) \perp g(r)$ and we can apply $g^{-1}$ obtaining $g(l) \perp g(r) \implies l \perp r$, ultimately $l \perp r \iff g(l) \perp g(r) \quad \forall g \in Isom\textbf{P}$. 
 
 <br>
@@ -636,11 +643,11 @@ This is, take some point at one line and there is only a unique orthogonal line 
 
 <br>
 
-### 7.2.3. Theorem 2.26: Orthogonality is a simetric relation.
+### 7.2.3. Theorem 2.26: Orthogonality is a simetric relation. Characterization of the orthogonal line.
 
 We are about to see that if $l,r$ are two lines of the plane, then the following equivalences are true: 
 
-$$l \bot r \iff r \bot l \iff \sigma_l(r) = r \iff \sigma_r(l) = l$$
+$$l \perp r \iff r \perp l \iff \sigma_l(r) = r \iff \sigma_r(l) = l$$
 
 
 To prove it, let's see that. Let be $\sigma_l, \sigma_r$ reflexion of axis $l,r$ respectively. 
@@ -655,17 +662,17 @@ To prove it, let's see that. Let be $\sigma_l, \sigma_r$ reflexion of axis $l,r$
 
     <br>
 
-- Let's now see that $\sigma_r(l) = l \implies r \bot l$.
+- Let's now see that $\sigma_r(l) = l \implies r \perp l$.
 
     Take $A',B' \in l : mid[A',B'] = M$, consider some $S \in r$, then since $\sigma_r(A') =B'$ is:
 
     $$d(A',S) = d(\sigma_r(A'),\sigma_r(S)) = d(B',S)$$
 
-    Which means that $r \bot l$.
+    Which means that $r \perp l$.
 
     <br>
 
-- And naturally, $r \bot l \implies \sigma_l(r) = r \implies l \bot r$.
+- And naturally, $r \perp l \implies \sigma_l(r) = r \implies l \perp r$.
 
     <br>
 
@@ -677,7 +684,7 @@ $$l \perp r \implies \sigma_r(l) = l \implies r \perp l \implies \sigma_r(l) = l
 
 ### 7.2.4. Theorem 2.27: Uniquity of the orthogonal line to other one passing through a point.
 
-We are going to see that for each line $r \subset \textbf{P}$ and each $P \in \textbf{P} - r$ there is only one line $l \bot r$.
+We are going to see that for each line $r \subset \textbf{P}$ and each $P \in \textbf{P} - r$ there is only one line $l \perp r$.
 
 - The existance can be easily proved by $\sigma_r$. By $P2, \ (i)$, there is some $P \notin r$, take then $l = r_{P\sigma_r(P)}$, observe that, by the properties of the isometries is: $\sigma_r(l) = r_{\sigma_r(P)P} = r_{P\sigma_r(P)} = l \iff l \cap r$.
 
@@ -692,7 +699,7 @@ Consider a line $r$ of the plane and two axis reflexion of edge $r$, $\sigma_r$,
 Then, take some $P \in \textbf{P}$, in this context:
 
 - $P \in r \implies \sigma_r (P)  = \sigma'_r (P) = P$
-- $P \in \textbf{P} - r \implies (\exists ! l \subset \textbf{P} : l \bot r \wedge P \in l)$ , then observe that $\sigma\_r, \sigma'\_r$ sends $P$ to $\sigma_r(P), \sigma'_r(P) \in l$ verifying $M = mid[P,\sigma\_r(P)] = mid[P,\sigma'\_r(P)] \in r \cap l$ by $6.2.2 -1$ and the fact $r \neq l$, hence:
+- $P \in \textbf{P} - r \implies (\exists ! l \subset \textbf{P} : l \perp r \wedge P \in l)$ , then observe that $\sigma\_r, \sigma'\_r$ sends $P$ to $\sigma_r(P), \sigma'_r(P) \in l$ verifying $M = mid[P,\sigma\_r(P)] = mid[P,\sigma'\_r(P)] \in r \cap l$ by $6.2.2 -1$ and the fact $r \neq l$, hence:
 
     $$\begin{cases} d(P,\sigma_r(P)) = d(P,\sigma'_r(P)) \\ d(M,\sigma_r(P)) = d(M,\sigma'_r(P)) \end{cases}$$
 
@@ -701,4 +708,35 @@ Then, take some $P \in \textbf{P}$, in this context:
     <br>
 
 Ultimately, $\sigma_r(P) = \sigma'\_r(P) \quad \forall P \in \textbf{P}$.
+
+<br>
+
+### 7.2.6. Theorem 2.29: Extensión of 2.27 to the point of intersection.
+
+Theorem 2.27 stablished the uniquity of the orthogonal line to another one passing thorugh an external point:
+
+$$\forall \text{ line } r \forall P \in \textbf{P} - r \  \exists ! \text{ line } l : (l \perp r \wedge P \in l)$$
+
+Now, we extend and complete this uniquity caracterization to a point in $r$:
+
+$$\forall \text{ line } r \forall P \in r \  \exists ! \text{ line } l : (l \perp r \wedge P \in l)$$
+
+<br>
+
+To prove it, take some line $r$ and some $P \in r$, then let's consider some point $S \in \textbf{P} - r$, then let be $l \perp r$ passing through $S$ if $S=P$ $l$ is our line, if not, take $mid[S,P] =M$ the $P5$'s axiom $g \in Isom(\textbf{P}) : g(S) = P, g(M) = M$ and $g(r) = r$. Then, $g(l)$ is a line passing through $P$ orthgonal to $r$ by $7.2.1$.
+
+We done $l \perp_P r$.
+
+<br>
+
+## 7.3. Perpendicular Bisector.
+
+Let be $A,B \in \textbf{P} : A \neq B$ and call $M = mid[A,B]$, then we define the set:
+
+$$M_{AB}:= \Set{X \in \textbf{P} \mid d(X,A) = d(X,B)}$$
+
+Observe immeditely that $M_{AB}$ as a set is the line orthogonal to $r_{AB}$; $M_{AB} = l : l \perp_M r_{AB}$ by $7.2.2$ and $7.2.6$.
+
+<br>
+
 

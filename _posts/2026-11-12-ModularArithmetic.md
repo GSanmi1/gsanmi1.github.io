@@ -19,7 +19,8 @@ lang: en
 
 3. Definition of $\mathbb{Z}/n\mathbb{Z}$.
 - 3.1. Congruence as an equivalence relation.
-
+- 3.2. Remainder class.
+- 3.3. Quotient Set of $\mathbb{Z}/n\mathbb{Z}$.
     <br>
 
 # 1. Introduction. 
@@ -36,7 +37,7 @@ Modular aritmetic is the aritmetic operation involving integers refering only of
 
 We have the following theorem in $\mathbb{Z}$. Let $q \geq 1$ a fixed integer, then:
 
-$$\forall p \in \mathbb{Z} \ \exists! n,r \in \mathbb{Z} : (p = nq + r \wedge 0 \leq r < n)$$
+$$\forall p \in \mathbb{Z} \ \exists! n,r \in \mathbb{Z} : (p = nq + r \wedge 0 \leq r < q)$$
 
 This theorem, called Euclidean Division, postulates that any integer can be decomposed in terms of any other integer disregarding a margin we call *remainder*. Essentially, the formal statement above should be read as; fixed some integer, then, any other integer exists inside it a unique amount of times neglecting a marging inferior than that very amount.
 
@@ -55,7 +56,7 @@ Then, from the fixed integer perspective, the remainder acts as a kind of identi
 
 Then, we will give to the remainder a singular nomenclature:
 
-$$r =  a \bmod n \iff n \mid (a - r)$$
+$$r =  a \bmod n \iff n \mid (a - r) : 0 \leq r < n$$
 
 Read as: $r$ is the remainder of $a$ modulo $n$, which means $a$ is a multiple of $n$ shifted $r$ times.
 
@@ -85,6 +86,8 @@ Let's see this relation is an equivalence relation in $\mathbb{Z}$. The followin
 
 <br>
 
+## 3.2. Remainder class.
+
 An equivalence relation declares certain elements to be indistinguishable. Along with an equivalence relation there are the class of $a$; $[a]$; which is the set of everything that is indistinguishable from $a$ from the relation perspective. In this case; 
 
 $$[a]= a + n\mathbb{Z}:= \Set{b \in \mathbb{Z} \mid b \equiv a \pmod n} = \Set{b \in \mathbb{Z} \mid b = a+kn : k \in \mathbb{Z} }$$
@@ -92,6 +95,8 @@ $$[a]= a + n\mathbb{Z}:= \Set{b \in \mathbb{Z} \mid b \equiv a \pmod n} = \Set{b
 Or simply: $a + n\mathbb{Z}:= \Set{a+kn : k \in \mathbb{Z}}$, the multiples of $n$ shifted $a$ unities.
 
 <br>
+
+## 3.3. Quotient Set of $\mathbb{Z}/n\mathbb{Z}$.
 
 Observe directly that since the remainder is a non-negative integer smaller than $n$, there are exactly $n$ relation class clustered in the quotient set:
 
@@ -101,8 +106,13 @@ Note then that the modulo let us to decompse an infinite set as $\mathbb{Z}$ in 
 
 <br>
 
-## 3.2. Quotient Set of $\mathbb{Z}/n\mathbb{Z}$.
+# 4. Great Common Divisor theorem.
 
+The GCD (Great Common Divisor) theorem is one of the most important theorems in Number Theory. Before, we define the remainder as the quantity that remains from an integer when we substract from him the maximum amount of copies available of other integer. Then, GCD expands this to two integers and transform it into a question; what remains of some integer if you can discard both copies of other two? The theorem states that the result is, once again, a remainder: the remainder modulo a single integer called great common divisor of those two.
+
+<br>
+
+## 4.1. Addition class in $\mathbb{Z}/n\mathbb{Z}$.
 
 
 <br>
