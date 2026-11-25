@@ -165,6 +165,36 @@ This theorem states ultimately that the derivative coincides with the average ra
 
 We are going to present important implications of the Mean Value Theorem.
 
-### 3.3.1. C
+### 3.3.1. Functions with a derivate of zero.
+
+Let be $f$ differentiable over an interval $I$, then:
+
+$$f'(x) = 0 \quad \forall x \in I \implies \exists C : f(x) = C \quad \forall x \in I$$
 
 <br>
+
+Note that $f$ is differentiable then $f$ must be continous. Then, suppose that $f$ is not constant in $I$, then, take $a,b \in I : f(b) \neq f(a)$ by the mean value theorem applied to $[a,b]$ (in which $f$ is differentiable and continous inheritated from $I$) there exists some $c$ such:
+
+$$f'(c) = \frac{f(b) - f(a)}{b-a}$$
+
+Then, $f(b) \neq f(a) \implies f'(c) \neq 0$.
+
+<br>
+
+### 3.3.2. Constant difference Theorem.
+
+Let be $f,g$ differentiable over an interval $I$ such $f'(x) = g'(x) \quad \forall x \in I$, then, observe that $h(x) = f(x) - g(x)$ is differentiable at $I$ and $h'(x) = 0$, so in virtue of $3.3.1$, exists some $C$ such $h(x) = f(x) - g(x) = C \iff f(x) = g(x) + C$
+
+<br>
+
+### 3.3.3. Increasing and decreasing functions.
+
+Let $f$ be continous over $[a,b]$ and differentiable over $(a,b)$:
+
+- $f'(x) > 0 \quad \forall x \in (a,b) \implies f \text{ is an increasing function in } [a,b]$.
+- $f'(x) < 0 \quad \forall x \in (a,b) \implies f \text{ is a decreasing function in } [a,b]$.
+
+Observe that by the mean value theorem, since $f'(x) > 0$ (or $< 0$), then $f(b)>f(a)$ ( or $< f(a)$), observe that, eventually, the slop of the tangent line at each point of the interval is positive (negative) so the function always increase (decrease).
+
+<br>
+
