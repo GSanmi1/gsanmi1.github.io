@@ -739,4 +739,32 @@ Observe immeditely that $M_{AB}$ as a set is the line orthogonal to $r_{AB}$; $M
 
 <br>
 
+# 8. Parallel.
 
+To conclude this section we are going to present the axiom of the parallel lines. We are going to discuss why this statement is needed to be introduced as an axiom and the importance of it. Let's start with an exercise:
+
+<br>
+
+Consider two lines $a,b \subset \textbf{P} : a \neq b \wedge a \cap b = \Set{P}$, consider in $C,A \in a : C \neq A$ and $B \in b : d(A,P)=d(B,P)=d(C,P)=\delta > 0$ aswell and consider the bisectors $M_{AB}, M_{BC}$. 
+
+- Note that obviously $P \in M_{AB}, M_{BC}$, demonstrate that $M_{AB} \perp_P M_{BC}$
+
+    First, consider $\sigma_{M_{AB}}$, since is an isometry, it preserves lines, also, since $P \in M_{AB}$ and $mid[A,B] \in M_{AB}$ then $\sigma_{M_{AB}}(r_{AP}) = r_{BP}$ so $\sigma_{AB}(C) = D \in b : d(P,C) = d(P,D)$.
+
+    Now, observe that $\sigma_{M_{AB}}(M_{BC}) = M_{DA}$, and is enough to proof that $M_{BC} = M_{DA}$ but this is immediate since, observe that $\sigma_{M_{BC}}(C) = B$ and $\sigma_{M_{BC}}(D) = A$ while fix each point of $M_{BC}$ since is an axial reflexion.
+
+    Observe that since $\sigma_{M_{BC}}$ sends $b$ to $a$ then $\sigma_{M_{BC}}([B,D]) = [C,\sigma_{M_{BC}}(D)] \subset a$  which means $\sigma_{M_{BC}}(D) \in a$ such:
+    
+    - $\sigma_{M_{BC}}([B,D]) = [C,\sigma_{M_{BC}}(D)] \implies d(C, \sigma_{M_{BC}}(D)) = d(B,D) = d(C,A)$. 
+    
+    - $\sigma_{M_{BC}}(mid[B,D]) = mid[C,\sigma_{M_{BC}}(D)] = P \implies d(\sigma_{M_{BC}}(D),P) = d(A,P)$
+
+        So, $\sigma_{M_{BC}}(D) = A$.
+
+    <br>
+
+- If we try to prove that $r_{AB} \perp r_{CB}$.
+
+    <br>
+
+    
